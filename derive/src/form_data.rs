@@ -105,9 +105,10 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 		Fields::Named(named) => {
 			for field in named.named {
 				let span = field.span();
-				let field_ident = field
+				let mut field_ident = field
 					.ident
 					.ok_or(Error::new(span, "Fields without an ident are not supported"))?;
+				field_ident.set_span(Span::call_site());
 				let field_type = field.ty;
 				builder.fields.push((field_ident, field_type));
 			}

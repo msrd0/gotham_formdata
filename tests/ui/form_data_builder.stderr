@@ -1,0 +1,10 @@
+error[E0428]: the name `MyFormDataFormDataBuilder` is defined multiple times
+ --> $DIR/form_data_builder.rs:7:1
+  |
+4 | #[derive(Deserialize, FormData)]
+  |                       -------- previous definition of the type `MyFormDataFormDataBuilder` here
+...
+7 | struct MyFormDataFormDataBuilder;
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `MyFormDataFormDataBuilder` redefined here
+  |
+  = note: `MyFormDataFormDataBuilder` must be defined only once in the type namespace of this module

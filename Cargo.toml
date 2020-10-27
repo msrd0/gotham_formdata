@@ -15,7 +15,7 @@ gotham = { version = "0.5", default-features = false }
 gotham_multipart_derive = { version = "0.0.1", path = "derive/" }
 log = "0.4"
 mime = "0.3"
-multipart = "0.17"
+multipart = { version = "0.17", features = ["server"], default-features = false }
 thiserror = "1.0"
 
 [dev-dependencies]

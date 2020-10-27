@@ -24,8 +24,8 @@
 <br/>
 
 This crate is an extension to the popular [gotham web framework][gotham] for Rust. It aims to reduce
-boilerplate necessary to read `multipart/form-data` requests as a stop-gap until gotham finally
-implements a [body extractor].
+boilerplate necessary to read `application/x-www-form-urlencoded` and `multipart/form-data` requests
+as a stop-gap until gotham finally implements a [body extractor].
 
 ## Warning
 
@@ -41,7 +41,7 @@ an async multipart parser.
 ```rust
 use gotham_formdata::FormData;
 
-#[derive(FormData)]
+#[derive(Deserialize, FormData)]
 struct LoginData {
 	username: String,
 	password: String

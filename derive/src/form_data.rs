@@ -154,18 +154,29 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 				async move {
 					let content_type = content_type?;
 					log::debug!("Parsing Form Data for type {} with Content-Type {}", stringify!(#name), content_type);
-					let boundary = ::gotham_formdata::internal::get_boundary(&content_type)?;
-					let mut multipart = ::gotham_formdata::internal::get_multipart(body, boundary).await?;
 
-					let mut builder: #builder_ident #ty_gen = Default::default();
-					while let Some(mut field) = multipart.read_entry()? {
-						let name = field.headers.name;
-						let mut value = String::new();
-						field.data.read_to_string(&mut value);
-						builder.add_entry(name, value)?;
+					if ::gotham_formdata::internal::is_urlencoded(&content_type) {
+						::gotham_formdata::internal::parse_urlencoded::<#name #ty_gen>(body).await
 					}
-					log::debug!("Finished parsing Form Data for type {}", stringify!(#name));
-					builder.build()
+
+					else if ::gotham_formdata::internal::is_multipart(&content_type) {
+						let boundary = ::gotham_formdata::internal::get_boundary(&content_type)?;
+						let mut multipart = ::gotham_formdata::internal::get_multipart(body, boundary).await?;
+
+						let mut builder: #builder_ident #ty_gen = Default::default();
+						while let Some(mut field) = multipart.read_entry()? {
+							let name = field.headers.name;
+							let mut value = String::new();
+							field.data.read_to_string(&mut value)?;
+							builder.add_entry(name, value)?;
+						}
+						log::debug!("Finished parsing Form Data for type {}", stringify!(#name));
+						builder.build()
+					}
+
+					else {
+						Err(::gotham_formdata::Error::UnknownContentType(content_type))
+					}
 				}.boxed()
 			}
 		}

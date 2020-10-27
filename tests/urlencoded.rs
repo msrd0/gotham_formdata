@@ -26,7 +26,7 @@ async fn login_handler(state: &mut State) -> Result<Response<Body>, HandlerError
 }
 
 #[test]
-fn multipart() {
+fn urlencoded() {
 	let _ = pretty_env_logger::try_init_timed();
 
 	let server = TestServer::new(build_simple_router(|router| {
@@ -34,8 +34,8 @@ fn multipart() {
 	}))
 	.unwrap();
 
-	let mime: Mime = "multipart/form-data; boundary=GOTHAMMULTIPART".parse().unwrap();
-	let body = "--GOTHAMMULTIPART\r\nContent-Disposition: form-data; name=\"username\"\r\n\r\ntestuser\r\n--GOTHAMMULTIPART\r\nContent-Disposition: form-data; name=\"password\"\r\n\r\nsecret\r\n--GOTHAMMULTIPART--\r\n";
+	let mime: Mime = "application/x-www-form-urlencoded".parse().unwrap();
+	let body = "username=testuser&password=secret";
 	let res = server.client().post("http://localhost/login", body, mime).perform().unwrap();
 	let body = res.read_body().unwrap();
 	assert_eq!(&body, b"testuser");

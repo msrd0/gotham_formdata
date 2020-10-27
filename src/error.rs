@@ -1,4 +1,5 @@
 use gotham::anyhow;
+use mime::Mime;
 use thiserror::Error;
 
 #[derive(Debug, Error)]
@@ -20,6 +21,10 @@ pub enum Error {
 	MissingContentType,
 	#[error("Missing Field '{0}'")]
 	MissingField(String),
+	#[error("Error while parsing the body: {0}")]
+	SyntaxError(#[from] serde_urlencoded::de::Error),
+	#[error("Unknown 'Content-Type' header value: {0}")]
+	UnknownContentType(Mime),
 	#[error("Unknown Field '{0}'")]
 	UnknownField(String)
 }

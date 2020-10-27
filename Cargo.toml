@@ -4,7 +4,7 @@
 members = ["derive"]
 
 [package]
-name = "gotham_multipart"
+name = "gotham_formdata"
 version = "0.0.1"
 authors = ["Dominic Meiser <git@msrd0.de>"]
 edition = "2018"
@@ -12,7 +12,7 @@ edition = "2018"
 [dependencies]
 futures-util = "0.3"
 gotham = { version = "0.5", default-features = false }
-gotham_multipart_derive = { version = "0.0.1", path = "derive/" }
+gotham_formdata_derive = { version = "0.0.1", path = "derive/" }
 log = "0.4"
 mime = "0.3"
 multipart = { version = "0.17", features = ["server"], default-features = false }

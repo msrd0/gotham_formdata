@@ -1,4 +1,4 @@
-# gotham_multipart
+# gotham_formdata
 
 This crate is an extension to the popular [gotham web framework][gotham] for Rust. It aims to reduce
 boilerplate necessary to read `multipart/form-data` requests as a stop-gap until gotham finally
@@ -16,7 +16,7 @@ an async multipart parser.
 ## Example
 
 ```rust
-use gotham_multipart::FormData;
+use gotham_formdata::FormData;
 
 #[derive(FormData)]
 struct LoginData {
@@ -41,7 +41,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,

@@ -1,7 +1,7 @@
 # -*- eval: (cargo-minor-mode 1) -*-
 
 [package]
-name = "gotham_multipart_derive"
+name = "gotham_formdata_derive"
 version = "0.0.1"
 authors = ["Dominic Meiser <git@msrd0.de>"]
 edition = "2018"

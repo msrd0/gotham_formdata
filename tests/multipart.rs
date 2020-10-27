@@ -6,7 +6,7 @@ use gotham::{
 	state::State,
 	test::TestServer
 };
-use gotham_multipart::FormData;
+use gotham_formdata::FormData;
 use mime::{Mime, TEXT_PLAIN};
 
 #[derive(FormData)]

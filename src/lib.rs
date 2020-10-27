@@ -20,7 +20,7 @@ an async multipart parser.
 # use gotham::state::State;
 # use gotham::helpers::http::response::*;
 # use mime::TEXT_PLAIN;
-use gotham_multipart::FormData;
+use gotham_formdata::FormData;
 
 #[derive(FormData)]
 struct LoginData {
@@ -69,7 +69,7 @@ pub mod export {
 }
 
 #[doc(inline)]
-pub use gotham_multipart_derive::*;
+pub use gotham_formdata_derive::*;
 
 mod error;
 pub use error::*;

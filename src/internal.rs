@@ -30,5 +30,6 @@ pub fn get_body(state: &mut State) -> Body {
 
 pub async fn get_multipart(body: Body, boundary: &str) -> Result<Multipart<impl Read>, Error> {
 	let body = body::to_bytes(body).await?;
+	log::debug!("Parsing body {:?} with boundary '{}'", body, boundary);
 	Ok(Multipart::with_body(Cursor::new(body), boundary))
 }

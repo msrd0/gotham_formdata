@@ -2,7 +2,7 @@ use gotham::state::State;
 use std::{future::Future, pin::Pin};
 
 #[allow(type_alias_bounds)]
-pub type FormDataFuture<T: FormData> = Pin<Box<dyn Future<Output = Result<T, T::Err>>>>;
+pub type FormDataFuture<T: FormData> = Pin<Box<dyn Future<Output = Result<T, T::Err>> + Send>>;
 
 pub trait FormData: Sized {
 	type Err;

@@ -58,10 +58,12 @@ impl<'a> FormDataBuilder<'a> {
 					#( else if name == stringify!(#field_names) {
 						let value_parsed = value.parse::<#field_types>()
 							.map_err(|err| ::gotham_multipart::Error::IllegalField(name.to_owned(), err.into()))?;
+						log::debug!("Found value for field {}", name);
 						self.#field_names.replace(value_parsed);
 						Ok(())
 					} )*
 					else {
+						log::debug!("Found an unknown field: {}", name);
 						Err(::gotham_multipart::Error::UnknownField(name.to_owned()))
 					}
 				}
@@ -151,6 +153,7 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 
 				async move {
 					let content_type = content_type?;
+					log::debug!("Parsing Form Data for type {} with Content-Type {}", stringify!(#name), content_type);
 					let boundary = ::gotham_multipart::internal::get_boundary(&content_type)?;
 					let mut multipart = ::gotham_multipart::internal::get_multipart(body, boundary).await?;
 
@@ -161,6 +164,7 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 						field.data.read_to_string(&mut value);
 						builder.add_entry(name, value)?;
 					}
+					log::debug!("Finished parsing Form Data for type {}", stringify!(#name));
 					builder.build()
 				}.boxed()
 			}

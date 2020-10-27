@@ -1,0 +1,18 @@
+# -*- eval: (cargo-minor-mode 1) -*-
+
+[workspace]
+members = ["derive"]
+
+[package]
+name = "gotham_multipart"
+version = "0.0.1"
+authors = ["Dominic Meiser <git@msrd0.de>"]
+edition = "2018"
+
+[dependencies]
+futures-util = "0.3"
+gotham = { version = "0.5", default-features = false }
+gotham_multipart_derive = { version = "0.0.1", path = "derive/" }
+mime = "0.3"
+multipart = "0.17"
+thiserror = "1.0"

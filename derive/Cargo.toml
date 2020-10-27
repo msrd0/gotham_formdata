@@ -1,0 +1,15 @@
+# -*- eval: (cargo-minor-mode 1) -*-
+
+[package]
+name = "gotham_multipart_derive"
+version = "0.0.1"
+authors = ["Dominic Meiser <git@msrd0.de>"]
+edition = "2018"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2 = "1.0"
+quote = "1.0"
+syn = { version = "1.0", features = ["derive"] }

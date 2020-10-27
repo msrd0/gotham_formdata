@@ -1,4 +1,4 @@
-use crate::Error;
+use crate::{Error, FormData};
 use gotham::{
 	hyper::{
 		body,
@@ -10,7 +10,17 @@ use gotham::{
 use mime::Mime;
 use multipart::server::Multipart;
 use serde::de::DeserializeOwned;
-use std::io::{Cursor, Read};
+use std::{
+	io::{Cursor, Read},
+	sync::Arc
+};
+
+pub trait FormDataBuilder: Default {
+	type Data: FormData;
+
+	fn add_entry(&mut self, name: Arc<str>, value: String) -> Result<(), Error>;
+	fn build(self) -> Result<Self::Data, Error>;
+}
 
 pub fn get_content_type(state: &State) -> Result<Mime, Error> {
 	let headers: &HeaderMap = state.borrow();
@@ -19,6 +29,10 @@ pub fn get_content_type(state: &State) -> Result<Mime, Error> {
 		.ok_or(Error::MissingContentType)?
 		.to_str()?
 		.parse()?)
+}
+
+pub fn get_body(state: &mut State) -> Body {
+	state.take()
 }
 
 pub fn is_urlencoded(content_type: &Mime) -> bool {
@@ -34,15 +48,17 @@ pub fn is_multipart(content_type: &Mime) -> bool {
 	content_type.essence_str() == "multipart/form-data"
 }
 
-pub fn get_boundary(content_type: &Mime) -> Result<&str, Error> {
-	Ok(content_type.get_param("boundary").ok_or(Error::MissingBoundary)?.as_str())
-}
-
-pub fn get_body(state: &mut State) -> Body {
-	state.take()
-}
-
-pub async fn get_multipart(body: Body, boundary: &str) -> Result<Multipart<impl Read>, Error> {
+pub async fn parse_multipart<T: FormDataBuilder>(body: Body, content_type: &Mime) -> Result<T::Data, Error> {
+	let boundary = content_type.get_param("boundary").ok_or(Error::MissingBoundary)?.as_str();
 	let body = body::to_bytes(body).await?;
-	Ok(Multipart::with_body(Cursor::new(body), boundary))
+	let mut multipart = Multipart::with_body(Cursor::new(body), boundary);
+
+	let mut builder = T::default();
+	while let Some(mut field) = multipart.read_entry()? {
+		let name = field.headers.name;
+		let mut value = String::new();
+		field.data.read_to_string(&mut value)?;
+		builder.add_entry(name, value)?;
+	}
+	builder.build()
 }

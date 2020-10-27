@@ -41,15 +41,18 @@ impl<'a> FormDataBuilder<'a> {
 		}
 	}
 
-	fn gen_add_entry_impl(&self) -> TokenStream {
+	fn gen_builder_impl(&self) -> TokenStream {
+		let name = &self.name;
 		let ident = &self.ident;
 		let (impl_gen, ty_gen, were) = self.generics.split_for_impl();
 
-		let field_names = self.fields.iter().map(|(name, _)| name);
+		let field_names = self.fields.iter().map(|(name, _)| name).collect::<Vec<_>>();
 		let field_types = self.fields.iter().map(|(_, ty)| ty);
 
 		quote! {
-			impl #impl_gen #ident #ty_gen #were {
+			impl #impl_gen ::gotham_formdata::internal::FormDataBuilder for #ident #ty_gen #were {
+				type Data = #name #ty_gen;
+
 				fn add_entry(&mut self, name: ::std::sync::Arc<str>, value: String) -> Result<(), ::gotham_formdata::Error> {
 					let name: &str = &name;
 					if false {
@@ -67,19 +70,7 @@ impl<'a> FormDataBuilder<'a> {
 						Err(::gotham_formdata::Error::UnknownField(name.to_owned()))
 					}
 				}
-			}
-		}
-	}
 
-	fn gen_build_impl(&self) -> TokenStream {
-		let name = &self.name;
-		let ident = &self.ident;
-		let (impl_gen, ty_gen, were) = self.generics.split_for_impl();
-
-		let field_names = self.fields.iter().map(|(name, _)| name);
-
-		quote! {
-			impl #impl_gen #ident #ty_gen #were {
 				fn build(self) -> Result<#name #ty_gen, ::gotham_formdata::Error> {
 					Ok(#name #ty_gen {
 						#( #field_names: self.#field_names.ok_or(::gotham_formdata::Error::MissingField(stringify!(#field_names).to_owned()))? ),*
@@ -132,21 +123,18 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 
 	let builder_struct = builder.gen_struct();
 	let builder_default_impl = builder.gen_default_impl();
-	let builder_add_entry_impl = builder.gen_add_entry_impl();
-	let builder_build_impl = builder.gen_build_impl();
+	let builder_builder_impl = builder.gen_builder_impl();
 
 	Ok(quote! {
 		#builder_struct
 		#builder_default_impl
-		#builder_add_entry_impl
-		#builder_build_impl
+		#builder_builder_impl
 
 		impl #impl_gen ::gotham_formdata::FormData for #name #ty_gen #were {
 			type Err = ::gotham_formdata::Error;
 
 			fn parse_form_data(state: &mut ::gotham_formdata::export::State) -> ::gotham_formdata::FormDataFuture<Self> {
 				use ::gotham_formdata::export::FutureExt;
-				use ::std::io::Read;
 
 				let content_type = ::gotham_formdata::internal::get_content_type(state);
 				let body = ::gotham_formdata::internal::get_body(state);
@@ -160,18 +148,7 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 					}
 
 					else if ::gotham_formdata::internal::is_multipart(&content_type) {
-						let boundary = ::gotham_formdata::internal::get_boundary(&content_type)?;
-						let mut multipart = ::gotham_formdata::internal::get_multipart(body, boundary).await?;
-
-						let mut builder: #builder_ident #ty_gen = Default::default();
-						while let Some(mut field) = multipart.read_entry()? {
-							let name = field.headers.name;
-							let mut value = String::new();
-							field.data.read_to_string(&mut value)?;
-							builder.add_entry(name, value)?;
-						}
-						log::debug!("Finished parsing Form Data for type {}", stringify!(#name));
-						builder.build()
+						::gotham_formdata::internal::parse_multipart::<#builder_ident #ty_gen>(body, &content_type).await
 					}
 
 					else {

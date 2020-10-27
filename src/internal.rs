@@ -1,14 +1,23 @@
 use crate::Error;
-use gotham::hyper::{body, Body};
-use gotham::hyper::header::{CONTENT_TYPE, HeaderMap};
-use gotham::state::State;
+use gotham::{
+	hyper::{
+		body,
+		header::{HeaderMap, CONTENT_TYPE},
+		Body
+	},
+	state::State
+};
 use mime::Mime;
 use multipart::server::Multipart;
 use std::io::{Cursor, Read};
 
 pub fn get_content_type(state: &State) -> Result<Mime, Error> {
 	let headers: &HeaderMap = state.borrow();
-	Ok(headers.get(CONTENT_TYPE).ok_or(Error::MissingContentType)?.to_str()?.parse()?)
+	Ok(headers
+		.get(CONTENT_TYPE)
+		.ok_or(Error::MissingContentType)?
+		.to_str()?
+		.parse()?)
 }
 
 pub fn get_boundary(content_type: &Mime) -> Result<&str, Error> {

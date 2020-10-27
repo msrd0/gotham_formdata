@@ -6,7 +6,7 @@ extern crate quote;
 
 use proc_macro::TokenStream;
 use proc_macro2::TokenStream as TokenStream2;
-use syn::{DeriveInput, Result, parse_macro_input};
+use syn::{parse_macro_input, DeriveInput, Result};
 
 mod form_data;
 

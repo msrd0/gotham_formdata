@@ -41,8 +41,8 @@ async fn login_handler(state: &mut State) -> Result<Response<Body>> {
 
 #[doc(hidden)]
 pub mod export {
-	pub use gotham::state::State;
 	pub use futures_util::future::FutureExt;
+	pub use gotham::state::State;
 }
 
 #[doc(inline)]

@@ -1,13 +1,12 @@
 use gotham::state::State;
-use std::future::Future;
-use std::pin::Pin;
+use std::{future::Future, pin::Pin};
 
 #[allow(type_alias_bounds)]
 pub type FormDataFuture<T: FormData> = Pin<Box<dyn Future<Output = Result<T, T::Err>>>>;
 
 pub trait FormData: Sized {
 	type Err;
-	
+
 	fn parse_form_data(state: &mut State) -> FormDataFuture<Self>;
 }
 

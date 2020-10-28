@@ -5,6 +5,9 @@ name = "gotham_formdata_derive"
 version = "0.0.1"
 authors = ["Dominic Meiser <git@msrd0.de>"]
 edition = "2018"
+description = "Form data parsing for the gotham web framework - Derive macros"
+license = "Apache-2.0"
+repository = "https://github.com/msrd0/gotham_formdata"
 
 [lib]
 proc-macro = true

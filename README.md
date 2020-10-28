@@ -18,7 +18,7 @@
 		<img alt="License Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue.svg"/>
 	</a>
 	<a href="https://deps.rs/repo/github/msrd0/gotham_formdata">
-		<img alt="dependencies" src="https://deps.rs/repo/github/msrd0/gotham-formdata/status.svg"/>
+		<img alt="dependencies" src="https://deps.rs/repo/github/msrd0/gotham_formdata/status.svg"/>
 	</a>
 </div>
 <br/>

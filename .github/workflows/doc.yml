@@ -23,6 +23,7 @@ jobs:
           
           test ! -d ./doc || rm -r ./doc
           cp -R ./target/doc ./doc
+          date >./doc/.timestamp
           
           git add ./doc
           git status

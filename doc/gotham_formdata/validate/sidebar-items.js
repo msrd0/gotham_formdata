@@ -1,1 +1,1 @@
-initSidebarItems({"trait":[["Validator","This trait allows data of type `T` to be verified against custom criteria."]]});
+initSidebarItems({"struct":[["MaxLengthValidator","A validator that checks that a string has a maximum length."],["MinLengthValidator","A validator that checks that a string has a minimum length."]],"trait":[["Validator","This trait allows data of type `T` to be verified against custom criteria."]]});

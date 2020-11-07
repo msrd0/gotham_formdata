@@ -47,3 +47,45 @@ fn validate_custom_validator() {
 		assert!(matches!(data, Error::InvalidData(_)));
 	});
 }
+
+#[test]
+fn validate_min_length() {
+	#[derive(Debug, FormData, PartialEq)]
+	struct Data {
+		#[validate(min_length = 8)]
+		data: String
+	}
+
+	with_body(b"data=verylong", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap();
+		assert_eq!(data, Data {
+			data: "verylong".to_owned()
+		})
+	});
+
+	with_body(b"data=shorter", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap_err();
+		assert!(matches!(data, Error::InvalidData(_)));
+	});
+}
+
+#[test]
+fn validate_max_length() {
+	#[derive(Debug, FormData, PartialEq)]
+	struct Data {
+		#[validate(max_length = 7)]
+		data: String
+	}
+
+	with_body(b"data=shorter", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap();
+		assert_eq!(data, Data {
+			data: "shorter".to_owned()
+		})
+	});
+
+	with_body(b"data=verylong", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap_err();
+		assert!(matches!(data, Error::InvalidData(_)));
+	});
+}

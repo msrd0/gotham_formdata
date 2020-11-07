@@ -1,5 +1,5 @@
 error: Illegal syntax for attribute validate
- --> $DIR/validate_no_args.rs:6:4
+ --> $DIR/validate_no_args.rs:5:4
   |
-6 |     #[validate]
+5 |     #[validate]
   |       ^^^^^^^^

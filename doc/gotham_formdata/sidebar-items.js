@@ -1,1 +1,1 @@
-initSidebarItems({"derive":[["FormData",""]],"enum":[["Error",""]],"trait":[["FormData",""],["FormDataFromState",""]],"type":[["FormDataFuture",""]]});
+initSidebarItems({"derive":[["FormData",""]],"enum":[["Error",""]],"mod":[["validate","This mod contains the `Validator` trait as well as pre-defined validation methods."]],"trait":[["FormData",""],["FormDataFromState",""]],"type":[["FormDataFuture",""]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["Validator","This trait allows data of type `T` to be verified against custom criteria."]]});

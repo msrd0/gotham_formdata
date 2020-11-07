@@ -81,6 +81,10 @@
 <span id="80">80</span>
 <span id="81">81</span>
 <span id="82">82</span>
+<span id="83">83</span>
+<span id="84">84</span>
+<span id="85">85</span>
+<span id="86">86</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">/*!
 This crate is an extension to the popular [gotham web framework][gotham] for Rust. It aims to reduce
@@ -147,6 +151,7 @@ limitations under the License.
 <span class="attribute">#![<span class="ident">deny</span>(<span class="ident">missing_debug_implementations</span>, <span class="ident">unreachable_pub</span>)]</span>
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
+<span class="doccomment">/// Not public API.</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">export</span> {
 	<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">futures_util</span>::<span class="ident">future</span>::<span class="ident">FutureExt</span>;
 	<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gotham</span>::<span class="ident">state</span>::<span class="ident">State</span>;
@@ -163,6 +168,9 @@ limitations under the License.
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">form_data</span>::<span class="kw-2">*</span>;
 
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
+<span class="doccomment">/// Not public API.</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">internal</span>;
+
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">validate</span>;
 </pre></div>
 </section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "gotham_formdata";</script><script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script><script defer src="../../search-index.js"></script></body></html>

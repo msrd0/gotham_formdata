@@ -23,8 +23,6 @@ pub enum Error<Err: std::error::Error + 'static> {
 	MissingContentType,
 	#[error("Missing Field '{0}'")]
 	MissingField(String),
-	#[error("Error while parsing the body: {0}")]
-	SyntaxError(#[from] serde_urlencoded::de::Error),
 	#[error("Unknown 'Content-Type' header value: {0}")]
 	UnknownContentType(Mime),
 	#[error("Unknown Field '{0}'")]

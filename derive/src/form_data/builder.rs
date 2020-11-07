@@ -57,7 +57,7 @@ impl<'a> FormDataBuilder<'a> {
 				type Data = #name #ty_gen;
 				type Err = #err_ident;
 
-				fn add_entry(&mut self, name: ::std::sync::Arc<str>, value: String) -> Result<(), ::gotham_formdata::Error<#err_ident>> {
+				fn add_entry(&mut self, name: ::std::borrow::Cow<'_, str>, value: ::std::borrow::Cow<'_, str>) -> Result<(), ::gotham_formdata::Error<#err_ident>> {
 					let name: &str = &name;
 					if false {
 						unreachable!()

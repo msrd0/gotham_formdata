@@ -9,10 +9,9 @@ use gotham::{
 };
 use mime::Mime;
 use multipart::server::Multipart;
-use serde::de::DeserializeOwned;
 use std::{
-	io::{Cursor, Read},
-	sync::Arc
+	borrow::Cow,
+	io::{Cursor, Read}
 };
 
 pub trait FormDataBuilder: Default {
@@ -20,7 +19,7 @@ pub trait FormDataBuilder: Default {
 	/// The error that can occur during verification.
 	type Err: std::error::Error + 'static;
 
-	fn add_entry(&mut self, name: Arc<str>, value: String) -> Result<(), Error<Self::Err>>;
+	fn add_entry(&mut self, name: Cow<'_, str>, value: Cow<'_, str>) -> Result<(), Error<Self::Err>>;
 	fn build(self) -> Result<Self::Data, Error<Self::Err>>;
 }
 
@@ -41,9 +40,14 @@ pub fn is_urlencoded(content_type: &Mime) -> bool {
 	content_type.essence_str() == "application/x-www-form-urlencoded"
 }
 
-pub async fn parse_urlencoded<T: DeserializeOwned, Err: std::error::Error + 'static>(body: Body) -> Result<T, Error<Err>> {
+pub async fn parse_urlencoded<T: FormDataBuilder>(body: Body) -> Result<T::Data, Error<T::Err>> {
 	let body = body::to_bytes(body).await?;
-	serde_urlencoded::from_bytes(&body).map_err(Into::into)
+
+	let mut builder = T::default();
+	for (name, value) in form_urlencoded::parse(&body) {
+		builder.add_entry(name, value)?;
+	}
+	builder.build()
 }
 
 pub fn is_multipart(content_type: &Mime) -> bool {
@@ -60,7 +64,7 @@ pub async fn parse_multipart<T: FormDataBuilder>(body: Body, content_type: &Mime
 		let name = field.headers.name;
 		let mut value = String::new();
 		field.data.read_to_string(&mut value)?;
-		builder.add_entry(name, value)?;
+		builder.add_entry(name.as_ref().into(), value.into())?;
 	}
 	builder.build()
 }

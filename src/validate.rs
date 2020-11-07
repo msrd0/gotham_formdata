@@ -7,7 +7,21 @@ use std::convert::Infallible;
 /// Example:
 ///
 /// ```rust
-/// // TODO
+/// # use gotham_formdata::FormData;
+/// # use serde::Deserialize;
+/// fn validate_password(password: &String) -> Result<(), &'static str> {
+/// 	if password.len() < 8 {
+/// 		return Err("Password is too short");
+/// 		}
+/// 	Ok(())
+/// 	}
+///
+/// #[derive(Deserialize, FormData)]
+/// struct LoginData {
+/// 	username: String,
+/// 	#[validate(validator = "validate_password")]
+/// 	password: String
+/// 	}
 /// ```
 pub trait Validator<T> {
 	/// The error returned when validation failed.

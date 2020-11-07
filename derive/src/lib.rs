@@ -25,7 +25,7 @@ where
 	print_tokens(expand(parse_macro_input!(input)).unwrap_or_else(|err| err.to_compile_error()))
 }
 
-#[proc_macro_derive(FormData)]
+#[proc_macro_derive(FormData, attributes(validate))]
 pub fn derive_form_data(input: TokenStream) -> TokenStream {
 	expand_derive(input, form_data::expand)
 }

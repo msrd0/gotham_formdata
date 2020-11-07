@@ -117,7 +117,7 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 	let field_validators = fields.iter().map(|f| {
 		f.validator
 			.as_ref()
-			.map(|v| quote!(Some(#v)))
+			.map(|v| quote!(Some({ #v })))
 			.unwrap_or_else(|| quote!(::std::option::Option::<()>::None))
 	});
 
@@ -136,7 +136,7 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 
 				#({
 					let value = &self.#field_idents;
-					let validator = { #field_validators };
+					let validator = #field_validators;
 					if let Some(validator) = validator {
 						::gotham_formdata::validate::Validator::validate(validator, value)
 							.map_err(|err| #err_ident::invalid(stringify!(#field_idents), err))?;

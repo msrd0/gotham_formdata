@@ -48,15 +48,43 @@ impl Field {
 				_ => return Err(Error::new(nested.span(), "Expected key-value pair for attribute validate"))
 			};
 			let path = validate.path;
-			let value = match validate.lit {
-				Lit::Str(value) => value,
-				lit => return Err(Error::new(lit.span(), "Expected string literal for attribute validate"))
-			};
+
 			validator = Some(match path {
+				// custom validator
 				path if path.ends_with("validator") => {
+					let value = match validate.lit {
+						Lit::Str(value) => value,
+						lit => {
+							return Err(Error::new(
+								lit.span(),
+								"Expected string literal containing validator expression"
+							))
+						},
+					};
 					let expr: Expr = syn::parse_str(&value.value()).map_err(|err| err.with_span(value.span()))?;
 					quote_spanned!(value.span() => #expr)
 				},
+
+				// min_length validator
+				path if path.ends_with("min_length") => {
+					let value = match validate.lit {
+						Lit::Int(value) => value,
+						lit => return Err(Error::new(lit.span(), "Expected integer literal for min_length validator"))
+					};
+					let min_length: usize = value.base10_parse().map_err(|err| err.with_span(value.span()))?;
+					quote!(::gotham_formdata::validate::MinLengthValidator::new(#min_length))
+				},
+
+				// max_length validator
+				path if path.ends_with("max_length") => {
+					let value = match validate.lit {
+						Lit::Int(value) => value,
+						lit => return Err(Error::new(lit.span(), "Expected integer literal for max_length validator"))
+					};
+					let max_length: usize = value.base10_parse().map_err(|err| err.with_span(value.span()))?;
+					quote!(::gotham_formdata::validate::MaxLengthValidator::new(#max_length))
+				},
+
 				path => return Err(Error::new(path.span(), "Unknown key for attribute validate"))
 			});
 		}

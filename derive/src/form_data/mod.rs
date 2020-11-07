@@ -91,6 +91,7 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 
 	let validation_error = ValidationError {
 		name,
+		vis: &input.vis,
 		ident: format_ident!("{}VerificationError", name),
 		fields: &fields
 	};
@@ -112,6 +113,14 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 	let builder_default_impl = builder.gen_default_impl();
 	let builder_builder_impl = builder.gen_builder_impl();
 
+	let field_idents = fields.iter().map(|f| &f.ident);
+	let field_validators = fields.iter().map(|f| {
+		f.validator
+			.as_ref()
+			.map(|v| quote!(Some(#v)))
+			.unwrap_or_else(|| quote!(::std::option::Option::<()>::None))
+	});
+
 	Ok(quote! {
 		#validation_error_struct
 		#validation_error_display_impl
@@ -119,6 +128,24 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 		#builder_struct
 		#builder_default_impl
 		#builder_builder_impl
+
+		impl #impl_gen #name #ty_gen #were {
+			#[doc(hidden)]
+			fn __validate(&self) -> Result<(), #err_ident> {
+				::log::debug!("Validating Form Data for type {}", stringify!(#name));
+
+				#({
+					let value = &self.#field_idents;
+					let validator = { #field_validators };
+					if let Some(validator) = validator {
+						::gotham_formdata::validate::Validator::validate(validator, value)
+							.map_err(|err| #err_ident::invalid(stringify!(#field_idents), err))?;
+					}
+				})*
+
+				Ok(())
+			}
+		}
 
 		impl #impl_gen ::gotham_formdata::FormData for #name #ty_gen #were {
 			type Err = ::gotham_formdata::Error<#err_ident>;
@@ -131,19 +158,19 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 
 				async move {
 					let content_type = content_type?;
-					log::debug!("Parsing Form Data for type {} with Content-Type {}", stringify!(#name), content_type);
+					::log::debug!("Parsing Form Data for type {} with Content-Type {}", stringify!(#name), content_type);
 
-					if ::gotham_formdata::internal::is_urlencoded(&content_type) {
-						::gotham_formdata::internal::parse_urlencoded::<#name #ty_gen, _>(body).await
-					}
-
-					else if ::gotham_formdata::internal::is_multipart(&content_type) {
-						::gotham_formdata::internal::parse_multipart::<#builder_ident #ty_gen>(body, &content_type).await
-					}
-
-					else {
-						Err(::gotham_formdata::Error::UnknownContentType(content_type))
-					}
+					let res: Self = match &content_type {
+						ct if ::gotham_formdata::internal::is_urlencoded(ct) => {
+							::gotham_formdata::internal::parse_urlencoded::<#name #ty_gen, _>(body).await
+						},
+						ct if ::gotham_formdata::internal::is_multipart(ct) => {
+							::gotham_formdata::internal::parse_multipart::<#builder_ident #ty_gen>(body, ct).await
+						},
+						_ => Err(::gotham_formdata::Error::UnknownContentType(content_type))
+					}?;
+					res.__validate().map_err(|err| ::gotham_formdata::Error::InvalidData(err))?;
+					Ok(res)
 				}.boxed()
 			}
 		}

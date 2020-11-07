@@ -1,12 +1,13 @@
 error[E0277]: the trait bound `for<'de> MyFormData: serde::de::Deserialize<'de>` is not satisfied
-  --> $DIR/form_data_deserialize.rs:4:8
+  --> $DIR/form_data_deserialize.rs:3:10
    |
-4  | struct MyFormData {
-   |        ^^^^^^^^^^ the trait `for<'de> serde::de::Deserialize<'de>` is not implemented for `MyFormData`
+3  | #[derive(FormData)]
+   |          ^^^^^^^^ the trait `for<'de> serde::de::Deserialize<'de>` is not implemented for `MyFormData`
    |
   ::: $WORKSPACE/src/internal.rs
    |
-   | pub async fn parse_urlencoded<T: DeserializeOwned>(body: Body) -> Result<T, Error> {
+   | pub async fn parse_urlencoded<T: DeserializeOwned, Err: std::error::Error + 'static>(body: Body) -> Result<T, Error<Err>> {
    |                                  ---------------- required by this bound in `gotham_formdata::internal::parse_urlencoded`
    |
    = note: required because of the requirements on the impl of `serde::de::DeserializeOwned` for `MyFormData`
+   = note: this error originates in a derive macro (in Nightly builds, run with -Z macro-backtrace for more info)

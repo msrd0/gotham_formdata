@@ -1,0 +1,5 @@
+error: Illegal syntax for attribute validate
+ --> $DIR/validate_no_list.rs:6:4
+  |
+6 |     #[validate = "custom_validator"]
+  |       ^^^^^^^^

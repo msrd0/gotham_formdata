@@ -63,6 +63,7 @@ limitations under the License.
 #![deny(missing_debug_implementations, unreachable_pub)]
 
 #[doc(hidden)]
+/// Not public API.
 pub mod export {
 	pub use futures_util::future::FutureExt;
 	pub use gotham::state::State;
@@ -79,4 +80,7 @@ mod form_data;
 pub use form_data::*;
 
 #[doc(hidden)]
+/// Not public API.
 pub mod internal;
+
+pub mod validate;

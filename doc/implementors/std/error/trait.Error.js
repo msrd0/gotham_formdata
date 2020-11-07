@@ -25,7 +25,6 @@ implementors["rand_jitter"] = [{"text":"impl Error for TimerError","synthetic":f
 implementors["regex"] = [{"text":"impl Error for Error","synthetic":false,"types":[]}];
 implementors["regex_syntax"] = [{"text":"impl Error for Error","synthetic":false,"types":[]},{"text":"impl Error for Error","synthetic":false,"types":[]},{"text":"impl Error for Error","synthetic":false,"types":[]},{"text":"impl Error for CaseFoldError","synthetic":false,"types":[]},{"text":"impl Error for UnicodeWordError","synthetic":false,"types":[]}];
 implementors["serde"] = [{"text":"impl Error for Error","synthetic":false,"types":[]}];
-implementors["serde_urlencoded"] = [{"text":"impl Error for Error","synthetic":false,"types":[]}];
 implementors["syn"] = [{"text":"impl Error for Error","synthetic":false,"types":[]}];
 implementors["tempfile"] = [{"text":"impl Error for PathPersistError","synthetic":false,"types":[]},{"text":"impl Error for PersistError","synthetic":false,"types":[]}];
 implementors["time"] = [{"text":"impl Error for Error","synthetic":false,"types":[]},{"text":"impl Error for ConversionRange","synthetic":false,"types":[]},{"text":"impl Error for ComponentRange","synthetic":false,"types":[]},{"text":"impl Error for IndeterminateOffset","synthetic":false,"types":[]},{"text":"impl Error for Format","synthetic":false,"types":[]},{"text":"impl Error for Error","synthetic":false,"types":[]}];

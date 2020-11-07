@@ -9,6 +9,7 @@ use proc_macro2::TokenStream as TokenStream2;
 use syn::{parse_macro_input, DeriveInput, Result};
 
 mod form_data;
+mod util;
 
 #[inline]
 fn print_tokens(tokens: TokenStream2) -> TokenStream {

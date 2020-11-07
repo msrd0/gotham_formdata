@@ -17,12 +17,14 @@ use std::{
 
 pub trait FormDataBuilder: Default {
 	type Data: FormData;
+	/// The error that can occur during verification.
+	type Err: std::error::Error + 'static;
 
-	fn add_entry(&mut self, name: Arc<str>, value: String) -> Result<(), Error>;
-	fn build(self) -> Result<Self::Data, Error>;
+	fn add_entry(&mut self, name: Arc<str>, value: String) -> Result<(), Error<Self::Err>>;
+	fn build(self) -> Result<Self::Data, Error<Self::Err>>;
 }
 
-pub fn get_content_type(state: &State) -> Result<Mime, Error> {
+pub fn get_content_type<Err: std::error::Error>(state: &State) -> Result<Mime, Error<Err>> {
 	let headers: &HeaderMap = state.borrow();
 	Ok(headers
 		.get(CONTENT_TYPE)
@@ -39,7 +41,7 @@ pub fn is_urlencoded(content_type: &Mime) -> bool {
 	content_type.essence_str() == "application/x-www-form-urlencoded"
 }
 
-pub async fn parse_urlencoded<T: DeserializeOwned>(body: Body) -> Result<T, Error> {
+pub async fn parse_urlencoded<T: DeserializeOwned, Err: std::error::Error + 'static>(body: Body) -> Result<T, Error<Err>> {
 	let body = body::to_bytes(body).await?;
 	serde_urlencoded::from_bytes(&body).map_err(Into::into)
 }
@@ -48,7 +50,7 @@ pub fn is_multipart(content_type: &Mime) -> bool {
 	content_type.essence_str() == "multipart/form-data"
 }
 
-pub async fn parse_multipart<T: FormDataBuilder>(body: Body, content_type: &Mime) -> Result<T::Data, Error> {
+pub async fn parse_multipart<T: FormDataBuilder>(body: Body, content_type: &Mime) -> Result<T::Data, Error<T::Err>> {
 	let boundary = content_type.get_param("boundary").ok_or(Error::MissingBoundary)?.as_str();
 	let body = body::to_bytes(body).await?;
 	let mut multipart = Multipart::with_body(Cursor::new(body), boundary);

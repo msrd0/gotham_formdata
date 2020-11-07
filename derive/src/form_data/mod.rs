@@ -162,7 +162,7 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 
 					let res: Self = match &content_type {
 						ct if ::gotham_formdata::internal::is_urlencoded(ct) => {
-							::gotham_formdata::internal::parse_urlencoded::<#name #ty_gen, _>(body).await
+							::gotham_formdata::internal::parse_urlencoded::<#builder_ident #ty_gen>(body).await
 						},
 						ct if ::gotham_formdata::internal::is_multipart(ct) => {
 							::gotham_formdata::internal::parse_multipart::<#builder_ident #ty_gen>(body, ct).await

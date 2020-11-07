@@ -8,7 +8,6 @@ use gotham::{
 };
 use gotham_formdata::{Error, FormData};
 use mime::{Mime, APPLICATION_WWW_FORM_URLENCODED};
-use serde::Deserialize;
 
 fn custom_validator(value: &u8) -> Result<(), &'static str> {
 	if *value >= 128 {
@@ -32,7 +31,7 @@ fn with_body(body: &'static [u8], content_type: Mime, callback: impl Fn(&mut Sta
 
 #[test]
 fn validate_custom_validator() {
-	#[derive(Debug, Deserialize, FormData, PartialEq)]
+	#[derive(Debug, FormData, PartialEq)]
 	struct Data {
 		#[validate(validator = "custom_validator")]
 		data: u8

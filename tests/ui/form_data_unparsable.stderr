@@ -1,7 +1,7 @@
 error[E0277]: the trait bound `MyType: std::str::FromStr` is not satisfied
- --> $DIR/form_data_unparsable.rs:7:23
+ --> $DIR/form_data_unparsable.rs:5:10
   |
-7 | #[derive(Deserialize, FormData)]
-  |                       ^^^^^^^^ the trait `std::str::FromStr` is not implemented for `MyType`
+5 | #[derive(FormData)]
+  |          ^^^^^^^^ the trait `std::str::FromStr` is not implemented for `MyType`
   |
   = note: this error originates in a derive macro (in Nightly builds, run with -Z macro-backtrace for more info)

@@ -1,5 +1,5 @@
 error: Unknown key for attribute validate
- --> $DIR/validate_unknown_key.rs:6:13
+ --> $DIR/validate_unknown_key.rs:5:13
   |
-6 |     #[validate(foo = "bar")]
+5 |     #[validate(foo = "bar")]
   |                ^^^

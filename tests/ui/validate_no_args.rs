@@ -1,7 +1,6 @@
 use gotham_formdata::FormData;
-use serde::Deserialize;
 
-#[derive(Deserialize, FormData)]
+#[derive(FormData)]
 struct MyFormData {
 	#[validate]
 	value: u8

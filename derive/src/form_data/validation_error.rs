@@ -66,7 +66,8 @@ impl<'a> ValidationError<'a> {
 
 				#vis fn field_name(&self) -> &'static str {
 					match self {
-						#( Self::#variant_idents(_) => #field_names ),*
+						#( Self::#variant_idents(_) => #field_names, )*
+						_ => unreachable!()
 					}
 				}
 			}

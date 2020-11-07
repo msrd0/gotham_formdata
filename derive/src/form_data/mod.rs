@@ -54,7 +54,7 @@ impl Field {
 			};
 			validator = Some(match path {
 				path if path.ends_with("validator") => {
-					let expr: Expr = syn::parse_str(&value.value())?;
+					let expr: Expr = syn::parse_str(&value.value()).map_err(|err| err.with_span(value.span()))?;
 					quote_spanned!(value.span() => #expr)
 				},
 				path => return Err(Error::new(path.span(), "Unknown key for attribute validate"))

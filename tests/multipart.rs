@@ -8,9 +8,8 @@ use gotham::{
 };
 use gotham_formdata::FormData;
 use mime::{Mime, TEXT_PLAIN};
-use serde::Deserialize;
 
-#[derive(Deserialize, FormData)]
+#[derive(FormData)]
 struct LoginData {
 	username: String,
 	password: String

@@ -1,0 +1,26 @@
+name: Documentation
+on:
+  push:
+    branches: [master]
+
+jobs:
+  doc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo doc --workspace --all-features
+      - name: Push changes to gh-pages
+        run: |
+          REMOTE=https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git config user.name "${{ github.actor }}"
+
+          git pull ${REMOTE}
+          git checkout gh-pages
+          rm -r ./doc
+          cp -R ./target/doc ./doc
+          git add ./doc
+          git status
+          git commit -m "Update Documentation for ${{ github.sha }}"
+          git push ${REMOTE} gh-pages

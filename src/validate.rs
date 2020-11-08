@@ -19,7 +19,7 @@ use std::{convert::Infallible, fmt::Display};
 /// #[derive(FormData)]
 /// struct LoginData {
 /// 	username: String,
-/// 	#[validate(validator = "validate_password")]
+/// 	#[validate(validator = validate_password)]
 /// 	password: String
 /// 	}
 /// ```

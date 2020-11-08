@@ -1,5 +1,0 @@
-error: Expected integer literal for min_length validator
- --> $DIR/validate_min_length_non_usize.rs:5:26
-  |
-5 |     #[validate(min_length = "foobar")]
-  |                             ^^^^^^^^

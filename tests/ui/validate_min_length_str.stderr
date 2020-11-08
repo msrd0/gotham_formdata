@@ -1,0 +1,5 @@
+error[E0308]: mismatched types
+ --> $DIR/validate_min_length_str.rs:5:26
+  |
+5 |     #[validate(min_length = "foobar")]
+  |                             ^^^^^^^^ expected `usize`, found `&str`

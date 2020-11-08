@@ -33,7 +33,7 @@ fn with_body(body: &'static [u8], content_type: Mime, callback: impl Fn(&mut Sta
 fn validate_custom_validator() {
 	#[derive(Debug, FormData, PartialEq)]
 	struct Data {
-		#[validate(validator = "custom_validator")]
+		#[validate(validator = custom_validator)]
 		data: u8
 	}
 

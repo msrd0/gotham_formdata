@@ -1,6 +1,28 @@
 use crate::util::*;
 use proc_macro2::{Ident, Span, TokenStream};
-use syn::{spanned::Spanned, Error, Expr, Lit, Meta, NestedMeta, Result, Type};
+use syn::{
+	parse::{Parse, ParseStream},
+	punctuated::Punctuated,
+	spanned::Spanned,
+	Error, Expr, Result, Token, Type
+};
+
+#[allow(dead_code)]
+struct FieldMeta {
+	ident: Ident,
+	eq_token: Token![=],
+	expr: Expr
+}
+
+impl Parse for FieldMeta {
+	fn parse(input: ParseStream<'_>) -> Result<Self> {
+		Ok(Self {
+			ident: input.parse()?,
+			eq_token: input.parse()?,
+			expr: input.parse()?
+		})
+	}
+}
 
 pub(super) struct Field {
 	pub(super) ident: Ident,
@@ -22,82 +44,46 @@ impl Field {
 
 		let mut validator: Option<TokenStream> = None;
 		for attr in field.attrs {
-			let meta = attr.parse_meta()?;
-			if !meta.path().ends_with("validate") {
+			if !attr.path.ends_with("validate") {
 				continue;
 			}
-			let list = match meta {
-				Meta::List(list) => list,
-				_ => return Err(Error::new(meta.span(), "Illegal syntax for attribute validate"))
-			};
-			if list.nested.len() != 1 {
-				return Err(Error::new(
-					list.nested.span(),
-					"Expected single key-value pair for attribute validate"
-				));
+			let attr_span = attr.tokens.span();
+			let list = attr.parse_args_with(Punctuated::<FieldMeta, Token![,]>::parse_separated_nonempty)?;
+			// parse_separated_nonempty guarantees that there is at least one element in the list
+			if list.len() != 1 {
+				return Err(Error::new(attr_span, "Expected single key-value pair for attribute validate"));
 			}
-			let nested = list.nested.into_iter().next().unwrap();
-			let validate = match nested {
-				NestedMeta::Meta(Meta::NameValue(nv)) => nv,
-				_ => return Err(Error::new(nested.span(), "Expected key-value pair for attribute validate"))
-			};
-			let path = validate.path;
+			let validate = list.into_iter().next().unwrap();
+			let name = validate.ident;
+			let expr = validate.expr;
 
-			validator = Some(match path {
+			validator = Some(match name.to_string().as_ref() {
 				// custom validator
-				path if path.ends_with("validator") => {
-					let value = match validate.lit {
-						Lit::Str(value) => value,
-						lit => {
-							return Err(Error::new(
-								lit.span(),
-								"Expected string literal containing validator expression"
-							))
-						},
-					};
-					let expr: Expr = syn::parse_str(&value.value()).map_err(|err| err.with_span(value.span()))?;
-					quote_spanned!(value.span() => #expr)
+				"validator" => {
+					// TODO this code makes sure to emit an error message pointing to the macro's
+					// input, but there should be a better way to do this
+					quote_spanned! { expr.span() =>
+						{
+							let validator = #expr;
+							::gotham_formdata::internal::assert_validator::<_, _>(&validator);
+							validator
+						}
+					}
 				},
 
 				// min_length validator
-				path if path.ends_with("min_length") => {
-					let value = match validate.lit {
-						Lit::Int(value) => value,
-						lit => return Err(Error::new(lit.span(), "Expected integer literal for min_length validator"))
-					};
-					let min_length: usize = value.base10_parse().map_err(|err| err.with_span(value.span()))?;
-					quote!(::gotham_formdata::validate::MinLengthValidator::new(#min_length))
-				},
+				"min_length" => quote!(::gotham_formdata::validate::MinLengthValidator::new(#expr)),
 
 				// max_length validator
-				path if path.ends_with("max_length") => {
-					let value = match validate.lit {
-						Lit::Int(value) => value,
-						lit => return Err(Error::new(lit.span(), "Expected integer literal for max_length validator"))
-					};
-					let max_length: usize = value.base10_parse().map_err(|err| err.with_span(value.span()))?;
-					quote!(::gotham_formdata::validate::MaxLengthValidator::new(#max_length))
-				},
+				"max_length" => quote!(::gotham_formdata::validate::MaxLengthValidator::new(#expr)),
 
 				// min validator
-				path if path.ends_with("min") => {
-					let value = match validate.lit {
-						Lit::Int(value) => value,
-						lit => return Err(Error::new(lit.span(), "Expected integer literal for min validator"))
-					};
-					quote!(::gotham_formdata::validate::MinValidator::<#ty>::new(#value))
-				},
+				"min" => quote!(::gotham_formdata::validate::MinValidator::<#ty>::new(#expr)),
 
 				// max validator
-				path if path.ends_with("max") => {
-					let value = match validate.lit {
-						Lit::Int(value) => value,
-						lit => return Err(Error::new(lit.span(), "Expected integer literal for max validator"))
-					};
-					quote!(::gotham_formdata::validate::MaxValidator::<#ty>::new(#value))
-				},
+				"max" => quote!(::gotham_formdata::validate::MaxValidator::<#ty>::new(#expr)),
 
-				path => return Err(Error::new(path.span(), "Unknown key for attribute validate"))
+				_ => return Err(Error::new(name.span(), "Unknown key for attribute validate"))
 			});
 		}
 

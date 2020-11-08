@@ -2,7 +2,7 @@ use gotham_formdata::FormData;
 
 #[derive(FormData)]
 struct MyFormData {
-	#[validate(validator = struct CustomValidator)]
+	#[validate(validator = "foobar")]
 	value: u8
 }
 

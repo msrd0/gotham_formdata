@@ -1,0 +1,25 @@
+error[E0277]: expected a `std::ops::Fn<(&_,)>` closure, found `str`
+  --> $DIR/validate_custom_str.rs:5:25
+   |
+5  |     #[validate(validator = "foobar")]
+   |                            ^^^^^^^^ expected an `Fn<(&_,)>` closure, found `str`
+   |
+  ::: $WORKSPACE/src/internal.rs
+   |
+   | pub fn assert_validator<V: Validator<T>, T>(_: &V) {}
+   |                            ------------ required by this bound in `gotham_formdata::internal::assert_validator`
+   |
+   = help: the trait `std::ops::Fn<(&_,)>` is not implemented for `str`
+   = note: required because of the requirements on the impl of `std::ops::FnOnce<(&_,)>` for `&str`
+   = note: required because of the requirements on the impl of `gotham_formdata::validate::Validator<_>` for `&str`
+
+error[E0277]: expected a `std::ops::Fn<(&_,)>` closure, found `str`
+ --> $DIR/validate_custom_str.rs:3:10
+  |
+3 | #[derive(FormData)]
+  |          ^^^^^^^^ expected an `Fn<(&_,)>` closure, found `str`
+  |
+  = help: the trait `std::ops::Fn<(&_,)>` is not implemented for `str`
+  = note: required because of the requirements on the impl of `std::ops::FnOnce<(&_,)>` for `&str`
+  = note: required because of the requirements on the impl of `gotham_formdata::validate::Validator<_>` for `&str`
+  = note: this error originates in a derive macro (in Nightly builds, run with -Z macro-backtrace for more info)

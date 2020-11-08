@@ -1,4 +1,4 @@
-use crate::{Error, FormData};
+use crate::{validate::Validator, Error, FormData};
 use gotham::{
 	hyper::{
 		body,
@@ -13,6 +13,8 @@ use std::{
 	borrow::Cow,
 	io::{Cursor, Read}
 };
+
+pub fn assert_validator<V: Validator<T>, T>(_: &V) {}
 
 pub trait FormDataBuilder: Default {
 	type Data: FormData;

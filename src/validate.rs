@@ -1,6 +1,6 @@
 //! This mod contains the `Validator` trait as well as pre-defined validation methods.
 
-use std::convert::Infallible;
+use std::{convert::Infallible, fmt::Display};
 
 /// This trait allows data of type `T` to be verified against custom criteria.
 ///
@@ -95,6 +95,62 @@ impl<T: AsRef<str>> Validator<T> for MaxLengthValidator {
 	fn validate(self, data: &T) -> Result<(), String> {
 		if data.as_ref().len() > self.max_length {
 			return Err(format!("Value is longer than maximum length of {}", self.max_length));
+		}
+		Ok(())
+	}
+}
+
+/// A validator that checks that an integer is at least of a minimal value.
+#[derive(Clone, Copy, Debug)]
+pub struct MinValidator<I> {
+	min: I
+}
+
+impl<I> MinValidator<I> {
+	/// Create a new [MinValidator].
+	pub fn new(min: I) -> Self {
+		Self { min }
+	}
+}
+
+impl<I, T> Validator<T> for MinValidator<I>
+where
+	I: Display + PartialOrd,
+	T: Clone + Into<I>
+{
+	type Err = String;
+
+	fn validate(self, data: &T) -> Result<(), String> {
+		if data.clone().into() < self.min {
+			return Err(format!("Value is smaller than minimum of {}", self.min));
+		}
+		Ok(())
+	}
+}
+
+/// A validator that checks that an integer is at most of a maximal value.
+#[derive(Clone, Copy, Debug)]
+pub struct MaxValidator<I> {
+	max: I
+}
+
+impl<I> MaxValidator<I> {
+	/// Create a new [MaxValidator].
+	pub fn new(max: I) -> Self {
+		Self { max }
+	}
+}
+
+impl<I, T> Validator<T> for MaxValidator<I>
+where
+	I: Display + PartialOrd,
+	T: Clone + Into<I>
+{
+	type Err = String;
+
+	fn validate(self, data: &T) -> Result<(), String> {
+		if data.clone().into() > self.max {
+			return Err(format!("Value is greater than maximum of {}", self.max));
 		}
 		Ok(())
 	}

@@ -49,6 +49,30 @@ fn validate_custom_validator() {
 }
 
 #[test]
+fn validate_custom_validator_lambda() {
+	#[derive(Debug, FormData, PartialEq)]
+	struct Data {
+		#[validate(validator = |value: &u8| {
+			if *value == 0 {
+				return Err("Value must not be 0");
+			}
+			Ok(())
+		})]
+		data: u8
+	}
+
+	with_body(b"data=1", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap();
+		assert_eq!(data, Data { data: 1 })
+	});
+
+	with_body(b"data=0", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap_err();
+		assert!(matches!(data, Error::InvalidData(_)));
+	});
+}
+
+#[test]
 fn validate_min_length() {
 	#[derive(Debug, FormData, PartialEq)]
 	struct Data {

@@ -85,6 +85,24 @@ impl Field {
 					quote!(::gotham_formdata::validate::MaxLengthValidator::new(#max_length))
 				},
 
+				// min validator
+				path if path.ends_with("min") => {
+					let value = match validate.lit {
+						Lit::Int(value) => value,
+						lit => return Err(Error::new(lit.span(), "Expected integer literal for min validator"))
+					};
+					quote!(::gotham_formdata::validate::MinValidator::<#ty>::new(#value))
+				},
+
+				// max validator
+				path if path.ends_with("max") => {
+					let value = match validate.lit {
+						Lit::Int(value) => value,
+						lit => return Err(Error::new(lit.span(), "Expected integer literal for max validator"))
+					};
+					quote!(::gotham_formdata::validate::MaxValidator::<#ty>::new(#value))
+				},
+
 				path => return Err(Error::new(path.span(), "Unknown key for attribute validate"))
 			});
 		}

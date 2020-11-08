@@ -89,3 +89,41 @@ fn validate_max_length() {
 		assert!(matches!(data, Error::InvalidData(_)));
 	});
 }
+
+#[test]
+fn validate_min() {
+	#[derive(Debug, FormData, PartialEq)]
+	struct Data {
+		#[validate(min = 10)]
+		data: u64
+	}
+
+	with_body(b"data=10", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap();
+		assert_eq!(data, Data { data: 10 })
+	});
+
+	with_body(b"data=9", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap_err();
+		assert!(matches!(data, Error::InvalidData(_)));
+	});
+}
+
+#[test]
+fn validate_max() {
+	#[derive(Debug, FormData, PartialEq)]
+	struct Data {
+		#[validate(max = 10)]
+		data: u64
+	}
+
+	with_body(b"data=10", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap();
+		assert_eq!(data, Data { data: 10 })
+	});
+
+	with_body(b"data=11", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap_err();
+		assert!(matches!(data, Error::InvalidData(_)));
+	});
+}

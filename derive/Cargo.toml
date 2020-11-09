@@ -12,6 +12,10 @@ repository = "https://github.com/msrd0/gotham_formdata"
 [lib]
 proc-macro = true
 
+[features]
+# This crate is only meant to be imported (and re-exported) by gotham_formdata, so default features make no sense.
+regex = []
+
 [dependencies]
 heck = "0.3.1"
 proc-macro2 = "1.0"

@@ -8,3 +8,8 @@ pub use range::*;
 
 mod validator;
 pub use validator::*;
+
+#[cfg(feature = "regex")]
+mod regex;
+#[cfg(feature = "regex")]
+pub use regex::*;

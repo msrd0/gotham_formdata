@@ -151,3 +151,24 @@ fn validate_max() {
 		assert!(matches!(data, Error::InvalidData(_)));
 	});
 }
+
+#[test]
+fn validate_regex() {
+	#[derive(Debug, FormData, PartialEq)]
+	struct Data {
+		#[validate(regex = "^[a-z]+$")]
+		data: String
+	}
+
+	with_body(b"data=lower", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap();
+		assert_eq!(data, Data {
+			data: "lower".to_owned()
+		})
+	});
+
+	with_body(b"data=UPPER", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap_err();
+		assert!(matches!(data, Error::InvalidData(_)));
+	});
+}

@@ -1,5 +1,8 @@
 //! This mod contains the `Validator` trait as well as pre-defined validation methods.
 
+mod expected;
+pub use expected::*;
+
 mod length;
 pub use length::*;
 

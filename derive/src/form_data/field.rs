@@ -99,6 +99,9 @@ impl Field {
 					})
 				},
 
+				// expected validator
+				"expected" => quote!(::gotham_formdata::validate::ExpectedValidator::new(#expr)),
+
 				_ => return Err(Error::new(name.span(), "Unknown key for attribute validate"))
 			});
 		}

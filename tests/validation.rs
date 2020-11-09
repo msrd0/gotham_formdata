@@ -187,3 +187,27 @@ fn validate_regex() {
 		assert!(matches!(data, Error::InvalidData(_)));
 	});
 }
+
+#[test]
+fn validate_expected() {
+	#[derive(Debug, FormData, PartialEq)]
+	struct Data {
+		#[validate(expected = &["foo", "bar"])]
+		data: String
+	}
+
+	with_body(b"data=foo", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap();
+		assert_eq!(data, Data { data: "foo".to_owned() })
+	});
+
+	with_body(b"data=bar", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap();
+		assert_eq!(data, Data { data: "bar".to_owned() })
+	});
+
+	with_body(b"data=other", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap_err();
+		assert!(matches!(data, Error::InvalidData(_)));
+	});
+}

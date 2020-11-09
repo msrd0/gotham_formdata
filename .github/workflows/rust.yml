@@ -6,22 +6,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: dtolnay/rust-toolchain@1.42.0
+      - uses: dtolnay/rust-toolchain
+        with:
+          toolchain: 1.42.0
       - run: cargo test -- --skip trybuild_ui
   
   trybuild:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: dtolnay/rust-toolchain@1.47.0
+      - uses: dtolnay/rust-toolchain
+        with:
+          toolchain: 1.47.0
       - run: cargo test -- trybuild_ui
   
   rustfmt:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: dtolnay/rust-toolchain@nightly
+      - uses: dtolnay/rust-toolchain
         with:
+          toolchain: nightly
           components: rustfmt
       - run: cargo fmt -- --check
   

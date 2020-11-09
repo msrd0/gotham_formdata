@@ -83,6 +83,22 @@ impl Field {
 				// max validator
 				"max" => quote!(::gotham_formdata::validate::MaxValidator::<#ty>::new(#expr)),
 
+				// regex validator
+				"regex" => {
+					if cfg!(not(feature = "regex")) {
+						return Err(Error::new(
+							name.span(),
+							"You need to enable the 'regex' feature of gotham_formdata to enable the regex validator"
+						));
+					}
+
+					let regex_ident = format_ident!("{}_validation_regex", ident.to_string());
+					quote!({
+						static #regex_ident: ::gotham_formdata::validate::LazyRegex = ::gotham_formdata::validate::LazyRegex::new(#expr);
+						::gotham_formdata::validate::RegexValidator::new(#regex_ident.get().expect("Invalid Regex"))
+					})
+				},
+
 				_ => return Err(Error::new(name.span(), "Unknown key for attribute validate"))
 			});
 		}

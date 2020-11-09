@@ -50,30 +50,34 @@
 <span id="49">49</span>
 <span id="50">50</span>
 <span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">convert</span>::<span class="ident">Infallible</span>;
 
-<span class="doccomment">/// This trait allows data of type `T` to be verified against custom criteria.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Example:</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// use gotham_formdata::FormData;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// fn validate_password(password: &amp;String) -&gt; Result&lt;(), &amp;&#39;static str&gt; {</span>
-<span class="doccomment">/// 	if password.len() &lt; 8 {</span>
-<span class="doccomment">/// 		return Err(&quot;Password is too short&quot;);</span>
-<span class="doccomment">/// 		}</span>
-<span class="doccomment">/// 	Ok(())</span>
-<span class="doccomment">/// 	}</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// #[derive(FormData)]</span>
-<span class="doccomment">/// struct LoginData {</span>
-<span class="doccomment">/// 	username: String,</span>
-<span class="doccomment">/// 	#[validate(validator = validate_password)]</span>
-<span class="doccomment">/// 	password: String</span>
-<span class="doccomment">/// 	}</span>
-<span class="doccomment">/// ```</span>
+<span class="doccomment">/**
+This trait allows data of type `T` to be verified against custom criteria.
+
+Example:
+
+```rust
+use gotham_formdata::FormData;
+
+fn validate_password(password: &amp;String) -&gt; Result&lt;(), &amp;&#39;static str&gt; {
+	if password.len() &lt; 8 {
+		return Err(&quot;Password is too short&quot;);
+		}
+	Ok(())
+}
+
+#[derive(FormData)]
+struct LoginData {
+	username: String,
+	#[validate(validator = validate_password)]
+	password: String
+}
+```
+*/</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Validator</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
 	<span class="doccomment">/// The error returned when validation failed.</span>
 	<span class="kw">type</span> <span class="prelude-val">Err</span>;

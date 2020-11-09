@@ -14,7 +14,7 @@ use std::{
 	io::{Cursor, Read}
 };
 
-pub fn assert_validator<V: Validator<T>, T>(_: &V) {}
+pub fn assert_validator<V: Validator<T>, T: ?Sized>(_: &V) {}
 
 pub trait FormDataBuilder: Default {
 	type Data: FormData;

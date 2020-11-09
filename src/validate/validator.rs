@@ -23,7 +23,7 @@ struct LoginData {
 }
 ```
 */
-pub trait Validator<T> {
+pub trait Validator<T: ?Sized> {
 	/// The error returned when validation failed.
 	type Err;
 
@@ -32,7 +32,7 @@ pub trait Validator<T> {
 }
 
 /// Convert `()` into an allways accepting validator.
-impl<T> Validator<T> for () {
+impl<T: ?Sized> Validator<T> for () {
 	type Err = Infallible;
 
 	fn validate(self, _: &T) -> Result<(), Infallible> {
@@ -41,7 +41,7 @@ impl<T> Validator<T> for () {
 }
 
 /// Convert any function with the correct signature into a validator.
-impl<F, Err, T> Validator<T> for F
+impl<F, Err, T: ?Sized> Validator<T> for F
 where
 	F: Fn(&T) -> Result<(), Err>
 {

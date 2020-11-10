@@ -19,6 +19,7 @@ default = ["regex"]
 regex = ["gotham_formdata_derive/regex", "regex_crate"]
 
 [dependencies]
+either = "1.0"
 form_urlencoded = "1.0"
 futures-util = "0.3.7"
 gotham = { version = "0.5", default-features = false }
@@ -26,8 +27,10 @@ gotham_formdata_derive = { version = "0.0.1", path = "derive/" }
 log = "0.4"
 mime = "0.3"
 multipart = { version = "0.17", features = ["server"], default-features = false }
-regex_crate = { package = "regex", version = "1.4", optional = true }
 thiserror = "1.0"
+
+# Optional Dependencies
+regex_crate = { package = "regex", version = "1.4", optional = true }
 
 [dev-dependencies]
 futures-executor = "0.3.7"

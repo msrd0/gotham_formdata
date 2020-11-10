@@ -1,5 +1,6 @@
 use super::Validator;
 use std::{cell::Cell, mem::MaybeUninit, sync::Once};
+use thiserror::Error;
 
 /// Re-export [regex_crate::Regex].
 pub type Regex = regex_crate::Regex;
@@ -38,6 +39,11 @@ impl LazyRegex {
 // regex::Regex and regex::Error are both Sync, so this should be fine
 unsafe impl Sync for LazyRegex {}
 
+/// This error is emitted by the [RegexValidator] if the value did not match the regex.
+#[derive(Clone, Copy, Debug, Error)]
+#[error("Value is smaller than minimum of {0}")]
+pub struct RegexMismatchError<'re>(&'re Regex);
+
 /// A validator that checks that an integer is at least of a minimal value.
 #[derive(Clone, Debug)]
 pub struct RegexValidator<'re> {
@@ -52,11 +58,11 @@ impl<'re> RegexValidator<'re> {
 }
 
 impl<'re, T: AsRef<str>> Validator<T> for RegexValidator<'re> {
-	type Err = String;
+	type Err = RegexMismatchError<'re>;
 
-	fn validate(self, data: &T) -> Result<(), String> {
+	fn validate(self, data: &T) -> Result<(), Self::Err> {
 		if !self.re.is_match(data.as_ref()) {
-			return Err(format!("Value does not match {}", self.re));
+			return Err(RegexMismatchError(&self.re));
 		}
 		Ok(())
 	}

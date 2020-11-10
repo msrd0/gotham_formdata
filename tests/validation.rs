@@ -61,6 +61,35 @@ fn validate_custom_error() {
 }
 
 #[test]
+fn validate_combined_validator() {
+	#[derive(Debug, FormData, PartialEq)]
+	struct Data {
+		#[validate(min = 1, max = 2)]
+		data: u8
+	}
+
+	with_body(b"data=1", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap();
+		assert_eq!(data, Data { data: 1 })
+	});
+
+	with_body(b"data=2", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap();
+		assert_eq!(data, Data { data: 2 })
+	});
+
+	with_body(b"data=0", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap_err();
+		assert!(matches!(data, Error::InvalidData(_)));
+	});
+
+	with_body(b"data=3", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap_err();
+		assert!(matches!(data, Error::InvalidData(_)));
+	});
+}
+
+#[test]
 fn validate_custom_validator() {
 	#[derive(Debug, FormData, PartialEq)]
 	struct Data {

@@ -113,7 +113,13 @@ impl Field {
 				};
 
 				validator = match validator {
-					Some(_) => unimplemented!(),
+					Some(old_validator) => Some(quote! {
+						{
+							let first_validator = #old_validator;
+							let second_validator = #new_validator;
+							::gotham_formdata::validate::CombinedValidator::new(first_validator, second_validator)
+						}
+					}),
 					None => Some(new_validator)
 				};
 			}

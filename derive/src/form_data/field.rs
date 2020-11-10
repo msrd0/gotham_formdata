@@ -27,7 +27,8 @@ impl Parse for FieldMeta {
 pub(super) struct Field {
 	pub(super) ident: Ident,
 	pub(super) ty: Type,
-	pub(super) validator: Option<TokenStream>
+	pub(super) validator: Option<TokenStream>,
+	pub(super) validation_error: Option<Expr>
 }
 
 impl Field {
@@ -43,69 +44,86 @@ impl Field {
 		// unfortunately, we cannot change spans of types
 
 		let mut validator: Option<TokenStream> = None;
+		let mut validation_error: Option<Expr> = None;
 		for attr in field.attrs {
 			if !attr.path.ends_with("validate") {
 				continue;
 			}
-			let attr_span = attr.tokens.span();
 			let list = attr.parse_args_with(Punctuated::<FieldMeta, Token![,]>::parse_separated_nonempty)?;
 			// parse_separated_nonempty guarantees that there is at least one element in the list
-			if list.len() != 1 {
-				return Err(Error::new(attr_span, "Expected single key-value pair for attribute validate"));
-			}
-			let validate = list.into_iter().next().unwrap();
-			let name = validate.ident;
-			let expr = validate.expr;
+			for meta in list.into_iter() {
+				let name = meta.ident;
+				let expr = meta.expr;
 
-			validator = Some(match name.to_string().as_ref() {
-				// custom validator
-				"validator" => {
-					// TODO this code makes sure to emit an error message pointing to the macro's
-					// input, but there should be a better way to do this
-					quote_spanned! { expr.span() =>
-						{
-							let validator = #expr;
-							::gotham_formdata::internal::assert_validator::<_, _>(&validator);
-							validator
+				let new_validator = match name.to_string().as_ref() {
+					// custom error message
+					"error" => {
+						if validation_error.is_some() {
+							return Err(Error::new(name.span(), "'error' must not appear more than once"));
 						}
-					}
-				},
+						validation_error = Some(expr);
+						continue;
+					},
 
-				// min_length validator
-				"min_length" => quote!(::gotham_formdata::validate::MinLengthValidator::new(#expr)),
+					// custom validator
+					"validator" => {
+						// TODO this code makes sure to emit an error message pointing to the macro's
+						// input, but there should be a better way to do this
+						quote_spanned! { expr.span() =>
+							{
+								let validator = #expr;
+								::gotham_formdata::internal::assert_validator::<_, _>(&validator);
+								validator
+							}
+						}
+					},
 
-				// max_length validator
-				"max_length" => quote!(::gotham_formdata::validate::MaxLengthValidator::new(#expr)),
+					// min_length validator
+					"min_length" => quote!(::gotham_formdata::validate::MinLengthValidator::new(#expr)),
 
-				// min validator
-				"min" => quote!(::gotham_formdata::validate::MinValidator::<#ty>::new(#expr)),
+					// max_length validator
+					"max_length" => quote!(::gotham_formdata::validate::MaxLengthValidator::new(#expr)),
 
-				// max validator
-				"max" => quote!(::gotham_formdata::validate::MaxValidator::<#ty>::new(#expr)),
+					// min validator
+					"min" => quote!(::gotham_formdata::validate::MinValidator::<#ty>::new(#expr)),
 
-				// regex validator
-				"regex" => {
-					if cfg!(not(feature = "regex")) {
-						return Err(Error::new(
-							name.span(),
-							"You need to enable the 'regex' feature of gotham_formdata to enable the regex validator"
-						));
-					}
+					// max validator
+					"max" => quote!(::gotham_formdata::validate::MaxValidator::<#ty>::new(#expr)),
 
-					let regex_ident = format_ident!("{}_validation_regex", ident.to_string());
-					quote!({
-						static #regex_ident: ::gotham_formdata::validate::LazyRegex = ::gotham_formdata::validate::LazyRegex::new(#expr);
-						::gotham_formdata::validate::RegexValidator::new(#regex_ident.get().expect("Invalid Regex"))
-					})
-				},
+					// regex validator
+					"regex" => {
+						if cfg!(not(feature = "regex")) {
+							return Err(Error::new(
+								name.span(),
+								"You need to enable the 'regex' feature of gotham_formdata to enable the regex validator"
+							));
+						}
 
-				// expected validator
-				"expected" => quote!(::gotham_formdata::validate::ExpectedValidator::new(#expr)),
+						let regex_ident = format_ident!("{}_validation_regex", ident.to_string());
+						quote!({
+							static #regex_ident: ::gotham_formdata::validate::LazyRegex = ::gotham_formdata::validate::LazyRegex::new(#expr);
+							::gotham_formdata::validate::RegexValidator::new(#regex_ident.get().expect("Invalid Regex"))
+						})
+					},
 
-				_ => return Err(Error::new(name.span(), "Unknown key for attribute validate"))
-			});
+					// expected validator
+					"expected" => quote!(::gotham_formdata::validate::ExpectedValidator::new(#expr)),
+
+					_ => return Err(Error::new(name.span(), "Unknown key for attribute validate"))
+				};
+
+				validator = match validator {
+					Some(_) => unimplemented!(),
+					None => Some(new_validator)
+				};
+			}
 		}
 
-		Ok(Self { ident, ty, validator })
+		Ok(Self {
+			ident,
+			ty,
+			validator,
+			validation_error
+		})
 	}
 }

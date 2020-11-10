@@ -53,7 +53,6 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 	let builder_ident = &builder.ident;
 
 	let validation_error_struct = validation_error.gen_struct();
-	let validation_error_display_impl = validation_error.gen_display_impl();
 
 	let builder_struct = builder.gen_struct();
 	let builder_default_impl = builder.gen_default_impl();
@@ -66,26 +65,45 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 			.map(|v| quote!(Some({ #v })))
 			.unwrap_or_else(|| quote!(::std::option::Option::<()>::None))
 	});
+	let field_validation_errors = fields.iter().map(|f| {
+		f.validation_error
+			.as_ref()
+			.map(|err| quote!(Some(#err)))
+			.unwrap_or_else(|| quote!(::std::option::Option::<String>::None))
+	});
+
+	let validate_trait = format_ident!("Validate{}FormData", name);
 
 	Ok(quote! {
 		#validation_error_struct
-		#validation_error_display_impl
 
 		#builder_struct
 		#builder_default_impl
 		#builder_builder_impl
 
-		impl #impl_gen #name #ty_gen #were {
+		#[doc(hidden)]
+		trait #validate_trait {
+			fn validate(&self) -> Result<(), #err_ident>;
+		}
+
+		impl #impl_gen #validate_trait for #name #ty_gen #were {
 			#[doc(hidden)]
-			fn __validate(&self) -> Result<(), #err_ident> {
+			fn validate(&self) -> Result<(), #err_ident> {
 				::log::debug!("Validating Form Data for type {}", stringify!(#name));
 
 				#({
+					const name: &str = stringify!(#field_idents);
 					let value = &self.#field_idents;
 					let validator = #field_validators;
+					let validation_error = #field_validation_errors;
 					if let Some(validator) = validator {
 						::gotham_formdata::validate::Validator::validate(validator, value)
-							.map_err(|err| #err_ident::invalid(stringify!(#field_idents), err))?;
+							.map_err(|err| {
+								match validation_error {
+									Some(ve) => #err_ident::invalid(name, ve),
+									None     => #err_ident::invalid(name, err)
+								}
+							})?;
 					}
 				})*
 
@@ -115,7 +133,7 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 						},
 						_ => Err(::gotham_formdata::Error::UnknownContentType(content_type))
 					}?;
-					res.__validate().map_err(|err| ::gotham_formdata::Error::InvalidData(err))?;
+					#validate_trait::validate(&res).map_err(|err| ::gotham_formdata::Error::InvalidData(err))?;
 					Ok(res)
 				}.boxed()
 			}

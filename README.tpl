@@ -1,6 +1,15 @@
+<!-- experimental code warning with spacing above -->
+<br/>
 <div align="center">
-	<h1>gotham_formdata</h1>
+	:warning: <span color="#ffcc4d">This crate is still experimental and not yet ready for production.</span> :warning:
 </div>
+
+<!-- headline -->
+<div align="center">
+	<h1>gotham_formdata :writing_hand:</h1>
+</div>
+
+<!-- badges -->
 <div align="center">
 	<a href="https://github.com/msrd0/gotham_formdata/actions?query=workflow%3ARust">
 		<img alt="GitHub Actions" src="https://github.com/msrd0/gotham_formdata/workflows/Rust/badge.svg"/>

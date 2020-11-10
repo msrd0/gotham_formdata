@@ -5,6 +5,7 @@ implementors["bincode"] = [{"text":"impl Error for ErrorKind","synthetic":false,
 implementors["buf_redux"] = [{"text":"impl&lt;W:&nbsp;Any + Send + Debug&gt; Error for IntoInnerError&lt;W&gt;","synthetic":false,"types":[]}];
 implementors["chrono"] = [{"text":"impl Error for ParseError","synthetic":false,"types":[]},{"text":"impl Error for RoundingError","synthetic":false,"types":[]}];
 implementors["cookie"] = [{"text":"impl Error for ParseError","synthetic":false,"types":[]}];
+implementors["either"] = [{"text":"impl&lt;L, R&gt; Error for Either&lt;L, R&gt; <span class=\"where fmt-newline\">where<br>&nbsp;&nbsp;&nbsp;&nbsp;L: Error,<br>&nbsp;&nbsp;&nbsp;&nbsp;R: Error,&nbsp;</span>","synthetic":false,"types":[]}];
 implementors["futures_channel"] = [{"text":"impl Error for SendError","synthetic":false,"types":[]},{"text":"impl&lt;T:&nbsp;Any&gt; Error for TrySendError&lt;T&gt;","synthetic":false,"types":[]},{"text":"impl Error for TryRecvError","synthetic":false,"types":[]},{"text":"impl Error for Canceled","synthetic":false,"types":[]}];
 implementors["futures_executor"] = [{"text":"impl Error for EnterError","synthetic":false,"types":[]}];
 implementors["futures_task"] = [{"text":"impl Error for SpawnError","synthetic":false,"types":[]}];

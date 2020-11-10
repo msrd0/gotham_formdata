@@ -1,9 +1,7 @@
 use super::Validator;
+use regex_crate::Regex;
 use std::{cell::Cell, mem::MaybeUninit, sync::Once};
 use thiserror::Error;
-
-/// Re-export [regex_crate::Regex].
-pub type Regex = regex_crate::Regex;
 
 /// Lazy Regex creation, similar to `lazy_static`. NOT PUBLIC API.
 #[doc(hidden)]

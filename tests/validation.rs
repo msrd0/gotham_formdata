@@ -31,6 +31,36 @@ fn with_body(body: &'static [u8], content_type: Mime, callback: impl Fn(&mut Sta
 }
 
 #[test]
+fn validate_custom_error() {
+	#[derive(Debug, FormData, PartialEq)]
+	struct Data {
+		#[validate(min = 1, error = "Too small.")]
+		data: u8
+	}
+
+	// testing that we can define `.validate()` eventhough that name is also used in the derive code
+	impl Data {
+		fn validate(&self) -> bool {
+			true
+		}
+	}
+
+	with_body(b"data=1", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap();
+		assert!(data.validate()); // NOTE this is defined above, not generated
+		assert_eq!(data, Data { data: 1 })
+	});
+
+	with_body(b"data=0", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap_err();
+		match data {
+			Error::InvalidData(DataVerificationError::DataInvalid(err)) => assert_eq!(err, "Too small."),
+			_ => panic!("Expected DataVerificationError::DataInvalid, got {:?}", data)
+		};
+	});
+}
+
+#[test]
 fn validate_custom_validator() {
 	#[derive(Debug, FormData, PartialEq)]
 	struct Data {

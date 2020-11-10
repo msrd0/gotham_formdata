@@ -72,19 +72,17 @@ impl<'a> ValidationError<'a> {
 				}
 			}
 
-			impl ::std::error::Error for #ident {}
-		}
-	}
-
-	pub(super) fn gen_display_impl(&self) -> TokenStream {
-		let ident = &self.ident;
-
-		quote! {
 			impl ::std::fmt::Display for #ident {
 				fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-					write!(f, "Invalid value for field {}", self.field_name())
+					write!(f, "Invalid value for field {}:", self.field_name())?;
+					match self {
+						#( Self::#variant_idents(err) => write!(f, "{}", err), )*
+						_ => unreachable!()
+					}
 				}
 			}
+
+			impl ::std::error::Error for #ident {}
 		}
 	}
 }

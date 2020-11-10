@@ -240,7 +240,7 @@
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">serde</span>::<span class="ident">Deserialize</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Sign</span> {
-    <span class="kw">fn</span> <span class="ident">deserialize</span><span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>(<span class="ident">deserializer</span>: <span class="ident">D</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">D</span>::<span class="ident">Error</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">deserialize</span><span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>(<span class="ident">deserializer</span>: <span class="ident">D</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">D</span>::<span class="ident">Error</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">D</span>: <span class="ident">serde</span>::<span class="ident">Deserializer</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>,
     {
@@ -257,19 +257,19 @@
     <span class="doccomment">/// # use time::Sign;</span>
     <span class="doccomment">/// assert_eq!(Sign::default(), Sign::Zero);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">Zero</span>
     }
 }
 
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">sign_mul</span> {
-    ($(<span class="macro-nonterminal">$</span><span class="kw">type</span>:<span class="macro-nonterminal">ty</span>),<span class="op">+</span> $(,)<span class="question-mark">?</span>) <span class="op">=&gt;</span> {
+    ($(<span class="macro-nonterminal">$</span><span class="kw">type</span>:<span class="macro-nonterminal">ty</span>),<span class="op">+</span> $(,)<span class="question-mark">?</span>) <span class="op">=</span><span class="op">&gt;</span> {
         $(
             <span class="kw">impl</span> <span class="ident">Mul</span><span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="kw">type</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="macro-nonterminal">Sign</span> {
                 <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="kw">type</span>;
 
                 <span class="attribute">#[<span class="macro-nonterminal">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
-                <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="macro-nonterminal">$</span><span class="kw">type</span>) <span class="op">-&gt;</span> <span class="self">Self</span>::<span class="macro-nonterminal">Output</span> {
+                <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="macro-nonterminal">$</span><span class="kw">type</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>::<span class="macro-nonterminal">Output</span> {
                     (<span class="self">self</span> <span class="kw">as</span> <span class="ident">i8</span>) <span class="kw">as</span> <span class="macro-nonterminal">$</span><span class="kw">type</span> <span class="op">*</span> <span class="macro-nonterminal">rhs</span>
                 }
             }
@@ -277,7 +277,7 @@
             <span class="kw">impl</span> <span class="ident">Mul</span><span class="op">&lt;</span><span class="ident">Sign</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="kw">type</span> {
                 <span class="kw">type</span> <span class="macro-nonterminal">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-                <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Sign</span>) <span class="op">-&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
+                <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Sign</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
                     <span class="ident">rhs</span> <span class="op">*</span> <span class="self">self</span>
                 }
             }
@@ -285,21 +285,21 @@
             <span class="kw">impl</span> <span class="ident">MulAssign</span><span class="op">&lt;</span><span class="ident">Sign</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="kw">type</span> {
                 <span class="attribute">#[<span class="macro-nonterminal">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
                 <span class="kw">fn</span> <span class="ident">mul_assign</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Sign</span>) {
-                    <span class="kw-2">*</span><span class="self">self</span> <span class="op">*=</span> <span class="ident">rhs</span> <span class="kw">as</span> <span class="ident">i8</span> <span class="kw">as</span> <span class="macro-nonterminal">$</span><span class="kw">type</span>;
+                    <span class="kw-2">*</span><span class="self">self</span> <span class="kw-2">*</span><span class="op">=</span> <span class="ident">rhs</span> <span class="kw">as</span> <span class="ident">i8</span> <span class="kw">as</span> <span class="macro-nonterminal">$</span><span class="kw">type</span>;
                 }
             }
 
             <span class="kw">impl</span> <span class="macro-nonterminal">Div</span><span class="op">&lt;</span><span class="ident">Sign</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="kw">type</span> {
                 <span class="kw">type</span> <span class="macro-nonterminal">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-                <span class="kw">fn</span> <span class="ident">div</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Sign</span>) <span class="op">-&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
+                <span class="kw">fn</span> <span class="ident">div</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Sign</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
                     <span class="self">self</span> <span class="op">*</span> <span class="ident">rhs</span>
                 }
             }
 
             <span class="kw">impl</span> <span class="ident">DivAssign</span><span class="op">&lt;</span><span class="ident">Sign</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="kw">type</span> {
                 <span class="kw">fn</span> <span class="macro-nonterminal">div_assign</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Sign</span>) {
-                    <span class="kw-2">*</span><span class="self">self</span> <span class="op">*=</span> <span class="ident">rhs</span>
+                    <span class="kw-2">*</span><span class="self">self</span> <span class="kw-2">*</span><span class="op">=</span> <span class="ident">rhs</span>
                 }
             }
         )<span class="op">*</span>
@@ -310,11 +310,11 @@
 <span class="kw">impl</span> <span class="ident">Mul</span><span class="op">&lt;</span><span class="ident">Sign</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Sign</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-    <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="self">Self</span>) <span class="op">-&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
+    <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
         <span class="kw">match</span> (<span class="self">self</span>, <span class="ident">rhs</span>) {
-            (<span class="ident">Zero</span>, <span class="kw">_</span>) <span class="op">|</span> (<span class="kw">_</span>, <span class="ident">Zero</span>) <span class="op">=&gt;</span> <span class="ident">Zero</span>,
-            (<span class="ident">Positive</span>, <span class="ident">Positive</span>) <span class="op">|</span> (<span class="ident">Negative</span>, <span class="ident">Negative</span>) <span class="op">=&gt;</span> <span class="ident">Positive</span>,
-            (<span class="ident">Positive</span>, <span class="ident">Negative</span>) <span class="op">|</span> (<span class="ident">Negative</span>, <span class="ident">Positive</span>) <span class="op">=&gt;</span> <span class="ident">Negative</span>,
+            (<span class="ident">Zero</span>, <span class="kw">_</span>) <span class="op">|</span> (<span class="kw">_</span>, <span class="ident">Zero</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Zero</span>,
+            (<span class="ident">Positive</span>, <span class="ident">Positive</span>) <span class="op">|</span> (<span class="ident">Negative</span>, <span class="ident">Negative</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Positive</span>,
+            (<span class="ident">Positive</span>, <span class="ident">Negative</span>) <span class="op">|</span> (<span class="ident">Negative</span>, <span class="ident">Positive</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Negative</span>,
         }
     }
 }
@@ -328,21 +328,21 @@
 <span class="kw">impl</span> <span class="ident">Div</span><span class="op">&lt;</span><span class="ident">Sign</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Sign</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-    <span class="kw">fn</span> <span class="ident">div</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="self">Self</span>) <span class="op">-&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
+    <span class="kw">fn</span> <span class="ident">div</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
         <span class="self">self</span> <span class="op">*</span> <span class="ident">rhs</span>
     }
 }
 
 <span class="kw">impl</span> <span class="ident">DivAssign</span><span class="op">&lt;</span><span class="ident">Sign</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Sign</span> {
     <span class="kw">fn</span> <span class="ident">div_assign</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">rhs</span>: <span class="self">Self</span>) {
-        <span class="kw-2">*</span><span class="self">self</span> <span class="op">*=</span> <span class="ident">rhs</span>
+        <span class="kw-2">*</span><span class="self">self</span> <span class="kw-2">*</span><span class="op">=</span> <span class="ident">rhs</span>
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Neg</span> <span class="kw">for</span> <span class="ident">Sign</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-    <span class="kw">fn</span> <span class="ident">neg</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
+    <span class="kw">fn</span> <span class="ident">neg</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
         <span class="self">self</span>.<span class="ident">negate</span>()
     }
 }
@@ -350,7 +350,7 @@
 <span class="kw">impl</span> <span class="ident">Not</span> <span class="kw">for</span> <span class="ident">Sign</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-    <span class="kw">fn</span> <span class="ident">not</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
+    <span class="kw">fn</span> <span class="ident">not</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
         <span class="self">self</span>.<span class="ident">negate</span>()
     }
 }
@@ -365,11 +365,11 @@
     <span class="doccomment">/// assert_eq!(Sign::Negative.negate(), Sign::Positive);</span>
     <span class="doccomment">/// assert_eq!(Sign::Zero.negate(), Sign::Zero);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">negate</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">negate</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">Positive</span> <span class="op">=&gt;</span> <span class="ident">Negative</span>,
-            <span class="ident">Negative</span> <span class="op">=&gt;</span> <span class="ident">Positive</span>,
-            <span class="ident">Zero</span> <span class="op">=&gt;</span> <span class="ident">Zero</span>,
+            <span class="ident">Positive</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Negative</span>,
+            <span class="ident">Negative</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Positive</span>,
+            <span class="ident">Zero</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Zero</span>,
         }
     }
 
@@ -382,8 +382,8 @@
     <span class="doccomment">/// assert!(!Sign::Negative.is_positive());</span>
     <span class="doccomment">/// assert!(!Sign::Zero.is_positive());</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">is_positive</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="self">self</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="op">==</span> <span class="ident">Positive</span> <span class="kw">as</span> <span class="ident">u8</span>
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">is_positive</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="self">self</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="op">=</span><span class="op">=</span> <span class="ident">Positive</span> <span class="kw">as</span> <span class="ident">u8</span>
     }
 
     <span class="doccomment">/// Is the sign negative?</span>
@@ -395,8 +395,8 @@
     <span class="doccomment">/// assert!(Sign::Negative.is_negative());</span>
     <span class="doccomment">/// assert!(!Sign::Zero.is_negative());</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">is_negative</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="self">self</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="op">==</span> <span class="ident">Negative</span> <span class="kw">as</span> <span class="ident">u8</span>
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">is_negative</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="self">self</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="op">=</span><span class="op">=</span> <span class="ident">Negative</span> <span class="kw">as</span> <span class="ident">u8</span>
     }
 
     <span class="doccomment">/// Is the value exactly zero?</span>
@@ -408,8 +408,8 @@
     <span class="doccomment">/// assert!(!Sign::Negative.is_zero());</span>
     <span class="doccomment">/// assert!(Sign::Zero.is_zero());</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">is_zero</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="self">self</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="op">==</span> <span class="ident">Zero</span> <span class="kw">as</span> <span class="ident">u8</span>
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">is_zero</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="self">self</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="op">=</span><span class="op">=</span> <span class="ident">Zero</span> <span class="kw">as</span> <span class="ident">u8</span>
     }
 }
 </pre></div>

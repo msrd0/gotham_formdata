@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.5.0/src/router/tree/node.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>node.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled ><script src="../../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../../gotham/index.html'><div class='logo-container rust-logo'><img src='../../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.5.0/src/router/tree/node.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>node.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled ><script src="../../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg">
+<link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png">
+<link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../../gotham/index.html'><div class='logo-container rust-logo'><img src='../../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
                 <a id="settings-menu" href="../../../../settings.html"><img src="../../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
@@ -592,13 +594,13 @@
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Node</span> {
     <span class="ident">segment</span>: <span class="ident">String</span>,
     <span class="ident">segment_type</span>: <span class="ident">SegmentType</span>,
-    <span class="ident">routes</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Route</span><span class="op">&lt;</span><span class="ident">ResBody</span> <span class="op">=</span> <span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;&gt;</span>,
+    <span class="ident">routes</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">dyn</span> <span class="ident">Route</span><span class="op">&lt;</span><span class="ident">ResBody</span> <span class="op">=</span> <span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span><span class="op">&gt;</span>,
     <span class="ident">children</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Node</span><span class="op">&gt;</span>,
 }
 
 <span class="kw">impl</span> <span class="ident">Node</span> {
     <span class="doccomment">/// Creates new `Node` for the given segment and type.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">segment</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">segment_type</span>: <span class="ident">SegmentType</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">segment</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">segment_type</span>: <span class="ident">SegmentType</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">Node</span> {
             <span class="ident">segment_type</span>,
             <span class="ident">segment</span>: <span class="ident">segment</span>.<span class="ident">to_string</span>(),
@@ -608,23 +610,23 @@
     }
 
     <span class="doccomment">/// Adds a new child `Node` instance to this `Node`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_child</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">node</span>: <span class="ident">Node</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_child</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">node</span>: <span class="ident">Node</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">children</span>.<span class="ident">push</span>(<span class="ident">node</span>);
         <span class="self">self</span>.<span class="ident">children</span>.<span class="ident">sort</span>();
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Adds a `Route` to this `Node`, to be potentially evaluated by the `Router`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_route</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">route</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Route</span><span class="op">&lt;</span><span class="ident">ResBody</span> <span class="op">=</span> <span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_route</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">route</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">dyn</span> <span class="ident">Route</span><span class="op">&lt;</span><span class="ident">ResBody</span> <span class="op">=</span> <span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">routes</span>.<span class="ident">push</span>(<span class="ident">route</span>);
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Borrows a child `Node` based on the defined segment bounds.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">borrow_child</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">segment</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">segment_type</span>: <span class="ident">SegmentType</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Node</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">borrow_child</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">segment</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">segment_type</span>: <span class="ident">SegmentType</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Node</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">children</span>
             .<span class="ident">iter</span>()
-            .<span class="ident">find</span>(<span class="op">|</span><span class="ident">n</span><span class="op">|</span> <span class="ident">n</span>.<span class="ident">segment_type</span> <span class="op">==</span> <span class="ident">segment_type</span> <span class="op">&amp;&amp;</span> <span class="ident">n</span>.<span class="ident">segment</span> <span class="op">==</span> <span class="ident">segment</span>)
+            .<span class="ident">find</span>(<span class="op">|</span><span class="ident">n</span><span class="op">|</span> <span class="ident">n</span>.<span class="ident">segment_type</span> <span class="op">=</span><span class="op">=</span> <span class="ident">segment_type</span> <span class="op">&amp;&amp;</span> <span class="ident">n</span>.<span class="ident">segment</span> <span class="op">=</span><span class="op">=</span> <span class="ident">segment</span>)
     }
 
     <span class="doccomment">/// Borrows a mutable child `Node` based on the defined segment bounds.</span>
@@ -632,19 +634,19 @@
         <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
         <span class="ident">segment</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">segment_type</span>: <span class="ident">SegmentType</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Node</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Node</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">children</span>
             .<span class="ident">iter_mut</span>()
-            .<span class="ident">find</span>(<span class="op">|</span><span class="ident">n</span><span class="op">|</span> <span class="ident">n</span>.<span class="ident">segment_type</span> <span class="op">==</span> <span class="ident">segment_type</span> <span class="op">&amp;&amp;</span> <span class="ident">n</span>.<span class="ident">segment</span> <span class="op">==</span> <span class="ident">segment</span>)
+            .<span class="ident">find</span>(<span class="op">|</span><span class="ident">n</span><span class="op">|</span> <span class="ident">n</span>.<span class="ident">segment_type</span> <span class="op">=</span><span class="op">=</span> <span class="ident">segment_type</span> <span class="op">&amp;&amp;</span> <span class="ident">n</span>.<span class="ident">segment</span> <span class="op">=</span><span class="op">=</span> <span class="ident">segment</span>)
     }
 
     <span class="doccomment">/// Determines if a child exists based on the defined segment bounds.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has_child</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">segment</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">segment_type</span>: <span class="ident">SegmentType</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has_child</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">segment</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">segment_type</span>: <span class="ident">SegmentType</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">borrow_child</span>(<span class="ident">segment</span>, <span class="ident">segment_type</span>).<span class="ident">is_some</span>()
     }
 
     <span class="doccomment">/// Determines if this `Node` has any valid `Route` values attached.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_routable</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_routable</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="op">!</span><span class="self">self</span>.<span class="ident">routes</span>.<span class="ident">is_empty</span>()
     }
 
@@ -668,7 +670,7 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">match_node</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>,
         <span class="ident">segments</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">PercentDecoded</span>],
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Node</span>, <span class="ident">SegmentMapping</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>, <span class="ident">usize</span>)<span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Node</span>, <span class="ident">SegmentMapping</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>, <span class="ident">usize</span>)<span class="op">&gt;</span> {
         <span class="comment">// accumulators for recursion</span>
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">params</span> <span class="op">=</span> <span class="ident">HashMap</span>::<span class="ident">new</span>();
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">processed</span> <span class="op">=</span> <span class="number">0</span>;
@@ -681,7 +683,7 @@
     <span class="doccomment">/// Retrieves a reference to the contained segment value.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This is required for lifetime related annotations.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">segment</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">segment</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span> {
         <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">segment</span>
     }
 
@@ -699,21 +701,21 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">select_route</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="ident">State</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Route</span><span class="op">&lt;</span><span class="ident">ResBody</span> <span class="op">=</span> <span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span>, <span class="ident">RouteNonMatch</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">dyn</span> <span class="ident">Route</span><span class="op">&lt;</span><span class="ident">ResBody</span> <span class="op">=</span> <span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span>, <span class="ident">RouteNonMatch</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">err</span> <span class="op">=</span> <span class="prelude-val">Ok</span>(());
 
         <span class="comment">// check for matching routes</span>
         <span class="kw">for</span> <span class="ident">r</span> <span class="kw">in</span> <span class="self">self</span>.<span class="ident">routes</span>.<span class="ident">iter</span>() {
             <span class="kw">match</span> <span class="ident">r</span>.<span class="ident">is_match</span>(<span class="ident">state</span>) {
-                <span class="prelude-val">Ok</span>(()) <span class="op">=&gt;</span> {
+                <span class="prelude-val">Ok</span>(()) <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="macro">trace</span><span class="macro">!</span>(<span class="string">&quot;[{}] found matching route&quot;</span>, <span class="ident">request_id</span>(<span class="ident">state</span>));
                     <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">r</span>);
                 }
-                <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=&gt;</span> {
+                <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="comment">// concat errors</span>
                     <span class="ident">err</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">err</span> {
-                        <span class="prelude-val">Err</span>(<span class="ident">e0</span>) <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>.<span class="ident">union</span>(<span class="ident">e0</span>)),
-                        <span class="prelude-val">Ok</span>(()) <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>),
+                        <span class="prelude-val">Err</span>(<span class="ident">e0</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>.<span class="ident">union</span>(<span class="ident">e0</span>)),
+                        <span class="prelude-val">Ok</span>(()) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>),
                     }
                 }
             }
@@ -747,7 +749,7 @@
         <span class="ident">segments</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">PercentDecoded</span>],
         <span class="ident">params</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">SegmentMapping</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>,
         <span class="ident">processed</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">usize</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Node</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Node</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">next_segment</span> <span class="op">=</span> <span class="ident">segments</span>.<span class="ident">split_first</span>();
 
         <span class="comment">// stop if we&#39;re done</span>
@@ -760,33 +762,33 @@
 
         <span class="comment">// check for external delegates, and stop</span>
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">route</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">routes</span>.<span class="ident">first</span>() {
-            <span class="kw">if</span> <span class="ident">route</span>.<span class="ident">delegation</span>() <span class="op">==</span> <span class="ident">Delegation</span>::<span class="ident">External</span> {
+            <span class="kw">if</span> <span class="ident">route</span>.<span class="ident">delegation</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">Delegation</span>::<span class="ident">External</span> {
                 <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="self">self</span>);
             }
         }
 
         <span class="kw">let</span> (<span class="ident">segment</span>, <span class="ident">remaining</span>) <span class="op">=</span> <span class="ident">next_segment</span>.<span class="ident">unwrap</span>();
 
-        <span class="kw-2">*</span><span class="ident">processed</span> <span class="op">+=</span> <span class="number">1</span>;
+        <span class="kw-2">*</span><span class="ident">processed</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
 
         <span class="comment">// check all children first</span>
         <span class="kw">for</span> <span class="ident">child</span> <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">children</span> {
             <span class="kw">match</span> <span class="ident">child</span>.<span class="ident">segment_type</span> {
                 <span class="comment">// Globbing matches everything, so we append the segment value</span>
                 <span class="comment">// to the parameters against the child segment name.</span>
-                <span class="ident">SegmentType</span>::<span class="ident">Glob</span> <span class="op">=&gt;</span> {
+                <span class="ident">SegmentType</span>::<span class="ident">Glob</span> <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="ident">params</span>
                         .<span class="ident">entry</span>(<span class="kw-2">&amp;</span><span class="ident">child</span>.<span class="ident">segment</span>)
-                        .<span class="ident">or_insert_with</span>(<span class="op">||</span> <span class="macro">vec</span><span class="macro">!</span>[])
+                        .<span class="ident">or_insert_with</span>(<span class="op">|</span><span class="op">|</span> <span class="macro">vec</span><span class="macro">!</span>[])
                         .<span class="ident">push</span>(<span class="kw-2">&amp;</span><span class="ident">segment</span>);
                 }
 
                 <span class="comment">// Static matches based on a raw string match, so we simply</span>
                 <span class="comment">// compare the value of the current segment with that of the</span>
                 <span class="comment">// child node we&#39;re currently iterating.</span>
-                <span class="ident">SegmentType</span>::<span class="ident">Static</span> <span class="op">=&gt;</span> {
+                <span class="ident">SegmentType</span>::<span class="ident">Static</span> <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="comment">// check for raw string match</span>
-                    <span class="kw">if</span> <span class="ident">child</span>.<span class="ident">segment</span> <span class="op">!=</span> <span class="ident">segment</span>.<span class="ident">as_ref</span>() {
+                    <span class="kw">if</span> <span class="ident">child</span>.<span class="ident">segment</span> <span class="op">!</span><span class="op">=</span> <span class="ident">segment</span>.<span class="ident">as_ref</span>() {
                         <span class="kw">continue</span>;
                     }
                 }
@@ -794,7 +796,7 @@
                 <span class="comment">// Constrained matches are based on a contained pattern the</span>
                 <span class="comment">// segment value must match. If the segment matches, we need</span>
                 <span class="comment">// to make sure to store the value inside the parameters map.</span>
-                <span class="ident">SegmentType</span>::<span class="ident">Constrained</span> { <span class="kw-2">ref</span> <span class="ident">regex</span> } <span class="op">=&gt;</span> {
+                <span class="ident">SegmentType</span>::<span class="ident">Constrained</span> { <span class="kw-2">ref</span> <span class="ident">regex</span> } <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="comment">// check for regex matching</span>
                     <span class="kw">if</span> <span class="op">!</span><span class="ident">regex</span>.<span class="ident">is_match</span>(<span class="kw-2">&amp;</span><span class="ident">segment</span>.<span class="ident">as_ref</span>()) {
                         <span class="kw">continue</span>;
@@ -806,7 +808,7 @@
                 <span class="comment">// Dynamic matches match every value, so we just attach the</span>
                 <span class="comment">// segment value to the parameters list (just like with the</span>
                 <span class="comment">// constrained type).</span>
-                <span class="ident">SegmentType</span>::<span class="ident">Dynamic</span> <span class="op">=&gt;</span> {
+                <span class="ident">SegmentType</span>::<span class="ident">Dynamic</span> <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="comment">// if there&#39;s a match, store the value</span>
                     <span class="ident">params</span>.<span class="ident">insert</span>(<span class="kw-2">&amp;</span><span class="ident">child</span>.<span class="ident">segment</span>, <span class="macro">vec</span><span class="macro">!</span>[<span class="kw-2">&amp;</span><span class="ident">segment</span>]);
                 }
@@ -837,21 +839,21 @@
 <span class="kw">impl</span> <span class="ident">Eq</span> <span class="kw">for</span> <span class="ident">Node</span> {}
 <span class="kw">impl</span> <span class="ident">PartialEq</span> <span class="kw">for</span> <span class="ident">Node</span> {
     <span class="doccomment">/// Compares two `Node` values for equality based on the segments they represent.</span>
-    <span class="kw">fn</span> <span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="ident">Node</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">segment</span> <span class="op">==</span> <span class="ident">other</span>.<span class="ident">segment</span> <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">segment_type</span> <span class="op">==</span> <span class="ident">other</span>.<span class="ident">segment_type</span>
+    <span class="kw">fn</span> <span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="ident">Node</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="self">self</span>.<span class="ident">segment</span> <span class="op">=</span><span class="op">=</span> <span class="ident">other</span>.<span class="ident">segment</span> <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">segment_type</span> <span class="op">=</span><span class="op">=</span> <span class="ident">other</span>.<span class="ident">segment_type</span>
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Ord</span> <span class="kw">for</span> <span class="ident">Node</span> {
     <span class="doccomment">/// Compares two `Node` values to determine an appropriate `Ordering`.</span>
-    <span class="kw">fn</span> <span class="ident">cmp</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="ident">Node</span>) <span class="op">-&gt;</span> <span class="ident">Ordering</span> {
+    <span class="kw">fn</span> <span class="ident">cmp</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="ident">Node</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Ordering</span> {
         (<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">segment_type</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">segment</span>).<span class="ident">cmp</span>(<span class="kw-2">&amp;</span>(<span class="kw-2">&amp;</span><span class="ident">other</span>.<span class="ident">segment_type</span>, <span class="kw-2">&amp;</span><span class="ident">other</span>.<span class="ident">segment</span>))
     }
 }
 
 <span class="kw">impl</span> <span class="ident">PartialOrd</span> <span class="kw">for</span> <span class="ident">Node</span> {
     <span class="doccomment">/// Compares two `Node` values to determine an appropriate `Ordering`.</span>
-    <span class="kw">fn</span> <span class="ident">partial_cmp</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="ident">Node</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Ordering</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">partial_cmp</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="ident">Node</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Ordering</span><span class="op">&gt;</span> {
         <span class="prelude-val">Some</span>(<span class="self">self</span>.<span class="ident">cmp</span>(<span class="ident">other</span>))
     }
 }
@@ -874,17 +876,17 @@
     <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">router</span>::<span class="ident">tree</span>::<span class="ident">regex</span>::<span class="ident">ConstrainedSegmentRegex</span>;
     <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">state</span>::{<span class="ident">set_request_id</span>, <span class="ident">State</span>};
 
-    <span class="kw">fn</span> <span class="ident">handler</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
+    <span class="kw">fn</span> <span class="ident">handler</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
         (<span class="ident">state</span>, <span class="ident">Response</span>::<span class="ident">new</span>(<span class="ident">Body</span>::<span class="ident">empty</span>()))
     }
 
-    <span class="kw">fn</span> <span class="ident">get_route</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>(<span class="ident">pipeline_set</span>: <span class="ident">PipelineSet</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Route</span><span class="op">&lt;</span><span class="ident">ResBody</span> <span class="op">=</span> <span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">get_route</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>(<span class="ident">pipeline_set</span>: <span class="ident">PipelineSet</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">dyn</span> <span class="ident">Route</span><span class="op">&lt;</span><span class="ident">ResBody</span> <span class="op">=</span> <span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">P</span>: <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="ident">RefUnwindSafe</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
     {
         <span class="kw">let</span> <span class="ident">methods</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">Method</span>::<span class="ident">GET</span>];
         <span class="kw">let</span> <span class="ident">matcher</span> <span class="op">=</span> <span class="ident">MethodOnlyRouteMatcher</span>::<span class="ident">new</span>(<span class="ident">methods</span>);
-        <span class="kw">let</span> <span class="ident">dispatcher</span> <span class="op">=</span> <span class="ident">DispatcherImpl</span>::<span class="ident">new</span>(<span class="op">||</span> <span class="prelude-val">Ok</span>(<span class="ident">handler</span>), (), <span class="ident">pipeline_set</span>);
+        <span class="kw">let</span> <span class="ident">dispatcher</span> <span class="op">=</span> <span class="ident">DispatcherImpl</span>::<span class="ident">new</span>(<span class="op">|</span><span class="op">|</span> <span class="prelude-val">Ok</span>(<span class="ident">handler</span>), (), <span class="ident">pipeline_set</span>);
         <span class="kw">let</span> <span class="ident">extractors</span>: <span class="ident">Extractors</span><span class="op">&lt;</span><span class="ident">NoopPathExtractor</span>, <span class="ident">NoopQueryStringExtractor</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Extractors</span>::<span class="ident">new</span>();
         <span class="kw">let</span> <span class="ident">route</span> <span class="op">=</span> <span class="ident">RouteImpl</span>::<span class="ident">new</span>(
             <span class="ident">matcher</span>,
@@ -895,7 +897,7 @@
         <span class="ident">Box</span>::<span class="ident">new</span>(<span class="ident">route</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">test_structure</span>() <span class="op">-&gt;</span> <span class="ident">Node</span> {
+    <span class="kw">fn</span> <span class="ident">test_structure</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Node</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">root</span> <span class="op">=</span> <span class="ident">Node</span>::<span class="ident">new</span>(<span class="string">&quot;/&quot;</span>, <span class="ident">SegmentType</span>::<span class="ident">Static</span>);
         <span class="kw">let</span> <span class="ident">pipeline_set</span> <span class="op">=</span> <span class="ident">finalize_pipeline_set</span>(<span class="ident">new_pipeline_set</span>());
 
@@ -904,7 +906,7 @@
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">seg1</span> <span class="op">=</span> <span class="ident">Node</span>::<span class="ident">new</span>(<span class="string">&quot;seg1&quot;</span>, <span class="ident">SegmentType</span>::<span class="ident">Static</span>);
         <span class="kw">let</span> <span class="ident">methods</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">Method</span>::<span class="ident">GET</span>, <span class="ident">Method</span>::<span class="ident">HEAD</span>];
         <span class="kw">let</span> <span class="ident">matcher</span> <span class="op">=</span> <span class="ident">MethodOnlyRouteMatcher</span>::<span class="ident">new</span>(<span class="ident">methods</span>);
-        <span class="kw">let</span> <span class="ident">dispatcher</span> <span class="op">=</span> <span class="ident">DispatcherImpl</span>::<span class="ident">new</span>(<span class="op">||</span> <span class="prelude-val">Ok</span>(<span class="ident">handler</span>), (), <span class="ident">pipeline_set</span>.<span class="ident">clone</span>());
+        <span class="kw">let</span> <span class="ident">dispatcher</span> <span class="op">=</span> <span class="ident">DispatcherImpl</span>::<span class="ident">new</span>(<span class="op">|</span><span class="op">|</span> <span class="prelude-val">Ok</span>(<span class="ident">handler</span>), (), <span class="ident">pipeline_set</span>.<span class="ident">clone</span>());
         <span class="kw">let</span> <span class="ident">extractors</span>: <span class="ident">Extractors</span><span class="op">&lt;</span><span class="ident">NoopPathExtractor</span>, <span class="ident">NoopQueryStringExtractor</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Extractors</span>::<span class="ident">new</span>();
         <span class="kw">let</span> <span class="ident">route</span> <span class="op">=</span> <span class="ident">RouteImpl</span>::<span class="ident">new</span>(
             <span class="ident">matcher</span>,
@@ -920,7 +922,7 @@
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">seg2</span> <span class="op">=</span> <span class="ident">Node</span>::<span class="ident">new</span>(<span class="string">&quot;seg2&quot;</span>, <span class="ident">SegmentType</span>::<span class="ident">Static</span>);
         <span class="kw">let</span> <span class="ident">methods</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">Method</span>::<span class="ident">POST</span>];
         <span class="kw">let</span> <span class="ident">matcher</span> <span class="op">=</span> <span class="ident">MethodOnlyRouteMatcher</span>::<span class="ident">new</span>(<span class="ident">methods</span>);
-        <span class="kw">let</span> <span class="ident">dispatcher</span> <span class="op">=</span> <span class="ident">DispatcherImpl</span>::<span class="ident">new</span>(<span class="op">||</span> <span class="prelude-val">Ok</span>(<span class="ident">handler</span>), (), <span class="ident">pipeline_set</span>.<span class="ident">clone</span>());
+        <span class="kw">let</span> <span class="ident">dispatcher</span> <span class="op">=</span> <span class="ident">DispatcherImpl</span>::<span class="ident">new</span>(<span class="op">|</span><span class="op">|</span> <span class="prelude-val">Ok</span>(<span class="ident">handler</span>), (), <span class="ident">pipeline_set</span>.<span class="ident">clone</span>());
         <span class="kw">let</span> <span class="ident">extractors</span>: <span class="ident">Extractors</span><span class="op">&lt;</span><span class="ident">NoopPathExtractor</span>, <span class="ident">NoopQueryStringExtractor</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Extractors</span>::<span class="ident">new</span>();
         <span class="kw">let</span> <span class="ident">route</span> <span class="op">=</span> <span class="ident">RouteImpl</span>::<span class="ident">new</span>(
             <span class="ident">matcher</span>,
@@ -933,7 +935,7 @@
         <span class="comment">// Patch: /seg2</span>
         <span class="kw">let</span> <span class="ident">methods</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">Method</span>::<span class="ident">PATCH</span>];
         <span class="kw">let</span> <span class="ident">matcher</span> <span class="op">=</span> <span class="ident">MethodOnlyRouteMatcher</span>::<span class="ident">new</span>(<span class="ident">methods</span>);
-        <span class="kw">let</span> <span class="ident">dispatcher</span> <span class="op">=</span> <span class="ident">DispatcherImpl</span>::<span class="ident">new</span>(<span class="op">||</span> <span class="prelude-val">Ok</span>(<span class="ident">handler</span>), (), <span class="ident">pipeline_set</span>.<span class="ident">clone</span>());
+        <span class="kw">let</span> <span class="ident">dispatcher</span> <span class="op">=</span> <span class="ident">DispatcherImpl</span>::<span class="ident">new</span>(<span class="op">|</span><span class="op">|</span> <span class="prelude-val">Ok</span>(<span class="ident">handler</span>), (), <span class="ident">pipeline_set</span>.<span class="ident">clone</span>());
         <span class="kw">let</span> <span class="ident">extractors</span>: <span class="ident">Extractors</span><span class="op">&lt;</span><span class="ident">NoopPathExtractor</span>, <span class="ident">NoopQueryStringExtractor</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Extractors</span>::<span class="ident">new</span>();
         <span class="kw">let</span> <span class="ident">route</span> <span class="op">=</span> <span class="ident">RouteImpl</span>::<span class="ident">new</span>(
             <span class="ident">matcher</span>,
@@ -1016,11 +1018,11 @@
         <span class="comment">// GET /seg3/seg4</span>
         <span class="kw">let</span> <span class="ident">rs</span> <span class="op">=</span> <span class="ident">RequestPathSegments</span>::<span class="ident">new</span>(<span class="string">&quot;/seg3/seg4&quot;</span>);
         <span class="kw">match</span> <span class="ident">root</span>.<span class="ident">match_node</span>(<span class="kw-2">&amp;</span><span class="ident">rs</span>.<span class="ident">segments</span>()) {
-            <span class="prelude-val">Some</span>((<span class="ident">node</span>, <span class="ident">_params</span>, <span class="ident">processed</span>)) <span class="op">=&gt;</span> {
+            <span class="prelude-val">Some</span>((<span class="ident">node</span>, <span class="ident">_params</span>, <span class="ident">processed</span>)) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">node</span>.<span class="ident">segment</span>, <span class="string">&quot;seg4&quot;</span>);
                 <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">processed</span>, <span class="number">2</span>);
             }
-            <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
+            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
         }
 
         <span class="comment">// GET /seg3/seg4/seg5</span>
@@ -1030,41 +1032,41 @@
         <span class="comment">// GET /seg5/seg6</span>
         <span class="kw">let</span> <span class="ident">rs</span> <span class="op">=</span> <span class="ident">RequestPathSegments</span>::<span class="ident">new</span>(<span class="string">&quot;/seg5/seg6&quot;</span>);
         <span class="kw">match</span> <span class="ident">root</span>.<span class="ident">match_node</span>(<span class="kw-2">&amp;</span><span class="ident">rs</span>.<span class="ident">segments</span>()) {
-            <span class="prelude-val">Some</span>((<span class="ident">node</span>, <span class="ident">_params</span>, <span class="ident">processed</span>)) <span class="op">=&gt;</span> {
+            <span class="prelude-val">Some</span>((<span class="ident">node</span>, <span class="ident">_params</span>, <span class="ident">processed</span>)) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">node</span>.<span class="ident">segment</span>, <span class="string">&quot;seg6&quot;</span>);
                 <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">processed</span>, <span class="number">2</span>);
             }
-            <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
+            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
         }
 
         <span class="comment">// GET /seg5/someval/seg7</span>
         <span class="kw">let</span> <span class="ident">rs</span> <span class="op">=</span> <span class="ident">RequestPathSegments</span>::<span class="ident">new</span>(<span class="string">&quot;/seg5/someval/seg7&quot;</span>);
         <span class="kw">match</span> <span class="ident">root</span>.<span class="ident">match_node</span>(<span class="kw-2">&amp;</span><span class="ident">rs</span>.<span class="ident">segments</span>()) {
-            <span class="prelude-val">Some</span>((<span class="ident">node</span>, <span class="ident">_params</span>, <span class="ident">processed</span>)) <span class="op">=&gt;</span> {
+            <span class="prelude-val">Some</span>((<span class="ident">node</span>, <span class="ident">_params</span>, <span class="ident">processed</span>)) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">node</span>.<span class="ident">segment</span>, <span class="string">&quot;seg7&quot;</span>);
                 <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">processed</span>, <span class="number">3</span>);
             }
-            <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
+            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
         }
 
         <span class="comment">// GET /some/path/seg9/another/path</span>
         <span class="kw">let</span> <span class="ident">rs</span> <span class="op">=</span> <span class="ident">RequestPathSegments</span>::<span class="ident">new</span>(<span class="string">&quot;/some/path/seg9/another/branch&quot;</span>);
         <span class="kw">match</span> <span class="ident">root</span>.<span class="ident">match_node</span>(<span class="kw-2">&amp;</span><span class="ident">rs</span>.<span class="ident">segments</span>()) {
-            <span class="prelude-val">Some</span>((<span class="ident">node</span>, <span class="ident">_params</span>, <span class="ident">processed</span>)) <span class="op">=&gt;</span> {
+            <span class="prelude-val">Some</span>((<span class="ident">node</span>, <span class="ident">_params</span>, <span class="ident">processed</span>)) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">node</span>.<span class="ident">segment</span>, <span class="string">&quot;seg10&quot;</span>);
                 <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">processed</span>, <span class="number">5</span>);
             }
-            <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
+            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
         }
 
         <span class="kw">let</span> <span class="ident">rs</span> <span class="op">=</span> <span class="ident">RequestPathSegments</span>::<span class="ident">new</span>(<span class="string">&quot;/resource/5001&quot;</span>);
         <span class="kw">let</span> <span class="ident">expected_segment</span> <span class="op">=</span> <span class="string">&quot;id&quot;</span>;
         <span class="kw">match</span> <span class="ident">root</span>.<span class="ident">match_node</span>(<span class="kw-2">&amp;</span><span class="ident">rs</span>.<span class="ident">segments</span>()) {
-            <span class="prelude-val">Some</span>((<span class="ident">node</span>, <span class="ident">_params</span>, <span class="ident">processed</span>)) <span class="op">=&gt;</span> {
+            <span class="prelude-val">Some</span>((<span class="ident">node</span>, <span class="ident">_params</span>, <span class="ident">processed</span>)) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">node</span>.<span class="ident">segment</span>, <span class="ident">expected_segment</span>);
                 <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">processed</span>, <span class="number">2</span>);
             }
-            <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
+            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
         }
     }
 
@@ -1079,30 +1081,30 @@
 
         <span class="kw">let</span> <span class="ident">rs</span> <span class="op">=</span> <span class="ident">RequestPathSegments</span>::<span class="ident">new</span>(<span class="string">&quot;/seg2&quot;</span>);
         <span class="kw">match</span> <span class="ident">root</span>.<span class="ident">match_node</span>(<span class="kw-2">&amp;</span><span class="ident">rs</span>.<span class="ident">segments</span>()) {
-            <span class="prelude-val">Some</span>((<span class="ident">node</span>, <span class="ident">_params</span>, <span class="ident">_processed</span>)) <span class="op">=&gt;</span> <span class="kw">match</span> <span class="ident">node</span>.<span class="ident">select_route</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>) {
-                <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=&gt;</span> {
+            <span class="prelude-val">Some</span>((<span class="ident">node</span>, <span class="ident">_params</span>, <span class="ident">_processed</span>)) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">match</span> <span class="ident">node</span>.<span class="ident">select_route</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>) {
+                <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="kw">let</span> (<span class="ident">status</span>, <span class="kw-2">mut</span> <span class="ident">allow_list</span>) <span class="op">=</span> <span class="ident">e</span>.<span class="ident">deconstruct</span>();
                     <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">status</span>, <span class="ident">StatusCode</span>::<span class="ident">METHOD_NOT_ALLOWED</span>);
                     <span class="ident">allow_list</span>.<span class="ident">sort_by</span>(<span class="op">|</span><span class="ident">a</span>, <span class="ident">b</span><span class="op">|</span> <span class="ident">a</span>.<span class="ident">as_ref</span>().<span class="ident">cmp</span>(<span class="ident">b</span>.<span class="ident">as_ref</span>()));
                     <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">allow_list</span>, <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">Method</span>::<span class="ident">PATCH</span>, <span class="ident">Method</span>::<span class="ident">POST</span>]);
                 }
-                <span class="prelude-val">Ok</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;expected mismatched route to test allow header&quot;</span>),
+                <span class="prelude-val">Ok</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;expected mismatched route to test allow header&quot;</span>),
             },
-            <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
+            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
         }
 
         <span class="kw">let</span> <span class="ident">rs</span> <span class="op">=</span> <span class="ident">RequestPathSegments</span>::<span class="ident">new</span>(<span class="string">&quot;/resource/100&quot;</span>);
         <span class="kw">match</span> <span class="ident">root</span>.<span class="ident">match_node</span>(<span class="kw-2">&amp;</span><span class="ident">rs</span>.<span class="ident">segments</span>()) {
-            <span class="prelude-val">Some</span>((<span class="ident">node</span>, <span class="ident">_params</span>, <span class="ident">_processed</span>)) <span class="op">=&gt;</span> <span class="kw">match</span> <span class="ident">node</span>.<span class="ident">select_route</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>) {
-                <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=&gt;</span> {
+            <span class="prelude-val">Some</span>((<span class="ident">node</span>, <span class="ident">_params</span>, <span class="ident">_processed</span>)) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">match</span> <span class="ident">node</span>.<span class="ident">select_route</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>) {
+                <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="kw">let</span> (<span class="ident">status</span>, <span class="kw-2">mut</span> <span class="ident">allow_list</span>) <span class="op">=</span> <span class="ident">e</span>.<span class="ident">deconstruct</span>();
                     <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">status</span>, <span class="ident">StatusCode</span>::<span class="ident">METHOD_NOT_ALLOWED</span>);
                     <span class="ident">allow_list</span>.<span class="ident">sort_by</span>(<span class="op">|</span><span class="ident">a</span>, <span class="ident">b</span><span class="op">|</span> <span class="ident">a</span>.<span class="ident">as_ref</span>().<span class="ident">cmp</span>(<span class="ident">b</span>.<span class="ident">as_ref</span>()));
                     <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">allow_list</span>, <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">Method</span>::<span class="ident">GET</span>]);
                 }
-                <span class="prelude-val">Ok</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;expected mismatched route to test allow header&quot;</span>),
+                <span class="prelude-val">Ok</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;expected mismatched route to test allow header&quot;</span>),
             },
-            <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
+            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
         }
     }
 
@@ -1116,7 +1118,7 @@
         <span class="kw">let</span> <span class="ident">route</span> <span class="op">=</span> {
             <span class="kw">let</span> <span class="ident">methods</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">Method</span>::<span class="ident">GET</span>];
             <span class="kw">let</span> <span class="ident">matcher</span> <span class="op">=</span> <span class="ident">MethodOnlyRouteMatcher</span>::<span class="ident">new</span>(<span class="ident">methods</span>);
-            <span class="kw">let</span> <span class="ident">dispatcher</span> <span class="op">=</span> <span class="ident">Box</span>::<span class="ident">new</span>(<span class="ident">DispatcherImpl</span>::<span class="ident">new</span>(<span class="op">||</span> <span class="prelude-val">Ok</span>(<span class="ident">handler</span>), (), <span class="ident">pipeline_set</span>));
+            <span class="kw">let</span> <span class="ident">dispatcher</span> <span class="op">=</span> <span class="ident">Box</span>::<span class="ident">new</span>(<span class="ident">DispatcherImpl</span>::<span class="ident">new</span>(<span class="op">|</span><span class="op">|</span> <span class="prelude-val">Ok</span>(<span class="ident">handler</span>), (), <span class="ident">pipeline_set</span>));
             <span class="kw">let</span> <span class="ident">extractors</span>: <span class="ident">Extractors</span><span class="op">&lt;</span><span class="ident">NoopPathExtractor</span>, <span class="ident">NoopQueryStringExtractor</span><span class="op">&gt;</span> <span class="op">=</span>
                 <span class="ident">Extractors</span>::<span class="ident">new</span>();
             <span class="kw">let</span> <span class="ident">route</span> <span class="op">=</span> <span class="ident">RouteImpl</span>::<span class="ident">new</span>(<span class="ident">matcher</span>, <span class="ident">dispatcher</span>, <span class="ident">extractors</span>, <span class="ident">Delegation</span>::<span class="ident">Internal</span>);
@@ -1132,11 +1134,11 @@
             <span class="ident">PercentDecoded</span>::<span class="ident">new</span>(<span class="string">&quot;activate&quot;</span>).<span class="ident">unwrap</span>(),
             <span class="ident">PercentDecoded</span>::<span class="ident">new</span>(<span class="string">&quot;workflow&quot;</span>).<span class="ident">unwrap</span>(),
         ]) {
-            <span class="prelude-val">Some</span>((<span class="ident">node</span>, <span class="ident">_params</span>, <span class="ident">processed</span>)) <span class="op">=&gt;</span> {
+            <span class="prelude-val">Some</span>((<span class="ident">node</span>, <span class="ident">_params</span>, <span class="ident">processed</span>)) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="macro">assert</span><span class="macro">!</span>(<span class="ident">node</span>.<span class="ident">is_routable</span>());
                 <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">processed</span>, <span class="number">2</span>)
             }
-            <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(),
+            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(),
         }
     }
 }

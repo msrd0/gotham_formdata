@@ -113,7 +113,7 @@
 
 <span class="kw">impl</span> <span class="ident">DeferredFormat</span> {
     <span class="doccomment">/// Create a new `DeferredFormat` with the provided formatting string.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">format</span>: <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Format</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">format</span>: <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Format</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">Self</span> {
             <span class="ident">date</span>: <span class="prelude-val">None</span>,
             <span class="ident">time</span>: <span class="prelude-val">None</span>,
@@ -123,47 +123,47 @@
     }
 
     <span class="doccomment">/// Provide the `Date` component.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">with_date</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">date</span>: <span class="ident">Date</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">with_date</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">date</span>: <span class="ident">Date</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">date</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">date</span>);
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Provide the `Time` component.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">with_time</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">time</span>: <span class="ident">Time</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">with_time</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">time</span>: <span class="ident">Time</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">time</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">time</span>);
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Provide the `UtcOffset` component.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">with_offset</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">offset</span>: <span class="ident">UtcOffset</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">with_offset</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">offset</span>: <span class="ident">UtcOffset</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">offset</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">offset</span>);
         <span class="self">self</span>
     }
 
     <span class="doccomment">/// Obtain the `Date` component.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">date</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Date</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">date</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Date</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">date</span>
     }
 
     <span class="doccomment">/// Obtain the `Time` component.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">time</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Time</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">time</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Time</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">time</span>
     }
 
     <span class="doccomment">/// Obtain the `UtcOffset` component.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">offset</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">UtcOffset</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">offset</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">UtcOffset</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">offset</span>
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Display</span> <span class="kw">for</span> <span class="ident">DeferredFormat</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
         <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">format</span> {
-            <span class="ident">Format</span>::<span class="ident">Custom</span>(<span class="ident">s</span>) <span class="op">=&gt;</span> {
+            <span class="ident">Format</span>::<span class="ident">Custom</span>(<span class="ident">s</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">for</span> <span class="ident">item</span> <span class="kw">in</span> <span class="ident">parse_fmt_string</span>(<span class="ident">s</span>) {
                     <span class="kw">match</span> <span class="ident">item</span> {
-                        <span class="ident">FormatItem</span>::<span class="ident">Literal</span>(<span class="ident">value</span>) <span class="op">=&gt;</span> <span class="ident">f</span>.<span class="ident">write_str</span>(<span class="ident">value</span>)<span class="question-mark">?</span>,
-                        <span class="ident">FormatItem</span>::<span class="ident">Specifier</span>(<span class="ident">specifier</span>) <span class="op">=&gt;</span> {
+                        <span class="ident">FormatItem</span>::<span class="ident">Literal</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">f</span>.<span class="ident">write_str</span>(<span class="ident">value</span>)<span class="question-mark">?</span>,
+                        <span class="ident">FormatItem</span>::<span class="ident">Specifier</span>(<span class="ident">specifier</span>) <span class="op">=</span><span class="op">&gt;</span> {
                             <span class="ident">format_specifier</span>(<span class="ident">f</span>, <span class="self">self</span>.<span class="ident">date</span>, <span class="self">self</span>.<span class="ident">time</span>, <span class="self">self</span>.<span class="ident">offset</span>, <span class="ident">specifier</span>)
                                 .<span class="ident">map_err</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">fmt</span>::<span class="ident">Error</span>)<span class="question-mark">?</span>
                         }
@@ -172,9 +172,9 @@
 
                 <span class="prelude-val">Ok</span>(())
             }
-            <span class="ident">Format</span>::<span class="ident">Rfc3339</span> <span class="op">=&gt;</span> <span class="ident">well_known</span>::<span class="ident">rfc3339</span>::<span class="ident">fmt</span>(<span class="self">self</span>, <span class="ident">f</span>).<span class="ident">map_err</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">fmt</span>::<span class="ident">Error</span>),
+            <span class="ident">Format</span>::<span class="ident">Rfc3339</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">well_known</span>::<span class="ident">rfc3339</span>::<span class="ident">fmt</span>(<span class="self">self</span>, <span class="ident">f</span>).<span class="ident">map_err</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">fmt</span>::<span class="ident">Error</span>),
             <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">__time_02_supports_non_exhaustive</span>))]</span>
-            <span class="ident">Format</span>::<span class="ident">__NonExhaustive</span> <span class="op">=&gt;</span> <span class="macro">unreachable</span><span class="macro">!</span>(),
+            <span class="ident">Format</span>::<span class="ident">__NonExhaustive</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">unreachable</span><span class="macro">!</span>(),
         }
     }
 }

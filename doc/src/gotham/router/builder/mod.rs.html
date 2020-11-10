@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.5.0/src/router/builder/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled ><script src="../../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../../gotham/index.html'><div class='logo-container rust-logo'><img src='../../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.5.0/src/router/builder/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled ><script src="../../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg">
+<link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png">
+<link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../../gotham/index.html'><div class='logo-container rust-logo'><img src='../../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
                 <a id="settings-menu" href="../../../../settings.html"><img src="../../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
@@ -713,7 +715,7 @@
 <span class="doccomment">/// #   assert_eq!(response.status(), StatusCode::ACCEPTED);</span>
 <span class="doccomment">/// # }</span>
 <span class="doccomment">/// ```</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_router</span><span class="op">&lt;</span><span class="ident">C</span>, <span class="ident">P</span>, <span class="ident">F</span><span class="op">&gt;</span>(<span class="ident">pipeline_chain</span>: <span class="ident">C</span>, <span class="ident">pipelines</span>: <span class="ident">PipelineSet</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>, <span class="ident">f</span>: <span class="ident">F</span>) <span class="op">-&gt;</span> <span class="ident">Router</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_router</span><span class="op">&lt;</span><span class="ident">C</span>, <span class="ident">P</span>, <span class="ident">F</span><span class="op">&gt;</span>(<span class="ident">pipeline_chain</span>: <span class="ident">C</span>, <span class="ident">pipelines</span>: <span class="ident">PipelineSet</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>, <span class="ident">f</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Router</span>
 <span class="kw">where</span>
     <span class="ident">C</span>: <span class="ident">PipelineHandleChain</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
     <span class="ident">P</span>: <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
@@ -770,7 +772,7 @@
 <span class="doccomment">/// #   assert_eq!(response.status(), StatusCode::ACCEPTED);</span>
 <span class="doccomment">/// # }</span>
 <span class="doccomment">/// ```</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_simple_router</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="ident">f</span>: <span class="ident">F</span>) <span class="op">-&gt;</span> <span class="ident">Router</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build_simple_router</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="ident">f</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Router</span>
 <span class="kw">where</span>
     <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">RouterBuilder</span><span class="op">&lt;</span>(), ()<span class="op">&gt;</span>),
 {
@@ -928,7 +930,7 @@
 {
     <span class="doccomment">/// Coerces the type of the internal `PhantomData`, to replace an extractor by changing the</span>
     <span class="doccomment">/// type parameter without changing anything else.</span>
-    <span class="kw">fn</span> <span class="ident">coerce</span><span class="op">&lt;</span><span class="ident">NPE</span>, <span class="ident">NQSE</span><span class="op">&gt;</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">SingleRouteBuilder</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">M</span>, <span class="ident">C</span>, <span class="ident">P</span>, <span class="ident">NPE</span>, <span class="ident">NQSE</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">coerce</span><span class="op">&lt;</span><span class="ident">NPE</span>, <span class="ident">NQSE</span><span class="op">&gt;</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SingleRouteBuilder</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">M</span>, <span class="ident">C</span>, <span class="ident">P</span>, <span class="ident">NPE</span>, <span class="ident">NQSE</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">NPE</span>: <span class="ident">PathExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
         <span class="ident">NQSE</span>: <span class="ident">QueryStringExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
@@ -985,7 +987,7 @@
 
     <span class="kw">mod</span> <span class="ident">welcome</span> {
         <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">index</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
+        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">index</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
             (
                 <span class="ident">state</span>,
                 <span class="ident">Response</span>::<span class="ident">builder</span>()
@@ -995,7 +997,7 @@
             )
         }
 
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">literal</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
+        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">literal</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
             (
                 <span class="ident">state</span>,
                 <span class="ident">Response</span>::<span class="ident">builder</span>()
@@ -1005,7 +1007,7 @@
             )
         }
 
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hello</span>(<span class="kw-2">mut</span> <span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
+        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hello</span>(<span class="kw-2">mut</span> <span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
             <span class="kw">let</span> <span class="ident">params</span> <span class="op">=</span> <span class="ident">state</span>.<span class="ident">take</span>::<span class="op">&lt;</span><span class="ident">SalutationParams</span><span class="op">&gt;</span>();
             <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">Response</span>::<span class="ident">builder</span>()
                 .<span class="ident">status</span>(<span class="ident">StatusCode</span>::<span class="ident">OK</span>)
@@ -1014,7 +1016,7 @@
             (<span class="ident">state</span>, <span class="ident">response</span>)
         }
 
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">globbed</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
+        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">globbed</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
             <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">Response</span>::<span class="ident">builder</span>()
                 .<span class="ident">status</span>(<span class="ident">StatusCode</span>::<span class="ident">OK</span>)
                 .<span class="ident">body</span>(<span class="string">&quot;Globbed&quot;</span>.<span class="ident">into</span>())
@@ -1022,7 +1024,7 @@
             (<span class="ident">state</span>, <span class="ident">response</span>)
         }
 
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">delegated</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
+        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">delegated</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
             <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">Response</span>::<span class="ident">builder</span>()
                 .<span class="ident">status</span>(<span class="ident">StatusCode</span>::<span class="ident">OK</span>)
                 .<span class="ident">body</span>(<span class="string">&quot;Delegated&quot;</span>.<span class="ident">into</span>())
@@ -1030,7 +1032,7 @@
             (<span class="ident">state</span>, <span class="ident">response</span>)
         }
 
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">goodbye</span>(<span class="kw-2">mut</span> <span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
+        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">goodbye</span>(<span class="kw-2">mut</span> <span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
             <span class="kw">let</span> <span class="ident">params</span> <span class="op">=</span> <span class="ident">state</span>.<span class="ident">take</span>::<span class="op">&lt;</span><span class="ident">SalutationParams</span><span class="op">&gt;</span>();
             <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">Response</span>::<span class="ident">builder</span>()
                 .<span class="ident">status</span>(<span class="ident">StatusCode</span>::<span class="ident">OK</span>)
@@ -1039,7 +1041,7 @@
             (<span class="ident">state</span>, <span class="ident">response</span>)
         }
 
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">mut</span> <span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
+        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">mut</span> <span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
             <span class="kw">let</span> <span class="ident">params</span> <span class="op">=</span> <span class="ident">state</span>.<span class="ident">take</span>::<span class="op">&lt;</span><span class="ident">AddParams</span><span class="op">&gt;</span>();
             <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">Response</span>::<span class="ident">builder</span>()
                 .<span class="ident">status</span>(<span class="ident">StatusCode</span>::<span class="ident">OK</span>)
@@ -1048,7 +1050,7 @@
             (<span class="ident">state</span>, <span class="ident">response</span>)
         }
 
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">trailing_slash</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
+        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">trailing_slash</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
             <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">Response</span>::<span class="ident">builder</span>()
                 .<span class="ident">status</span>(<span class="ident">StatusCode</span>::<span class="ident">OK</span>)
                 .<span class="ident">body</span>(<span class="string">&quot;Trailing slash!&quot;</span>.<span class="ident">into</span>())
@@ -1059,7 +1061,7 @@
 
     <span class="kw">mod</span> <span class="ident">resource</span> {
         <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
+        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
             <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">Response</span>::<span class="ident">builder</span>()
                 .<span class="ident">status</span>(<span class="ident">StatusCode</span>::<span class="ident">CREATED</span>)
                 .<span class="ident">body</span>(<span class="ident">Body</span>::<span class="ident">empty</span>())
@@ -1067,7 +1069,7 @@
             (<span class="ident">state</span>, <span class="ident">response</span>)
         }
 
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">destroy</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
+        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">destroy</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
             <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">Response</span>::<span class="ident">builder</span>()
                 .<span class="ident">status</span>(<span class="ident">StatusCode</span>::<span class="ident">ACCEPTED</span>)
                 .<span class="ident">body</span>(<span class="ident">Body</span>::<span class="ident">empty</span>())
@@ -1075,7 +1077,7 @@
             (<span class="ident">state</span>, <span class="ident">response</span>)
         }
 
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">show</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
+        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">show</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
             <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">Response</span>::<span class="ident">builder</span>()
                 .<span class="ident">status</span>(<span class="ident">StatusCode</span>::<span class="ident">OK</span>)
                 .<span class="ident">body</span>(<span class="string">&quot;It&#39;s a resource.&quot;</span>.<span class="ident">into</span>())
@@ -1083,7 +1085,7 @@
             (<span class="ident">state</span>, <span class="ident">response</span>)
         }
 
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">update</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
+        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">update</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
             <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">Response</span>::<span class="ident">builder</span>()
                 .<span class="ident">status</span>(<span class="ident">StatusCode</span>::<span class="ident">ACCEPTED</span>)
                 .<span class="ident">body</span>(<span class="ident">Body</span>::<span class="ident">empty</span>())
@@ -1094,7 +1096,7 @@
 
     <span class="kw">mod</span> <span class="ident">api</span> {
         <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">submit</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
+        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">submit</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
             (
                 <span class="ident">state</span>,
                 <span class="ident">Response</span>::<span class="ident">builder</span>()

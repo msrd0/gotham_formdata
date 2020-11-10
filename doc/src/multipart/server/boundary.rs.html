@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/multipart-0.17.0/src/server/boundary.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>boundary.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script src="../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../multipart/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/multipart-0.17.0/src/server/boundary.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>boundary.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script src="../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+<link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png">
+<link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../multipart/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
                 <a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
@@ -641,7 +643,7 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span> <span class="ident">BoundaryReader</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span> <span class="kw">where</span> <span class="ident">R</span>: <span class="ident">Read</span> {
     <span class="doccomment">/// Internal API</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_reader</span><span class="op">&lt;</span><span class="ident">B</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;&gt;</span><span class="op">&gt;</span>(<span class="ident">reader</span>: <span class="ident">R</span>, <span class="ident">boundary</span>: <span class="ident">B</span>) <span class="op">-&gt;</span> <span class="ident">BoundaryReader</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_reader</span><span class="op">&lt;</span><span class="ident">B</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">reader</span>: <span class="ident">R</span>, <span class="ident">boundary</span>: <span class="ident">B</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">BoundaryReader</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">boundary</span> <span class="op">=</span> <span class="ident">boundary</span>.<span class="ident">into</span>();
         <span class="ident">safemem</span>::<span class="ident">prepend</span>(<span class="string">b&quot;--&quot;</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">boundary</span>);
         <span class="kw">let</span> <span class="ident">source</span> <span class="op">=</span> <span class="ident">BufReader</span>::<span class="ident">new</span>(<span class="ident">reader</span>).<span class="ident">set_policy</span>(<span class="ident">MinBuffered</span>(<span class="ident">MIN_BUF_SIZE</span>));
@@ -654,7 +656,7 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">read_to_boundary</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">read_to_boundary</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">buf</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">source</span>.<span class="ident">fill_buf</span>()<span class="question-mark">?</span>;
 
         <span class="macro">trace</span><span class="macro">!</span>(<span class="string">&quot;Buf: {:?}&quot;</span>, <span class="ident">String</span>::<span class="ident">from_utf8_lossy</span>(<span class="ident">buf</span>));
@@ -662,21 +664,21 @@
         <span class="macro">debug</span><span class="macro">!</span>(<span class="string">&quot;Before search Buf len: {} Search idx: {} State: {:?}&quot;</span>,
                <span class="ident">buf</span>.<span class="ident">len</span>(), <span class="self">self</span>.<span class="ident">search_idx</span>, <span class="self">self</span>.<span class="ident">state</span>);
 
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">state</span> <span class="op">==</span> <span class="ident">BoundaryRead</span> <span class="op">||</span> <span class="self">self</span>.<span class="ident">state</span> <span class="op">==</span> <span class="ident">AtEnd</span> {
+        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">state</span> <span class="op">=</span><span class="op">=</span> <span class="ident">BoundaryRead</span> <span class="op">|</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">state</span> <span class="op">=</span><span class="op">=</span> <span class="ident">AtEnd</span> {
             <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="kw-2">&amp;</span><span class="ident">buf</span>[..<span class="self">self</span>.<span class="ident">search_idx</span>])
         }
 
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">state</span> <span class="op">==</span> <span class="ident">Searching</span> <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">search_idx</span> <span class="op">&lt;</span> <span class="ident">buf</span>.<span class="ident">len</span>() {
+        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">state</span> <span class="op">=</span><span class="op">=</span> <span class="ident">Searching</span> <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">search_idx</span> <span class="op">&lt;</span> <span class="ident">buf</span>.<span class="ident">len</span>() {
             <span class="kw">let</span> <span class="ident">lookahead</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">buf</span>[<span class="self">self</span>.<span class="ident">search_idx</span>..];
 
             <span class="comment">// Look for the boundary, or if it isn&#39;t found, stop near the end.</span>
             <span class="kw">match</span> <span class="ident">find_boundary</span>(<span class="ident">lookahead</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">boundary</span>) {
-                <span class="prelude-val">Ok</span>(<span class="ident">found_idx</span>) <span class="op">=&gt;</span> {
-                    <span class="self">self</span>.<span class="ident">search_idx</span> <span class="op">+=</span> <span class="ident">found_idx</span>;
+                <span class="prelude-val">Ok</span>(<span class="ident">found_idx</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                    <span class="self">self</span>.<span class="ident">search_idx</span> <span class="op">+</span><span class="op">=</span> <span class="ident">found_idx</span>;
                     <span class="self">self</span>.<span class="ident">state</span> <span class="op">=</span> <span class="ident">BoundaryRead</span>;
                 },
-                <span class="prelude-val">Err</span>(<span class="ident">yield_len</span>) <span class="op">=&gt;</span> {
-                    <span class="self">self</span>.<span class="ident">search_idx</span> <span class="op">+=</span> <span class="ident">yield_len</span>;
+                <span class="prelude-val">Err</span>(<span class="ident">yield_len</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                    <span class="self">self</span>.<span class="ident">search_idx</span> <span class="op">+</span><span class="op">=</span> <span class="ident">yield_len</span>;
                 }
             }
         }        
@@ -685,15 +687,15 @@
                <span class="ident">buf</span>.<span class="ident">len</span>(), <span class="self">self</span>.<span class="ident">search_idx</span>, <span class="self">self</span>.<span class="ident">state</span>);
 
         <span class="comment">// back up the cursor to before the boundary&#39;s preceding CRLF if we haven&#39;t already</span>
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">search_idx</span> <span class="op">&gt;=</span> <span class="number">2</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="ident">buf</span>[<span class="self">self</span>.<span class="ident">search_idx</span>..].<span class="ident">starts_with</span>(<span class="string">b&quot;\r\n&quot;</span>) {
+        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">search_idx</span> <span class="op">&gt;</span><span class="op">=</span> <span class="number">2</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="ident">buf</span>[<span class="self">self</span>.<span class="ident">search_idx</span>..].<span class="ident">starts_with</span>(<span class="string">b&quot;\r\n&quot;</span>) {
             <span class="kw">let</span> <span class="ident">two_bytes_before</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">buf</span>[<span class="self">self</span>.<span class="ident">search_idx</span> <span class="op">-</span> <span class="number">2</span> .. <span class="self">self</span>.<span class="ident">search_idx</span>];
 
             <span class="macro">trace</span><span class="macro">!</span>(<span class="string">&quot;Two bytes before: {:?} ({:?}) (\&quot;\\r\\n\&quot;: {:?})&quot;</span>,
                    <span class="ident">String</span>::<span class="ident">from_utf8_lossy</span>(<span class="ident">two_bytes_before</span>), <span class="ident">two_bytes_before</span>, <span class="string">b&quot;\r\n&quot;</span>);
 
-            <span class="kw">if</span> <span class="ident">two_bytes_before</span> <span class="op">==</span> <span class="kw-2">*</span><span class="string">b&quot;\r\n&quot;</span> {
+            <span class="kw">if</span> <span class="ident">two_bytes_before</span> <span class="op">=</span><span class="op">=</span> <span class="kw-2">*</span><span class="string">b&quot;\r\n&quot;</span> {
                 <span class="macro">debug</span><span class="macro">!</span>(<span class="string">&quot;Subtract two!&quot;</span>);
-                <span class="self">self</span>.<span class="ident">search_idx</span> <span class="op">-=</span> <span class="number">2</span>;
+                <span class="self">self</span>.<span class="ident">search_idx</span> <span class="op">-</span><span class="op">=</span> <span class="number">2</span>;
             }
         }
 
@@ -711,17 +713,17 @@
         <span class="self">self</span>.<span class="ident">source</span>.<span class="ident">policy_mut</span>().<span class="number">0</span> <span class="op">=</span> <span class="ident">min_buf_size</span>;
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">consume_boundary</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">state</span> <span class="op">==</span> <span class="ident">AtEnd</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">consume_boundary</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span><span class="op">&gt;</span> {
+        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">state</span> <span class="op">=</span><span class="op">=</span> <span class="ident">AtEnd</span> {
             <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="bool-val">false</span>);
         }
 
-        <span class="kw">while</span> <span class="self">self</span>.<span class="ident">state</span> <span class="op">==</span> <span class="ident">Searching</span> {
+        <span class="kw">while</span> <span class="self">self</span>.<span class="ident">state</span> <span class="op">=</span><span class="op">=</span> <span class="ident">Searching</span> {
             <span class="macro">debug</span><span class="macro">!</span>(<span class="string">&quot;Boundary not found yet&quot;</span>);
 
             <span class="kw">let</span> <span class="ident">buf_len</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">read_to_boundary</span>()<span class="question-mark">?</span>.<span class="ident">len</span>();
 
-            <span class="kw">if</span> <span class="ident">buf_len</span> <span class="op">==</span> <span class="number">0</span> <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">state</span> <span class="op">==</span> <span class="ident">Searching</span> {
+            <span class="kw">if</span> <span class="ident">buf_len</span> <span class="op">=</span><span class="op">=</span> <span class="number">0</span> <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">state</span> <span class="op">=</span><span class="op">=</span> <span class="ident">Searching</span> {
                 <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">new</span>(<span class="ident">io</span>::<span class="ident">ErrorKind</span>::<span class="ident">UnexpectedEof</span>,
                                           <span class="string">&quot;unexpected end of request body&quot;</span>));
             }
@@ -742,7 +744,7 @@
 
             <span class="kw">if</span> <span class="ident">bnd_segment</span>.<span class="ident">starts_with</span>(<span class="string">b&quot;\r\n&quot;</span>) {
                 <span class="comment">// preceding CRLF needs to be consumed as well</span>
-                <span class="ident">consume_amt</span> <span class="op">+=</span> <span class="number">2</span>;
+                <span class="ident">consume_amt</span> <span class="op">+</span><span class="op">=</span> <span class="number">2</span>;
 
                 <span class="comment">// assert that we&#39;ve found the boundary after the CRLF</span>
                 <span class="macro">debug_assert_eq</span><span class="macro">!</span>(<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">boundary</span>, <span class="ident">bnd_segment</span>[<span class="number">2</span> .. <span class="self">self</span>.<span class="ident">boundary</span>.<span class="ident">len</span>() <span class="op">+</span> <span class="number">2</span>]);
@@ -752,7 +754,7 @@
             }
 
             <span class="comment">// include the trailing CRLF or --</span>
-            <span class="ident">consume_amt</span> <span class="op">+=</span> <span class="number">2</span>;
+            <span class="ident">consume_amt</span> <span class="op">+</span><span class="op">=</span> <span class="number">2</span>;
 
             <span class="kw">if</span> <span class="ident">buf</span>.<span class="ident">len</span>() <span class="op">&lt;</span> <span class="ident">consume_amt</span> {
                 <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">new</span>(<span class="ident">io</span>::<span class="ident">ErrorKind</span>::<span class="ident">UnexpectedEof</span>,
@@ -765,9 +767,9 @@
             <span class="kw">let</span> <span class="ident">last_two</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">buf</span>[<span class="ident">consume_amt</span> <span class="op">-</span> <span class="number">2</span> .. <span class="ident">consume_amt</span>];
 
             <span class="kw">match</span> <span class="ident">last_two</span> {
-                <span class="string">b&quot;\r\n&quot;</span> <span class="op">=&gt;</span> <span class="self">self</span>.<span class="ident">state</span> <span class="op">=</span> <span class="ident">Searching</span>,
-                <span class="string">b&quot;--&quot;</span> <span class="op">=&gt;</span> <span class="self">self</span>.<span class="ident">state</span> <span class="op">=</span> <span class="ident">AtEnd</span>,
-                <span class="kw">_</span> <span class="op">=&gt;</span> <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">new</span>(
+                <span class="string">b&quot;\r\n&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">self</span>.<span class="ident">state</span> <span class="op">=</span> <span class="ident">Searching</span>,
+                <span class="string">b&quot;--&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">self</span>.<span class="ident">state</span> <span class="op">=</span> <span class="ident">AtEnd</span>,
+                <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">new</span>(
                     <span class="ident">io</span>::<span class="ident">ErrorKind</span>::<span class="ident">InvalidData</span>,
                     <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;unexpected bytes following multipart boundary: {:X} {:X}&quot;</span>,
                             <span class="ident">last_two</span>[<span class="number">0</span>], <span class="ident">last_two</span>[<span class="number">1</span>])
@@ -792,12 +794,12 @@
         <span class="macro">trace</span><span class="macro">!</span>(<span class="string">&quot;Consumed boundary (state: {:?}), remaining buf: {:?}&quot;</span>, <span class="self">self</span>.<span class="ident">state</span>,
                <span class="ident">String</span>::<span class="ident">from_utf8_lossy</span>(<span class="self">self</span>.<span class="ident">source</span>.<span class="ident">buffer</span>()));
 
-        <span class="prelude-val">Ok</span>(<span class="self">self</span>.<span class="ident">state</span> <span class="op">!=</span> <span class="ident">AtEnd</span>)
+        <span class="prelude-val">Ok</span>(<span class="self">self</span>.<span class="ident">state</span> <span class="op">!</span><span class="op">=</span> <span class="ident">AtEnd</span>)
     }
 }
 
 <span class="doccomment">/// Find the boundary occurrence or the highest length to safely yield</span>
-<span class="kw">fn</span> <span class="ident">find_boundary</span>(<span class="ident">buf</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">boundary</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">usize</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">find_boundary</span>(<span class="ident">buf</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">boundary</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">usize</span><span class="op">&gt;</span> {
     <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">idx</span>) <span class="op">=</span> <span class="ident">twoway</span>::<span class="ident">find_bytes</span>(<span class="ident">buf</span>, <span class="ident">boundary</span>) {
         <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">idx</span>);
     }
@@ -815,8 +817,8 @@
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;bench&quot;</span>)]</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">BoundaryReader</span><span class="op">&lt;</span><span class="ident">io</span>::<span class="ident">Cursor</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">u8</span>]<span class="op">&gt;&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">new_with_bytes</span>(<span class="ident">bytes</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">u8</span>], <span class="ident">boundary</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">BoundaryReader</span><span class="op">&lt;</span><span class="ident">io</span>::<span class="ident">Cursor</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">u8</span>]<span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">new_with_bytes</span>(<span class="ident">bytes</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">u8</span>], <span class="ident">boundary</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">Self</span>::<span class="ident">from_reader</span>(<span class="ident">io</span>::<span class="ident">Cursor</span>::<span class="ident">new</span>(<span class="ident">bytes</span>), <span class="ident">boundary</span>)
     }
 
@@ -829,13 +831,13 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span> <span class="ident">Borrow</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">BoundaryReader</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">borrow</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">R</span> {
+    <span class="kw">fn</span> <span class="ident">borrow</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">R</span> {
         <span class="self">self</span>.<span class="ident">source</span>.<span class="ident">get_ref</span>()
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span> <span class="ident">Read</span> <span class="kw">for</span> <span class="ident">BoundaryReader</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span> <span class="kw">where</span> <span class="ident">R</span>: <span class="ident">Read</span> {
-    <span class="kw">fn</span> <span class="ident">read</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">out</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">read</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">out</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">read</span> <span class="op">=</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">read_to_boundary</span>()<span class="question-mark">?</span>;
             <span class="comment">// This shouldn&#39;t ever be an error so unwrapping is fine.</span>
@@ -848,7 +850,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span> <span class="ident">BufRead</span> <span class="kw">for</span> <span class="ident">BoundaryReader</span><span class="op">&lt;</span><span class="ident">R</span><span class="op">&gt;</span> <span class="kw">where</span> <span class="ident">R</span>: <span class="ident">Read</span> {
-    <span class="kw">fn</span> <span class="ident">fill_buf</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">fill_buf</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">read_to_boundary</span>()
     }
 
@@ -858,7 +860,7 @@
         <span class="macro">debug</span><span class="macro">!</span>(<span class="string">&quot;Consume! amt: {} true amt: {}&quot;</span>, <span class="ident">amt</span>, <span class="ident">true_amt</span>);
 
         <span class="self">self</span>.<span class="ident">source</span>.<span class="ident">consume</span>(<span class="ident">true_amt</span>);
-        <span class="self">self</span>.<span class="ident">search_idx</span> <span class="op">-=</span> <span class="ident">true_amt</span>;
+        <span class="self">self</span>.<span class="ident">search_idx</span> <span class="op">-</span><span class="op">=</span> <span class="ident">true_amt</span>;
     }
 }
 
@@ -896,7 +898,7 @@
     }
 
     <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">SplitReader</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-        <span class="kw">fn</span> <span class="ident">split</span>(<span class="ident">data</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">u8</span>], <span class="ident">at</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="ident">SplitReader</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+        <span class="kw">fn</span> <span class="ident">split</span>(<span class="ident">data</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">u8</span>], <span class="ident">at</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SplitReader</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
             <span class="kw">let</span> (<span class="ident">left</span>, <span class="ident">right</span>) <span class="op">=</span> <span class="ident">data</span>.<span class="ident">split_at</span>(<span class="ident">at</span>);
 
             <span class="ident">SplitReader</span> { 
@@ -907,14 +909,14 @@
     }
 
     <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Read</span> <span class="kw">for</span> <span class="ident">SplitReader</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-        <span class="kw">fn</span> <span class="ident">read</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">dst</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
-            <span class="kw">fn</span> <span class="ident">copy_bytes_partial</span>(<span class="ident">src</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">dst</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">usize</span> {
+        <span class="kw">fn</span> <span class="ident">read</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">dst</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
+            <span class="kw">fn</span> <span class="ident">copy_bytes_partial</span>(<span class="ident">src</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">dst</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
                 <span class="ident">src</span>.<span class="ident">read</span>(<span class="ident">dst</span>).<span class="ident">unwrap</span>()
             }
 
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">copy_amt</span> <span class="op">=</span> <span class="ident">copy_bytes_partial</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">left</span>, <span class="ident">dst</span>);
 
-            <span class="kw">if</span> <span class="ident">copy_amt</span> <span class="op">==</span> <span class="number">0</span> {
+            <span class="kw">if</span> <span class="ident">copy_amt</span> <span class="op">=</span><span class="op">=</span> <span class="number">0</span> {
                 <span class="ident">copy_amt</span> <span class="op">=</span> <span class="ident">copy_bytes_partial</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">right</span>, <span class="ident">dst</span>)
             };
 
@@ -1189,7 +1191,7 @@
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">reader</span> <span class="op">=</span> <span class="ident">BoundaryReader</span>::<span class="ident">new_with_bytes</span>(<span class="ident">TEST_VAL</span>.<span class="ident">as_bytes</span>(), <span class="ident">BOUNDARY</span>);
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> <span class="ident">String</span>::<span class="ident">with_capacity</span>(<span class="number">256</span>);
 
-            <span class="ident">b</span>.<span class="ident">iter</span>(<span class="op">||</span> {
+            <span class="ident">b</span>.<span class="ident">iter</span>(<span class="op">|</span><span class="op">|</span> {
                 <span class="ident">reader</span>.<span class="ident">reset</span>();
                 <span class="ident">test_boundary_reader</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">reader</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">buf</span>);
             });

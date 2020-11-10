@@ -12,8 +12,8 @@ definition.</p>
 <li>
 <p><code>std</code> (<em>enabled by default</em>)</p>
 <p>This enables a number of features that depend on the standard library.
-[<code>Instant</code>] is the primary item that requires this feature, though some
-others methods may rely on [<code>Instant</code>] internally.</p>
+<a href="../time/struct.Instant.html" title="Instant"><code>Instant</code></a> is the primary item that requires this feature, though some
+others methods may rely on <a href="../time/struct.Instant.html" title="Instant"><code>Instant</code></a> internally.</p>
 <p>This crate currently requires a global allocator be present even if this
 feature is disabled.</p>
 </li>
@@ -109,8 +109,8 @@ Adding a modifier to a non-supporting specifier is a no-op.</p>
 <table><tr class='module-item'><td><a class="struct" href="struct.Date.html" title='time::Date struct'>Date</a></td><td class='docblock-short'><p>Calendar date.</p>
 </td></tr><tr class='module-item'><td><a class="struct" href="struct.Duration.html" title='time::Duration struct'>Duration</a></td><td class='docblock-short'><p>A span of time with nanosecond precision.</p>
 </td></tr><tr class='module-item'><td><a class="struct" href="struct.Instant.html" title='time::Instant struct'>Instant</a></td><td class='docblock-short'><p>A measurement of a monotonically non-decreasing clock. Opaque and useful
-only with [<code>Duration</code>].</p>
-</td></tr><tr class='module-item'><td><a class="struct" href="struct.OffsetDateTime.html" title='time::OffsetDateTime struct'>OffsetDateTime</a></td><td class='docblock-short'><p>A [<code>PrimitiveDateTime</code>] with a [<code>UtcOffset</code>].</p>
+only with <a href="../time/struct.Duration.html" title="Duration"><code>Duration</code></a>.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.OffsetDateTime.html" title='time::OffsetDateTime struct'>OffsetDateTime</a></td><td class='docblock-short'><p>A <a href="../time/struct.PrimitiveDateTime.html" title="PrimitiveDateTime"><code>PrimitiveDateTime</code></a> with a <a href="../time/struct.UtcOffset.html" title="UtcOffset"><code>UtcOffset</code></a>.</p>
 </td></tr><tr class='module-item'><td><a class="struct" href="struct.PrimitiveDateTime.html" title='time::PrimitiveDateTime struct'>PrimitiveDateTime</a></td><td class='docblock-short'><p>Combined date and time.</p>
 </td></tr><tr class='module-item'><td><a class="struct" href="struct.Time.html" title='time::Time struct'>Time</a></td><td class='docblock-short'><p>The clock time within a given date. Nanosecond precision.</p>
 </td></tr><tr class='module-item'><td><a class="struct" href="struct.UtcOffset.html" title='time::UtcOffset struct'>UtcOffset</a></td><td class='docblock-short'><p>An offset from UTC.</p>
@@ -118,7 +118,7 @@ only with [<code>Duration</code>].</p>
 <table><tr class='module-item'><td><a class="enum" href="enum.Format.html" title='time::Format enum'>Format</a></td><td class='docblock-short'><p>Various well-known formats, along with the possibility for a custom format
 (provided either at compile-time or runtime).</p>
 </td></tr><tr class='module-item'><td><a class="enum" href="enum.ParseError.html" title='time::ParseError enum'>ParseError</a></td><td class='docblock-short'><p>An error occurred while parsing.</p>
-</td></tr><tr class='module-item'><td><a class="enum" href="enum.Sign.html" title='time::Sign enum'>Sign</a></td><td class='docblock-short'><span class="stab deprecated">Deprecated</span><p>Contains the sign of a value: positive, negative, or zero.</p>
+</td></tr><tr class='module-item'><td><a class="enum" href="enum.Sign.html" title='time::Sign enum'>Sign</a></td><td class='docblock-short'><span class="stab deprecated" title="">Deprecated</span><p>Contains the sign of a value: positive, negative, or zero.</p>
 </td></tr><tr class='module-item'><td><a class="enum" href="enum.Weekday.html" title='time::Weekday enum'>Weekday</a></td><td class='docblock-short'><p>Days of the week.</p>
 </td></tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table><tr class='module-item'><td><a class="fn" href="fn.parse.html" title='time::parse fn'>parse</a></td><td class='docblock-short'><p>Parse any parsable type from the time crate.</p>

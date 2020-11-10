@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/multipart-0.17.0/src/server/save.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>save.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script src="../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../multipart/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/multipart-0.17.0/src/server/save.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>save.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script src="../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+<link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png">
+<link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../multipart/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
                 <a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
@@ -1073,34 +1075,34 @@
 
 <span class="kw">const</span> <span class="ident">RANDOM_FILENAME_LEN</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">12</span>;
 
-<span class="kw">fn</span> <span class="ident">rand_filename</span>() <span class="op">-&gt;</span> <span class="ident">String</span> {
+<span class="kw">fn</span> <span class="ident">rand_filename</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
     ::<span class="ident">random_alphanumeric</span>(<span class="ident">RANDOM_FILENAME_LEN</span>)
 }
 
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">try_start</span> (
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">try</span>:<span class="ident">expr</span>) <span class="op">=&gt;</span> (
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">try</span>:<span class="ident">expr</span>) <span class="op">=</span><span class="op">&gt;</span> (
         <span class="kw">match</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">try</span> {
-            <span class="prelude-val">Ok</span>(<span class="ident">val</span>) <span class="op">=&gt;</span> <span class="ident">val</span>,
-            <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=&gt;</span> <span class="kw">return</span> <span class="ident">Error</span>(<span class="ident">e</span>),
+            <span class="prelude-val">Ok</span>(<span class="ident">val</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">val</span>,
+            <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">Error</span>(<span class="ident">e</span>),
         }
     )
 );
 
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">try_full</span> (
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">try</span>:<span class="ident">expr</span>) <span class="op">=&gt;</span> {
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">try</span>:<span class="ident">expr</span>) <span class="op">=</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">try</span> {
-            <span class="ident">Full</span>(<span class="ident">full</span>) <span class="op">=&gt;</span> <span class="ident">full</span>,
-            <span class="ident">other</span> <span class="op">=&gt;</span> <span class="kw">return</span> <span class="ident">other</span>,
+            <span class="ident">Full</span>(<span class="ident">full</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">full</span>,
+            <span class="ident">other</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">other</span>,
         }
     }
 );
 
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">try_partial</span> (
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">try</span>:<span class="ident">expr</span>) <span class="op">=&gt;</span> {
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">try</span>:<span class="ident">expr</span>) <span class="op">=</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">try</span> {
-            <span class="ident">Full</span>(<span class="ident">full</span>) <span class="op">=&gt;</span> <span class="kw">return</span> <span class="ident">Full</span>(<span class="ident">full</span>.<span class="ident">into</span>()),
-            <span class="ident">Partial</span>(<span class="ident">partial</span>, <span class="ident">reason</span>) <span class="op">=&gt;</span> (<span class="ident">partial</span>, <span class="ident">reason</span>),
-            <span class="ident">Error</span>(<span class="ident">e</span>) <span class="op">=&gt;</span> <span class="kw">return</span> <span class="ident">Error</span>(<span class="ident">e</span>),
+            <span class="ident">Full</span>(<span class="ident">full</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">Full</span>(<span class="ident">full</span>.<span class="ident">into</span>()),
+            <span class="ident">Partial</span>(<span class="ident">partial</span>, <span class="ident">reason</span>) <span class="op">=</span><span class="op">&gt;</span> (<span class="ident">partial</span>, <span class="ident">reason</span>),
+            <span class="ident">Error</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">Error</span>(<span class="ident">e</span>),
         }
     }
 );
@@ -1190,7 +1192,7 @@
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> <span class="ident">SaveBuilder</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
     <span class="doccomment">/// Implementation detail but not problematic to have accessible.</span>
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">savable</span>: <span class="ident">S</span>) <span class="op">-&gt;</span> <span class="ident">SaveBuilder</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">savable</span>: <span class="ident">S</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SaveBuilder</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">open_opts</span> <span class="op">=</span> <span class="ident">OpenOptions</span>::<span class="ident">new</span>();
         <span class="ident">open_opts</span>.<span class="ident">write</span>(<span class="bool-val">true</span>).<span class="ident">create_new</span>(<span class="bool-val">true</span>);
 
@@ -1211,7 +1213,7 @@
     <span class="doccomment">/// Set the maximum number of bytes to write out *per file*.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Can be `u64` or `Option&lt;u64&gt;`. If `None` or `u64::MAX`, clears the limit.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">size_limit</span><span class="op">&lt;</span><span class="ident">L</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">limit</span>: <span class="ident">L</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">size_limit</span><span class="op">&lt;</span><span class="ident">L</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">limit</span>: <span class="ident">L</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">size_limit</span> <span class="op">=</span> <span class="ident">limit</span>.<span class="ident">into</span>().<span class="ident">unwrap_or</span>(<span class="ident">u64</span>::<span class="ident">MAX</span>);
         <span class="self">self</span>
     }
@@ -1220,7 +1222,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// The `write` flag will be reset to `true` after the closure returns. (It&#39;d be pretty</span>
     <span class="doccomment">/// pointless otherwise, right?)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mod_open_opts</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">OpenOptions</span>)<span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">opts_fn</span>: <span class="ident">F</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mod_open_opts</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">OpenOptions</span>)<span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">opts_fn</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">opts_fn</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">open_opts</span>);
         <span class="self">self</span>.<span class="ident">open_opts</span>.<span class="ident">write</span>(<span class="bool-val">true</span>);
         <span class="self">self</span>
@@ -1231,7 +1233,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// If `0`, forces fields to save directly to the filesystem.</span>
     <span class="doccomment">/// If `u64::MAX`, effectively forces fields to always save to memory.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">memory_threshold</span>(<span class="self">self</span>, <span class="ident">memory_threshold</span>: <span class="ident">u64</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">memory_threshold</span>(<span class="self">self</span>, <span class="ident">memory_threshold</span>: <span class="ident">u64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">Self</span> { <span class="ident">memory_threshold</span>, ..<span class="self">self</span> }
     }
 
@@ -1242,7 +1244,7 @@
     <span class="doccomment">/// always attempt to decode text regardless of the field&#39;s `Content-Type`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Has no effect once `memory_threshold` has been reached.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">try_text</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">try_text</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">Self</span> { <span class="ident">text_policy</span>: <span class="ident">TextPolicy</span>::<span class="ident">Try</span>, ..<span class="self">self</span> }
     }
 
@@ -1252,12 +1254,12 @@
     <span class="doccomment">/// always attempt to decode text regardless of the field&#39;s `Content-Type`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// (RFC: should this continue to validate UTF-8 when writing to the filesystem?)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">force_text</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">force_text</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">Self</span> { <span class="ident">text_policy</span>: <span class="ident">TextPolicy</span>::<span class="ident">Force</span>, ..<span class="self">self</span>}
     }
 
     <span class="doccomment">/// Don&#39;t try to read or validate any field data as UTF-8.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ignore_text</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ignore_text</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">Self</span> { <span class="ident">text_policy</span>: <span class="ident">TextPolicy</span>::<span class="ident">Ignore</span>, ..<span class="self">self</span> }
     }
 }
@@ -1267,7 +1269,7 @@
     <span class="doccomment">/// Set the maximum number of fields to process.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Can be `u32` or `Option&lt;u32&gt;`. If `None` or `u32::MAX`, clears the limit.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">count_limit</span><span class="op">&lt;</span><span class="ident">L</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">count_limit</span>: <span class="ident">L</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">count_limit</span><span class="op">&lt;</span><span class="ident">L</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">count_limit</span>: <span class="ident">L</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">count_limit</span> <span class="op">=</span> <span class="ident">count_limit</span>.<span class="ident">into</span>().<span class="ident">unwrap_or</span>(<span class="ident">u32</span>::<span class="ident">MAX</span>);
         <span class="self">self</span>
     }
@@ -1281,7 +1283,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// ### Note: Temporary</span>
     <span class="doccomment">/// See `SaveDir` for more info (the type of `Entries::save_dir`).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">temp</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">EntriesSaveResult</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">temp</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">EntriesSaveResult</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">temp_with_prefix</span>(<span class="string">&quot;multipart-rs&quot;</span>)
     }
 
@@ -1294,10 +1296,10 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// ### Note: Temporary</span>
     <span class="doccomment">/// See `SaveDir` for more info (the type of `Entries::save_dir`).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">temp_with_prefix</span>(<span class="self">self</span>, <span class="ident">prefix</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-&gt;</span> <span class="ident">EntriesSaveResult</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">temp_with_prefix</span>(<span class="self">self</span>, <span class="ident">prefix</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">EntriesSaveResult</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="ident">tempfile</span>::<span class="ident">Builder</span>::<span class="ident">new</span>().<span class="ident">prefix</span>(<span class="ident">prefix</span>).<span class="ident">tempdir</span>() {
-            <span class="prelude-val">Ok</span>(<span class="ident">tempdir</span>) <span class="op">=&gt;</span> <span class="self">self</span>.<span class="ident">with_temp_dir</span>(<span class="ident">tempdir</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=&gt;</span> <span class="ident">SaveResult</span>::<span class="ident">Error</span>(<span class="ident">e</span>),
+            <span class="prelude-val">Ok</span>(<span class="ident">tempdir</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="self">self</span>.<span class="ident">with_temp_dir</span>(<span class="ident">tempdir</span>),
+            <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">SaveResult</span>::<span class="ident">Error</span>(<span class="ident">e</span>),
         }
     }
 
@@ -1306,7 +1308,7 @@
     <span class="doccomment">/// See `with_entries()` for more info.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The `TempDir` is returned in the result under `Entries::save_dir`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_temp_dir</span>(<span class="self">self</span>, <span class="ident">tempdir</span>: <span class="ident">TempDir</span>) <span class="op">-&gt;</span> <span class="ident">EntriesSaveResult</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_temp_dir</span>(<span class="self">self</span>, <span class="ident">tempdir</span>: <span class="ident">TempDir</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">EntriesSaveResult</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">with_entries</span>(<span class="ident">Entries</span>::<span class="ident">new</span>(<span class="ident">SaveDir</span>::<span class="ident">Temp</span>(<span class="ident">tempdir</span>)))
     }
 
@@ -1315,7 +1317,7 @@
     <span class="doccomment">/// Any nonexistent directories in the path will be created.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// See `with_entries()` for more info.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_dir</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">PathBuf</span><span class="op">&gt;&gt;</span>(<span class="self">self</span>, <span class="ident">dir</span>: <span class="ident">P</span>) <span class="op">-&gt;</span> <span class="ident">EntriesSaveResult</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_dir</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">PathBuf</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">dir</span>: <span class="ident">P</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">EntriesSaveResult</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">dir</span> <span class="op">=</span> <span class="ident">dir</span>.<span class="ident">into</span>();
 
         <span class="macro">try_start</span><span class="macro">!</span>(<span class="ident">create_dir_all</span>(<span class="kw-2">&amp;</span><span class="ident">dir</span>));
@@ -1332,7 +1334,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Note that `PartialReason::CountLimit` will still be returned if the number of fields</span>
     <span class="doccomment">/// reaches `u32::MAX`, but this would be an extremely degenerate case.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_entries</span>(<span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">entries</span>: <span class="ident">Entries</span>) <span class="op">-&gt;</span> <span class="ident">EntriesSaveResult</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_entries</span>(<span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">entries</span>: <span class="ident">Entries</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">EntriesSaveResult</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">SaveBuilder</span> {
             <span class="ident">savable</span>, <span class="ident">open_opts</span>, <span class="ident">count_limit</span>, <span class="ident">size_limit</span>,
             <span class="ident">memory_threshold</span>, <span class="ident">text_policy</span>
@@ -1355,9 +1357,9 @@
 
         <span class="kw">while</span> <span class="ident">entries</span>.<span class="ident">fields_count</span> <span class="op">&lt;</span> <span class="ident">count_limit</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">field</span>: <span class="ident">MultipartField</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">res</span> {
-                <span class="ident">ReadEntryResult</span>::<span class="ident">Entry</span>(<span class="ident">field</span>) <span class="op">=&gt;</span> <span class="ident">field</span>,
-                <span class="ident">ReadEntryResult</span>::<span class="ident">End</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="kw">return</span> <span class="ident">Full</span>(<span class="ident">entries</span>), <span class="comment">// normal exit point</span>
-                <span class="ident">ReadEntryResult</span>::<span class="ident">Error</span>(<span class="kw">_</span>, <span class="ident">e</span>) <span class="op">=&gt;</span> <span class="kw">return</span> <span class="ident">Partial</span> (
+                <span class="ident">ReadEntryResult</span>::<span class="ident">Entry</span>(<span class="ident">field</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">field</span>,
+                <span class="ident">ReadEntryResult</span>::<span class="ident">End</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">Full</span>(<span class="ident">entries</span>), <span class="comment">// normal exit point</span>
+                <span class="ident">ReadEntryResult</span>::<span class="ident">Error</span>(<span class="kw">_</span>, <span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">Partial</span> (
                     <span class="ident">PartialEntries</span> {
                         <span class="ident">entries</span>,
                         <span class="ident">partial</span>: <span class="prelude-val">None</span>,
@@ -1367,13 +1369,13 @@
             };
 
             <span class="kw">let</span> (<span class="ident">dest</span>, <span class="ident">reason</span>) <span class="op">=</span> <span class="kw">match</span> <span class="ident">save_field</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">field</span>, <span class="kw-2">&amp;</span><span class="ident">entries</span>) {
-                <span class="ident">Full</span>(<span class="ident">saved</span>) <span class="op">=&gt;</span> {
+                <span class="ident">Full</span>(<span class="ident">saved</span>) <span class="op">=</span><span class="op">&gt;</span> {
                     <span class="ident">entries</span>.<span class="ident">push_field</span>(<span class="ident">field</span>.<span class="ident">headers</span>, <span class="ident">saved</span>);
                     <span class="ident">res</span> <span class="op">=</span> <span class="ident">ReadEntry</span>::<span class="ident">read_entry</span>(<span class="ident">field</span>.<span class="ident">data</span>.<span class="ident">into_inner</span>());
                     <span class="kw">continue</span>;
                 },
-                <span class="ident">Partial</span>(<span class="ident">saved</span>, <span class="ident">reason</span>) <span class="op">=&gt;</span> (<span class="prelude-val">Some</span>(<span class="ident">saved</span>), <span class="ident">reason</span>),
-                <span class="ident">Error</span>(<span class="ident">error</span>) <span class="op">=&gt;</span> (<span class="prelude-val">None</span>, <span class="ident">PartialReason</span>::<span class="ident">IoError</span>(<span class="ident">error</span>)),
+                <span class="ident">Partial</span>(<span class="ident">saved</span>, <span class="ident">reason</span>) <span class="op">=</span><span class="op">&gt;</span> (<span class="prelude-val">Some</span>(<span class="ident">saved</span>), <span class="ident">reason</span>),
+                <span class="ident">Error</span>(<span class="ident">error</span>) <span class="op">=</span><span class="op">&gt;</span> (<span class="prelude-val">None</span>, <span class="ident">PartialReason</span>::<span class="ident">IoError</span>(<span class="ident">error</span>)),
             };
 
             <span class="kw">return</span> <span class="ident">Partial</span>(
@@ -1399,12 +1401,12 @@
 }
 
 <span class="doccomment">/// Save API for individual fields.</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;m</span>, <span class="ident">M</span>: <span class="lifetime">&#39;m</span><span class="op">&gt;</span> <span class="ident">SaveBuilder</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;m</span> <span class="kw-2">mut</span> <span class="ident">MultipartData</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;&gt;</span> <span class="kw">where</span> <span class="ident">MultipartData</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span>: <span class="ident">BufRead</span> {
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;m</span>, <span class="ident">M</span>: <span class="lifetime">&#39;m</span><span class="op">&gt;</span> <span class="ident">SaveBuilder</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;m</span> <span class="kw-2">mut</span> <span class="ident">MultipartData</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="kw">where</span> <span class="ident">MultipartData</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span>: <span class="ident">BufRead</span> {
     <span class="doccomment">/// Save the field data, potentially using a file with a random name in the</span>
     <span class="doccomment">/// OS temporary directory.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// See `with_path()` for more details.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">temp</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">FieldSaveResult</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">temp</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">FieldSaveResult</span> {
         <span class="kw">let</span> <span class="ident">path</span> <span class="op">=</span> <span class="ident">env</span>::<span class="ident">temp_dir</span>().<span class="ident">join</span>(<span class="ident">rand_filename</span>());
         <span class="self">self</span>.<span class="ident">with_path</span>(<span class="ident">path</span>)
     }
@@ -1413,7 +1415,7 @@
     <span class="doccomment">/// the OS temporary directory.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// See `with_path()` for more details.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_filename</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">filename</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-&gt;</span> <span class="ident">FieldSaveResult</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_filename</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">filename</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">FieldSaveResult</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tempdir</span> <span class="op">=</span> <span class="ident">env</span>::<span class="ident">temp_dir</span>();
         <span class="ident">tempdir</span>.<span class="ident">set_file_name</span>(<span class="ident">filename</span>);
 
@@ -1424,7 +1426,7 @@
     <span class="doccomment">/// in the given directory.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// See `with_path()` for more details.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_dir</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">Path</span><span class="op">&gt;&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">dir</span>: <span class="ident">P</span>) <span class="op">-&gt;</span> <span class="ident">FieldSaveResult</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_dir</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">Path</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">dir</span>: <span class="ident">P</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">FieldSaveResult</span> {
         <span class="kw">let</span> <span class="ident">path</span> <span class="op">=</span> <span class="ident">dir</span>.<span class="ident">as_ref</span>().<span class="ident">join</span>(<span class="ident">rand_filename</span>());
         <span class="self">self</span>.<span class="ident">with_path</span>(<span class="ident">path</span>)
     }
@@ -1438,13 +1440,13 @@
     <span class="doccomment">/// The no directories or files will be created until the set `memory_threshold` is reached.</span>
     <span class="doccomment">/// If `size_limit` is set and less than or equal to `memory_threshold`,</span>
     <span class="doccomment">/// then the disk will never be touched.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_path</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">PathBuf</span><span class="op">&gt;&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">path</span>: <span class="ident">P</span>) <span class="op">-&gt;</span> <span class="ident">FieldSaveResult</span> {
-        <span class="kw">let</span> <span class="ident">bytes</span> <span class="op">=</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">text_policy</span> <span class="op">!=</span> <span class="ident">Ignore</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_path</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">PathBuf</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">path</span>: <span class="ident">P</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">FieldSaveResult</span> {
+        <span class="kw">let</span> <span class="ident">bytes</span> <span class="op">=</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">text_policy</span> <span class="op">!</span><span class="op">=</span> <span class="ident">Ignore</span> {
             <span class="kw">let</span> (<span class="ident">text</span>, <span class="ident">reason</span>) <span class="op">=</span> <span class="macro">try_partial</span><span class="macro">!</span>(<span class="self">self</span>.<span class="ident">save_text</span>());
             <span class="kw">match</span> <span class="ident">reason</span> {
-                <span class="ident">SizeLimit</span> <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">cmp_size_limit</span>(<span class="ident">text</span>.<span class="ident">len</span>()) <span class="op">=&gt;</span> <span class="ident">text</span>.<span class="ident">into_bytes</span>(),
-                <span class="ident">Utf8Error</span>(<span class="kw">_</span>) <span class="kw">if</span> <span class="self">self</span>.<span class="ident">text_policy</span> <span class="op">!=</span> <span class="ident">Force</span> <span class="op">=&gt;</span> <span class="ident">text</span>.<span class="ident">into_bytes</span>(),
-                <span class="ident">other</span> <span class="op">=&gt;</span> <span class="kw">return</span> <span class="ident">Partial</span>(<span class="ident">text</span>.<span class="ident">into</span>(), <span class="ident">other</span>),
+                <span class="ident">SizeLimit</span> <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">cmp_size_limit</span>(<span class="ident">text</span>.<span class="ident">len</span>()) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">text</span>.<span class="ident">into_bytes</span>(),
+                <span class="ident">Utf8Error</span>(<span class="kw">_</span>) <span class="kw">if</span> <span class="self">self</span>.<span class="ident">text_policy</span> <span class="op">!</span><span class="op">=</span> <span class="ident">Force</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">text</span>.<span class="ident">into_bytes</span>(),
+                <span class="ident">other</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">Partial</span>(<span class="ident">text</span>.<span class="ident">into</span>(), <span class="ident">other</span>),
             }
         } <span class="kw">else</span> {
             <span class="ident">Vec</span>::<span class="ident">new</span>()
@@ -1453,15 +1455,15 @@
         <span class="kw">let</span> (<span class="ident">bytes</span>, <span class="ident">reason</span>) <span class="op">=</span> <span class="macro">try_partial</span><span class="macro">!</span>(<span class="self">self</span>.<span class="ident">save_mem</span>(<span class="ident">bytes</span>));
 
         <span class="kw">match</span> <span class="ident">reason</span> {
-            <span class="ident">SizeLimit</span> <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">cmp_size_limit</span>(<span class="ident">bytes</span>.<span class="ident">len</span>()) <span class="op">=&gt;</span> (),
-            <span class="ident">other</span> <span class="op">=&gt;</span> <span class="kw">return</span> <span class="ident">Partial</span>(<span class="ident">bytes</span>.<span class="ident">into</span>(), <span class="ident">other</span>)
+            <span class="ident">SizeLimit</span> <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">cmp_size_limit</span>(<span class="ident">bytes</span>.<span class="ident">len</span>()) <span class="op">=</span><span class="op">&gt;</span> (),
+            <span class="ident">other</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">Partial</span>(<span class="ident">bytes</span>.<span class="ident">into</span>(), <span class="ident">other</span>)
         }
 
         <span class="kw">let</span> <span class="ident">path</span> <span class="op">=</span> <span class="ident">path</span>.<span class="ident">into</span>();
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">file</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">create_dir_all</span>(<span class="kw-2">&amp;</span><span class="ident">path</span>).<span class="ident">and_then</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">open_opts</span>.<span class="ident">open</span>(<span class="kw-2">&amp;</span><span class="ident">path</span>)) {
-            <span class="prelude-val">Ok</span>(<span class="ident">file</span>) <span class="op">=&gt;</span> <span class="ident">file</span>,
-            <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=&gt;</span> <span class="kw">return</span> <span class="ident">Error</span>(<span class="ident">e</span>),
+            <span class="prelude-val">Ok</span>(<span class="ident">file</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">file</span>,
+            <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">Error</span>(<span class="ident">e</span>),
         };
 
         <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span> <span class="macro">try_full</span><span class="macro">!</span>(
@@ -1479,7 +1481,7 @@
     <span class="doccomment">/// (tested by `MultipartFile::fill_buf().is_empty()` so no bytes are consumed).</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Retries on interrupts.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">write_to</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">dest</span>: <span class="ident">W</span>) <span class="op">-&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">u64</span>, <span class="ident">u64</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">write_to</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">dest</span>: <span class="ident">W</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">u64</span>, <span class="ident">u64</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">size_limit</span> <span class="op">&lt;</span> <span class="ident">u64</span>::<span class="ident">MAX</span> {
             <span class="ident">try_copy_limited</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">savable</span>, <span class="op">|</span><span class="ident">buf</span><span class="op">|</span> <span class="ident">try_write_all</span>(<span class="ident">buf</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">dest</span>), <span class="self">self</span>.<span class="ident">size_limit</span>)
         } <span class="kw">else</span> {
@@ -1487,26 +1489,26 @@
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">save_mem</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">bytes</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">save_mem</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">bytes</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">pre_read</span> <span class="op">=</span> <span class="ident">bytes</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">u64</span>;
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">read_mem</span>(<span class="op">|</span><span class="ident">buf</span><span class="op">|</span> { <span class="ident">bytes</span>.<span class="ident">extend_from_slice</span>(<span class="ident">buf</span>); <span class="ident">Full</span>(<span class="ident">buf</span>.<span class="ident">len</span>()) }, <span class="ident">pre_read</span>) {
-            <span class="ident">Full</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="ident">Full</span>(<span class="ident">bytes</span>),
-            <span class="ident">Partial</span>(<span class="kw">_</span>, <span class="ident">reason</span>) <span class="op">=&gt;</span> <span class="ident">Partial</span>(<span class="ident">bytes</span>, <span class="ident">reason</span>),
-            <span class="ident">Error</span>(<span class="ident">e</span>) <span class="op">=&gt;</span> <span class="kw">if</span> <span class="op">!</span><span class="ident">bytes</span>.<span class="ident">is_empty</span>() { <span class="ident">Partial</span>(<span class="ident">bytes</span>, <span class="ident">e</span>.<span class="ident">into</span>()) }
+            <span class="ident">Full</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Full</span>(<span class="ident">bytes</span>),
+            <span class="ident">Partial</span>(<span class="kw">_</span>, <span class="ident">reason</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Partial</span>(<span class="ident">bytes</span>, <span class="ident">reason</span>),
+            <span class="ident">Error</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">if</span> <span class="op">!</span><span class="ident">bytes</span>.<span class="ident">is_empty</span>() { <span class="ident">Partial</span>(<span class="ident">bytes</span>, <span class="ident">e</span>.<span class="ident">into</span>()) }
             <span class="kw">else</span> { <span class="ident">Error</span>(<span class="ident">e</span>) }
         }
 
     }
 
-    <span class="kw">fn</span> <span class="ident">save_text</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="ident">String</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">save_text</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="ident">String</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">string</span> <span class="op">=</span> <span class="ident">String</span>::<span class="ident">new</span>();
 
         <span class="comment">// incrementally validate UTF-8 to do as much work as possible during network activity</span>
         <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">read_mem</span>(<span class="op">|</span><span class="ident">buf</span><span class="op">|</span> {
             <span class="kw">match</span> <span class="ident">str</span>::<span class="ident">from_utf8</span>(<span class="ident">buf</span>) {
-                <span class="prelude-val">Ok</span>(<span class="ident">s</span>) <span class="op">=&gt;</span> { <span class="ident">string</span>.<span class="ident">push_str</span>(<span class="ident">s</span>); <span class="ident">Full</span>(<span class="ident">buf</span>.<span class="ident">len</span>()) },
+                <span class="prelude-val">Ok</span>(<span class="ident">s</span>) <span class="op">=</span><span class="op">&gt;</span> { <span class="ident">string</span>.<span class="ident">push_str</span>(<span class="ident">s</span>); <span class="ident">Full</span>(<span class="ident">buf</span>.<span class="ident">len</span>()) },
                 <span class="comment">// buffer should always be bigger</span>
-                <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=&gt;</span> <span class="kw">if</span> <span class="ident">buf</span>.<span class="ident">len</span>() <span class="op">&lt;</span> <span class="number">4</span> {
+                <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">if</span> <span class="ident">buf</span>.<span class="ident">len</span>() <span class="op">&lt;</span> <span class="number">4</span> {
                         <span class="ident">Partial</span>(<span class="number">0</span>, <span class="ident">e</span>.<span class="ident">into</span>())
                     } <span class="kw">else</span> {
                         <span class="ident">string</span>.<span class="ident">push_str</span>(<span class="ident">str</span>::<span class="ident">from_utf8</span>(<span class="kw-2">&amp;</span><span class="ident">buf</span>[..<span class="ident">e</span>.<span class="ident">valid_up_to</span>()]).<span class="ident">unwrap</span>());
@@ -1516,20 +1518,20 @@
         }, <span class="number">0</span>);
 
         <span class="kw">match</span> <span class="ident">res</span> {
-            <span class="ident">Full</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="ident">Full</span>(<span class="ident">string</span>),
-            <span class="ident">Partial</span>(<span class="kw">_</span>, <span class="ident">reason</span>) <span class="op">=&gt;</span> <span class="ident">Partial</span>(<span class="ident">string</span>, <span class="ident">reason</span>),
-            <span class="ident">Error</span>(<span class="ident">e</span>) <span class="op">=&gt;</span> <span class="ident">Error</span>(<span class="ident">e</span>),
+            <span class="ident">Full</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Full</span>(<span class="ident">string</span>),
+            <span class="ident">Partial</span>(<span class="kw">_</span>, <span class="ident">reason</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Partial</span>(<span class="ident">string</span>, <span class="ident">reason</span>),
+            <span class="ident">Error</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Error</span>(<span class="ident">e</span>),
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">read_mem</span><span class="op">&lt;</span><span class="ident">Wb</span>: <span class="ident">FnMut</span>(<span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">usize</span><span class="op">&gt;&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">with_buf</span>: <span class="ident">Wb</span>, <span class="ident">pre_read</span>: <span class="ident">u64</span>) <span class="op">-&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">u64</span>, <span class="ident">u64</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">read_mem</span><span class="op">&lt;</span><span class="ident">Wb</span>: <span class="ident">FnMut</span>(<span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">usize</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">with_buf</span>: <span class="ident">Wb</span>, <span class="ident">pre_read</span>: <span class="ident">u64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">u64</span>, <span class="ident">u64</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">limit</span> <span class="op">=</span> <span class="ident">cmp</span>::<span class="ident">min</span>(<span class="self">self</span>.<span class="ident">size_limit</span>, <span class="self">self</span>.<span class="ident">memory_threshold</span>)
             .<span class="ident">saturating_sub</span>(<span class="ident">pre_read</span>);
         <span class="ident">try_copy_limited</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">savable</span>, <span class="ident">with_buf</span>, <span class="ident">limit</span>)
     }
 
-    <span class="kw">fn</span> <span class="ident">cmp_size_limit</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">size</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
-        <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u64</span> <span class="op">&gt;=</span> <span class="self">self</span>.<span class="ident">size_limit</span>
+    <span class="kw">fn</span> <span class="ident">cmp_size_limit</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">size</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+        <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u64</span> <span class="op">&gt;</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">size_limit</span>
     }
 }
 
@@ -1557,13 +1559,13 @@
     <span class="doccomment">/// Get an adapter for this data which implements `Read`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If the data is in a file, the file is opened in read-only mode.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">readable</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">DataReader</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">readable</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">DataReader</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="self">self</span>::<span class="ident">SavedData</span>::<span class="kw-2">*</span>;
 
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">Text</span>(<span class="kw-2">ref</span> <span class="ident">text</span>) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">DataReader</span>::<span class="ident">Bytes</span>(<span class="ident">text</span>.<span class="ident">as_ref</span>())),
-            <span class="ident">Bytes</span>(<span class="kw-2">ref</span> <span class="ident">bytes</span>) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">DataReader</span>::<span class="ident">Bytes</span>(<span class="ident">bytes</span>)),
-            <span class="ident">File</span>(<span class="kw-2">ref</span> <span class="ident">path</span>, <span class="kw">_</span>) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">DataReader</span>::<span class="ident">File</span>(<span class="ident">BufReader</span>::<span class="ident">new</span>(<span class="ident">fs</span>::<span class="ident">File</span>::<span class="ident">open</span>(<span class="ident">path</span>)<span class="question-mark">?</span>))),
+            <span class="ident">Text</span>(<span class="kw-2">ref</span> <span class="ident">text</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">DataReader</span>::<span class="ident">Bytes</span>(<span class="ident">text</span>.<span class="ident">as_ref</span>())),
+            <span class="ident">Bytes</span>(<span class="kw-2">ref</span> <span class="ident">bytes</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">DataReader</span>::<span class="ident">Bytes</span>(<span class="ident">bytes</span>)),
+            <span class="ident">File</span>(<span class="kw-2">ref</span> <span class="ident">path</span>, <span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">DataReader</span>::<span class="ident">File</span>(<span class="ident">BufReader</span>::<span class="ident">new</span>(<span class="ident">fs</span>::<span class="ident">File</span>::<span class="ident">open</span>(<span class="ident">path</span>)<span class="question-mark">?</span>))),
         }
     }
 
@@ -1571,44 +1573,44 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// #### Note</span>
     <span class="doccomment">/// The size on disk may not match the size of the file if it is externally modified.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u64</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u64</span> {
         <span class="kw">use</span> <span class="self">self</span>::<span class="ident">SavedData</span>::<span class="kw-2">*</span>;
 
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">Text</span>(<span class="kw-2">ref</span> <span class="ident">text</span>) <span class="op">=&gt;</span> <span class="ident">text</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">u64</span>,
-            <span class="ident">Bytes</span>(<span class="kw-2">ref</span> <span class="ident">bytes</span>) <span class="op">=&gt;</span> <span class="ident">bytes</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">u64</span>,
-            <span class="ident">File</span>(<span class="kw">_</span>, <span class="ident">size</span>) <span class="op">=&gt;</span> <span class="ident">size</span>,
+            <span class="ident">Text</span>(<span class="kw-2">ref</span> <span class="ident">text</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">text</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">u64</span>,
+            <span class="ident">Bytes</span>(<span class="kw-2">ref</span> <span class="ident">bytes</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">bytes</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">u64</span>,
+            <span class="ident">File</span>(<span class="kw">_</span>, <span class="ident">size</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">size</span>,
         }
     }
 
     <span class="doccomment">/// Returns `true` if the data is known to be in memory (`Text | Bytes`)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_memory</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_memory</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">use</span> <span class="self">self</span>::<span class="ident">SavedData</span>::<span class="kw-2">*</span>;
 
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">Text</span>(<span class="kw">_</span>) <span class="op">|</span> <span class="ident">Bytes</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="ident">File</span>(<span class="kw">_</span>, <span class="kw">_</span>) <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">Text</span>(<span class="kw">_</span>) <span class="op">|</span> <span class="ident">Bytes</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="ident">File</span>(<span class="kw">_</span>, <span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">add_size</span>(<span class="self">self</span>, <span class="ident">add</span>: <span class="ident">u64</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">add_size</span>(<span class="self">self</span>, <span class="ident">add</span>: <span class="ident">u64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">use</span> <span class="self">self</span>::<span class="ident">SavedData</span>::<span class="ident">File</span>;
 
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">File</span>(<span class="ident">path</span>, <span class="ident">size</span>) <span class="op">=&gt;</span> <span class="ident">File</span>(<span class="ident">path</span>, <span class="ident">size</span>.<span class="ident">saturating_add</span>(<span class="ident">add</span>)),
-            <span class="ident">other</span> <span class="op">=&gt;</span> <span class="ident">other</span>
+            <span class="ident">File</span>(<span class="ident">path</span>, <span class="ident">size</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">File</span>(<span class="ident">path</span>, <span class="ident">size</span>.<span class="ident">saturating_add</span>(<span class="ident">add</span>)),
+            <span class="ident">other</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">other</span>
         }
     }
 }
 
 <span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">SavedData</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">s</span>: <span class="ident">String</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">s</span>: <span class="ident">String</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">SavedData</span>::<span class="ident">Text</span>(<span class="ident">s</span>)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;&gt;</span> <span class="kw">for</span> <span class="ident">SavedData</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">b</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">SavedData</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">b</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">SavedData</span>::<span class="ident">Bytes</span>(<span class="ident">b</span>)
     }
 }
@@ -1622,23 +1624,23 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Read</span> <span class="kw">for</span> <span class="ident">DataReader</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">read</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">read</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">buf</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="self">self</span>::<span class="ident">DataReader</span>::<span class="kw-2">*</span>;
 
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">Bytes</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">bytes</span>) <span class="op">=&gt;</span> <span class="ident">bytes</span>.<span class="ident">read</span>(<span class="ident">buf</span>),
-            <span class="ident">File</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">file</span>) <span class="op">=&gt;</span> <span class="ident">file</span>.<span class="ident">read</span>(<span class="ident">buf</span>),
+            <span class="ident">Bytes</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">bytes</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">bytes</span>.<span class="ident">read</span>(<span class="ident">buf</span>),
+            <span class="ident">File</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">file</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">file</span>.<span class="ident">read</span>(<span class="ident">buf</span>),
         }
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">BufRead</span> <span class="kw">for</span> <span class="ident">DataReader</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">fill_buf</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">fill_buf</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="self">self</span>::<span class="ident">DataReader</span>::<span class="kw-2">*</span>;
 
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">Bytes</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">bytes</span>) <span class="op">=&gt;</span> <span class="ident">bytes</span>.<span class="ident">fill_buf</span>(),
-            <span class="ident">File</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">file</span>) <span class="op">=&gt;</span> <span class="ident">file</span>.<span class="ident">fill_buf</span>(),
+            <span class="ident">Bytes</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">bytes</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">bytes</span>.<span class="ident">fill_buf</span>(),
+            <span class="ident">File</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">file</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">file</span>.<span class="ident">fill_buf</span>(),
         }
     }
 
@@ -1646,8 +1648,8 @@
         <span class="kw">use</span> <span class="self">self</span>::<span class="ident">DataReader</span>::<span class="kw-2">*</span>;
 
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">Bytes</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">bytes</span>) <span class="op">=&gt;</span> <span class="ident">bytes</span>.<span class="ident">consume</span>(<span class="ident">amt</span>),
-            <span class="ident">File</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">file</span>) <span class="op">=&gt;</span> <span class="ident">file</span>.<span class="ident">consume</span>(<span class="ident">amt</span>),
+            <span class="ident">Bytes</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">bytes</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">bytes</span>.<span class="ident">consume</span>(<span class="ident">amt</span>),
+            <span class="ident">File</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">file</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">file</span>.<span class="ident">consume</span>(<span class="ident">amt</span>),
         }
     }
 }
@@ -1663,7 +1665,7 @@
     <span class="doccomment">/// Each vector is guaranteed not to be empty unless externally modified.</span>
     <span class="comment">// Even though individual fields might only have one entry, it&#39;s better to limit the</span>
     <span class="comment">// size of a value type in `HashMap` to improve cache efficiency in lookups.</span>
-        <span class="kw">pub</span> <span class="ident">fields</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">SavedField</span><span class="op">&gt;&gt;</span>,
+        <span class="kw">pub</span> <span class="ident">fields</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">SavedField</span><span class="op">&gt;</span><span class="op">&gt;</span>,
     <span class="doccomment">/// The directory that the entries in `fields` were saved into.</span>
     <span class="kw">pub</span> <span class="ident">save_dir</span>: <span class="ident">SaveDir</span>,
     <span class="ident">fields_count</span>: <span class="ident">u32</span>,
@@ -1671,7 +1673,7 @@
 
 <span class="kw">impl</span> <span class="ident">Entries</span> {
     <span class="doccomment">/// Create a new `Entries` with the given `SaveDir`</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">save_dir</span>: <span class="ident">SaveDir</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">save_dir</span>: <span class="ident">SaveDir</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">Entries</span> {
             <span class="ident">fields</span>: <span class="ident">HashMap</span>::<span class="ident">new</span>(),
             <span class="ident">save_dir</span>,
@@ -1680,7 +1682,7 @@
     }
 
     <span class="doccomment">/// Returns `true` if `fields` is empty, `false` otherwise.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_empty</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_empty</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">fields</span>.<span class="ident">is_empty</span>()
     }
 
@@ -1691,12 +1693,12 @@
     <span class="doccomment">/// ## Note</span>
     <span class="doccomment">/// This will be incorrect if `fields` is modified externally. Call `recount_fields()`</span>
     <span class="doccomment">/// to get the correct count.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">fields_count</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u32</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">fields_count</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u32</span> {
         <span class="self">self</span>.<span class="ident">fields_count</span>
     }
 
     <span class="doccomment">/// Sum the number of fields in this `Entries` and then return the updated value.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">recount_fields</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u32</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">recount_fields</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u32</span> {
         <span class="kw">let</span> <span class="ident">fields_count</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">fields</span>.<span class="ident">values</span>().<span class="ident">map</span>(<span class="ident">Vec</span>::<span class="ident">len</span>).<span class="ident">sum</span>();
         <span class="comment">// saturating cast</span>
         <span class="self">self</span>.<span class="ident">fields_count</span> <span class="op">=</span> <span class="ident">cmp</span>::<span class="ident">min</span>(<span class="ident">u32</span>::<span class="ident">MAX</span> <span class="kw">as</span> <span class="ident">usize</span>, <span class="ident">fields_count</span>) <span class="kw">as</span> <span class="ident">u32</span>;
@@ -1707,8 +1709,8 @@
         <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">collections</span>::<span class="ident">hash_map</span>::<span class="ident">Entry</span>::<span class="kw-2">*</span>;
 
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">fields</span>.<span class="ident">entry</span>(<span class="ident">headers</span>.<span class="ident">name</span>.<span class="ident">clone</span>()) {
-            <span class="ident">Vacant</span>(<span class="ident">vacant</span>) <span class="op">=&gt;</span> { <span class="ident">vacant</span>.<span class="ident">insert</span>(<span class="macro">vec</span><span class="macro">!</span>[<span class="ident">SavedField</span> { <span class="ident">headers</span>, <span class="ident">data</span> }]); },
-            <span class="ident">Occupied</span>(<span class="ident">occupied</span>) <span class="op">=&gt;</span> {
+            <span class="ident">Vacant</span>(<span class="ident">vacant</span>) <span class="op">=</span><span class="op">&gt;</span> { <span class="ident">vacant</span>.<span class="ident">insert</span>(<span class="macro">vec</span><span class="macro">!</span>[<span class="ident">SavedField</span> { <span class="ident">headers</span>, <span class="ident">data</span> }]); },
+            <span class="ident">Occupied</span>(<span class="ident">occupied</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="comment">// dedup the field name by reusing the key&#39;s `Arc`</span>
                 <span class="ident">headers</span>.<span class="ident">name</span> <span class="op">=</span> <span class="ident">occupied</span>.<span class="ident">key</span>().<span class="ident">clone</span>();
                 <span class="ident">occupied</span>.<span class="ident">into_mut</span>().<span class="ident">push</span>({ <span class="ident">SavedField</span> { <span class="ident">headers</span>, <span class="ident">data</span> }});
@@ -1719,14 +1721,14 @@
     }
 
     <span class="doccomment">/// Print all fields and their contents to stdout. Mostly for testing purposes.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">print_debug</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">print_debug</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">stdout</span> <span class="op">=</span> <span class="ident">io</span>::<span class="ident">stdout</span>();
         <span class="kw">let</span> <span class="ident">stdout_lock</span> <span class="op">=</span> <span class="ident">stdout</span>.<span class="ident">lock</span>();
         <span class="self">self</span>.<span class="ident">write_debug</span>(<span class="ident">stdout_lock</span>)
     }
 
     <span class="doccomment">/// Write all fields and their contents to the given output. Mostly for testing purposes.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">write_debug</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">writer</span>: <span class="ident">W</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">write_debug</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">writer</span>: <span class="ident">W</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="kw">for</span> (<span class="ident">name</span>, <span class="ident">entries</span>) <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">fields</span> {
             <span class="macro">writeln</span><span class="macro">!</span>(<span class="ident">writer</span>, <span class="string">&quot;Field {:?} has {} entries:&quot;</span>, <span class="ident">name</span>, <span class="ident">entries</span>.<span class="ident">len</span>())<span class="question-mark">?</span>;
 
@@ -1757,31 +1759,31 @@
 
 <span class="kw">impl</span> <span class="ident">SaveDir</span> {
     <span class="doccomment">/// Get the path of this directory, either temporary or permanent.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_path</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">Path</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_path</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">Path</span> {
         <span class="kw">use</span> <span class="self">self</span>::<span class="ident">SaveDir</span>::<span class="kw-2">*</span>;
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">Temp</span>(<span class="kw-2">ref</span> <span class="ident">tempdir</span>) <span class="op">=&gt;</span> <span class="ident">tempdir</span>.<span class="ident">path</span>(),
-            <span class="ident">Perm</span>(<span class="kw-2">ref</span> <span class="ident">pathbuf</span>) <span class="op">=&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">pathbuf</span>,
+            <span class="ident">Temp</span>(<span class="kw-2">ref</span> <span class="ident">tempdir</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">tempdir</span>.<span class="ident">path</span>(),
+            <span class="ident">Perm</span>(<span class="kw-2">ref</span> <span class="ident">pathbuf</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">pathbuf</span>,
         }
     }
 
     <span class="doccomment">/// Returns `true` if this is a temporary directory which will be deleted on-drop.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_temporary</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_temporary</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="kw">use</span> <span class="self">self</span>::<span class="ident">SaveDir</span>::<span class="kw-2">*</span>;
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">Temp</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            <span class="ident">Perm</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">Temp</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
+            <span class="ident">Perm</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
     <span class="doccomment">/// Unwrap the `PathBuf` from `self`; if this is a temporary directory,</span>
     <span class="doccomment">/// it will be converted to a permanent one.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_path</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">PathBuf</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_path</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">PathBuf</span> {
         <span class="kw">use</span> <span class="self">self</span>::<span class="ident">SaveDir</span>::<span class="kw-2">*</span>;
 
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">Temp</span>(<span class="ident">tempdir</span>) <span class="op">=&gt;</span> <span class="ident">tempdir</span>.<span class="ident">into_path</span>(),
-            <span class="ident">Perm</span>(<span class="ident">pathbuf</span>) <span class="op">=&gt;</span> <span class="ident">pathbuf</span>,
+            <span class="ident">Temp</span>(<span class="ident">tempdir</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">tempdir</span>.<span class="ident">into_path</span>(),
+            <span class="ident">Perm</span>(<span class="ident">pathbuf</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">pathbuf</span>,
         }
     }
 
@@ -1798,8 +1800,8 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">keep</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
         <span class="kw">use</span> <span class="self">self</span>::<span class="ident">SaveDir</span>::<span class="kw-2">*</span>;
         <span class="kw-2">*</span><span class="self">self</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">mem</span>::<span class="ident">replace</span>(<span class="self">self</span>, <span class="ident">Perm</span>(<span class="ident">PathBuf</span>::<span class="ident">new</span>())) {
-            <span class="ident">Temp</span>(<span class="ident">tempdir</span>) <span class="op">=&gt;</span> <span class="ident">Perm</span>(<span class="ident">tempdir</span>.<span class="ident">into_path</span>()),
-            <span class="ident">old_self</span> <span class="op">=&gt;</span> <span class="ident">old_self</span>,
+            <span class="ident">Temp</span>(<span class="ident">tempdir</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Perm</span>(<span class="ident">tempdir</span>.<span class="ident">into_path</span>()),
+            <span class="ident">old_self</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">old_self</span>,
         };
     }
 
@@ -1811,17 +1813,17 @@
     <span class="doccomment">/// Files deleted programmatically are deleted directly from disk, as compared to most file</span>
     <span class="doccomment">/// manager applications which use a staging area from which deleted files can be safely</span>
     <span class="doccomment">/// recovered (i.e. Windows&#39; Recycle Bin, OS X&#39;s Trash Can, etc.).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">delete</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">delete</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="self">self</span>::<span class="ident">SaveDir</span>::<span class="kw-2">*</span>;
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">Temp</span>(<span class="ident">tempdir</span>) <span class="op">=&gt;</span> <span class="ident">tempdir</span>.<span class="ident">close</span>(),
-            <span class="ident">Perm</span>(<span class="ident">pathbuf</span>) <span class="op">=&gt;</span> <span class="ident">fs</span>::<span class="ident">remove_dir_all</span>(<span class="kw-2">&amp;</span><span class="ident">pathbuf</span>),
+            <span class="ident">Temp</span>(<span class="ident">tempdir</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">tempdir</span>.<span class="ident">close</span>(),
+            <span class="ident">Perm</span>(<span class="ident">pathbuf</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">fs</span>::<span class="ident">remove_dir_all</span>(<span class="kw-2">&amp;</span><span class="ident">pathbuf</span>),
         }
     }
 }
 
 <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">Path</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">SaveDir</span> {
-    <span class="kw">fn</span> <span class="ident">as_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">Path</span> {
+    <span class="kw">fn</span> <span class="ident">as_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">Path</span> {
         <span class="self">self</span>.<span class="ident">as_path</span>()
     }
 }
@@ -1844,29 +1846,29 @@
 }
 
 <span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">io</span>::<span class="ident">Error</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">PartialReason</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">e</span>: <span class="ident">io</span>::<span class="ident">Error</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">e</span>: <span class="ident">io</span>::<span class="ident">Error</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">IoError</span>(<span class="ident">e</span>)
     }
 }
 
 <span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">str</span>::<span class="ident">Utf8Error</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">PartialReason</span> {
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">e</span>: <span class="ident">str</span>::<span class="ident">Utf8Error</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">e</span>: <span class="ident">str</span>::<span class="ident">Utf8Error</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">Utf8Error</span>(<span class="ident">e</span>)
     }
 }
 
 <span class="kw">impl</span> <span class="ident">PartialReason</span> {
     <span class="doccomment">/// Return `io::Error` in the `IoError` case or panic otherwise.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unwrap_err</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="ident">Error</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unwrap_err</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="ident">Error</span> {
         <span class="self">self</span>.<span class="ident">expect_err</span>(<span class="string">&quot;`PartialReason` was not `IoError`&quot;</span>)
     }
 
     <span class="doccomment">/// Return `io::Error` in the `IoError` case or panic with the given</span>
     <span class="doccomment">/// message otherwise.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">expect_err</span>(<span class="self">self</span>, <span class="ident">msg</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="ident">Error</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">expect_err</span>(<span class="self">self</span>, <span class="ident">msg</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="ident">Error</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">PartialReason</span>::<span class="ident">IoError</span>(<span class="ident">e</span>) <span class="op">=&gt;</span> <span class="ident">e</span>,
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;{}: {:?}&quot;</span>, <span class="ident">msg</span>, <span class="self">self</span>),
+            <span class="ident">PartialReason</span>::<span class="ident">IoError</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">e</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;{}: {:?}&quot;</span>, <span class="ident">msg</span>, <span class="self">self</span>),
         }
     }
 }
@@ -1895,12 +1897,12 @@
     <span class="kw">pub</span> <span class="ident">entries</span>: <span class="ident">Entries</span>,
     <span class="doccomment">/// The field that was in the process of being read. `None` if the error</span>
     <span class="doccomment">/// occurred between entries.</span>
-    <span class="kw">pub</span> <span class="ident">partial</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">PartialSavedField</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;&gt;</span>,
+    <span class="kw">pub</span> <span class="ident">partial</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">PartialSavedField</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span><span class="op">&gt;</span>,
 }
 
 <span class="doccomment">/// Discards `partial`</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">M</span>: <span class="ident">ReadEntry</span><span class="op">&gt;</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Entries</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">PartialEntries</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">into</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Entries</span> {
+    <span class="kw">fn</span> <span class="ident">into</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Entries</span> {
         <span class="self">self</span>.<span class="ident">entries</span>
     }
 }
@@ -1910,7 +1912,7 @@
     <span class="doccomment">/// add it to the `Entries` instance and return it.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Otherwise, returns `self.entries`</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">keep_partial</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Entries</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">keep_partial</span>(<span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Entries</span> {
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">partial</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">partial</span> {
             <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">saved</span>) <span class="op">=</span> <span class="ident">partial</span>.<span class="ident">dest</span> {
                 <span class="self">self</span>.<span class="ident">entries</span>.<span class="ident">push_field</span>(<span class="ident">partial</span>.<span class="ident">source</span>.<span class="ident">headers</span>, <span class="ident">saved</span>);
@@ -1934,7 +1936,7 @@
 }
 
 <span class="doccomment">/// Shorthand result for methods that return `Entries`</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">EntriesSaveResult</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">Entries</span>, <span class="ident">PartialEntries</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;&gt;</span>;
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">EntriesSaveResult</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">Entries</span>, <span class="ident">PartialEntries</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span><span class="op">&gt;</span>;
 
 <span class="doccomment">/// Shorthand result for methods that return `FieldData`s.</span>
 <span class="doccomment">///</span>
@@ -1946,46 +1948,46 @@
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">M</span>: <span class="ident">ReadEntry</span><span class="op">&gt;</span> <span class="ident">EntriesSaveResult</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span> {
     <span class="doccomment">/// Take the `Entries` from `self`, if applicable, and discarding</span>
     <span class="doccomment">/// the error, if any.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_entries</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Entries</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_entries</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Entries</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">Full</span>(<span class="ident">entries</span>) <span class="op">|</span> <span class="ident">Partial</span>(<span class="ident">PartialEntries</span> { <span class="ident">entries</span>, .. }, <span class="kw">_</span>) <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">entries</span>),
-            <span class="ident">Error</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+            <span class="ident">Full</span>(<span class="ident">entries</span>) <span class="op">|</span> <span class="ident">Partial</span>(<span class="ident">PartialEntries</span> { <span class="ident">entries</span>, .. }, <span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">entries</span>),
+            <span class="ident">Error</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
         }
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">S</span>, <span class="ident">P</span><span class="op">&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">S</span>, <span class="ident">P</span><span class="op">&gt;</span> <span class="kw">where</span> <span class="ident">P</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
     <span class="doccomment">/// Convert `self` to `Option&lt;S&gt;`; there may still have been an error.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">okish</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">okish</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">into_opt_both</span>().<span class="number">0</span>
     }
 
     <span class="doccomment">/// Map the `Full` or `Partial` values to a new type, retaining the reason</span>
     <span class="doccomment">/// in the `Partial` case.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">map</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">Map</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">map</span>: <span class="ident">Map</span>) <span class="op">-&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">T</span><span class="op">&gt;</span> <span class="kw">where</span> <span class="ident">Map</span>: <span class="ident">FnOnce</span>(<span class="ident">S</span>) <span class="op">-&gt;</span> <span class="ident">T</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">map</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">Map</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">map</span>: <span class="ident">Map</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">T</span><span class="op">&gt;</span> <span class="kw">where</span> <span class="ident">Map</span>: <span class="ident">FnOnce</span>(<span class="ident">S</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">T</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">Full</span>(<span class="ident">full</span>) <span class="op">=&gt;</span> <span class="ident">Full</span>(<span class="ident">map</span>(<span class="ident">full</span>)),
-            <span class="ident">Partial</span>(<span class="ident">partial</span>, <span class="ident">reason</span>) <span class="op">=&gt;</span> <span class="ident">Partial</span>(<span class="ident">map</span>(<span class="ident">partial</span>.<span class="ident">into</span>()), <span class="ident">reason</span>),
-            <span class="ident">Error</span>(<span class="ident">e</span>) <span class="op">=&gt;</span> <span class="ident">Error</span>(<span class="ident">e</span>),
+            <span class="ident">Full</span>(<span class="ident">full</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Full</span>(<span class="ident">map</span>(<span class="ident">full</span>)),
+            <span class="ident">Partial</span>(<span class="ident">partial</span>, <span class="ident">reason</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Partial</span>(<span class="ident">map</span>(<span class="ident">partial</span>.<span class="ident">into</span>()), <span class="ident">reason</span>),
+            <span class="ident">Error</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Error</span>(<span class="ident">e</span>),
         }
     }
 
     <span class="doccomment">/// Decompose `self` to `(Option&lt;S&gt;, Option&lt;io::Error&gt;)`</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_opt_both</span>(<span class="self">self</span>) <span class="op">-&gt;</span> (<span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">io</span>::<span class="ident">Error</span><span class="op">&gt;</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_opt_both</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">io</span>::<span class="ident">Error</span><span class="op">&gt;</span>) {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">Full</span>(<span class="ident">full</span>)  <span class="op">=&gt;</span> (<span class="prelude-val">Some</span>(<span class="ident">full</span>), <span class="prelude-val">None</span>),
-            <span class="ident">Partial</span>(<span class="ident">partial</span>, <span class="ident">IoError</span>(<span class="ident">e</span>)) <span class="op">=&gt;</span> (<span class="prelude-val">Some</span>(<span class="ident">partial</span>.<span class="ident">into</span>()), <span class="prelude-val">Some</span>(<span class="ident">e</span>)),
-            <span class="ident">Partial</span>(<span class="ident">partial</span>, <span class="kw">_</span>) <span class="op">=&gt;</span> (<span class="prelude-val">Some</span>(<span class="ident">partial</span>.<span class="ident">into</span>()), <span class="prelude-val">None</span>),
-            <span class="ident">Error</span>(<span class="ident">error</span>) <span class="op">=&gt;</span> (<span class="prelude-val">None</span>, <span class="prelude-val">Some</span>(<span class="ident">error</span>)),
+            <span class="ident">Full</span>(<span class="ident">full</span>)  <span class="op">=</span><span class="op">&gt;</span> (<span class="prelude-val">Some</span>(<span class="ident">full</span>), <span class="prelude-val">None</span>),
+            <span class="ident">Partial</span>(<span class="ident">partial</span>, <span class="ident">IoError</span>(<span class="ident">e</span>)) <span class="op">=</span><span class="op">&gt;</span> (<span class="prelude-val">Some</span>(<span class="ident">partial</span>.<span class="ident">into</span>()), <span class="prelude-val">Some</span>(<span class="ident">e</span>)),
+            <span class="ident">Partial</span>(<span class="ident">partial</span>, <span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> (<span class="prelude-val">Some</span>(<span class="ident">partial</span>.<span class="ident">into</span>()), <span class="prelude-val">None</span>),
+            <span class="ident">Error</span>(<span class="ident">error</span>) <span class="op">=</span><span class="op">&gt;</span> (<span class="prelude-val">None</span>, <span class="prelude-val">Some</span>(<span class="ident">error</span>)),
         }
     }
 
     <span class="doccomment">/// Map `self` to an `io::Result`, discarding the error in the `Partial` case.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_result</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_result</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">Full</span>(<span class="ident">entries</span>) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">entries</span>),
-            <span class="ident">Partial</span>(<span class="ident">partial</span>, <span class="kw">_</span>) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">partial</span>.<span class="ident">into</span>()),
-            <span class="ident">Error</span>(<span class="ident">error</span>) <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">error</span>),
+            <span class="ident">Full</span>(<span class="ident">entries</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">entries</span>),
+            <span class="ident">Partial</span>(<span class="ident">partial</span>, <span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">partial</span>.<span class="ident">into</span>()),
+            <span class="ident">Error</span>(<span class="ident">error</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">error</span>),
         }
     }
 
@@ -1997,16 +1999,16 @@
     <span class="doccomment">/// partially written file on-disk. If you&#39;re not using a temporary directory</span>
     <span class="doccomment">/// (OS-managed or via `TempDir`) then partially written files will remain on-disk until</span>
     <span class="doccomment">/// explicitly removed which could result in excessive disk usage if not monitored closely.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_result_strict</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_result_strict</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">Full</span>(<span class="ident">entries</span>) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">entries</span>),
-            <span class="ident">Partial</span>(<span class="kw">_</span>, <span class="ident">PartialReason</span>::<span class="ident">IoError</span>(<span class="ident">e</span>)) <span class="op">|</span> <span class="ident">Error</span>(<span class="ident">e</span>) <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>),
-            <span class="ident">Partial</span>(<span class="ident">partial</span>, <span class="kw">_</span>) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">partial</span>.<span class="ident">into</span>()),
+            <span class="ident">Full</span>(<span class="ident">entries</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">entries</span>),
+            <span class="ident">Partial</span>(<span class="kw">_</span>, <span class="ident">PartialReason</span>::<span class="ident">IoError</span>(<span class="ident">e</span>)) <span class="op">|</span> <span class="ident">Error</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>),
+            <span class="ident">Partial</span>(<span class="ident">partial</span>, <span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">partial</span>.<span class="ident">into</span>()),
         }
     }
 }
 
-<span class="kw">fn</span> <span class="ident">create_dir_all</span>(<span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">create_dir_all</span>(<span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">parent</span>) <span class="op">=</span> <span class="ident">path</span>.<span class="ident">parent</span>() {
         <span class="ident">fs</span>::<span class="ident">create_dir_all</span>(<span class="ident">parent</span>)
     } <span class="kw">else</span> {
@@ -2016,7 +2018,7 @@
     }
 }
 
-<span class="kw">fn</span> <span class="ident">try_copy_limited</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">BufRead</span>, <span class="ident">Wb</span>: <span class="ident">FnMut</span>(<span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">usize</span><span class="op">&gt;&gt;</span>(<span class="ident">src</span>: <span class="ident">R</span>, <span class="kw-2">mut</span> <span class="ident">with_buf</span>: <span class="ident">Wb</span>, <span class="ident">limit</span>: <span class="ident">u64</span>) <span class="op">-&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">u64</span>, <span class="ident">u64</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">try_copy_limited</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">BufRead</span>, <span class="ident">Wb</span>: <span class="ident">FnMut</span>(<span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">usize</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">src</span>: <span class="ident">R</span>, <span class="kw-2">mut</span> <span class="ident">with_buf</span>: <span class="ident">Wb</span>, <span class="ident">limit</span>: <span class="ident">u64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">u64</span>, <span class="ident">u64</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">copied</span> <span class="op">=</span> <span class="number">0u64</span>;
     <span class="ident">try_read_buf</span>(<span class="ident">src</span>, <span class="op">|</span><span class="ident">buf</span><span class="op">|</span> {
         <span class="kw">let</span> <span class="ident">new_copied</span> <span class="op">=</span> <span class="ident">copied</span>.<span class="ident">saturating_add</span>(<span class="ident">buf</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">u64</span>);
@@ -2027,15 +2029,15 @@
     })
 }
 
-<span class="kw">fn</span> <span class="ident">try_read_buf</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">BufRead</span>, <span class="ident">Wb</span>: <span class="ident">FnMut</span>(<span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">usize</span><span class="op">&gt;&gt;</span>(<span class="kw-2">mut</span> <span class="ident">src</span>: <span class="ident">R</span>, <span class="kw-2">mut</span> <span class="ident">with_buf</span>: <span class="ident">Wb</span>) <span class="op">-&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">u64</span>, <span class="ident">u64</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">try_read_buf</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">BufRead</span>, <span class="ident">Wb</span>: <span class="ident">FnMut</span>(<span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">usize</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="ident">src</span>: <span class="ident">R</span>, <span class="kw-2">mut</span> <span class="ident">with_buf</span>: <span class="ident">Wb</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">u64</span>, <span class="ident">u64</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">total_copied</span> <span class="op">=</span> <span class="number">0u64</span>;
 
     <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">try_here</span> (
-        (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">try</span>:<span class="ident">expr</span>) <span class="op">=&gt;</span> (
+        (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">try</span>:<span class="ident">expr</span>) <span class="op">=</span><span class="op">&gt;</span> (
             <span class="kw">match</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">try</span> {
-                <span class="prelude-val">Ok</span>(<span class="ident">val</span>) <span class="op">=&gt;</span> <span class="ident">val</span>,
-                <span class="prelude-val">Err</span>(<span class="kw-2">ref</span> <span class="ident">e</span>) <span class="kw">if</span> <span class="ident">e</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">io</span>::<span class="ident">ErrorKind</span>::<span class="ident">Interrupted</span> <span class="op">=&gt;</span> <span class="kw">continue</span>,
-                <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=&gt;</span> <span class="kw">return</span> <span class="kw">if</span> <span class="ident">total_copied</span> <span class="op">==</span> <span class="number">0</span> { <span class="ident">Error</span>(<span class="ident">e</span>) }
+                <span class="prelude-val">Ok</span>(<span class="ident">val</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">val</span>,
+                <span class="prelude-val">Err</span>(<span class="kw-2">ref</span> <span class="ident">e</span>) <span class="kw">if</span> <span class="ident">e</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">io</span>::<span class="ident">ErrorKind</span>::<span class="ident">Interrupted</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">continue</span>,
+                <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="kw">if</span> <span class="ident">total_copied</span> <span class="op">=</span><span class="op">=</span> <span class="number">0</span> { <span class="ident">Error</span>(<span class="ident">e</span>) }
                                  <span class="kw">else</span> { <span class="ident">Partial</span>(<span class="ident">total_copied</span>, <span class="ident">e</span>.<span class="ident">into</span>()) },
             }
         )
@@ -2049,12 +2051,12 @@
         };
 
         <span class="kw">match</span> <span class="ident">res</span> {
-            <span class="ident">Full</span>(<span class="ident">copied</span>) <span class="op">=&gt;</span> { <span class="ident">src</span>.<span class="ident">consume</span>(<span class="ident">copied</span>); <span class="ident">total_copied</span> <span class="op">+=</span> <span class="ident">copied</span> <span class="kw">as</span> <span class="ident">u64</span>; }
-            <span class="ident">Partial</span>(<span class="ident">copied</span>, <span class="ident">reason</span>) <span class="op">=&gt;</span> {
-                <span class="ident">src</span>.<span class="ident">consume</span>(<span class="ident">copied</span>); <span class="ident">total_copied</span> <span class="op">+=</span> <span class="ident">copied</span> <span class="kw">as</span> <span class="ident">u64</span>;
+            <span class="ident">Full</span>(<span class="ident">copied</span>) <span class="op">=</span><span class="op">&gt;</span> { <span class="ident">src</span>.<span class="ident">consume</span>(<span class="ident">copied</span>); <span class="ident">total_copied</span> <span class="op">+</span><span class="op">=</span> <span class="ident">copied</span> <span class="kw">as</span> <span class="ident">u64</span>; }
+            <span class="ident">Partial</span>(<span class="ident">copied</span>, <span class="ident">reason</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="ident">src</span>.<span class="ident">consume</span>(<span class="ident">copied</span>); <span class="ident">total_copied</span> <span class="op">+</span><span class="op">=</span> <span class="ident">copied</span> <span class="kw">as</span> <span class="ident">u64</span>;
                 <span class="kw">return</span> <span class="ident">Partial</span>(<span class="ident">total_copied</span>, <span class="ident">reason</span>);
             },
-            <span class="ident">Error</span>(<span class="ident">err</span>) <span class="op">=&gt;</span> {
+            <span class="ident">Error</span>(<span class="ident">err</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">return</span> <span class="ident">Partial</span>(<span class="ident">total_copied</span>, <span class="ident">err</span>.<span class="ident">into</span>());
             }
         }
@@ -2063,15 +2065,15 @@
     <span class="ident">Full</span>(<span class="ident">total_copied</span>)
 }
 
-<span class="kw">fn</span> <span class="ident">try_write_all</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="ident">buf</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="kw-2">mut</span> <span class="ident">dest</span>: <span class="ident">W</span>) <span class="op">-&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">usize</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">try_write_all</span><span class="op">&lt;</span><span class="ident">W</span>: <span class="ident">Write</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="ident">buf</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="kw-2">mut</span> <span class="ident">dest</span>: <span class="ident">W</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SaveResult</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">usize</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">total_copied</span> <span class="op">=</span> <span class="number">0</span>;
 
     <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">try_here</span> (
-        (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">try</span>:<span class="ident">expr</span>) <span class="op">=&gt;</span> (
+        (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">try</span>:<span class="ident">expr</span>) <span class="op">=</span><span class="op">&gt;</span> (
             <span class="kw">match</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">try</span> {
-                <span class="prelude-val">Ok</span>(<span class="ident">val</span>) <span class="op">=&gt;</span> <span class="ident">val</span>,
-                <span class="prelude-val">Err</span>(<span class="kw-2">ref</span> <span class="ident">e</span>) <span class="kw">if</span> <span class="ident">e</span>.<span class="ident">kind</span>() <span class="op">==</span> <span class="ident">io</span>::<span class="ident">ErrorKind</span>::<span class="ident">Interrupted</span> <span class="op">=&gt;</span> <span class="kw">continue</span>,
-                <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=&gt;</span> <span class="kw">return</span> <span class="kw">if</span> <span class="ident">total_copied</span> <span class="op">==</span> <span class="number">0</span> { <span class="ident">Error</span>(<span class="ident">e</span>) }
+                <span class="prelude-val">Ok</span>(<span class="ident">val</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">val</span>,
+                <span class="prelude-val">Err</span>(<span class="kw-2">ref</span> <span class="ident">e</span>) <span class="kw">if</span> <span class="ident">e</span>.<span class="ident">kind</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">io</span>::<span class="ident">ErrorKind</span>::<span class="ident">Interrupted</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">continue</span>,
+                <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="kw">if</span> <span class="ident">total_copied</span> <span class="op">=</span><span class="op">=</span> <span class="number">0</span> { <span class="ident">Error</span>(<span class="ident">e</span>) }
                                  <span class="kw">else</span> { <span class="ident">Partial</span>(<span class="ident">total_copied</span>, <span class="ident">e</span>.<span class="ident">into</span>()) },
             }
         )
@@ -2079,11 +2081,11 @@
 
     <span class="kw">while</span> <span class="op">!</span><span class="ident">buf</span>.<span class="ident">is_empty</span>() {
         <span class="kw">match</span> <span class="macro">try_here</span><span class="macro">!</span>(<span class="ident">dest</span>.<span class="ident">write</span>(<span class="ident">buf</span>)) {
-            <span class="number">0</span> <span class="op">=&gt;</span> <span class="macro">try_here</span><span class="macro">!</span>(<span class="prelude-val">Err</span>(<span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">new</span>(<span class="ident">io</span>::<span class="ident">ErrorKind</span>::<span class="ident">WriteZero</span>,
+            <span class="number">0</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">try_here</span><span class="macro">!</span>(<span class="prelude-val">Err</span>(<span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">new</span>(<span class="ident">io</span>::<span class="ident">ErrorKind</span>::<span class="ident">WriteZero</span>,
                                           <span class="string">&quot;failed to write whole buffer&quot;</span>))),
-            <span class="ident">copied</span> <span class="op">=&gt;</span> {
+            <span class="ident">copied</span> <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">buf</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">buf</span>[<span class="ident">copied</span>..];
-                <span class="ident">total_copied</span> <span class="op">+=</span> <span class="ident">copied</span>;
+                <span class="ident">total_copied</span> <span class="op">+</span><span class="op">=</span> <span class="ident">copied</span>;
             },
         }
     }

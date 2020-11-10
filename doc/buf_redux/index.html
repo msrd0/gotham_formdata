@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `buf_redux` crate."><meta name="keywords" content="rust, rustlang, rust-lang, buf_redux"><title>buf_redux - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../ayu.css" disabled ><script src="../storage.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="shortcut icon" href="../favicon.ico"><style type="text/css">#crate-search{background-image:url("../down-arrow.svg");}</style></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../buf_redux/index.html'><div class='logo-container rust-logo'><img src='../rust-logo.png' alt='logo'></div></a><p class='location'>Crate buf_redux</p><div class='block version'><p>Version 0.8.4</p></div><div class="sidebar-elems"><a id='all-types' href='all.html'><p>See all buf_redux's items</p></a><div class="block items"><ul><li><a href="#modules">Modules</a></li><li><a href="#macros">Macros</a></li><li><a href="#structs">Structs</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'buf_redux', ty: 'mod', relpath: '../'};</script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `buf_redux` crate."><meta name="keywords" content="rust, rustlang, rust-lang, buf_redux"><title>buf_redux - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../ayu.css" disabled ><script src="../storage.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="alternate icon" type="image/png" href="../favicon-16x16.png">
+<link rel="alternate icon" type="image/png" href="../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../down-arrow.svg");}</style></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../buf_redux/index.html'><div class='logo-container rust-logo'><img src='../rust-logo.png' alt='logo'></div></a><p class='location'>Crate buf_redux</p><div class='block version'><p>Version 0.8.4</p></div><div class="sidebar-elems"><a id='all-types' href='all.html'><p>See all buf_redux's items</p></a><div class="block items"><ul><li><a href="#modules">Modules</a></li><li><a href="#macros">Macros</a></li><li><a href="#structs">Structs</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'buf_redux', ty: 'mod', relpath: '../'};</script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
                 <a id="settings-menu" href="../settings.html"><img src="../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/buf_redux/lib.rs.html#12-1295' title='goto source code'>[src]</a></span><span class='in-band'>Crate <a class="mod" href=''>buf_redux</a></span></h1><div class='docblock'><p>Drop-in replacements for buffered I/O types in <code>std::io</code>.</p>
 <p>These replacements retain the method names/signatures and implemented traits of their stdlib
 counterparts, making replacement as simple as swapping the import of the type:</p>
@@ -36,22 +38,22 @@ counterparts, making replacement as simple as swapping the import of the type:</
 </ul>
 <h3 id="more-sensible-and-customizable-buffering-behavior" class="section-header"><a href="#more-sensible-and-customizable-buffering-behavior">More Sensible and Customizable Buffering Behavior</a></h3>
 <p>Tune the behavior of the buffer to your specific use-case using the types in the
-<a href="policy"><code>policy</code> module</a>:</p>
+<a href="../buf_redux/policy/index.html"><code>policy</code> module</a>:</p>
 <ul>
 <li>
-<p>Refine <code>BufReader</code>'s behavior by implementing the <a href="policy::ReaderPolicy"><code>ReaderPolicy</code> trait</a> or use
-an existing implementation like <a href="policy::MinBuffered"><code>MinBuffered</code></a> to ensure the buffer always contains
+<p>Refine <code>BufReader</code>'s behavior by implementing the <a href="../buf_redux/policy/trait.ReaderPolicy.html"><code>ReaderPolicy</code> trait</a> or use
+an existing implementation like <a href="../buf_redux/policy/struct.MinBuffered.html"><code>MinBuffered</code></a> to ensure the buffer always contains
 a minimum number of bytes (until the underlying reader is empty).</p>
 </li>
 <li>
 <p>Refine <code>BufWriter</code>'s behavior by implementing the [<code>WriterPolicy</code> trait]
-or use an existing implementation like <a href="policy::FlushOn"><code>FlushOn</code></a> to flush when a particular byte
-appears in the buffer (used to implement <a href="LineWriter"><code>LineWriter</code></a>).</p>
+or use an existing implementation like <a href="../buf_redux/policy/struct.FlushOn.html"><code>FlushOn</code></a> to flush when a particular byte
+appears in the buffer (used to implement <a href="../buf_redux/struct.LineWriter.html"><code>LineWriter</code></a>).</p>
 </li>
 </ul>
 <h3 id="making-room" class="section-header"><a href="#making-room">Making Room</a></h3>
 <p>The buffered types of this crate and their <code>std::io</code> counterparts, by default, use <code>Box&lt;[u8]&gt;</code>
-as their buffer types (<a href="Buffer"><code>Buffer</code></a> is included as well since it is used internally
+as their buffer types (<a href="../buf_redux/struct.Buffer.html"><code>Buffer</code></a> is included as well since it is used internally
 by the other types in this crate).</p>
 <p>When one of these types inserts bytes into its buffer, via <code>BufRead::fill_buf()</code> (implicitly
 called by <code>Read::read()</code>) in <code>BufReader</code>'s case or <code>Write::write()</code> in <code>BufWriter</code>'s case,
@@ -77,8 +79,8 @@ it would require two flushes to get it all, which could degrade performance.</p>
 when there is no more room at the end so that more reads/writes into the buffer can be issued.
 This works, and may suit some use-cases where the amount of data left is small and thus copying
 it would be inexpensive, but it is non-optimal. However, this option is provided
-as the <code>.make_room()</code> methods, and is utilized by <a href="policy::MinBuffered"><code>policy::MinBuffered</code></a>
-and <a href="policy::FlushExact"><code>policy::FlushExact</code></a>.</p>
+as the <code>.make_room()</code> methods, and is utilized by <a href="../buf_redux/policy/struct.MinBuffered.html"><code>policy::MinBuffered</code></a>
+and <a href="../buf_redux/policy/struct.FlushExact.html"><code>policy::FlushExact</code></a>.</p>
 <h3 id="ringbuffers--slice-deque-feature" class="section-header"><a href="#ringbuffers--slice-deque-feature">Ringbuffers / <code>slice-deque</code> Feature</a></h3>
 <p>Instead of moving data, however, it is also possible to use virtual-memory tricks to
 allocate a ringbuffer that loops around on itself in memory and thus is always contiguous,

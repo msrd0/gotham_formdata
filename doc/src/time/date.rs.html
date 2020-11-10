@@ -1211,10 +1211,10 @@
 <span class="doccomment">/// Floored division for integers. This differs from the default behavior, which</span>
 <span class="doccomment">/// is truncation.</span>
 <span class="attribute">#[<span class="ident">const_fn</span>(<span class="string">&quot;1.46&quot;</span>)]</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">div_floor</span>(<span class="ident">a</span>: <span class="ident">i64</span>, <span class="ident">b</span>: <span class="ident">i64</span>) <span class="op">-&gt;</span> <span class="ident">i64</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">div_floor</span>(<span class="ident">a</span>: <span class="ident">i64</span>, <span class="ident">b</span>: <span class="ident">i64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i64</span> {
     <span class="kw">let</span> (<span class="ident">quotient</span>, <span class="ident">remainder</span>) <span class="op">=</span> (<span class="ident">a</span> <span class="op">/</span> <span class="ident">b</span>, <span class="ident">a</span> <span class="op">%</span> <span class="ident">b</span>);
 
-    <span class="kw">if</span> (<span class="ident">remainder</span> <span class="op">&gt;</span> <span class="number">0</span> <span class="op">&amp;&amp;</span> <span class="ident">b</span> <span class="op">&lt;</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">remainder</span> <span class="op">&lt;</span> <span class="number">0</span> <span class="op">&amp;&amp;</span> <span class="ident">b</span> <span class="op">&gt;</span> <span class="number">0</span>) {
+    <span class="kw">if</span> (<span class="ident">remainder</span> <span class="op">&gt;</span> <span class="number">0</span> <span class="op">&amp;&amp;</span> <span class="ident">b</span> <span class="op">&lt;</span> <span class="number">0</span>) <span class="op">|</span><span class="op">|</span> (<span class="ident">remainder</span> <span class="op">&lt;</span> <span class="number">0</span> <span class="op">&amp;&amp;</span> <span class="ident">b</span> <span class="op">&gt;</span> <span class="number">0</span>) {
         <span class="ident">quotient</span> <span class="op">-</span> <span class="number">1</span>
     } <span class="kw">else</span> {
         <span class="ident">quotient</span>
@@ -1240,7 +1240,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">Date</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">fmt</span>::<span class="ident">Error</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">fmt</span>::<span class="ident">Error</span><span class="op">&gt;</span> {
         <span class="ident">f</span>.<span class="ident">debug_struct</span>(<span class="string">&quot;Date&quot;</span>)
             .<span class="ident">field</span>(<span class="string">&quot;year&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">year</span>())
             .<span class="ident">field</span>(<span class="string">&quot;ordinal&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">ordinal</span>())
@@ -1250,7 +1250,7 @@
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">serde</span>::<span class="ident">Deserialize</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Date</span> {
-    <span class="kw">fn</span> <span class="ident">deserialize</span><span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>(<span class="ident">deserializer</span>: <span class="ident">D</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">D</span>::<span class="ident">Error</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">deserialize</span><span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>(<span class="ident">deserializer</span>: <span class="ident">D</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">D</span>::<span class="ident">Error</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">D</span>: <span class="ident">serde</span>::<span class="ident">Deserializer</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>,
     {
@@ -1284,10 +1284,10 @@
         <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;For dates knowable at compile-time, use the `date!` macro. For situations where a \
                 value isn&#39;t known, use `Date::try_from_ymd`.&quot;</span>
     )]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_ymd</span>(<span class="ident">year</span>: <span class="ident">i32</span>, <span class="ident">month</span>: <span class="ident">u8</span>, <span class="ident">day</span>: <span class="ident">u8</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
-        <span class="macro">assert_value_in_range</span><span class="macro">!</span>(<span class="ident">year</span> <span class="kw">in</span> <span class="ident">MIN_YEAR</span> <span class="op">=&gt;</span> <span class="ident">MAX_YEAR</span>);
-        <span class="macro">assert_value_in_range</span><span class="macro">!</span>(<span class="ident">month</span> <span class="kw">in</span> <span class="number">1</span> <span class="op">=&gt;</span> <span class="number">12</span>);
-        <span class="macro">assert_value_in_range</span><span class="macro">!</span>(<span class="ident">day</span> <span class="kw">in</span> <span class="number">1</span> <span class="op">=&gt;</span> <span class="ident">days_in_year_month</span>(<span class="ident">year</span>, <span class="ident">month</span>), <span class="ident">given</span> <span class="ident">year</span>, <span class="ident">month</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_ymd</span>(<span class="ident">year</span>: <span class="ident">i32</span>, <span class="ident">month</span>: <span class="ident">u8</span>, <span class="ident">day</span>: <span class="ident">u8</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+        <span class="macro">assert_value_in_range</span><span class="macro">!</span>(<span class="ident">year</span> <span class="kw">in</span> <span class="ident">MIN_YEAR</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">MAX_YEAR</span>);
+        <span class="macro">assert_value_in_range</span><span class="macro">!</span>(<span class="ident">month</span> <span class="kw">in</span> <span class="number">1</span> <span class="op">=</span><span class="op">&gt;</span> <span class="number">12</span>);
+        <span class="macro">assert_value_in_range</span><span class="macro">!</span>(<span class="ident">day</span> <span class="kw">in</span> <span class="number">1</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">days_in_year_month</span>(<span class="ident">year</span>, <span class="ident">month</span>), <span class="ident">given</span> <span class="ident">year</span>, <span class="ident">month</span>);
 
         <span class="ident">internals</span>::<span class="ident">Date</span>::<span class="ident">from_ymd_unchecked</span>(<span class="ident">year</span>, <span class="ident">month</span>, <span class="ident">day</span>)
     }
@@ -1313,10 +1313,10 @@
         <span class="ident">year</span>: <span class="ident">i32</span>,
         <span class="ident">month</span>: <span class="ident">u8</span>,
         <span class="ident">day</span>: <span class="ident">u8</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">error</span>::<span class="ident">ComponentRange</span><span class="op">&gt;</span> {
-        <span class="macro">ensure_value_in_range</span><span class="macro">!</span>(<span class="ident">year</span> <span class="kw">in</span> <span class="ident">MIN_YEAR</span> <span class="op">=&gt;</span> <span class="ident">MAX_YEAR</span>);
-        <span class="macro">ensure_value_in_range</span><span class="macro">!</span>(<span class="ident">month</span> <span class="kw">in</span> <span class="number">1</span> <span class="op">=&gt;</span> <span class="number">12</span>);
-        <span class="macro">ensure_value_in_range</span><span class="macro">!</span>(<span class="ident">day</span> <span class="ident">conditionally</span> <span class="kw">in</span> <span class="number">1</span> <span class="op">=&gt;</span> <span class="ident">days_in_year_month</span>(<span class="ident">year</span>, <span class="ident">month</span>));
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">error</span>::<span class="ident">ComponentRange</span><span class="op">&gt;</span> {
+        <span class="macro">ensure_value_in_range</span><span class="macro">!</span>(<span class="ident">year</span> <span class="kw">in</span> <span class="ident">MIN_YEAR</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">MAX_YEAR</span>);
+        <span class="macro">ensure_value_in_range</span><span class="macro">!</span>(<span class="ident">month</span> <span class="kw">in</span> <span class="number">1</span> <span class="op">=</span><span class="op">&gt;</span> <span class="number">12</span>);
+        <span class="macro">ensure_value_in_range</span><span class="macro">!</span>(<span class="ident">day</span> <span class="ident">conditionally</span> <span class="kw">in</span> <span class="number">1</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">days_in_year_month</span>(<span class="ident">year</span>, <span class="ident">month</span>));
 
         <span class="prelude-val">Ok</span>(<span class="ident">internals</span>::<span class="ident">Date</span>::<span class="ident">from_ymd_unchecked</span>(<span class="ident">year</span>, <span class="ident">month</span>, <span class="ident">day</span>))
     }
@@ -1344,9 +1344,9 @@
         <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;For dates knowable at compile-time, use the `date!` macro. For situations where a \
                 value isn&#39;t known, use `Date::try_from_yo`.&quot;</span>
     )]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_yo</span>(<span class="ident">year</span>: <span class="ident">i32</span>, <span class="ident">ordinal</span>: <span class="ident">u16</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
-        <span class="macro">assert_value_in_range</span><span class="macro">!</span>(<span class="ident">year</span> <span class="kw">in</span> <span class="ident">MIN_YEAR</span> <span class="op">=&gt;</span> <span class="ident">MAX_YEAR</span>);
-        <span class="macro">assert_value_in_range</span><span class="macro">!</span>(<span class="ident">ordinal</span> <span class="kw">in</span> <span class="number">1</span> <span class="op">=&gt;</span> <span class="ident">days_in_year</span>(<span class="ident">year</span>), <span class="ident">given</span> <span class="ident">year</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_yo</span>(<span class="ident">year</span>: <span class="ident">i32</span>, <span class="ident">ordinal</span>: <span class="ident">u16</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+        <span class="macro">assert_value_in_range</span><span class="macro">!</span>(<span class="ident">year</span> <span class="kw">in</span> <span class="ident">MIN_YEAR</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">MAX_YEAR</span>);
+        <span class="macro">assert_value_in_range</span><span class="macro">!</span>(<span class="ident">ordinal</span> <span class="kw">in</span> <span class="number">1</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">days_in_year</span>(<span class="ident">year</span>), <span class="ident">given</span> <span class="ident">year</span>);
         <span class="ident">internals</span>::<span class="ident">Date</span>::<span class="ident">from_yo_unchecked</span>(<span class="ident">year</span>, <span class="ident">ordinal</span>)
     }
 
@@ -1367,9 +1367,9 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function is `const fn` when using rustc &gt;= 1.46.</span>
     <span class="attribute">#[<span class="ident">const_fn</span>(<span class="string">&quot;1.46&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">try_from_yo</span>(<span class="ident">year</span>: <span class="ident">i32</span>, <span class="ident">ordinal</span>: <span class="ident">u16</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">error</span>::<span class="ident">ComponentRange</span><span class="op">&gt;</span> {
-        <span class="macro">ensure_value_in_range</span><span class="macro">!</span>(<span class="ident">year</span> <span class="kw">in</span> <span class="ident">MIN_YEAR</span> <span class="op">=&gt;</span> <span class="ident">MAX_YEAR</span>);
-        <span class="macro">ensure_value_in_range</span><span class="macro">!</span>(<span class="ident">ordinal</span> <span class="ident">conditionally</span> <span class="kw">in</span> <span class="number">1</span> <span class="op">=&gt;</span> <span class="ident">days_in_year</span>(<span class="ident">year</span>));
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">try_from_yo</span>(<span class="ident">year</span>: <span class="ident">i32</span>, <span class="ident">ordinal</span>: <span class="ident">u16</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">error</span>::<span class="ident">ComponentRange</span><span class="op">&gt;</span> {
+        <span class="macro">ensure_value_in_range</span><span class="macro">!</span>(<span class="ident">year</span> <span class="kw">in</span> <span class="ident">MIN_YEAR</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">MAX_YEAR</span>);
+        <span class="macro">ensure_value_in_range</span><span class="macro">!</span>(<span class="ident">ordinal</span> <span class="ident">conditionally</span> <span class="kw">in</span> <span class="number">1</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">days_in_year</span>(<span class="ident">year</span>));
         <span class="prelude-val">Ok</span>(<span class="ident">internals</span>::<span class="ident">Date</span>::<span class="ident">from_yo_unchecked</span>(<span class="ident">year</span>, <span class="ident">ordinal</span>))
     }
 
@@ -1406,9 +1406,9 @@
         <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;For dates knowable at compile-time, use the `date!` macro. For situations where a \
                 value isn&#39;t known, use `Date::try_from_iso_ywd`.&quot;</span>
     )]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_iso_ywd</span>(<span class="ident">year</span>: <span class="ident">i32</span>, <span class="ident">week</span>: <span class="ident">u8</span>, <span class="ident">weekday</span>: <span class="ident">Weekday</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
-        <span class="macro">assert_value_in_range</span><span class="macro">!</span>(<span class="ident">year</span> <span class="kw">in</span> <span class="ident">MIN_YEAR</span> <span class="op">=&gt;</span> <span class="ident">MAX_YEAR</span>);
-        <span class="macro">assert_value_in_range</span><span class="macro">!</span>(<span class="ident">week</span> <span class="kw">in</span> <span class="number">1</span> <span class="op">=&gt;</span> <span class="ident">weeks_in_year</span>(<span class="ident">year</span>), <span class="ident">given</span> <span class="ident">year</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_iso_ywd</span>(<span class="ident">year</span>: <span class="ident">i32</span>, <span class="ident">week</span>: <span class="ident">u8</span>, <span class="ident">weekday</span>: <span class="ident">Weekday</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+        <span class="macro">assert_value_in_range</span><span class="macro">!</span>(<span class="ident">year</span> <span class="kw">in</span> <span class="ident">MIN_YEAR</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">MAX_YEAR</span>);
+        <span class="macro">assert_value_in_range</span><span class="macro">!</span>(<span class="ident">week</span> <span class="kw">in</span> <span class="number">1</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">weeks_in_year</span>(<span class="ident">year</span>), <span class="ident">given</span> <span class="ident">year</span>);
         <span class="ident">internals</span>::<span class="ident">Date</span>::<span class="ident">from_iso_ywd_unchecked</span>(<span class="ident">year</span>, <span class="ident">week</span>, <span class="ident">weekday</span>)
     }
 
@@ -1434,9 +1434,9 @@
         <span class="ident">year</span>: <span class="ident">i32</span>,
         <span class="ident">week</span>: <span class="ident">u8</span>,
         <span class="ident">weekday</span>: <span class="ident">Weekday</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">error</span>::<span class="ident">ComponentRange</span><span class="op">&gt;</span> {
-        <span class="macro">ensure_value_in_range</span><span class="macro">!</span>(<span class="ident">year</span> <span class="kw">in</span> <span class="ident">MIN_YEAR</span> <span class="op">=&gt;</span> <span class="ident">MAX_YEAR</span>);
-        <span class="macro">ensure_value_in_range</span><span class="macro">!</span>(<span class="ident">week</span> <span class="ident">conditionally</span> <span class="kw">in</span> <span class="number">1</span> <span class="op">=&gt;</span> <span class="ident">weeks_in_year</span>(<span class="ident">year</span>));
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">error</span>::<span class="ident">ComponentRange</span><span class="op">&gt;</span> {
+        <span class="macro">ensure_value_in_range</span><span class="macro">!</span>(<span class="ident">year</span> <span class="kw">in</span> <span class="ident">MIN_YEAR</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">MAX_YEAR</span>);
+        <span class="macro">ensure_value_in_range</span><span class="macro">!</span>(<span class="ident">week</span> <span class="ident">conditionally</span> <span class="kw">in</span> <span class="number">1</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">weeks_in_year</span>(<span class="ident">year</span>));
         <span class="prelude-val">Ok</span>(<span class="ident">internals</span>::<span class="ident">Date</span>::<span class="ident">from_iso_ywd_unchecked</span>(<span class="ident">year</span>, <span class="ident">week</span>, <span class="ident">weekday</span>))
     }
 
@@ -1454,7 +1454,7 @@
         <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;This method returns a value that assumes an offset of UTC.&quot;</span>
     )]</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">deprecated</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">today</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">today</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">PrimitiveDateTime</span>::<span class="ident">now</span>().<span class="ident">date</span>()
     }
 
@@ -1470,8 +1470,8 @@
     <span class="doccomment">/// This function is `const fn` when using rustc &gt;= 1.46.</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy</span>::<span class="ident">missing_const_for_fn</span>)]</span>
     <span class="attribute">#[<span class="ident">const_fn</span>(<span class="string">&quot;1.46&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">year</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">i32</span> {
-        <span class="self">self</span>.<span class="ident">value</span> <span class="op">&gt;&gt;</span> <span class="number">9</span>
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">year</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i32</span> {
+        <span class="self">self</span>.<span class="ident">value</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">9</span>
     }
 
     <span class="doccomment">/// Get the month. If fetching both the month and day, it is more efficient</span>
@@ -1487,7 +1487,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function is `const fn` when using rustc &gt;= 1.46.</span>
     <span class="attribute">#[<span class="ident">const_fn</span>(<span class="string">&quot;1.46&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">month</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u8</span> {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">month</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
         <span class="self">self</span>.<span class="ident">month_day</span>().<span class="number">0</span>
     }
 
@@ -1504,7 +1504,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function is `const fn` when using rustc &gt;= 1.46.</span>
     <span class="attribute">#[<span class="ident">const_fn</span>(<span class="string">&quot;1.46&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">day</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u8</span> {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">day</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
         <span class="self">self</span>.<span class="ident">month_day</span>().<span class="number">1</span>
     }
 
@@ -1524,7 +1524,7 @@
     <span class="comment">// For whatever reason, rustc has difficulty optimizing this function. It&#39;s</span>
     <span class="comment">// significantly faster to write the statements out by hand.</span>
     <span class="attribute">#[<span class="ident">const_fn</span>(<span class="string">&quot;1.46&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">month_day</span>(<span class="self">self</span>) <span class="op">-&gt;</span> (<span class="ident">u8</span>, <span class="ident">u8</span>) {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">month_day</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">u8</span>, <span class="ident">u8</span>) {
         <span class="doccomment">/// The number of days up to and including the given month. Common years</span>
         <span class="doccomment">/// are first, followed by leap years.</span>
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy</span>::<span class="ident">items_after_statements</span>)]</span>
@@ -1577,7 +1577,7 @@
     <span class="doccomment">/// This function is `const fn` when using rustc &gt;= 1.46.</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy</span>::<span class="ident">missing_const_for_fn</span>)]</span>
     <span class="attribute">#[<span class="ident">const_fn</span>(<span class="string">&quot;1.46&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">ordinal</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u16</span> {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">ordinal</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u16</span> {
         (<span class="self">self</span>.<span class="ident">value</span> <span class="op">&amp;</span> <span class="number">0x1FF</span>) <span class="kw">as</span> <span class="ident">u16</span>
     }
 
@@ -1594,13 +1594,13 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function is `const fn` when using rustc &gt;= 1.46.</span>
     <span class="attribute">#[<span class="ident">const_fn</span>(<span class="string">&quot;1.46&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">iso_year_week</span>(<span class="self">self</span>) <span class="op">-&gt;</span> (<span class="ident">i32</span>, <span class="ident">u8</span>) {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">iso_year_week</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">i32</span>, <span class="ident">u8</span>) {
         <span class="kw">let</span> (<span class="ident">year</span>, <span class="ident">ordinal</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">as_yo</span>();
 
         <span class="kw">match</span> ((<span class="ident">ordinal</span> <span class="op">+</span> <span class="number">10</span> <span class="op">-</span> <span class="self">self</span>.<span class="ident">iso_weekday_number</span>() <span class="kw">as</span> <span class="ident">u16</span>) <span class="op">/</span> <span class="number">7</span>) <span class="kw">as</span> <span class="ident">u8</span> {
-            <span class="number">0</span> <span class="op">=&gt;</span> (<span class="ident">year</span> <span class="op">-</span> <span class="number">1</span>, <span class="ident">weeks_in_year</span>(<span class="ident">year</span> <span class="op">-</span> <span class="number">1</span>)),
-            <span class="number">53</span> <span class="kw">if</span> <span class="ident">weeks_in_year</span>(<span class="ident">year</span>) <span class="op">==</span> <span class="number">52</span> <span class="op">=&gt;</span> (<span class="ident">year</span> <span class="op">+</span> <span class="number">1</span>, <span class="number">1</span>),
-            <span class="kw">_</span> <span class="op">=&gt;</span> (
+            <span class="number">0</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="ident">year</span> <span class="op">-</span> <span class="number">1</span>, <span class="ident">weeks_in_year</span>(<span class="ident">year</span> <span class="op">-</span> <span class="number">1</span>)),
+            <span class="number">53</span> <span class="kw">if</span> <span class="ident">weeks_in_year</span>(<span class="ident">year</span>) <span class="op">=</span><span class="op">=</span> <span class="number">52</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="ident">year</span> <span class="op">+</span> <span class="number">1</span>, <span class="number">1</span>),
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> (
                 <span class="ident">year</span>,
                 ((<span class="ident">ordinal</span> <span class="op">+</span> <span class="number">10</span> <span class="op">-</span> <span class="self">self</span>.<span class="ident">iso_weekday_number</span>() <span class="kw">as</span> <span class="ident">u16</span>) <span class="op">/</span> <span class="number">7</span>) <span class="kw">as</span> <span class="ident">u8</span>,
             ),
@@ -1622,7 +1622,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function is `const fn` when using rustc &gt;= 1.46.</span>
     <span class="attribute">#[<span class="ident">const_fn</span>(<span class="string">&quot;1.46&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">week</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u8</span> {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">week</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
         <span class="self">self</span>.<span class="ident">iso_year_week</span>().<span class="number">1</span>
     }
 
@@ -1640,7 +1640,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function is `const fn` when using rustc &gt;= 1.46.</span>
     <span class="attribute">#[<span class="ident">const_fn</span>(<span class="string">&quot;1.46&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">sunday_based_week</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u8</span> {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">sunday_based_week</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
         ((<span class="self">self</span>.<span class="ident">ordinal</span>() <span class="kw">as</span> <span class="ident">i16</span> <span class="op">-</span> <span class="self">self</span>.<span class="ident">number_days_from_sunday</span>() <span class="kw">as</span> <span class="ident">i16</span> <span class="op">+</span> <span class="number">6</span>) <span class="op">/</span> <span class="number">7</span>) <span class="kw">as</span> <span class="ident">u8</span>
     }
 
@@ -1658,7 +1658,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function is `const fn` when using rustc &gt;= 1.46.</span>
     <span class="attribute">#[<span class="ident">const_fn</span>(<span class="string">&quot;1.46&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">monday_based_week</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u8</span> {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">monday_based_week</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
         ((<span class="self">self</span>.<span class="ident">ordinal</span>() <span class="kw">as</span> <span class="ident">i16</span> <span class="op">-</span> <span class="self">self</span>.<span class="ident">number_days_from_monday</span>() <span class="kw">as</span> <span class="ident">i16</span> <span class="op">+</span> <span class="number">6</span>) <span class="op">/</span> <span class="number">7</span>) <span class="kw">as</span> <span class="ident">u8</span>
     }
 
@@ -1671,7 +1671,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function is `const fn` when using rustc &gt;= 1.46.</span>
     <span class="attribute">#[<span class="ident">const_fn</span>(<span class="string">&quot;1.46&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">as_ymd</span>(<span class="self">self</span>) <span class="op">-&gt;</span> (<span class="ident">i32</span>, <span class="ident">u8</span>, <span class="ident">u8</span>) {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">as_ymd</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">i32</span>, <span class="ident">u8</span>, <span class="ident">u8</span>) {
         <span class="kw">let</span> (<span class="ident">month</span>, <span class="ident">day</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">month_day</span>();
         (<span class="self">self</span>.<span class="ident">year</span>(), <span class="ident">month</span>, <span class="ident">day</span>)
     }
@@ -1686,7 +1686,7 @@
     <span class="doccomment">/// This function is `const fn` when using rustc &gt;= 1.46.</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy</span>::<span class="ident">missing_const_for_fn</span>)]</span>
     <span class="attribute">#[<span class="ident">const_fn</span>(<span class="string">&quot;1.46&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">as_yo</span>(<span class="self">self</span>) <span class="op">-&gt;</span> (<span class="ident">i32</span>, <span class="ident">u16</span>) {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">as_yo</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">i32</span>, <span class="ident">u16</span>) {
         (<span class="self">self</span>.<span class="ident">year</span>(), <span class="self">self</span>.<span class="ident">ordinal</span>())
     }
 
@@ -1695,7 +1695,7 @@
     <span class="doccomment">/// This is equivalent to calling `.weekday().iso_weekday_number()`, but is</span>
     <span class="doccomment">/// usable in `const` contexts.</span>
     <span class="attribute">#[<span class="ident">const_fn</span>(<span class="string">&quot;1.46&quot;</span>)]</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">iso_weekday_number</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u8</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">iso_weekday_number</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
         <span class="self">self</span>.<span class="ident">number_days_from_monday</span>() <span class="op">+</span> <span class="number">1</span>
     }
 
@@ -1704,7 +1704,7 @@
     <span class="doccomment">/// This is equivalent to calling `.weekday().number_days_from_sunday()`,</span>
     <span class="doccomment">/// but is usable in `const` contexts.</span>
     <span class="attribute">#[<span class="ident">const_fn</span>(<span class="string">&quot;1.46&quot;</span>)]</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">number_days_from_sunday</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u8</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">number_days_from_sunday</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
         <span class="self">self</span>.<span class="ident">iso_weekday_number</span>() <span class="op">%</span> <span class="number">7</span>
     }
 
@@ -1713,7 +1713,7 @@
     <span class="doccomment">/// This is equivalent to calling `.weekday().number_days_from_monday()`,</span>
     <span class="doccomment">/// but is usable in `const` contexts.</span>
     <span class="attribute">#[<span class="ident">const_fn</span>(<span class="string">&quot;1.46&quot;</span>)]</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">number_days_from_monday</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u8</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">number_days_from_monday</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
         <span class="kw">let</span> (<span class="ident">year</span>, <span class="ident">month</span>, <span class="ident">day</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">as_ymd</span>();
 
         <span class="kw">let</span> (<span class="ident">month</span>, <span class="ident">adjusted_year</span>) <span class="op">=</span> <span class="kw">if</span> <span class="ident">month</span> <span class="op">&lt;</span> <span class="number">3</span> {
@@ -1756,18 +1756,18 @@
     <span class="doccomment">/// assert_eq!(date!(2019-11-01).weekday(), Friday);</span>
     <span class="doccomment">/// assert_eq!(date!(2019-12-01).weekday(), Sunday);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">weekday</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Weekday</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">weekday</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Weekday</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">number_days_from_monday</span>() {
-            <span class="number">0</span> <span class="op">=&gt;</span> <span class="ident">Weekday</span>::<span class="ident">Monday</span>,
-            <span class="number">1</span> <span class="op">=&gt;</span> <span class="ident">Weekday</span>::<span class="ident">Tuesday</span>,
-            <span class="number">2</span> <span class="op">=&gt;</span> <span class="ident">Weekday</span>::<span class="ident">Wednesday</span>,
-            <span class="number">3</span> <span class="op">=&gt;</span> <span class="ident">Weekday</span>::<span class="ident">Thursday</span>,
-            <span class="number">4</span> <span class="op">=&gt;</span> <span class="ident">Weekday</span>::<span class="ident">Friday</span>,
-            <span class="number">5</span> <span class="op">=&gt;</span> <span class="ident">Weekday</span>::<span class="ident">Saturday</span>,
-            <span class="number">6</span> <span class="op">=&gt;</span> <span class="ident">Weekday</span>::<span class="ident">Sunday</span>,
+            <span class="number">0</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Weekday</span>::<span class="ident">Monday</span>,
+            <span class="number">1</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Weekday</span>::<span class="ident">Tuesday</span>,
+            <span class="number">2</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Weekday</span>::<span class="ident">Wednesday</span>,
+            <span class="number">3</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Weekday</span>::<span class="ident">Thursday</span>,
+            <span class="number">4</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Weekday</span>::<span class="ident">Friday</span>,
+            <span class="number">5</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Weekday</span>::<span class="ident">Saturday</span>,
+            <span class="number">6</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Weekday</span>::<span class="ident">Sunday</span>,
             <span class="comment">// FIXME The compiler isn&#39;t able to optimize this away. See</span>
             <span class="comment">// rust-lang/rust#66993.</span>
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="macro">unreachable</span><span class="macro">!</span>(<span class="string">&quot;A value mod 7 is always in the range 0..7&quot;</span>),
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">unreachable</span><span class="macro">!</span>(<span class="string">&quot;A value mod 7 is always in the range 0..7&quot;</span>),
         }
     }
 
@@ -1779,13 +1779,13 @@
     <span class="doccomment">/// assert_eq!(date!(2019-01-31).next_day(), date!(2019-02-01));</span>
     <span class="doccomment">/// assert_eq!(date!(2019-12-31).next_day(), date!(2020-01-01));</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">next_day</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">next_day</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">let</span> (<span class="kw-2">mut</span> <span class="ident">year</span>, <span class="kw-2">mut</span> <span class="ident">ordinal</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">as_yo</span>();
 
-        <span class="ident">ordinal</span> <span class="op">+=</span> <span class="number">1</span>;
+        <span class="ident">ordinal</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
 
         <span class="kw">if</span> <span class="ident">ordinal</span> <span class="op">&gt;</span> <span class="ident">days_in_year</span>(<span class="ident">year</span>) {
-            <span class="ident">year</span> <span class="op">+=</span> <span class="number">1</span>;
+            <span class="ident">year</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
             <span class="ident">ordinal</span> <span class="op">=</span> <span class="number">1</span>;
         }
 
@@ -1804,13 +1804,13 @@
     <span class="doccomment">/// assert_eq!(date!(2019-02-01).previous_day(), date!(2019-01-31));</span>
     <span class="doccomment">/// assert_eq!(date!(2020-01-01).previous_day(), date!(2019-12-31));</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">previous_day</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">previous_day</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">let</span> (<span class="kw-2">mut</span> <span class="ident">year</span>, <span class="kw-2">mut</span> <span class="ident">ordinal</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">as_yo</span>();
 
-        <span class="ident">ordinal</span> <span class="op">-=</span> <span class="number">1</span>;
+        <span class="ident">ordinal</span> <span class="op">-</span><span class="op">=</span> <span class="number">1</span>;
 
-        <span class="kw">if</span> <span class="ident">ordinal</span> <span class="op">==</span> <span class="number">0</span> {
-            <span class="ident">year</span> <span class="op">-=</span> <span class="number">1</span>;
+        <span class="kw">if</span> <span class="ident">ordinal</span> <span class="op">=</span><span class="op">=</span> <span class="number">0</span> {
+            <span class="ident">year</span> <span class="op">-</span><span class="op">=</span> <span class="number">1</span>;
             <span class="ident">ordinal</span> <span class="op">=</span> <span class="ident">days_in_year</span>(<span class="ident">year</span>);
         }
 
@@ -1837,12 +1837,12 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function is `const fn` when using rustc &gt;= 1.46.</span>
     <span class="attribute">#[<span class="ident">const_fn</span>(<span class="string">&quot;1.46&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">julian_day</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">i64</span> {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">julian_day</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i64</span> {
         <span class="kw">let</span> (<span class="kw-2">mut</span> <span class="ident">year</span>, <span class="kw-2">mut</span> <span class="ident">month</span>, <span class="ident">day</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">as_ymd</span>();
 
         <span class="kw">if</span> <span class="ident">month</span> <span class="op">&lt;</span> <span class="number">3</span> {
-            <span class="ident">year</span> <span class="op">-=</span> <span class="number">1</span>;
-            <span class="ident">month</span> <span class="op">+=</span> <span class="number">12</span>;
+            <span class="ident">year</span> <span class="op">-</span><span class="op">=</span> <span class="number">1</span>;
+            <span class="ident">month</span> <span class="op">+</span><span class="op">=</span> <span class="number">12</span>;
         }
 
         <span class="kw">let</span> <span class="ident">year</span> <span class="op">=</span> <span class="ident">year</span> <span class="kw">as</span> <span class="ident">i64</span>;
@@ -1871,7 +1871,7 @@
     <span class="doccomment">/// assert_eq!(Date::from_julian_day(2_458_849), date!(2019-12-31));</span>
     <span class="doccomment">/// ```</span>
     <span class="comment">// TODO Return a `Result&lt;Self, error::ComponentRange&gt;` in 0.3</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_julian_day</span>(<span class="ident">julian_day</span>: <span class="ident">i64</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_julian_day</span>(<span class="ident">julian_day</span>: <span class="ident">i64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">clippy</span>::<span class="ident">many_single_char_names</span>)]</span>
         <span class="kw">let</span> <span class="ident">z</span> <span class="op">=</span> <span class="ident">julian_day</span> <span class="op">-</span> <span class="number">1_721_119</span>;
         <span class="kw">let</span> <span class="ident">h</span> <span class="op">=</span> <span class="number">100</span> <span class="op">*</span> <span class="ident">z</span> <span class="op">-</span> <span class="number">25</span>;
@@ -1883,13 +1883,13 @@
         <span class="kw">let</span> <span class="ident">day</span> <span class="op">=</span> <span class="ident">c</span> <span class="op">-</span> (<span class="number">153</span> <span class="op">*</span> <span class="ident">month</span> <span class="op">-</span> <span class="number">457</span>) <span class="op">/</span> <span class="number">5</span>;
 
         <span class="kw">if</span> <span class="ident">month</span> <span class="op">&gt;</span> <span class="number">12</span> {
-            <span class="ident">year</span> <span class="op">+=</span> <span class="number">1</span>;
-            <span class="ident">month</span> <span class="op">-=</span> <span class="number">12</span>;
+            <span class="ident">year</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
+            <span class="ident">month</span> <span class="op">-</span><span class="op">=</span> <span class="number">12</span>;
         }
 
         <span class="kw">match</span> <span class="ident">Date</span>::<span class="ident">try_from_ymd</span>(<span class="ident">year</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="ident">month</span> <span class="kw">as</span> <span class="ident">u8</span>, <span class="ident">day</span> <span class="kw">as</span> <span class="ident">u8</span>) {
-            <span class="prelude-val">Ok</span>(<span class="ident">date</span>) <span class="op">=&gt;</span> <span class="ident">date</span>,
-            <span class="prelude-val">Err</span>(<span class="ident">err</span>) <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">err</span>),
+            <span class="prelude-val">Ok</span>(<span class="ident">date</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">date</span>,
+            <span class="prelude-val">Err</span>(<span class="ident">err</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">err</span>),
         }
     }
 }
@@ -1906,7 +1906,7 @@
     <span class="doccomment">///     date!(1970-01-01).with_time(time!(0:00))</span>
     <span class="doccomment">/// );</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">midnight</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">PrimitiveDateTime</span> {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">midnight</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">PrimitiveDateTime</span> {
         <span class="ident">PrimitiveDateTime</span>::<span class="ident">new</span>(<span class="self">self</span>, <span class="ident">Time</span>::<span class="ident">midnight</span>())
     }
 
@@ -1919,7 +1919,7 @@
     <span class="doccomment">///     date!(1970-01-01).midnight(),</span>
     <span class="doccomment">/// );</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">with_time</span>(<span class="self">self</span>, <span class="ident">time</span>: <span class="ident">Time</span>) <span class="op">-&gt;</span> <span class="ident">PrimitiveDateTime</span> {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">with_time</span>(<span class="self">self</span>, <span class="ident">time</span>: <span class="ident">Time</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">PrimitiveDateTime</span> {
         <span class="ident">PrimitiveDateTime</span>::<span class="ident">new</span>(<span class="self">self</span>, <span class="ident">time</span>)
     }
 
@@ -1941,7 +1941,7 @@
         <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;For times knowable at compile-time, use the `time!` macro and `Date::with_time`. \
                 For situations where a value isn&#39;t known, use `Date::try_with_hms`.&quot;</span>
     )]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_hms</span>(<span class="self">self</span>, <span class="ident">hour</span>: <span class="ident">u8</span>, <span class="ident">minute</span>: <span class="ident">u8</span>, <span class="ident">second</span>: <span class="ident">u8</span>) <span class="op">-&gt;</span> <span class="ident">PrimitiveDateTime</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_hms</span>(<span class="self">self</span>, <span class="ident">hour</span>: <span class="ident">u8</span>, <span class="ident">minute</span>: <span class="ident">u8</span>, <span class="ident">second</span>: <span class="ident">u8</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">PrimitiveDateTime</span> {
         <span class="ident">PrimitiveDateTime</span>::<span class="ident">new</span>(<span class="self">self</span>, <span class="ident">Time</span>::<span class="ident">from_hms</span>(<span class="ident">hour</span>, <span class="ident">minute</span>, <span class="ident">second</span>))
     }
 
@@ -1961,7 +1961,7 @@
         <span class="ident">hour</span>: <span class="ident">u8</span>,
         <span class="ident">minute</span>: <span class="ident">u8</span>,
         <span class="ident">second</span>: <span class="ident">u8</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">PrimitiveDateTime</span>, <span class="ident">error</span>::<span class="ident">ComponentRange</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">PrimitiveDateTime</span>, <span class="ident">error</span>::<span class="ident">ComponentRange</span><span class="op">&gt;</span> {
         <span class="prelude-val">Ok</span>(<span class="ident">PrimitiveDateTime</span>::<span class="ident">new</span>(
             <span class="self">self</span>,
             <span class="macro">const_try</span><span class="macro">!</span>(<span class="ident">Time</span>::<span class="ident">try_from_hms</span>(<span class="ident">hour</span>, <span class="ident">minute</span>, <span class="ident">second</span>)),
@@ -1993,7 +1993,7 @@
         <span class="ident">minute</span>: <span class="ident">u8</span>,
         <span class="ident">second</span>: <span class="ident">u8</span>,
         <span class="ident">millisecond</span>: <span class="ident">u16</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">PrimitiveDateTime</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">PrimitiveDateTime</span> {
         <span class="ident">PrimitiveDateTime</span>::<span class="ident">new</span>(
             <span class="self">self</span>,
             <span class="ident">Time</span>::<span class="ident">from_hms_milli</span>(<span class="ident">hour</span>, <span class="ident">minute</span>, <span class="ident">second</span>, <span class="ident">millisecond</span>),
@@ -2016,7 +2016,7 @@
         <span class="ident">minute</span>: <span class="ident">u8</span>,
         <span class="ident">second</span>: <span class="ident">u8</span>,
         <span class="ident">millisecond</span>: <span class="ident">u16</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">PrimitiveDateTime</span>, <span class="ident">error</span>::<span class="ident">ComponentRange</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">PrimitiveDateTime</span>, <span class="ident">error</span>::<span class="ident">ComponentRange</span><span class="op">&gt;</span> {
         <span class="prelude-val">Ok</span>(<span class="ident">PrimitiveDateTime</span>::<span class="ident">new</span>(
             <span class="self">self</span>,
             <span class="macro">const_try</span><span class="macro">!</span>(<span class="ident">Time</span>::<span class="ident">try_from_hms_milli</span>(<span class="ident">hour</span>, <span class="ident">minute</span>, <span class="ident">second</span>, <span class="ident">millisecond</span>)),
@@ -2047,7 +2047,7 @@
         <span class="ident">minute</span>: <span class="ident">u8</span>,
         <span class="ident">second</span>: <span class="ident">u8</span>,
         <span class="ident">microsecond</span>: <span class="ident">u32</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">PrimitiveDateTime</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">PrimitiveDateTime</span> {
         <span class="ident">PrimitiveDateTime</span>::<span class="ident">new</span>(
             <span class="self">self</span>,
             <span class="ident">Time</span>::<span class="ident">from_hms_micro</span>(<span class="ident">hour</span>, <span class="ident">minute</span>, <span class="ident">second</span>, <span class="ident">microsecond</span>),
@@ -2075,7 +2075,7 @@
         <span class="ident">minute</span>: <span class="ident">u8</span>,
         <span class="ident">second</span>: <span class="ident">u8</span>,
         <span class="ident">microsecond</span>: <span class="ident">u32</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">PrimitiveDateTime</span>, <span class="ident">error</span>::<span class="ident">ComponentRange</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">PrimitiveDateTime</span>, <span class="ident">error</span>::<span class="ident">ComponentRange</span><span class="op">&gt;</span> {
         <span class="prelude-val">Ok</span>(<span class="ident">PrimitiveDateTime</span>::<span class="ident">new</span>(
             <span class="self">self</span>,
             <span class="macro">const_try</span><span class="macro">!</span>(<span class="ident">Time</span>::<span class="ident">try_from_hms_micro</span>(<span class="ident">hour</span>, <span class="ident">minute</span>, <span class="ident">second</span>, <span class="ident">microsecond</span>)),
@@ -2106,7 +2106,7 @@
         <span class="ident">minute</span>: <span class="ident">u8</span>,
         <span class="ident">second</span>: <span class="ident">u8</span>,
         <span class="ident">nanosecond</span>: <span class="ident">u32</span>,
-    ) <span class="op">-&gt;</span> <span class="ident">PrimitiveDateTime</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">PrimitiveDateTime</span> {
         <span class="ident">PrimitiveDateTime</span>::<span class="ident">new</span>(<span class="self">self</span>, <span class="ident">Time</span>::<span class="ident">from_hms_nano</span>(<span class="ident">hour</span>, <span class="ident">minute</span>, <span class="ident">second</span>, <span class="ident">nanosecond</span>))
     }
 
@@ -2126,7 +2126,7 @@
         <span class="ident">minute</span>: <span class="ident">u8</span>,
         <span class="ident">second</span>: <span class="ident">u8</span>,
         <span class="ident">nanosecond</span>: <span class="ident">u32</span>,
-    ) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">PrimitiveDateTime</span>, <span class="ident">error</span>::<span class="ident">ComponentRange</span><span class="op">&gt;</span> {
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">PrimitiveDateTime</span>, <span class="ident">error</span>::<span class="ident">ComponentRange</span><span class="op">&gt;</span> {
         <span class="prelude-val">Ok</span>(<span class="ident">PrimitiveDateTime</span>::<span class="ident">new</span>(
             <span class="self">self</span>,
             <span class="macro">const_try</span><span class="macro">!</span>(<span class="ident">Time</span>::<span class="ident">try_from_hms_nano</span>(<span class="ident">hour</span>, <span class="ident">minute</span>, <span class="ident">second</span>, <span class="ident">nanosecond</span>)),
@@ -2142,7 +2142,7 @@
     <span class="doccomment">/// # use time::date;</span>
     <span class="doccomment">/// assert_eq!(date!(2019-01-02).format(&quot;%Y-%m-%d&quot;), &quot;2019-01-02&quot;);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">format</span>(<span class="self">self</span>, <span class="ident">format</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">String</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">format</span>(<span class="self">self</span>, <span class="ident">format</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
         <span class="self">self</span>.<span class="ident">lazy_format</span>(<span class="ident">format</span>).<span class="ident">to_string</span>()
     }
 
@@ -2152,7 +2152,7 @@
     <span class="doccomment">/// # use time::date;</span>
     <span class="doccomment">/// assert_eq!(date!(2019-01-02).lazy_format(&quot;%Y-%m-%d&quot;).to_string(), &quot;2019-01-02&quot;);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">lazy_format</span>(<span class="self">self</span>, <span class="ident">format</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="kw">impl</span> <span class="ident">Display</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">lazy_format</span>(<span class="self">self</span>, <span class="ident">format</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">impl</span> <span class="ident">Display</span> {
         <span class="ident">DeferredFormat</span>::<span class="ident">new</span>(<span class="ident">format</span>.<span class="ident">as_ref</span>())
             .<span class="ident">with_date</span>(<span class="self">self</span>)
             .<span class="ident">to_owned</span>()
@@ -2175,63 +2175,63 @@
     <span class="doccomment">///     Ok(date!(2019-W01-3))</span>
     <span class="doccomment">/// );</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse</span>(<span class="ident">s</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">format</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">ParseResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse</span>(<span class="ident">s</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">format</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ParseResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
         <span class="self">Self</span>::<span class="ident">try_from_parsed_items</span>(<span class="ident">parse</span>(<span class="ident">s</span>.<span class="ident">as_ref</span>(), <span class="kw-2">&amp;</span><span class="ident">format</span>.<span class="ident">into</span>())<span class="question-mark">?</span>)
     }
 
     <span class="doccomment">/// Given the items already parsed, attempt to create a `Date`.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">try_from_parsed_items</span>(<span class="ident">items</span>: <span class="ident">ParsedItems</span>) <span class="op">-&gt;</span> <span class="ident">ParseResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">try_from_parsed_items</span>(<span class="ident">items</span>: <span class="ident">ParsedItems</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ParseResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
         <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">items</span> {
-            ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">item</span>:<span class="ident">ident</span>),<span class="op">*</span> $(,)<span class="question-mark">?</span>) <span class="op">=&gt;</span> {
+            ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">item</span>:<span class="ident">ident</span>),<span class="op">*</span> $(,)<span class="question-mark">?</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">ParsedItems</span> { $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">item</span>: <span class="prelude-val">Some</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">item</span>)),<span class="kw-2">*</span>, .. }
             };
         }
 
         <span class="doccomment">/// Get the value needed to adjust the ordinal day for Sunday and</span>
         <span class="doccomment">/// Monday-based week numbering.</span>
-        <span class="kw">fn</span> <span class="ident">adjustment</span>(<span class="ident">year</span>: <span class="ident">i32</span>) <span class="op">-&gt;</span> <span class="ident">i16</span> {
+        <span class="kw">fn</span> <span class="ident">adjustment</span>(<span class="ident">year</span>: <span class="ident">i32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">i16</span> {
             <span class="kw">match</span> <span class="ident">internals</span>::<span class="ident">Date</span>::<span class="ident">from_yo_unchecked</span>(<span class="ident">year</span>, <span class="number">1</span>).<span class="ident">weekday</span>() {
-                <span class="ident">Weekday</span>::<span class="ident">Monday</span> <span class="op">=&gt;</span> <span class="number">7</span>,
-                <span class="ident">Weekday</span>::<span class="ident">Tuesday</span> <span class="op">=&gt;</span> <span class="number">1</span>,
-                <span class="ident">Weekday</span>::<span class="ident">Wednesday</span> <span class="op">=&gt;</span> <span class="number">2</span>,
-                <span class="ident">Weekday</span>::<span class="ident">Thursday</span> <span class="op">=&gt;</span> <span class="number">3</span>,
-                <span class="ident">Weekday</span>::<span class="ident">Friday</span> <span class="op">=&gt;</span> <span class="number">4</span>,
-                <span class="ident">Weekday</span>::<span class="ident">Saturday</span> <span class="op">=&gt;</span> <span class="number">5</span>,
-                <span class="ident">Weekday</span>::<span class="ident">Sunday</span> <span class="op">=&gt;</span> <span class="number">6</span>,
+                <span class="ident">Weekday</span>::<span class="ident">Monday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="number">7</span>,
+                <span class="ident">Weekday</span>::<span class="ident">Tuesday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="number">1</span>,
+                <span class="ident">Weekday</span>::<span class="ident">Wednesday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="number">2</span>,
+                <span class="ident">Weekday</span>::<span class="ident">Thursday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="number">3</span>,
+                <span class="ident">Weekday</span>::<span class="ident">Friday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="number">4</span>,
+                <span class="ident">Weekday</span>::<span class="ident">Saturday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="number">5</span>,
+                <span class="ident">Weekday</span>::<span class="ident">Sunday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="number">6</span>,
             }
         }
 
         <span class="kw">match</span> <span class="ident">items</span> {
-            <span class="macro">items</span><span class="macro">!</span>(<span class="ident">year</span>, <span class="ident">month</span>, <span class="ident">day</span>) <span class="op">=&gt;</span> {
+            <span class="macro">items</span><span class="macro">!</span>(<span class="ident">year</span>, <span class="ident">month</span>, <span class="ident">day</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">Date</span>::<span class="ident">try_from_ymd</span>(<span class="ident">year</span>, <span class="ident">month</span>.<span class="ident">get</span>(), <span class="ident">day</span>.<span class="ident">get</span>()).<span class="ident">map_err</span>(<span class="ident">Into</span>::<span class="ident">into</span>)
             }
-            <span class="macro">items</span><span class="macro">!</span>(<span class="ident">year</span>, <span class="ident">ordinal_day</span>) <span class="op">=&gt;</span> {
+            <span class="macro">items</span><span class="macro">!</span>(<span class="ident">year</span>, <span class="ident">ordinal_day</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">Date</span>::<span class="ident">try_from_yo</span>(<span class="ident">year</span>, <span class="ident">ordinal_day</span>.<span class="ident">get</span>()).<span class="ident">map_err</span>(<span class="ident">Into</span>::<span class="ident">into</span>)
             }
-            <span class="macro">items</span><span class="macro">!</span>(<span class="ident">week_based_year</span>, <span class="ident">iso_week</span>, <span class="ident">weekday</span>) <span class="op">=&gt;</span> {
+            <span class="macro">items</span><span class="macro">!</span>(<span class="ident">week_based_year</span>, <span class="ident">iso_week</span>, <span class="ident">weekday</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">Date</span>::<span class="ident">try_from_iso_ywd</span>(<span class="ident">week_based_year</span>, <span class="ident">iso_week</span>.<span class="ident">get</span>(), <span class="ident">weekday</span>).<span class="ident">map_err</span>(<span class="ident">Into</span>::<span class="ident">into</span>)
             }
-            <span class="macro">items</span><span class="macro">!</span>(<span class="ident">year</span>, <span class="ident">sunday_week</span>, <span class="ident">weekday</span>) <span class="op">=&gt;</span> <span class="ident">Date</span>::<span class="ident">try_from_yo</span>(
+            <span class="macro">items</span><span class="macro">!</span>(<span class="ident">year</span>, <span class="ident">sunday_week</span>, <span class="ident">weekday</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Date</span>::<span class="ident">try_from_yo</span>(
                 <span class="ident">year</span>,
                 (<span class="ident">sunday_week</span> <span class="kw">as</span> <span class="ident">i16</span> <span class="op">*</span> <span class="number">7</span> <span class="op">+</span> <span class="ident">weekday</span>.<span class="ident">number_days_from_sunday</span>() <span class="kw">as</span> <span class="ident">i16</span>
                     <span class="op">-</span> <span class="ident">adjustment</span>(<span class="ident">year</span>)
                     <span class="op">+</span> <span class="number">1</span>) <span class="kw">as</span> <span class="ident">u16</span>,
             )
             .<span class="ident">map_err</span>(<span class="ident">Into</span>::<span class="ident">into</span>),
-            <span class="macro">items</span><span class="macro">!</span>(<span class="ident">year</span>, <span class="ident">monday_week</span>, <span class="ident">weekday</span>) <span class="op">=&gt;</span> <span class="ident">Date</span>::<span class="ident">try_from_yo</span>(
+            <span class="macro">items</span><span class="macro">!</span>(<span class="ident">year</span>, <span class="ident">monday_week</span>, <span class="ident">weekday</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Date</span>::<span class="ident">try_from_yo</span>(
                 <span class="ident">year</span>,
                 (<span class="ident">monday_week</span> <span class="kw">as</span> <span class="ident">i16</span> <span class="op">*</span> <span class="number">7</span> <span class="op">+</span> <span class="ident">weekday</span>.<span class="ident">number_days_from_monday</span>() <span class="kw">as</span> <span class="ident">i16</span>
                     <span class="op">-</span> <span class="ident">adjustment</span>(<span class="ident">year</span>)
                     <span class="op">+</span> <span class="number">1</span>) <span class="kw">as</span> <span class="ident">u16</span>,
             )
             .<span class="ident">map_err</span>(<span class="ident">Into</span>::<span class="ident">into</span>),
-            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">error</span>::<span class="ident">Parse</span>::<span class="ident">InsufficientInformation</span>),
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">error</span>::<span class="ident">Parse</span>::<span class="ident">InsufficientInformation</span>),
         }
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Display</span> <span class="kw">for</span> <span class="ident">Date</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
         <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">format</span>::{<span class="ident">date</span>, <span class="ident">Padding</span>};
 
         <span class="ident">date</span>::<span class="ident">fmt_Y</span>(<span class="ident">f</span>, <span class="kw-2">*</span><span class="self">self</span>, <span class="ident">Padding</span>::<span class="ident">Zero</span>)<span class="question-mark">?</span>;
@@ -2247,7 +2247,7 @@
 <span class="kw">impl</span> <span class="ident">Add</span><span class="op">&lt;</span><span class="ident">Duration</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Date</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-    <span class="kw">fn</span> <span class="ident">add</span>(<span class="self">self</span>, <span class="ident">duration</span>: <span class="ident">Duration</span>) <span class="op">-&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
+    <span class="kw">fn</span> <span class="ident">add</span>(<span class="self">self</span>, <span class="ident">duration</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
         <span class="self">Self</span>::<span class="ident">from_julian_day</span>(<span class="self">self</span>.<span class="ident">julian_day</span>() <span class="op">+</span> <span class="ident">duration</span>.<span class="ident">whole_days</span>())
     }
 }
@@ -2255,7 +2255,7 @@
 <span class="kw">impl</span> <span class="ident">Add</span><span class="op">&lt;</span><span class="ident">StdDuration</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Date</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-    <span class="kw">fn</span> <span class="ident">add</span>(<span class="self">self</span>, <span class="ident">duration</span>: <span class="ident">StdDuration</span>) <span class="op">-&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
+    <span class="kw">fn</span> <span class="ident">add</span>(<span class="self">self</span>, <span class="ident">duration</span>: <span class="ident">StdDuration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
         <span class="self">Self</span>::<span class="ident">from_julian_day</span>(<span class="self">self</span>.<span class="ident">julian_day</span>() <span class="op">+</span> (<span class="ident">duration</span>.<span class="ident">as_secs</span>() <span class="op">/</span> <span class="number">86_400</span>) <span class="kw">as</span> <span class="ident">i64</span>)
     }
 }
@@ -2275,7 +2275,7 @@
 <span class="kw">impl</span> <span class="ident">Sub</span><span class="op">&lt;</span><span class="ident">Duration</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Date</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-    <span class="kw">fn</span> <span class="ident">sub</span>(<span class="self">self</span>, <span class="ident">duration</span>: <span class="ident">Duration</span>) <span class="op">-&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
+    <span class="kw">fn</span> <span class="ident">sub</span>(<span class="self">self</span>, <span class="ident">duration</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
         <span class="self">self</span> <span class="op">+</span> <span class="op">-</span><span class="ident">duration</span>
     }
 }
@@ -2283,7 +2283,7 @@
 <span class="kw">impl</span> <span class="ident">Sub</span><span class="op">&lt;</span><span class="ident">StdDuration</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Date</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-    <span class="kw">fn</span> <span class="ident">sub</span>(<span class="self">self</span>, <span class="ident">duration</span>: <span class="ident">StdDuration</span>) <span class="op">-&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
+    <span class="kw">fn</span> <span class="ident">sub</span>(<span class="self">self</span>, <span class="ident">duration</span>: <span class="ident">StdDuration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
         <span class="self">Self</span>::<span class="ident">from_julian_day</span>(<span class="self">self</span>.<span class="ident">julian_day</span>() <span class="op">-</span> (<span class="ident">duration</span>.<span class="ident">as_secs</span>() <span class="op">/</span> <span class="number">86_400</span>) <span class="kw">as</span> <span class="ident">i64</span>)
     }
 }
@@ -2303,22 +2303,22 @@
 <span class="kw">impl</span> <span class="ident">Sub</span><span class="op">&lt;</span><span class="ident">Date</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Date</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">Duration</span>;
 
-    <span class="kw">fn</span> <span class="ident">sub</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
+    <span class="kw">fn</span> <span class="ident">sub</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>::<span class="ident">Output</span> {
         <span class="ident">Duration</span>::<span class="ident">days</span>(<span class="self">self</span>.<span class="ident">julian_day</span>() <span class="op">-</span> <span class="ident">other</span>.<span class="ident">julian_day</span>())
     }
 }
 
 <span class="kw">impl</span> <span class="ident">PartialOrd</span> <span class="kw">for</span> <span class="ident">Date</span> {
-    <span class="kw">fn</span> <span class="ident">partial_cmp</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="self">Self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Ordering</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">partial_cmp</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Ordering</span><span class="op">&gt;</span> {
         <span class="prelude-val">Some</span>(<span class="self">self</span>.<span class="ident">cmp</span>(<span class="ident">other</span>))
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Ord</span> <span class="kw">for</span> <span class="ident">Date</span> {
-    <span class="kw">fn</span> <span class="ident">cmp</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="self">Self</span>) <span class="op">-&gt;</span> <span class="ident">Ordering</span> {
+    <span class="kw">fn</span> <span class="ident">cmp</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Ordering</span> {
         <span class="self">self</span>.<span class="ident">year</span>()
             .<span class="ident">cmp</span>(<span class="kw-2">&amp;</span><span class="ident">other</span>.<span class="ident">year</span>())
-            .<span class="ident">then_with</span>(<span class="op">||</span> <span class="self">self</span>.<span class="ident">ordinal</span>().<span class="ident">cmp</span>(<span class="kw-2">&amp;</span><span class="ident">other</span>.<span class="ident">ordinal</span>()))
+            .<span class="ident">then_with</span>(<span class="op">|</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">ordinal</span>().<span class="ident">cmp</span>(<span class="kw-2">&amp;</span><span class="ident">other</span>.<span class="ident">ordinal</span>()))
     }
 }
 

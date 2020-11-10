@@ -184,7 +184,7 @@
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">serde</span>::<span class="ident">Deserialize</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Weekday</span> {
-    <span class="kw">fn</span> <span class="ident">deserialize</span><span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>(<span class="ident">deserializer</span>: <span class="ident">D</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">D</span>::<span class="ident">Error</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">deserialize</span><span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>(<span class="ident">deserializer</span>: <span class="ident">D</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">D</span>::<span class="ident">Error</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">D</span>: <span class="ident">serde</span>::<span class="ident">Deserializer</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>,
     {
@@ -204,15 +204,15 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function is `const fn` when using rustc &gt;= 1.46.</span>
     <span class="attribute">#[<span class="ident">const_fn</span>(<span class="string">&quot;1.46&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">previous</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">previous</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">Monday</span> <span class="op">=&gt;</span> <span class="ident">Sunday</span>,
-            <span class="ident">Tuesday</span> <span class="op">=&gt;</span> <span class="ident">Monday</span>,
-            <span class="ident">Wednesday</span> <span class="op">=&gt;</span> <span class="ident">Tuesday</span>,
-            <span class="ident">Thursday</span> <span class="op">=&gt;</span> <span class="ident">Wednesday</span>,
-            <span class="ident">Friday</span> <span class="op">=&gt;</span> <span class="ident">Thursday</span>,
-            <span class="ident">Saturday</span> <span class="op">=&gt;</span> <span class="ident">Friday</span>,
-            <span class="ident">Sunday</span> <span class="op">=&gt;</span> <span class="ident">Saturday</span>,
+            <span class="ident">Monday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Sunday</span>,
+            <span class="ident">Tuesday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Monday</span>,
+            <span class="ident">Wednesday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Tuesday</span>,
+            <span class="ident">Thursday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Wednesday</span>,
+            <span class="ident">Friday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Thursday</span>,
+            <span class="ident">Saturday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Friday</span>,
+            <span class="ident">Sunday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Saturday</span>,
         }
     }
 
@@ -225,15 +225,15 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function is `const fn` when using rustc &gt;= 1.46.</span>
     <span class="attribute">#[<span class="ident">const_fn</span>(<span class="string">&quot;1.46&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">next</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">next</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">Monday</span> <span class="op">=&gt;</span> <span class="ident">Tuesday</span>,
-            <span class="ident">Tuesday</span> <span class="op">=&gt;</span> <span class="ident">Wednesday</span>,
-            <span class="ident">Wednesday</span> <span class="op">=&gt;</span> <span class="ident">Thursday</span>,
-            <span class="ident">Thursday</span> <span class="op">=&gt;</span> <span class="ident">Friday</span>,
-            <span class="ident">Friday</span> <span class="op">=&gt;</span> <span class="ident">Saturday</span>,
-            <span class="ident">Saturday</span> <span class="op">=&gt;</span> <span class="ident">Sunday</span>,
-            <span class="ident">Sunday</span> <span class="op">=&gt;</span> <span class="ident">Monday</span>,
+            <span class="ident">Monday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Tuesday</span>,
+            <span class="ident">Tuesday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Wednesday</span>,
+            <span class="ident">Wednesday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Thursday</span>,
+            <span class="ident">Thursday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Friday</span>,
+            <span class="ident">Friday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Saturday</span>,
+            <span class="ident">Saturday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Sunday</span>,
+            <span class="ident">Sunday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Monday</span>,
         }
     }
 
@@ -244,7 +244,7 @@
     <span class="doccomment">/// # use time::Weekday;</span>
     <span class="doccomment">/// assert_eq!(Weekday::Monday.iso_weekday_number(), 1);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">iso_weekday_number</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u8</span> {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">iso_weekday_number</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
         <span class="self">self</span>.<span class="ident">number_from_monday</span>()
     }
 
@@ -254,7 +254,7 @@
     <span class="doccomment">/// # use time::Weekday;</span>
     <span class="doccomment">/// assert_eq!(Weekday::Monday.number_from_monday(), 1);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">number_from_monday</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u8</span> {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">number_from_monday</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
         <span class="self">self</span>.<span class="ident">number_days_from_monday</span>() <span class="op">+</span> <span class="number">1</span>
     }
 
@@ -264,7 +264,7 @@
     <span class="doccomment">/// # use time::Weekday;</span>
     <span class="doccomment">/// assert_eq!(Weekday::Monday.number_from_sunday(), 2);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">number_from_sunday</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u8</span> {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">number_from_sunday</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
         <span class="self">self</span>.<span class="ident">number_days_from_sunday</span>() <span class="op">+</span> <span class="number">1</span>
     }
 
@@ -274,7 +274,7 @@
     <span class="doccomment">/// # use time::Weekday;</span>
     <span class="doccomment">/// assert_eq!(Weekday::Monday.number_days_from_monday(), 0);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">number_days_from_monday</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u8</span> {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">number_days_from_monday</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
         <span class="self">self</span> <span class="kw">as</span> <span class="ident">u8</span>
     }
 
@@ -284,21 +284,21 @@
     <span class="doccomment">/// # use time::Weekday;</span>
     <span class="doccomment">/// assert_eq!(Weekday::Monday.number_days_from_sunday(), 1);</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">number_days_from_sunday</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u8</span> {
+    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">number_days_from_sunday</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u8</span> {
         (<span class="self">self</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="op">+</span> <span class="number">1</span>) <span class="op">%</span> <span class="number">7</span>
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Display</span> <span class="kw">for</span> <span class="ident">Weekday</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
         <span class="ident">f</span>.<span class="ident">write_str</span>(<span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">Monday</span> <span class="op">=&gt;</span> <span class="string">&quot;Monday&quot;</span>,
-            <span class="ident">Tuesday</span> <span class="op">=&gt;</span> <span class="string">&quot;Tuesday&quot;</span>,
-            <span class="ident">Wednesday</span> <span class="op">=&gt;</span> <span class="string">&quot;Wednesday&quot;</span>,
-            <span class="ident">Thursday</span> <span class="op">=&gt;</span> <span class="string">&quot;Thursday&quot;</span>,
-            <span class="ident">Friday</span> <span class="op">=&gt;</span> <span class="string">&quot;Friday&quot;</span>,
-            <span class="ident">Saturday</span> <span class="op">=&gt;</span> <span class="string">&quot;Saturday&quot;</span>,
-            <span class="ident">Sunday</span> <span class="op">=&gt;</span> <span class="string">&quot;Sunday&quot;</span>,
+            <span class="ident">Monday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Monday&quot;</span>,
+            <span class="ident">Tuesday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Tuesday&quot;</span>,
+            <span class="ident">Wednesday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Wednesday&quot;</span>,
+            <span class="ident">Thursday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Thursday&quot;</span>,
+            <span class="ident">Friday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Friday&quot;</span>,
+            <span class="ident">Saturday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Saturday&quot;</span>,
+            <span class="ident">Sunday</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Sunday&quot;</span>,
         })
     }
 }

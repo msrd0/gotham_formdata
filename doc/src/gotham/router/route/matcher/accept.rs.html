@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.5.0/src/router/route/matcher/accept.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>accept.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../../../ayu.css" disabled ><script src="../../../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../../../gotham/index.html'><div class='logo-container rust-logo'><img src='../../../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.5.0/src/router/route/matcher/accept.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>accept.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../../../ayu.css" disabled ><script src="../../../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../../../../favicon.svg">
+<link rel="alternate icon" type="image/png" href="../../../../../favicon-16x16.png">
+<link rel="alternate icon" type="image/png" href="../../../../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../../../gotham/index.html'><div class='logo-container rust-logo'><img src='../../../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
                 <a id="settings-menu" href="../../../../../settings.html"><img src="../../../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
@@ -280,7 +282,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">QMime</span> {
-    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">mime</span>: <span class="ident">Mime</span>, <span class="ident">weight</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">mime</span>: <span class="ident">Mime</span>, <span class="ident">weight</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="self">Self</span> {
             <span class="ident">mime</span>,
             <span class="ident">_weight</span>: <span class="ident">weight</span>,
@@ -291,10 +293,10 @@
 <span class="kw">impl</span> <span class="ident">core</span>::<span class="ident">str</span>::<span class="ident">FromStr</span> <span class="kw">for</span> <span class="ident">QMime</span> {
     <span class="kw">type</span> <span class="prelude-val">Err</span> <span class="op">=</span> <span class="ident">anyhow</span>::<span class="ident">Error</span>;
 
-    <span class="kw">fn</span> <span class="ident">from_str</span>(<span class="ident">str</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-&gt;</span> <span class="ident">anyhow</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">from_str</span>(<span class="ident">str</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">anyhow</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="ident">str</span>.<span class="ident">find</span>(<span class="string">&quot;;q=&quot;</span>) {
-            <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="self">Self</span>::<span class="ident">new</span>(<span class="ident">str</span>.<span class="ident">parse</span>()<span class="question-mark">?</span>, <span class="prelude-val">None</span>)),
-            <span class="prelude-val">Some</span>(<span class="ident">index</span>) <span class="op">=&gt;</span> {
+            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="self">Self</span>::<span class="ident">new</span>(<span class="ident">str</span>.<span class="ident">parse</span>()<span class="question-mark">?</span>, <span class="prelude-val">None</span>)),
+            <span class="prelude-val">Some</span>(<span class="ident">index</span>) <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">let</span> <span class="ident">mime</span> <span class="op">=</span> <span class="ident">str</span>[..<span class="ident">index</span>].<span class="ident">parse</span>()<span class="question-mark">?</span>;
                 <span class="kw">let</span> <span class="ident">weight</span> <span class="op">=</span> <span class="ident">str</span>[<span class="ident">index</span> <span class="op">+</span> <span class="number">3</span>..].<span class="ident">parse</span>()<span class="question-mark">?</span>;
                 <span class="prelude-val">Ok</span>(<span class="self">Self</span>::<span class="ident">new</span>(<span class="ident">mime</span>, <span class="prelude-val">Some</span>(<span class="ident">weight</span>)))
@@ -370,7 +372,7 @@
 
 <span class="kw">impl</span> <span class="ident">AcceptHeaderRouteMatcher</span> {
     <span class="doccomment">/// Creates a new `AcceptHeaderRouteMatcher`</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">supported_media_types</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">mime</span>::<span class="ident">Mime</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">supported_media_types</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">mime</span>::<span class="ident">Mime</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">lookup_table</span> <span class="op">=</span> <span class="ident">LookupTable</span>::<span class="ident">from_types</span>(<span class="ident">supported_media_types</span>.<span class="ident">iter</span>(), <span class="bool-val">true</span>);
         <span class="self">Self</span> {
             <span class="ident">supported_media_types</span>,
@@ -380,7 +382,7 @@
 }
 
 <span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">fn</span> <span class="ident">err</span>(<span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="ident">State</span>) <span class="op">-&gt;</span> <span class="ident">RouteNonMatch</span> {
+<span class="kw">fn</span> <span class="ident">err</span>(<span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RouteNonMatch</span> {
     <span class="macro">trace</span><span class="macro">!</span>(
         <span class="string">&quot;[{}] did not provide an Accept with media types supported by this Route&quot;</span>,
         <span class="ident">request_id</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>)
@@ -396,7 +398,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Quality values within `Accept` header values are not considered by the matcher, as the</span>
     <span class="doccomment">/// matcher is only able to indicate whether a successful match has been found.</span>
-    <span class="kw">fn</span> <span class="ident">is_match</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="ident">State</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">RouteNonMatch</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">is_match</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">RouteNonMatch</span><span class="op">&gt;</span> {
         <span class="ident">HeaderMap</span>::<span class="ident">borrow_from</span>(<span class="ident">state</span>)
             .<span class="ident">get</span>(<span class="ident">ACCEPT</span>)
             .<span class="ident">map</span>(<span class="op">|</span><span class="ident">header</span><span class="op">|</span> {
@@ -406,22 +408,22 @@
                     .<span class="ident">map_err</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">err</span>(<span class="ident">state</span>))<span class="question-mark">?</span>
                     .<span class="ident">split</span>(<span class="string">&#39;,&#39;</span>)
                     .<span class="ident">map</span>(<span class="op">|</span><span class="ident">str</span><span class="op">|</span> <span class="ident">str</span>.<span class="ident">trim</span>().<span class="ident">parse</span>())
-                    .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">QMime</span><span class="op">&gt;</span>, <span class="kw">_</span><span class="op">&gt;&gt;</span>()
+                    .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">QMime</span><span class="op">&gt;</span>, <span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>()
                     .<span class="ident">map_err</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">err</span>(<span class="ident">state</span>))<span class="question-mark">?</span>;
 
                 <span class="kw">for</span> <span class="ident">qmime</span> <span class="kw">in</span> <span class="ident">acceptable</span> {
                     <span class="comment">// get mime type candidates from the lookup table</span>
                     <span class="kw">let</span> <span class="ident">essence</span> <span class="op">=</span> <span class="ident">qmime</span>.<span class="ident">mime</span>.<span class="ident">essence_str</span>();
                     <span class="kw">let</span> <span class="ident">candidates</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">lookup_table</span>.<span class="ident">get</span>(<span class="ident">essence</span>) {
-                        <span class="prelude-val">Some</span>(<span class="ident">candidates</span>) <span class="op">=&gt;</span> <span class="ident">candidates</span>,
-                        <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="kw">continue</span>,
+                        <span class="prelude-val">Some</span>(<span class="ident">candidates</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">candidates</span>,
+                        <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">continue</span>,
                     };
                     <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="ident">candidates</span> {
                         <span class="kw">let</span> <span class="ident">candidate</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">supported_media_types</span>[<span class="kw-2">*</span><span class="ident">i</span>];
 
                         <span class="comment">// check that the candidates have the same suffix - this is not included in the</span>
                         <span class="comment">// essence string</span>
-                        <span class="kw">if</span> <span class="ident">candidate</span>.<span class="ident">suffix</span>() <span class="op">!=</span> <span class="ident">qmime</span>.<span class="ident">mime</span>.<span class="ident">suffix</span>() <span class="op">&amp;&amp;</span> <span class="ident">qmime</span>.<span class="ident">mime</span>.<span class="ident">subtype</span>() <span class="op">!=</span> <span class="string">&quot;*&quot;</span>
+                        <span class="kw">if</span> <span class="ident">candidate</span>.<span class="ident">suffix</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">qmime</span>.<span class="ident">mime</span>.<span class="ident">suffix</span>() <span class="op">&amp;&amp;</span> <span class="ident">qmime</span>.<span class="ident">mime</span>.<span class="ident">subtype</span>() <span class="op">!</span><span class="op">=</span> <span class="string">&quot;*&quot;</span>
                         {
                             <span class="kw">continue</span>;
                         }
@@ -434,7 +436,7 @@
                 <span class="comment">// no candidates found</span>
                 <span class="prelude-val">Err</span>(<span class="ident">err</span>(<span class="ident">state</span>))
             })
-            .<span class="ident">unwrap_or_else</span>(<span class="op">||</span> {
+            .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> {
                 <span class="comment">// no accept header - assume all types are acceptable</span>
                 <span class="prelude-val">Ok</span>(())
             })
@@ -447,7 +449,7 @@
 
     <span class="kw">fn</span> <span class="ident">with_state</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="ident">accept</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">block</span>: <span class="ident">F</span>)
     <span class="kw">where</span>
-        <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">State</span>) <span class="op">-&gt;</span> (),
+        <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> (),
     {
         <span class="ident">State</span>::<span class="ident">with_new</span>(<span class="op">|</span><span class="ident">state</span><span class="op">|</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">headers</span> <span class="op">=</span> <span class="ident">HeaderMap</span>::<span class="ident">new</span>();

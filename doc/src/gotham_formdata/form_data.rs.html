@@ -22,20 +22,48 @@
 <span id="19">19</span>
 <span id="20">20</span>
 <span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="ident">gotham</span>::<span class="ident">state</span>::<span class="ident">State</span>;
 <span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">future</span>::<span class="ident">Future</span>, <span class="ident">pin</span>::<span class="ident">Pin</span>};
 
+<span class="doccomment">/// This is the return type of [FormData::parse_form_data].</span>
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">type_alias_bounds</span>)]</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">FormDataFuture</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FormData</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">dyn</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">T</span>::<span class="prelude-val">Err</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span><span class="op">&gt;</span><span class="op">&gt;</span>;
 
+<span class="doccomment">/**
+This is the trait implemented by `#[derive(FormData)]`. It provides a method to parse the struct
+it is implemented for to be parsed from the request body contained in gotham&#39;s state.
+
+You usually don&#39;t implement this trait directly, use the derive macro instead.
+*/</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">FormData</span>: <span class="ident">Sized</span> {
+	<span class="doccomment">/// The error type returned when parsing the request body was unsuccessful.</span>
 	<span class="kw">type</span> <span class="prelude-val">Err</span>;
 
+	<span class="doccomment">/// Parse the struct from the request body contained in gotham&#39;s state.</span>
 	<span class="kw">fn</span> <span class="ident">parse_form_data</span>(<span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">FormDataFuture</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
 }
 
+<span class="doccomment">/**
+This is the equivalent of [FormData] from the state&#39;s perspective. Use this if you prefer
+`state.parse_form_data::&lt;MyData&gt;()?` over `MyData::parse_form_data(&amp;mut state)?`.
+*/</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">FormDataFromState</span> {
+	<span class="doccomment">/// Parse `T` from the request body contained in this state.</span>
 	<span class="kw">fn</span> <span class="ident">parse_form_data</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FormData</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">FormDataFuture</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>;
 }
 

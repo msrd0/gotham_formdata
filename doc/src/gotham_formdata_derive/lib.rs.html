@@ -32,8 +32,12 @@
 <span id="29">29</span>
 <span id="30">30</span>
 <span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
 </pre><div class="example-wrap"><pre class="rust ">
-<span class="attribute">#![<span class="ident">warn</span>(<span class="ident">rust_2018_idioms</span>)]</span>
+<span class="doccomment">//! This crate implements derive macros for the `gotham_formdata` crate.</span>
+<span class="attribute">#![<span class="ident">warn</span>(<span class="ident">missing_docs</span>, <span class="ident">rust_2018_idioms</span>)]</span>
 <span class="attribute">#![<span class="ident">deny</span>(<span class="ident">unreachable_pub</span>)]</span>
 
 <span class="attribute">#[<span class="ident">macro_use</span>]</span>
@@ -60,6 +64,8 @@
 	<span class="ident">print_tokens</span>(<span class="ident">expand</span>(<span class="macro">parse_macro_input</span><span class="macro">!</span>(<span class="ident">input</span>)).<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="ident">err</span><span class="op">|</span> <span class="ident">err</span>.<span class="ident">to_compile_error</span>()))
 }
 
+<span class="doccomment">/// This derive macro implements `FormData` for the struct it is invoked on. Enums, unions and</span>
+<span class="doccomment">/// tuple structs are not supported.</span>
 <span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">FormData</span>, <span class="ident">attributes</span>(<span class="ident">validate</span>))]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_form_data</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
 	<span class="ident">expand_derive</span>(<span class="ident">input</span>, <span class="ident">form_data</span>::<span class="ident">expand</span>)

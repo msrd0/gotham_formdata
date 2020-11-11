@@ -35,31 +35,36 @@
 </div>
 <br/>
 
-This crate is an extension to the popular [gotham web framework][gotham] for Rust. It aims to reduce
-boilerplate necessary to read `application/x-www-form-urlencoded` and `multipart/form-data` requests
-as a stop-gap until gotham finally implements a [body extractor].
+This crate is an extension to the popular [gotham web framework][gotham] for Rust. It aims to
+reduce boilerplate necessary to read request bodies today as a stop-gap until gotham finally
+implements a [body extractor].
 
-## Warning
+## :sparkles: Features
 
-This crate is synchronous. It does load the entire request body into memory. **DO NOT USE IN
-PRODUCTION UNLESS YOU ENFORCE YOUR OWN UPLOAD LIMIT TO AVOID SERIOUS SECURITY VULNERABILITIES
-IN YOUR SOFTWARE.**
+- Parse `application/x-www-form-urlencoded` request bodies
+- Parse `multipart/form-data` request bodies
+- Verify the parsed request body
 
-For the same reason, file uploads are not supported, and this won't change unless this crate uses
-an async multipart parser.
+## :warning: Warning
 
-## Example
+This crate is synchronous. It loads the entire request body into memory. **YOU ARE RESPONSIBLE
+FOR ENFORCING UPLOAD LIMITS.** For this reason, file uploads are not supported, and this won't
+change before this crate switches to an async multipart parser.
+
+## :spiral_notepad: Example
 
 ```rust
 use gotham_formdata::FormData;
 
 #[derive(FormData)]
 struct LoginData {
+	#[validate(regex = "[a-zA-Z0-9_]", error = "The username contains illegal characters.")]
 	username: String,
+	#[validate(min_length = 6)]
 	password: String
 }
 
-async fn login_handler(state: &mut State) -> Result<Response<Body>> {
+async fn login_handler(state: &mut State) -> Result<Response<Body>, HandlerError> {
 	let login_data: LoginData = FormData::parse_form_data(state).await?;
 	Ok(if login_data.password == "secret" {
 		create_response(state, StatusCode::OK, TEXT_PLAIN, login_data.username)
@@ -69,7 +74,12 @@ async fn login_handler(state: &mut State) -> Result<Response<Body>> {
 }
 ```
 
-## License
+## :label: Versioning
+
+Like all rust crates, this crate will follow semantic versioning guidelines. However, changing
+the MSRV (minimum supported rust version) is not considered a breaking change.
+
+## :page_with_curl: License
 
 ```
 Licensed under the Apache License, Version 2.0 (the "License");

@@ -13,6 +13,7 @@ pub struct LazyRegex {
 }
 
 impl LazyRegex {
+	#[doc(hidden)]
 	pub const fn new(raw: &'static str) -> Self {
 		Self {
 			raw,
@@ -21,6 +22,7 @@ impl LazyRegex {
 		}
 	}
 
+	#[doc(hidden)]
 	pub fn get(&'static self) -> Result<&'static Regex, regex_crate::Error> {
 		self.once.call_once(|| self.re.set(MaybeUninit::new(Regex::new(self.raw))));
 

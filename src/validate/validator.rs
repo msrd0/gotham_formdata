@@ -58,6 +58,7 @@ where
 pub struct CombinedValidator<T: ?Sized, V: Validator<T>, W: Validator<T>>(V, W, PhantomData<T>);
 
 impl<T: ?Sized, V: Validator<T>, W: Validator<T>> CombinedValidator<T, V, W> {
+	/// Construct a new [CombinedValidator] from two other validators.
 	pub fn new(first_validator: V, second_validator: W) -> Self {
 		Self(first_validator, second_validator, Default::default())
 	}

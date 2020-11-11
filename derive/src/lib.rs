@@ -1,4 +1,5 @@
-#![warn(rust_2018_idioms)]
+//! This crate implements derive macros for the `gotham_formdata` crate.
+#![warn(missing_docs, rust_2018_idioms)]
 #![deny(unreachable_pub)]
 
 #[macro_use]
@@ -25,6 +26,8 @@ where
 	print_tokens(expand(parse_macro_input!(input)).unwrap_or_else(|err| err.to_compile_error()))
 }
 
+/// This derive macro implements `FormData` for the struct it is invoked on. Enums, unions and
+/// tuple structs are not supported.
 #[proc_macro_derive(FormData, attributes(validate))]
 pub fn derive_form_data(input: TokenStream) -> TokenStream {
 	expand_derive(input, form_data::expand)

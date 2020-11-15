@@ -5,15 +5,16 @@ name = "gotham_formdata_derive"
 version = "0.0.1"
 authors = ["Dominic Meiser <git@msrd0.de>"]
 edition = "2018"
-description = "Form data parsing for the gotham web framework - Derive macros"
+description = "Derive macros for gotham_formdata"
 license = "Apache-2.0"
 repository = "https://github.com/msrd0/gotham_formdata"
+include = ["src/**", "Cargo.toml", "LICENSE"]
 
 [lib]
 proc-macro = true
 
-[features]
 # This crate is only meant to be imported (and re-exported) by gotham_formdata, so default features make no sense.
+[features]
 regex = []
 
 [dependencies]

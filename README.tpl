@@ -1,7 +1,7 @@
-<!-- experimental code warning with spacing above -->
+<!-- alpha code warning with spacing above -->
 <br/>
 <div align="center">
-	:warning: <span color="#ffcc4d">This crate is still experimental and not yet ready for production.</span> :warning:
+	:warning: <span color="#ffcc4d">This crate is still alpha. APIs are subject to change.</span> :warning:
 </div>
 
 <!-- headline -->

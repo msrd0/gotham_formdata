@@ -110,7 +110,7 @@ and calling <a href="../../tokio/io/trait.AsyncWriteExt.html#method.flush"><code
 <p>If a file is opened with both read and append access, beware that after
 opening, and after every write, the position for reading may be set at the
 end of the file. So, before writing, save the current position (using
-<a href="../../tokio/io/trait.AsyncSeekExt.html#method.seek"><code>seek</code></a><code>(</code><a href="https://doc.rust-lang.org/nightly/std/io/enum.SeekFrom.html"><code>SeekFrom</code></a><code>::</code><a href="https://doc.rust-lang.org/nightly/std/io/enum.SeekFrom.html#variant.Current"><code>Current</code></a><code>(0))</code>), and restore it before the next read.</p>
+<a href="../../tokio/io/trait.AsyncSeekExt.html#method.seek"><code>seek</code></a><code>(</code><a href="../../tokio/io/enum.SeekFrom.html"><code>SeekFrom</code></a><code>::</code><a href="../../tokio/io/enum.SeekFrom.html#variant.Current"><code>Current</code></a><code>(0))</code>), and restore it before the next read.</p>
 <p>This is an async version of <a href="https://doc.rust-lang.org/nightly/std/fs/struct.OpenOptions.html#method.append"><code>std::fs::OpenOptions::append</code></a></p>
 <h2 id="note" class="section-header"><a href="#note">Note</a></h2>
 <p>This function doesn't create the file if it doesn't exist. Use the <a href="../../tokio/fs/struct.OpenOptions.html#method.create"><code>create</code></a>

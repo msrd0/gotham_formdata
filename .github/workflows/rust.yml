@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: dtolnay/rust-toolchain@master
         with:
-          toolchain: 1.47.0
+          toolchain: 1.48.0
       - run: cargo test -- trybuild_ui
   
   rustfmt:

@@ -7,7 +7,7 @@ use gotham::{
 	},
 	state::State
 };
-use mime::Mime;
+use mime::{Mime, APPLICATION_WWW_FORM_URLENCODED, BOUNDARY, MULTIPART_FORM_DATA};
 use multer::Multipart;
 use std::{borrow::Cow, future::Future, pin::Pin};
 
@@ -43,7 +43,7 @@ pub fn get_body(state: &mut State) -> Body {
 }
 
 pub fn is_urlencoded(content_type: &Mime) -> bool {
-	content_type.essence_str() == "application/x-www-form-urlencoded"
+	content_type.essence_str() == APPLICATION_WWW_FORM_URLENCODED.as_ref()
 }
 
 pub async fn parse_urlencoded<T: FormDataBuilder>(body: Body) -> Result<T::Data, Error<T::Err>> {
@@ -60,11 +60,11 @@ pub async fn parse_urlencoded<T: FormDataBuilder>(body: Body) -> Result<T::Data,
 }
 
 pub fn is_multipart(content_type: &Mime) -> bool {
-	content_type.essence_str() == "multipart/form-data"
+	content_type.essence_str() == MULTIPART_FORM_DATA.as_ref()
 }
 
 pub async fn parse_multipart<T: FormDataBuilder>(body: Body, content_type: &Mime) -> Result<T::Data, Error<T::Err>> {
-	let boundary = content_type.get_param("boundary").ok_or(Error::MissingBoundary)?.as_str();
+	let boundary = content_type.get_param(BOUNDARY).ok_or(Error::MissingBoundary)?.as_str();
 	let mut multipart = Multipart::new(body, boundary);
 
 	let mut builder = T::default();

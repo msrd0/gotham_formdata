@@ -57,22 +57,35 @@ impl<'a> FormDataBuilder<'a> {
 				type Data = #name #ty_gen;
 				type Err = #err_ident;
 
-				fn add_entry(&mut self, name: ::std::borrow::Cow<'_, str>, value: ::std::borrow::Cow<'_, str>) -> Result<(), ::gotham_formdata::Error<#err_ident>> {
-					let name: &str = &name;
-					if false {
-						unreachable!()
-					}
-					#( else if name == stringify!(#field_names) {
-						let value_parsed = value.parse::<#field_types>()
-							.map_err(|err| ::gotham_formdata::Error::IllegalField(name.to_owned(), err.into()))?;
-						log::debug!("Found value for field {}", name);
-						self.#field_names.replace(value_parsed);
-						Ok(())
-					} )*
-					else {
-						log::debug!("Found an unknown field: {}", name);
-						Err(::gotham_formdata::Error::UnknownField(name.to_owned()))
-					}
+				fn add_entry<'a>(
+						&'a mut self,
+						name: ::std::borrow::Cow<'a, str>,
+						mut value: ::gotham_formdata::internal::FormDataValue<Self::Err>
+				) -> ::gotham_formdata::internal::FormDataBuilderFuture<'a, Self::Err> {
+					use ::gotham_formdata::export::{FutureExt, StreamExt};
+
+					async move {
+						// TODO converting the stream to a string might not always be what we want
+						let mut buf = String::new();
+						while let Some(data) = value.next().await {
+							buf.push_str(::std::str::from_utf8(data?.as_ref())?);
+						}
+
+						let name: &str = &name;
+						match name {
+							#(stringify!(#field_names) => {
+								let value_parsed = buf.parse::<#field_types>()
+									.map_err(|err| ::gotham_formdata::Error::IllegalField(name.to_string(), err.into()))?;
+								log::debug!("Found value for field {}", name);
+								self.#field_names.replace(value_parsed);
+								Ok(())
+							},)*
+							_ => {
+								log::debug!("Found an unknown field: {}", name);
+								Err(::gotham_formdata::Error::UnknownField(name.to_string()))
+							}
+						}
+					}.boxed()
 				}
 
 				fn build(self) -> Result<#name #ty_gen, ::gotham_formdata::Error<Self::Err>> {

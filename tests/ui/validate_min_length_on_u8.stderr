@@ -1,18 +1,18 @@
-error[E0277]: the trait bound `u8: std::convert::AsRef<str>` is not satisfied
+error[E0277]: the trait bound `u8: AsRef<str>` is not satisfied
  --> $DIR/validate_min_length_on_u8.rs:3:10
   |
 3 | #[derive(FormData)]
-  |          ^^^^^^^^ the trait `std::convert::AsRef<str>` is not implemented for `u8`
+  |          ^^^^^^^^ the trait `AsRef<str>` is not implemented for `u8`
   |
-  = note: required because of the requirements on the impl of `gotham_formdata::validate::Validator<u8>` for `gotham_formdata::validate::MinLengthValidator`
+  = note: required because of the requirements on the impl of `Validator<u8>` for `MinLengthValidator`
   = note: this error originates in a derive macro (in Nightly builds, run with -Z macro-backtrace for more info)
 
-error[E0277]: the trait bound `gotham_formdata::validate::MinLengthValidator: gotham_formdata::validate::Validator<u8>` is not satisfied
+error[E0277]: the trait bound `MinLengthValidator: Validator<u8>` is not satisfied
  --> $DIR/validate_min_length_on_u8.rs:3:10
   |
 3 | #[derive(FormData)]
-  |          ^^^^^^^^ the trait `gotham_formdata::validate::Validator<u8>` is not implemented for `gotham_formdata::validate::MinLengthValidator`
+  |          ^^^^^^^^ the trait `Validator<u8>` is not implemented for `MinLengthValidator`
   |
   = help: the following implementations were found:
-            <gotham_formdata::validate::MinLengthValidator as gotham_formdata::validate::Validator<T>>
+            <MinLengthValidator as Validator<T>>
   = note: this error originates in a derive macro (in Nightly builds, run with -Z macro-backtrace for more info)

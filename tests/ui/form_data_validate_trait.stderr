@@ -26,5 +26,5 @@ error[E0599]: no function or associated item named `validate` found for trait ob
   = help: items from traits can only be used if the trait is implemented and in scope
   = note: the following traits define an item `validate`, perhaps you need to implement one of them:
           candidate #1: `ValidateMyFormDataFormData`
-          candidate #2: `gotham_formdata::validate::Validator`
+          candidate #2: `Validator`
   = note: this error originates in a derive macro (in Nightly builds, run with -Z macro-backtrace for more info)

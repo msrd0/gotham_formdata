@@ -11,9 +11,8 @@ implements a [body extractor].
 
 # :warning: Warning
 
-This crate is synchronous. It loads the entire request body into memory. **YOU ARE RESPONSIBLE
-FOR ENFORCING UPLOAD LIMITS.** For this reason, file uploads are not supported, and this won't
-change before this crate switches to an async multipart parser.
+This crate is asynchronous, but does not yet enforce uploads limits. **YOU ARE RESPONSIBLE
+FOR ENFORCING UPLOAD LIMITS.**
 
 # :spiral_notepad: Example
 
@@ -74,8 +73,8 @@ limitations under the License.
 #[doc(hidden)]
 /// Not public API.
 pub mod export {
-	pub use futures_util::future::FutureExt;
-	pub use gotham::state::State;
+	pub use futures_util::{future::FutureExt, stream::StreamExt};
+	pub use gotham::{hyper::body::Bytes, state::State};
 	pub use log;
 }
 

@@ -128,15 +128,7 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 						let content_type = content_type?;
 						::log::debug!("Parsing Form Data for type {} with Content-Type {}", stringify!(#name), content_type);
 
-						let res: Self = match &content_type {
-							ct if ::gotham_formdata::internal::is_urlencoded(ct) => {
-								::gotham_formdata::internal::parse_urlencoded::<#builder_ident #ty_gen>(body).await
-							},
-							ct if ::gotham_formdata::internal::is_multipart(ct) => {
-								::gotham_formdata::internal::parse_multipart::<#builder_ident #ty_gen>(body, ct).await
-							},
-							_ => Err(::gotham_formdata::Error::UnknownContentType(content_type))
-						}?;
+						let res = ::gotham_formdata::internal::parse::<#builder_ident #ty_gen>(body, content_type).await?;
 						#validate_trait::validate(&res).map_err(|err| ::gotham_formdata::Error::InvalidData(err))?;
 						Ok(res)
 					}.boxed()

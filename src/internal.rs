@@ -42,11 +42,21 @@ pub fn get_body(state: &mut State) -> Body {
 	state.take()
 }
 
-pub fn is_urlencoded(content_type: &Mime) -> bool {
+pub async fn parse<T: FormDataBuilder>(body: Body, content_type: Mime) -> Result<T::Data, Error<T::Err>> {
+	if is_urlencoded(&content_type) {
+		parse_urlencoded::<T>(body).await
+	} else if is_multipart(&content_type) {
+		parse_multipart::<T>(body, &content_type).await
+	} else {
+		Err(Error::UnknownContentType(content_type))
+	}
+}
+
+fn is_urlencoded(content_type: &Mime) -> bool {
 	content_type.essence_str() == APPLICATION_WWW_FORM_URLENCODED.as_ref()
 }
 
-pub async fn parse_urlencoded<T: FormDataBuilder>(body: Body) -> Result<T::Data, Error<T::Err>> {
+async fn parse_urlencoded<T: FormDataBuilder>(body: Body) -> Result<T::Data, Error<T::Err>> {
 	let body = body::to_bytes(body).await?;
 
 	let mut builder = T::default();
@@ -59,11 +69,11 @@ pub async fn parse_urlencoded<T: FormDataBuilder>(body: Body) -> Result<T::Data,
 	builder.build()
 }
 
-pub fn is_multipart(content_type: &Mime) -> bool {
+fn is_multipart(content_type: &Mime) -> bool {
 	content_type.essence_str() == MULTIPART_FORM_DATA.as_ref()
 }
 
-pub async fn parse_multipart<T: FormDataBuilder>(body: Body, content_type: &Mime) -> Result<T::Data, Error<T::Err>> {
+async fn parse_multipart<T: FormDataBuilder>(body: Body, content_type: &Mime) -> Result<T::Data, Error<T::Err>> {
 	let boundary = content_type.get_param(BOUNDARY).ok_or(Error::MissingBoundary)?.as_str();
 	let mut multipart = Multipart::new(body, boundary);
 

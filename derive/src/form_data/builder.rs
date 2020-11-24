@@ -71,16 +71,19 @@ impl<'a> FormDataBuilder<'a> {
 							buf.push_str(::std::str::from_utf8(data?.as_ref())?);
 						}
 
-						#(if name == stringify!(#field_names) {
-							let value_parsed = buf.parse::<#field_types>()
-								.map_err(|err| ::gotham_formdata::Error::IllegalField(name.to_string(), err.into()))?;
-							log::debug!("Found value for field {}", name);
-							self.#field_names.replace(value_parsed);
-							Ok(())
-						})else*
-						else {
-							log::debug!("Found an unknown field: {}", name);
-							Err(::gotham_formdata::Error::UnknownField(name.to_string()))
+						let name: &str = &name;
+						match name {
+							#(stringify!(#field_names) => {
+								let value_parsed = buf.parse::<#field_types>()
+									.map_err(|err| ::gotham_formdata::Error::IllegalField(name.to_string(), err.into()))?;
+								log::debug!("Found value for field {}", name);
+								self.#field_names.replace(value_parsed);
+								Ok(())
+							},)*
+							_ => {
+								log::debug!("Found an unknown field: {}", name);
+								Err(::gotham_formdata::Error::UnknownField(name.to_string()))
+							}
 						}
 					}.boxed()
 				}

@@ -74,69 +74,74 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 
 	let validate_trait = format_ident!("Validate{}FormData", name);
 
+	let mut dummy = format_ident!("_IMPL_FORMDATA_FOR_{}", name);
+	dummy.set_span(Span::call_site());
 	Ok(quote! {
 		#validation_error_struct
 
-		#builder_struct
-		#builder_default_impl
-		#builder_builder_impl
+		#[allow(non_upper_case_globals)]
+		static #dummy: () = {
+			#builder_struct
+			#builder_default_impl
+			#builder_builder_impl
 
-		#[doc(hidden)]
-		trait #validate_trait {
-			fn validate(&self) -> Result<(), #err_ident>;
-		}
-
-		impl #impl_gen #validate_trait for #name #ty_gen #were {
 			#[doc(hidden)]
-			fn validate(&self) -> Result<(), #err_ident> {
-				::log::debug!("Validating Form Data for type {}", stringify!(#name));
-
-				#({
-					const name: &str = stringify!(#field_idents);
-					let value = &self.#field_idents;
-					let validator = #field_validators;
-					let validation_error = #field_validation_errors;
-					if let Some(validator) = validator {
-						::gotham_formdata::validate::Validator::validate(validator, value)
-							.map_err(|err| {
-								match validation_error {
-									Some(ve) => #err_ident::invalid(name, ve),
-									None     => #err_ident::invalid(name, err)
-								}
-							})?;
-					}
-				})*
-
-				Ok(())
+			trait #validate_trait {
+				fn validate(&self) -> Result<(), #err_ident>;
 			}
-		}
 
-		impl #impl_gen ::gotham_formdata::FormData for #name #ty_gen #were {
-			type Err = ::gotham_formdata::Error<#err_ident>;
+			impl #impl_gen #validate_trait for #name #ty_gen #were {
+				#[doc(hidden)]
+				fn validate(&self) -> Result<(), #err_ident> {
+					::log::debug!("Validating Form Data for type {}", stringify!(#name));
 
-			fn parse_form_data(state: &mut ::gotham_formdata::export::State) -> ::gotham_formdata::FormDataFuture<Self> {
-				use ::gotham_formdata::export::FutureExt;
+					#({
+						const name: &str = stringify!(#field_idents);
+						let value = &self.#field_idents;
+						let validator = #field_validators;
+						let validation_error = #field_validation_errors;
+						if let Some(validator) = validator {
+							::gotham_formdata::validate::Validator::validate(validator, value)
+								.map_err(|err| {
+									match validation_error {
+										Some(ve) => #err_ident::invalid(name, ve),
+										None     => #err_ident::invalid(name, err)
+									}
+								})?;
+						}
+					})*
 
-				let content_type = ::gotham_formdata::internal::get_content_type(state);
-				let body = ::gotham_formdata::internal::get_body(state);
-
-				async move {
-					let content_type = content_type?;
-					::log::debug!("Parsing Form Data for type {} with Content-Type {}", stringify!(#name), content_type);
-
-					let res: Self = match &content_type {
-						ct if ::gotham_formdata::internal::is_urlencoded(ct) => {
-							::gotham_formdata::internal::parse_urlencoded::<#builder_ident #ty_gen>(body).await
-						},
-						ct if ::gotham_formdata::internal::is_multipart(ct) => {
-							::gotham_formdata::internal::parse_multipart::<#builder_ident #ty_gen>(body, ct).await
-						},
-						_ => Err(::gotham_formdata::Error::UnknownContentType(content_type))
-					}?;
-					#validate_trait::validate(&res).map_err(|err| ::gotham_formdata::Error::InvalidData(err))?;
-					Ok(res)
-				}.boxed()
+					Ok(())
+				}
 			}
-		}
+
+			impl #impl_gen ::gotham_formdata::FormData for #name #ty_gen #were {
+				type Err = ::gotham_formdata::Error<#err_ident>;
+
+				fn parse_form_data(state: &mut ::gotham_formdata::export::State) -> ::gotham_formdata::FormDataFuture<Self> {
+					use ::gotham_formdata::export::FutureExt;
+
+					let content_type = ::gotham_formdata::internal::get_content_type(state);
+					let body = ::gotham_formdata::internal::get_body(state);
+
+					async move {
+						let content_type = content_type?;
+						::log::debug!("Parsing Form Data for type {} with Content-Type {}", stringify!(#name), content_type);
+
+						let res: Self = match &content_type {
+							ct if ::gotham_formdata::internal::is_urlencoded(ct) => {
+								::gotham_formdata::internal::parse_urlencoded::<#builder_ident #ty_gen>(body).await
+							},
+							ct if ::gotham_formdata::internal::is_multipart(ct) => {
+								::gotham_formdata::internal::parse_multipart::<#builder_ident #ty_gen>(body, ct).await
+							},
+							_ => Err(::gotham_formdata::Error::UnknownContentType(content_type))
+						}?;
+						#validate_trait::validate(&res).map_err(|err| ::gotham_formdata::Error::InvalidData(err))?;
+						Ok(res)
+					}.boxed()
+				}
+			}
+		};
 	})
 }

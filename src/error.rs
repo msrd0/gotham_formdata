@@ -1,5 +1,6 @@
 use gotham::anyhow;
 use mime::Mime;
+use std::str::Utf8Error;
 use thiserror::Error;
 
 #[derive(Debug, Error)]
@@ -30,13 +31,22 @@ pub enum Error<Err: std::error::Error + 'static> {
 	/// The request did not specify a content type.
 	#[error("The request is missing a 'Content-Type' header")]
 	MissingContentType,
+	/// One of the multipart parts is missing a `Content-Disposition` header.
+	#[error("Missing a 'Content-Disposition' header")]
+	MissingContentDisposition,
 	/// The body is missing a required field.
 	#[error("Missing Field '{0}'")]
 	MissingField(String),
+	/// The multipart format was invalid.
+	#[error("Multipart error: {0}")]
+	MultipartError(#[from] multer::Error),
 	/// The body's content type is not supported.
 	#[error("Unknown 'Content-Type' header value: {0}")]
 	UnknownContentType(Mime),
 	/// The body contained a field that was not expected.
 	#[error("Unknown Field '{0}'")]
-	UnknownField(String)
+	UnknownField(String),
+	/// The body contained invalid utf8 characters.
+	#[error("Invalid Utf8: {0}")]
+	Utf8Error(#[from] Utf8Error)
 }

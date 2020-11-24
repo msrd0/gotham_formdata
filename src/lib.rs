@@ -74,8 +74,8 @@ limitations under the License.
 #[doc(hidden)]
 /// Not public API.
 pub mod export {
-	pub use futures_util::future::FutureExt;
-	pub use gotham::state::State;
+	pub use futures_util::{future::FutureExt, stream::StreamExt};
+	pub use gotham::{hyper::body::Bytes, state::State};
 	pub use log;
 }
 

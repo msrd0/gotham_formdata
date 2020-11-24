@@ -1,27 +1,31 @@
 use crate::{validate::Validator, Error, FormData};
+use futures_util::stream::{self, Stream, StreamExt, TryStreamExt};
 use gotham::{
 	hyper::{
-		body,
-		header::{HeaderMap, CONTENT_TYPE},
-		Body
+		body::{self, Body, Bytes},
+		header::{HeaderMap, CONTENT_TYPE}
 	},
 	state::State
 };
 use mime::Mime;
-use multipart::server::Multipart;
-use std::{
-	borrow::Cow,
-	io::{Cursor, Read}
-};
+use multer::Multipart;
+use std::{borrow::Cow, future::Future, pin::Pin};
 
 pub fn assert_validator<V: Validator<T>, T: ?Sized>(_: &V) {}
+
+pub type FormDataValue<Err> = Pin<Box<dyn Stream<Item = Result<Bytes, Error<Err>>> + Send>>;
+pub type FormDataBuilderFuture<'a, Err> = Pin<Box<dyn Future<Output = Result<(), Error<Err>>> + Send + 'a>>;
 
 pub trait FormDataBuilder: Default {
 	type Data: FormData;
 	/// The error that can occur during verification.
 	type Err: std::error::Error + 'static;
 
-	fn add_entry(&mut self, name: Cow<'_, str>, value: Cow<'_, str>) -> Result<(), Error<Self::Err>>;
+	fn add_entry<'a>(
+		&'a mut self,
+		name: Cow<'a, str>,
+		value: FormDataValue<Self::Err>
+	) -> FormDataBuilderFuture<'a, Self::Err>;
 	fn build(self) -> Result<Self::Data, Error<Self::Err>>;
 }
 
@@ -47,7 +51,10 @@ pub async fn parse_urlencoded<T: FormDataBuilder>(body: Body) -> Result<T::Data,
 
 	let mut builder = T::default();
 	for (name, value) in form_urlencoded::parse(&body) {
-		builder.add_entry(name, value)?;
+		let bytes = Bytes::copy_from_slice(value.as_bytes());
+		builder
+			.add_entry(name, stream::once(async move { Ok(bytes) }).boxed())
+			.await?;
 	}
 	builder.build()
 }
@@ -58,15 +65,17 @@ pub fn is_multipart(content_type: &Mime) -> bool {
 
 pub async fn parse_multipart<T: FormDataBuilder>(body: Body, content_type: &Mime) -> Result<T::Data, Error<T::Err>> {
 	let boundary = content_type.get_param("boundary").ok_or(Error::MissingBoundary)?.as_str();
-	let body = body::to_bytes(body).await?;
-	let mut multipart = Multipart::with_body(Cursor::new(body), boundary);
+	let mut multipart = Multipart::new(body, boundary);
 
 	let mut builder = T::default();
-	while let Some(mut field) = multipart.read_entry()? {
-		let name = field.headers.name;
-		let mut value = String::new();
-		field.data.read_to_string(&mut value)?;
-		builder.add_entry(name.as_ref().into(), value.into())?;
+	while let Some(field) = multipart.next_field().await? {
+		let name = field.name().ok_or(Error::MissingContentDisposition)?;
+		// unfortunately, we need to clone the name so we can move field which is our only way
+		// of accessing the stream
+		let name = name.to_owned();
+
+		let value = field.map_err(Into::into);
+		builder.add_entry(name.into(), value.boxed()).await?;
 	}
 	builder.build()
 }

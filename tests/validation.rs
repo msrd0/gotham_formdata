@@ -54,7 +54,7 @@ fn validate_custom_error() {
 	with_body(b"data=0", APPLICATION_WWW_FORM_URLENCODED, |state| {
 		let data = block_on(Data::parse_form_data(state)).unwrap_err();
 		match data {
-			Error::InvalidData(DataVerificationError::DataInvalid(err)) => assert_eq!(err, "Too small."),
+			Error::InvalidData(DataValidationError::DataInvalid(err)) => assert_eq!(err, "Too small."),
 			_ => panic!("Expected DataVerificationError::DataInvalid, got {:?}", data)
 		};
 	});

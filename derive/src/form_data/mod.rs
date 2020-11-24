@@ -32,13 +32,13 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 				"#[derive(FormData)] cannot be used on tuple structs"
 			))
 		},
-		Fields::Unit => Default::default()
+		Fields::Unit => Vec::new()
 	};
 
 	let validation_error = ValidationError {
 		name,
 		vis: &input.vis,
-		ident: format_ident!("{}VerificationError", name),
+		ident: format_ident!("{}ValidationError", name),
 		fields: &fields
 	};
 	let err_ident = &validation_error.ident;

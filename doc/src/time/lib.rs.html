@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.2.22/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="https://avatars0.githubusercontent.com/u/55999857"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../time/index.html'><div class='logo-container'><img src='https://avatars0.githubusercontent.com/u/55999857' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.2.23/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings"></script><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="https://avatars0.githubusercontent.com/u/55999857"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../time/index.html'><div class='logo-container'><img src='https://avatars0.githubusercontent.com/u/55999857' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
                 <a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
@@ -519,6 +519,29 @@
 <span id="518">518</span>
 <span id="519">519</span>
 <span id="520">520</span>
+<span id="521">521</span>
+<span id="522">522</span>
+<span id="523">523</span>
+<span id="524">524</span>
+<span id="525">525</span>
+<span id="526">526</span>
+<span id="527">527</span>
+<span id="528">528</span>
+<span id="529">529</span>
+<span id="530">530</span>
+<span id="531">531</span>
+<span id="532">532</span>
+<span id="533">533</span>
+<span id="534">534</span>
+<span id="535">535</span>
+<span id="536">536</span>
+<span id="537">537</span>
+<span id="538">538</span>
+<span id="539">539</span>
+<span id="540">540</span>
+<span id="541">541</span>
+<span id="542">542</span>
+<span id="543">543</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">//! [![GitHub time-rs/time](https://img.shields.io/badge/GitHub-time--rs%2Ftime-9b88bb?logo=github&amp;style=for-the-badge)](https://github.com/time-rs/time)</span>
 <span class="doccomment">//! ![license MIT or Apache-2.0](https://img.shields.io/badge/license-MIT%20or%20Apache--2.0-779a6b?style=for-the-badge)</span>
@@ -833,90 +856,42 @@
 
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">date</span>::<span class="ident">Date</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">duration</span>::<span class="ident">Duration</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">error</span>::<span class="ident">Error</span>;
+<span class="attribute">#[<span class="ident">deprecated</span>(
+    <span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;0.2.23&quot;</span>,
+    <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Errors have been moved to the `error` module.&quot;</span>
+)]</span>
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">error</span>::{
-    <span class="ident">ComponentRange</span> <span class="kw">as</span> <span class="ident">ComponentRangeError</span>, <span class="ident">ConversionRange</span> <span class="kw">as</span> <span class="ident">ConversionRangeError</span>, <span class="ident">Error</span>,
+    <span class="ident">ComponentRange</span> <span class="kw">as</span> <span class="ident">ComponentRangeError</span>, <span class="ident">ConversionRange</span> <span class="kw">as</span> <span class="ident">ConversionRangeError</span>,
     <span class="ident">IndeterminateOffset</span> <span class="kw">as</span> <span class="ident">IndeterminateOffsetError</span>, <span class="ident">Parse</span> <span class="kw">as</span> <span class="ident">ParseError</span>,
 };
+<span class="attribute">#[<span class="ident">deprecated</span>(
+    <span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;0.2.23&quot;</span>,
+    <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Extension traits have been moved to the `ext` module.&quot;</span>
+)]</span>
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">ext</span>::{<span class="ident">NumericalDuration</span>, <span class="ident">NumericalStdDuration</span>, <span class="ident">NumericalStdDurationShort</span>};
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="ident">format</span>::<span class="ident">DeferredFormat</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">format</span>::<span class="ident">Format</span>;
 <span class="kw">use</span> <span class="ident">format</span>::<span class="ident">ParseResult</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">instant</span>::<span class="ident">Instant</span>;
+<span class="attribute">#[<span class="ident">deprecated</span>(
+    <span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;0.2.23&quot;</span>,
+    <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Macros have been moved to the `macros` module.&quot;</span>
+)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">macros</span>::{<span class="ident">date</span>, <span class="ident">offset</span>, <span class="ident">time</span>};
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">offset_date_time</span>::<span class="ident">OffsetDateTime</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">primitive_date_time</span>::<span class="ident">PrimitiveDateTime</span>;
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">deprecated</span>)]</span>
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">sign</span>::<span class="ident">Sign</span>;
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused_imports</span>)]</span>
 <span class="kw">use</span> <span class="ident">standback</span>::<span class="ident">prelude</span>::<span class="kw-2">*</span>;
-<span class="doccomment">/// Construct a [`Date`](crate::Date) with a statically known value.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The resulting expression can be used in `const` or `static` declarations.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Three formats are supported: year-week-weekday, year-ordinal, and</span>
-<span class="doccomment">/// year-month-day.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # use time::{Date, date, Weekday::*};</span>
-<span class="doccomment">/// # fn main() -&gt; time::Result&lt;()&gt; {</span>
-<span class="doccomment">/// assert_eq!(date!(2020-W01-3), Date::try_from_iso_ywd(2020, 1, Wednesday)?);</span>
-<span class="doccomment">/// assert_eq!(date!(2020-001), Date::try_from_yo(2020, 1)?);</span>
-<span class="doccomment">/// assert_eq!(date!(2020-01-01), Date::try_from_ymd(2020, 1, 1)?);</span>
-<span class="doccomment">/// # Ok(())</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// ```</span>
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">time_macros</span>::<span class="ident">date</span>;
-<span class="doccomment">/// Construct a [`UtcOffset`](crate::UtcOffset) with a statically known value.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The resulting expression can be used in `const` or `static` declarations.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// A sign and the hour must be provided; minutes and seconds default to zero.</span>
-<span class="doccomment">/// `UTC` (both uppercase and lowercase) is also allowed.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # use time::{offset, UtcOffset};</span>
-<span class="doccomment">/// assert_eq!(offset!(UTC), UtcOffset::hours(0));</span>
-<span class="doccomment">/// assert_eq!(offset!(utc), UtcOffset::hours(0));</span>
-<span class="doccomment">/// assert_eq!(offset!(+0), UtcOffset::hours(0));</span>
-<span class="doccomment">/// assert_eq!(offset!(+1), UtcOffset::hours(1));</span>
-<span class="doccomment">/// assert_eq!(offset!(-1), UtcOffset::hours(-1));</span>
-<span class="doccomment">/// assert_eq!(offset!(+1:30), UtcOffset::minutes(90));</span>
-<span class="doccomment">/// assert_eq!(offset!(-1:30), UtcOffset::minutes(-90));</span>
-<span class="doccomment">/// assert_eq!(offset!(+1:30:59), UtcOffset::seconds(5459));</span>
-<span class="doccomment">/// assert_eq!(offset!(-1:30:59), UtcOffset::seconds(-5459));</span>
-<span class="doccomment">/// assert_eq!(offset!(+23:59:59), UtcOffset::seconds(86_399));</span>
-<span class="doccomment">/// assert_eq!(offset!(-23:59:59), UtcOffset::seconds(-86_399));</span>
-<span class="doccomment">/// ```</span>
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">time_macros</span>::<span class="ident">offset</span>;
-<span class="doccomment">/// Construct a [`Time`](crate::Time) with a statically known value.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The resulting expression can be used in `const` or `static` declarations.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Hours and minutes must be provided, while seconds defaults to zero. AM/PM is</span>
-<span class="doccomment">/// allowed (either uppercase or lowercase). Any number of subsecond digits may</span>
-<span class="doccomment">/// be provided (though any past nine will be discarded).</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// All components are validated at compile-time. An error will be raised if any</span>
-<span class="doccomment">/// value is invalid.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # use time::{Time, time};</span>
-<span class="doccomment">/// # fn main() -&gt; time::Result&lt;()&gt; {</span>
-<span class="doccomment">/// assert_eq!(time!(0:00), Time::try_from_hms(0, 0, 0)?);</span>
-<span class="doccomment">/// assert_eq!(time!(1:02:03), Time::try_from_hms(1, 2, 3)?);</span>
-<span class="doccomment">/// assert_eq!(time!(1:02:03.004_005_006), Time::try_from_hms_nano(1, 2, 3, 4_005_006)?);</span>
-<span class="doccomment">/// assert_eq!(time!(12:00 am), Time::try_from_hms(0, 0, 0)?);</span>
-<span class="doccomment">/// assert_eq!(time!(1:02:03 am), Time::try_from_hms(1, 2, 3)?);</span>
-<span class="doccomment">/// assert_eq!(time!(1:02:03.004_005_006 am), Time::try_from_hms_nano(1, 2, 3, 4_005_006)?);</span>
-<span class="doccomment">/// assert_eq!(time!(12:00 pm), Time::try_from_hms(12, 0, 0)?);</span>
-<span class="doccomment">/// assert_eq!(time!(1:02:03 pm), Time::try_from_hms(13, 2, 3)?);</span>
-<span class="doccomment">/// assert_eq!(time!(1:02:03.004_005_006 pm), Time::try_from_hms_nano(13, 2, 3, 4_005_006)?);</span>
-<span class="doccomment">/// # Ok(())</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// ```</span>
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">time_macros</span>::<span class="ident">time</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">time_mod</span>::<span class="ident">Time</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">utc_offset</span>::<span class="ident">UtcOffset</span>;
+<span class="attribute">#[<span class="ident">deprecated</span>(
+    <span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;0.2.23&quot;</span>,
+    <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;This function has been moved to the `util` module.&quot;</span>
+)]</span>
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">util</span>::{<span class="ident">days_in_year</span>, <span class="ident">is_leap_year</span>, <span class="ident">validate_format_string</span>, <span class="ident">weeks_in_year</span>};
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">weekday</span>::<span class="ident">Weekday</span>;
 
@@ -993,6 +968,77 @@
 <span class="doccomment">/// ```</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">private</span>::<span class="ident">Parsable</span><span class="op">&gt;</span>(<span class="ident">s</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">format</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ParseResult</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
     <span class="ident">private</span>::<span class="ident">Parsable</span>::<span class="ident">parse</span>(<span class="ident">s</span>, <span class="ident">format</span>)
+}
+
+<span class="doccomment">/// Macros to statically construct values that are known to be valid.</span>
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">macros</span> {
+
+    <span class="doccomment">/// Construct a [`Date`](crate::Date) with a statically known value.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The resulting expression can be used in `const` or `static` declarations.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Three formats are supported: year-week-weekday, year-ordinal, and</span>
+    <span class="doccomment">/// year-month-day.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ```rust</span>
+    <span class="doccomment">/// # use time::{Date, macros::date, Weekday::*};</span>
+    <span class="doccomment">/// # fn main() -&gt; time::Result&lt;()&gt; {</span>
+    <span class="doccomment">/// assert_eq!(date!(2020-W01-3), Date::try_from_iso_ywd(2020, 1, Wednesday)?);</span>
+    <span class="doccomment">/// assert_eq!(date!(2020-001), Date::try_from_yo(2020, 1)?);</span>
+    <span class="doccomment">/// assert_eq!(date!(2020-01-01), Date::try_from_ymd(2020, 1, 1)?);</span>
+    <span class="doccomment">/// # Ok(())</span>
+    <span class="doccomment">/// # }</span>
+    <span class="doccomment">/// ```</span>
+    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">time_macros</span>::<span class="ident">date</span>;
+    <span class="doccomment">/// Construct a [`UtcOffset`](crate::UtcOffset) with a statically known value.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The resulting expression can be used in `const` or `static` declarations.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// A sign and the hour must be provided; minutes and seconds default to zero.</span>
+    <span class="doccomment">/// `UTC` (both uppercase and lowercase) is also allowed.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ```rust</span>
+    <span class="doccomment">/// # use time::{macros::offset, UtcOffset};</span>
+    <span class="doccomment">/// assert_eq!(offset!(UTC), UtcOffset::hours(0));</span>
+    <span class="doccomment">/// assert_eq!(offset!(utc), UtcOffset::hours(0));</span>
+    <span class="doccomment">/// assert_eq!(offset!(+0), UtcOffset::hours(0));</span>
+    <span class="doccomment">/// assert_eq!(offset!(+1), UtcOffset::hours(1));</span>
+    <span class="doccomment">/// assert_eq!(offset!(-1), UtcOffset::hours(-1));</span>
+    <span class="doccomment">/// assert_eq!(offset!(+1:30), UtcOffset::minutes(90));</span>
+    <span class="doccomment">/// assert_eq!(offset!(-1:30), UtcOffset::minutes(-90));</span>
+    <span class="doccomment">/// assert_eq!(offset!(+1:30:59), UtcOffset::seconds(5459));</span>
+    <span class="doccomment">/// assert_eq!(offset!(-1:30:59), UtcOffset::seconds(-5459));</span>
+    <span class="doccomment">/// assert_eq!(offset!(+23:59:59), UtcOffset::seconds(86_399));</span>
+    <span class="doccomment">/// assert_eq!(offset!(-23:59:59), UtcOffset::seconds(-86_399));</span>
+    <span class="doccomment">/// ```</span>
+    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">time_macros</span>::<span class="ident">offset</span>;
+    <span class="doccomment">/// Construct a [`Time`](crate::Time) with a statically known value.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The resulting expression can be used in `const` or `static` declarations.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Hours and minutes must be provided, while seconds defaults to zero. AM/PM is</span>
+    <span class="doccomment">/// allowed (either uppercase or lowercase). Any number of subsecond digits may</span>
+    <span class="doccomment">/// be provided (though any past nine will be discarded).</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// All components are validated at compile-time. An error will be raised if any</span>
+    <span class="doccomment">/// value is invalid.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ```rust</span>
+    <span class="doccomment">/// # use time::{Time, macros::time};</span>
+    <span class="doccomment">/// # fn main() -&gt; time::Result&lt;()&gt; {</span>
+    <span class="doccomment">/// assert_eq!(time!(0:00), Time::try_from_hms(0, 0, 0)?);</span>
+    <span class="doccomment">/// assert_eq!(time!(1:02:03), Time::try_from_hms(1, 2, 3)?);</span>
+    <span class="doccomment">/// assert_eq!(time!(1:02:03.004_005_006), Time::try_from_hms_nano(1, 2, 3, 4_005_006)?);</span>
+    <span class="doccomment">/// assert_eq!(time!(12:00 am), Time::try_from_hms(0, 0, 0)?);</span>
+    <span class="doccomment">/// assert_eq!(time!(1:02:03 am), Time::try_from_hms(1, 2, 3)?);</span>
+    <span class="doccomment">/// assert_eq!(time!(1:02:03.004_005_006 am), Time::try_from_hms_nano(1, 2, 3, 4_005_006)?);</span>
+    <span class="doccomment">/// assert_eq!(time!(12:00 pm), Time::try_from_hms(12, 0, 0)?);</span>
+    <span class="doccomment">/// assert_eq!(time!(1:02:03 pm), Time::try_from_hms(13, 2, 3)?);</span>
+    <span class="doccomment">/// assert_eq!(time!(1:02:03.004_005_006 pm), Time::try_from_hms_nano(13, 2, 3, 4_005_006)?);</span>
+    <span class="doccomment">/// # Ok(())</span>
+    <span class="doccomment">/// # }</span>
+    <span class="doccomment">/// ```</span>
+    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">time_macros</span>::<span class="ident">time</span>;
 }
 
 <span class="comment">// For some back-compatibility, we&#39;re also implementing some deprecated types</span>

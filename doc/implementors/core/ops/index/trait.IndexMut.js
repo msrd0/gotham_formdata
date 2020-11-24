@@ -3,4 +3,5 @@ implementors["indexmap"] = [{"text":"impl&lt;K, V, Q:&nbsp;?Sized, S, '_&gt; Ind
 implementors["linked_hash_map"] = [{"text":"impl&lt;'a, K, V, S, Q:&nbsp;?Sized&gt; IndexMut&lt;&amp;'a Q&gt; for LinkedHashMap&lt;K, V, S&gt; <span class=\"where fmt-newline\">where<br>&nbsp;&nbsp;&nbsp;&nbsp;K: Hash + Eq + Borrow&lt;Q&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;S: BuildHasher,<br>&nbsp;&nbsp;&nbsp;&nbsp;Q: Eq + Hash,&nbsp;</span>","synthetic":false,"types":[]}];
 implementors["slab"] = [{"text":"impl&lt;T&gt; IndexMut&lt;usize&gt; for Slab&lt;T&gt;","synthetic":false,"types":[]}];
 implementors["syn"] = [{"text":"impl&lt;T, P&gt; IndexMut&lt;usize&gt; for Punctuated&lt;T, P&gt;","synthetic":false,"types":[]}];
+implementors["unchecked_index"] = [{"text":"impl&lt;T, I&gt; IndexMut&lt;I&gt; for UncheckedIndex&lt;T&gt; <span class=\"where fmt-newline\">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: GetUncheckedMut&lt;I&gt;,&nbsp;</span>","synthetic":false,"types":[]}];
 if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

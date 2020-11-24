@@ -2,5 +2,6 @@
 implementors["futures_channel"] = [{"text":"impl&lt;T&gt; Stream for Receiver&lt;T&gt;","synthetic":false,"types":[]},{"text":"impl&lt;T&gt; Stream for UnboundedReceiver&lt;T&gt;","synthetic":false,"types":[]}];
 implementors["futures_core"] = [];
 implementors["hyper"] = [{"text":"impl Stream for Body","synthetic":false,"types":[]}];
+implementors["multer"] = [{"text":"impl Stream for Field","synthetic":false,"types":[]},{"text":"impl Stream for Multipart","synthetic":false,"types":[]}];
 implementors["tokio_util"] = [{"text":"impl&lt;T, U&gt; Stream for Framed&lt;T, U&gt; <span class=\"where fmt-newline\">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: AsyncRead,<br>&nbsp;&nbsp;&nbsp;&nbsp;U: Decoder,&nbsp;</span>","synthetic":false,"types":[]},{"text":"impl&lt;T, D&gt; Stream for FramedRead&lt;T, D&gt; <span class=\"where fmt-newline\">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: AsyncRead,<br>&nbsp;&nbsp;&nbsp;&nbsp;D: Decoder,&nbsp;</span>","synthetic":false,"types":[]},{"text":"impl&lt;T, D&gt; Stream for FramedWrite&lt;T, D&gt; <span class=\"where fmt-newline\">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: Stream,&nbsp;</span>","synthetic":false,"types":[]}];
 if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

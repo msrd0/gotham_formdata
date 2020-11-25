@@ -81,6 +81,8 @@ pub mod export {
 #[doc(inline)]
 pub use gotham_formdata_derive::*;
 
+pub mod conversion;
+
 mod error;
 pub use error::*;
 

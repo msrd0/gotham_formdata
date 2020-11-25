@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["ConvertFromStr","This trait is used to convert types that implement [FromStr] from a stream of bytes."],["ConvertRawBytes","This trait is used to convert `Vec<u8>` and similar types from a stream of bytes."]],"type":[["ByteStream","A stream of bytes."],["ConversionFuture","The future returned from conversion methods."]]});

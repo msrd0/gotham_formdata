@@ -60,7 +60,7 @@ impl<'a> FormDataBuilder<'a> {
 				fn add_entry<'a>(
 						&'a mut self,
 						name: ::std::borrow::Cow<'a, str>,
-						value: ::gotham_formdata::internal::FormDataValue<Self::Err>
+						value: ::gotham_formdata::conversion::ByteStream<::gotham_formdata::Error<Self::Err>>
 				) -> ::gotham_formdata::internal::FormDataBuilderFuture<'a, Self::Err> {
 					use ::gotham_formdata::export::{FutureExt, StreamExt};
 					use ::gotham_formdata::conversion::*;

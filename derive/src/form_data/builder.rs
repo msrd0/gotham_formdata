@@ -62,15 +62,15 @@ impl<'a> FormDataBuilder<'a> {
 						name: ::std::borrow::Cow<'a, str>,
 						value: ::gotham_formdata::conversion::ByteStream<::gotham_formdata::Error<Self::Err>>
 				) -> ::gotham_formdata::internal::FormDataBuilderFuture<'a, Self::Err> {
-					use ::gotham_formdata::export::{FutureExt, StreamExt};
-					use ::gotham_formdata::conversion::*;
+					#[allow(unused_imports)]
+					use ::gotham_formdata::{conversion::prelude::*, export::{FutureExt, StreamExt}};
 
 					async move {
 						let name: &str = &name;
 						match name {
 							#(stringify!(#field_names) => {
 								log::debug!("Found value for field {}", name);
-								let value_parsed = #field_types::convert_byte_stream(name, value).await?;
+								let value_parsed = <#field_types>::convert_byte_stream(name, value).await?;
 								self.#field_names.replace(value_parsed);
 								Ok(())
 							},)*

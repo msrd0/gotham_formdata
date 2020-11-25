@@ -12,6 +12,12 @@ use futures_util::{
 use gotham::{anyhow, hyper::body::Bytes};
 use std::{future::Future, pin::Pin, str::FromStr};
 
+/// Re-exports for use in derive macro.
+#[doc(hidden)]
+pub mod prelude {
+	pub use super::{ConvertFromStr, ConvertRawBytes};
+}
+
 /// A stream of bytes.
 pub type ByteStream<Err> = Pin<Box<dyn Stream<Item = Result<Bytes, Err>> + Send>>;
 /// The future returned from conversion methods.
@@ -38,6 +44,25 @@ where
 
 			buf.parse::<Self>()
 				.map_err(|err| Error::IllegalField(name.to_owned(), err.into()))
+		}
+		.boxed()
+	}
+}
+
+/// This trait is used to convert `Vec<u8>` and similar types from a stream of bytes.
+pub trait ConvertRawBytes<'a, Err>: Sized {
+	/// Perform the conversion.
+	fn convert_byte_stream(name: &'a str, stream: ByteStream<Err>) -> ConversionFuture<'a, Self, Err>;
+}
+
+impl<'a, E: 'a> ConvertRawBytes<'a, E> for Vec<u8> {
+	fn convert_byte_stream(_name: &'a str, mut stream: ByteStream<E>) -> ConversionFuture<'a, Self, E> {
+		async move {
+			let mut buf: Vec<u8> = Vec::new();
+			while let Some(data) = stream.next().await {
+				buf.extend_from_slice(&data?);
+			}
+			Ok(buf)
 		}
 		.boxed()
 	}

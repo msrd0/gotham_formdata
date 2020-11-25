@@ -1,5 +1,5 @@
-use crate::{validate::Validator, Error, FormData};
-use futures_util::stream::{self, Stream, StreamExt, TryStreamExt};
+use crate::{conversion::ByteStream, validate::Validator, Error, FormData};
+use futures_util::stream::{self, StreamExt, TryStreamExt};
 use gotham::{
 	hyper::{
 		body::{self, Body, Bytes},
@@ -13,7 +13,6 @@ use std::{borrow::Cow, future::Future, pin::Pin};
 
 pub fn assert_validator<V: Validator<T>, T: ?Sized>(_: &V) {}
 
-pub type FormDataValue<Err> = Pin<Box<dyn Stream<Item = Result<Bytes, Error<Err>>> + Send>>;
 pub type FormDataBuilderFuture<'a, Err> = Pin<Box<dyn Future<Output = Result<(), Error<Err>>> + Send + 'a>>;
 
 pub trait FormDataBuilder: Default {
@@ -24,7 +23,7 @@ pub trait FormDataBuilder: Default {
 	fn add_entry<'a>(
 		&'a mut self,
 		name: Cow<'a, str>,
-		value: FormDataValue<Self::Err>
+		value: ByteStream<Error<Self::Err>>
 	) -> FormDataBuilderFuture<'a, Self::Err>;
 	fn build(self) -> Result<Self::Data, Error<Self::Err>>;
 }

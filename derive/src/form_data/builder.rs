@@ -60,23 +60,17 @@ impl<'a> FormDataBuilder<'a> {
 				fn add_entry<'a>(
 						&'a mut self,
 						name: ::std::borrow::Cow<'a, str>,
-						mut value: ::gotham_formdata::internal::FormDataValue<Self::Err>
+						value: ::gotham_formdata::conversion::ByteStream<::gotham_formdata::Error<Self::Err>>
 				) -> ::gotham_formdata::internal::FormDataBuilderFuture<'a, Self::Err> {
-					use ::gotham_formdata::export::{FutureExt, StreamExt};
+					#[allow(unused_imports)]
+					use ::gotham_formdata::{conversion::prelude::*, export::{FutureExt, StreamExt}};
 
 					async move {
-						// TODO converting the stream to a string might not always be what we want
-						let mut buf = String::new();
-						while let Some(data) = value.next().await {
-							buf.push_str(::std::str::from_utf8(data?.as_ref())?);
-						}
-
 						let name: &str = &name;
 						match name {
 							#(stringify!(#field_names) => {
-								let value_parsed = buf.parse::<#field_types>()
-									.map_err(|err| ::gotham_formdata::Error::IllegalField(name.to_string(), err.into()))?;
 								log::debug!("Found value for field {}", name);
+								let value_parsed = <#field_types>::convert_byte_stream(name, value).await?;
 								self.#field_names.replace(value_parsed);
 								Ok(())
 							},)*

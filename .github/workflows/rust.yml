@@ -130,12 +130,12 @@ jobs:
       - run: |
           test ! -d ./doc || rm -r ./doc
           tar xfJ rustdoc.tar.xz --strip-components=1
+          rm rustdoc.tar.xz
           date >./doc/.timestamp
           
-          cp tarpaulin-report.html ./doc
           coverage=$(jq '.files | { covered: map(.covered) | add, coverable: map(.coverable) | add } | .covered / .coverable * 10000 | round | . / 100' tarpaulin-report.json)
           color=$([[ $coverage < 90 ]] && printf yellow || printf brightgreen)
-          wget -qO doc/coverage.svg "https://img.shields.io/badge/coverage-$coverage%25-$color"
+          wget -qO coverage.svg "https://img.shields.io/badge/coverage-$coverage%25-$color"
           
           git add ./doc
           git status

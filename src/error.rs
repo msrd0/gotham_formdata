@@ -1,6 +1,5 @@
 use gotham::anyhow;
 use mime::Mime;
-use std::str::Utf8Error;
 use thiserror::Error;
 
 #[derive(Debug, Error)]
@@ -45,8 +44,5 @@ pub enum Error<Err: std::error::Error + 'static> {
 	UnknownContentType(Mime),
 	/// The body contained a field that was not expected.
 	#[error("Unknown Field '{0}'")]
-	UnknownField(String),
-	/// The body contained invalid utf8 characters.
-	#[error("Invalid Utf8: {0}")]
-	Utf8Error(#[from] Utf8Error)
+	UnknownField(String)
 }

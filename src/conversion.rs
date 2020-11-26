@@ -39,7 +39,9 @@ where
 		async move {
 			let mut buf = String::new();
 			while let Some(data) = stream.next().await {
-				buf.push_str(::std::str::from_utf8(data?.as_ref())?);
+				let data = data?;
+				let str = String::from_utf8_lossy(data.as_ref());
+				buf.push_str(&str);
 			}
 
 			buf.parse::<Self>()

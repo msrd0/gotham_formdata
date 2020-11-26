@@ -59,7 +59,7 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ steps.rust-version.outputs.VERSION }}-tarpaulin-${{ steps.tarpaulin-version.outputs.VERSION }} }}
       
       - name: Install Tarpaulin
-        run: cargo install cargo-tarpaulin=${{ steps.tarpaulin-version.outputs.VERSION }}
+        run: cargo install cargo-tarpaulin --version ${{ steps.tarpaulin-version.outputs.VERSION }}
       
       - name: Run Tarpaulin coverage tests
         run: |

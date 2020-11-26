@@ -1,7 +1,43 @@
 /*!
 This mod contains conversion traits for common used types, that allows them to be created from
-a stream of bytes. Furthermore, it allows every type that implements [FromStr] or [From<&[u8]>]
-to be converted.
+a stream of bytes. Furthermore, it allows every type that implements [FromStr] plus some other
+common types to be converted.
+
+**DO NOT IMPLEMENT ANY OF THESE TRAITS MANUALLY!** If you do, it will likely result in compile
+errors when the compiler cannot choose which trait to use in the proc-macro generated code.
+Instead, if you want to provide a custom conversion method, just implement it as a method for
+your type:
+
+```rust
+use futures_util::{FutureExt, StreamExt};
+use gotham_formdata::{FormData, conversion::{ByteStream, ConversionFuture}};
+
+/// This type parses Base64-encoded values to a [Vec<u8>].
+struct Base64(Vec<u8>);
+
+impl Base64 {
+	// the method signature needs to be roughly equivalent to this
+	fn convert_byte_stream<'a, E>(
+			name: &'a str,
+			mut stream: ByteStream<gotham_formdata::Error<E>>
+	) -> ConversionFuture<'a, Self, gotham_formdata::Error<E>>
+	where
+		E: std::error::Error + 'a
+	{
+		async move {
+			let mut buf: Vec<u8> = Vec::new();
+			while let Some(data) = stream.next().await {
+				buf.extend_from_slice(data?.as_ref());
+			}
+
+			let data = base64::decode(&buf)
+					.map_err(|err| gotham_formdata::Error::IllegalField(name.to_owned(), err.into()))?;
+			Ok(Self(data))
+		}.boxed()
+	}
+}
+# mod base64 { pub fn decode(input: &[u8]) -> Result<Vec<u8>, std::convert::Infallible> { unimplemented!() } }
+```
 */
 
 use crate::Error;
@@ -24,6 +60,9 @@ pub type ByteStream<Err> = Pin<Box<dyn Stream<Item = Result<Bytes, Err>> + Send>
 pub type ConversionFuture<'a, T, Err> = Pin<Box<dyn Future<Output = Result<T, Err>> + Send + 'a>>;
 
 /// This trait is used to convert types that implement [FromStr] from a stream of bytes.
+///
+/// **DO NOT IMPLEMENT MANUALLY!** Look at the [module documentation](self) for an example how
+/// to convert custom types.
 pub trait ConvertFromStr<Err>: Sized {
 	/// Perform the conversion.
 	fn convert_byte_stream<'a>(name: &'a str, stream: ByteStream<Err>) -> ConversionFuture<'a, Self, Err>;
@@ -52,6 +91,9 @@ where
 }
 
 /// This trait is used to convert `Vec<u8>` and similar types from a stream of bytes.
+///
+/// **DO NOT IMPLEMENT MANUALLY!** Look at the [module documentation](self) for an example how
+/// to convert custom types.
 pub trait ConvertRawBytes<'a, Err>: Sized {
 	/// Perform the conversion.
 	fn convert_byte_stream(name: &'a str, stream: ByteStream<Err>) -> ConversionFuture<'a, Self, Err>;

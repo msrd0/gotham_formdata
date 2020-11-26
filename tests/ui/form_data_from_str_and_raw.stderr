@@ -1,0 +1,21 @@
+error[E0034]: multiple applicable items in scope
+  --> $DIR/form_data_from_str_and_raw.rs:25:10
+   |
+25 | #[derive(FormData)]
+   |          ^^^^^^^^ multiple `convert_byte_stream` found
+   |
+note: candidate #1 is defined in an impl of the trait `gotham_formdata::conversion::ConvertRawBytes` for the type `CustomType`
+  --> $DIR/form_data_from_str_and_raw.rs:18:2
+   |
+18 |     fn convert_byte_stream(_name: &'a str, mut stream: ByteStream<E>) -> ConversionFuture<'a, Self, E> {
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   = note: candidate #2 is defined in an impl of the trait `gotham_formdata::conversion::ConvertFromStr` for the type `T`
+   = note: this error originates in a derive macro (in Nightly builds, run with -Z macro-backtrace for more info)
+help: disambiguate the associated function for candidate #1
+   |
+25 | #[derive(gotham_formdata::conversion::ConvertRawBytes::convert_byte_stream)]
+   |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+help: disambiguate the associated function for candidate #2
+   |
+25 | #[derive(gotham_formdata::conversion::ConvertFromStr::convert_byte_stream)]
+   |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

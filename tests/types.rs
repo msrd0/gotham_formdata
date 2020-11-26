@@ -1,4 +1,5 @@
 use futures_executor::block_on;
+use futures_util::future::FutureExt;
 use gotham::{
 	hyper::{
 		body::Body,
@@ -8,6 +9,7 @@ use gotham::{
 };
 use gotham_formdata::FormData;
 use mime::{Mime, APPLICATION_WWW_FORM_URLENCODED};
+use std::{convert::Infallible, str::FromStr};
 
 fn with_body(body: &'static [u8], content_type: Mime, callback: impl Fn(&mut State)) {
 	State::with_new(|state| {
@@ -20,6 +22,38 @@ fn with_body(body: &'static [u8], content_type: Mime, callback: impl Fn(&mut Sta
 
 		callback(state);
 	});
+}
+
+#[test]
+fn test_custom_from_str_and_convert() {
+	use gotham_formdata::conversion::{ByteStream, ConversionFuture};
+
+	#[derive(Debug)]
+	struct CustomType(bool);
+
+	impl FromStr for CustomType {
+		type Err = Infallible;
+
+		fn from_str(_: &str) -> Result<Self, Infallible> {
+			Ok(Self(false))
+		}
+	}
+
+	impl CustomType {
+		fn convert_byte_stream<'a, E: 'a>(_name: &'a str, _stream: ByteStream<E>) -> ConversionFuture<'a, Self, E> {
+			async move { Ok(Self(true)) }.boxed()
+		}
+	}
+
+	#[derive(Debug, FormData)]
+	struct Data {
+		foo: CustomType
+	}
+
+	with_body(b"foo=", APPLICATION_WWW_FORM_URLENCODED, |state| {
+		let data = block_on(Data::parse_form_data(state)).unwrap();
+		assert!(data.foo.0);
+	})
 }
 
 #[test]

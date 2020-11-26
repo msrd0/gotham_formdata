@@ -41,11 +41,12 @@ impl Base64 {
 */
 
 use crate::Error;
+use bytes::{Bytes, BytesMut};
 use futures_util::{
 	future::FutureExt,
 	stream::{Stream, StreamExt}
 };
-use gotham::{anyhow, hyper::body::Bytes};
+use gotham::anyhow;
 use std::{future::Future, pin::Pin, str::FromStr};
 
 /// Re-exports for use in derive macro.
@@ -109,5 +110,26 @@ impl<'a, E: 'a> ConvertRawBytes<'a, E> for Vec<u8> {
 			Ok(buf)
 		}
 		.boxed()
+	}
+}
+
+impl<'a, E: 'a> ConvertRawBytes<'a, E> for BytesMut {
+	fn convert_byte_stream(_name: &'a str, mut stream: ByteStream<E>) -> ConversionFuture<'a, Self, E> {
+		async move {
+			let mut buf = BytesMut::new();
+			while let Some(data) = stream.next().await {
+				buf.extend_from_slice(&data?);
+			}
+			Ok(buf)
+		}
+		.boxed()
+	}
+}
+
+impl<'a, E: 'a> ConvertRawBytes<'a, E> for Bytes {
+	fn convert_byte_stream(name: &'a str, stream: ByteStream<E>) -> ConversionFuture<'a, Self, E> {
+		BytesMut::convert_byte_stream(name, stream)
+			.map(|res| res.map(Into::into))
+			.boxed()
 	}
 }

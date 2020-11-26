@@ -2,7 +2,7 @@ use futures_executor::block_on;
 use futures_util::future::FutureExt;
 use gotham::{
 	hyper::{
-		body::Body,
+		body::{Body, Bytes},
 		header::{HeaderMap, CONTENT_TYPE}
 	},
 	state::State
@@ -89,6 +89,25 @@ fn test_vec_u8() {
 			let data = block_on(Data::parse_form_data(state)).unwrap();
 			assert_eq!(data, Data {
 				foo: "🚢 DONAUDAMPFSCHIFFFAHRTSKAPITÄNSMÜTZE 👮".as_bytes().to_owned()
+			});
+		}
+	);
+}
+
+#[test]
+fn test_bytes() {
+	#[derive(Debug, FormData, PartialEq)]
+	struct Data {
+		foo: Bytes
+	}
+
+	with_body(
+		b"foo=%F0%9F%9A%A2+DONAUDAMPFSCHIFFFAHRTSKAPIT%C3%84NSM%C3%9CTZE+%F0%9F%91%AE",
+		APPLICATION_WWW_FORM_URLENCODED,
+		|state| {
+			let data = block_on(Data::parse_form_data(state)).unwrap();
+			assert_eq!(data, Data {
+				foo: "🚢 DONAUDAMPFSCHIFFFAHRTSKAPITÄNSMÜTZE 👮".as_bytes().into()
 			});
 		}
 	);

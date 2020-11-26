@@ -59,10 +59,11 @@ jobs:
       
       - run: cargo doc --workspace --all-features
       
+      - run: tar cfJ rustdoc.tar.xz target/doc/
       - uses: actions/upload-artifact@v2
         with:
           name: rustdoc
-          path: target/doc
+          path: rustdoc.tar.xz
   
   rustfmt:
     runs-on: ubuntu-20.04
@@ -94,7 +95,6 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: rustdoc
-          path: target/doc
       
       - uses: actions/download-artifact@v2
         with:
@@ -102,7 +102,7 @@ jobs:
       
       - run: |
           test ! -d ./doc || rm -r ./doc
-          cp -R ./target/doc ./doc
+          tar xfJ rustdoc.tar.xz --strip-components=1
           date >./doc/.timestamp
           
           cp tarpaulin-report.html ./doc

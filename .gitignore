@@ -1,8 +1,12 @@
 /target
+/wip
 Cargo.lock
 **/*.rs.bk
+
 *~
 \#*
 .#*
+
 cobertura.xml
+tarpaulin-report.json
 tarpaulin-report.html

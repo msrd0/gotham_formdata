@@ -1,5 +1,8 @@
 name: Rust
-on: [push, pull_request]
+on:
+  push:
+    branches: [master]
+  pull_request:
 
 jobs:
   test:
@@ -18,6 +21,49 @@ jobs:
           toolchain: 1.48.0
       - run: cargo test -- trybuild_ui
   
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dtolnay/rust-toolchain@stable
+      
+      - uses: actions-rs/install@v0.1.2
+        with:
+          crate: cargo-tarpaulin
+          use-tool-cache: true
+      
+      - run: |
+          cargo tarpaulin -v \
+          	--target-dir target/tarpaulin \
+          	--workspace \
+          	--all-features \
+          	--exclude-files 'cargo/*' \
+          	--exclude-files 'derive/*' \
+          	--exclude-files 'target/*' \
+          	--ignore-panics --ignore-tests \
+          	--out Html --out Json \
+          	-- --skip trybuild_ui
+      
+      - uses: actions/upload-artifact@v2
+        with:
+          name: tarpaulin-report
+          path: |
+            tarpaulin-report.json
+            tarpaulin-report.html
+  
+  doc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dtolnay/rust-toolchain@stable
+      
+      - run: cargo doc --workspace --all-features
+      
+      - uses: actions/upload-artifact@v2
+        with:
+          name: rustdoc
+          path: target/doc
+  
   rustfmt:
     runs-on: ubuntu-latest
     steps:
@@ -35,3 +81,38 @@ jobs:
       - run: cargo install cargo-readme
       - run: cargo readme >README.md.new
       - run: diff README.md README.md.new
+  
+  pages:
+    runs-on: ubuntu-latest
+    needs: [coverage, doc]
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+      
+      - uses: actions/download-artifact@v2
+        with:
+          name: rustdoc
+          path: target/doc
+      
+      - uses: actions/download-artifact@v2
+        with:
+          name: tarpaulin-report
+      
+      - run: |
+          test ! -d ./doc || rm -r ./doc
+          cp -R ./target/doc ./doc
+          date >./doc/.timestamp
+          
+          cp tarpaulin-report.html ./doc
+          coverage=$(jq '.files | { covered: map(.covered) | add, coverable: map(.coverable) | add } | .covered / .coverable * 10000 | round | . / 100' tarpaulin-report.json)
+          color=$([[ $coverage >= 90 ]] && printf yellow || printf brightgreen)
+          wget -qO doc/coverage.svg "https://img.shields.io/badge/coverage-$coverage%25-$color"
+          
+          git add ./doc
+          git status
+      
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "GitHub Pages for ${{ github.sha }}"

@@ -19,6 +19,9 @@ jobs:
           key: ${{ runner.os }}-cargo-1.42 }}
       
       - run: cargo test -- --skip trybuild_ui
+        env:
+          RUST_BACKTRACE: 1
+          RUST_LOG: info
   
   trybuild:
     runs-on: ubuntu-20.04
@@ -36,6 +39,9 @@ jobs:
           key: ${{ runner.os }}-cargo-1.48 }}
       
       - run: cargo test -- trybuild_ui
+        env:
+          RUST_BACKTRACE: 1
+          RUST_LOG: info
   
   coverage:
     runs-on: ubuntu-20.04
@@ -59,7 +65,10 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ steps.rust-version.outputs.VERSION }}-tarpaulin-${{ steps.tarpaulin-version.outputs.VERSION }} }}
       
       - name: Install Tarpaulin
-        run: cargo install cargo-tarpaulin --version ${{ steps.tarpaulin-version.outputs.VERSION }}
+        run: |
+          ls -lh ~/.cargo || true
+          ls -lh ~/.cargo/bin || true
+          cargo install cargo-tarpaulin --version ${{ steps.tarpaulin-version.outputs.VERSION }}
       
       - name: Run Tarpaulin coverage tests
         run: |
@@ -73,6 +82,9 @@ jobs:
           	--ignore-panics --ignore-tests \
           	--out Html --out Json \
           	-- --skip trybuild_ui
+        env:
+          RUST_BACKTRACE: 1
+          RUST_LOG: info
       
       - uses: actions/upload-artifact@v2
         with:

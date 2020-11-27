@@ -17,28 +17,31 @@ struct Base64(Vec<u8>);
 
 impl Base64 {
 	// the method signature needs to be roughly equivalent to this
-	fn convert_byte_stream<'a, E>(
-			name: &'a str,
-			value: Value<'a, gotham_formdata::Error<E>>
-	) -> ConversionFuture<'a, Self, gotham_formdata::Error<E>>
+	async fn convert_value<E>(
+			name: &str,
+			value: Value<'_, gotham_formdata::Error<E>>
+	) -> Result<Self, gotham_formdata::Error<E>>
 	where
-		E: std::error::Error + 'a
+		E: std::error::Error
 	{
-		async move {
-			let decoded = match value.value {
-				BytesOrString::Bytes(mut stream) => {
-					let mut buf: Vec<u8> = Vec::new();
-					while let Some(data) = stream.next().await {
-						buf.extend_from_slice(&data?);
-					}
-					base64::decode(&buf)
-				},
-				BytesOrString::String(string) => base64::decode(string.as_bytes())
-			}.map_err(|err| gotham_formdata::Error::IllegalField(name.to_owned(), err.into()))?;
+		let decoded = match value.value {
+			BytesOrString::Bytes(mut stream) => {
+				let mut buf: Vec<u8> = Vec::new();
+				while let Some(data) = stream.next().await {
+					buf.extend_from_slice(&data?);
+				}
+				base64::decode(&buf)
+			},
+			BytesOrString::String(string) => base64::decode(string.as_bytes())
+		}.map_err(|err| gotham_formdata::Error::IllegalField(name.to_owned(), err.into()))?;
 
-			Ok(Self(decoded))
-		}.boxed()
+		Ok(Self(decoded))
 	}
+}
+
+#[derive(FormData)]
+struct MyData {
+	foo: Base64
 }
 # mod base64 { pub fn decode(input: &[u8]) -> Result<Vec<u8>, std::convert::Infallible> { unimplemented!() } }
 ```

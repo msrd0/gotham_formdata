@@ -10,7 +10,7 @@ your type:
 
 ```rust
 use futures_util::{FutureExt, StreamExt};
-use gotham_formdata::{FormData, conversion::{ByteStream, ConversionFuture}};
+use gotham_formdata::{conversion::ConversionFuture, value::{BytesOrString, Value}, FormData};
 
 /// This type parses Base64-encoded values to a [Vec<u8>].
 struct Base64(Vec<u8>);
@@ -19,20 +19,24 @@ impl Base64 {
 	// the method signature needs to be roughly equivalent to this
 	fn convert_byte_stream<'a, E>(
 			name: &'a str,
-			mut stream: ByteStream<gotham_formdata::Error<E>>
+			value: Value<'a, gotham_formdata::Error<E>>
 	) -> ConversionFuture<'a, Self, gotham_formdata::Error<E>>
 	where
 		E: std::error::Error + 'a
 	{
 		async move {
-			let mut buf: Vec<u8> = Vec::new();
-			while let Some(data) = stream.next().await {
-				buf.extend_from_slice(data?.as_ref());
-			}
+			let decoded = match value.value {
+				BytesOrString::Bytes(mut stream) => {
+					let mut buf: Vec<u8> = Vec::new();
+					while let Some(data) = stream.next().await {
+						buf.extend_from_slice(&data?);
+					}
+					base64::decode(&buf)
+				},
+				BytesOrString::String(string) => base64::decode(string.as_bytes())
+			}.map_err(|err| gotham_formdata::Error::IllegalField(name.to_owned(), err.into()))?;
 
-			let data = base64::decode(&buf)
-					.map_err(|err| gotham_formdata::Error::IllegalField(name.to_owned(), err.into()))?;
-			Ok(Self(data))
+			Ok(Self(decoded))
 		}.boxed()
 	}
 }
@@ -40,12 +44,12 @@ impl Base64 {
 ```
 */
 
-use crate::Error;
-use bytes::{Bytes, BytesMut};
-use futures_util::{
-	future::FutureExt,
-	stream::{Stream, StreamExt}
+use crate::{
+	value::{BytesOrString, Value},
+	Error
 };
+use bytes::{Bytes, BytesMut};
+use futures_util::{future::FutureExt, stream::StreamExt};
 use gotham::anyhow;
 use std::{future::Future, pin::Pin, str::FromStr};
 
@@ -55,8 +59,6 @@ pub mod prelude {
 	pub use super::{ConvertFromStr, ConvertRawBytes};
 }
 
-/// A stream of bytes.
-pub type ByteStream<Err> = Pin<Box<dyn Stream<Item = Result<Bytes, Err>> + Send>>;
 /// The future returned from conversion methods.
 pub type ConversionFuture<'a, T, Err> = Pin<Box<dyn Future<Output = Result<T, Err>> + Send + 'a>>;
 
@@ -66,7 +68,7 @@ pub type ConversionFuture<'a, T, Err> = Pin<Box<dyn Future<Output = Result<T, Er
 /// to convert custom types.
 pub trait ConvertFromStr<Err>: Sized {
 	/// Perform the conversion.
-	fn convert_byte_stream<'a>(name: &'a str, stream: ByteStream<Err>) -> ConversionFuture<'a, Self, Err>;
+	fn convert_value<'a>(name: &'a str, value: Value<'a, Err>) -> ConversionFuture<'a, Self, Err>;
 }
 
 impl<E, T> ConvertFromStr<Error<E>> for T
@@ -75,14 +77,20 @@ where
 	T: FromStr,
 	T::Err: Into<anyhow::Error>
 {
-	fn convert_byte_stream<'a>(name: &'a str, mut stream: ByteStream<Error<E>>) -> ConversionFuture<'a, Self, Error<E>> {
+	fn convert_value<'a>(name: &'a str, value: Value<'a, Error<E>>) -> ConversionFuture<'a, Self, Error<E>> {
 		async move {
-			let mut buf = String::new();
-			while let Some(data) = stream.next().await {
-				let data = data?;
-				let str = String::from_utf8_lossy(data.as_ref());
-				buf.push_str(&str);
-			}
+			let buf = match value.value {
+				BytesOrString::Bytes(mut stream) => {
+					let mut buf = String::new();
+					while let Some(data) = stream.next().await {
+						let data = data?;
+						let str = String::from_utf8_lossy(data.as_ref());
+						buf.push_str(&str);
+					}
+					buf.into()
+				},
+				BytesOrString::String(buf) => buf
+			};
 
 			buf.parse::<Self>()
 				.map_err(|err| Error::IllegalField(name.to_owned(), err.into()))
@@ -97,39 +105,47 @@ where
 /// to convert custom types.
 pub trait ConvertRawBytes<'a, Err>: Sized {
 	/// Perform the conversion.
-	fn convert_byte_stream(name: &'a str, stream: ByteStream<Err>) -> ConversionFuture<'a, Self, Err>;
+	fn convert_value(name: &'a str, value: Value<'a, Err>) -> ConversionFuture<'a, Self, Err>;
 }
 
-impl<'a, E: 'a> ConvertRawBytes<'a, E> for Vec<u8> {
-	fn convert_byte_stream(_name: &'a str, mut stream: ByteStream<E>) -> ConversionFuture<'a, Self, E> {
+impl<'a, Err: 'a> ConvertRawBytes<'a, Err> for Vec<u8> {
+	fn convert_value(_name: &'a str, value: Value<'a, Err>) -> ConversionFuture<'a, Self, Err> {
 		async move {
-			let mut buf: Vec<u8> = Vec::new();
-			while let Some(data) = stream.next().await {
-				buf.extend_from_slice(&data?);
+			match value.value {
+				BytesOrString::Bytes(mut stream) => {
+					let mut buf: Vec<u8> = Vec::new();
+					while let Some(data) = stream.next().await {
+						buf.extend_from_slice(&data?);
+					}
+					Ok(buf)
+				},
+				BytesOrString::String(string) => Ok(string.as_bytes().to_vec())
 			}
-			Ok(buf)
 		}
 		.boxed()
 	}
 }
 
-impl<'a, E: 'a> ConvertRawBytes<'a, E> for BytesMut {
-	fn convert_byte_stream(_name: &'a str, mut stream: ByteStream<E>) -> ConversionFuture<'a, Self, E> {
+impl<'a, Err: 'a> ConvertRawBytes<'a, Err> for BytesMut {
+	fn convert_value(_name: &'a str, value: Value<'a, Err>) -> ConversionFuture<'a, Self, Err> {
 		async move {
-			let mut buf = BytesMut::new();
-			while let Some(data) = stream.next().await {
-				buf.extend_from_slice(&data?);
+			match value.value {
+				BytesOrString::Bytes(mut stream) => {
+					let mut buf = BytesMut::new();
+					while let Some(data) = stream.next().await {
+						buf.extend_from_slice(&data?);
+					}
+					Ok(buf)
+				},
+				BytesOrString::String(string) => Ok(string.as_bytes().into())
 			}
-			Ok(buf)
 		}
 		.boxed()
 	}
 }
 
-impl<'a, E: 'a> ConvertRawBytes<'a, E> for Bytes {
-	fn convert_byte_stream(name: &'a str, stream: ByteStream<E>) -> ConversionFuture<'a, Self, E> {
-		BytesMut::convert_byte_stream(name, stream)
-			.map(|res| res.map(Into::into))
-			.boxed()
+impl<'a, Err: 'a> ConvertRawBytes<'a, Err> for Bytes {
+	fn convert_value(name: &'a str, value: Value<'a, Err>) -> ConversionFuture<'a, Self, Err> {
+		BytesMut::convert_value(name, value).map(|res| res.map(Into::into)).boxed()
 	}
 }

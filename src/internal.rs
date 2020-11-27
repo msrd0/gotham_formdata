@@ -1,8 +1,12 @@
-use crate::{conversion::ByteStream, validate::Validator, Error, FormData};
-use futures_util::stream::{self, StreamExt, TryStreamExt};
+use crate::{
+	validate::Validator,
+	value::{BytesOrString, Value},
+	Error, FormData
+};
+use futures_util::stream::{StreamExt, TryStreamExt};
 use gotham::{
 	hyper::{
-		body::{self, Body, Bytes},
+		body::{self, Body},
 		header::{HeaderMap, CONTENT_TYPE}
 	},
 	state::State
@@ -23,7 +27,7 @@ pub trait FormDataBuilder: Default {
 	fn add_entry<'a>(
 		&'a mut self,
 		name: Cow<'a, str>,
-		value: ByteStream<Error<Self::Err>>
+		value: Value<'a, Error<Self::Err>>
 	) -> FormDataBuilderFuture<'a, Self::Err>;
 	fn build(self) -> Result<Self::Data, Error<Self::Err>>;
 }
@@ -60,10 +64,11 @@ async fn parse_urlencoded<T: FormDataBuilder>(body: Body) -> Result<T::Data, Err
 
 	let mut builder = T::default();
 	for (name, value) in form_urlencoded::parse(&body) {
-		let bytes = Bytes::copy_from_slice(value.as_bytes());
-		builder
-			.add_entry(name, stream::once(async move { Ok(bytes) }).boxed())
-			.await?;
+		let value = Value {
+			value: BytesOrString::String(value),
+			content_type: None
+		};
+		builder.add_entry(name, value).await?;
 	}
 	builder.build()
 }
@@ -78,13 +83,15 @@ async fn parse_multipart<T: FormDataBuilder>(body: Body, content_type: &Mime) ->
 
 	let mut builder = T::default();
 	while let Some(field) = multipart.next_field().await? {
-		let name = field.name().ok_or(Error::MissingContentDisposition)?;
-		// unfortunately, we need to clone the name so we can move field which is our only way
-		// of accessing the stream
-		let name = name.to_owned();
+		let name = field.name().ok_or(Error::MissingContentDisposition)?.to_owned();
+		let mime = field.content_type().cloned();
 
-		let value = field.map_err(Into::into);
-		builder.add_entry(name.into(), value.boxed()).await?;
+		let stream = field.map_err(Into::into).boxed();
+		let value = Value {
+			value: BytesOrString::Bytes(stream),
+			content_type: mime
+		};
+		builder.add_entry(name.into(), value).await?;
 	}
 	builder.build()
 }

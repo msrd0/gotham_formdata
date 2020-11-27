@@ -1,6 +1,7 @@
 use futures_util::future::FutureExt;
 use gotham_formdata::FormData;
-use gotham_formdata::conversion::*;
+use gotham_formdata::conversion::{ConvertRawBytes, ConversionFuture};
+use gotham_formdata::value::Value;
 use std::convert::Infallible;
 use std::str::FromStr;
 
@@ -15,7 +16,7 @@ impl FromStr for CustomType {
 }
 
 impl<'a, E: 'a> ConvertRawBytes<'a, E> for CustomType {
-	fn convert_byte_stream(_name: &'a str, mut stream: ByteStream<E>) -> ConversionFuture<'a, Self, E> {
+	fn convert_value(_name: &'a str, _value: Value<'a, E>) -> ConversionFuture<'a, Self, E> {
 		async move {
 			Ok(Self(true))
 		}.boxed()

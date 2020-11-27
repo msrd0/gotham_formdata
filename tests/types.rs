@@ -26,7 +26,7 @@ fn with_body(body: &'static [u8], content_type: Mime, callback: impl Fn(&mut Sta
 
 #[test]
 fn test_custom_from_str_and_convert() {
-	use gotham_formdata::conversion::{ByteStream, ConversionFuture};
+	use gotham_formdata::{conversion::ConversionFuture, value::Value};
 
 	#[derive(Debug)]
 	struct CustomType(bool);
@@ -40,7 +40,7 @@ fn test_custom_from_str_and_convert() {
 	}
 
 	impl CustomType {
-		fn convert_byte_stream<'a, E: 'a>(_name: &'a str, _stream: ByteStream<E>) -> ConversionFuture<'a, Self, E> {
+		fn convert_value<'a, E: 'a>(_name: &'a str, _value: Value<'a, E>) -> ConversionFuture<'a, Self, E> {
 			async move { Ok(Self(true)) }.boxed()
 		}
 	}

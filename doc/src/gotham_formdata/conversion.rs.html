@@ -152,6 +152,9 @@
 <span id="149">149</span>
 <span id="150">150</span>
 <span id="151">151</span>
+<span id="152">152</span>
+<span id="153">153</span>
+<span id="154">154</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">/*!
 This mod contains conversion traits for common used types, that allows them to be created from
@@ -172,28 +175,31 @@ struct Base64(Vec&lt;u8&gt;);
 
 impl Base64 {
 	// the method signature needs to be roughly equivalent to this
-	fn convert_byte_stream&lt;&#39;a, E&gt;(
-			name: &amp;&#39;a str,
-			value: Value&lt;&#39;a, gotham_formdata::Error&lt;E&gt;&gt;
-	) -&gt; ConversionFuture&lt;&#39;a, Self, gotham_formdata::Error&lt;E&gt;&gt;
+	async fn convert_value&lt;E&gt;(
+			name: &amp;str,
+			value: Value&lt;&#39;_, gotham_formdata::Error&lt;E&gt;&gt;
+	) -&gt; Result&lt;Self, gotham_formdata::Error&lt;E&gt;&gt;
 	where
-		E: std::error::Error + &#39;a
+		E: std::error::Error
 	{
-		async move {
-			let decoded = match value.value {
-				BytesOrString::Bytes(mut stream) =&gt; {
-					let mut buf: Vec&lt;u8&gt; = Vec::new();
-					while let Some(data) = stream.next().await {
-						buf.extend_from_slice(&amp;data?);
-					}
-					base64::decode(&amp;buf)
-				},
-				BytesOrString::String(string) =&gt; base64::decode(string.as_bytes())
-			}.map_err(|err| gotham_formdata::Error::IllegalField(name.to_owned(), err.into()))?;
+		let decoded = match value.value {
+			BytesOrString::Bytes(mut stream) =&gt; {
+				let mut buf: Vec&lt;u8&gt; = Vec::new();
+				while let Some(data) = stream.next().await {
+					buf.extend_from_slice(&amp;data?);
+				}
+				base64::decode(&amp;buf)
+			},
+			BytesOrString::String(string) =&gt; base64::decode(string.as_bytes())
+		}.map_err(|err| gotham_formdata::Error::IllegalField(name.to_owned(), err.into()))?;
 
-			Ok(Self(decoded))
-		}.boxed()
+		Ok(Self(decoded))
 	}
+}
+
+#[derive(FormData)]
+struct MyData {
+	foo: Base64
 }
 # mod base64 { pub fn decode(input: &amp;[u8]) -&gt; Result&lt;Vec&lt;u8&gt;, std::convert::Infallible&gt; { unimplemented!() } }
 ```

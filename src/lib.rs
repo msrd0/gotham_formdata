@@ -8,6 +8,7 @@ implements a [body extractor].
 - Parse `application/x-www-form-urlencoded` request bodies
 - Parse `multipart/form-data` request bodies
 - Verify the parsed request body
+- `#![forbid(unsafe_code)]` ensures that all functionality is implemented in 100% safe Rust code
 
 # :warning: Warning
 
@@ -67,15 +68,21 @@ limitations under the License.
  [gotham]: https://github.com/gotham-rs/gotham
  [multipart]: https://crates.io/crates/multipart
 */
+
 #![warn(missing_docs, rust_2018_idioms)]
 #![deny(missing_debug_implementations, unreachable_pub)]
+#![forbid(unsafe_code)]
 
 #[doc(hidden)]
 /// Not public API.
 pub mod export {
 	pub use futures_util::{future::FutureExt, stream::StreamExt};
 	pub use gotham::{hyper::body::Bytes, state::State};
-	pub use log;
+
+	#[cfg(feature = "regex")]
+	pub use once_cell::sync::Lazy;
+	#[cfg(feature = "regex")]
+	pub use regex_crate::Regex;
 }
 
 #[doc(inline)]

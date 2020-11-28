@@ -18,7 +18,7 @@ include = ["src/**", "Cargo.toml", "LICENSE", "README.md"]
 
 [features]
 default = ["regex"]
-regex = ["gotham_formdata_derive/regex", "regex_crate"]
+regex = ["gotham_formdata_derive/regex", "once_cell", "regex_crate"]
 
 [dependencies]
 bytes = "0.5"
@@ -33,6 +33,7 @@ multer = "1.2"
 thiserror = "1.0"
 
 # Optional Dependencies
+once_cell = { version = "1.5", optional = true }
 regex_crate = { package = "regex", version = "1.4", optional = true }
 
 [dev-dependencies]

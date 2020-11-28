@@ -101,8 +101,9 @@ impl Field {
 
 						let regex_ident = format_ident!("{}_validation_regex", ident.to_string());
 						quote!({
-							static #regex_ident: ::gotham_formdata::validate::LazyRegex = ::gotham_formdata::validate::LazyRegex::new(#expr);
-							::gotham_formdata::validate::RegexValidator::new(#regex_ident.get().expect("Invalid Regex"))
+							static #regex_ident: ::gotham_formdata::export::Lazy<::gotham_formdata::export::Regex> =
+									::gotham_formdata::export::Lazy::new(|| ::gotham_formdata::export::Regex::new(#expr).expect("Invalid Regex"));
+							::gotham_formdata::validate::RegexValidator::new(&#regex_ident)
 						})
 					},
 

@@ -49,6 +49,7 @@ implements a [body extractor].
 - Parse `application/x-www-form-urlencoded` request bodies
 - Parse `multipart/form-data` request bodies
 - Verify the parsed request body
+- `#![forbid(unsafe_code)]` ensures that all functionality is implemented in 100% safe Rust code
 
 ## :warning: Warning
 

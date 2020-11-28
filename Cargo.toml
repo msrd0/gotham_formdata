@@ -21,7 +21,7 @@ default = ["regex"]
 regex = ["gotham_formdata_derive/regex", "once_cell", "regex_crate"]
 
 [dependencies]
-bytes = "0.5"
+bytes = "0.6"
 either = "1.0"
 form_urlencoded = "1.0"
 futures-util = "0.3.7"

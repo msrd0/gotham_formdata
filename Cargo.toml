@@ -38,5 +38,6 @@ regex_crate = { package = "regex", version = "1.4", optional = true }
 
 [dev-dependencies]
 futures-executor = "0.3.7"
+percent-encoding = "2.1"
 pretty_env_logger = "0.4"
 trybuild = "1.0"

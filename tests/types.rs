@@ -8,11 +8,12 @@ use gotham::{
 };
 use gotham_formdata::FormData;
 use mime::{Mime, APPLICATION_WWW_FORM_URLENCODED};
+use percent_encoding::{percent_encode, NON_ALPHANUMERIC};
 use std::{convert::Infallible, str::FromStr};
 
-fn with_body(body: &'static [u8], content_type: Mime, callback: impl Fn(&mut State)) {
+fn with_body(body: &[u8], content_type: Mime, callback: impl Fn(&mut State)) {
 	State::with_new(|state| {
-		let body: Body = body.into();
+		let body: Body = body.to_owned().into();
 		state.put(body);
 
 		let mut headers = HeaderMap::new();
@@ -21,6 +22,18 @@ fn with_body(body: &'static [u8], content_type: Mime, callback: impl Fn(&mut Sta
 
 		callback(state);
 	});
+}
+
+fn with_body_foo(foo: &[u8], callback: impl Fn(&mut State)) {
+	let urlencoded = format!("foo={}", percent_encode(foo, NON_ALPHANUMERIC));
+	with_body(urlencoded.as_bytes(), APPLICATION_WWW_FORM_URLENCODED, &callback);
+
+	let mut multipart = Vec::new();
+	multipart.extend_from_slice(b"--GOTHAM-MULTIPART-BOUNDARY\r\nContent-Disposition: form-data; name=\"foo\"\r\n\r\n");
+	multipart.extend_from_slice(foo);
+	multipart.extend_from_slice(b"\r\n--GOTHAM-MULTIPART-BOUNDARY--");
+	let mime = "multipart/form-data; boundary=GOTHAM-MULTIPART-BOUNDARY";
+	with_body(&multipart, mime.parse().unwrap(), &callback);
 }
 
 #[test]
@@ -49,7 +62,7 @@ fn test_custom_from_str_and_convert() {
 		foo: CustomType
 	}
 
-	with_body(b"foo=", APPLICATION_WWW_FORM_URLENCODED, |state| {
+	with_body_foo(b"", |state| {
 		let data = block_on(Data::parse_form_data(state)).unwrap();
 		assert!(data.foo.0);
 	})
@@ -62,9 +75,8 @@ fn test_string() {
 		foo: String
 	}
 
-	with_body(
-		b"foo=%F0%9F%9A%A2+DONAUDAMPFSCHIFFFAHRTSKAPIT%C3%84NSM%C3%9CTZE+%F0%9F%91%AE",
-		APPLICATION_WWW_FORM_URLENCODED,
+	with_body_foo(
+		b"\xF0\x9F\x9A\xA2 DONAUDAMPFSCHIFFFAHRTSKAPIT\xC3\x84NSM\xC3\x9CTZE \xF0\x9F\x91\xAE",
 		|state| {
 			let data = block_on(Data::parse_form_data(state)).unwrap();
 			assert_eq!(data, Data {
@@ -81,9 +93,8 @@ fn test_vec_u8() {
 		foo: Vec<u8>
 	}
 
-	with_body(
-		b"foo=%F0%9F%9A%A2+DONAUDAMPFSCHIFFFAHRTSKAPIT%C3%84NSM%C3%9CTZE+%F0%9F%91%AE",
-		APPLICATION_WWW_FORM_URLENCODED,
+	with_body_foo(
+		b"\xF0\x9F\x9A\xA2 DONAUDAMPFSCHIFFFAHRTSKAPIT\xC3\x84NSM\xC3\x9CTZE \xF0\x9F\x91\xAE",
 		|state| {
 			let data = block_on(Data::parse_form_data(state)).unwrap();
 			assert_eq!(data, Data {
@@ -100,9 +111,8 @@ fn test_bytes() {
 		foo: Bytes
 	}
 
-	with_body(
-		b"foo=%F0%9F%9A%A2+DONAUDAMPFSCHIFFFAHRTSKAPIT%C3%84NSM%C3%9CTZE+%F0%9F%91%AE",
-		APPLICATION_WWW_FORM_URLENCODED,
+	with_body_foo(
+		b"\xF0\x9F\x9A\xA2 DONAUDAMPFSCHIFFFAHRTSKAPIT\xC3\x84NSM\xC3\x9CTZE \xF0\x9F\x91\xAE",
 		|state| {
 			let data = block_on(Data::parse_form_data(state)).unwrap();
 			assert_eq!(data, Data {

@@ -5,7 +5,7 @@ members = ["derive"]
 
 [package]
 name = "gotham_formdata"
-version = "0.0.1"
+version = "0.0.3"
 authors = ["Dominic Meiser <git@msrd0.de>"]
 edition = "2018"
 description = "Form data parsing for the gotham web framework"
@@ -26,7 +26,7 @@ either = "1.0"
 form_urlencoded = "1.0"
 futures-util = "0.3.7"
 gotham = { version = "0.5", default-features = false }
-gotham_formdata_derive = { version = "0.0.1", path = "derive/" }
+gotham_formdata_derive = { version = "0.0.2", path = "derive/" }
 log = "0.4"
 mime = "0.3"
 multer = "1.2"

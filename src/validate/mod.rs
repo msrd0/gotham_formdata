@@ -12,7 +12,7 @@ pub use range::*;
 mod validator;
 pub use validator::*;
 
-#[cfg(feature = "regex")]
+#[cfg(feature = "regex-validation")]
 mod regex;
-#[cfg(feature = "regex")]
-pub use regex::*;
+#[cfg(feature = "regex-validation")]
+pub use self::regex::*;

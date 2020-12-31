@@ -23,6 +23,24 @@ jobs:
           RUST_BACKTRACE: 1
           RUST_LOG: info
   
+  test-no-features:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dtolnay/rust-toolchain@1.42.0
+      
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo
+            target
+          key: ${{ runner.os }}-cargo-1.42 }}
+      
+      - run: cargo test --no-default-features --lib --tests -- --skip trybuild_ui
+        env:
+          RUST_BACKTRACE: 1
+          RUST_LOG: info
+  
   trybuild:
     runs-on: ubuntu-20.04
     steps:

@@ -95,7 +95,7 @@ impl Field {
 						if cfg!(not(feature = "regex")) {
 							return Err(Error::new(
 								name.span(),
-								"You need to enable the 'regex' feature of gotham_formdata to enable the regex validator"
+								"You need to enable the 'regex-validation' feature of gotham_formdata to enable the regex validator"
 							));
 						}
 

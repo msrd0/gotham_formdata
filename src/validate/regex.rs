@@ -1,5 +1,5 @@
 use super::Validator;
-use regex_crate::Regex;
+use regex::Regex;
 use thiserror::Error;
 
 /// This error is emitted by the [RegexValidator] if the value did not match the regex.

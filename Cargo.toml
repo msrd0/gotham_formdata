@@ -17,8 +17,10 @@ repository = "https://github.com/msrd0/gotham_formdata"
 include = ["src/**", "Cargo.toml", "LICENSE", "README.md"]
 
 [features]
-default = ["regex"]
-regex = ["gotham_formdata_derive/regex", "once_cell", "regex_crate"]
+default = ["regex-validation"]
+
+# This feature allows the usage of `#[validate(regex = "[0-9a-fA-F]+")]`
+regex-validation = ["gotham_formdata_derive/regex", "once_cell", "regex"]
 
 [dependencies]
 bytes = "0.5"
@@ -34,7 +36,7 @@ thiserror = "1.0"
 
 # Optional Dependencies
 once_cell = { version = "1.5", optional = true }
-regex_crate = { package = "regex", version = "1.4", optional = true }
+regex = { version = "1.4", optional = true }
 
 [dev-dependencies]
 futures-executor = "0.3.7"

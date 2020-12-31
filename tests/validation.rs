@@ -226,6 +226,7 @@ fn validate_max() {
 	});
 }
 
+#[cfg(feature = "regex-validation")]
 #[test]
 fn validate_regex() {
 	#[derive(Debug, FormData, PartialEq)]

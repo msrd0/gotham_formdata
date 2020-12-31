@@ -79,10 +79,10 @@ pub mod export {
 	pub use futures_util::{future::FutureExt, stream::StreamExt};
 	pub use gotham::{hyper::body::Bytes, state::State};
 
-	#[cfg(feature = "regex")]
+	#[cfg(feature = "regex-validation")]
 	pub use once_cell::sync::Lazy;
-	#[cfg(feature = "regex")]
-	pub use regex_crate::Regex;
+	#[cfg(feature = "regex-validation")]
+	pub use regex::Regex;
 }
 
 #[doc(inline)]

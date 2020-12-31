@@ -3,10 +3,8 @@ This mod contains conversion traits for common used types, that allows them to b
 a stream of bytes. Furthermore, it allows every type that implements [FromStr] plus some other
 common types to be converted.
 
-**DO NOT IMPLEMENT ANY OF THESE TRAITS MANUALLY!** If you do, it will likely result in compile
-errors when the compiler cannot choose which trait to use in the proc-macro generated code.
-Instead, if you want to provide a custom conversion method, just implement it as a method for
-your type:
+You cannot implement any of these traits manually. This is intentional. Instead, if you want to
+provide a custom conversion method, just implement it as a method for your type:
 
 ```rust
 use futures_util::{FutureExt, StreamExt};
@@ -62,16 +60,31 @@ pub mod prelude {
 	pub use super::{ConvertFromStr, ConvertRawBytes};
 }
 
+mod private {
+	/// This trait ensures that none of the conversion traits can be implemented manually.
+	pub trait Sealed1 {}
+
+	/// This trait ensures that none of the conversion traits can be implemented manually.
+	pub trait Sealed2 {}
+}
+
 /// The future returned from conversion methods.
 pub type ConversionFuture<'a, T, Err> = Pin<Box<dyn Future<Output = Result<T, Err>> + Send + 'a>>;
 
 /// This trait is used to convert types that implement [FromStr] from a stream of bytes.
 ///
-/// **DO NOT IMPLEMENT MANUALLY!** Look at the [module documentation](self) for an example how
-/// to convert custom types.
-pub trait ConvertFromStr<Err>: Sized {
+/// It is not possible to implement this trait manually. This is intentional. Look at the
+/// [module documentation](self) for an example how to convert custom types.
+pub trait ConvertFromStr<Err>: private::Sealed1 + Sized {
 	/// Perform the conversion.
 	fn convert_value<'a>(name: &'a str, value: Value<'a, Err>) -> ConversionFuture<'a, Self, Err>;
+}
+
+impl<T> private::Sealed1 for T
+where
+	T: FromStr,
+	T::Err: Into<anyhow::Error>
+{
 }
 
 impl<E, T> ConvertFromStr<Error<E>> for T
@@ -104,12 +117,14 @@ where
 
 /// This trait is used to convert `Vec<u8>` and similar types from a stream of bytes.
 ///
-/// **DO NOT IMPLEMENT MANUALLY!** Look at the [module documentation](self) for an example how
-/// to convert custom types.
-pub trait ConvertRawBytes<'a, Err>: Sized {
+/// It is not possible to implement this trait manually. This is intentional. Look at the
+/// [module documentation](self) for an example how to convert custom types.
+pub trait ConvertRawBytes<'a, Err>: private::Sealed2 + Sized {
 	/// Perform the conversion.
 	fn convert_value(name: &'a str, value: Value<'a, Err>) -> ConversionFuture<'a, Self, Err>;
 }
+
+impl private::Sealed2 for Vec<u8> {}
 
 impl<'a, Err: 'a> ConvertRawBytes<'a, Err> for Vec<u8> {
 	fn convert_value(_name: &'a str, value: Value<'a, Err>) -> ConversionFuture<'a, Self, Err> {
@@ -129,6 +144,8 @@ impl<'a, Err: 'a> ConvertRawBytes<'a, Err> for Vec<u8> {
 	}
 }
 
+impl private::Sealed2 for BytesMut {}
+
 impl<'a, Err: 'a> ConvertRawBytes<'a, Err> for BytesMut {
 	fn convert_value(_name: &'a str, value: Value<'a, Err>) -> ConversionFuture<'a, Self, Err> {
 		async move {
@@ -146,6 +163,8 @@ impl<'a, Err: 'a> ConvertRawBytes<'a, Err> for BytesMut {
 		.boxed()
 	}
 }
+
+impl private::Sealed2 for Bytes {}
 
 impl<'a, Err: 'a> ConvertRawBytes<'a, Err> for Bytes {
 	fn convert_value(name: &'a str, value: Value<'a, Err>) -> ConversionFuture<'a, Self, Err> {

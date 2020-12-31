@@ -1,1 +1,1 @@
-initSidebarItems({"trait":[["Slice_v1_49",""]]});
+initSidebarItems({});

@@ -5,6 +5,7 @@ error[E0277]: the trait bound `u8: AsRef<str>` is not satisfied
   |          ^^^^^^^^ the trait `AsRef<str>` is not implemented for `u8`
   |
   = note: required because of the requirements on the impl of `Validator<u8>` for `MinLengthValidator`
+  = note: required by `validate`
   = note: this error originates in a derive macro (in Nightly builds, run with -Z macro-backtrace for more info)
 
 error[E0277]: the trait bound `MinLengthValidator: Validator<u8>` is not satisfied

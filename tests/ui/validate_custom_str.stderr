@@ -22,4 +22,5 @@ error[E0277]: expected a `Fn<(&_,)>` closure, found `str`
   = help: the trait `Fn<(&_,)>` is not implemented for `str`
   = note: required because of the requirements on the impl of `FnOnce<(&_,)>` for `&str`
   = note: required because of the requirements on the impl of `Validator<_>` for `&str`
+  = note: required by `validate`
   = note: this error originates in a derive macro (in Nightly builds, run with -Z macro-backtrace for more info)

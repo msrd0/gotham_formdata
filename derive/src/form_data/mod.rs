@@ -72,6 +72,25 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 			.unwrap_or_else(|| quote!(::std::option::Option::<String>::None))
 	});
 
+	// We're using this weird way of calling the validator to make type errors appear on the
+	// validator's span, not the call site.
+	let field_validate_call = fields.iter().map(|f| {
+		let span = f.validator_span.unwrap_or_else(Span::call_site);
+		quote_spanned! { span =>
+			{
+				fn validate_field_asserting_type<T, V>(validator: V, value: &T)
+					-> ::std::result::Result<(), <V as ::gotham_formdata::validate::Validator<T>>::Err>
+				where
+					T: ?Sized,
+					V: ::gotham_formdata::validate::Validator<T>
+				{
+					validator.validate(value)
+				}
+				validate_field_asserting_type(validator, value)
+			}
+		}
+	});
+
 	let validate_trait = format_ident!("Validate{}FormData", name);
 
 	let mut dummy = format_ident!("_IMPL_FORMDATA_FOR_{}", name);
@@ -101,7 +120,7 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 						let validator = #field_validators;
 						let validation_error = #field_validation_errors;
 						if let Some(validator) = validator {
-							::gotham_formdata::validate::Validator::validate(validator, value)
+							#field_validate_call
 								.map_err(|err| {
 									match validation_error {
 										Some(ve) => #err_ident::invalid(name, ve),

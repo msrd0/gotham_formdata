@@ -1,5 +1,5 @@
 (function() {var implementors = {};
-implementors["rand_chacha"] = [{"text":"impl RngCore for ChaCha20Rng","synthetic":false,"types":[]},{"text":"impl RngCore for ChaCha12Rng","synthetic":false,"types":[]},{"text":"impl RngCore for ChaCha8Rng","synthetic":false,"types":[]}];
+implementors["rand_chacha"] = [{"text":"impl RngCore for ChaChaRng","synthetic":false,"types":[]}];
 implementors["rand_core"] = [];
 implementors["rand_hc"] = [{"text":"impl RngCore for Hc128Rng","synthetic":false,"types":[]}];
 implementors["rand_isaac"] = [{"text":"impl RngCore for IsaacRng","synthetic":false,"types":[]},{"text":"impl RngCore for Isaac64Rng","synthetic":false,"types":[]}];

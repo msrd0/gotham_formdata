@@ -1,4 +1,4 @@
-error[E0599]: no function or associated item named `convert_value` found for struct `MyType` in the current scope
+error[E0599]: the function or associated item `convert_value` exists for struct `MyType`, but its trait bounds were not satisfied
  --> $DIR/form_data_unparsable.rs:5:10
   |
 3 | struct MyType;
@@ -9,9 +9,9 @@ error[E0599]: no function or associated item named `convert_value` found for str
   | doesn't satisfy `_: gotham_formdata::conversion::ConvertFromStr<gotham_formdata::Error<_>>`
 4 |
 5 | #[derive(FormData)]
-  |          ^^^^^^^^ function or associated item not found in `MyType`
+  |          ^^^^^^^^ function or associated item cannot be called on `MyType` due to unsatisfied trait bounds
   |
-  = note: the method `convert_value` exists but the following trait bounds were not satisfied:
+  = note: the following trait bounds were not satisfied:
           `MyType: FromStr`
           which is required by `MyType: gotham_formdata::conversion::ConvertFromStr<gotham_formdata::Error<_>>`
           `&MyType: FromStr`

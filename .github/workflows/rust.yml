@@ -9,14 +9,14 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - uses: dtolnay/rust-toolchain@1.45.0
+      - uses: dtolnay/rust-toolchain@1.49.0
       
       - uses: actions/cache@v2
         with:
           path: |
             ~/.cargo
             target
-          key: ${{ runner.os }}-cargo-1.45 }}
+          key: ${{ runner.os }}-cargo-1.49
       
       - run: cargo test -- --skip trybuild_ui
         env:
@@ -27,14 +27,14 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - uses: dtolnay/rust-toolchain@1.45.0
+      - uses: dtolnay/rust-toolchain@1.49.0
       
       - uses: actions/cache@v2
         with:
           path: |
             ~/.cargo
             target
-          key: ${{ runner.os }}-cargo-1.45 }}
+          key: ${{ runner.os }}-cargo-1.49
       
       - run: cargo test --no-default-features --lib --tests -- --skip trybuild_ui
         env:
@@ -45,7 +45,9 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - uses: dtolnay/rust-toolchain@1.52.0
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: "1.52.1"
       
       - uses: actions/cache@v2
         with:
@@ -78,7 +80,7 @@ jobs:
           path: |
             ~/.cargo
             target
-          key: ${{ runner.os }}-cargo-${{ steps.rust-version.outputs.VERSION }}-tarpaulin-${{ steps.tarpaulin-version.outputs.VERSION }} }}
+          key: ${{ runner.os }}-cargo-${{ steps.rust-version.outputs.VERSION }}-tarpaulin-${{ steps.tarpaulin-version.outputs.VERSION }}
       
       - name: Install Tarpaulin
         run: |

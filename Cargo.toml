@@ -31,7 +31,7 @@ gotham = { version = "0.6", default-features = false }
 gotham_formdata_derive = { version = "0.0.2", path = "derive/" }
 log = "0.4"
 mime = "0.3"
-multer = "1.2"
+multer = "2.0"
 thiserror = "1.0"
 
 # Optional Dependencies (not features)

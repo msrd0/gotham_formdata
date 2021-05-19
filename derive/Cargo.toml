@@ -2,7 +2,7 @@
 
 [package]
 name = "gotham_formdata_derive"
-version = "0.0.2"
+version = "0.0.3"
 authors = ["Dominic Meiser <git@msrd0.de>"]
 edition = "2018"
 description = "Implementation detail of gotham_formdata"
@@ -18,7 +18,7 @@ proc-macro = true
 regex = []
 
 [dependencies]
-heck = "0.3.1"
+heck = "0.3.2"
 proc-macro2 = "1.0"
 quote = "1.0"
 syn = { version = "1.0", features = ["derive", "parsing", "printing", "proc-macro"], default-features = false }

@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/error.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>error.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings"></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="alternate icon" type="image/png" href="../../favicon-16x16.png">
-<link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../gotham_formdata/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../brush.svg" width="18" height="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" class="help-button">?</button>
+<link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../gotham_formdata/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../../brush.svg" width="18" height="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" class="help-button">?</button>
                 <a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" height="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>
@@ -50,32 +50,32 @@
 <span id="47">47</span>
 <span id="48">48</span>
 </pre><div class="example-wrap"><pre class="rust ">
-<span class="kw">use</span> <span class="ident">gotham</span>::<span class="ident">anyhow</span>;
-<span class="kw">use</span> <span class="ident">mime</span>::<span class="ident">Mime</span>;
-<span class="kw">use</span> <span class="ident">thiserror</span>::<span class="ident">Error</span>;
+<span class="kw">use</span> <span class="ident">gotham::anyhow</span>;
+<span class="kw">use</span> <span class="ident">mime::Mime</span>;
+<span class="kw">use</span> <span class="ident">thiserror::Error</span>;
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Error</span>)]</span>
 <span class="attribute">#[<span class="ident">non_exhaustive</span>]</span>
 <span class="doccomment">/// This error type is used when parsing form data from a request body was unsuccessful.</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Error</span><span class="op">&lt;</span><span class="prelude-val">Err</span>: <span class="ident">std</span>::<span class="ident">error</span>::<span class="ident">Error</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Error</span><span class="op">&lt;</span><span class="prelude-val">Err</span>: <span class="ident">std::error::Error</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
 	<span class="doccomment">/// The body of the request could not be read.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;The body of the request could not be read&quot;</span>)]</span>
-	<span class="ident">IllegalBody</span>(<span class="attribute">#[<span class="ident">from</span>]</span> <span class="ident">gotham</span>::<span class="ident">hyper</span>::<span class="ident">Error</span>),
+	<span class="ident">IllegalBody</span>(<span class="attribute">#[<span class="ident">from</span>]</span> <span class="ident">gotham::hyper::Error</span>),
 	<span class="doccomment">/// The content type of the body was not a valid mime type.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;The &#39;Content-Type&#39; header could not be parsed: {0}&quot;</span>)]</span>
-	<span class="ident">IllegalContentType</span>(<span class="attribute">#[<span class="ident">from</span>]</span> <span class="ident">mime</span>::<span class="ident">FromStrError</span>),
+	<span class="ident">IllegalContentType</span>(<span class="attribute">#[<span class="ident">from</span>]</span> <span class="ident">mime::FromStrError</span>),
 	<span class="doccomment">/// The content type of the body contained unreadable bytes.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;The &#39;Content-Type&#39; header could not be parsed: {0}&quot;</span>)]</span>
-	<span class="ident">IllegalContentTypeValue</span>(<span class="attribute">#[<span class="ident">from</span>]</span> <span class="ident">gotham</span>::<span class="ident">hyper</span>::<span class="ident">header</span>::<span class="ident">ToStrError</span>),
+	<span class="ident">IllegalContentTypeValue</span>(<span class="attribute">#[<span class="ident">from</span>]</span> <span class="ident">gotham::hyper::header::ToStrError</span>),
 	<span class="doccomment">/// The value of a field could not be parsed into that field&#39;s type.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;The field {0} could not be parsed: {1}&quot;</span>)]</span>
-	<span class="ident">IllegalField</span>(<span class="ident">String</span>, <span class="attribute">#[<span class="ident">source</span>]</span> <span class="ident">anyhow</span>::<span class="ident">Error</span>),
+	<span class="ident">IllegalField</span>(<span class="ident">String</span>, <span class="attribute">#[<span class="ident">source</span>]</span> <span class="ident">anyhow::Error</span>),
 	<span class="doccomment">/// The body was parsed but contained data that did not pass validation.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;The body contained invalid data: {0}&quot;</span>)]</span>
 	<span class="ident">InvalidData</span>(<span class="attribute">#[<span class="ident">source</span>]</span> <span class="prelude-val">Err</span>),
 	<span class="doccomment">/// An I/O error occured while reading the body.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;I/O Error while reading body: {0}&quot;</span>)]</span>
-	<span class="ident">IoError</span>(<span class="attribute">#[<span class="ident">from</span>]</span> <span class="ident">std</span>::<span class="ident">io</span>::<span class="ident">Error</span>),
+	<span class="ident">IoError</span>(<span class="attribute">#[<span class="ident">from</span>]</span> <span class="ident">std::io::Error</span>),
 	<span class="doccomment">/// The body was a multipart body but did not specify a boundary.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;The request failed to specify the multipart boundary&quot;</span>)]</span>
 	<span class="ident">MissingBoundary</span>,
@@ -90,7 +90,7 @@
 	<span class="ident">MissingField</span>(<span class="ident">String</span>),
 	<span class="doccomment">/// The multipart format was invalid.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;Multipart error: {0}&quot;</span>)]</span>
-	<span class="ident">MultipartError</span>(<span class="attribute">#[<span class="ident">from</span>]</span> <span class="ident">multer</span>::<span class="ident">Error</span>),
+	<span class="ident">MultipartError</span>(<span class="attribute">#[<span class="ident">from</span>]</span> <span class="ident">multer::Error</span>),
 	<span class="doccomment">/// The body&#39;s content type is not supported.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;Unknown &#39;Content-Type&#39; header value: {0}&quot;</span>)]</span>
 	<span class="ident">UnknownContentType</span>(<span class="ident">Mime</span>),
@@ -99,5 +99,5 @@
 	<span class="ident">UnknownField</span>(<span class="ident">String</span>)
 }
 </pre></div>
-</section><section id="search" class="content hidden"></section><section class="footer"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gotham_formdata" data-search-js="../../search-index.js"></div>
+</section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="gotham_formdata" data-search-index-js="../../search-index.js" data-search-js="../../search.js"></div>
     <script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script></body></html>

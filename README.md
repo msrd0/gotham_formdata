@@ -18,7 +18,7 @@
         <img alt="docs.rs" src="https://docs.rs/gotham_formdata/badge.svg"/>
     </a>
 	<a href="https://msrd0.github.io/gotham_formdata/doc/gotham_formdata/index.html">
-		<img alt="docs for master" src="https://img.shields.io/badge/docs-master-blue.svg"/>
+		<img alt="docs for main" src="https://img.shields.io/badge/docs-main-blue.svg"/>
 	</a>
     <a href="https://blog.rust-lang.org/2020/12/31/Rust-1.49.0.html">
         <img alt="Rust 1.49+" src="https://img.shields.io/badge/rustc-1.49+-orange.svg"/>

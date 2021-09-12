@@ -1,3 +1,3 @@
 (function() {var implementors = {};
-implementors["time"] = [{"text":"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.54.0/core/ops/bit/trait.Not.html\" title=\"trait core::ops::bit::Not\">Not</a> for <a class=\"enum\" href=\"time/enum.Sign.html\" title=\"enum time::Sign\">Sign</a>","synthetic":false,"types":["time::sign::Sign"]}];
+implementors["time"] = [{"text":"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.55.0/core/ops/bit/trait.Not.html\" title=\"trait core::ops::bit::Not\">Not</a> for <a class=\"enum\" href=\"time/enum.Sign.html\" title=\"enum time::Sign\">Sign</a>","synthetic":false,"types":["time::sign::Sign"]}];
 if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

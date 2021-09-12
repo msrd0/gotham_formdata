@@ -1,5 +1,0 @@
-error: expected parentheses: #[validate(...)]
- --> $DIR/validate_no_list.rs:5:13
-  |
-5 |     #[validate = "custom_validator"]
-  |                ^

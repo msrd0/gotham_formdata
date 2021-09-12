@@ -9,19 +9,17 @@ provide a custom conversion method, just implement it as a method for your type:
 ```rust
 use futures_util::{FutureExt, StreamExt};
 use gotham_formdata::{conversion::ConversionFuture, value::{BytesOrString, Value}, FormData};
+use validator::Validate;
 
 /// This type parses Base64-encoded values to a [Vec<u8>].
 struct Base64(Vec<u8>);
 
 impl Base64 {
 	// the method signature needs to be roughly equivalent to this
-	async fn convert_value<E>(
+	async fn convert_value(
 			name: &str,
-			value: Value<'_, gotham_formdata::Error<E>>
-	) -> Result<Self, gotham_formdata::Error<E>>
-	where
-		E: std::error::Error
-	{
+			value: Value<'_, gotham_formdata::Error>
+	) -> Result<Self, gotham_formdata::Error> {
 		let decoded = match value.value {
 			BytesOrString::Bytes(mut stream) => {
 				let mut buf: Vec<u8> = Vec::new();
@@ -37,7 +35,7 @@ impl Base64 {
 	}
 }
 
-#[derive(FormData)]
+#[derive(FormData, Validate)]
 struct MyData {
 	foo: Base64
 }
@@ -87,13 +85,12 @@ where
 {
 }
 
-impl<E, T> ConvertFromStr<Error<E>> for T
+impl<T> ConvertFromStr<Error> for T
 where
-	E: std::error::Error,
 	T: FromStr,
 	T::Err: Into<anyhow::Error>
 {
-	fn convert_value<'a>(name: &'a str, value: Value<'a, Error<E>>) -> ConversionFuture<'a, Self, Error<E>> {
+	fn convert_value<'a>(name: &'a str, value: Value<'a, Error>) -> ConversionFuture<'a, Self, Error> {
 		async move {
 			let buf = match value.value {
 				BytesOrString::Bytes(mut stream) => {

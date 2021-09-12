@@ -1,0 +1,12 @@
+error[E0277]: the trait bound `MyFormData: Validate` is not satisfied
+  --> $DIR/form_data_missing_validate.rs:5:10
+   |
+5  | #[derive(FormData)]
+   |          ^^^^^^^^ the trait `Validate` is not implemented for `MyFormData`
+   |
+note: required by `validate`
+  --> $DIR/traits.rs:96:5
+   |
+96 |     fn validate(&self) -> Result<(), ValidationErrors>;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   = note: this error originates in the derive macro `FormData` (in Nightly builds, run with -Z macro-backtrace for more info)

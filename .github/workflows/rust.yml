@@ -138,6 +138,7 @@ jobs:
         with:
           components: rustfmt
       - run: cargo fmt -- --check
+      - run: ./tests/ui/rustfmt.sh --check
   
   readme:
     runs-on: ubuntu-latest

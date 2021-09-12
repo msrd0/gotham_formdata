@@ -6,5 +6,4 @@ union MyFormData {
 	bar: i8
 }
 
-fn main() {
-}
+fn main() {}

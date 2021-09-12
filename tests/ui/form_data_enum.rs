@@ -1,8 +1,6 @@
 use gotham_formdata::FormData;
 
 #[derive(FormData)]
-enum MyFormData {
-}
+enum MyFormData {}
 
-fn main() {
-}
+fn main() {}

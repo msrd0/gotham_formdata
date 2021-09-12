@@ -60,12 +60,13 @@ FOR ENFORCING UPLOAD LIMITS.**
 
 ```rust
 use gotham_formdata::FormData;
+use validator::Validate;
 
-#[derive(FormData)]
+#[derive(FormData, Validate)]
 struct LoginData {
-	#[validate(regex = "[a-zA-Z0-9_]", error = "The username contains illegal characters.")]
+	#[validate(length(min = 5, max = 16))]
 	username: String,
-	#[validate(min_length = 6)]
+	#[validate(length(min = 8))]
 	password: String
 }
 

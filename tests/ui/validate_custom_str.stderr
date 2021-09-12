@@ -4,7 +4,7 @@ error[E0277]: expected a `Fn<(&_,)>` closure, found `str`
 5  |     #[validate(validator = "foobar")]
    |                            ^^^^^^^^ expected an `Fn<(&_,)>` closure, found `str`
    |
-  ::: $WORKSPACE/src/internal.rs
+  ::: $WORKSPACE/src/private.rs
    |
    | pub fn assert_validator<V: Validator<T>, T: ?Sized>(_: &V) {}
    |                            ------------ required by this bound in `assert_validator`

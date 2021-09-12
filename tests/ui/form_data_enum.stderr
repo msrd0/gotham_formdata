@@ -4,4 +4,4 @@ error: #[derive(FormData)] can only be used on structs
 3 | #[derive(FormData)]
   |          ^^^^^^^^
   |
-  = note: this error originates in a derive macro (in Nightly builds, run with -Z macro-backtrace for more info)
+  = note: this error originates in the derive macro `FormData` (in Nightly builds, run with -Z macro-backtrace for more info)

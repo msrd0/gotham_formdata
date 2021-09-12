@@ -15,10 +15,7 @@ pub use futures_util::{FutureExt, StreamExt};
 pub use gotham::{hyper::body::Bytes, state::State};
 pub use validator::Validate;
 
-#[cfg(feature = "regex-validation")]
-pub use regex::Regex;
-#[cfg(feature = "regex-validation")]
-pub type LazyRegex = once_cell::sync::Lazy<Regex>;
+pub mod serde;
 
 pub type FormDataBuilderFuture<'a> = Pin<Box<dyn Future<Output = Result<(), Error>> + Send + 'a>>;
 

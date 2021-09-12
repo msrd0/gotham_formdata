@@ -1,7 +1,6 @@
 use gotham_formdata::FormData;
-use validator::Validate;
 
-#[derive(FormData, Validate)]
+#[derive(FormData)]
 enum MyFormData {}
 
 fn main() {}

@@ -90,7 +90,6 @@
 <span id="90">90</span>
 <span id="91">91</span>
 <span id="92">92</span>
-<span id="93">93</span>
 </pre><pre class="rust">
 <span class="doccomment">/*!
 This crate is an extension to the popular [gotham web framework][gotham] for Rust. It aims to
@@ -118,12 +117,13 @@ FOR ENFORCING UPLOAD LIMITS.**
 # use gotham::state::State;
 # use mime::TEXT_PLAIN;
 use gotham_formdata::FormData;
+use validator::Validate;
 
-#[derive(FormData)]
+#[derive(FormData, Validate)]
 struct LoginData {
-	#[validate(regex = &quot;[a-zA-Z0-9_]&quot;, error = &quot;The username contains illegal characters.&quot;)]
+	#[validate(length(min = 5, max = 16))]
 	username: String,
-	#[validate(min_length = 6)]
+	#[validate(length(min = 8))]
 	password: String
 }
 
@@ -181,8 +181,6 @@ limitations under the License.
 <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
 <span class="doccomment">/// Not public API.</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">private</span>;
-
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">validate</span>;
 
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">value</span>;
 </pre></div>

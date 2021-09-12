@@ -88,9 +88,6 @@
 <span id="88">88</span>
 <span id="89">89</span>
 <span id="90">90</span>
-<span id="91">91</span>
-<span id="92">92</span>
-<span id="93">93</span>
 </pre><pre class="rust">
 <span class="kw">use</span> <span class="kw">super</span><span class="ident">::Field</span>;
 <span class="kw">use</span> <span class="ident">proc_macro2</span>::{<span class="ident">Ident</span>, <span class="ident">TokenStream</span>};
@@ -98,7 +95,6 @@
 
 <span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">struct</span> <span class="ident">FormDataBuilder</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
 	<span class="kw">pub</span>(<span class="kw">super</span>) <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Ident</span>,
-	<span class="kw">pub</span>(<span class="kw">super</span>) <span class="ident">err_ident</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Ident</span>,
 	<span class="kw">pub</span>(<span class="kw">super</span>) <span class="ident">ident</span>: <span class="ident">Ident</span>,
 	<span class="kw">pub</span>(<span class="kw">super</span>) <span class="ident">generics</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Generics</span>,
 	<span class="kw">pub</span>(<span class="kw">super</span>) <span class="ident">fields</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">Field</span>]
@@ -139,7 +135,6 @@
 
 	<span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">gen_builder_impl</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
 		<span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">name</span>;
-		<span class="kw">let</span> <span class="ident">err_ident</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">err_ident</span>;
 		<span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">ident</span>;
 		<span class="kw">let</span> (<span class="ident">impl_gen</span>, <span class="ident">ty_gen</span>, <span class="ident">were</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">generics</span>.<span class="ident">split_for_impl</span>();
 
@@ -149,13 +144,12 @@
 		<span class="macro">quote!</span> {
 			<span class="kw">impl</span> #<span class="ident">impl_gen</span> <span class="ident">::gotham_formdata::private::FormDataBuilder</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">ty_gen</span> #<span class="ident">were</span> {
 				<span class="kw">type</span> <span class="ident">Data</span> <span class="op">=</span> #<span class="ident">name</span> #<span class="ident">ty_gen</span>;
-				<span class="kw">type</span> <span class="prelude-val">Err</span> <span class="op">=</span> #<span class="ident">err_ident</span>;
 
 				<span class="kw">fn</span> <span class="ident">add_entry</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(
 						<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="self">self</span>,
 						<span class="ident">name</span>: <span class="ident">::std::borrow::Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">str</span><span class="op">&gt;</span>,
-						<span class="ident">value</span>: <span class="ident">::gotham_formdata::value::Value</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">::gotham_formdata::Error</span><span class="op">&lt;</span><span class="self">Self</span><span class="ident">::Err</span><span class="op">&gt;</span><span class="op">&gt;</span>
-				) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">::gotham_formdata::private::FormDataBuilderFuture</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="self">Self</span><span class="ident">::Err</span><span class="op">&gt;</span> {
+						<span class="ident">value</span>: <span class="ident">::gotham_formdata::value::Value</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">::gotham_formdata::Error</span><span class="op">&gt;</span>
+				) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">::gotham_formdata::private::FormDataBuilderFuture</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
 					<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused_imports</span>)]</span>
 					<span class="kw">use</span> <span class="ident">::gotham_formdata</span>::{<span class="ident">conversion::prelude</span>::<span class="kw-2">*</span>, <span class="ident">private</span>::{<span class="ident">FutureExt</span>, <span class="ident">StreamExt</span>}};
 
@@ -176,7 +170,7 @@
 					}.<span class="ident">boxed</span>()
 				}
 
-				<span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>#<span class="ident">name</span> #<span class="ident">ty_gen</span>, <span class="ident">::gotham_formdata::Error</span><span class="op">&lt;</span><span class="self">Self</span><span class="ident">::Err</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+				<span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>#<span class="ident">name</span> #<span class="ident">ty_gen</span>, <span class="ident">::gotham_formdata::Error</span><span class="op">&gt;</span> {
 					<span class="prelude-val">Ok</span>(#<span class="ident">name</span> #<span class="ident">ty_gen</span> {
 						#( #<span class="ident">field_names</span>: <span class="self">self</span>.#<span class="ident">field_names</span>.<span class="ident">ok_or</span>(<span class="ident">::gotham_formdata::Error::MissingField</span>(<span class="macro">stringify!</span>(#<span class="ident">field_names</span>).<span class="ident">to_owned</span>()))<span class="question-mark">?</span> ),<span class="op">*</span>
 					})

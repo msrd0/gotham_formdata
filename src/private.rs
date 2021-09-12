@@ -1,5 +1,4 @@
 use crate::{
-	validate::Validator,
 	value::{BytesOrString, Value},
 	Error, FormData
 };
@@ -14,30 +13,23 @@ use std::{borrow::Cow, future::Future, pin::Pin};
 
 pub use futures_util::{FutureExt, StreamExt};
 pub use gotham::{hyper::body::Bytes, state::State};
+pub use validator::Validate;
 
 #[cfg(feature = "regex-validation")]
 pub use regex::Regex;
 #[cfg(feature = "regex-validation")]
 pub type LazyRegex = once_cell::sync::Lazy<Regex>;
 
-pub fn assert_validator<V: Validator<T>, T: ?Sized>(_: &V) {}
-
-pub type FormDataBuilderFuture<'a, Err> = Pin<Box<dyn Future<Output = Result<(), Error<Err>>> + Send + 'a>>;
+pub type FormDataBuilderFuture<'a> = Pin<Box<dyn Future<Output = Result<(), Error>> + Send + 'a>>;
 
 pub trait FormDataBuilder: Default {
 	type Data: FormData;
-	/// The error that can occur during verification.
-	type Err: std::error::Error + 'static;
 
-	fn add_entry<'a>(
-		&'a mut self,
-		name: Cow<'a, str>,
-		value: Value<'a, Error<Self::Err>>
-	) -> FormDataBuilderFuture<'a, Self::Err>;
-	fn build(self) -> Result<Self::Data, Error<Self::Err>>;
+	fn add_entry<'a>(&'a mut self, name: Cow<'a, str>, value: Value<'a, Error>) -> FormDataBuilderFuture<'a>;
+	fn build(self) -> Result<Self::Data, Error>;
 }
 
-pub fn get_content_type<Err: std::error::Error>(state: &State) -> Result<Mime, Error<Err>> {
+pub fn get_content_type(state: &State) -> Result<Mime, Error> {
 	let headers: &HeaderMap = state.borrow();
 	Ok(headers
 		.get(CONTENT_TYPE)
@@ -50,7 +42,7 @@ pub fn get_body(state: &mut State) -> Body {
 	state.take()
 }
 
-pub async fn parse<T: FormDataBuilder>(body: Body, content_type: Mime) -> Result<T::Data, Error<T::Err>> {
+pub async fn parse<T: FormDataBuilder>(body: Body, content_type: Mime) -> Result<T::Data, Error> {
 	if is_urlencoded(&content_type) {
 		parse_urlencoded::<T>(body).await
 	} else if is_multipart(&content_type) {
@@ -64,7 +56,7 @@ fn is_urlencoded(content_type: &Mime) -> bool {
 	content_type.essence_str() == APPLICATION_WWW_FORM_URLENCODED.as_ref()
 }
 
-async fn parse_urlencoded<T: FormDataBuilder>(body: Body) -> Result<T::Data, Error<T::Err>> {
+async fn parse_urlencoded<T: FormDataBuilder>(body: Body) -> Result<T::Data, Error> {
 	let body = body::to_bytes(body).await?;
 
 	let mut builder = T::default();
@@ -82,7 +74,7 @@ fn is_multipart(content_type: &Mime) -> bool {
 	content_type.essence_str() == MULTIPART_FORM_DATA.as_ref()
 }
 
-async fn parse_multipart<T: FormDataBuilder>(body: Body, content_type: &Mime) -> Result<T::Data, Error<T::Err>> {
+async fn parse_multipart<T: FormDataBuilder>(body: Body, content_type: &Mime) -> Result<T::Data, Error> {
 	let boundary = content_type.get_param(BOUNDARY).ok_or(Error::MissingBoundary)?.as_str();
 	let mut multipart = Multipart::new(body, boundary);
 

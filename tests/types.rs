@@ -10,6 +10,7 @@ use gotham_formdata::FormData;
 use mime::{Mime, APPLICATION_WWW_FORM_URLENCODED};
 use percent_encoding::{percent_encode, NON_ALPHANUMERIC};
 use std::{convert::Infallible, str::FromStr};
+use validator::Validate;
 
 fn with_body(body: &[u8], content_type: Mime, callback: impl Fn(&mut State)) {
 	State::with_new(|state| {
@@ -57,7 +58,7 @@ fn test_custom_from_str_and_convert() {
 		}
 	}
 
-	#[derive(Debug, FormData)]
+	#[derive(Debug, FormData, Validate)]
 	struct Data {
 		foo: CustomType
 	}
@@ -70,7 +71,7 @@ fn test_custom_from_str_and_convert() {
 
 #[test]
 fn test_string() {
-	#[derive(Debug, FormData, PartialEq)]
+	#[derive(Debug, FormData, PartialEq, Validate)]
 	struct Data {
 		foo: String
 	}
@@ -88,7 +89,7 @@ fn test_string() {
 
 #[test]
 fn test_vec_u8() {
-	#[derive(Debug, FormData, PartialEq)]
+	#[derive(Debug, FormData, PartialEq, Validate)]
 	struct Data {
 		foo: Vec<u8>
 	}
@@ -106,7 +107,7 @@ fn test_vec_u8() {
 
 #[test]
 fn test_bytes() {
-	#[derive(Debug, FormData, PartialEq)]
+	#[derive(Debug, FormData, PartialEq, Validate)]
 	struct Data {
 		foo: Bytes
 	}

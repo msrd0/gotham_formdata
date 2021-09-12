@@ -1,5 +1,0 @@
-error: expected expression
- --> $DIR/validate_custom_nonsense.rs:5:25
-  |
-5 |     #[validate(validator = struct CustomValidator)]
-  |                            ^^^^^^

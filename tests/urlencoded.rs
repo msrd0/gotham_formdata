@@ -8,8 +8,9 @@ use gotham::{
 };
 use gotham_formdata::FormData;
 use mime::{Mime, TEXT_PLAIN};
+use validator::Validate;
 
-#[derive(FormData)]
+#[derive(FormData, Validate)]
 struct LoginData {
 	username: String,
 	password: String

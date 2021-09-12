@@ -1,11 +1,12 @@
 use gotham::anyhow;
 use mime::Mime;
 use thiserror::Error;
+use validator::ValidationErrors;
 
 #[derive(Debug, Error)]
 #[non_exhaustive]
 /// This error type is used when parsing form data from a request body was unsuccessful.
-pub enum Error<Err: std::error::Error + 'static> {
+pub enum Error {
 	/// The body of the request could not be read.
 	#[error("The body of the request could not be read")]
 	IllegalBody(#[from] gotham::hyper::Error),
@@ -20,7 +21,7 @@ pub enum Error<Err: std::error::Error + 'static> {
 	IllegalField(String, #[source] anyhow::Error),
 	/// The body was parsed but contained data that did not pass validation.
 	#[error("The body contained invalid data: {0}")]
-	InvalidData(#[source] Err),
+	InvalidData(#[from] ValidationErrors),
 	/// An I/O error occured while reading the body.
 	#[error("I/O Error while reading body: {0}")]
 	IoError(#[from] std::io::Error),

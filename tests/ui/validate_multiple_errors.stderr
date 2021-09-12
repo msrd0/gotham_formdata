@@ -1,5 +1,0 @@
-error: 'error' must not appear more than once
- --> $DIR/validate_multiple_errors.rs:5:52
-  |
-5 |     #[validate(min = 1, error = "Minimum value is 1", error = "The value must be at least 1")]
-  |                                                       ^^^^^

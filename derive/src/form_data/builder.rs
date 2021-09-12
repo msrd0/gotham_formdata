@@ -4,7 +4,6 @@ use syn::Generics;
 
 pub(super) struct FormDataBuilder<'a> {
 	pub(super) name: &'a Ident,
-	pub(super) err_ident: &'a Ident,
 	pub(super) ident: Ident,
 	pub(super) generics: &'a Generics,
 	pub(super) fields: &'a [Field]
@@ -45,7 +44,6 @@ impl<'a> FormDataBuilder<'a> {
 
 	pub(super) fn gen_builder_impl(&self) -> TokenStream {
 		let name = &self.name;
-		let err_ident = &self.err_ident;
 		let ident = &self.ident;
 		let (impl_gen, ty_gen, were) = self.generics.split_for_impl();
 
@@ -55,13 +53,12 @@ impl<'a> FormDataBuilder<'a> {
 		quote! {
 			impl #impl_gen ::gotham_formdata::private::FormDataBuilder for #ident #ty_gen #were {
 				type Data = #name #ty_gen;
-				type Err = #err_ident;
 
 				fn add_entry<'a>(
 						&'a mut self,
 						name: ::std::borrow::Cow<'a, str>,
-						value: ::gotham_formdata::value::Value<'a, ::gotham_formdata::Error<Self::Err>>
-				) -> ::gotham_formdata::private::FormDataBuilderFuture<'a, Self::Err> {
+						value: ::gotham_formdata::value::Value<'a, ::gotham_formdata::Error>
+				) -> ::gotham_formdata::private::FormDataBuilderFuture<'a> {
 					#[allow(unused_imports)]
 					use ::gotham_formdata::{conversion::prelude::*, private::{FutureExt, StreamExt}};
 
@@ -82,7 +79,7 @@ impl<'a> FormDataBuilder<'a> {
 					}.boxed()
 				}
 
-				fn build(self) -> Result<#name #ty_gen, ::gotham_formdata::Error<Self::Err>> {
+				fn build(self) -> Result<#name #ty_gen, ::gotham_formdata::Error> {
 					Ok(#name #ty_gen {
 						#( #field_names: self.#field_names.ok_or(::gotham_formdata::Error::MissingField(stringify!(#field_names).to_owned()))? ),*
 					})

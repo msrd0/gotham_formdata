@@ -1,10 +1,10 @@
 use gotham_formdata::FormData;
 
+struct MyType;
+
 #[derive(FormData)]
 struct MyFormData {
-	#[validate(validator = struct CustomValidator)]
-	value: u8
+	foo: String
 }
 
-fn main() {
-}
+fn main() {}

@@ -3,17 +3,22 @@ use crate::{
 	value::{BytesOrString, Value},
 	Error, FormData
 };
-use futures_util::stream::{StreamExt, TryStreamExt};
-use gotham::{
-	hyper::{
-		body::{self, Body},
-		header::{HeaderMap, CONTENT_TYPE}
-	},
-	state::State
+use futures_util::stream::TryStreamExt;
+use gotham::hyper::{
+	body::{self, Body},
+	header::{HeaderMap, CONTENT_TYPE}
 };
 use mime::{Mime, APPLICATION_WWW_FORM_URLENCODED, BOUNDARY, MULTIPART_FORM_DATA};
 use multer::Multipart;
 use std::{borrow::Cow, future::Future, pin::Pin};
+
+pub use futures_util::{FutureExt, StreamExt};
+pub use gotham::{hyper::body::Bytes, state::State};
+
+#[cfg(feature = "regex-validation")]
+pub use regex::Regex;
+#[cfg(feature = "regex-validation")]
+pub type LazyRegex = once_cell::sync::Lazy<Regex>;
 
 pub fn assert_validator<V: Validator<T>, T: ?Sized>(_: &V) {}
 

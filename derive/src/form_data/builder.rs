@@ -53,7 +53,7 @@ impl<'a> FormDataBuilder<'a> {
 		let field_types = self.fields.iter().map(|f| &f.ty);
 
 		quote! {
-			impl #impl_gen ::gotham_formdata::internal::FormDataBuilder for #ident #ty_gen #were {
+			impl #impl_gen ::gotham_formdata::private::FormDataBuilder for #ident #ty_gen #were {
 				type Data = #name #ty_gen;
 				type Err = #err_ident;
 
@@ -61,9 +61,9 @@ impl<'a> FormDataBuilder<'a> {
 						&'a mut self,
 						name: ::std::borrow::Cow<'a, str>,
 						value: ::gotham_formdata::value::Value<'a, ::gotham_formdata::Error<Self::Err>>
-				) -> ::gotham_formdata::internal::FormDataBuilderFuture<'a, Self::Err> {
+				) -> ::gotham_formdata::private::FormDataBuilderFuture<'a, Self::Err> {
 					#[allow(unused_imports)]
-					use ::gotham_formdata::{conversion::prelude::*, export::{FutureExt, StreamExt}};
+					use ::gotham_formdata::{conversion::prelude::*, private::{FutureExt, StreamExt}};
 
 					async move {
 						let name: &str = &name;

@@ -73,18 +73,6 @@ limitations under the License.
 #![deny(missing_debug_implementations, unreachable_pub)]
 #![forbid(unsafe_code)]
 
-#[doc(hidden)]
-/// Not public API.
-pub mod export {
-	pub use futures_util::{future::FutureExt, stream::StreamExt};
-	pub use gotham::{hyper::body::Bytes, state::State};
-
-	#[cfg(feature = "regex-validation")]
-	pub use once_cell::sync::Lazy;
-	#[cfg(feature = "regex-validation")]
-	pub use regex::Regex;
-}
-
 #[doc(inline)]
 pub use gotham_formdata_derive::*;
 
@@ -98,7 +86,7 @@ pub use form_data::*;
 
 #[doc(hidden)]
 /// Not public API.
-pub mod internal;
+pub mod private;
 
 pub mod validate;
 

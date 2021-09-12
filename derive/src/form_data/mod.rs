@@ -137,17 +137,17 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 			impl #impl_gen ::gotham_formdata::FormData for #name #ty_gen #were {
 				type Err = ::gotham_formdata::Error<#err_ident>;
 
-				fn parse_form_data(state: &mut ::gotham_formdata::export::State) -> ::gotham_formdata::FormDataFuture<Self> {
-					use ::gotham_formdata::export::FutureExt;
+				fn parse_form_data(state: &mut ::gotham_formdata::private::State) -> ::gotham_formdata::FormDataFuture<Self> {
+					use ::gotham_formdata::private::FutureExt as _;
 
-					let content_type = ::gotham_formdata::internal::get_content_type(state);
-					let body = ::gotham_formdata::internal::get_body(state);
+					let content_type = ::gotham_formdata::private::get_content_type(state);
+					let body = ::gotham_formdata::private::get_body(state);
 
 					async move {
 						let content_type = content_type?;
 						::log::debug!("Parsing Form Data for type {} with Content-Type {}", stringify!(#name), content_type);
 
-						let res = ::gotham_formdata::internal::parse::<#builder_ident #ty_gen>(body, content_type).await?;
+						let res = ::gotham_formdata::private::parse::<#builder_ident #ty_gen>(body, content_type).await?;
 						#validate_trait::validate(&res).map_err(|err| ::gotham_formdata::Error::InvalidData(err))?;
 						Ok(res)
 					}.boxed()

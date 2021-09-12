@@ -75,7 +75,7 @@ impl Field {
 							quote_spanned! { expr.span() =>
 								{
 									let validator = #expr;
-									::gotham_formdata::internal::assert_validator::<_, _>(&validator);
+									::gotham_formdata::private::assert_validator::<_, _>(&validator);
 									validator
 								}
 							},
@@ -119,8 +119,10 @@ impl Field {
 						let regex_ident = format_ident!("{}_validation_regex", ident.to_string());
 						(
 							quote!({
-								static #regex_ident: ::gotham_formdata::export::Lazy<::gotham_formdata::export::Regex> =
-										::gotham_formdata::export::Lazy::new(|| ::gotham_formdata::export::Regex::new(#expr).expect("Invalid Regex"));
+								static #regex_ident: ::gotham_formdata::private::LazyRegex =
+										::gotham_formdata::private::LazyRegex::new(|| {
+											::gotham_formdata::private::Regex::new(#expr).expect("Invalid Regex")
+										});
 								::gotham_formdata::validate::RegexValidator::new(&#regex_ident)
 							}),
 							name.span()

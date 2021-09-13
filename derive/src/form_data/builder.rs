@@ -20,7 +20,7 @@ impl<'a> FormDataBuilder<'a> {
 		quote! {
 			#[doc(hidden)]
 			struct #ident #impl_gen #were {
-				#( #field_names: Option<#field_types> ),*
+				#( #field_names: ::core::option::Option<#field_types> ),*
 			}
 		}
 	}
@@ -32,10 +32,10 @@ impl<'a> FormDataBuilder<'a> {
 		let field_names = self.fields.iter().map(|f| &f.ident);
 
 		quote! {
-			impl #impl_gen Default for #ident #ty_gen #were {
+			impl #impl_gen ::core::default::Default for #ident #ty_gen #were {
 				fn default() -> Self {
 					Self {
-						#( #field_names: None ),*
+						#( #field_names: ::core::option::Option::None ),*
 					}
 				}
 			}
@@ -60,13 +60,13 @@ impl<'a> FormDataBuilder<'a> {
 						value: ::gotham_formdata::value::Value<'a, ::gotham_formdata::Error>
 				) -> ::gotham_formdata::private::FormDataBuilderFuture<'a> {
 					#[allow(unused_imports)]
-					use ::gotham_formdata::{private::{FutureExt as _, StreamExt as _}};
+					use ::gotham_formdata::private::{FutureExt as _, StreamExt as _};
 
 					async move {
-						let name: &str = &name;
+						let name: &::core::primitive::str = &name;
 						match name {
 							#(stringify!(#field_names) => {
-								log::debug!("Found value for field {}", name);
+								::gotham_formdata::private::debug!("Found value for field {}", name);
 								let value_parsed = ::gotham_formdata::private::Parse::<#field_types>::parse(value)
 									.await
 									.map_err(|err| ::gotham_formdata::Error::IllegalField(name.to_owned(), err.into()))?;
@@ -74,15 +74,15 @@ impl<'a> FormDataBuilder<'a> {
 								Ok(())
 							},)*
 							_ => {
-								log::debug!("Found an unknown field: {}", name);
+								::gotham_formdata::private::debug!("Found an unknown field: {}", name);
 								Err(::gotham_formdata::Error::UnknownField(name.to_string()))
 							}
 						}
 					}.boxed()
 				}
 
-				fn build(self) -> Result<#name #ty_gen, ::gotham_formdata::Error> {
-					Ok(#name #ty_gen {
+				fn build(self) -> ::core::result::Result<#name #ty_gen, ::gotham_formdata::Error> {
+					::core::result::Result::Ok(#name #ty_gen {
 						#( #field_names: self.#field_names.ok_or(::gotham_formdata::Error::MissingField(stringify!(#field_names).to_owned()))? ),*
 					})
 				}

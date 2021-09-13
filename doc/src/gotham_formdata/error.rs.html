@@ -65,9 +65,9 @@
 <span class="kw">use</span> <span class="ident">thiserror::Error</span>;
 <span class="kw">use</span> <span class="ident">validator::ValidationErrors</span>;
 
+<span class="doccomment">/// This error type is used when parsing form data from a request body was unsuccessful.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Error</span>)]</span>
 <span class="attribute">#[<span class="ident">non_exhaustive</span>]</span>
-<span class="doccomment">/// This error type is used when parsing form data from a request body was unsuccessful.</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Error</span> {
 	<span class="doccomment">/// The body of the request could not be read.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;The body of the request could not be read&quot;</span>)]</span>

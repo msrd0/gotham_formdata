@@ -162,7 +162,7 @@
 </pre><pre class="rust">
 <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::util</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">proc_macro2</span>::{<span class="ident">Span</span>, <span class="ident">TokenStream</span>};
-<span class="kw">use</span> <span class="ident">std::array</span>;
+<span class="kw">use</span> <span class="ident">std::iter</span>;
 <span class="kw">use</span> <span class="ident">syn</span>::{
 	<span class="ident">AngleBracketedGenericArguments</span>, <span class="ident">BoundLifetimes</span>, <span class="ident">Data</span>, <span class="ident">DeriveInput</span>, <span class="ident">Error</span>, <span class="ident">Fields</span>, <span class="ident">GenericArgument</span>, <span class="ident">Lifetime</span>,
 	<span class="ident">LifetimeDef</span>, <span class="ident">PathArguments</span>, <span class="ident">PredicateType</span>, <span class="prelude-ty">Result</span>, <span class="ident">TraitBound</span>, <span class="ident">TraitBoundModifier</span>, <span class="ident">Type</span>, <span class="ident">TypeParamBound</span>, <span class="ident">TypePath</span>,
@@ -211,12 +211,12 @@
 			<span class="ident">lifetimes</span>: <span class="prelude-val">None</span>,
 			<span class="ident">bounded_ty</span>: <span class="ident">f</span>.<span class="ident">ty</span>.<span class="ident">clone</span>(),
 			<span class="ident">colon_token</span>: <span class="ident">Default::default</span>(),
-			<span class="ident">bounds</span>: <span class="ident">array::IntoIter::new</span>([<span class="ident">TypeParamBound::Trait</span>(<span class="ident">TraitBound</span> {
+			<span class="ident">bounds</span>: <span class="ident">iter::once</span>(<span class="ident">TypeParamBound::Trait</span>(<span class="ident">TraitBound</span> {
 				<span class="ident">paren_token</span>: <span class="prelude-val">None</span>,
 				<span class="ident">modifier</span>: <span class="ident">TraitBoundModifier::None</span>,
 				<span class="ident">lifetimes</span>: <span class="prelude-val">None</span>,
 				<span class="ident">path</span>: <span class="macro">path!</span>(<span class="ident">::std::marker::Send</span>)
-			})])
+			}))
 			.<span class="ident">collect</span>()
 		}));
 
@@ -226,7 +226,7 @@
 			<span class="ident">lifetimes</span>: <span class="prelude-val">Some</span>(<span class="ident">BoundLifetimes</span> {
 				<span class="ident">for_token</span>: <span class="ident">Default::default</span>(),
 				<span class="ident">lt_token</span>: <span class="ident">Default::default</span>(),
-				<span class="ident">lifetimes</span>: <span class="ident">array::IntoIter::new</span>([<span class="ident">LifetimeDef</span> {
+				<span class="ident">lifetimes</span>: <span class="ident">iter::once</span>(<span class="ident">LifetimeDef</span> {
 					<span class="ident">attrs</span>: <span class="ident">Vec::new</span>(),
 					<span class="ident">lifetime</span>: <span class="ident">Lifetime</span> {
 						<span class="ident">apostrophe</span>: <span class="ident">Span::call_site</span>(),
@@ -234,7 +234,7 @@
 					},
 					<span class="ident">colon_token</span>: <span class="prelude-val">None</span>,
 					<span class="ident">bounds</span>: <span class="ident">Default::default</span>()
-				}])
+				})
 				.<span class="ident">collect</span>(),
 				<span class="ident">gt_token</span>: <span class="ident">Default::default</span>()
 			}),
@@ -244,17 +244,17 @@
 					<span class="ident">PathArguments::AngleBracketed</span>(<span class="ident">AngleBracketedGenericArguments</span> {
 						<span class="ident">colon2_token</span>: <span class="prelude-val">None</span>,
 						<span class="ident">lt_token</span>: <span class="ident">Default::default</span>(),
-						<span class="ident">args</span>: <span class="ident">array::IntoIter::new</span>([<span class="ident">GenericArgument::Lifetime</span>(<span class="ident">Lifetime</span> {
+						<span class="ident">args</span>: <span class="ident">iter::once</span>(<span class="ident">GenericArgument::Lifetime</span>(<span class="ident">Lifetime</span> {
 							<span class="ident">apostrophe</span>: <span class="ident">Span::call_site</span>(),
 							<span class="ident">ident</span>: <span class="ident">lt</span>
-						})])
+						}))
 						.<span class="ident">collect</span>(),
 						<span class="ident">gt_token</span>: <span class="ident">Default::default</span>()
 					});
 				<span class="ident">Type::Path</span>(<span class="ident">TypePath</span> { <span class="ident">qself</span>: <span class="prelude-val">None</span>, <span class="ident">path</span> })
 			},
 			<span class="ident">colon_token</span>: <span class="ident">Default::default</span>(),
-			<span class="ident">bounds</span>: <span class="ident">array::IntoIter::new</span>([<span class="ident">TypeParamBound::Trait</span>(<span class="ident">TraitBound</span> {
+			<span class="ident">bounds</span>: <span class="ident">iter::once</span>(<span class="ident">TypeParamBound::Trait</span>(<span class="ident">TraitBound</span> {
 				<span class="ident">paren_token</span>: <span class="prelude-val">None</span>,
 				<span class="ident">modifier</span>: <span class="ident">TraitBoundModifier::None</span>,
 				<span class="ident">lifetimes</span>: <span class="prelude-val">None</span>,
@@ -264,12 +264,12 @@
 						<span class="ident">PathArguments::AngleBracketed</span>(<span class="ident">AngleBracketedGenericArguments</span> {
 							<span class="ident">colon2_token</span>: <span class="prelude-val">None</span>,
 							<span class="ident">lt_token</span>: <span class="ident">Default::default</span>(),
-							<span class="ident">args</span>: <span class="ident">array::IntoIter::new</span>([<span class="ident">GenericArgument::Type</span>(<span class="ident">f</span>.<span class="ident">ty</span>.<span class="ident">clone</span>())]).<span class="ident">collect</span>(),
+							<span class="ident">args</span>: <span class="ident">iter::once</span>(<span class="ident">GenericArgument::Type</span>(<span class="ident">f</span>.<span class="ident">ty</span>.<span class="ident">clone</span>())).<span class="ident">collect</span>(),
 							<span class="ident">gt_token</span>: <span class="ident">Default::default</span>()
 						});
 					<span class="ident">path</span>
 				}
-			})])
+			}))
 			.<span class="ident">collect</span>()
 		}));
 	}

@@ -2,23 +2,22 @@ use crate::{
 	value::{BytesOrString, Value},
 	Error, FormData
 };
-use futures_util::stream::TryStreamExt;
+use futures_util::{future::BoxFuture, stream::TryStreamExt};
 use gotham::hyper::{
 	body::{self, Body},
 	header::{HeaderMap, CONTENT_TYPE}
 };
 use mime::{Mime, APPLICATION_WWW_FORM_URLENCODED, BOUNDARY, MULTIPART_FORM_DATA};
 use multer::Multipart;
-use std::{borrow::Cow, future::Future, pin::Pin};
+use serde::de::DeserializeOwned;
+use std::{borrow::Cow, fmt::Display, future::Future, pin::Pin};
 
 pub use futures_util::{FutureExt, StreamExt};
 pub use gotham::{hyper::body::Bytes, state::State};
 pub use validator::Validate;
 
-#[cfg(feature = "regex-validation")]
-pub use regex::Regex;
-#[cfg(feature = "regex-validation")]
-pub type LazyRegex = once_cell::sync::Lazy<Regex>;
+mod deserializer;
+use deserializer::Deserializer;
 
 pub type FormDataBuilderFuture<'a> = Pin<Box<dyn Future<Output = Result<(), Error>> + Send + 'a>>;
 
@@ -91,4 +90,37 @@ async fn parse_multipart<T: FormDataBuilder>(body: Body, content_type: &Mime) ->
 		builder.add_entry(name.into(), value).await?;
 	}
 	builder.build()
+}
+
+pub trait Parse<T> {
+	type Err;
+	type Fut: Future<Output = Result<T, Self::Err>>;
+
+	fn parse(self) -> Self::Fut;
+}
+
+impl<'de, T, Err> Parse<T> for Value<'de, Err>
+where
+	T: DeserializeOwned,
+	Err: Display + 'static
+{
+	type Err = deserializer::Error;
+	type Fut = BoxFuture<'de, Result<T, Self::Err>>;
+
+	fn parse(self) -> Self::Fut {
+		async move {
+			let mut deserializer = match self.value {
+				BytesOrString::Bytes(mut stream) => {
+					let mut buf: Vec<u8> = Vec::new();
+					while let Some(data) = stream.next().await {
+						buf.extend_from_slice(&data.map_err(|e| deserializer::Error(e.to_string()))?);
+					}
+					Deserializer::Bytes(buf.into())
+				},
+				BytesOrString::String(s) => Deserializer::Text(s)
+			};
+			T::deserialize(&mut deserializer)
+		}
+		.boxed()
+	}
 }

@@ -1,10 +1,5 @@
-error[E0277]: the trait bound `MyType: conversion::private::Sealed2` is not satisfied
-   --> $DIR/convert_raw_bytes_sealed.rs:9:17
-    |
-9   | impl<'a, E: 'a> ConvertRawBytes<'a, E> for MyType {
-    |                 ^^^^^^^^^^^^^^^^^^^^^^ the trait `conversion::private::Sealed2` is not implemented for `MyType`
-    |
-   ::: $WORKSPACE/src/conversion.rs
-    |
-    | pub trait ConvertRawBytes<'a, Err>: private::Sealed2 + Sized {
-    |                                     ---------------- required by this bound in `ConvertRawBytes`
+error[E0432]: unresolved import `gotham_formdata::conversion`
+ --> $DIR/convert_raw_bytes_sealed.rs:3:2
+  |
+3 |     conversion::{ConversionFuture, ConvertRawBytes},
+  |     ^^^^^^^^^^ could not find `conversion` in `gotham_formdata`

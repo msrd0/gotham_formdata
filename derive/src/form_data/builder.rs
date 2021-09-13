@@ -60,14 +60,16 @@ impl<'a> FormDataBuilder<'a> {
 						value: ::gotham_formdata::value::Value<'a, ::gotham_formdata::Error>
 				) -> ::gotham_formdata::private::FormDataBuilderFuture<'a> {
 					#[allow(unused_imports)]
-					use ::gotham_formdata::{conversion::prelude::*, private::{FutureExt, StreamExt}};
+					use ::gotham_formdata::{private::{FutureExt as _, StreamExt as _}};
 
 					async move {
 						let name: &str = &name;
 						match name {
 							#(stringify!(#field_names) => {
 								log::debug!("Found value for field {}", name);
-								let value_parsed = <#field_types>::convert_value(name, value).await?;
+								let value_parsed = ::gotham_formdata::private::Parse::<#field_types>::parse(value)
+									.await
+									.map_err(|err| ::gotham_formdata::Error::IllegalField(name.to_owned(), err.into()))?;
 								self.#field_names.replace(value_parsed);
 								Ok(())
 							},)*

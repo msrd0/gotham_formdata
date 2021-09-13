@@ -1,12 +1,13 @@
 use paste::paste;
 use serde::de::{self, Visitor};
 use std::{
-	borrow::Cow,
-	fmt::{self, Display}
+	borrow::{Borrow, Cow},
+	fmt::{self, Display},
+	ops::Deref
 };
 
 #[derive(Debug)]
-pub struct Error(String);
+pub struct Error(pub(super) String);
 
 impl de::Error for Error {
 	fn custom<T: Display>(msg: T) -> Self {
@@ -26,22 +27,45 @@ type Result<T> = std::result::Result<T, Error>;
 
 #[derive(Debug)]
 pub enum Deserializer<'de> {
-	Bytes(&'de [u8]),
-	Text(&'de str)
+	Bytes(Vec<u8>),
+	Text(Cow<'de, str>)
+}
+
+enum Borrowed<'short, 'long: 'short, T: ?Sized + ToOwned> {
+	Short(&'short T),
+	Long(&'long T),
+	Owned(<T as ToOwned>::Owned)
+}
+
+impl<'short, 'long: 'short, T: ?Sized + ToOwned> Deref for Borrowed<'short, 'long, T> {
+	type Target = T;
+
+	fn deref(&self) -> &T {
+		match *self {
+			Self::Short(b) => b,
+			Self::Long(b) => b,
+			Self::Owned(ref o) => o.borrow()
+		}
+	}
 }
 
 impl<'de> Deserializer<'de> {
-	fn text(&self) -> Cow<'de, str> {
-		match self {
-			Self::Bytes(b) => String::from_utf8_lossy(b),
-			Self::Text(s) => (*s).into()
+	fn text(&self) -> Borrowed<'_, 'de, str> {
+		match &self {
+			Self::Bytes(b) => match String::from_utf8_lossy(&b) {
+				Cow::Borrowed(s) => Borrowed::Short(s),
+				Cow::Owned(s) => Borrowed::Owned(s)
+			},
+			Self::Text(Cow::Borrowed(s)) => Borrowed::Long(s),
+			Self::Text(Cow::Owned(s)) => Borrowed::Short(&s)
 		}
 	}
 
-	fn bytes(&self) -> &'de [u8] {
+	fn bytes(&self) -> Borrowed<'_, 'de, [u8]> {
 		match self {
-			Self::Bytes(b) => b,
-			Self::Text(s) => s.as_bytes()
+			Self::Bytes(b) => Borrowed::Short(&b),
+			Self::Text(Cow::Borrowed(s)) => Borrowed::Long(s.as_bytes()),
+			Self::Text(Cow::Owned(s)) => Borrowed::Short(s.as_bytes())
 		}
 	}
 }
@@ -61,7 +85,7 @@ macro_rules! impl_deserializer {
 			fn $fn:ident<$V:ident>($this0:ident $(, $arg:ident : $ty:ty)*) { $($body0:tt)* }
 		)*
 	) => {
-		impl<'de> de::Deserializer<'de> for &mut Deserializer<'de> {
+		impl<'a, 'de> de::Deserializer<'de> for &'a mut Deserializer<'de> {
 			type Error = Error;
 			paste! {
 				$(
@@ -69,7 +93,7 @@ macro_rules! impl_deserializer {
 					where
 						V: Visitor<'de>
 					{
-						let $this = self;
+						let $this: &'a mut Deserializer<'de> = self;
 						$($body)*
 					}
 				)*
@@ -110,8 +134,9 @@ macro_rules! impl_deserializer {
 impl_deserializer! {
 	const deserialize_any = |this, visitor| {
 		match this {
-			Deserializer::Bytes(b) => visitor.visit_borrowed_bytes(b),
-			Deserializer::Text(s) => visitor.visit_borrowed_str(s),
+			Deserializer::Bytes(b) => visitor.visit_bytes(&b),
+			Deserializer::Text(Cow::Borrowed(s)) => visitor.visit_borrowed_str(s),
+			Deserializer::Text(Cow::Owned(s)) => visitor.visit_str(&s)
 		}
 	};
 
@@ -123,13 +148,18 @@ impl_deserializer! {
 
 	const deserialize_str = |this, visitor| {
 		match this.text() {
-			Cow::Borrowed(s) => visitor.visit_borrowed_str(s),
-			Cow::Owned(s) => visitor.visit_string(s)
+			Borrowed::Short(s) => visitor.visit_str(s),
+			Borrowed::Long(s) => visitor.visit_borrowed_str(s),
+			Borrowed::Owned(s) => visitor.visit_string(s)
 		}
 	};
 
 	const deserialize_bytes = |this, visitor| {
-		visitor.visit_borrowed_bytes(this.bytes())
+		match this.bytes() {
+			Borrowed::Short(b) => visitor.visit_bytes(b),
+			Borrowed::Long(b) => visitor.visit_borrowed_bytes(b),
+			Borrowed::Owned(b) => visitor.visit_byte_buf(b)
+		}
 	};
 
 	parse i8;

@@ -47,6 +47,18 @@
 <span id="47">47</span>
 <span id="48">48</span>
 <span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
+<span id="60">60</span>
+<span id="61">61</span>
 </pre><pre class="rust">
 <span class="kw">use</span> <span class="ident">gotham::anyhow</span>;
 <span class="kw">use</span> <span class="ident">mime::Mime</span>;
@@ -60,39 +72,51 @@
 	<span class="doccomment">/// The body of the request could not be read.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;The body of the request could not be read&quot;</span>)]</span>
 	<span class="ident">IllegalBody</span>(<span class="attribute">#[<span class="ident">from</span>]</span> <span class="ident">gotham::hyper::Error</span>),
+
 	<span class="doccomment">/// The content type of the body was not a valid mime type.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;The &#39;Content-Type&#39; header could not be parsed: {0}&quot;</span>)]</span>
 	<span class="ident">IllegalContentType</span>(<span class="attribute">#[<span class="ident">from</span>]</span> <span class="ident">mime::FromStrError</span>),
+
 	<span class="doccomment">/// The content type of the body contained unreadable bytes.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;The &#39;Content-Type&#39; header could not be parsed: {0}&quot;</span>)]</span>
 	<span class="ident">IllegalContentTypeValue</span>(<span class="attribute">#[<span class="ident">from</span>]</span> <span class="ident">gotham::hyper::header::ToStrError</span>),
+
 	<span class="doccomment">/// The value of a field could not be parsed into that field&#39;s type.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;The field {0} could not be parsed: {1}&quot;</span>)]</span>
 	<span class="ident">IllegalField</span>(<span class="ident">String</span>, <span class="attribute">#[<span class="ident">source</span>]</span> <span class="ident">anyhow::Error</span>),
+
 	<span class="doccomment">/// The body was parsed but contained data that did not pass validation.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;The body contained invalid data: {0}&quot;</span>)]</span>
 	<span class="ident">InvalidData</span>(<span class="attribute">#[<span class="ident">from</span>]</span> <span class="ident">ValidationErrors</span>),
+
 	<span class="doccomment">/// An I/O error occured while reading the body.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;I/O Error while reading body: {0}&quot;</span>)]</span>
 	<span class="ident">IoError</span>(<span class="attribute">#[<span class="ident">from</span>]</span> <span class="ident">std::io::Error</span>),
+
 	<span class="doccomment">/// The body was a multipart body but did not specify a boundary.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;The request failed to specify the multipart boundary&quot;</span>)]</span>
 	<span class="ident">MissingBoundary</span>,
+
 	<span class="doccomment">/// The request did not specify a content type.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;The request is missing a &#39;Content-Type&#39; header&quot;</span>)]</span>
 	<span class="ident">MissingContentType</span>,
+
 	<span class="doccomment">/// One of the multipart parts is missing a `Content-Disposition` header.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;Missing a &#39;Content-Disposition&#39; header&quot;</span>)]</span>
 	<span class="ident">MissingContentDisposition</span>,
+
 	<span class="doccomment">/// The body is missing a required field.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;Missing Field &#39;{0}&#39;&quot;</span>)]</span>
 	<span class="ident">MissingField</span>(<span class="ident">String</span>),
+
 	<span class="doccomment">/// The multipart format was invalid.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;Multipart error: {0}&quot;</span>)]</span>
 	<span class="ident">MultipartError</span>(<span class="attribute">#[<span class="ident">from</span>]</span> <span class="ident">multer::Error</span>),
+
 	<span class="doccomment">/// The body&#39;s content type is not supported.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;Unknown &#39;Content-Type&#39; header value: {0}&quot;</span>)]</span>
 	<span class="ident">UnknownContentType</span>(<span class="ident">Mime</span>),
+
 	<span class="doccomment">/// The body contained a field that was not expected.</span>
 	<span class="attribute">#[<span class="ident">error</span>(<span class="string">&quot;Unknown Field &#39;{0}&#39;&quot;</span>)]</span>
 	<span class="ident">UnknownField</span>(<span class="ident">String</span>)

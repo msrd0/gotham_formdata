@@ -168,6 +168,9 @@
 <span id="168">168</span>
 <span id="169">169</span>
 <span id="170">170</span>
+<span id="171">171</span>
+<span id="172">172</span>
+<span id="173">173</span>
 </pre><pre class="rust">
 <span class="doccomment">/*!
 This mod contains conversion traits for common used types, that allows them to be created from
@@ -180,17 +183,19 @@ provide a custom conversion method, just implement it as a method for your type:
 ```rust
 use futures_util::{FutureExt, StreamExt};
 use gotham_formdata::{conversion::ConversionFuture, value::{BytesOrString, Value}, FormData};
-use validator::Validate;
 
 /// This type parses Base64-encoded values to a [Vec&lt;u8&gt;].
 struct Base64(Vec&lt;u8&gt;);
 
 impl Base64 {
 	// the method signature needs to be roughly equivalent to this
-	async fn convert_value(
+	async fn convert_value&lt;E&gt;(
 			name: &amp;str,
-			value: Value&lt;&#39;_, gotham_formdata::Error&gt;
-	) -&gt; Result&lt;Self, gotham_formdata::Error&gt; {
+			value: Value&lt;&#39;_, gotham_formdata::Error&lt;E&gt;&gt;
+	) -&gt; Result&lt;Self, gotham_formdata::Error&lt;E&gt;&gt;
+	where
+		E: std::error::Error
+	{
 		let decoded = match value.value {
 			BytesOrString::Bytes(mut stream) =&gt; {
 				let mut buf: Vec&lt;u8&gt; = Vec::new();
@@ -206,7 +211,7 @@ impl Base64 {
 	}
 }
 
-#[derive(FormData, Validate)]
+#[derive(FormData)]
 struct MyData {
 	foo: Base64
 }
@@ -256,12 +261,13 @@ struct MyData {
 {
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">ConvertFromStr</span><span class="op">&lt;</span><span class="ident">Error</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">T</span>
+<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">E</span>, <span class="ident">T</span><span class="op">&gt;</span> <span class="ident">ConvertFromStr</span><span class="op">&lt;</span><span class="ident">Error</span><span class="op">&lt;</span><span class="ident">E</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">T</span>
 <span class="kw">where</span>
+	<span class="ident">E</span>: <span class="ident">std::error::Error</span>,
 	<span class="ident">T</span>: <span class="ident">FromStr</span>,
 	<span class="ident">T::Err</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">anyhow::Error</span><span class="op">&gt;</span>
 {
-	<span class="kw">fn</span> <span class="ident">convert_value</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>, <span class="ident">value</span>: <span class="ident">Value</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Error</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ConversionFuture</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="self">Self</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
+	<span class="kw">fn</span> <span class="ident">convert_value</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>, <span class="ident">value</span>: <span class="ident">Value</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Error</span><span class="op">&lt;</span><span class="ident">E</span><span class="op">&gt;</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ConversionFuture</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="self">Self</span>, <span class="ident">Error</span><span class="op">&lt;</span><span class="ident">E</span><span class="op">&gt;</span><span class="op">&gt;</span> {
 		<span class="kw">async</span> <span class="kw">move</span> {
 			<span class="kw">let</span> <span class="ident">buf</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">value</span>.<span class="ident">value</span> {
 				<span class="ident">BytesOrString::Bytes</span>(<span class="kw-2">mut</span> <span class="ident">stream</span>) <span class="op">=</span><span class="op">&gt;</span> {

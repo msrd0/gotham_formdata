@@ -41,7 +41,7 @@ intended to allow filters to completely disable tracing in a particular context.
 <span class="macro">assert!</span>(<span class="ident">LevelFilter::INFO</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">Level::DEBUG</span>);
 <span class="macro">assert!</span>(<span class="ident">LevelFilter::INFO</span> <span class="op">&gt;</span><span class="op">=</span> <span class="ident">Level::INFO</span>);</pre></div>
 <h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
-<p>Below is a simple example of how a [<code>Subscriber</code>] could implement filtering through
+<p>Below is a simple example of how a <a href="../trait.Subscriber.html"><code>Subscriber</code></a> could implement filtering through
 a <a href="../struct.LevelFilter.html" title="LevelFilter"><code>LevelFilter</code></a>. When a span or event is recorded, the <a href="../trait.Subscriber.html#tymethod.enabled"><code>Subscriber::enabled</code></a> method
 compares the span or event’s <code>Level</code> against the configured <a href="../struct.LevelFilter.html" title="LevelFilter"><code>LevelFilter</code></a>.
 The optional <a href="../trait.Subscriber.html#method.max_level_hint"><code>Subscriber::max_level_hint</code></a> method can also be implemented to allow spans

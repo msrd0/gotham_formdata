@@ -10,8 +10,10 @@ use proc_macro::TokenStream;
 use proc_macro2::TokenStream as TokenStream2;
 use syn::{parse_macro_input, DeriveInput, Result};
 
-mod form_data;
+#[macro_use]
 mod util;
+
+mod form_data;
 
 #[inline]
 fn print_tokens(tokens: TokenStream2) -> TokenStream {

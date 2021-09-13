@@ -71,3 +71,84 @@ fn test_vec_u8() {
 		}
 	);
 }
+
+#[test]
+fn test_generic() {
+	#[derive(Debug, PartialEq, Validate)]
+	struct Data<T> {
+		foo: T
+	}
+
+	#[allow(non_upper_case_globals)]
+	static _IMPL_FORMDATA_FOR_Data: () = {
+		#[doc(hidden)]
+		struct DataFormDataBuilder<T> {
+			foo: ::core::option::Option<T>
+		}
+		impl<T> ::core::default::Default for DataFormDataBuilder<T> {
+			fn default() -> Self {
+				Self {
+					foo: ::core::option::Option::None
+				}
+			}
+		}
+		impl<T> ::gotham_formdata::private::FormDataBuilder for DataFormDataBuilder<T>
+		where
+			T: ::std::marker::Send,
+			for<'a> ::gotham_formdata::private::Value<'a>: ::gotham_formdata::private::Parse<T>
+		{
+			type Data = Data<T>;
+			fn add_entry<'a>(
+				&'a mut self,
+				name: ::std::borrow::Cow<'a, str>,
+				value: ::gotham_formdata::value::Value<'a, ::gotham_formdata::Error>
+			) -> ::gotham_formdata::private::FormDataBuilderFuture<'a> {
+				#[allow(unused_imports)]
+				use ::gotham_formdata::private::{FutureExt as _, StreamExt as _};
+				async move {
+					let name: &::core::primitive::str = &name;
+					match name {
+						"foo" => {
+							let value_parsed = ::gotham_formdata::private::Parse::<T>::parse(value)
+								.await
+								.map_err(|err| ::gotham_formdata::Error::IllegalField(name.to_owned(), err.into()))?;
+							self.foo.replace(value_parsed);
+							Ok(())
+						},
+						_ => Err(::gotham_formdata::Error::UnknownField(name.to_string()))
+					}
+				}
+				.boxed()
+			}
+			fn build(self) -> ::core::result::Result<Self::Data, ::gotham_formdata::Error> {
+				::core::result::Result::Ok(Self::Data {
+					foo: self.foo.ok_or(::gotham_formdata::Error::MissingField("foo".to_owned()))?
+				})
+			}
+		}
+		impl<T> ::gotham_formdata::FormData for Data<T>
+		where
+			T: ::std::marker::Send,
+			for<'a> ::gotham_formdata::private::Value<'a>: ::gotham_formdata::private::Parse<T>
+		{
+			type Err = ::gotham_formdata::Error;
+			fn parse_form_data(state: &mut ::gotham_formdata::private::State) -> ::gotham_formdata::FormDataFuture<Self> {
+				use ::gotham_formdata::private::FutureExt as _;
+				let content_type = ::gotham_formdata::private::get_content_type(state);
+				let body = ::gotham_formdata::private::get_body(state);
+				async move {
+					let content_type = content_type?;
+					let res = ::gotham_formdata::private::parse::<DataFormDataBuilder<T>>(body, content_type).await?;
+					::gotham_formdata::private::Validate::validate(&res)?;
+					Ok(res)
+				}
+				.boxed()
+			}
+		}
+	};
+
+	with_body_foo(b"bar", |state| {
+		let data = block_on(Data::<String>::parse_form_data(state)).unwrap();
+		assert_eq!(data, Data { foo: "bar".to_owned() })
+	});
+}

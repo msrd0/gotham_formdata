@@ -1,13 +1,19 @@
 error[E0277]: the trait bound `for<'de> MyType: serde::de::Deserialize<'de>` is not satisfied
-   --> $DIR/form_data_unparsable.rs:8:7
-    |
-8   |     foo: MyType
-    |          ^^^^^^ the trait `for<'de> serde::de::Deserialize<'de>` is not implemented for `MyType`
-    |
-    = note: required because of the requirements on the impl of `serde::de::DeserializeOwned` for `MyType`
-    = note: required because of the requirements on the impl of `Parse<MyType>` for `Value<'_, gotham_formdata::Error>`
-note: required by `gotham_formdata::private::Parse::parse`
-   --> $DIR/mod.rs:100:2
-    |
-100 |     fn parse(self) -> Self::Fut;
-    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  --> $DIR/form_data_unparsable.rs:14:2
+   |
+11 | fn assert_formdata<T: FormData>() {}
+   |                       -------- required by this bound in `assert_formdata`
+...
+14 |     assert_formdata::<MyFormData>();
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `for<'de> serde::de::Deserialize<'de>` is not implemented for `MyType`
+   |
+   = note: required because of the requirements on the impl of `serde::de::DeserializeOwned` for `MyType`
+   = note: required because of the requirements on the impl of `for<'gotham_formdata_value> Parse<MyType>` for `Value<'gotham_formdata_value, gotham_formdata::Error>`
+note: required because of the requirements on the impl of `FormData` for `MyFormData`
+  --> $DIR/form_data_unparsable.rs:6:10
+   |
+6  | #[derive(FormData, Validate)]
+   |          ^^^^^^^^
+7  | struct MyFormData {
+   |        ^^^^^^^^^^
+   = note: this error originates in the derive macro `FormData` (in Nightly builds, run with -Z macro-backtrace for more info)

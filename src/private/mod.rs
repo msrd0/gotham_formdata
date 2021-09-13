@@ -1,11 +1,11 @@
-use crate::{
-	value::{BytesOrString, Value},
-	Error, FormData
-};
+use crate::{value::BytesOrString, Error, FormData};
 use futures_util::{future::BoxFuture, stream::TryStreamExt};
-use gotham::hyper::{
-	body::{self, Body},
-	header::{HeaderMap, CONTENT_TYPE}
+use gotham::{
+	anyhow,
+	hyper::{
+		body::{self, Body},
+		header::{HeaderMap, CONTENT_TYPE}
+	}
 };
 use mime::{Mime, APPLICATION_WWW_FORM_URLENCODED, BOUNDARY, MULTIPART_FORM_DATA};
 use multer::Multipart;
@@ -21,6 +21,7 @@ mod deserializer;
 use deserializer::Deserializer;
 
 pub type FormDataBuilderFuture<'a> = Pin<Box<dyn Future<Output = Result<(), Error>> + Send + 'a>>;
+pub type Value<'a, E = Error> = crate::value::Value<'a, E>;
 
 pub trait FormDataBuilder: Default {
 	type Data: FormData;
@@ -94,8 +95,8 @@ async fn parse_multipart<T: FormDataBuilder>(body: Body, content_type: &Mime) ->
 }
 
 pub trait Parse<T> {
-	type Err;
-	type Fut: Future<Output = Result<T, Self::Err>>;
+	type Err: Into<anyhow::Error>;
+	type Fut: Future<Output = Result<T, Self::Err>> + Send;
 
 	fn parse(self) -> Self::Fut;
 }

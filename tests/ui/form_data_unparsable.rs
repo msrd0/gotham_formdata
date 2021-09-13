@@ -8,4 +8,8 @@ struct MyFormData {
 	foo: MyType
 }
 
-fn main() {}
+fn assert_formdata<T: FormData>() {}
+
+fn main() {
+	assert_formdata::<MyFormData>();
+}

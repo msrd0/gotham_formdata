@@ -1,6 +1,11 @@
 use crate::util::*;
 use proc_macro2::{Span, TokenStream};
-use syn::{Data, DeriveInput, Error, Fields, Result};
+use std::array;
+use syn::{
+	AngleBracketedGenericArguments, BoundLifetimes, Data, DeriveInput, Error, Fields, GenericArgument, Lifetime,
+	LifetimeDef, PathArguments, PredicateType, Result, TraitBound, TraitBoundModifier, Type, TypeParamBound, TypePath,
+	WhereClause, WherePredicate
+};
 
 mod builder;
 use builder::FormDataBuilder;
@@ -10,7 +15,13 @@ use field::Field;
 
 pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 	let name = &input.ident;
-	let (impl_gen, ty_gen, were) = input.generics.split_for_impl();
+
+	let (impl_generics, ty_generics, where_clause) = input.generics.split_for_impl();
+	let mut where_clause = where_clause.cloned().unwrap_or_else(|| WhereClause {
+		where_token: Default::default(),
+		predicates: Default::default()
+	});
+
 	let strukt = match input.data {
 		Data::Struct(strukt) => strukt,
 		_ => {
@@ -32,10 +43,81 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 		Fields::Unit => Vec::new()
 	};
 
+	for f in &fields {
+		// T: Send
+		where_clause.predicates.push(WherePredicate::Type(PredicateType {
+			lifetimes: None,
+			bounded_ty: f.ty.clone(),
+			colon_token: Default::default(),
+			bounds: array::IntoIter::new([TypeParamBound::Trait(TraitBound {
+				paren_token: None,
+				modifier: TraitBoundModifier::None,
+				lifetimes: None,
+				path: path!(::std::marker::Send)
+			})])
+			.collect()
+		}));
+
+		// for<'a> Value<'a>: Parse<T>
+		let lt = format_ident!("gotham_formdata_value");
+		where_clause.predicates.push(WherePredicate::Type(PredicateType {
+			lifetimes: Some(BoundLifetimes {
+				for_token: Default::default(),
+				lt_token: Default::default(),
+				lifetimes: array::IntoIter::new([LifetimeDef {
+					attrs: Vec::new(),
+					lifetime: Lifetime {
+						apostrophe: Span::call_site(),
+						ident: lt.clone()
+					},
+					colon_token: None,
+					bounds: Default::default()
+				}])
+				.collect(),
+				gt_token: Default::default()
+			}),
+			bounded_ty: {
+				let mut path = path!(::gotham_formdata::private::Value);
+				path.segments.last_mut().unwrap().arguments =
+					PathArguments::AngleBracketed(AngleBracketedGenericArguments {
+						colon2_token: None,
+						lt_token: Default::default(),
+						args: array::IntoIter::new([GenericArgument::Lifetime(Lifetime {
+							apostrophe: Span::call_site(),
+							ident: lt
+						})])
+						.collect(),
+						gt_token: Default::default()
+					});
+				Type::Path(TypePath { qself: None, path })
+			},
+			colon_token: Default::default(),
+			bounds: array::IntoIter::new([TypeParamBound::Trait(TraitBound {
+				paren_token: None,
+				modifier: TraitBoundModifier::None,
+				lifetimes: None,
+				path: {
+					let mut path = path!(::gotham_formdata::private::Parse);
+					path.segments.last_mut().unwrap().arguments =
+						PathArguments::AngleBracketed(AngleBracketedGenericArguments {
+							colon2_token: None,
+							lt_token: Default::default(),
+							args: array::IntoIter::new([GenericArgument::Type(f.ty.clone())]).collect(),
+							gt_token: Default::default()
+						});
+					path
+				}
+			})])
+			.collect()
+		}));
+	}
+
 	let builder = FormDataBuilder {
 		name,
 		ident: format_ident!("{}FormDataBuilder", name),
-		generics: &input.generics,
+		impl_generics: &impl_generics,
+		ty_generics: &ty_generics,
+		where_clause: &where_clause,
 		fields: &fields
 	};
 	let builder_ident = &builder.ident;
@@ -53,7 +135,9 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 			#builder_default_impl
 			#builder_builder_impl
 
-			impl #impl_gen ::gotham_formdata::FormData for #name #ty_gen #were {
+			impl #impl_generics ::gotham_formdata::FormData for #name #ty_generics
+			#where_clause
+			{
 				type Err = ::gotham_formdata::Error;
 
 				fn parse_form_data(state: &mut ::gotham_formdata::private::State) -> ::gotham_formdata::FormDataFuture<Self> {
@@ -64,9 +148,9 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 
 					async move {
 						let content_type = content_type?;
-						::log::debug!("Parsing Form Data for type {} with Content-Type {}", stringify!(#name), content_type);
+						::gotham_formdata::private::debug!("Parsing Form Data for type {} with Content-Type {}", stringify!(#name), content_type);
 
-						let res = ::gotham_formdata::private::parse::<#builder_ident #ty_gen>(body, content_type).await?;
+						let res = ::gotham_formdata::private::parse::<#builder_ident #ty_generics>(body, content_type).await?;
 						::gotham_formdata::private::Validate::validate(&res)?;
 						Ok(res)
 					}.boxed()

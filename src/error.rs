@@ -3,9 +3,9 @@ use mime::Mime;
 use thiserror::Error;
 use validator::ValidationErrors;
 
+/// This error type is used when parsing form data from a request body was unsuccessful.
 #[derive(Debug, Error)]
 #[non_exhaustive]
-/// This error type is used when parsing form data from a request body was unsuccessful.
 pub enum Error {
 	/// The body of the request could not be read.
 	#[error("The body of the request could not be read")]

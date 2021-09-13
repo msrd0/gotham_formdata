@@ -1,6 +1,6 @@
 use crate::util::*;
 use proc_macro2::{Span, TokenStream};
-use std::array;
+use std::iter;
 use syn::{
 	AngleBracketedGenericArguments, BoundLifetimes, Data, DeriveInput, Error, Fields, GenericArgument, Lifetime,
 	LifetimeDef, PathArguments, PredicateType, Result, TraitBound, TraitBoundModifier, Type, TypeParamBound, TypePath,
@@ -49,12 +49,12 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 			lifetimes: None,
 			bounded_ty: f.ty.clone(),
 			colon_token: Default::default(),
-			bounds: array::IntoIter::new([TypeParamBound::Trait(TraitBound {
+			bounds: iter::once(TypeParamBound::Trait(TraitBound {
 				paren_token: None,
 				modifier: TraitBoundModifier::None,
 				lifetimes: None,
 				path: path!(::std::marker::Send)
-			})])
+			}))
 			.collect()
 		}));
 
@@ -64,7 +64,7 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 			lifetimes: Some(BoundLifetimes {
 				for_token: Default::default(),
 				lt_token: Default::default(),
-				lifetimes: array::IntoIter::new([LifetimeDef {
+				lifetimes: iter::once(LifetimeDef {
 					attrs: Vec::new(),
 					lifetime: Lifetime {
 						apostrophe: Span::call_site(),
@@ -72,7 +72,7 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 					},
 					colon_token: None,
 					bounds: Default::default()
-				}])
+				})
 				.collect(),
 				gt_token: Default::default()
 			}),
@@ -82,17 +82,17 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 					PathArguments::AngleBracketed(AngleBracketedGenericArguments {
 						colon2_token: None,
 						lt_token: Default::default(),
-						args: array::IntoIter::new([GenericArgument::Lifetime(Lifetime {
+						args: iter::once(GenericArgument::Lifetime(Lifetime {
 							apostrophe: Span::call_site(),
 							ident: lt
-						})])
+						}))
 						.collect(),
 						gt_token: Default::default()
 					});
 				Type::Path(TypePath { qself: None, path })
 			},
 			colon_token: Default::default(),
-			bounds: array::IntoIter::new([TypeParamBound::Trait(TraitBound {
+			bounds: iter::once(TypeParamBound::Trait(TraitBound {
 				paren_token: None,
 				modifier: TraitBoundModifier::None,
 				lifetimes: None,
@@ -102,12 +102,12 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 						PathArguments::AngleBracketed(AngleBracketedGenericArguments {
 							colon2_token: None,
 							lt_token: Default::default(),
-							args: array::IntoIter::new([GenericArgument::Type(f.ty.clone())]).collect(),
+							args: iter::once(GenericArgument::Type(f.ty.clone())).collect(),
 							gt_token: Default::default()
 						});
 					path
 				}
-			})])
+			}))
 			.collect()
 		}));
 	}

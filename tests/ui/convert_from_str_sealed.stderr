@@ -1,5 +1,0 @@
-error[E0432]: unresolved import `gotham_formdata::conversion`
- --> $DIR/convert_from_str_sealed.rs:3:2
-  |
-3 |     conversion::{ConversionFuture, ConvertFromStr},
-  |     ^^^^^^^^^^ could not find `conversion` in `gotham_formdata`

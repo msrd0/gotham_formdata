@@ -125,15 +125,16 @@
 <span id="125">125</span>
 <span id="126">126</span>
 <span id="127">127</span>
+<span id="128">128</span>
 </pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">crate</span>::{
-	<span class="ident">value</span>::{<span class="ident">BytesOrString</span>, <span class="ident">Value</span>},
-	<span class="ident">Error</span>, <span class="ident">FormData</span>
-};
+<span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">value::BytesOrString</span>, <span class="ident">Error</span>, <span class="ident">FormData</span>};
 <span class="kw">use</span> <span class="ident">futures_util</span>::{<span class="ident">future::BoxFuture</span>, <span class="ident">stream::TryStreamExt</span>};
-<span class="kw">use</span> <span class="ident">gotham::hyper</span>::{
-	<span class="ident">body</span>::{<span class="self">self</span>, <span class="ident">Body</span>},
-	<span class="ident">header</span>::{<span class="ident">HeaderMap</span>, <span class="ident">CONTENT_TYPE</span>}
+<span class="kw">use</span> <span class="ident">gotham</span>::{
+	<span class="ident">anyhow</span>,
+	<span class="ident">hyper</span>::{
+		<span class="ident">body</span>::{<span class="self">self</span>, <span class="ident">Body</span>},
+		<span class="ident">header</span>::{<span class="ident">HeaderMap</span>, <span class="ident">CONTENT_TYPE</span>}
+	}
 };
 <span class="kw">use</span> <span class="ident">mime</span>::{<span class="ident">Mime</span>, <span class="ident">APPLICATION_WWW_FORM_URLENCODED</span>, <span class="ident">BOUNDARY</span>, <span class="ident">MULTIPART_FORM_DATA</span>};
 <span class="kw">use</span> <span class="ident">multer::Multipart</span>;
@@ -149,6 +150,7 @@
 <span class="kw">use</span> <span class="ident">deserializer::Deserializer</span>;
 
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">FormDataBuilderFuture</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;a</span><span class="op">&gt;</span><span class="op">&gt;</span>;
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Value</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">E</span> <span class="op">=</span> <span class="ident">Error</span><span class="op">&gt;</span> <span class="op">=</span> <span class="kw">crate</span><span class="ident">::value::Value</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">E</span><span class="op">&gt;</span>;
 
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">FormDataBuilder</span>: <span class="ident">Default</span> {
 	<span class="kw">type</span> <span class="ident">Data</span>: <span class="ident">FormData</span>;
@@ -222,8 +224,8 @@
 }
 
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Parse</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-	<span class="kw">type</span> <span class="prelude-val">Err</span>;
-	<span class="kw">type</span> <span class="ident">Fut</span>: <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="self">Self</span><span class="ident">::Err</span><span class="op">&gt;</span><span class="op">&gt;</span>;
+	<span class="kw">type</span> <span class="prelude-val">Err</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">anyhow::Error</span><span class="op">&gt;</span>;
+	<span class="kw">type</span> <span class="ident">Fut</span>: <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="self">Self</span><span class="ident">::Err</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span>;
 
 	<span class="kw">fn</span> <span class="ident">parse</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Fut</span>;
 }

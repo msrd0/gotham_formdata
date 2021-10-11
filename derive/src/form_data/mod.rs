@@ -45,71 +45,10 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 
 	for f in &fields {
 		// T: Send
-		where_clause.predicates.push(WherePredicate::Type(PredicateType {
-			lifetimes: None,
-			bounded_ty: f.ty.clone(),
-			colon_token: Default::default(),
-			bounds: iter::once(TypeParamBound::Trait(TraitBound {
-				paren_token: None,
-				modifier: TraitBoundModifier::None,
-				lifetimes: None,
-				path: path!(::std::marker::Send)
-			}))
-			.collect()
-		}));
+		where_clause.predicates.push(where_predicate_t_send(f.ty.clone()));
 
 		// for<'a> Value<'a>: Parse<T>
-		let lt = format_ident!("gotham_formdata_value");
-		where_clause.predicates.push(WherePredicate::Type(PredicateType {
-			lifetimes: Some(BoundLifetimes {
-				for_token: Default::default(),
-				lt_token: Default::default(),
-				lifetimes: iter::once(LifetimeDef {
-					attrs: Vec::new(),
-					lifetime: Lifetime {
-						apostrophe: Span::call_site(),
-						ident: lt.clone()
-					},
-					colon_token: None,
-					bounds: Default::default()
-				})
-				.collect(),
-				gt_token: Default::default()
-			}),
-			bounded_ty: {
-				let mut path = path!(::gotham_formdata::private::Value);
-				path.segments.last_mut().unwrap().arguments =
-					PathArguments::AngleBracketed(AngleBracketedGenericArguments {
-						colon2_token: None,
-						lt_token: Default::default(),
-						args: iter::once(GenericArgument::Lifetime(Lifetime {
-							apostrophe: Span::call_site(),
-							ident: lt
-						}))
-						.collect(),
-						gt_token: Default::default()
-					});
-				Type::Path(TypePath { qself: None, path })
-			},
-			colon_token: Default::default(),
-			bounds: iter::once(TypeParamBound::Trait(TraitBound {
-				paren_token: None,
-				modifier: TraitBoundModifier::None,
-				lifetimes: None,
-				path: {
-					let mut path = path!(::gotham_formdata::private::Parse);
-					path.segments.last_mut().unwrap().arguments =
-						PathArguments::AngleBracketed(AngleBracketedGenericArguments {
-							colon2_token: None,
-							lt_token: Default::default(),
-							args: iter::once(GenericArgument::Type(f.ty.clone())).collect(),
-							gt_token: Default::default()
-						});
-					path
-				}
-			}))
-			.collect()
-		}));
+		where_clause.predicates.push(where_predicate_value_parse_t(f.ty.clone()));
 	}
 
 	let builder = FormDataBuilder {
@@ -158,4 +97,94 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 			}
 		};
 	})
+}
+
+/// `T: Send`
+fn where_predicate_t_send(t: Type) -> WherePredicate {
+	WherePredicate::Type(PredicateType {
+		lifetimes: None,
+		bounded_ty: t,
+		colon_token: Default::default(),
+		bounds: iter::once(TypeParamBound::Trait(TraitBound {
+			paren_token: None,
+			modifier: TraitBoundModifier::None,
+			lifetimes: None,
+			path: path!(::std::marker::Send)
+		}))
+		.collect()
+	})
+}
+
+/// `for<'a> Value<'a>: Parse<T>`
+fn where_predicate_value_parse_t(t: Type) -> WherePredicate {
+	let lt = Lifetime {
+		apostrophe: Span::call_site(),
+		ident: format_ident!("gotham_formdata_value")
+	};
+	WherePredicate::Type(PredicateType {
+		lifetimes: Some(BoundLifetimes {
+			for_token: Default::default(),
+			lt_token: Default::default(),
+			lifetimes: iter::once(LifetimeDef {
+				attrs: Vec::new(),
+				lifetime: lt.clone(),
+				colon_token: None,
+				bounds: Default::default()
+			})
+			.collect(),
+			gt_token: Default::default()
+		}),
+		bounded_ty: {
+			let mut path = path!(::gotham_formdata::private::Value);
+			path.segments.last_mut().unwrap().arguments = PathArguments::AngleBracketed(AngleBracketedGenericArguments {
+				colon2_token: None,
+				lt_token: Default::default(),
+				args: iter::once(GenericArgument::Lifetime(lt)).collect(),
+				gt_token: Default::default()
+			});
+			Type::Path(TypePath { qself: None, path })
+		},
+		colon_token: Default::default(),
+		bounds: iter::once(TypeParamBound::Trait(TraitBound {
+			paren_token: None,
+			modifier: TraitBoundModifier::None,
+			lifetimes: None,
+			path: {
+				let mut path = path!(::gotham_formdata::private::Parse);
+				path.segments.last_mut().unwrap().arguments =
+					PathArguments::AngleBracketed(AngleBracketedGenericArguments {
+						colon2_token: None,
+						lt_token: Default::default(),
+						args: iter::once(GenericArgument::Type(t)).collect(),
+						gt_token: Default::default()
+					});
+				path
+			}
+		}))
+		.collect()
+	})
+}
+
+#[cfg(test)]
+mod tests {
+	use super::*;
+
+	#[test]
+	fn test_where_predicate_t_send() {
+		let t = syn::parse_str("FooBar<'a, String, &'static [u8]>").unwrap();
+		let expected = quote! { FooBar<'a, String, &'static [u8]>: ::std::marker::Send };
+		let actual = where_predicate_t_send(t);
+		assert_eq!(syn::parse2::<WherePredicate>(expected).unwrap(), actual);
+	}
+
+	#[test]
+	fn test_where_predicate_value_parse_t() {
+		let t = syn::parse_str("FooBar<'a, String, &'static [u8]>").unwrap();
+		let expected = quote! {
+			for<'gotham_formdata_value> ::gotham_formdata::private::Value<'gotham_formdata_value>:
+				::gotham_formdata::private::Parse<FooBar<'a, String, &'static [u8]>>
+		};
+		let actual = where_predicate_value_parse_t(t);
+		assert_eq!(syn::parse2::<WherePredicate>(expected).unwrap(), actual);
+	}
 }

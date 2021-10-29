@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;time-0.2.27&#x2F;src&#x2F;duration.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>duration.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="https:&#x2F;&#x2F;avatars0.githubusercontent.com&#x2F;u&#x2F;55999857"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../time/index.html'><div class='logo-container rust-logo'><img src='https:&#x2F;&#x2F;avatars0.githubusercontent.com&#x2F;u&#x2F;55999857' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input"name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;time-0.2.27&#x2F;src&#x2F;duration.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>duration.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="https:&#x2F;&#x2F;avatars0.githubusercontent.com&#x2F;u&#x2F;55999857"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../time/index.html'><div class='logo-container rust-logo'><img src='https:&#x2F;&#x2F;avatars0.githubusercontent.com&#x2F;u&#x2F;55999857' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -1160,10 +1160,9 @@
 <span id="1160">1160</span>
 <span id="1161">1161</span>
 <span id="1162">1162</span>
-</pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::error</span>;
+</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::error</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::Instant</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Instant</span>;
 <span class="kw">use</span> <span class="ident">const_fn::const_fn</span>;
 <span class="kw">use</span> <span class="ident">core</span>::{
     <span class="ident">cmp::Ordering</span>,
@@ -1218,7 +1217,7 @@
     <span class="doccomment">/// assert_eq!(Duration::zero(), 0.seconds());</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">zero</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::seconds</span>(<span class="number">0</span>)
+        <span class="ident"><span class="self">Self</span>::seconds</span>(<span class="number">0</span>)
     }
 
     <span class="doccomment">/// Equivalent to `1.nanoseconds()`.</span>
@@ -1228,7 +1227,7 @@
     <span class="doccomment">/// assert_eq!(Duration::nanosecond(), 1.nanoseconds());</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">nanosecond</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::nanoseconds</span>(<span class="number">1</span>)
+        <span class="ident"><span class="self">Self</span>::nanoseconds</span>(<span class="number">1</span>)
     }
 
     <span class="doccomment">/// Equivalent to `1.microseconds()`.</span>
@@ -1238,7 +1237,7 @@
     <span class="doccomment">/// assert_eq!(Duration::microsecond(), 1.microseconds());</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">microsecond</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::microseconds</span>(<span class="number">1</span>)
+        <span class="ident"><span class="self">Self</span>::microseconds</span>(<span class="number">1</span>)
     }
 
     <span class="doccomment">/// Equivalent to `1.milliseconds()`.</span>
@@ -1248,7 +1247,7 @@
     <span class="doccomment">/// assert_eq!(Duration::millisecond(), 1.milliseconds());</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">millisecond</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::milliseconds</span>(<span class="number">1</span>)
+        <span class="ident"><span class="self">Self</span>::milliseconds</span>(<span class="number">1</span>)
     }
 
     <span class="doccomment">/// Equivalent to `1.seconds()`.</span>
@@ -1258,7 +1257,7 @@
     <span class="doccomment">/// assert_eq!(Duration::second(), 1.seconds());</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">second</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::seconds</span>(<span class="number">1</span>)
+        <span class="ident"><span class="self">Self</span>::seconds</span>(<span class="number">1</span>)
     }
 
     <span class="doccomment">/// Equivalent to `1.minutes()`.</span>
@@ -1268,7 +1267,7 @@
     <span class="doccomment">/// assert_eq!(Duration::minute(), 1.minutes());</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">minute</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::minutes</span>(<span class="number">1</span>)
+        <span class="ident"><span class="self">Self</span>::minutes</span>(<span class="number">1</span>)
     }
 
     <span class="doccomment">/// Equivalent to `1.hours()`.</span>
@@ -1278,7 +1277,7 @@
     <span class="doccomment">/// assert_eq!(Duration::hour(), 1.hours());</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">hour</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::hours</span>(<span class="number">1</span>)
+        <span class="ident"><span class="self">Self</span>::hours</span>(<span class="number">1</span>)
     }
 
     <span class="doccomment">/// Equivalent to `1.days()`.</span>
@@ -1288,7 +1287,7 @@
     <span class="doccomment">/// assert_eq!(Duration::day(), 1.days());</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">day</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::days</span>(<span class="number">1</span>)
+        <span class="ident"><span class="self">Self</span>::days</span>(<span class="number">1</span>)
     }
 
     <span class="doccomment">/// Equivalent to `1.weeks()`.</span>
@@ -1298,7 +1297,7 @@
     <span class="doccomment">/// assert_eq!(Duration::week(), 1.weeks());</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">week</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::weeks</span>(<span class="number">1</span>)
+        <span class="ident"><span class="self">Self</span>::weeks</span>(<span class="number">1</span>)
     }
 
     <span class="doccomment">/// The maximum possible duration. Adding any positive duration to this will</span>
@@ -1306,7 +1305,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// The value returned by this method may change at any time.</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">max_value</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::new</span>(<span class="ident">i64::max_value</span>(), <span class="number">999_999_999</span>)
+        <span class="ident"><span class="self">Self</span>::new</span>(<span class="ident">i64::max_value</span>(), <span class="number">999_999_999</span>)
     }
 
     <span class="doccomment">/// The minimum possible duration. Adding any negative duration to this will</span>
@@ -1314,7 +1313,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// The value returned by this method may change at any time.</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">min_value</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::new</span>(<span class="ident">i64::min_value</span>(), <span class="op">-</span><span class="number">999_999_999</span>)
+        <span class="ident"><span class="self">Self</span>::new</span>(<span class="ident">i64::min_value</span>(), <span class="op">-</span><span class="number">999_999_999</span>)
     }
 
     <span class="doccomment">/// Check if a duration is exactly zero.</span>
@@ -1367,8 +1366,8 @@
                 `is_negative`, and `is_zero` methods.&quot;</span>
     )]</span>
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">deprecated</span>, <span class="ident">clippy::missing_const_for_fn</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sign</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw">crate</span><span class="ident">::Sign</span> {
-        <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::Sign</span>::<span class="kw-2">*</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sign</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="kw">crate</span>::Sign</span> {
+        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::Sign</span>::<span class="kw-2">*</span>;
 
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">nanoseconds</span> <span class="op">&gt;</span> <span class="number">0</span> {
             <span class="ident">Positive</span>
@@ -1495,7 +1494,7 @@
     <span class="doccomment">/// assert_eq!(Duration::weeks(1), 604_800.seconds());</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">weeks</span>(<span class="ident">weeks</span>: <span class="ident">i64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::seconds</span>(<span class="ident">weeks</span> <span class="op">*</span> <span class="ident">SECONDS_PER_WEEK</span>)
+        <span class="ident"><span class="self">Self</span>::seconds</span>(<span class="ident">weeks</span> <span class="op">*</span> <span class="ident">SECONDS_PER_WEEK</span>)
     }
 
     <span class="doccomment">/// Get the number of whole weeks in the duration.</span>
@@ -1519,7 +1518,7 @@
     <span class="doccomment">/// assert_eq!(Duration::days(1), 86_400.seconds());</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">days</span>(<span class="ident">days</span>: <span class="ident">i64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::seconds</span>(<span class="ident">days</span> <span class="op">*</span> <span class="ident">SECONDS_PER_DAY</span>)
+        <span class="ident"><span class="self">Self</span>::seconds</span>(<span class="ident">days</span> <span class="op">*</span> <span class="ident">SECONDS_PER_DAY</span>)
     }
 
     <span class="doccomment">/// Get the number of whole days in the duration.</span>
@@ -1543,7 +1542,7 @@
     <span class="doccomment">/// assert_eq!(Duration::hours(1), 3_600.seconds());</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">hours</span>(<span class="ident">hours</span>: <span class="ident">i64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::seconds</span>(<span class="ident">hours</span> <span class="op">*</span> <span class="ident">SECONDS_PER_HOUR</span>)
+        <span class="ident"><span class="self">Self</span>::seconds</span>(<span class="ident">hours</span> <span class="op">*</span> <span class="ident">SECONDS_PER_HOUR</span>)
     }
 
     <span class="doccomment">/// Get the number of whole hours in the duration.</span>
@@ -1567,7 +1566,7 @@
     <span class="doccomment">/// assert_eq!(Duration::minutes(1), 60.seconds());</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">minutes</span>(<span class="ident">minutes</span>: <span class="ident">i64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::seconds</span>(<span class="ident">minutes</span> <span class="op">*</span> <span class="ident">SECONDS_PER_MINUTE</span>)
+        <span class="ident"><span class="self">Self</span>::seconds</span>(<span class="ident">minutes</span> <span class="op">*</span> <span class="ident">SECONDS_PER_MINUTE</span>)
     }
 
     <span class="doccomment">/// Get the number of whole minutes in the duration.</span>
@@ -1984,7 +1983,7 @@
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;0.2.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Use the `time_fn` function&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">span</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="ident">FnOnce</span>()<span class="op">&gt;</span>(<span class="ident">f</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span><span class="ident">::time_fn</span>(<span class="ident">f</span>).<span class="number">0</span>
+        <span class="ident"><span class="self">Self</span>::time_fn</span>(<span class="ident">f</span>).<span class="number">0</span>
     }
 
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">deprecated</span>)]</span>
@@ -2010,7 +2009,7 @@
     <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">error::ConversionRange</span>;
 
     <span class="kw">fn</span> <span class="ident">try_from</span>(<span class="ident">original</span>: <span class="ident">StdDuration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">error::ConversionRange</span><span class="op">&gt;</span> {
-        <span class="prelude-val">Ok</span>(<span class="self">Self</span><span class="ident">::new</span>(
+        <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::new</span>(
             <span class="ident">original</span>
                 .<span class="ident">as_secs</span>()
                 .<span class="ident">try_into</span>()
@@ -2027,7 +2026,7 @@
     <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">error::ConversionRange</span>;
 
     <span class="kw">fn</span> <span class="ident">try_from</span>(<span class="ident">duration</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">error::ConversionRange</span><span class="op">&gt;</span> {
-        <span class="prelude-val">Ok</span>(<span class="self">Self</span><span class="ident">::new</span>(
+        <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::new</span>(
             <span class="ident">duration</span>
                 .<span class="ident">seconds</span>
                 .<span class="ident">try_into</span>()
@@ -2043,7 +2042,7 @@
 <span class="kw">impl</span> <span class="ident">Add</span> <span class="kw">for</span> <span class="ident">Duration</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-    <span class="kw">fn</span> <span class="ident">add</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Output</span> {
+    <span class="kw">fn</span> <span class="ident">add</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Output</span> {
         <span class="self">self</span>.<span class="ident">checked_add</span>(<span class="ident">rhs</span>)
             .<span class="ident">expect</span>(<span class="string">&quot;overflow when adding durations&quot;</span>)
     }
@@ -2052,8 +2051,8 @@
 <span class="kw">impl</span> <span class="ident">Add</span><span class="op">&lt;</span><span class="ident">StdDuration</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Duration</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-    <span class="kw">fn</span> <span class="ident">add</span>(<span class="self">self</span>, <span class="ident">std_duration</span>: <span class="ident">StdDuration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Output</span> {
-        <span class="self">self</span> <span class="op">+</span> <span class="self">Self</span><span class="ident">::try_from</span>(<span class="ident">std_duration</span>)
+    <span class="kw">fn</span> <span class="ident">add</span>(<span class="self">self</span>, <span class="ident">std_duration</span>: <span class="ident">StdDuration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Output</span> {
+        <span class="self">self</span> <span class="op">+</span> <span class="ident"><span class="self">Self</span>::try_from</span>(<span class="ident">std_duration</span>)
             .<span class="ident">expect</span>(<span class="string">&quot;overflow converting `std::time::Duration` to `time::Duration`&quot;</span>)
     }
 }
@@ -2061,7 +2060,7 @@
 <span class="kw">impl</span> <span class="ident">Add</span><span class="op">&lt;</span><span class="ident">Duration</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">StdDuration</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">Duration</span>;
 
-    <span class="kw">fn</span> <span class="ident">add</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Output</span> {
+    <span class="kw">fn</span> <span class="ident">add</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Output</span> {
         <span class="ident">rhs</span> <span class="op">+</span> <span class="self">self</span>
     }
 }
@@ -2081,7 +2080,7 @@
 <span class="kw">impl</span> <span class="ident">Neg</span> <span class="kw">for</span> <span class="ident">Duration</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-    <span class="kw">fn</span> <span class="ident">neg</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Output</span> {
+    <span class="kw">fn</span> <span class="ident">neg</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Output</span> {
         <span class="op">-</span><span class="number">1</span> <span class="op">*</span> <span class="self">self</span>
     }
 }
@@ -2089,7 +2088,7 @@
 <span class="kw">impl</span> <span class="ident">Sub</span> <span class="kw">for</span> <span class="ident">Duration</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-    <span class="kw">fn</span> <span class="ident">sub</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Output</span> {
+    <span class="kw">fn</span> <span class="ident">sub</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Output</span> {
         <span class="self">self</span>.<span class="ident">checked_sub</span>(<span class="ident">rhs</span>)
             .<span class="ident">expect</span>(<span class="string">&quot;overflow when subtracting durations&quot;</span>)
     }
@@ -2098,8 +2097,8 @@
 <span class="kw">impl</span> <span class="ident">Sub</span><span class="op">&lt;</span><span class="ident">StdDuration</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Duration</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-    <span class="kw">fn</span> <span class="ident">sub</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">StdDuration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Output</span> {
-        <span class="self">self</span> <span class="op">-</span> <span class="self">Self</span><span class="ident">::try_from</span>(<span class="ident">rhs</span>)
+    <span class="kw">fn</span> <span class="ident">sub</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">StdDuration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Output</span> {
+        <span class="self">self</span> <span class="op">-</span> <span class="ident"><span class="self">Self</span>::try_from</span>(<span class="ident">rhs</span>)
             .<span class="ident">expect</span>(<span class="string">&quot;overflow converting `std::time::Duration` to `time::Duration`&quot;</span>)
     }
 }
@@ -2107,7 +2106,7 @@
 <span class="kw">impl</span> <span class="ident">Sub</span><span class="op">&lt;</span><span class="ident">Duration</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">StdDuration</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">Duration</span>;
 
-    <span class="kw">fn</span> <span class="ident">sub</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Output</span> {
+    <span class="kw">fn</span> <span class="ident">sub</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Output</span> {
         <span class="ident">Duration::try_from</span>(<span class="self">self</span>)
             .<span class="ident">expect</span>(<span class="string">&quot;overflow converting `std::time::Duration` to `time::Duration`&quot;</span>)
             <span class="op">-</span> <span class="ident">rhs</span>
@@ -2141,8 +2140,8 @@
             <span class="kw">impl</span> <span class="ident">Mul</span><span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="kw">type</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="macro-nonterminal">Duration</span> {
                 <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-                <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="macro-nonterminal">$</span><span class="kw">type</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="macro-nonterminal">::Output</span> {
-                    <span class="self">Self</span><span class="ident">::nanoseconds_i128</span>(
+                <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="macro-nonterminal">$</span><span class="kw">type</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="macro-nonterminal">Self::Output</span> {
+                    <span class="ident"><span class="self">Self</span>::nanoseconds_i128</span>(
                         <span class="self">self</span>.<span class="ident">whole_nanoseconds</span>()
                             .<span class="ident">checked_mul</span>(<span class="ident">rhs</span> <span class="kw">as</span> <span class="ident">i128</span>)
                             .<span class="ident">expect</span>(<span class="string">&quot;overflow when multiplying duration&quot;</span>)
@@ -2152,14 +2151,14 @@
 
             <span class="kw">impl</span> <span class="ident">MulAssign</span><span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="kw">type</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="macro-nonterminal">Duration</span> {
                 <span class="kw">fn</span> <span class="ident">mul_assign</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">rhs</span>: <span class="macro-nonterminal">$</span><span class="kw">type</span>) {
-                    <span class="kw-2">*</span><span class="self">self</span> <span class="op">=</span> <span class="kw-2">*</span><span class="self">self</span> <span class="op">*</span> <span class="macro-nonterminal">rhs</span>;
+                    <span class="kw-2">*</span><span class="macro-nonterminal">self</span> <span class="op">=</span> <span class="kw-2">*</span><span class="self">self</span> <span class="op">*</span> <span class="ident">rhs</span>;
                 }
             }
 
             <span class="kw">impl</span> <span class="ident">Mul</span><span class="op">&lt;</span><span class="ident">Duration</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="kw">type</span> {
                 <span class="kw">type</span> <span class="macro-nonterminal">Output</span> <span class="op">=</span> <span class="ident">Duration</span>;
 
-                <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Output</span> {
+                <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Output</span> {
                     <span class="ident">rhs</span> <span class="op">*</span> <span class="self">self</span>
                 }
             }
@@ -2167,14 +2166,14 @@
             <span class="kw">impl</span> <span class="ident">Div</span><span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="kw">type</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="macro-nonterminal">Duration</span> {
                 <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-                <span class="kw">fn</span> <span class="ident">div</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="macro-nonterminal">$</span><span class="kw">type</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="macro-nonterminal">::Output</span> {
-                    <span class="self">Self</span><span class="ident">::nanoseconds_i128</span>(<span class="self">self</span>.<span class="ident">whole_nanoseconds</span>() <span class="op">/</span> <span class="ident">rhs</span> <span class="kw">as</span> <span class="ident">i128</span>)
+                <span class="kw">fn</span> <span class="ident">div</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="macro-nonterminal">$</span><span class="kw">type</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="macro-nonterminal">Self::Output</span> {
+                    <span class="ident"><span class="self">Self</span>::nanoseconds_i128</span>(<span class="self">self</span>.<span class="ident">whole_nanoseconds</span>() <span class="op">/</span> <span class="ident">rhs</span> <span class="kw">as</span> <span class="ident">i128</span>)
                 }
             }
 
             <span class="kw">impl</span> <span class="ident">DivAssign</span><span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="kw">type</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="macro-nonterminal">Duration</span> {
                 <span class="kw">fn</span> <span class="ident">div_assign</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">rhs</span>: <span class="macro-nonterminal">$</span><span class="kw">type</span>) {
-                    <span class="kw-2">*</span><span class="self">self</span> <span class="op">=</span> <span class="kw-2">*</span><span class="self">self</span> <span class="op">/</span> <span class="macro-nonterminal">rhs</span>;
+                    <span class="kw-2">*</span><span class="macro-nonterminal">self</span> <span class="op">=</span> <span class="kw-2">*</span><span class="self">self</span> <span class="op">/</span> <span class="ident">rhs</span>;
                 }
             }
         )<span class="op">+</span>
@@ -2185,8 +2184,8 @@
 <span class="kw">impl</span> <span class="ident">Mul</span><span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Duration</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-    <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">f32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Output</span> {
-        <span class="self">Self</span><span class="ident">::seconds_f32</span>(<span class="self">self</span>.<span class="ident">as_seconds_f32</span>() <span class="op">*</span> <span class="ident">rhs</span>)
+    <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">f32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Output</span> {
+        <span class="ident"><span class="self">Self</span>::seconds_f32</span>(<span class="self">self</span>.<span class="ident">as_seconds_f32</span>() <span class="op">*</span> <span class="ident">rhs</span>)
     }
 }
 
@@ -2199,7 +2198,7 @@
 <span class="kw">impl</span> <span class="ident">Mul</span><span class="op">&lt;</span><span class="ident">Duration</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">f32</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">Duration</span>;
 
-    <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Output</span> {
+    <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Output</span> {
         <span class="ident">rhs</span> <span class="op">*</span> <span class="self">self</span>
     }
 }
@@ -2207,8 +2206,8 @@
 <span class="kw">impl</span> <span class="ident">Mul</span><span class="op">&lt;</span><span class="ident">f64</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Duration</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-    <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">f64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Output</span> {
-        <span class="self">Self</span><span class="ident">::seconds_f64</span>(<span class="self">self</span>.<span class="ident">as_seconds_f64</span>() <span class="op">*</span> <span class="ident">rhs</span>)
+    <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">f64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Output</span> {
+        <span class="ident"><span class="self">Self</span>::seconds_f64</span>(<span class="self">self</span>.<span class="ident">as_seconds_f64</span>() <span class="op">*</span> <span class="ident">rhs</span>)
     }
 }
 
@@ -2221,7 +2220,7 @@
 <span class="kw">impl</span> <span class="ident">Mul</span><span class="op">&lt;</span><span class="ident">Duration</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">f64</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">Duration</span>;
 
-    <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Output</span> {
+    <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Output</span> {
         <span class="ident">rhs</span> <span class="op">*</span> <span class="self">self</span>
     }
 }
@@ -2229,8 +2228,8 @@
 <span class="kw">impl</span> <span class="ident">Div</span><span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Duration</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-    <span class="kw">fn</span> <span class="ident">div</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">f32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Output</span> {
-        <span class="self">Self</span><span class="ident">::seconds_f32</span>(<span class="self">self</span>.<span class="ident">as_seconds_f32</span>() <span class="op">/</span> <span class="ident">rhs</span>)
+    <span class="kw">fn</span> <span class="ident">div</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">f32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Output</span> {
+        <span class="ident"><span class="self">Self</span>::seconds_f32</span>(<span class="self">self</span>.<span class="ident">as_seconds_f32</span>() <span class="op">/</span> <span class="ident">rhs</span>)
     }
 }
 
@@ -2243,8 +2242,8 @@
 <span class="kw">impl</span> <span class="ident">Div</span><span class="op">&lt;</span><span class="ident">f64</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Duration</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
 
-    <span class="kw">fn</span> <span class="ident">div</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">f64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Output</span> {
-        <span class="self">Self</span><span class="ident">::seconds_f64</span>(<span class="self">self</span>.<span class="ident">as_seconds_f64</span>() <span class="op">/</span> <span class="ident">rhs</span>)
+    <span class="kw">fn</span> <span class="ident">div</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">f64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Output</span> {
+        <span class="ident"><span class="self">Self</span>::seconds_f64</span>(<span class="self">self</span>.<span class="ident">as_seconds_f64</span>() <span class="op">/</span> <span class="ident">rhs</span>)
     }
 }
 
@@ -2257,7 +2256,7 @@
 <span class="kw">impl</span> <span class="ident">Div</span><span class="op">&lt;</span><span class="ident">Duration</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Duration</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">f64</span>;
 
-    <span class="kw">fn</span> <span class="ident">div</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Output</span> {
+    <span class="kw">fn</span> <span class="ident">div</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Output</span> {
         <span class="self">self</span>.<span class="ident">as_seconds_f64</span>() <span class="op">/</span> <span class="ident">rhs</span>.<span class="ident">as_seconds_f64</span>()
     }
 }
@@ -2265,7 +2264,7 @@
 <span class="kw">impl</span> <span class="ident">Div</span><span class="op">&lt;</span><span class="ident">StdDuration</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Duration</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">f64</span>;
 
-    <span class="kw">fn</span> <span class="ident">div</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">StdDuration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Output</span> {
+    <span class="kw">fn</span> <span class="ident">div</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">StdDuration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Output</span> {
         <span class="self">self</span>.<span class="ident">as_seconds_f64</span>() <span class="op">/</span> <span class="ident">rhs</span>.<span class="ident">as_secs_f64</span>()
     }
 }
@@ -2273,14 +2272,14 @@
 <span class="kw">impl</span> <span class="ident">Div</span><span class="op">&lt;</span><span class="ident">Duration</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">StdDuration</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">f64</span>;
 
-    <span class="kw">fn</span> <span class="ident">div</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span><span class="ident">::Output</span> {
+    <span class="kw">fn</span> <span class="ident">div</span>(<span class="self">self</span>, <span class="ident">rhs</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Output</span> {
         <span class="self">self</span>.<span class="ident">as_secs_f64</span>() <span class="op">/</span> <span class="ident">rhs</span>.<span class="ident">as_seconds_f64</span>()
     }
 }
 
 <span class="kw">impl</span> <span class="ident">PartialEq</span><span class="op">&lt;</span><span class="ident">StdDuration</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Duration</span> {
     <span class="kw">fn</span> <span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">rhs</span>: <span class="kw-2">&amp;</span><span class="ident">StdDuration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-        <span class="prelude-val">Ok</span>(<span class="kw-2">*</span><span class="self">self</span>) <span class="op">=</span><span class="op">=</span> <span class="self">Self</span><span class="ident">::try_from</span>(<span class="kw-2">*</span><span class="ident">rhs</span>)
+        <span class="prelude-val">Ok</span>(<span class="kw-2">*</span><span class="self">self</span>) <span class="op">=</span><span class="op">=</span> <span class="ident"><span class="self">Self</span>::try_from</span>(<span class="kw-2">*</span><span class="ident">rhs</span>)
     }
 }
 
@@ -2323,7 +2322,7 @@
             .<span class="ident">then_with</span>(<span class="op">|</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">nanoseconds</span>.<span class="ident">cmp</span>(<span class="kw-2">&amp;</span><span class="ident">rhs</span>.<span class="ident">nanoseconds</span>))
     }
 }
-</pre></div>
+</code></pre></div>
 </section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="time" data-search-index-js="../../search-index.js" data-search-js="../../search.js"></div>
     <script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script>
 </body></html>

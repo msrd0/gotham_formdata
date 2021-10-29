@@ -45,14 +45,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: dtolnay/rust-toolchain@1.55.0
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: "1.56"
       
       - uses: actions/cache@v2
         with:
           path: |
             ~/.cargo
             target
-          key: ${{ runner.os }}-cargo-1.55
+          key: ${{ runner.os }}-cargo-1.56
       
       - run: cargo test -- trybuild_ui
         env:

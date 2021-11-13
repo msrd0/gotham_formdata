@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;gotham-0.6.0&#x2F;src&#x2F;router&#x2F;builder&#x2F;single.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>single.rs - source</title><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../../../storage.js"></script><script src="../../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../../gotham/index.html'><div class='logo-container rust-logo'><img src='../../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;gotham-0.7.0&#x2F;src&#x2F;router&#x2F;builder&#x2F;single.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>single.rs - source</title><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../../../storage.js"></script><script src="../../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../../gotham/index.html'><div class='logo-container rust-logo'><img src='../../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -631,65 +631,19 @@
 <span id="631">631</span>
 <span id="632">632</span>
 <span id="633">633</span>
-<span id="634">634</span>
-<span id="635">635</span>
-<span id="636">636</span>
-<span id="637">637</span>
-<span id="638">638</span>
-<span id="639">639</span>
-<span id="640">640</span>
-<span id="641">641</span>
-<span id="642">642</span>
-<span id="643">643</span>
-<span id="644">644</span>
-<span id="645">645</span>
-<span id="646">646</span>
-<span id="647">647</span>
-<span id="648">648</span>
-<span id="649">649</span>
-<span id="650">650</span>
-<span id="651">651</span>
-<span id="652">652</span>
-<span id="653">653</span>
-<span id="654">654</span>
-<span id="655">655</span>
-<span id="656">656</span>
-<span id="657">657</span>
-<span id="658">658</span>
-<span id="659">659</span>
-<span id="660">660</span>
-<span id="661">661</span>
-<span id="662">662</span>
-<span id="663">663</span>
-<span id="664">664</span>
-<span id="665">665</span>
-<span id="666">666</span>
-<span id="667">667</span>
-<span id="668">668</span>
-<span id="669">669</span>
-<span id="670">670</span>
-<span id="671">671</span>
-<span id="672">672</span>
-<span id="673">673</span>
-<span id="674">674</span>
-<span id="675">675</span>
-<span id="676">676</span>
-<span id="677">677</span>
-<span id="678">678</span>
-<span id="679">679</span>
-<span id="680">680</span>
-<span id="681">681</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">hyper::Body</span>;
+</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">futures_util::FutureExt</span>;
+<span class="kw">use</span> <span class="ident">hyper::Body</span>;
 
+<span class="kw">use</span> <span class="ident">std::future::Future</span>;
 <span class="kw">use</span> <span class="ident">std::panic::RefUnwindSafe</span>;
 <span class="kw">use</span> <span class="ident">std::pin::Pin</span>;
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::extractor</span>::{<span class="ident">PathExtractor</span>, <span class="ident">QueryStringExtractor</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::handler::assets</span>::{<span class="ident">DirHandler</span>, <span class="ident">FileHandler</span>, <span class="ident">FileOptions</span>, <span class="ident">FilePathExtractor</span>};
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::handler</span>::{
-    <span class="ident">Handler</span>, <span class="ident">HandlerError</span>, <span class="ident">HandlerFuture</span>, <span class="ident">HandlerResult</span>, <span class="ident">IntoResponse</span>, <span class="ident">NewHandler</span>,
+    <span class="ident">DirHandler</span>, <span class="ident">FileHandler</span>, <span class="ident">FileOptions</span>, <span class="ident">FilePathExtractor</span>, <span class="ident">Handler</span>, <span class="ident">HandlerError</span>, <span class="ident">HandlerFuture</span>,
+    <span class="ident">HandlerResult</span>, <span class="ident">IntoResponse</span>, <span class="ident">NewHandler</span>,
 };
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::pipeline::chain::PipelineHandleChain</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::pipeline::PipelineHandleChain</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::builder</span>::{
     <span class="ident">ExtendRouteMatcher</span>, <span class="ident">ReplacePathExtractor</span>, <span class="ident">ReplaceQueryStringExtractor</span>, <span class="ident">SingleRouteBuilder</span>,
 };
@@ -697,8 +651,6 @@
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::route::matcher::RouteMatcher</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::route</span>::{<span class="ident">Delegation</span>, <span class="ident">Extractors</span>, <span class="ident">RouteImpl</span>};
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state::State</span>;
-<span class="kw">use</span> <span class="ident">core::future::Future</span>;
-<span class="kw">use</span> <span class="ident">futures::FutureExt</span>;
 
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">HandlerMarker</span> {
     <span class="kw">fn</span> <span class="ident">call_and_wrap</span>(<span class="self">self</span>, <span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span>;
@@ -751,15 +703,11 @@
 <span class="doccomment">/// # Examples</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # extern crate gotham;</span>
-<span class="doccomment">/// # extern crate hyper;</span>
-<span class="doccomment">/// #</span>
 <span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
 <span class="doccomment">/// # use gotham::state::State;</span>
 <span class="doccomment">/// # use gotham::router::Router;</span>
 <span class="doccomment">/// # use gotham::router::builder::*;</span>
-<span class="doccomment">/// # use gotham::pipeline::new_pipeline;</span>
-<span class="doccomment">/// # use gotham::pipeline::single::*;</span>
+<span class="doccomment">/// # use gotham::pipeline::*;</span>
 <span class="doccomment">/// # use gotham::middleware::session::NewSessionMiddleware;</span>
 <span class="doccomment">/// # use gotham::test::TestServer;</span>
 <span class="doccomment">/// #</span>
@@ -796,15 +744,11 @@
     <span class="doccomment">/// # Examples</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # extern crate gotham;</span>
-    <span class="doccomment">/// # extern crate hyper;</span>
-    <span class="doccomment">/// #</span>
     <span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
     <span class="doccomment">/// # use gotham::state::State;</span>
     <span class="doccomment">/// # use gotham::router::Router;</span>
     <span class="doccomment">/// # use gotham::router::builder::*;</span>
-    <span class="doccomment">/// # use gotham::pipeline::new_pipeline;</span>
-    <span class="doccomment">/// # use gotham::pipeline::single::*;</span>
+    <span class="doccomment">/// # use gotham::pipeline::*;</span>
     <span class="doccomment">/// # use gotham::middleware::session::NewSessionMiddleware;</span>
     <span class="doccomment">/// # use gotham::test::TestServer;</span>
     <span class="doccomment">/// #</span>
@@ -842,16 +786,12 @@
     <span class="doccomment">/// # Examples</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # extern crate gotham;</span>
-    <span class="doccomment">/// # extern crate hyper;</span>
-    <span class="doccomment">/// #</span>
     <span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
     <span class="doccomment">/// # use gotham::handler::HandlerResult;</span>
     <span class="doccomment">/// # use gotham::state::State;</span>
     <span class="doccomment">/// # use gotham::router::Router;</span>
     <span class="doccomment">/// # use gotham::router::builder::*;</span>
-    <span class="doccomment">/// # use gotham::pipeline::new_pipeline;</span>
-    <span class="doccomment">/// # use gotham::pipeline::single::*;</span>
+    <span class="doccomment">/// # use gotham::pipeline::*;</span>
     <span class="doccomment">/// # use gotham::middleware::session::NewSessionMiddleware;</span>
     <span class="doccomment">/// # use gotham::test::TestServer;</span>
     <span class="doccomment">/// #</span>
@@ -897,22 +837,18 @@
     <span class="doccomment">/// # Examples</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # extern crate gotham;</span>
-    <span class="doccomment">/// # extern crate hyper;</span>
-    <span class="doccomment">/// #</span>
     <span class="doccomment">/// # use hyper::StatusCode;</span>
     <span class="doccomment">/// # use gotham::handler::{HandlerError, IntoResponse, MapHandlerError};</span>
     <span class="doccomment">/// # use gotham::state::State;</span>
     <span class="doccomment">/// # use gotham::router::Router;</span>
     <span class="doccomment">/// # use gotham::router::builder::*;</span>
-    <span class="doccomment">/// # use gotham::pipeline::new_pipeline;</span>
-    <span class="doccomment">/// # use gotham::pipeline::single::*;</span>
+    <span class="doccomment">/// # use gotham::pipeline::*;</span>
     <span class="doccomment">/// # use gotham::middleware::session::NewSessionMiddleware;</span>
     <span class="doccomment">/// # use gotham::test::TestServer;</span>
     <span class="doccomment">/// #</span>
     <span class="doccomment">/// async fn my_handler(_state: &amp;mut State) -&gt; Result&lt;impl IntoResponse, HandlerError&gt; {</span>
-    <span class="doccomment">///     let flavors = std::fs::read(&quot;coffee-flavors.txt&quot;)</span>
-    <span class="doccomment">///         .map_err_with_status(StatusCode::IM_A_TEAPOT)?;</span>
+    <span class="doccomment">///     let flavors =</span>
+    <span class="doccomment">///         std::fs::read(&quot;coffee-flavors.txt&quot;).map_err_with_status(StatusCode::IM_A_TEAPOT)?;</span>
     <span class="doccomment">///     Ok(flavors)</span>
     <span class="doccomment">/// }</span>
     <span class="doccomment">/// #</span>
@@ -947,20 +883,15 @@
     <span class="doccomment">/// # Examples</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # extern crate gotham;</span>
-    <span class="doccomment">/// # extern crate hyper;</span>
-    <span class="doccomment">/// # extern crate futures;</span>
-    <span class="doccomment">/// #</span>
     <span class="doccomment">/// # use std::pin::Pin;</span>
     <span class="doccomment">/// #</span>
+    <span class="doccomment">/// # use futures_util::future::{self, FutureExt};</span>
     <span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
-    <span class="doccomment">/// # use futures::prelude::*;</span>
     <span class="doccomment">/// # use gotham::handler::{Handler, HandlerFuture, NewHandler};</span>
     <span class="doccomment">/// # use gotham::state::State;</span>
     <span class="doccomment">/// # use gotham::router::Router;</span>
     <span class="doccomment">/// # use gotham::router::builder::*;</span>
-    <span class="doccomment">/// # use gotham::pipeline::new_pipeline;</span>
-    <span class="doccomment">/// # use gotham::pipeline::single::*;</span>
+    <span class="doccomment">/// # use gotham::pipeline::*;</span>
     <span class="doccomment">/// # use gotham::middleware::session::NewSessionMiddleware;</span>
     <span class="doccomment">/// # use gotham::test::TestServer;</span>
     <span class="doccomment">/// # use gotham::anyhow;</span>
@@ -1014,14 +945,10 @@
     <span class="doccomment">/// # Examples</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # extern crate gotham;</span>
-    <span class="doccomment">/// # extern crate hyper;</span>
-    <span class="doccomment">/// #</span>
     <span class="doccomment">/// # use hyper::StatusCode;</span>
     <span class="doccomment">/// # use gotham::router::Router;</span>
     <span class="doccomment">/// # use gotham::router::builder::*;</span>
-    <span class="doccomment">/// # use gotham::pipeline::new_pipeline;</span>
-    <span class="doccomment">/// # use gotham::pipeline::single::*;</span>
+    <span class="doccomment">/// # use gotham::pipeline::*;</span>
     <span class="doccomment">/// # use gotham::middleware::session::NewSessionMiddleware;</span>
     <span class="doccomment">/// # use gotham::test::TestServer;</span>
     <span class="doccomment">/// #</span>
@@ -1060,14 +987,10 @@
     <span class="doccomment">/// # Examples</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # extern crate gotham;</span>
-    <span class="doccomment">/// # extern crate hyper;</span>
-    <span class="doccomment">/// #</span>
     <span class="doccomment">/// # use hyper::StatusCode;</span>
     <span class="doccomment">/// # use gotham::router::Router;</span>
     <span class="doccomment">/// # use gotham::router::builder::*;</span>
-    <span class="doccomment">/// # use gotham::pipeline::new_pipeline;</span>
-    <span class="doccomment">/// # use gotham::pipeline::single::*;</span>
+    <span class="doccomment">/// # use gotham::pipeline::*;</span>
     <span class="doccomment">/// # use gotham::middleware::session::NewSessionMiddleware;</span>
     <span class="doccomment">/// # use gotham::test::TestServer;</span>
     <span class="doccomment">/// #</span>
@@ -1105,21 +1028,14 @@
     <span class="doccomment">/// # Examples</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # extern crate gotham;</span>
-    <span class="doccomment">/// # #[macro_use]</span>
-    <span class="doccomment">/// # extern crate gotham_derive;</span>
-    <span class="doccomment">/// # #[macro_use]</span>
-    <span class="doccomment">/// # extern crate serde_derive;</span>
-    <span class="doccomment">/// # extern crate hyper;</span>
-    <span class="doccomment">/// #</span>
     <span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
     <span class="doccomment">/// # use gotham::state::{State, FromState};</span>
-    <span class="doccomment">/// # use gotham::router::Router;</span>
-    <span class="doccomment">/// # use gotham::router::builder::*;</span>
-    <span class="doccomment">/// # use gotham::pipeline::new_pipeline;</span>
-    <span class="doccomment">/// # use gotham::pipeline::set::*;</span>
+    <span class="doccomment">/// # use gotham::router::{build_router, Router};</span>
+    <span class="doccomment">/// # use gotham::prelude::*;</span>
+    <span class="doccomment">/// # use gotham::pipeline::*;</span>
     <span class="doccomment">/// # use gotham::middleware::session::NewSessionMiddleware;</span>
     <span class="doccomment">/// # use gotham::test::TestServer;</span>
+    <span class="doccomment">/// # use serde::Deserialize;</span>
     <span class="doccomment">/// #</span>
     <span class="doccomment">/// #[derive(Deserialize, StateData, StaticResponseExtender)]</span>
     <span class="doccomment">/// struct MyPathParams {</span>
@@ -1174,22 +1090,14 @@
     <span class="doccomment">/// # Examples</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # extern crate gotham;</span>
-    <span class="doccomment">/// # #[macro_use]</span>
-    <span class="doccomment">/// # extern crate gotham_derive;</span>
-    <span class="doccomment">/// # extern crate hyper;</span>
-    <span class="doccomment">/// # extern crate serde;</span>
-    <span class="doccomment">/// # #[macro_use]</span>
-    <span class="doccomment">/// # extern crate serde_derive;</span>
-    <span class="doccomment">/// #</span>
     <span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
     <span class="doccomment">/// # use gotham::state::{State, FromState};</span>
-    <span class="doccomment">/// # use gotham::router::Router;</span>
-    <span class="doccomment">/// # use gotham::router::builder::*;</span>
-    <span class="doccomment">/// # use gotham::pipeline::new_pipeline;</span>
-    <span class="doccomment">/// # use gotham::pipeline::set::*;</span>
+    <span class="doccomment">/// # use gotham::router::{build_router, Router};</span>
+    <span class="doccomment">/// # use gotham::prelude::*;</span>
+    <span class="doccomment">/// # use gotham::pipeline::*;</span>
     <span class="doccomment">/// # use gotham::middleware::session::NewSessionMiddleware;</span>
     <span class="doccomment">/// # use gotham::test::TestServer;</span>
+    <span class="doccomment">/// # use serde::Deserialize;</span>
     <span class="doccomment">/// #</span>
     <span class="doccomment">/// #[derive(StateData, Deserialize, StaticResponseExtender)]</span>
     <span class="doccomment">/// struct MyQueryParams {</span>
@@ -1241,10 +1149,6 @@
     <span class="doccomment">/// Adds additional `RouteMatcher` requirements to the current route.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// # extern crate gotham;</span>
-    <span class="doccomment">/// # extern crate hyper;</span>
-    <span class="doccomment">/// # extern crate mime;</span>
-    <span class="doccomment">/// #</span>
     <span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
     <span class="doccomment">/// # use hyper::header::ACCEPT;</span>
     <span class="doccomment">/// # use gotham::state::State;</span>

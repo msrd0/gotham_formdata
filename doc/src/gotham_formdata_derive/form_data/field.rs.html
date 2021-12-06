@@ -54,7 +54,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Parse</span> <span class="kw">for</span> <span class="ident">FieldMeta</span> {
-	<span class="kw">fn</span> <span class="ident">parse</span>(<span class="ident">input</span>: <span class="ident">ParseStream</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+	<span class="kw">fn</span> <span class="ident">parse</span>(<span class="ident">input</span>: <span class="ident">ParseStream</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
 		<span class="prelude-val">Ok</span>(<span class="self">Self</span> {
 			<span class="ident">ident</span>: <span class="ident">input</span>.<span class="ident">parse</span>()<span class="question-mark">?</span>,
 			<span class="ident">eq_token</span>: <span class="ident">input</span>.<span class="ident">parse</span>()<span class="question-mark">?</span>,
@@ -69,7 +69,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Field</span> {
-	<span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">field</span>: <span class="ident">syn::Field</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+	<span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">field</span>: <span class="ident">syn::Field</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
 		<span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">field</span>.<span class="ident">span</span>();
 
 		<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">field</span>

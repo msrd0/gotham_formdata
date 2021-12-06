@@ -624,12 +624,12 @@
 
 <span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Validate</span>, <span class="ident">attributes</span>(<span class="ident">validate</span>))]</span>
 <span class="attribute">#[<span class="ident">proc_macro_error</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_validation</span>(<span class="ident">input</span>: <span class="ident">proc_macro::TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro::TokenStream</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_validation</span>(<span class="ident">input</span>: <span class="ident">proc_macro::TokenStream</span>) -&gt; <span class="ident">proc_macro::TokenStream</span> {
     <span class="kw">let</span> <span class="ident">ast</span> <span class="op">=</span> <span class="ident">syn::parse</span>(<span class="ident">input</span>).<span class="ident">unwrap</span>();
     <span class="ident">impl_validate</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>).<span class="ident">into</span>()
 }
 
-<span class="kw">fn</span> <span class="ident">impl_validate</span>(<span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">syn::DeriveInput</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro2::TokenStream</span> {
+<span class="kw">fn</span> <span class="ident">impl_validate</span>(<span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">syn::DeriveInput</span>) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
     <span class="comment">// Collecting the validators</span>
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">validations</span> <span class="op">=</span> <span class="ident">collect_field_validations</span>(<span class="ident">ast</span>);
     <span class="kw">let</span> (<span class="ident">arg_type</span>, <span class="ident">has_arg</span>) <span class="op">=</span> <span class="ident">construct_validator_argument_type</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">validations</span>);
@@ -645,7 +645,7 @@
     <span class="kw">let</span> <span class="ident">validate_trait_impl</span> <span class="op">=</span> <span class="kw">if</span> <span class="op">!</span><span class="ident">has_arg</span> {
         <span class="macro">quote!</span>(
             <span class="kw">impl</span> #<span class="ident">impl_generics</span> <span class="ident">::validator::Validate</span> <span class="kw">for</span> #<span class="ident">ident</span> #<span class="ident">ty_generics</span> #<span class="ident">where_clause</span> {
-                <span class="kw">fn</span> <span class="ident">validate</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">::std::result::Result</span><span class="op">&lt;</span>(), <span class="ident">::validator::ValidationErrors</span><span class="op">&gt;</span> {
+                <span class="kw">fn</span> <span class="ident">validate</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">::std::result::Result</span><span class="op">&lt;</span>(), <span class="ident">::validator::ValidationErrors</span><span class="op">&gt;</span> {
                     <span class="kw">use</span> <span class="ident">::validator::ValidateArgs</span>;
                     <span class="self">self</span>.<span class="ident">validate_args</span>(())
                 }
@@ -674,7 +674,7 @@
 
             <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused_mut</span>)]</span>
             <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused_variable</span>)]</span>
-            <span class="kw">fn</span> <span class="ident">validate_args</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">args</span>: <span class="ident"><span class="self">Self</span>::Args</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">::std::result::Result</span><span class="op">&lt;</span>(), <span class="ident">::validator::ValidationErrors</span><span class="op">&gt;</span> {
+            <span class="kw">fn</span> <span class="ident">validate_args</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">args</span>: <span class="ident"><span class="self">Self</span>::Args</span>) -&gt; <span class="ident">::std::result::Result</span><span class="op">&lt;</span>(), <span class="ident">::validator::ValidationErrors</span><span class="op">&gt;</span> {
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">errors</span> <span class="op">=</span> <span class="ident">::validator::ValidationErrors::new</span>();
 
                 #(#<span class="ident">validations</span>)<span class="op">*</span>
@@ -698,9 +698,9 @@
     <span class="ident">impl_ast</span>
 }
 
-<span class="kw">fn</span> <span class="ident">collect_fields</span>(<span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">syn::DeriveInput</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">syn::Field</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">collect_fields</span>(<span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">syn::DeriveInput</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">syn::Field</span><span class="op">&gt;</span> {
     <span class="kw">match</span> <span class="ident">ast</span>.<span class="ident">data</span> {
-        <span class="ident">syn::Data::Struct</span>(<span class="ident">syn::DataStruct</span> { <span class="kw-2">ref</span> <span class="ident">fields</span>, .. }) <span class="op">=</span><span class="op">&gt;</span> {
+        <span class="ident">syn::Data::Struct</span>(<span class="ident">syn::DataStruct</span> { <span class="kw-2">ref</span> <span class="ident">fields</span>, .. }) =&gt; {
             <span class="kw">if</span> <span class="ident">fields</span>.<span class="ident">iter</span>().<span class="ident">any</span>(<span class="op">|</span><span class="ident">field</span><span class="op">|</span> <span class="ident">field</span>.<span class="ident">ident</span>.<span class="ident">is_none</span>()) {
                 <span class="macro">abort!</span>(
                     <span class="ident">fields</span>.<span class="ident">span</span>(),
@@ -710,11 +710,11 @@
             }
             <span class="ident">fields</span>.<span class="ident">iter</span>().<span class="ident">cloned</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>()
         }
-        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">abort!</span>(<span class="ident">ast</span>.<span class="ident">span</span>(), <span class="string">&quot;#[derive(Validate)] can only be used with structs&quot;</span>),
+        <span class="kw">_</span> =&gt; <span class="macro">abort!</span>(<span class="ident">ast</span>.<span class="ident">span</span>(), <span class="string">&quot;#[derive(Validate)] can only be used with structs&quot;</span>),
     }
 }
 
-<span class="kw">fn</span> <span class="ident">collect_field_validations</span>(<span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">syn::DeriveInput</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">FieldInformation</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">collect_field_validations</span>(<span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">syn::DeriveInput</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">FieldInformation</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">fields</span> <span class="op">=</span> <span class="ident">collect_fields</span>(<span class="ident">ast</span>);
 
     <span class="kw">let</span> <span class="ident">field_types</span> <span class="op">=</span> <span class="ident">find_fields_type</span>(<span class="kw-2">&amp;</span><span class="ident">fields</span>);
@@ -733,7 +733,7 @@
 
 <span class="kw">fn</span> <span class="ident">construct_validator_argument_type</span>(
     <span class="ident">validations</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">FieldInformation</span><span class="op">&gt;</span>,
-) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">proc_macro2::TokenStream</span>, <span class="ident">bool</span>) {
+) -&gt; (<span class="ident">proc_macro2::TokenStream</span>, <span class="ident">bool</span>) {
     <span class="kw">const</span> <span class="ident">ARGS_PARAMETER_NAME</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;args&quot;</span>;
 
     <span class="comment">// This iterator only holds custom validations with a argument_type</span>
@@ -746,14 +746,14 @@
     <span class="kw">if</span> <span class="ident">customs</span>.<span class="ident">is_empty</span>() {
         <span class="comment">// Just the default empty type if no types are defined</span>
         (<span class="macro">quote!</span>(()), <span class="bool-val">false</span>)
-    } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">customs</span>.<span class="ident">len</span>() <span class="op">=</span><span class="op">=</span> <span class="number">1</span> {
+    } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">customs</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">1</span> {
         <span class="comment">// A single parameter will not be wrapped in a tuple</span>
         <span class="kw">let</span> <span class="ident">arg</span> <span class="op">=</span> <span class="ident">customs</span>.<span class="ident">pop</span>().<span class="ident">unwrap</span>();
         <span class="ident">arg</span>.<span class="ident">arg_access</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">syn::parse_str</span>(<span class="ident">ARGS_PARAMETER_NAME</span>).<span class="ident">unwrap</span>());
         
         <span class="kw">let</span> <span class="ident">type_stream</span>: <span class="kw-2">&amp;</span><span class="ident">Type</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">arg</span>.<span class="ident">arg_type</span>;
         <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">arg</span>.<span class="ident">def_span</span>;
-        (<span class="macro">quote_spanned!</span>(<span class="ident">span</span><span class="op">=</span><span class="op">&gt;</span> #<span class="ident">type_stream</span>), <span class="bool-val">true</span>)
+        (<span class="macro">quote_spanned!</span>(<span class="ident">span</span>=&gt; #<span class="ident">type_stream</span>), <span class="bool-val">true</span>)
     } <span class="kw">else</span> {
         <span class="comment">// Multiple times will be wrapped in a tuple</span>
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">index</span> <span class="op">=</span> <span class="number">0</span>;
@@ -765,10 +765,10 @@
             <span class="kw">let</span> <span class="ident">type_stream</span>: <span class="kw-2">&amp;</span><span class="ident">Type</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">arg</span>.<span class="ident">arg_type</span>;
             <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">arg</span>.<span class="ident">def_span</span>;
 
-            <span class="kw">if</span> <span class="ident">index</span> <span class="op">=</span><span class="op">=</span> <span class="number">1</span> {
-                <span class="macro">quote_spanned!</span>(<span class="ident">span</span><span class="op">=</span><span class="op">&gt;</span> #<span class="ident">type_stream</span>)
+            <span class="kw">if</span> <span class="ident">index</span> <span class="op">==</span> <span class="number">1</span> {
+                <span class="macro">quote_spanned!</span>(<span class="ident">span</span>=&gt; #<span class="ident">type_stream</span>)
             } <span class="kw">else</span> {
-                <span class="macro">quote_spanned!</span>(<span class="ident">span</span><span class="op">=</span><span class="op">&gt;</span> #<span class="ident">acc</span>, #<span class="ident">type_stream</span>)
+                <span class="macro">quote_spanned!</span>(<span class="ident">span</span>=&gt; #<span class="ident">acc</span>, #<span class="ident">type_stream</span>)
             }
         });
 
@@ -778,7 +778,7 @@
 
 <span class="kw">fn</span> <span class="ident">quote_field_validations</span>(
     <span class="kw-2">mut</span> <span class="ident">fields</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">FieldInformation</span><span class="op">&gt;</span>,
-) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">proc_macro2::TokenStream</span><span class="op">&gt;</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">proc_macro2::TokenStream</span><span class="op">&gt;</span>) {
+) -&gt; (<span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">proc_macro2::TokenStream</span><span class="op">&gt;</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">proc_macro2::TokenStream</span><span class="op">&gt;</span>) {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">validations</span> <span class="op">=</span> <span class="macro">vec!</span>[];
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">nested_validations</span> <span class="op">=</span> <span class="macro">vec!</span>[];
 
@@ -795,8 +795,8 @@
 }
 
 <span class="doccomment">/// Find if a struct has some schema validation and returns the info if so</span>
-<span class="kw">fn</span> <span class="ident">find_struct_validation</span>(<span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">syn::Attribute</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">SchemaValidation</span> {
-    <span class="kw">let</span> <span class="ident">error</span> <span class="op">=</span> <span class="op">|</span><span class="ident">span</span>: <span class="ident">Span</span>, <span class="ident">msg</span>: <span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">|</span> <span class="op">-</span><span class="op">&gt;</span> <span class="op">!</span> {
+<span class="kw">fn</span> <span class="ident">find_struct_validation</span>(<span class="ident">attr</span>: <span class="kw-2">&amp;</span><span class="ident">syn::Attribute</span>) -&gt; <span class="ident">SchemaValidation</span> {
+    <span class="kw">let</span> <span class="ident">error</span> <span class="op">=</span> <span class="op">|</span><span class="ident">span</span>: <span class="ident">Span</span>, <span class="ident">msg</span>: <span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">|</span> -&gt; <span class="op">!</span> {
         <span class="macro">abort!</span>(<span class="ident">span</span>, <span class="string">&quot;Invalid schema level validation: {}&quot;</span>, <span class="ident">msg</span>);
     };
 
@@ -824,35 +824,35 @@
                     <span class="ident">then</span> {
                         <span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">path</span>.<span class="ident">get_ident</span>().<span class="ident">unwrap</span>();
                         <span class="kw">match</span> <span class="ident">ident</span>.<span class="ident">to_string</span>().<span class="ident">as_ref</span>() {
-                            <span class="string">&quot;function&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                            <span class="string">&quot;function&quot;</span> =&gt; {
                                 <span class="ident">function</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">lit_to_string</span>(<span class="ident">lit</span>) {
-                                    <span class="prelude-val">Some</span>(<span class="ident">s</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">s</span>,
-                                    <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">error</span>(<span class="ident">lit</span>.<span class="ident">span</span>(), <span class="string">&quot;invalid argument type for `function` \
+                                    <span class="prelude-val">Some</span>(<span class="ident">s</span>) =&gt; <span class="ident">s</span>,
+                                    <span class="prelude-val">None</span> =&gt; <span class="ident">error</span>(<span class="ident">lit</span>.<span class="ident">span</span>(), <span class="string">&quot;invalid argument type for `function` \
                                     : only a string is allowed&quot;</span>),
                                 };
                             },
-                            <span class="string">&quot;skip_on_field_errors&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                            <span class="string">&quot;skip_on_field_errors&quot;</span> =&gt; {
                                 <span class="ident">skip_on_field_errors</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">lit_to_bool</span>(<span class="ident">lit</span>) {
-                                    <span class="prelude-val">Some</span>(<span class="ident">s</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">s</span>,
-                                    <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">error</span>(<span class="ident">lit</span>.<span class="ident">span</span>(), <span class="string">&quot;invalid argument type for `skip_on_field_errors` \
+                                    <span class="prelude-val">Some</span>(<span class="ident">s</span>) =&gt; <span class="ident">s</span>,
+                                    <span class="prelude-val">None</span> =&gt; <span class="ident">error</span>(<span class="ident">lit</span>.<span class="ident">span</span>(), <span class="string">&quot;invalid argument type for `skip_on_field_errors` \
                                     : only a bool is allowed&quot;</span>),
                                 };
                             },
-                            <span class="string">&quot;code&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                            <span class="string">&quot;code&quot;</span> =&gt; {
                                 <span class="ident">code</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">lit_to_string</span>(<span class="ident">lit</span>) {
-                                    <span class="prelude-val">Some</span>(<span class="ident">s</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">s</span>),
-                                    <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">error</span>(<span class="ident">lit</span>.<span class="ident">span</span>(), <span class="string">&quot;invalid argument type for `code` \
+                                    <span class="prelude-val">Some</span>(<span class="ident">s</span>) =&gt; <span class="prelude-val">Some</span>(<span class="ident">s</span>),
+                                    <span class="prelude-val">None</span> =&gt; <span class="ident">error</span>(<span class="ident">lit</span>.<span class="ident">span</span>(), <span class="string">&quot;invalid argument type for `code` \
                                     : only a string is allowed&quot;</span>),
                                 };
                             },
-                            <span class="string">&quot;message&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                            <span class="string">&quot;message&quot;</span> =&gt; {
                                 <span class="ident">message</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">lit_to_string</span>(<span class="ident">lit</span>) {
-                                    <span class="prelude-val">Some</span>(<span class="ident">s</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">s</span>),
-                                    <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">error</span>(<span class="ident">lit</span>.<span class="ident">span</span>(), <span class="string">&quot;invalid argument type for `message` \
+                                    <span class="prelude-val">Some</span>(<span class="ident">s</span>) =&gt; <span class="prelude-val">Some</span>(<span class="ident">s</span>),
+                                    <span class="prelude-val">None</span> =&gt; <span class="ident">error</span>(<span class="ident">lit</span>.<span class="ident">span</span>(), <span class="string">&quot;invalid argument type for `message` \
                                     : only a string is allowed&quot;</span>),
                                 };
                             },
-                            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">error</span>(<span class="ident">lit</span>.<span class="ident">span</span>(), <span class="string">&quot;Unknown argument&quot;</span>)
+                            <span class="kw">_</span> =&gt; <span class="ident">error</span>(<span class="ident">lit</span>.<span class="ident">span</span>(), <span class="string">&quot;Unknown argument&quot;</span>)
                         }
                     } <span class="kw">else</span> {
                         <span class="ident">error</span>(<span class="ident">arg</span>.<span class="ident">span</span>(), <span class="string">&quot;Unexpected args&quot;</span>)
@@ -877,28 +877,28 @@
 }
 
 <span class="doccomment">/// Finds all struct schema validations</span>
-<span class="kw">fn</span> <span class="ident">find_struct_validations</span>(<span class="ident">struct_attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">syn::Attribute</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">SchemaValidation</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">find_struct_validations</span>(<span class="ident">struct_attrs</span>: <span class="kw-2">&amp;</span>[<span class="ident">syn::Attribute</span>]) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">SchemaValidation</span><span class="op">&gt;</span> {
     <span class="ident">struct_attrs</span>
         .<span class="ident">iter</span>()
-        .<span class="ident">filter</span>(<span class="op">|</span><span class="ident">attribute</span><span class="op">|</span> <span class="ident">attribute</span>.<span class="ident">path</span> <span class="op">=</span><span class="op">=</span> <span class="macro">parse_quote!</span>(<span class="ident">validate</span>))
+        .<span class="ident">filter</span>(<span class="op">|</span><span class="ident">attribute</span><span class="op">|</span> <span class="ident">attribute</span>.<span class="ident">path</span> <span class="op">==</span> <span class="macro">parse_quote!</span>(<span class="ident">validate</span>))
         .<span class="ident">map</span>(<span class="op">|</span><span class="ident">attribute</span><span class="op">|</span> <span class="ident">find_struct_validation</span>(<span class="ident">attribute</span>))
         .<span class="ident">collect</span>()
 }
 
 <span class="doccomment">/// Find the types (as string) for each field of the struct</span>
 <span class="doccomment">/// Needed for the `must_match` filter</span>
-<span class="kw">fn</span> <span class="ident">find_fields_type</span>(<span class="ident">fields</span>: <span class="kw-2">&amp;</span>[<span class="ident">syn::Field</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">find_fields_type</span>(<span class="ident">fields</span>: <span class="kw-2">&amp;</span>[<span class="ident">syn::Field</span>]) -&gt; <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="ident">String</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">types</span> <span class="op">=</span> <span class="ident">HashMap::new</span>();
 
     <span class="kw">for</span> <span class="ident">field</span> <span class="kw">in</span> <span class="ident">fields</span> {
         <span class="kw">let</span> <span class="ident">field_ident</span> <span class="op">=</span> <span class="ident">field</span>.<span class="ident">ident</span>.<span class="ident">clone</span>().<span class="ident">unwrap</span>().<span class="ident">to_string</span>();
         <span class="kw">let</span> <span class="ident">field_type</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">field</span>.<span class="ident">ty</span> {
-            <span class="ident">syn::Type::Path</span>(<span class="ident">syn::TypePath</span> { <span class="kw-2">ref</span> <span class="ident">path</span>, .. }) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">syn::Type::Path</span>(<span class="ident">syn::TypePath</span> { <span class="kw-2">ref</span> <span class="ident">path</span>, .. }) =&gt; {
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tokens</span> <span class="op">=</span> <span class="ident">proc_macro2::TokenStream::new</span>();
                 <span class="ident">path</span>.<span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">tokens</span>);
                 <span class="ident">tokens</span>.<span class="ident">to_string</span>().<span class="ident">replace</span>(<span class="string">&#39; &#39;</span>, <span class="string">&quot;&quot;</span>)
             }
-            <span class="ident">syn::Type::Reference</span>(<span class="ident">syn::TypeReference</span> { <span class="kw-2">ref</span> <span class="ident">lifetime</span>, <span class="kw-2">ref</span> <span class="ident">elem</span>, .. }) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">syn::Type::Reference</span>(<span class="ident">syn::TypeReference</span> { <span class="kw-2">ref</span> <span class="ident">lifetime</span>, <span class="kw-2">ref</span> <span class="ident">elem</span>, .. }) =&gt; {
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tokens</span> <span class="op">=</span> <span class="ident">proc_macro2::TokenStream::new</span>();
                 <span class="ident">elem</span>.<span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">tokens</span>);
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">tokens</span>.<span class="ident">to_string</span>().<span class="ident">replace</span>(<span class="string">&#39; &#39;</span>, <span class="string">&quot;&quot;</span>);
@@ -907,12 +907,12 @@
                 }
                 <span class="ident">name</span>
             }
-            <span class="ident">syn::Type::Group</span>(<span class="ident">syn::TypeGroup</span> { <span class="kw-2">ref</span> <span class="ident">elem</span>, .. }) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">syn::Type::Group</span>(<span class="ident">syn::TypeGroup</span> { <span class="kw-2">ref</span> <span class="ident">elem</span>, .. }) =&gt; {
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tokens</span> <span class="op">=</span> <span class="ident">proc_macro2::TokenStream::new</span>();
                 <span class="ident">elem</span>.<span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">tokens</span>);
                 <span class="ident">tokens</span>.<span class="ident">to_string</span>().<span class="ident">replace</span>(<span class="string">&#39; &#39;</span>, <span class="string">&quot;&quot;</span>)
             }
-            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="kw">_</span> =&gt; {
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">field_type</span> <span class="op">=</span> <span class="ident">proc_macro2::TokenStream::new</span>();
                 <span class="ident">field</span>.<span class="ident">ty</span>.<span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">field_type</span>);
                 <span class="macro">abort!</span>(
@@ -936,11 +936,11 @@
 <span class="kw">fn</span> <span class="ident">find_validators_for_field</span>(
     <span class="ident">field</span>: <span class="kw-2">&amp;</span><span class="ident">syn::Field</span>,
     <span class="ident">field_types</span>: <span class="kw-2">&amp;</span><span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="ident">String</span><span class="op">&gt;</span>,
-) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">String</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">FieldValidation</span><span class="op">&gt;</span>) {
+) -&gt; (<span class="ident">String</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">FieldValidation</span><span class="op">&gt;</span>) {
     <span class="kw">let</span> <span class="ident">rust_ident</span> <span class="op">=</span> <span class="ident">field</span>.<span class="ident">ident</span>.<span class="ident">clone</span>().<span class="ident">unwrap</span>().<span class="ident">to_string</span>();
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">field_ident</span> <span class="op">=</span> <span class="ident">field</span>.<span class="ident">ident</span>.<span class="ident">clone</span>().<span class="ident">unwrap</span>().<span class="ident">to_string</span>();
 
-    <span class="kw">let</span> <span class="ident">error</span> <span class="op">=</span> <span class="op">|</span><span class="ident">span</span>: <span class="ident">Span</span>, <span class="ident">msg</span>: <span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">|</span> <span class="op">-</span><span class="op">&gt;</span> <span class="op">!</span> {
+    <span class="kw">let</span> <span class="ident">error</span> <span class="op">=</span> <span class="op">|</span><span class="ident">span</span>: <span class="ident">Span</span>, <span class="ident">msg</span>: <span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">|</span> -&gt; <span class="op">!</span> {
         <span class="macro">abort!</span>(
             <span class="ident">span</span>,
             <span class="string">&quot;Invalid attribute #[validate] on field `{}`: {}&quot;</span>,
@@ -959,15 +959,15 @@
             <span class="kw">continue</span>;
         }
 
-        <span class="kw">if</span> <span class="ident">attr</span>.<span class="ident">path</span> <span class="op">=</span><span class="op">=</span> <span class="macro">parse_quote!</span>(<span class="ident">validate</span>) {
+        <span class="kw">if</span> <span class="ident">attr</span>.<span class="ident">path</span> <span class="op">==</span> <span class="macro">parse_quote!</span>(<span class="ident">validate</span>) {
             <span class="ident">has_validate</span> <span class="op">=</span> <span class="bool-val">true</span>;
         }
 
         <span class="kw">match</span> <span class="ident">attr</span>.<span class="ident">parse_meta</span>() {
-            <span class="prelude-val">Ok</span>(<span class="ident">syn::Meta::List</span>(<span class="ident">syn::MetaList</span> { <span class="kw-2">ref</span> <span class="ident">nested</span>, .. })) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="prelude-val">Ok</span>(<span class="ident">syn::Meta::List</span>(<span class="ident">syn::MetaList</span> { <span class="kw-2">ref</span> <span class="ident">nested</span>, .. })) =&gt; {
                 <span class="kw">let</span> <span class="ident">meta_items</span> <span class="op">=</span> <span class="ident">nested</span>.<span class="ident">iter</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>();
                 <span class="comment">// original name before serde rename</span>
-                <span class="kw">if</span> <span class="ident">attr</span>.<span class="ident">path</span> <span class="op">=</span><span class="op">=</span> <span class="macro">parse_quote!</span>(<span class="ident">serde</span>) {
+                <span class="kw">if</span> <span class="ident">attr</span>.<span class="ident">path</span> <span class="op">==</span> <span class="macro">parse_quote!</span>(<span class="ident">serde</span>) {
                     <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">s</span>) <span class="op">=</span> <span class="ident">find_original_field_name</span>(<span class="kw-2">&amp;</span><span class="ident">meta_items</span>) {
                         <span class="ident">field_ident</span> <span class="op">=</span> <span class="ident">s</span>;
                     }
@@ -977,31 +977,31 @@
                 <span class="comment">// only validation from there on</span>
                 <span class="kw">for</span> <span class="ident">meta_item</span> <span class="kw">in</span> <span class="ident">meta_items</span> {
                     <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">meta_item</span> {
-                        <span class="ident">syn::NestedMeta::Meta</span>(<span class="kw-2">ref</span> <span class="ident">item</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">item</span> {
+                        <span class="ident">syn::NestedMeta::Meta</span>(<span class="kw-2">ref</span> <span class="ident">item</span>) =&gt; <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">item</span> {
                             <span class="comment">// email, url, phone, credit_card, non_control_character</span>
-                            <span class="ident">syn::Meta::Path</span>(<span class="kw-2">ref</span> <span class="ident">name</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                            <span class="ident">syn::Meta::Path</span>(<span class="kw-2">ref</span> <span class="ident">name</span>) =&gt; {
                                 <span class="kw">match</span> <span class="ident">name</span>.<span class="ident">get_ident</span>().<span class="ident">unwrap</span>().<span class="ident">to_string</span>().<span class="ident">as_ref</span>() {
-                                    <span class="string">&quot;email&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                    <span class="string">&quot;email&quot;</span> =&gt; {
                                         <span class="ident">assert_string_type</span>(<span class="string">&quot;email&quot;</span>, <span class="ident">field_type</span>, <span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">ty</span>);
                                         <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">FieldValidation::new</span>(<span class="ident">Validator::Email</span>));
                                     }
-                                    <span class="string">&quot;url&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                    <span class="string">&quot;url&quot;</span> =&gt; {
                                         <span class="ident">assert_string_type</span>(<span class="string">&quot;url&quot;</span>, <span class="ident">field_type</span>, <span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">ty</span>);
                                         <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">FieldValidation::new</span>(<span class="ident">Validator::Url</span>));
                                     }
                                     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;phone&quot;</span>)]</span>
-                                    <span class="string">&quot;phone&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                    <span class="string">&quot;phone&quot;</span> =&gt; {
                                         <span class="ident">assert_string_type</span>(<span class="string">&quot;phone&quot;</span>, <span class="ident">field_type</span>, <span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">ty</span>);
                                         <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">FieldValidation::new</span>(<span class="ident">Validator::Phone</span>));
                                     }
                                     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;card&quot;</span>)]</span>
-                                    <span class="string">&quot;credit_card&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                    <span class="string">&quot;credit_card&quot;</span> =&gt; {
                                         <span class="ident">assert_string_type</span>(<span class="string">&quot;credit_card&quot;</span>, <span class="ident">field_type</span>, <span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">ty</span>);
                                         <span class="ident">validators</span>
                                             .<span class="ident">push</span>(<span class="ident">FieldValidation::new</span>(<span class="ident">Validator::CreditCard</span>));
                                     }
                                     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;unic&quot;</span>)]</span>
-                                    <span class="string">&quot;non_control_character&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                    <span class="string">&quot;non_control_character&quot;</span> =&gt; {
                                         <span class="ident">assert_string_type</span>(
                                             <span class="string">&quot;non_control_character&quot;</span>,
                                             <span class="ident">field_type</span>,
@@ -1011,14 +1011,14 @@
                                             <span class="ident">Validator::NonControlCharacter</span>,
                                         ));
                                     }
-                                    <span class="string">&quot;required&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                    <span class="string">&quot;required&quot;</span> =&gt; {
                                         <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">FieldValidation::new</span>(<span class="ident">Validator::Required</span>));
                                     }
-                                    <span class="string">&quot;required_nested&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                    <span class="string">&quot;required_nested&quot;</span> =&gt; {
                                         <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">FieldValidation::new</span>(<span class="ident">Validator::Required</span>));
                                         <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">FieldValidation::new</span>(<span class="ident">Validator::Nested</span>));
                                     }
-                                    <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                    <span class="kw">_</span> =&gt; {
                                         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">proc_macro2::TokenStream::new</span>();
                                         <span class="ident">name</span>.<span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">ident</span>);
                                         <span class="macro">abort!</span>(<span class="ident">name</span>.<span class="ident">span</span>(), <span class="string">&quot;Unexpected validator: {}&quot;</span>, <span class="ident">ident</span>)
@@ -1028,40 +1028,40 @@
                             <span class="comment">// custom, contains, must_match, regex</span>
                             <span class="ident">syn::Meta::NameValue</span>(<span class="ident">syn::MetaNameValue</span> {
                                 <span class="kw-2">ref</span> <span class="ident">path</span>, <span class="kw-2">ref</span> <span class="ident">lit</span>, ..
-                            }) <span class="op">=</span><span class="op">&gt;</span> {
+                            }) =&gt; {
                                 <span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">path</span>.<span class="ident">get_ident</span>().<span class="ident">unwrap</span>();
                                 <span class="kw">match</span> <span class="ident">ident</span>.<span class="ident">to_string</span>().<span class="ident">as_ref</span>() {
-                                    <span class="string">&quot;custom&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                    <span class="string">&quot;custom&quot;</span> =&gt; {
                                         <span class="kw">match</span> <span class="ident">lit_to_string</span>(<span class="ident">lit</span>) {
-                                            <span class="prelude-val">Some</span>(<span class="ident">s</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">FieldValidation::new</span>(<span class="ident">Validator::Custom</span> {
+                                            <span class="prelude-val">Some</span>(<span class="ident">s</span>) =&gt; <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">FieldValidation::new</span>(<span class="ident">Validator::Custom</span> {
                                                 <span class="ident">function</span>: <span class="ident">s</span>,
                                                 <span class="ident">argument</span>: <span class="prelude-val">None</span>,
                                             })),
-                                            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">error</span>(<span class="ident">lit</span>.<span class="ident">span</span>(), <span class="string">&quot;invalid argument for `custom` validator: only strings are allowed&quot;</span>),
+                                            <span class="prelude-val">None</span> =&gt; <span class="ident">error</span>(<span class="ident">lit</span>.<span class="ident">span</span>(), <span class="string">&quot;invalid argument for `custom` validator: only strings are allowed&quot;</span>),
                                         };
                                     }
-                                    <span class="string">&quot;contains&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                    <span class="string">&quot;contains&quot;</span> =&gt; {
                                         <span class="kw">match</span> <span class="ident">lit_to_string</span>(<span class="ident">lit</span>) {
-                                            <span class="prelude-val">Some</span>(<span class="ident">s</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">FieldValidation::new</span>(<span class="ident">Validator::Contains</span>(<span class="ident">s</span>))),
-                                            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">error</span>(<span class="ident">lit</span>.<span class="ident">span</span>(), <span class="string">&quot;invalid argument for `contains` validator: only strings are allowed&quot;</span>),
+                                            <span class="prelude-val">Some</span>(<span class="ident">s</span>) =&gt; <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">FieldValidation::new</span>(<span class="ident">Validator::Contains</span>(<span class="ident">s</span>))),
+                                            <span class="prelude-val">None</span> =&gt; <span class="ident">error</span>(<span class="ident">lit</span>.<span class="ident">span</span>(), <span class="string">&quot;invalid argument for `contains` validator: only strings are allowed&quot;</span>),
                                         };
                                     }
-                                    <span class="string">&quot;regex&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                    <span class="string">&quot;regex&quot;</span> =&gt; {
                                         <span class="kw">match</span> <span class="ident">lit_to_string</span>(<span class="ident">lit</span>) {
-                                            <span class="prelude-val">Some</span>(<span class="ident">s</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">FieldValidation::new</span>(<span class="ident">Validator::Regex</span>(<span class="ident">s</span>))),
-                                            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">error</span>(<span class="ident">lit</span>.<span class="ident">span</span>(), <span class="string">&quot;invalid argument for `regex` validator: only strings are allowed&quot;</span>),
+                                            <span class="prelude-val">Some</span>(<span class="ident">s</span>) =&gt; <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">FieldValidation::new</span>(<span class="ident">Validator::Regex</span>(<span class="ident">s</span>))),
+                                            <span class="prelude-val">None</span> =&gt; <span class="ident">error</span>(<span class="ident">lit</span>.<span class="ident">span</span>(), <span class="string">&quot;invalid argument for `regex` validator: only strings are allowed&quot;</span>),
                                         };
                                     }
-                                    <span class="string">&quot;must_match&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                    <span class="string">&quot;must_match&quot;</span> =&gt; {
                                         <span class="kw">match</span> <span class="ident">lit_to_string</span>(<span class="ident">lit</span>) {
-                                            <span class="prelude-val">Some</span>(<span class="ident">s</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                                            <span class="prelude-val">Some</span>(<span class="ident">s</span>) =&gt; {
                                                 <span class="ident">assert_type_matches</span>(<span class="ident">rust_ident</span>.<span class="ident">clone</span>(), <span class="ident">field_type</span>, <span class="ident">field_types</span>.<span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="ident">s</span>), <span class="kw-2">&amp;</span><span class="ident">attr</span>);
                                                 <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">FieldValidation::new</span>(<span class="ident">Validator::MustMatch</span>(<span class="ident">s</span>)));
                                             },
-                                            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">error</span>(<span class="ident">lit</span>.<span class="ident">span</span>(), <span class="string">&quot;invalid argument for `must_match` validator: only strings are allowed&quot;</span>),
+                                            <span class="prelude-val">None</span> =&gt; <span class="ident">error</span>(<span class="ident">lit</span>.<span class="ident">span</span>(), <span class="string">&quot;invalid argument for `must_match` validator: only strings are allowed&quot;</span>),
                                         };
                                     }
-                                    <span class="ident">v</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">abort!</span>(
+                                    <span class="ident">v</span> =&gt; <span class="macro">abort!</span>(
                                         <span class="ident">path</span>.<span class="ident">span</span>(),
                                         <span class="string">&quot;unexpected name value validator: {:?}&quot;</span>,
                                         <span class="ident">v</span>
@@ -1069,11 +1069,11 @@
                                 };
                             }
                             <span class="comment">// Validators with several args</span>
-                            <span class="ident">syn::Meta::List</span>(<span class="ident">syn::MetaList</span> { <span class="kw-2">ref</span> <span class="ident">path</span>, <span class="kw-2">ref</span> <span class="ident">nested</span>, .. }) <span class="op">=</span><span class="op">&gt;</span> {
+                            <span class="ident">syn::Meta::List</span>(<span class="ident">syn::MetaList</span> { <span class="kw-2">ref</span> <span class="ident">path</span>, <span class="kw-2">ref</span> <span class="ident">nested</span>, .. }) =&gt; {
                                 <span class="kw">let</span> <span class="ident">meta_items</span> <span class="op">=</span> <span class="ident">nested</span>.<span class="ident">iter</span>().<span class="ident">cloned</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>();
                                 <span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">path</span>.<span class="ident">get_ident</span>().<span class="ident">unwrap</span>();
                                 <span class="kw">match</span> <span class="ident">ident</span>.<span class="ident">to_string</span>().<span class="ident">as_ref</span>() {
-                                    <span class="string">&quot;length&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                    <span class="string">&quot;length&quot;</span> =&gt; {
                                         <span class="ident">assert_has_len</span>(<span class="ident">rust_ident</span>.<span class="ident">clone</span>(), <span class="ident">field_type</span>, <span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">ty</span>);
                                         <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">extract_length_validation</span>(
                                             <span class="ident">rust_ident</span>.<span class="ident">clone</span>(),
@@ -1081,7 +1081,7 @@
                                             <span class="kw-2">&amp;</span><span class="ident">meta_items</span>,
                                         ));
                                     }
-                                    <span class="string">&quot;range&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                    <span class="string">&quot;range&quot;</span> =&gt; {
                                         <span class="ident">assert_has_range</span>(<span class="ident">rust_ident</span>.<span class="ident">clone</span>(), <span class="ident">field_type</span>, <span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">ty</span>);
                                         <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">extract_range_validation</span>(
                                             <span class="ident">rust_ident</span>.<span class="ident">clone</span>(),
@@ -1089,7 +1089,7 @@
                                             <span class="kw-2">&amp;</span><span class="ident">meta_items</span>,
                                         ));
                                     }
-                                    <span class="string">&quot;custom&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                    <span class="string">&quot;custom&quot;</span> =&gt; {
                                         <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">extract_custom_validation</span>(
                                             <span class="ident">rust_ident</span>.<span class="ident">clone</span>(),
                                             <span class="ident">attr</span>,
@@ -1100,14 +1100,14 @@
                                     <span class="op">|</span> <span class="string">&quot;url&quot;</span>
                                     <span class="op">|</span> <span class="string">&quot;phone&quot;</span>
                                     <span class="op">|</span> <span class="string">&quot;credit_card&quot;</span>
-                                    <span class="op">|</span> <span class="string">&quot;non_control_character&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                    <span class="op">|</span> <span class="string">&quot;non_control_character&quot;</span> =&gt; {
                                         <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">extract_argless_validation</span>(
                                             <span class="ident">ident</span>.<span class="ident">to_string</span>(),
                                             <span class="ident">rust_ident</span>.<span class="ident">clone</span>(),
                                             <span class="kw-2">&amp;</span><span class="ident">meta_items</span>,
                                         ));
                                     }
-                                    <span class="string">&quot;contains&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                    <span class="string">&quot;contains&quot;</span> =&gt; {
                                         <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">extract_one_arg_validation</span>(
                                             <span class="string">&quot;pattern&quot;</span>,
                                             <span class="ident">ident</span>.<span class="ident">to_string</span>(),
@@ -1115,7 +1115,7 @@
                                             <span class="kw-2">&amp;</span><span class="ident">meta_items</span>,
                                         ));
                                     }
-                                    <span class="string">&quot;regex&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                    <span class="string">&quot;regex&quot;</span> =&gt; {
                                         <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">extract_one_arg_validation</span>(
                                             <span class="string">&quot;path&quot;</span>,
                                             <span class="ident">ident</span>.<span class="ident">to_string</span>(),
@@ -1123,7 +1123,7 @@
                                             <span class="kw-2">&amp;</span><span class="ident">meta_items</span>,
                                         ));
                                     }
-                                    <span class="string">&quot;must_match&quot;</span> <span class="op">=</span><span class="op">&gt;</span> {
+                                    <span class="string">&quot;must_match&quot;</span> =&gt; {
                                         <span class="kw">let</span> <span class="ident">validation</span> <span class="op">=</span> <span class="ident">extract_one_arg_validation</span>(
                                             <span class="string">&quot;other&quot;</span>,
                                             <span class="ident">ident</span>.<span class="ident">to_string</span>(),
@@ -1140,19 +1140,19 @@
                                         }
                                         <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">validation</span>);
                                     }
-                                    <span class="ident">v</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">abort!</span>(<span class="ident">path</span>.<span class="ident">span</span>(), <span class="string">&quot;unexpected list validator: {:?}&quot;</span>, <span class="ident">v</span>),
+                                    <span class="ident">v</span> =&gt; <span class="macro">abort!</span>(<span class="ident">path</span>.<span class="ident">span</span>(), <span class="string">&quot;unexpected list validator: {:?}&quot;</span>, <span class="ident">v</span>),
                                 }
                             }
                         },
-                        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">unreachable!</span>(<span class="string">&quot;Found a non Meta while looking for validators&quot;</span>),
+                        <span class="kw">_</span> =&gt; <span class="macro">unreachable!</span>(<span class="string">&quot;Found a non Meta while looking for validators&quot;</span>),
                     };
                 }
             }
-            <span class="prelude-val">Ok</span>(<span class="ident">syn::Meta::Path</span>(<span class="kw">_</span>)) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">FieldValidation::new</span>(<span class="ident">Validator::Nested</span>)),
-            <span class="prelude-val">Ok</span>(<span class="ident">syn::Meta::NameValue</span>(<span class="kw">_</span>)) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">abort!</span>(<span class="ident">attr</span>.<span class="ident">span</span>(), <span class="string">&quot;Unexpected name=value argument&quot;</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="prelude-val">Ok</span>(<span class="ident">syn::Meta::Path</span>(<span class="kw">_</span>)) =&gt; <span class="ident">validators</span>.<span class="ident">push</span>(<span class="ident">FieldValidation::new</span>(<span class="ident">Validator::Nested</span>)),
+            <span class="prelude-val">Ok</span>(<span class="ident">syn::Meta::NameValue</span>(<span class="kw">_</span>)) =&gt; <span class="macro">abort!</span>(<span class="ident">attr</span>.<span class="ident">span</span>(), <span class="string">&quot;Unexpected name=value argument&quot;</span>),
+            <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; {
                 <span class="kw">let</span> <span class="ident">error_string</span> <span class="op">=</span> <span class="macro">format!</span>(<span class="string">&quot;{:?}&quot;</span>, <span class="ident">e</span>);
-                <span class="kw">if</span> <span class="ident">error_string</span> <span class="op">=</span><span class="op">=</span> <span class="string">&quot;Error(\&quot;expected literal\&quot;)&quot;</span> {
+                <span class="kw">if</span> <span class="ident">error_string</span> <span class="op">==</span> <span class="string">&quot;Error(\&quot;expected literal\&quot;)&quot;</span> {
                     <span class="macro">abort!</span>(<span class="ident">attr</span>.<span class="ident">span</span>(),
                         <span class="string">&quot;This attributes for the field `{}` seem to be misformed, please validate the syntax with the documentation&quot;</span>,
                         <span class="ident">field_ident</span>
@@ -1179,24 +1179,24 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// For example a JS frontend might send camelCase fields and Rust converts them to snake_case</span>
 <span class="doccomment">/// but we want to send the errors back with the original name</span>
-<span class="kw">fn</span> <span class="ident">find_original_field_name</span>(<span class="ident">meta_items</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">syn::NestedMeta</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
+<span class="kw">fn</span> <span class="ident">find_original_field_name</span>(<span class="ident">meta_items</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">syn::NestedMeta</span>]) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">original_name</span> <span class="op">=</span> <span class="prelude-val">None</span>;
 
     <span class="kw">for</span> <span class="ident">meta_item</span> <span class="kw">in</span> <span class="ident">meta_items</span> {
         <span class="kw">match</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="ident">meta_item</span> {
-            <span class="ident">syn::NestedMeta::Meta</span>(<span class="kw-2">ref</span> <span class="ident">item</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">item</span> {
-                <span class="ident">syn::Meta::Path</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">continue</span>,
-                <span class="ident">syn::Meta::NameValue</span>(<span class="ident">syn::MetaNameValue</span> { <span class="kw-2">ref</span> <span class="ident">path</span>, <span class="kw-2">ref</span> <span class="ident">lit</span>, .. }) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">syn::NestedMeta::Meta</span>(<span class="kw-2">ref</span> <span class="ident">item</span>) =&gt; <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">item</span> {
+                <span class="ident">syn::Meta::Path</span>(<span class="kw">_</span>) =&gt; <span class="kw">continue</span>,
+                <span class="ident">syn::Meta::NameValue</span>(<span class="ident">syn::MetaNameValue</span> { <span class="kw-2">ref</span> <span class="ident">path</span>, <span class="kw-2">ref</span> <span class="ident">lit</span>, .. }) =&gt; {
                     <span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">path</span>.<span class="ident">get_ident</span>().<span class="ident">unwrap</span>();
-                    <span class="kw">if</span> <span class="ident">ident</span> <span class="op">=</span><span class="op">=</span> <span class="string">&quot;rename&quot;</span> {
+                    <span class="kw">if</span> <span class="ident">ident</span> <span class="op">==</span> <span class="string">&quot;rename&quot;</span> {
                         <span class="ident">original_name</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">lit_to_string</span>(<span class="ident">lit</span>).<span class="ident">unwrap</span>());
                     }
                 }
-                <span class="ident">syn::Meta::List</span>(<span class="ident">syn::MetaList</span> { <span class="kw-2">ref</span> <span class="ident">nested</span>, .. }) <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="ident">syn::Meta::List</span>(<span class="ident">syn::MetaList</span> { <span class="kw-2">ref</span> <span class="ident">nested</span>, .. }) =&gt; {
                     <span class="kw">return</span> <span class="ident">find_original_field_name</span>(<span class="kw-2">&amp;</span><span class="ident">nested</span>.<span class="ident">iter</span>().<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>());
                 }
             },
-            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">unreachable!</span>(),
+            <span class="kw">_</span> =&gt; <span class="macro">unreachable!</span>(),
         };
 
         <span class="kw">if</span> <span class="ident">original_name</span>.<span class="ident">is_some</span>() {

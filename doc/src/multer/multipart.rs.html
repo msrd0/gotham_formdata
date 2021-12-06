@@ -561,7 +561,7 @@
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span> <span class="ident">Multipart</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span> {
     <span class="doccomment">/// Construct a new `Multipart` instance with the given [`Bytes`] stream and</span>
     <span class="doccomment">/// the boundary.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">S</span>, <span class="ident">O</span>, <span class="ident">E</span>, <span class="ident">B</span><span class="op">&gt;</span>(<span class="ident">stream</span>: <span class="ident">S</span>, <span class="ident">boundary</span>: <span class="ident">B</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">S</span>, <span class="ident">O</span>, <span class="ident">E</span>, <span class="ident">B</span><span class="op">&gt;</span>(<span class="ident">stream</span>: <span class="ident">S</span>, <span class="ident">boundary</span>: <span class="ident">B</span>) -&gt; <span class="self">Self</span>
     <span class="kw">where</span>
         <span class="ident">S</span>: <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">O</span>, <span class="ident">E</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;r</span>,
         <span class="ident">O</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Bytes</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
@@ -573,7 +573,7 @@
 
     <span class="doccomment">/// Construct a new `Multipart` instance with the given [`Bytes`] stream and</span>
     <span class="doccomment">/// the boundary.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_constraints</span><span class="op">&lt;</span><span class="ident">S</span>, <span class="ident">O</span>, <span class="ident">E</span>, <span class="ident">B</span><span class="op">&gt;</span>(<span class="ident">stream</span>: <span class="ident">S</span>, <span class="ident">boundary</span>: <span class="ident">B</span>, <span class="ident">constraints</span>: <span class="ident">Constraints</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_constraints</span><span class="op">&lt;</span><span class="ident">S</span>, <span class="ident">O</span>, <span class="ident">E</span>, <span class="ident">B</span><span class="op">&gt;</span>(<span class="ident">stream</span>: <span class="ident">S</span>, <span class="ident">boundary</span>: <span class="ident">B</span>, <span class="ident">constraints</span>: <span class="ident">Constraints</span>) -&gt; <span class="self">Self</span>
     <span class="kw">where</span>
         <span class="ident">S</span>: <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">O</span>, <span class="ident">E</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;r</span>,
         <span class="ident">O</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Bytes</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
@@ -626,7 +626,7 @@
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;tokio-io&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">nightly</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;tokio-io&quot;</span>)))]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_reader</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">B</span><span class="op">&gt;</span>(<span class="ident">reader</span>: <span class="ident">R</span>, <span class="ident">boundary</span>: <span class="ident">B</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_reader</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">B</span><span class="op">&gt;</span>(<span class="ident">reader</span>: <span class="ident">R</span>, <span class="ident">boundary</span>: <span class="ident">B</span>) -&gt; <span class="self">Self</span>
     <span class="kw">where</span>
         <span class="ident">R</span>: <span class="ident">AsyncRead</span> <span class="op">+</span> <span class="ident">Unpin</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;r</span>,
         <span class="ident">B</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
@@ -663,7 +663,7 @@
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;tokio-io&quot;</span>)]</span>
     <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">nightly</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;tokio-io&quot;</span>)))]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_reader_with_constraints</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">B</span><span class="op">&gt;</span>(<span class="ident">reader</span>: <span class="ident">R</span>, <span class="ident">boundary</span>: <span class="ident">B</span>, <span class="ident">constraints</span>: <span class="ident">Constraints</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_reader_with_constraints</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">B</span><span class="op">&gt;</span>(<span class="ident">reader</span>: <span class="ident">R</span>, <span class="ident">boundary</span>: <span class="ident">B</span>, <span class="ident">constraints</span>: <span class="ident">Constraints</span>) -&gt; <span class="self">Self</span>
     <span class="kw">where</span>
         <span class="ident">R</span>: <span class="ident">AsyncRead</span> <span class="op">+</span> <span class="ident">Unpin</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;r</span>,
         <span class="ident">B</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
@@ -677,7 +677,7 @@
     <span class="doccomment">/// Any previous `Field` returned by this method must be dropped before</span>
     <span class="doccomment">/// calling this method or [`Multipart::next_field_with_idx()`] again. See</span>
     <span class="doccomment">/// [field-exclusivity](#field-exclusivity) for details.</span>
-    <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">next_field</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Field</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">next_field</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Field</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="comment">// This is consistent as we have an `&amp;mut` and `Field` is not `Clone`.</span>
         <span class="comment">// Here, we are guaranteeing that the returned `Field` will be the</span>
         <span class="comment">// _only_ field with access to the multipart parsing state. This ensure</span>
@@ -692,16 +692,16 @@
 
     <span class="comment">// CORRECTNESS: This method must only be called only when it is guaranteed</span>
     <span class="comment">// that `self.state` is an exlusive `Arc`!</span>
-    <span class="kw">fn</span> <span class="ident">poll_next_field</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Field</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">poll_next_field</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Field</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="macro">debug_assert_eq!</span>(<span class="ident">Arc::strong_count</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">state</span>), <span class="number">1</span>);
         <span class="macro">debug_assert!</span>(<span class="self">self</span>.<span class="ident">state</span>.<span class="ident">try_lock</span>().<span class="ident">is_some</span>(), <span class="string">&quot;expected exlusive lock&quot;</span>);
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">lock</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">state</span>.<span class="ident">try_lock</span>() {
-            <span class="prelude-val">Some</span>(<span class="ident">lock</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">lock</span>,
-            <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident">Error::LockFailure</span>)),
+            <span class="prelude-val">Some</span>(<span class="ident">lock</span>) =&gt; <span class="ident">lock</span>,
+            <span class="prelude-val">None</span> =&gt; <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident">Error::LockFailure</span>)),
         };
 
         <span class="kw">let</span> <span class="ident">state</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="ident">lock</span>;
-        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">=</span><span class="op">=</span> <span class="ident">StreamingStage::Eof</span> {
+        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">==</span> <span class="ident">StreamingStage::Eof</span> {
             <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>));
         }
 
@@ -709,12 +709,12 @@
             <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::StreamReadFailed</span>(<span class="ident">err</span>.<span class="ident">into</span>())));
         }
 
-        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">=</span><span class="op">=</span> <span class="ident">StreamingStage::FindingFirstBoundary</span> {
+        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">==</span> <span class="ident">StreamingStage::FindingFirstBoundary</span> {
             <span class="kw">let</span> <span class="ident">boundary</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">state</span>.<span class="ident">boundary</span>;
             <span class="kw">let</span> <span class="ident">boundary_deriv</span> <span class="op">=</span> <span class="macro">format!</span>(<span class="string">&quot;{}{}&quot;</span>, <span class="ident">constants::BOUNDARY_EXT</span>, <span class="ident">boundary</span>);
             <span class="kw">match</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">read_to</span>(<span class="ident">boundary_deriv</span>.<span class="ident">as_bytes</span>()) {
-                <span class="prelude-val">Some</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">=</span> <span class="ident">StreamingStage::ReadingBoundary</span>,
-                <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="prelude-val">Some</span>(<span class="kw">_</span>) =&gt; <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">=</span> <span class="ident">StreamingStage::ReadingBoundary</span>,
+                <span class="prelude-val">None</span> =&gt; {
                     <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">err</span>) <span class="op">=</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">poll_stream</span>(<span class="ident">cx</span>) {
                         <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::StreamReadFailed</span>(<span class="ident">err</span>.<span class="ident">into</span>())));
                     }
@@ -726,12 +726,12 @@
         }
 
         <span class="comment">// The previous field did not finish reading its data.</span>
-        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">=</span><span class="op">=</span> <span class="ident">StreamingStage::ReadingFieldData</span> {
+        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">==</span> <span class="ident">StreamingStage::ReadingFieldData</span> {
             <span class="kw">match</span> <span class="ident">state</span>
                 .<span class="ident">buffer</span>
                 .<span class="ident">read_field_data</span>(<span class="ident">state</span>.<span class="ident">boundary</span>.<span class="ident">as_str</span>(), <span class="ident">state</span>.<span class="ident">curr_field_name</span>.<span class="ident">as_deref</span>())<span class="question-mark">?</span>
             {
-                <span class="prelude-val">Some</span>((<span class="ident">done</span>, <span class="ident">bytes</span>)) <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="prelude-val">Some</span>((<span class="ident">done</span>, <span class="ident">bytes</span>)) =&gt; {
                     <span class="ident">state</span>.<span class="ident">curr_field_size_counter</span> <span class="op">+</span><span class="op">=</span> <span class="ident">bytes</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">u64</span>;
 
                     <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">curr_field_size_counter</span> <span class="op">&gt;</span> <span class="ident">state</span>.<span class="ident">curr_field_size_limit</span> {
@@ -747,19 +747,19 @@
                         <span class="kw">return</span> <span class="ident">Poll::Pending</span>;
                     }
                 }
-                <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="prelude-val">None</span> =&gt; {
                     <span class="kw">return</span> <span class="ident">Poll::Pending</span>;
                 }
             }
         }
 
-        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">=</span><span class="op">=</span> <span class="ident">StreamingStage::ReadingBoundary</span> {
+        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">==</span> <span class="ident">StreamingStage::ReadingBoundary</span> {
             <span class="kw">let</span> <span class="ident">boundary</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">state</span>.<span class="ident">boundary</span>;
             <span class="kw">let</span> <span class="ident">boundary_deriv_len</span> <span class="op">=</span> <span class="ident">constants::BOUNDARY_EXT</span>.<span class="ident">len</span>() <span class="op">+</span> <span class="ident">boundary</span>.<span class="ident">len</span>();
 
             <span class="kw">let</span> <span class="ident">boundary_bytes</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">read_exact</span>(<span class="ident">boundary_deriv_len</span>) {
-                <span class="prelude-val">Some</span>(<span class="ident">bytes</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">bytes</span>,
-                <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="prelude-val">Some</span>(<span class="ident">bytes</span>) =&gt; <span class="ident">bytes</span>,
+                <span class="prelude-val">None</span> =&gt; {
                     <span class="kw">return</span> <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">eof</span> {
                         <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::IncompleteStream</span>))
                     } <span class="kw">else</span> {
@@ -768,18 +768,18 @@
                 }
             };
 
-            <span class="kw">if</span> <span class="kw-2">&amp;</span><span class="ident">boundary_bytes</span>[..] <span class="op">=</span><span class="op">=</span> <span class="macro">format!</span>(<span class="string">&quot;{}{}&quot;</span>, <span class="ident">constants::BOUNDARY_EXT</span>, <span class="ident">boundary</span>).<span class="ident">as_bytes</span>() {
+            <span class="kw">if</span> <span class="kw-2">&amp;</span><span class="ident">boundary_bytes</span>[..] <span class="op">==</span> <span class="macro">format!</span>(<span class="string">&quot;{}{}&quot;</span>, <span class="ident">constants::BOUNDARY_EXT</span>, <span class="ident">boundary</span>).<span class="ident">as_bytes</span>() {
                 <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">=</span> <span class="ident">StreamingStage::DeterminingBoundaryType</span>;
             } <span class="kw">else</span> {
                 <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::IncompleteStream</span>));
             }
         }
 
-        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">=</span><span class="op">=</span> <span class="ident">StreamingStage::DeterminingBoundaryType</span> {
+        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">==</span> <span class="ident">StreamingStage::DeterminingBoundaryType</span> {
             <span class="kw">let</span> <span class="ident">ext_len</span> <span class="op">=</span> <span class="ident">constants::BOUNDARY_EXT</span>.<span class="ident">len</span>();
             <span class="kw">let</span> <span class="ident">next_bytes</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">peek_exact</span>(<span class="ident">ext_len</span>) {
-                <span class="prelude-val">Some</span>(<span class="ident">bytes</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">bytes</span>,
-                <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="prelude-val">Some</span>(<span class="ident">bytes</span>) =&gt; <span class="ident">bytes</span>,
+                <span class="prelude-val">None</span> =&gt; {
                     <span class="kw">return</span> <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">eof</span> {
                         <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::IncompleteStream</span>))
                     } <span class="kw">else</span> {
@@ -788,7 +788,7 @@
                 }
             };
 
-            <span class="kw">if</span> <span class="ident">next_bytes</span> <span class="op">=</span><span class="op">=</span> <span class="ident">constants::BOUNDARY_EXT</span>.<span class="ident">as_bytes</span>() {
+            <span class="kw">if</span> <span class="ident">next_bytes</span> <span class="op">==</span> <span class="ident">constants::BOUNDARY_EXT</span>.<span class="ident">as_bytes</span>() {
                 <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">=</span> <span class="ident">StreamingStage::Eof</span>;
                 <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>));
             } <span class="kw">else</span> {
@@ -796,7 +796,7 @@
             }
         }
 
-        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">=</span><span class="op">=</span> <span class="ident">StreamingStage::ReadingTransportPadding</span> {
+        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">==</span> <span class="ident">StreamingStage::ReadingTransportPadding</span> {
             <span class="kw">if</span> <span class="op">!</span><span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">advance_past_transport_padding</span>() {
                 <span class="kw">return</span> <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">eof</span> {
                     <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::IncompleteStream</span>))
@@ -807,8 +807,8 @@
 
             <span class="kw">let</span> <span class="ident">crlf_len</span> <span class="op">=</span> <span class="ident">constants::CRLF</span>.<span class="ident">len</span>();
             <span class="kw">let</span> <span class="ident">crlf_bytes</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">read_exact</span>(<span class="ident">crlf_len</span>) {
-                <span class="prelude-val">Some</span>(<span class="ident">bytes</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">bytes</span>,
-                <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="prelude-val">Some</span>(<span class="ident">bytes</span>) =&gt; <span class="ident">bytes</span>,
+                <span class="prelude-val">None</span> =&gt; {
                     <span class="kw">return</span> <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">eof</span> {
                         <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::IncompleteStream</span>))
                     } <span class="kw">else</span> {
@@ -817,17 +817,17 @@
                 }
             };
 
-            <span class="kw">if</span> <span class="kw-2">&amp;</span><span class="ident">crlf_bytes</span>[..] <span class="op">=</span><span class="op">=</span> <span class="ident">constants::CRLF</span>.<span class="ident">as_bytes</span>() {
+            <span class="kw">if</span> <span class="kw-2">&amp;</span><span class="ident">crlf_bytes</span>[..] <span class="op">==</span> <span class="ident">constants::CRLF</span>.<span class="ident">as_bytes</span>() {
                 <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">=</span> <span class="ident">StreamingStage::ReadingFieldHeaders</span>;
             } <span class="kw">else</span> {
                 <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::IncompleteStream</span>));
             }
         }
 
-        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">=</span><span class="op">=</span> <span class="ident">StreamingStage::ReadingFieldHeaders</span> {
+        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">==</span> <span class="ident">StreamingStage::ReadingFieldHeaders</span> {
             <span class="kw">let</span> <span class="ident">header_bytes</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">read_until</span>(<span class="ident">constants::CRLF_CRLF</span>.<span class="ident">as_bytes</span>()) {
-                <span class="prelude-val">Some</span>(<span class="ident">bytes</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">bytes</span>,
-                <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="prelude-val">Some</span>(<span class="ident">bytes</span>) =&gt; <span class="ident">bytes</span>,
+                <span class="prelude-val">None</span> =&gt; {
                     <span class="kw">return</span> <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">eof</span> {
                         <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::IncompleteStream</span>));
                     } <span class="kw">else</span> {
@@ -840,15 +840,15 @@
 
             <span class="kw">let</span> <span class="ident">headers</span> <span class="op">=</span>
                 <span class="kw">match</span> <span class="ident">httparse::parse_headers</span>(<span class="kw-2">&amp;</span><span class="ident">header_bytes</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">headers</span>).<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::ReadHeaderFailed</span>)<span class="question-mark">?</span> {
-                    <span class="ident">httparse::Status::Complete</span>((<span class="kw">_</span>, <span class="ident">raw_headers</span>)) <span class="op">=</span><span class="op">&gt;</span> {
+                    <span class="ident">httparse::Status::Complete</span>((<span class="kw">_</span>, <span class="ident">raw_headers</span>)) =&gt; {
                         <span class="kw">match</span> <span class="ident">helpers::convert_raw_headers_to_header_map</span>(<span class="ident">raw_headers</span>) {
-                            <span class="prelude-val">Ok</span>(<span class="ident">headers</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">headers</span>,
-                            <span class="prelude-val">Err</span>(<span class="ident">err</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                            <span class="prelude-val">Ok</span>(<span class="ident">headers</span>) =&gt; <span class="ident">headers</span>,
+                            <span class="prelude-val">Err</span>(<span class="ident">err</span>) =&gt; {
                                 <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident">err</span>));
                             }
                         }
                     }
-                    <span class="ident">httparse::Status::Partial</span> <span class="op">=</span><span class="op">&gt;</span> {
+                    <span class="ident">httparse::Status::Partial</span> =&gt; {
                         <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::IncompleteHeaders</span>));
                     }
                 };
@@ -912,7 +912,7 @@
     <span class="doccomment">/// # }</span>
     <span class="doccomment">/// # tokio::runtime::Runtime::new().unwrap().block_on(run());</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">next_field_with_idx</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span>(<span class="ident">usize</span>, <span class="ident">Field</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span>)<span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">next_field_with_idx</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span>(<span class="ident">usize</span>, <span class="ident">Field</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span>)<span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">next_field</span>().<span class="kw">await</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">f</span><span class="op">|</span> <span class="ident">f</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">field</span><span class="op">|</span> (<span class="ident">field</span>.<span class="ident">index</span>(), <span class="ident">field</span>)))
     }
 }

@@ -178,51 +178,51 @@
 }
 
 <span class="kw">impl</span> <span class="ident">CustomArgument</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">def_span</span>: <span class="ident">Span</span>, <span class="ident">arg_type</span>: <span class="ident">Type</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">def_span</span>: <span class="ident">Span</span>, <span class="ident">arg_type</span>: <span class="ident">Type</span>) -&gt; <span class="self">Self</span> {
         <span class="ident">CustomArgument</span> { <span class="ident">def_span</span>, <span class="ident">arg_type</span>, <span class="ident">arg_access</span>: <span class="prelude-val">None</span> }
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Validator</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">code</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">code</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> {
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">Validator::MustMatch</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;must_match&quot;</span>,
-            <span class="ident">Validator::Email</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;email&quot;</span>,
-            <span class="ident">Validator::Url</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;url&quot;</span>,
-            <span class="ident">Validator::Custom</span> { .. } <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;custom&quot;</span>,
-            <span class="ident">Validator::Contains</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;contains&quot;</span>,
-            <span class="ident">Validator::Regex</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;regex&quot;</span>,
-            <span class="ident">Validator::Range</span> { .. } <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;range&quot;</span>,
-            <span class="ident">Validator::Length</span> { .. } <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;length&quot;</span>,
+            <span class="ident">Validator::MustMatch</span>(<span class="kw">_</span>) =&gt; <span class="string">&quot;must_match&quot;</span>,
+            <span class="ident">Validator::Email</span> =&gt; <span class="string">&quot;email&quot;</span>,
+            <span class="ident">Validator::Url</span> =&gt; <span class="string">&quot;url&quot;</span>,
+            <span class="ident">Validator::Custom</span> { .. } =&gt; <span class="string">&quot;custom&quot;</span>,
+            <span class="ident">Validator::Contains</span>(<span class="kw">_</span>) =&gt; <span class="string">&quot;contains&quot;</span>,
+            <span class="ident">Validator::Regex</span>(<span class="kw">_</span>) =&gt; <span class="string">&quot;regex&quot;</span>,
+            <span class="ident">Validator::Range</span> { .. } =&gt; <span class="string">&quot;range&quot;</span>,
+            <span class="ident">Validator::Length</span> { .. } =&gt; <span class="string">&quot;length&quot;</span>,
             <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;card&quot;</span>)]</span>
-            <span class="ident">Validator::CreditCard</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;credit_card&quot;</span>,
+            <span class="ident">Validator::CreditCard</span> =&gt; <span class="string">&quot;credit_card&quot;</span>,
             <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;phone&quot;</span>)]</span>
-            <span class="ident">Validator::Phone</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;phone&quot;</span>,
-            <span class="ident">Validator::Nested</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;nested&quot;</span>,
+            <span class="ident">Validator::Phone</span> =&gt; <span class="string">&quot;phone&quot;</span>,
+            <span class="ident">Validator::Nested</span> =&gt; <span class="string">&quot;nested&quot;</span>,
             <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;unic&quot;</span>)]</span>
-            <span class="ident">Validator::NonControlCharacter</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;non_control_character&quot;</span>,
-            <span class="ident">Validator::Required</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;required&quot;</span>,
-            <span class="ident">Validator::RequiredNested</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;required_nested&quot;</span>,
+            <span class="ident">Validator::NonControlCharacter</span> =&gt; <span class="string">&quot;non_control_character&quot;</span>,
+            <span class="ident">Validator::Required</span> =&gt; <span class="string">&quot;required&quot;</span>,
+            <span class="ident">Validator::RequiredNested</span> =&gt; <span class="string">&quot;required_nested&quot;</span>,
         }
     }
 
     <span class="doccomment">/// This returns the defined custom argument if it was defined</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_custom_argument</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">CustomArgument</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_custom_argument</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">CustomArgument</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">Validator::Custom</span> { <span class="ident">argument</span>: <span class="prelude-val">Some</span>(<span class="ident">argument</span>), .. } <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">argument</span>),
-            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
+            <span class="ident">Validator::Custom</span> { <span class="ident">argument</span>: <span class="prelude-val">Some</span>(<span class="ident">argument</span>), .. } =&gt; <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">argument</span>),
+            <span class="kw">_</span> =&gt; <span class="prelude-val">None</span>,
         }
     }
 
     <span class="doccomment">/// This returns the defined custom argument if it was defined</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_custom_argument_mut</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="ident">CustomArgument</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_custom_argument_mut</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="ident">CustomArgument</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">Validator::Custom</span> { <span class="ident">argument</span>: <span class="prelude-val">Some</span>(<span class="ident">argument</span>), .. } <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">argument</span>),
-            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
+            <span class="ident">Validator::Custom</span> { <span class="ident">argument</span>: <span class="prelude-val">Some</span>(<span class="ident">argument</span>), .. } =&gt; <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">argument</span>),
+            <span class="kw">_</span> =&gt; <span class="prelude-val">None</span>,
         }
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has_custom_argument</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has_custom_argument</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">get_custom_argument</span>().<span class="ident">is_some</span>()
     }
 }

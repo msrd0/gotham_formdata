@@ -59,7 +59,7 @@
 <span class="doccomment">/// optional and will only be validated if they are not `None`</span>
 <span class="doccomment">///</span>
 <span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">validate_range</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">value</span>: <span class="ident">T</span>, <span class="ident">min</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>, <span class="ident">max</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">validate_range</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">value</span>: <span class="ident">T</span>, <span class="ident">min</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>, <span class="ident">max</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>) -&gt; <span class="ident">bool</span>
 <span class="kw">where</span>
     <span class="ident">T</span>: <span class="ident">PartialOrd</span> <span class="op">+</span> <span class="ident">PartialEq</span>,
 {

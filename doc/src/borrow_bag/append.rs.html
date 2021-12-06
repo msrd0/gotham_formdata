@@ -119,7 +119,7 @@
     <span class="kw">type</span> <span class="ident">Navigator</span>;
 
     <span class="doccomment">/// Append the element, returning a new collection and a handle to borrow the element back.</span>
-    <span class="kw">fn</span> <span class="ident">append</span>(<span class="self">self</span>, <span class="ident">t</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident"><span class="self">Self</span>::Output</span>, <span class="ident">Handle</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident"><span class="self">Self</span>::Navigator</span><span class="op">&gt;</span>);
+    <span class="kw">fn</span> <span class="ident">append</span>(<span class="self">self</span>, <span class="ident">t</span>: <span class="ident">T</span>) -&gt; (<span class="ident"><span class="self">Self</span>::Output</span>, <span class="ident">Handle</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident"><span class="self">Self</span>::Navigator</span><span class="op">&gt;</span>);
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">U</span>, <span class="ident">V</span><span class="op">&gt;</span> <span class="ident">Append</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="kw">for</span> (<span class="ident">U</span>, <span class="ident">V</span>)
@@ -132,7 +132,7 @@
     <span class="comment">// We&#39;re mid-list. Skip this element and navigate again in the tail.</span>
     <span class="kw">type</span> <span class="ident">Navigator</span> <span class="op">=</span> (<span class="ident">Skip</span>, <span class="op">&lt;</span><span class="ident">V</span> <span class="kw">as</span> <span class="ident">Append</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="ident">::Navigator</span>);
 
-    <span class="kw">fn</span> <span class="ident">append</span>(<span class="self">self</span>, <span class="ident">t</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident"><span class="self">Self</span>::Output</span>, <span class="ident">Handle</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident"><span class="self">Self</span>::Navigator</span><span class="op">&gt;</span>) {
+    <span class="kw">fn</span> <span class="ident">append</span>(<span class="self">self</span>, <span class="ident">t</span>: <span class="ident">T</span>) -&gt; (<span class="ident"><span class="self">Self</span>::Output</span>, <span class="ident">Handle</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident"><span class="self">Self</span>::Navigator</span><span class="op">&gt;</span>) {
         <span class="kw">let</span> (<span class="ident">u</span>, <span class="ident">v</span>) <span class="op">=</span> <span class="self">self</span>;
         ((<span class="ident">u</span>, <span class="ident">v</span>.<span class="ident">append</span>(<span class="ident">t</span>).<span class="number">0</span>), <span class="ident">new_handle</span>())
     }
@@ -145,7 +145,7 @@
     <span class="comment">// We&#39;re adding our `T` here, so we take this element on navigation.</span>
     <span class="kw">type</span> <span class="ident">Navigator</span> <span class="op">=</span> <span class="ident">Take</span>;
 
-    <span class="kw">fn</span> <span class="ident">append</span>(<span class="self">self</span>, <span class="ident">t</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident"><span class="self">Self</span>::Output</span>, <span class="ident">Handle</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident"><span class="self">Self</span>::Navigator</span><span class="op">&gt;</span>) {
+    <span class="kw">fn</span> <span class="ident">append</span>(<span class="self">self</span>, <span class="ident">t</span>: <span class="ident">T</span>) -&gt; (<span class="ident"><span class="self">Self</span>::Output</span>, <span class="ident">Handle</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident"><span class="self">Self</span>::Navigator</span><span class="op">&gt;</span>) {
         ((<span class="ident">t</span>, ()), <span class="ident">new_handle</span>())
     }
 }

@@ -51,7 +51,7 @@ You usually don&#39;t implement this trait directly, use the derive macro instea
 	<span class="kw">type</span> <span class="prelude-val">Err</span>;
 
 	<span class="doccomment">/// Parse the struct from the request body contained in gotham&#39;s state.</span>
-	<span class="kw">fn</span> <span class="ident">parse_form_data</span>(<span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">FormDataFuture</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
+	<span class="kw">fn</span> <span class="ident">parse_form_data</span>(<span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">State</span>) -&gt; <span class="ident">FormDataFuture</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
 }
 
 <span class="doccomment">/**
@@ -60,11 +60,11 @@ This is the equivalent of [FormData] from the state&#39;s perspective. Use this 
 */</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">FormDataFromState</span> {
 	<span class="doccomment">/// Parse `T` from the request body contained in this state.</span>
-	<span class="kw">fn</span> <span class="ident">parse_form_data</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FormData</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">FormDataFuture</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>;
+	<span class="kw">fn</span> <span class="ident">parse_form_data</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FormData</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">FormDataFuture</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>;
 }
 
 <span class="kw">impl</span> <span class="ident">FormDataFromState</span> <span class="kw">for</span> <span class="ident">State</span> {
-	<span class="kw">fn</span> <span class="ident">parse_form_data</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FormData</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">FormDataFuture</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+	<span class="kw">fn</span> <span class="ident">parse_form_data</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FormData</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) -&gt; <span class="ident">FormDataFuture</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
 		<span class="ident">T::parse_form_data</span>(<span class="self">self</span>)
 	}
 }

@@ -122,40 +122,40 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// A bit sad it&#39;s not there by default in Rust</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">HasLen</span> {
-    <span class="kw">fn</span> <span class="ident">length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u64</span>;
+    <span class="kw">fn</span> <span class="ident">length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u64</span>;
 }
 
 <span class="kw">impl</span> <span class="ident">HasLen</span> <span class="kw">for</span> <span class="ident">String</span> {
-    <span class="kw">fn</span> <span class="ident">length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u64</span> {
+    <span class="kw">fn</span> <span class="ident">length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u64</span> {
         <span class="self">self</span>.<span class="ident">chars</span>().<span class="ident">count</span>() <span class="kw">as</span> <span class="ident">u64</span>
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">HasLen</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">String</span> {
-    <span class="kw">fn</span> <span class="ident">length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u64</span> {
+    <span class="kw">fn</span> <span class="ident">length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u64</span> {
         <span class="self">self</span>.<span class="ident">chars</span>().<span class="ident">count</span>() <span class="kw">as</span> <span class="ident">u64</span>
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">HasLen</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span> {
-    <span class="kw">fn</span> <span class="ident">length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u64</span> {
+    <span class="kw">fn</span> <span class="ident">length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u64</span> {
         <span class="self">self</span>.<span class="ident">chars</span>().<span class="ident">count</span>() <span class="kw">as</span> <span class="ident">u64</span>
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">HasLen</span> <span class="kw">for</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">str</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u64</span> {
+    <span class="kw">fn</span> <span class="ident">length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u64</span> {
         <span class="self">self</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">u64</span>
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">HasLen</span> <span class="kw">for</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u64</span> {
+    <span class="kw">fn</span> <span class="ident">length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u64</span> {
         <span class="self">self</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">u64</span>
     }
 }
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> <span class="ident">HasLen</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u64</span> {
+    <span class="kw">fn</span> <span class="ident">length</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u64</span> {
         <span class="self">self</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">u64</span>
     }
 }
@@ -164,41 +164,41 @@
 <span class="doccomment">/// work for more types</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Contains</span> {
     <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="kw">fn</span> <span class="ident">has_element</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">needle</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span>;
+    <span class="kw">fn</span> <span class="ident">has_element</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">needle</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span>;
 }
 
 <span class="kw">impl</span> <span class="ident">Contains</span> <span class="kw">for</span> <span class="ident">String</span> {
-    <span class="kw">fn</span> <span class="ident">has_element</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">needle</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">has_element</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">needle</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">contains</span>(<span class="ident">needle</span>)
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Contains</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">String</span> {
-    <span class="kw">fn</span> <span class="ident">has_element</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">needle</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">has_element</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">needle</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">contains</span>(<span class="ident">needle</span>)
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Contains</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span> {
-    <span class="kw">fn</span> <span class="ident">has_element</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">needle</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">has_element</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">needle</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">contains</span>(<span class="ident">needle</span>)
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Contains</span> <span class="kw">for</span> <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">str</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">has_element</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">needle</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">has_element</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">needle</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">contains</span>(<span class="ident">needle</span>)
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">S</span>, <span class="ident">H</span>: <span class="ident">::std::hash::BuildHasher</span><span class="op">&gt;</span> <span class="ident">Contains</span> <span class="kw">for</span> <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="ident">S</span>, <span class="ident">H</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">has_element</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">needle</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">has_element</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">needle</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">contains_key</span>(<span class="ident">needle</span>)
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">S</span>, <span class="ident">H</span>: <span class="ident">::std::hash::BuildHasher</span><span class="op">&gt;</span> <span class="ident">Contains</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="ident">S</span>, <span class="ident">H</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">has_element</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">needle</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">has_element</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">needle</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">contains_key</span>(<span class="ident">needle</span>)
     }
 }
@@ -207,11 +207,11 @@
 <span class="doccomment">/// implemented for struct validations that don&#39;t take custom arguments. The call is being</span>
 <span class="doccomment">/// forwarded to the `ValidateArgs&lt;&#39;v_a&gt;` trait.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Validate</span> {
-    <span class="kw">fn</span> <span class="ident">validate</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ValidationErrors</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">validate</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ValidationErrors</span><span class="op">&gt;</span>;
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Validate</span><span class="op">&gt;</span> <span class="ident">Validate</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="ident">T</span> {
-    <span class="kw">fn</span> <span class="ident">validate</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ValidationErrors</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">validate</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ValidationErrors</span><span class="op">&gt;</span> {
         <span class="ident">T::validate</span>(<span class="kw-2">*</span><span class="self">self</span>)
     }
 }
@@ -224,7 +224,7 @@
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">ValidateArgs</span><span class="op">&lt;</span><span class="lifetime">&#39;v_a</span><span class="op">&gt;</span> {
     <span class="kw">type</span> <span class="ident">Args</span>;
 
-    <span class="kw">fn</span> <span class="ident">validate_args</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">args</span>: <span class="ident"><span class="self">Self</span>::Args</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ValidationErrors</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">validate_args</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">args</span>: <span class="ident"><span class="self">Self</span>::Args</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ValidationErrors</span><span class="op">&gt;</span>;
 }
 </code></pre></div>
 </section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="validator" data-search-index-js="../../search-index.js" data-search-js="../../search.js"></div>

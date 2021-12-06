@@ -53,15 +53,15 @@
 <span class="kw">mod</span> <span class="ident">form_data</span>;
 
 <span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">fn</span> <span class="ident">print_tokens</span>(<span class="ident">tokens</span>: <span class="ident">TokenStream2</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
+<span class="kw">fn</span> <span class="ident">print_tokens</span>(<span class="ident">tokens</span>: <span class="ident">TokenStream2</span>) -&gt; <span class="ident">TokenStream</span> {
 	<span class="comment">//eprintln!(&quot;{}&quot;, tokens);</span>
 	<span class="ident">tokens</span>.<span class="ident">into</span>()
 }
 
 <span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">fn</span> <span class="ident">expand_derive</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>, <span class="ident">expand</span>: <span class="ident">F</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span>
+<span class="kw">fn</span> <span class="ident">expand_derive</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>, <span class="ident">expand</span>: <span class="ident">F</span>) -&gt; <span class="ident">TokenStream</span>
 <span class="kw">where</span>
-	<span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="ident">DeriveInput</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">TokenStream2</span><span class="op">&gt;</span>
+	<span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="ident">DeriveInput</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">TokenStream2</span><span class="op">&gt;</span>
 {
 	<span class="ident">print_tokens</span>(<span class="ident">expand</span>(<span class="macro">parse_macro_input!</span>(<span class="ident">input</span>)).<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="ident">err</span><span class="op">|</span> <span class="ident">err</span>.<span class="ident">to_compile_error</span>()))
 }
@@ -69,7 +69,7 @@
 <span class="doccomment">/// This derive macro implements `FormData` for the struct it is invoked on. Enums, unions and</span>
 <span class="doccomment">/// tuple structs are not supported.</span>
 <span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">FormData</span>, <span class="ident">attributes</span>(<span class="ident">validate</span>))]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_form_data</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_form_data</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) -&gt; <span class="ident">TokenStream</span> {
 	<span class="ident">expand_derive</span>(<span class="ident">input</span>, <span class="ident">form_data::expand</span>)
 }
 </code></pre></div>

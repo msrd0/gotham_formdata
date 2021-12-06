@@ -48,14 +48,14 @@
 }
 
 <span class="doccomment">/// Creates a new `Handle` of any given type.</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">new_handle</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">N</span><span class="op">&gt;</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Handle</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">N</span><span class="op">&gt;</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">new_handle</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">N</span><span class="op">&gt;</span>() -&gt; <span class="ident">Handle</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">N</span><span class="op">&gt;</span> {
     <span class="ident">Handle</span> {
         <span class="ident">phantom</span>: <span class="ident">PhantomData</span>,
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">N</span><span class="op">&gt;</span> <span class="ident">Clone</span> <span class="kw">for</span> <span class="ident">Handle</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">N</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Handle</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">N</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Handle</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">N</span><span class="op">&gt;</span> {
         <span class="ident">new_handle</span>()
     }
 }

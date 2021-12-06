@@ -7,14 +7,14 @@ manually for greater control.</p>
 <p>The default behaviour given by deriving all three traits will use the automatically derived
 behaviour from Serde, and result in a <code>400 Bad Request</code> HTTP response if the path segments are
 not able to be deserialized.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Deserialize</span>, <span class="ident">StateData</span>, <span class="ident">StaticResponseExtender</span>)]</span>
 <span class="kw">struct</span> <span class="ident">MyPathParams</span> {
     <span class="ident">id</span>: <span class="ident">i32</span>,
     <span class="ident">slug</span>: <span class="ident">String</span>,
 }
 
-<span class="kw">fn</span> <span class="ident">handler</span>(<span class="kw-2">mut</span> <span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
+<span class="kw">fn</span> <span class="ident">handler</span>(<span class="kw-2">mut</span> <span class="ident">state</span>: <span class="ident">State</span>) -&gt; (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
     <span class="kw">let</span> <span class="ident">MyPathParams</span> { <span class="ident">id</span>, <span class="ident">slug</span> } <span class="op">=</span> <span class="ident">MyPathParams::take_from</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">state</span>);
     <span class="kw">let</span> <span class="ident">body</span> <span class="op">=</span> <span class="macro">format!</span>(<span class="string">&quot;id = {}, slug = {}&quot;</span>, <span class="ident">id</span>, <span class="ident">slug</span>);
 
@@ -28,7 +28,7 @@ not able to be deserialized.</p>
     (<span class="ident">state</span>, <span class="ident">response</span>)
 }
 
-<span class="kw">fn</span> <span class="ident">router</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Router</span> {
+<span class="kw">fn</span> <span class="ident">router</span>() -&gt; <span class="ident">Router</span> {
     <span class="ident">build_simple_router</span>(<span class="op">|</span><span class="ident">route</span><span class="op">|</span> {
         <span class="ident">route</span>
             .<span class="ident">get</span>(<span class="string">&quot;/article/:id/:slug&quot;</span>)

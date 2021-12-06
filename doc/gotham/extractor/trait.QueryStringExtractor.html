@@ -7,7 +7,7 @@ manually for greater control.</p>
 <p>The default behaviour given by deriving all three traits will use the automatically derived
 behaviour from Serde, and result in a <code>400 Bad Request</code> HTTP response if the query string is
 not able to be deserialized.</p>
-<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Deserialize</span>, <span class="ident">StateData</span>, <span class="ident">StaticResponseExtender</span>)]</span>
 <span class="kw">struct</span> <span class="ident">MyQueryParams</span> {
     <span class="ident">x</span>: <span class="ident">i32</span>,
@@ -22,7 +22,7 @@ not able to be deserialized.</p>
     <span class="ident">C</span>,
 }
 
-<span class="kw">fn</span> <span class="ident">handler</span>(<span class="ident">state</span>: <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
+<span class="kw">fn</span> <span class="ident">handler</span>(<span class="ident">state</span>: <span class="ident">State</span>) -&gt; (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
     <span class="kw">let</span> <span class="kw-2">&amp;</span><span class="ident">MyQueryParams</span> { <span class="ident">x</span>, <span class="ident">y</span> } <span class="op">=</span> <span class="ident">MyQueryParams::borrow_from</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>);
     <span class="kw">let</span> <span class="ident">body</span> <span class="op">=</span> <span class="macro">format!</span>(<span class="string">&quot;x = {}, y = {:?}&quot;</span>, <span class="ident">x</span>, <span class="ident">y</span>);
 
@@ -36,7 +36,7 @@ not able to be deserialized.</p>
     (<span class="ident">state</span>, <span class="ident">response</span>)
 }
 
-<span class="kw">fn</span> <span class="ident">router</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Router</span> {
+<span class="kw">fn</span> <span class="ident">router</span>() -&gt; <span class="ident">Router</span> {
     <span class="ident">build_simple_router</span>(<span class="op">|</span><span class="ident">route</span><span class="op">|</span> {
         <span class="ident">route</span>
             .<span class="ident">get</span>(<span class="string">&quot;/test&quot;</span>)

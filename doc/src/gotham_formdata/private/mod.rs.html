@@ -154,11 +154,11 @@
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">FormDataBuilder</span>: <span class="ident">Default</span> {
 	<span class="kw">type</span> <span class="ident">Data</span>: <span class="ident">FormData</span>;
 
-	<span class="kw">fn</span> <span class="ident">add_entry</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">name</span>: <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">value</span>: <span class="ident">Value</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Error</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">FormDataBuilderFuture</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>;
-	<span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Data</span>, <span class="ident">Error</span><span class="op">&gt;</span>;
+	<span class="kw">fn</span> <span class="ident">add_entry</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">name</span>: <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">value</span>: <span class="ident">Value</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Error</span><span class="op">&gt;</span>) -&gt; <span class="ident">FormDataBuilderFuture</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>;
+	<span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Data</span>, <span class="ident">Error</span><span class="op">&gt;</span>;
 }
 
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_content_type</span>(<span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Mime</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_content_type</span>(<span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="ident">State</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Mime</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
 	<span class="kw">let</span> <span class="ident">headers</span>: <span class="kw-2">&amp;</span><span class="ident">HeaderMap</span> <span class="op">=</span> <span class="ident">state</span>.<span class="ident">borrow</span>();
 	<span class="prelude-val">Ok</span>(<span class="ident">headers</span>
 		.<span class="ident">get</span>(<span class="ident">CONTENT_TYPE</span>)
@@ -167,11 +167,11 @@
 		.<span class="ident">parse</span>()<span class="question-mark">?</span>)
 }
 
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_body</span>(<span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">State</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Body</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_body</span>(<span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">State</span>) -&gt; <span class="ident">Body</span> {
 	<span class="ident">state</span>.<span class="ident">take</span>()
 }
 
-<span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">parse</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FormDataBuilder</span><span class="op">&gt;</span>(<span class="ident">body</span>: <span class="ident">Body</span>, <span class="ident">content_type</span>: <span class="ident">Mime</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T::Data</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">parse</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FormDataBuilder</span><span class="op">&gt;</span>(<span class="ident">body</span>: <span class="ident">Body</span>, <span class="ident">content_type</span>: <span class="ident">Mime</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T::Data</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
 	<span class="kw">if</span> <span class="ident">is_urlencoded</span>(<span class="kw-2">&amp;</span><span class="ident">content_type</span>) {
 		<span class="ident">parse_urlencoded</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">body</span>).<span class="kw">await</span>
 	} <span class="kw">else</span> <span class="kw">if</span> <span class="ident">is_multipart</span>(<span class="kw-2">&amp;</span><span class="ident">content_type</span>) {
@@ -181,11 +181,11 @@
 	}
 }
 
-<span class="kw">fn</span> <span class="ident">is_urlencoded</span>(<span class="ident">content_type</span>: <span class="kw-2">&amp;</span><span class="ident">Mime</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-	<span class="ident">content_type</span>.<span class="ident">essence_str</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">APPLICATION_WWW_FORM_URLENCODED</span>.<span class="ident">as_ref</span>()
+<span class="kw">fn</span> <span class="ident">is_urlencoded</span>(<span class="ident">content_type</span>: <span class="kw-2">&amp;</span><span class="ident">Mime</span>) -&gt; <span class="ident">bool</span> {
+	<span class="ident">content_type</span>.<span class="ident">essence_str</span>() <span class="op">==</span> <span class="ident">APPLICATION_WWW_FORM_URLENCODED</span>.<span class="ident">as_ref</span>()
 }
 
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">parse_urlencoded</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FormDataBuilder</span><span class="op">&gt;</span>(<span class="ident">body</span>: <span class="ident">Body</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T::Data</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">parse_urlencoded</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FormDataBuilder</span><span class="op">&gt;</span>(<span class="ident">body</span>: <span class="ident">Body</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T::Data</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
 	<span class="kw">let</span> <span class="ident">body</span> <span class="op">=</span> <span class="ident">body::to_bytes</span>(<span class="ident">body</span>).<span class="kw">await</span><span class="question-mark">?</span>;
 
 	<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">builder</span> <span class="op">=</span> <span class="ident">T::default</span>();
@@ -199,11 +199,11 @@
 	<span class="ident">builder</span>.<span class="ident">build</span>()
 }
 
-<span class="kw">fn</span> <span class="ident">is_multipart</span>(<span class="ident">content_type</span>: <span class="kw-2">&amp;</span><span class="ident">Mime</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-	<span class="ident">content_type</span>.<span class="ident">essence_str</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">MULTIPART_FORM_DATA</span>.<span class="ident">as_ref</span>()
+<span class="kw">fn</span> <span class="ident">is_multipart</span>(<span class="ident">content_type</span>: <span class="kw-2">&amp;</span><span class="ident">Mime</span>) -&gt; <span class="ident">bool</span> {
+	<span class="ident">content_type</span>.<span class="ident">essence_str</span>() <span class="op">==</span> <span class="ident">MULTIPART_FORM_DATA</span>.<span class="ident">as_ref</span>()
 }
 
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">parse_multipart</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FormDataBuilder</span><span class="op">&gt;</span>(<span class="ident">body</span>: <span class="ident">Body</span>, <span class="ident">content_type</span>: <span class="kw-2">&amp;</span><span class="ident">Mime</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T::Data</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
+<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">parse_multipart</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">FormDataBuilder</span><span class="op">&gt;</span>(<span class="ident">body</span>: <span class="ident">Body</span>, <span class="ident">content_type</span>: <span class="kw-2">&amp;</span><span class="ident">Mime</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T::Data</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
 	<span class="kw">let</span> <span class="ident">boundary</span> <span class="op">=</span> <span class="ident">content_type</span>.<span class="ident">get_param</span>(<span class="ident">BOUNDARY</span>).<span class="ident">ok_or</span>(<span class="ident">Error::MissingBoundary</span>)<span class="question-mark">?</span>.<span class="ident">as_str</span>();
 	<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">multipart</span> <span class="op">=</span> <span class="ident">Multipart::new</span>(<span class="ident">body</span>, <span class="ident">boundary</span>);
 
@@ -226,7 +226,7 @@
 	<span class="kw">type</span> <span class="prelude-val">Err</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">anyhow::Error</span><span class="op">&gt;</span>;
 	<span class="kw">type</span> <span class="ident">Fut</span>: <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident"><span class="self">Self</span>::Err</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span>;
 
-	<span class="kw">fn</span> <span class="ident">parse</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Fut</span>;
+	<span class="kw">fn</span> <span class="ident">parse</span>(<span class="self">self</span>) -&gt; <span class="ident"><span class="self">Self</span>::Fut</span>;
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span>, <span class="ident">T</span>, <span class="prelude-val">Err</span><span class="op">&gt;</span> <span class="ident">Parse</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Value</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span>, <span class="prelude-val">Err</span><span class="op">&gt;</span>
@@ -237,17 +237,17 @@
 	<span class="kw">type</span> <span class="prelude-val">Err</span> <span class="op">=</span> <span class="ident">deserializer::Error</span>;
 	<span class="kw">type</span> <span class="ident">Fut</span> <span class="op">=</span> <span class="ident">BoxFuture</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span>, <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident"><span class="self">Self</span>::Err</span><span class="op">&gt;</span><span class="op">&gt;</span>;
 
-	<span class="kw">fn</span> <span class="ident">parse</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Fut</span> {
+	<span class="kw">fn</span> <span class="ident">parse</span>(<span class="self">self</span>) -&gt; <span class="ident"><span class="self">Self</span>::Fut</span> {
 		<span class="kw">async</span> <span class="kw">move</span> {
 			<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">deserializer</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">value</span> {
-				<span class="ident">BytesOrString::Bytes</span>(<span class="kw-2">mut</span> <span class="ident">stream</span>) <span class="op">=</span><span class="op">&gt;</span> {
+				<span class="ident">BytesOrString::Bytes</span>(<span class="kw-2">mut</span> <span class="ident">stream</span>) =&gt; {
 					<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Vec::new</span>();
 					<span class="kw">while</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">data</span>) <span class="op">=</span> <span class="ident">stream</span>.<span class="ident">next</span>().<span class="kw">await</span> {
 						<span class="ident">buf</span>.<span class="ident">extend_from_slice</span>(<span class="kw-2">&amp;</span><span class="ident">data</span>.<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="ident">deserializer::Error</span>(<span class="ident">e</span>.<span class="ident">to_string</span>()))<span class="question-mark">?</span>);
 					}
 					<span class="ident">Deserializer::Bytes</span>(<span class="ident">buf</span>.<span class="ident">into</span>())
 				},
-				<span class="ident">BytesOrString::String</span>(<span class="ident">s</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Deserializer::Text</span>(<span class="ident">s</span>)
+				<span class="ident">BytesOrString::String</span>(<span class="ident">s</span>) =&gt; <span class="ident">Deserializer::Text</span>(<span class="ident">s</span>)
 			};
 			<span class="ident">T::deserialize</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">deserializer</span>)
 		}

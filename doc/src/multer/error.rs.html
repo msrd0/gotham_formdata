@@ -172,45 +172,45 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">Error</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="ident">Display::fmt</span>(<span class="self">self</span>, <span class="ident">f</span>)
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Display</span> <span class="kw">for</span> <span class="ident">Error</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">Error::UnknownField</span> { <span class="ident">field_name</span> } <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">Error::UnknownField</span> { <span class="ident">field_name</span> } =&gt; {
                 <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">field_name</span>.<span class="ident">as_deref</span>().<span class="ident">unwrap_or</span>(<span class="string">&quot;&lt;unknown&gt;&quot;</span>);
                 <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;unknown field received: {:?}&quot;</span>, <span class="ident">name</span>)
             }
-            <span class="ident">Error::IncompleteFieldData</span> { <span class="ident">field_name</span> } <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">Error::IncompleteFieldData</span> { <span class="ident">field_name</span> } =&gt; {
                 <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">field_name</span>.<span class="ident">as_deref</span>().<span class="ident">unwrap_or</span>(<span class="string">&quot;&lt;unknown&gt;&quot;</span>);
                 <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;field {:?} received with incomplete data&quot;</span>, <span class="ident">name</span>)
             }
-            <span class="ident">Error::DecodeHeaderName</span> { <span class="ident">name</span>, <span class="ident">cause</span> } <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">Error::DecodeHeaderName</span> { <span class="ident">name</span>, <span class="ident">cause</span> } =&gt; {
                 <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to decode field&#39;s raw header name: {:?} {}&quot;</span>, <span class="ident">name</span>, <span class="ident">cause</span>)
             }
-            <span class="ident">Error::DecodeHeaderValue</span> { <span class="ident">cause</span>, .. } <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">Error::DecodeHeaderValue</span> { <span class="ident">cause</span>, .. } =&gt; {
                 <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to decode field&#39;s raw header value: {}&quot;</span>, <span class="ident">cause</span>)
             }
-            <span class="ident">Error::FieldSizeExceeded</span> { <span class="ident">limit</span>, <span class="ident">field_name</span> } <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">Error::FieldSizeExceeded</span> { <span class="ident">limit</span>, <span class="ident">field_name</span> } =&gt; {
                 <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">field_name</span>.<span class="ident">as_deref</span>().<span class="ident">unwrap_or</span>(<span class="string">&quot;&lt;unknown&gt;&quot;</span>);
                 <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;field {:?} exceeded the size limit: {} bytes&quot;</span>, <span class="ident">name</span>, <span class="ident">limit</span>)
             }
-            <span class="ident">Error::StreamSizeExceeded</span> { <span class="ident">limit</span> } <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">Error::StreamSizeExceeded</span> { <span class="ident">limit</span> } =&gt; {
                 <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;stream size exceeded limit: {} bytes&quot;</span>, <span class="ident">limit</span>)
             }
-            <span class="ident">Error::ReadHeaderFailed</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to read headers: {}&quot;</span>, <span class="ident">e</span>),
-            <span class="ident">Error::StreamReadFailed</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to read stream: {}&quot;</span>, <span class="ident">e</span>),
-            <span class="ident">Error::DecodeContentType</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to decode Content-Type: {}&quot;</span>, <span class="ident">e</span>),
-            <span class="ident">Error::IncompleteHeaders</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to read field complete headers&quot;</span>),
-            <span class="ident">Error::IncompleteStream</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;incomplete multipart stream&quot;</span>),
-            <span class="ident">Error::LockFailure</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to lock multipart state&quot;</span>),
-            <span class="ident">Error::NoMultipart</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;Content-Type is not multipart/form-data&quot;</span>),
-            <span class="ident">Error::NoBoundary</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;multipart boundary not found in Content-Type&quot;</span>),
+            <span class="ident">Error::ReadHeaderFailed</span>(<span class="ident">e</span>) =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to read headers: {}&quot;</span>, <span class="ident">e</span>),
+            <span class="ident">Error::StreamReadFailed</span>(<span class="ident">e</span>) =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to read stream: {}&quot;</span>, <span class="ident">e</span>),
+            <span class="ident">Error::DecodeContentType</span>(<span class="ident">e</span>) =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to decode Content-Type: {}&quot;</span>, <span class="ident">e</span>),
+            <span class="ident">Error::IncompleteHeaders</span> =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to read field complete headers&quot;</span>),
+            <span class="ident">Error::IncompleteStream</span> =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;incomplete multipart stream&quot;</span>),
+            <span class="ident">Error::LockFailure</span> =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to lock multipart state&quot;</span>),
+            <span class="ident">Error::NoMultipart</span> =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;Content-Type is not multipart/form-data&quot;</span>),
+            <span class="ident">Error::NoBoundary</span> =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;multipart boundary not found in Content-Type&quot;</span>),
             <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;json&quot;</span>)]</span>
-            <span class="ident">Error::DecodeJson</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to decode field data as JSON: {}&quot;</span>, <span class="ident">e</span>),
+            <span class="ident">Error::DecodeJson</span>(<span class="ident">e</span>) =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to decode field data as JSON: {}&quot;</span>, <span class="ident">e</span>),
         }
     }
 }
@@ -218,7 +218,7 @@
 <span class="kw">impl</span> <span class="ident">std::error::Error</span> <span class="kw">for</span> <span class="ident">Error</span> {}
 
 <span class="kw">impl</span> <span class="ident">PartialEq</span> <span class="kw">for</span> <span class="ident">Error</span> {
-    <span class="kw">fn</span> <span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="self">Self</span>) -&gt; <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">to_string</span>().<span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="ident">other</span>.<span class="ident">to_string</span>())
     }
 }

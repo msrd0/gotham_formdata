@@ -145,7 +145,7 @@
 
 <span class="doccomment">/// Validates whether the given string is an IP V4</span>
 <span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">validate_ip_v4</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">val</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">validate_ip_v4</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">val</span>: <span class="ident">T</span>) -&gt; <span class="ident">bool</span>
 <span class="kw">where</span>
     <span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>,
 {
@@ -154,7 +154,7 @@
 
 <span class="doccomment">/// Validates whether the given string is an IP V6</span>
 <span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">validate_ip_v6</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">val</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">validate_ip_v6</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">val</span>: <span class="ident">T</span>) -&gt; <span class="ident">bool</span>
 <span class="kw">where</span>
     <span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>,
 {
@@ -163,7 +163,7 @@
 
 <span class="doccomment">/// Validates whether the given string is an IP</span>
 <span class="attribute">#[<span class="ident">must_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">validate_ip</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">val</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">validate_ip</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">val</span>: <span class="ident">T</span>) -&gt; <span class="ident">bool</span>
 <span class="kw">where</span>
     <span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>,
 {

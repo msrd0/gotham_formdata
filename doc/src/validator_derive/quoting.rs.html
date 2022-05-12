@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/validator_derive-0.14.0/src/quoting.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>quoting.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/validator_derive-0.15.0/src/quoting.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>quoting.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
     <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../validator_derive/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div>
         </a><h2 class="location"></h2>
     </nav>
@@ -564,9 +564,54 @@
 <span id="559">559</span>
 <span id="560">560</span>
 <span id="561">561</span>
+<span id="562">562</span>
+<span id="563">563</span>
+<span id="564">564</span>
+<span id="565">565</span>
+<span id="566">566</span>
+<span id="567">567</span>
+<span id="568">568</span>
+<span id="569">569</span>
+<span id="570">570</span>
+<span id="571">571</span>
+<span id="572">572</span>
+<span id="573">573</span>
+<span id="574">574</span>
+<span id="575">575</span>
+<span id="576">576</span>
+<span id="577">577</span>
+<span id="578">578</span>
+<span id="579">579</span>
+<span id="580">580</span>
+<span id="581">581</span>
+<span id="582">582</span>
+<span id="583">583</span>
+<span id="584">584</span>
+<span id="585">585</span>
+<span id="586">586</span>
+<span id="587">587</span>
+<span id="588">588</span>
+<span id="589">589</span>
+<span id="590">590</span>
+<span id="591">591</span>
+<span id="592">592</span>
+<span id="593">593</span>
+<span id="594">594</span>
+<span id="595">595</span>
+<span id="596">596</span>
+<span id="597">597</span>
+<span id="598">598</span>
+<span id="599">599</span>
+<span id="600">600</span>
+<span id="601">601</span>
+<span id="602">602</span>
+<span id="603">603</span>
+<span id="604">604</span>
+<span id="605">605</span>
 </pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">if_chain::if_chain</span>;
 <span class="kw">use</span> <span class="ident">proc_macro2</span>::{<span class="self">self</span>, <span class="ident">Span</span>};
 <span class="kw">use</span> <span class="ident">quote::quote</span>;
+
 <span class="kw">use</span> <span class="ident">validator_types::Validator</span>;
 
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::asserts</span>::{<span class="ident">COW_TYPE</span>, <span class="ident">NUMBER_TYPES</span>};
@@ -597,7 +642,7 @@
 
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">_type</span>.<span class="ident">starts_with</span>(<span class="string">&quot;Option&lt;&quot;</span>) {
             <span class="macro">quote!</span>(#<span class="ident">ident</span>)
-        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">COW_TYPE</span>.<span class="ident">is_match</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">_type</span>.<span class="ident">as_ref</span>()) {
+        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">COW_TYPE</span>.<span class="ident">is_match</span>(<span class="self">self</span>.<span class="ident">_type</span>.<span class="ident">as_ref</span>()) {
             <span class="macro">quote!</span>(<span class="self">self</span>.#<span class="ident">ident</span>.<span class="ident">as_ref</span>())
         } <span class="kw">else</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">_type</span>.<span class="ident">starts_with</span>(<span class="string">&#39;&amp;&#39;</span>) <span class="op">|</span><span class="op">|</span> <span class="ident">NUMBER_TYPES</span>.<span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">_type</span>.<span class="ident">as_ref</span>()) {
             <span class="macro">quote!</span>(<span class="self">self</span>.#<span class="ident">ident</span>)
@@ -609,9 +654,12 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">quote_validator_field</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
         <span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">ident</span>;
 
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">_type</span>.<span class="ident">starts_with</span>(<span class="string">&quot;Option&lt;&quot;</span>) <span class="op">|</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">_type</span>.<span class="ident">starts_with</span>(<span class="string">&quot;Vec&lt;&quot;</span>) {
+        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">_type</span>.<span class="ident">starts_with</span>(<span class="string">&quot;Option&lt;&quot;</span>)
+            <span class="op">|</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">_type</span>.<span class="ident">starts_with</span>(<span class="string">&quot;Vec&lt;&quot;</span>)
+            <span class="op">|</span><span class="op">|</span> <span class="ident">is_map</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">_type</span>)
+        {
             <span class="macro">quote!</span>(#<span class="ident">ident</span>)
-        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">COW_TYPE</span>.<span class="ident">is_match</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">_type</span>.<span class="ident">as_ref</span>()) {
+        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">COW_TYPE</span>.<span class="ident">is_match</span>(<span class="self">self</span>.<span class="ident">_type</span>.<span class="ident">as_ref</span>()) {
             <span class="macro">quote!</span>(<span class="self">self</span>.#<span class="ident">ident</span>.<span class="ident">as_ref</span>())
         } <span class="kw">else</span> {
             <span class="macro">quote!</span>(<span class="self">self</span>.#<span class="ident">ident</span>)
@@ -654,7 +702,7 @@
 
     <span class="doccomment">/// Wrap the quoted output of a validation with a for loop if</span>
     <span class="doccomment">/// the field type is a vector</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">wrap_if_vector</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="ident">proc_macro2::TokenStream</span>) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">wrap_if_collection</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="ident">proc_macro2::TokenStream</span>) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
         <span class="kw">let</span> <span class="ident">field_ident</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">ident</span>;
         <span class="kw">let</span> <span class="ident">field_name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">name</span>;
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">_type</span>.<span class="ident">starts_with</span>(<span class="string">&quot;Vec&lt;&quot;</span>) {
@@ -677,10 +725,43 @@
                 }).<span class="ident">collect</span>();
                 <span class="ident">result</span> <span class="op">=</span> <span class="ident">::validator::ValidationErrors::merge_all</span>(<span class="ident">result</span>, #<span class="ident">field_name</span>, <span class="ident">results</span>);
             });
+        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">is_map</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">_type</span>) {
+            <span class="kw">if</span> <span class="self">self</span>.<span class="ident">_type</span>.<span class="ident">starts_with</span>(<span class="string">&quot;Option&lt;&quot;</span>) {
+                <span class="kw">return</span> <span class="macro">quote!</span>(
+                <span class="kw">if</span> <span class="op">!</span><span class="ident">::validator::ValidationErrors::has_error</span>(<span class="kw-2">&amp;</span><span class="ident">result</span>, #<span class="ident">field_name</span>) {
+                    <span class="kw">let</span> <span class="ident">results</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span> <span class="op">=</span> #<span class="ident">field_ident</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span>(<span class="kw">_</span>, #<span class="ident">field_ident</span>)<span class="op">|</span> {
+                        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">::std::result::Result::Ok</span>(());
+                        #<span class="ident">tokens</span>
+                        <span class="ident">result</span>
+                    }).<span class="ident">collect</span>();
+                    <span class="ident">result</span> <span class="op">=</span> <span class="ident">::validator::ValidationErrors::merge_all</span>(<span class="ident">result</span>, #<span class="ident">field_name</span>, <span class="ident">results</span>);
+                });
+            } <span class="kw">else</span> {
+                <span class="kw">return</span> <span class="macro">quote!</span>(
+                <span class="kw">if</span> <span class="op">!</span><span class="ident">::validator::ValidationErrors::has_error</span>(<span class="kw-2">&amp;</span><span class="ident">result</span>, #<span class="ident">field_name</span>) {
+                    <span class="kw">let</span> <span class="ident">results</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span> <span class="op">=</span> <span class="self">self</span>.#<span class="ident">field_ident</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span>(<span class="kw">_</span>, #<span class="ident">field_ident</span>)<span class="op">|</span> {
+                        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">::std::result::Result::Ok</span>(());
+                        #<span class="ident">tokens</span>
+                        <span class="ident">result</span>
+                    }).<span class="ident">collect</span>();
+                    <span class="ident">result</span> <span class="op">=</span> <span class="ident">::validator::ValidationErrors::merge_all</span>(<span class="ident">result</span>, #<span class="ident">field_name</span>, <span class="ident">results</span>);
+                });
+            }
         }
 
         <span class="ident">tokens</span>
     }
+}
+
+<span class="kw">fn</span> <span class="ident">is_map</span>(<span class="ident">_type</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
+    <span class="kw">if</span> <span class="ident">_type</span>.<span class="ident">starts_with</span>(<span class="string">&quot;Option&lt;&quot;</span>) {
+        <span class="kw">return</span> <span class="ident">is_map</span>(<span class="kw-2">&amp;</span><span class="ident">_type</span>[<span class="number">7</span>..]);
+    }
+
+    <span class="ident">_type</span>.<span class="ident">starts_with</span>(<span class="string">&quot;HashMap&lt;&quot;</span>)
+        <span class="op">|</span><span class="op">|</span> <span class="ident">_type</span>.<span class="ident">starts_with</span>(<span class="string">&quot;FxHashMap&lt;&quot;</span>)
+        <span class="op">|</span><span class="op">|</span> <span class="ident">_type</span>.<span class="ident">starts_with</span>(<span class="string">&quot;FnvHashMap&lt;&quot;</span>)
+        <span class="op">|</span><span class="op">|</span> <span class="ident">_type</span>.<span class="ident">starts_with</span>(<span class="string">&quot;BTreeMap&lt;&quot;</span>)
 }
 
 <span class="doccomment">/// Quote an actual end-user error creation automatically</span>
@@ -726,16 +807,16 @@
         };
 
         <span class="kw">let</span> <span class="ident">min_tokens</span> <span class="op">=</span> <span class="ident">option_to_tokens</span>(
-            <span class="kw-2">&amp;</span><span class="ident">min</span>.<span class="ident">clone</span>().<span class="ident">map</span>(<span class="op">|</span><span class="kw-2">ref</span> <span class="ident">x</span><span class="op">|</span> <span class="ident">value_or_path_to_tokens</span>(<span class="ident">x</span>)).<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="macro">quote!</span>(#<span class="ident">x</span> <span class="kw">as</span> <span class="ident">u64</span>)),
+            <span class="kw-2">&amp;</span><span class="ident">min</span>.<span class="ident">clone</span>().<span class="ident">as_ref</span>().<span class="ident">map</span>(<span class="ident">value_or_path_to_tokens</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="macro">quote!</span>(#<span class="ident">x</span> <span class="kw">as</span> <span class="ident">u64</span>)),
         );
         <span class="kw">let</span> <span class="ident">max_tokens</span> <span class="op">=</span> <span class="ident">option_to_tokens</span>(
-            <span class="kw-2">&amp;</span><span class="ident">max</span>.<span class="ident">clone</span>().<span class="ident">map</span>(<span class="op">|</span><span class="kw-2">ref</span> <span class="ident">x</span><span class="op">|</span> <span class="ident">value_or_path_to_tokens</span>(<span class="ident">x</span>)).<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="macro">quote!</span>(#<span class="ident">x</span> <span class="kw">as</span> <span class="ident">u64</span>)),
+            <span class="kw-2">&amp;</span><span class="ident">max</span>.<span class="ident">clone</span>().<span class="ident">as_ref</span>().<span class="ident">map</span>(<span class="ident">value_or_path_to_tokens</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="macro">quote!</span>(#<span class="ident">x</span> <span class="kw">as</span> <span class="ident">u64</span>)),
         );
         <span class="kw">let</span> <span class="ident">equal_tokens</span> <span class="op">=</span> <span class="ident">option_to_tokens</span>(
-            <span class="kw-2">&amp;</span><span class="ident">equal</span>.<span class="ident">clone</span>().<span class="ident">map</span>(<span class="op">|</span><span class="kw-2">ref</span> <span class="ident">x</span><span class="op">|</span> <span class="ident">value_or_path_to_tokens</span>(<span class="ident">x</span>)).<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="macro">quote!</span>(#<span class="ident">x</span> <span class="kw">as</span> <span class="ident">u64</span>)),
+            <span class="kw-2">&amp;</span><span class="ident">equal</span>.<span class="ident">clone</span>().<span class="ident">as_ref</span>().<span class="ident">map</span>(<span class="ident">value_or_path_to_tokens</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="macro">quote!</span>(#<span class="ident">x</span> <span class="kw">as</span> <span class="ident">u64</span>)),
         );
 
-        <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="kw-2">&amp;</span><span class="ident">validation</span>);
+        <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="ident">validation</span>);
         <span class="kw">let</span> <span class="ident">quoted</span> <span class="op">=</span> <span class="macro">quote!</span>(
             <span class="kw">if</span> <span class="op">!</span><span class="ident">::validator::validate_length</span>(
                 #<span class="ident">validator_param</span>,
@@ -788,7 +869,7 @@
             <span class="ident">max</span>.<span class="ident">clone</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">value_or_path_to_tokens</span>(<span class="kw-2">&amp;</span><span class="ident">x</span>)).<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="macro">quote!</span>(#<span class="ident">x</span> <span class="kw">as</span> <span class="ident">f64</span>));
         <span class="kw">let</span> <span class="ident">max_tokens</span> <span class="op">=</span> <span class="ident">option_to_tokens</span>(<span class="kw-2">&amp;</span><span class="ident">max_tokens</span>);
 
-        <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="kw-2">&amp;</span><span class="ident">validation</span>);
+        <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="ident">validation</span>);
         <span class="kw">let</span> <span class="ident">quoted</span> <span class="op">=</span> <span class="macro">quote!</span>(
             <span class="kw">if</span> <span class="op">!</span><span class="ident">::validator::validate_range</span>(
                 #<span class="ident">quoted_ident</span> <span class="kw">as</span> <span class="ident">f64</span>,
@@ -817,7 +898,7 @@
     <span class="kw">let</span> <span class="ident">field_name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">field_quoter</span>.<span class="ident">name</span>;
     <span class="kw">let</span> <span class="ident">validator_param</span> <span class="op">=</span> <span class="ident">field_quoter</span>.<span class="ident">quote_validator_param</span>();
 
-    <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="kw-2">&amp;</span><span class="ident">validation</span>);
+    <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="ident">validation</span>);
     <span class="kw">let</span> <span class="ident">quoted</span> <span class="op">=</span> <span class="macro">quote!</span>(
         <span class="kw">if</span> <span class="op">!</span><span class="ident">::validator::validate_credit_card</span>(#<span class="ident">validator_param</span>) {
             #<span class="ident">quoted_error</span>
@@ -837,7 +918,7 @@
     <span class="kw">let</span> <span class="ident">field_name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">field_quoter</span>.<span class="ident">name</span>;
     <span class="kw">let</span> <span class="ident">validator_param</span> <span class="op">=</span> <span class="ident">field_quoter</span>.<span class="ident">quote_validator_param</span>();
 
-    <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="kw-2">&amp;</span><span class="ident">validation</span>);
+    <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="ident">validation</span>);
     <span class="kw">let</span> <span class="ident">quoted</span> <span class="op">=</span> <span class="macro">quote!</span>(
         <span class="kw">if</span> <span class="op">!</span><span class="ident">::validator::validate_phone</span>(#<span class="ident">validator_param</span>) {
             #<span class="ident">quoted_error</span>
@@ -857,7 +938,7 @@
     <span class="kw">let</span> <span class="ident">field_name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">field_quoter</span>.<span class="ident">name</span>;
     <span class="kw">let</span> <span class="ident">validator_param</span> <span class="op">=</span> <span class="ident">field_quoter</span>.<span class="ident">quote_validator_param</span>();
 
-    <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="kw-2">&amp;</span><span class="ident">validation</span>);
+    <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="ident">validation</span>);
     <span class="kw">let</span> <span class="ident">quoted</span> <span class="op">=</span> <span class="macro">quote!</span>(
         <span class="kw">if</span> <span class="op">!</span><span class="ident">::validator::validate_non_control_character</span>(#<span class="ident">validator_param</span>) {
             #<span class="ident">quoted_error</span>
@@ -876,7 +957,7 @@
     <span class="kw">let</span> <span class="ident">field_name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">field_quoter</span>.<span class="ident">name</span>;
     <span class="kw">let</span> <span class="ident">validator_param</span> <span class="op">=</span> <span class="ident">field_quoter</span>.<span class="ident">quote_validator_param</span>();
 
-    <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="kw-2">&amp;</span><span class="ident">validation</span>);
+    <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="ident">validation</span>);
     <span class="kw">let</span> <span class="ident">quoted</span> <span class="op">=</span> <span class="macro">quote!</span>(
         <span class="kw">if</span> <span class="op">!</span><span class="ident">::validator::validate_url</span>(#<span class="ident">validator_param</span>) {
             #<span class="ident">quoted_error</span>
@@ -895,7 +976,7 @@
     <span class="kw">let</span> <span class="ident">field_name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">field_quoter</span>.<span class="ident">name</span>;
     <span class="kw">let</span> <span class="ident">validator_param</span> <span class="op">=</span> <span class="ident">field_quoter</span>.<span class="ident">quote_validator_param</span>();
 
-    <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="kw-2">&amp;</span><span class="ident">validation</span>);
+    <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="ident">validation</span>);
     <span class="kw">let</span> <span class="ident">quoted</span> <span class="op">=</span> <span class="macro">quote!</span>(
         <span class="kw">if</span> <span class="op">!</span><span class="ident">::validator::validate_email</span>(#<span class="ident">validator_param</span>) {
             #<span class="ident">quoted_error</span>
@@ -916,7 +997,7 @@
 
     <span class="kw">if</span> <span class="kw">let</span> <span class="ident">Validator::MustMatch</span>(<span class="kw-2">ref</span> <span class="ident">other</span>) <span class="op">=</span> <span class="ident">validation</span>.<span class="ident">validator</span> {
         <span class="kw">let</span> <span class="ident">other_ident</span> <span class="op">=</span> <span class="ident">syn::Ident::new</span>(<span class="ident">other</span>, <span class="ident">Span::call_site</span>());
-        <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="kw-2">&amp;</span><span class="ident">validation</span>);
+        <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="ident">validation</span>);
         <span class="kw">let</span> <span class="ident">quoted</span> <span class="op">=</span> <span class="macro">quote!</span>(
             <span class="kw">if</span> <span class="op">!</span><span class="ident">::validator::validate_must_match</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.#<span class="ident">ident</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.#<span class="ident">other_ident</span>) {
                 #<span class="ident">quoted_error</span>
@@ -943,7 +1024,7 @@
         <span class="kw">let</span> <span class="ident">fn_ident</span>: <span class="ident">syn::Path</span> <span class="op">=</span> <span class="ident">syn::parse_str</span>(<span class="ident">function</span>).<span class="ident">unwrap</span>();
 
         <span class="kw">let</span> <span class="ident">access</span> <span class="op">=</span> <span class="macro">if_chain!</span> {
-            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">argument</span>) <span class="op">=</span> <span class="ident">argument</span>;
+            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">argument</span>) <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="kw-2">*</span><span class="ident">argument</span>;
             <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">access</span>) <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">argument</span>.<span class="ident">arg_access</span>;
             <span class="ident">then</span> {
                 <span class="macro">quote!</span>(, #<span class="ident">access</span>)
@@ -983,7 +1064,7 @@
     <span class="kw">let</span> <span class="ident">validator_param</span> <span class="op">=</span> <span class="ident">field_quoter</span>.<span class="ident">quote_validator_param</span>();
 
     <span class="kw">if</span> <span class="kw">let</span> <span class="ident">Validator::Contains</span>(<span class="kw-2">ref</span> <span class="ident">needle</span>) <span class="op">=</span> <span class="ident">validation</span>.<span class="ident">validator</span> {
-        <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="kw-2">&amp;</span><span class="ident">validation</span>);
+        <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="ident">validation</span>);
         <span class="kw">let</span> <span class="ident">quoted</span> <span class="op">=</span> <span class="macro">quote!</span>(
             <span class="kw">if</span> <span class="op">!</span><span class="ident">::validator::validate_contains</span>(#<span class="ident">validator_param</span>, <span class="kw-2">&amp;</span>#<span class="ident">needle</span>) {
                 #<span class="ident">quoted_error</span>
@@ -1008,7 +1089,7 @@
 
     <span class="kw">if</span> <span class="kw">let</span> <span class="ident">Validator::Regex</span>(<span class="kw-2">ref</span> <span class="ident">re</span>) <span class="op">=</span> <span class="ident">validation</span>.<span class="ident">validator</span> {
         <span class="kw">let</span> <span class="ident">re_ident</span>: <span class="ident">syn::Path</span> <span class="op">=</span> <span class="ident">syn::parse_str</span>(<span class="ident">re</span>).<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="kw-2">&amp;</span><span class="ident">validation</span>);
+        <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="ident">validation</span>);
         <span class="kw">let</span> <span class="ident">quoted</span> <span class="op">=</span> <span class="macro">quote!</span>(
             <span class="kw">if</span> <span class="op">!</span>#<span class="ident">re_ident</span>.<span class="ident">is_match</span>(#<span class="ident">validator_param</span>) {
                 #<span class="ident">quoted_error</span>
@@ -1027,7 +1108,7 @@
     <span class="kw">let</span> <span class="ident">field_name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">field_quoter</span>.<span class="ident">name</span>;
     <span class="kw">let</span> <span class="ident">validator_field</span> <span class="op">=</span> <span class="ident">field_quoter</span>.<span class="ident">quote_validator_field</span>();
     <span class="kw">let</span> <span class="ident">quoted</span> <span class="op">=</span> <span class="macro">quote!</span>(<span class="ident">result</span> <span class="op">=</span> <span class="ident">::validator::ValidationErrors::merge</span>(<span class="ident">result</span>, #<span class="ident">field_name</span>, #<span class="ident">validator_field</span>.<span class="ident">validate</span>()););
-    <span class="ident">field_quoter</span>.<span class="ident">wrap_if_option</span>(<span class="ident">field_quoter</span>.<span class="ident">wrap_if_vector</span>(<span class="ident">quoted</span>))
+    <span class="ident">field_quoter</span>.<span class="ident">wrap_if_option</span>(<span class="ident">field_quoter</span>.<span class="ident">wrap_if_collection</span>(<span class="ident">quoted</span>))
 }
 
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">quote_validator</span>(
@@ -1038,42 +1119,49 @@
 ) {
     <span class="kw">match</span> <span class="ident">validation</span>.<span class="ident">validator</span> {
         <span class="ident">Validator::Length</span> { .. } =&gt; {
-            <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_length_validation</span>(<span class="kw-2">&amp;</span><span class="ident">field_quoter</span>, <span class="ident">validation</span>))
+            <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_length_validation</span>(<span class="ident">field_quoter</span>, <span class="ident">validation</span>))
         }
         <span class="ident">Validator::Range</span> { .. } =&gt; {
-            <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_range_validation</span>(<span class="kw-2">&amp;</span><span class="ident">field_quoter</span>, <span class="ident">validation</span>))
+            <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_range_validation</span>(<span class="ident">field_quoter</span>, <span class="ident">validation</span>))
         }
-        <span class="ident">Validator::Email</span> =&gt; <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_email_validation</span>(<span class="kw-2">&amp;</span><span class="ident">field_quoter</span>, <span class="ident">validation</span>)),
-        <span class="ident">Validator::Url</span> =&gt; <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_url_validation</span>(<span class="kw-2">&amp;</span><span class="ident">field_quoter</span>, <span class="ident">validation</span>)),
+        <span class="ident">Validator::Email</span> =&gt; <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_email_validation</span>(<span class="ident">field_quoter</span>, <span class="ident">validation</span>)),
+        <span class="ident">Validator::Url</span> =&gt; <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_url_validation</span>(<span class="ident">field_quoter</span>, <span class="ident">validation</span>)),
         <span class="ident">Validator::MustMatch</span>(<span class="kw">_</span>) =&gt; {
-            <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_must_match_validation</span>(<span class="kw-2">&amp;</span><span class="ident">field_quoter</span>, <span class="ident">validation</span>))
+            <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_must_match_validation</span>(<span class="ident">field_quoter</span>, <span class="ident">validation</span>))
         }
         <span class="ident">Validator::Custom</span> { .. } =&gt; {
-            <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_custom_validation</span>(<span class="kw-2">&amp;</span><span class="ident">field_quoter</span>, <span class="ident">validation</span>))
+            <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_custom_validation</span>(<span class="ident">field_quoter</span>, <span class="ident">validation</span>))
         }
         <span class="ident">Validator::Contains</span>(<span class="kw">_</span>) =&gt; {
-            <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_contains_validation</span>(<span class="kw-2">&amp;</span><span class="ident">field_quoter</span>, <span class="ident">validation</span>))
+            <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_contains_validation</span>(<span class="ident">field_quoter</span>, <span class="ident">validation</span>))
         }
-        <span class="ident">Validator::Regex</span>(<span class="kw">_</span>) =&gt; <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_regex_validation</span>(<span class="kw-2">&amp;</span><span class="ident">field_quoter</span>, <span class="ident">validation</span>)),
+        <span class="ident">Validator::Regex</span>(<span class="kw">_</span>) =&gt; <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_regex_validation</span>(<span class="ident">field_quoter</span>, <span class="ident">validation</span>)),
         <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;card&quot;</span>)]</span>
         <span class="ident">Validator::CreditCard</span> =&gt; {
-            <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_credit_card_validation</span>(<span class="kw-2">&amp;</span><span class="ident">field_quoter</span>, <span class="ident">validation</span>))
+            <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_credit_card_validation</span>(<span class="ident">field_quoter</span>, <span class="ident">validation</span>))
         }
         <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;phone&quot;</span>)]</span>
-        <span class="ident">Validator::Phone</span> =&gt; <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_phone_validation</span>(<span class="kw-2">&amp;</span><span class="ident">field_quoter</span>, <span class="ident">validation</span>)),
-        <span class="ident">Validator::Nested</span> =&gt; <span class="ident">nested_validations</span>.<span class="ident">push</span>(<span class="ident">quote_nested_validation</span>(<span class="kw-2">&amp;</span><span class="ident">field_quoter</span>)),
+        <span class="ident">Validator::Phone</span> =&gt; <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_phone_validation</span>(<span class="ident">field_quoter</span>, <span class="ident">validation</span>)),
+        <span class="ident">Validator::Nested</span> =&gt; <span class="ident">nested_validations</span>.<span class="ident">push</span>(<span class="ident">quote_nested_validation</span>(<span class="ident">field_quoter</span>)),
         <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;unic&quot;</span>)]</span>
         <span class="ident">Validator::NonControlCharacter</span> =&gt; {
-            <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_non_control_character_validation</span>(<span class="kw-2">&amp;</span><span class="ident">field_quoter</span>, <span class="ident">validation</span>))
+            <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_non_control_character_validation</span>(<span class="ident">field_quoter</span>, <span class="ident">validation</span>))
         }
         <span class="ident">Validator::Required</span> <span class="op">|</span> <span class="ident">Validator::RequiredNested</span> =&gt; {
-            <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_required_validation</span>(<span class="kw-2">&amp;</span><span class="ident">field_quoter</span>, <span class="ident">validation</span>))
+            <span class="ident">validations</span>.<span class="ident">push</span>(<span class="ident">quote_required_validation</span>(<span class="ident">field_quoter</span>, <span class="ident">validation</span>))
         }
     }
 }
 
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">quote_schema_validation</span>(<span class="ident">v</span>: <span class="kw-2">&amp;</span><span class="ident">SchemaValidation</span>) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
     <span class="kw">let</span> <span class="ident">fn_ident</span>: <span class="ident">syn::Path</span> <span class="op">=</span> <span class="ident">syn::parse_str</span>(<span class="kw-2">&amp;</span><span class="ident">v</span>.<span class="ident">function</span>).<span class="ident">unwrap</span>();
+
+    <span class="kw">let</span> <span class="ident">arg_quoted</span> <span class="op">=</span> <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="kw-2">ref</span> <span class="ident">args</span>) <span class="op">=</span> <span class="ident">v</span>.<span class="ident">args</span> {
+        <span class="kw">let</span> <span class="ident">arg_type</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">args</span>.<span class="ident">arg_access</span>;
+        <span class="macro">quote!</span>(<span class="self">self</span>, #<span class="ident">arg_type</span>)
+    } <span class="kw">else</span> {
+        <span class="macro">quote!</span>(<span class="self">self</span>)
+    };
 
     <span class="kw">let</span> <span class="ident">add_message_quoted</span> <span class="op">=</span> <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="kw-2">ref</span> <span class="ident">m</span>) <span class="op">=</span> <span class="ident">v</span>.<span class="ident">message</span> {
         <span class="macro">quote!</span>(<span class="ident">err</span>.<span class="ident">message</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">::std::borrow::Cow::from</span>(#<span class="ident">m</span>));)
@@ -1084,7 +1172,7 @@
     <span class="kw">let</span> <span class="ident">mut_err_token</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">v</span>.<span class="ident">message</span>.<span class="ident">is_some</span>() { <span class="macro">quote!</span>(<span class="kw-2">mut</span>) } <span class="kw">else</span> { <span class="macro">quote!</span>() };
 
     <span class="kw">let</span> <span class="ident">quoted</span> <span class="op">=</span> <span class="macro">quote!</span>(
-        <span class="kw">match</span> #<span class="ident">fn_ident</span>(<span class="self">self</span>) {
+        <span class="kw">match</span> #<span class="ident">fn_ident</span>(#<span class="ident">arg_quoted</span>) {
             <span class="ident">::std::result::Result::Ok</span>(()) =&gt; (),
             <span class="ident">::std::result::Result::Err</span>(#<span class="ident">mut_err_token</span> <span class="ident">err</span>) =&gt; {
                 #<span class="ident">add_message_quoted</span>
@@ -1114,7 +1202,7 @@
     <span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">field_quoter</span>.<span class="ident">ident</span>;
     <span class="kw">let</span> <span class="ident">validator_param</span> <span class="op">=</span> <span class="macro">quote!</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.#<span class="ident">ident</span>);
 
-    <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="kw-2">&amp;</span><span class="ident">validation</span>);
+    <span class="kw">let</span> <span class="ident">quoted_error</span> <span class="op">=</span> <span class="ident">quote_error</span>(<span class="ident">validation</span>);
     <span class="kw">let</span> <span class="ident">quoted</span> <span class="op">=</span> <span class="macro">quote!</span>(
         <span class="kw">if</span> <span class="op">!</span><span class="ident">::validator::validate_required</span>(#<span class="ident">validator_param</span>) {
             #<span class="ident">quoted_error</span>

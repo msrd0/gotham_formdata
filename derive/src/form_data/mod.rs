@@ -7,6 +7,7 @@ use syn::{
 	TraitBound, TraitBoundModifier, Type, TypeParamBound, TypePath, WhereClause,
 	WherePredicate
 };
+use syn_path::path;
 
 mod builder;
 use builder::FormDataBuilder;

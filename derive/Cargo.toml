@@ -21,3 +21,4 @@ regex = []
 proc-macro2 = "1.0"
 quote = "1.0"
 syn = { version = "1.0", features = ["clone-impls", "derive", "parsing", "printing", "proc-macro"], default-features = false }
+syn-path = "1"

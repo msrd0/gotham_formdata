@@ -20,13 +20,18 @@ pub use validator::Validate;
 mod deserializer;
 use deserializer::Deserializer;
 
-pub type FormDataBuilderFuture<'a> = Pin<Box<dyn Future<Output = Result<(), Error>> + Send + 'a>>;
+pub type FormDataBuilderFuture<'a> =
+	Pin<Box<dyn Future<Output = Result<(), Error>> + Send + 'a>>;
 pub type Value<'a, E = Error> = crate::value::Value<'a, E>;
 
 pub trait FormDataBuilder: Default {
 	type Data: FormData;
 
-	fn add_entry<'a>(&'a mut self, name: Cow<'a, str>, value: Value<'a, Error>) -> FormDataBuilderFuture<'a>;
+	fn add_entry<'a>(
+		&'a mut self,
+		name: Cow<'a, str>,
+		value: Value<'a, Error>
+	) -> FormDataBuilderFuture<'a>;
 	fn build(self) -> Result<Self::Data, Error>;
 }
 
@@ -43,7 +48,10 @@ pub fn get_body(state: &mut State) -> Body {
 	state.take()
 }
 
-pub async fn parse<T: FormDataBuilder>(body: Body, content_type: Mime) -> Result<T::Data, Error> {
+pub async fn parse<T: FormDataBuilder>(
+	body: Body,
+	content_type: Mime
+) -> Result<T::Data, Error> {
 	if is_urlencoded(&content_type) {
 		parse_urlencoded::<T>(body).await
 	} else if is_multipart(&content_type) {
@@ -75,13 +83,22 @@ fn is_multipart(content_type: &Mime) -> bool {
 	content_type.essence_str() == MULTIPART_FORM_DATA.as_ref()
 }
 
-async fn parse_multipart<T: FormDataBuilder>(body: Body, content_type: &Mime) -> Result<T::Data, Error> {
-	let boundary = content_type.get_param(BOUNDARY).ok_or(Error::MissingBoundary)?.as_str();
+async fn parse_multipart<T: FormDataBuilder>(
+	body: Body,
+	content_type: &Mime
+) -> Result<T::Data, Error> {
+	let boundary = content_type
+		.get_param(BOUNDARY)
+		.ok_or(Error::MissingBoundary)?
+		.as_str();
 	let mut multipart = Multipart::new(body, boundary);
 
 	let mut builder = T::default();
 	while let Some(field) = multipart.next_field().await? {
-		let name = field.name().ok_or(Error::MissingContentDisposition)?.to_owned();
+		let name = field
+			.name()
+			.ok_or(Error::MissingContentDisposition)?
+			.to_owned();
 		let mime = field.content_type().cloned();
 
 		let stream = field.map_err(Into::into).boxed();
@@ -115,7 +132,9 @@ where
 				BytesOrString::Bytes(mut stream) => {
 					let mut buf: Vec<u8> = Vec::new();
 					while let Some(data) = stream.next().await {
-						buf.extend_from_slice(&data.map_err(|e| deserializer::Error(e.to_string()))?);
+						buf.extend_from_slice(
+							&data.map_err(|e| deserializer::Error(e.to_string()))?
+						);
 					}
 					Deserializer::Bytes(buf)
 				},

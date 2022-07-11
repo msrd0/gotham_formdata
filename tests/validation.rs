@@ -33,9 +33,7 @@ fn validate_min_length() {
 
 	with_body(b"data=verylong", APPLICATION_WWW_FORM_URLENCODED, |state| {
 		let data = block_on(Data::parse_form_data(state)).unwrap();
-		assert_eq!(data, Data {
-			data: "verylong".to_owned()
-		})
+		assert_eq!(data, Data { data: "verylong".to_owned() })
 	});
 
 	with_body(b"data=shorter", APPLICATION_WWW_FORM_URLENCODED, |state| {
@@ -54,9 +52,7 @@ fn validate_max_length() {
 
 	with_body(b"data=shorter", APPLICATION_WWW_FORM_URLENCODED, |state| {
 		let data = block_on(Data::parse_form_data(state)).unwrap();
-		assert_eq!(data, Data {
-			data: "shorter".to_owned()
-		})
+		assert_eq!(data, Data { data: "shorter".to_owned() })
 	});
 
 	with_body(b"data=verylong", APPLICATION_WWW_FORM_URLENCODED, |state| {

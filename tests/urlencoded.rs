@@ -36,7 +36,11 @@ fn urlencoded() {
 
 	let mime: Mime = "application/x-www-form-urlencoded".parse().unwrap();
 	let body = "username=testuser&password=secret";
-	let res = server.client().post("http://localhost/login", body, mime).perform().unwrap();
+	let res = server
+		.client()
+		.post("http://localhost/login", body, mime)
+		.perform()
+		.unwrap();
 	let body = res.read_body().unwrap();
 	assert_eq!(&body, b"testuser");
 }

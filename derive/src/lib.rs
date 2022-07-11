@@ -26,7 +26,9 @@ fn expand_derive<F>(input: TokenStream, expand: F) -> TokenStream
 where
 	F: FnOnce(DeriveInput) -> Result<TokenStream2>
 {
-	print_tokens(expand(parse_macro_input!(input)).unwrap_or_else(|err| err.to_compile_error()))
+	print_tokens(
+		expand(parse_macro_input!(input)).unwrap_or_else(|err| err.to_compile_error())
+	)
 }
 
 /// This derive macro implements `FormData` for the struct it is invoked on. Enums, unions and

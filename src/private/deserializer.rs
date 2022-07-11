@@ -239,8 +239,8 @@ impl<'a, 'de> SeqAccess<'de> for Seq<'a> {
 
 		let v = seed.deserialize(&mut *self)?;
 		match self {
-			Self::Bytes(b) => *self = Self::Bytes(&b[1..]),
-			Self::Text(s) => *self = Self::Text(&s[1..]),
+			Self::Bytes(b) => *self = Self::Bytes(&b[1 ..]),
+			Self::Text(s) => *self = Self::Text(&s[1 ..]),
 			Self::String(_, i) => *i += 1
 		};
 		Ok(Some(v))

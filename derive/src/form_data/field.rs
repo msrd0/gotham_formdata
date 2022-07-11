@@ -31,9 +31,9 @@ impl Field {
 	pub(super) fn new(field: syn::Field) -> Result<Self> {
 		let span = field.span();
 
-		let mut ident = field
-			.ident
-			.ok_or_else(|| Error::new(span, "Fields without an ident are not supported"))?;
+		let mut ident = field.ident.ok_or_else(|| {
+			Error::new(span, "Fields without an ident are not supported")
+		})?;
 		ident.set_span(Span::call_site());
 
 		Ok(Self { ident, ty: field.ty })

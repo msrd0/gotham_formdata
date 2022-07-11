@@ -28,7 +28,11 @@ fn with_body(body: &[u8], content_type: Mime, callback: impl Fn(&mut State)) {
 
 fn with_body_foo(foo: &[u8], callback: impl Fn(&mut State)) {
 	let urlencoded = format!("foo={}", percent_encode(foo, NON_ALPHANUMERIC));
-	with_body(urlencoded.as_bytes(), APPLICATION_WWW_FORM_URLENCODED, &callback);
+	with_body(
+		urlencoded.as_bytes(),
+		APPLICATION_WWW_FORM_URLENCODED,
+		&callback
+	);
 
 	let mut multipart = Vec::new();
 	multipart.extend_from_slice(b"--GOTHAM-MULTIPART-BOUNDARY\r\nContent-Disposition: form-data; name=\"foo\"\r\n\r\n");

@@ -3,7 +3,8 @@ use std::{future::Future, pin::Pin};
 
 /// This is the return type of [FormData::parse_form_data].
 #[allow(type_alias_bounds)]
-pub type FormDataFuture<T: FormData> = Pin<Box<dyn Future<Output = Result<T, T::Err>> + Send>>;
+pub type FormDataFuture<T: FormData> =
+	Pin<Box<dyn Future<Output = Result<T, T::Err>> + Send>>;
 
 /**
 This is the trait implemented by `#[derive(FormData)]`. It provides a method to parse the struct

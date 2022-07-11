@@ -2,9 +2,10 @@ use crate::util::*;
 use proc_macro2::{Span, TokenStream};
 use std::iter;
 use syn::{
-	AngleBracketedGenericArguments, BoundLifetimes, Data, DeriveInput, Error, Fields, GenericArgument, Lifetime,
-	LifetimeDef, PathArguments, PredicateType, Result, TraitBound, TraitBoundModifier, Type, TypeParamBound, TypePath,
-	WhereClause, WherePredicate
+	AngleBracketedGenericArguments, BoundLifetimes, Data, DeriveInput, Error, Fields,
+	GenericArgument, Lifetime, LifetimeDef, PathArguments, PredicateType, Result,
+	TraitBound, TraitBoundModifier, Type, TypeParamBound, TypePath, WhereClause,
+	WherePredicate
 };
 
 mod builder;
@@ -33,7 +34,11 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 	};
 
 	let fields = match strukt.fields {
-		Fields::Named(named) => named.named.into_iter().map(Field::new).collect_to_result()?,
+		Fields::Named(named) => named
+			.named
+			.into_iter()
+			.map(Field::new)
+			.collect_to_result()?,
 		Fields::Unnamed(_) => {
 			return Err(Error::new(
 				Span::call_site(),
@@ -45,10 +50,14 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 
 	for f in &fields {
 		// T: Send
-		where_clause.predicates.push(where_predicate_t_send(f.ty.clone()));
+		where_clause
+			.predicates
+			.push(where_predicate_t_send(f.ty.clone()));
 
 		// for<'a> Value<'a>: Parse<T>
-		where_clause.predicates.push(where_predicate_value_parse_t(f.ty.clone()));
+		where_clause
+			.predicates
+			.push(where_predicate_value_parse_t(f.ty.clone()));
 	}
 
 	let builder = FormDataBuilder {
@@ -136,12 +145,13 @@ fn where_predicate_value_parse_t(t: Type) -> WherePredicate {
 		}),
 		bounded_ty: {
 			let mut path = path!(::gotham_formdata::private::Value);
-			path.segments.last_mut().unwrap().arguments = PathArguments::AngleBracketed(AngleBracketedGenericArguments {
-				colon2_token: None,
-				lt_token: Default::default(),
-				args: iter::once(GenericArgument::Lifetime(lt)).collect(),
-				gt_token: Default::default()
-			});
+			path.segments.last_mut().unwrap().arguments =
+				PathArguments::AngleBracketed(AngleBracketedGenericArguments {
+					colon2_token: None,
+					lt_token: Default::default(),
+					args: iter::once(GenericArgument::Lifetime(lt)).collect(),
+					gt_token: Default::default()
+				});
 			Type::Path(TypePath { qself: None, path })
 		},
 		colon_token: Default::default(),

@@ -8,10 +8,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: dtolnay/rust-toolchain@1.53.0
       
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: |
             ~/.cargo
@@ -26,10 +26,10 @@ jobs:
   test-no-features:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: dtolnay/rust-toolchain@1.53.0
       
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: |
             ~/.cargo
@@ -44,17 +44,17 @@ jobs:
   trybuild:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: dtolnay/rust-toolchain@master
         with:
-          toolchain: "1.58"
+          toolchain: "1.62"
       
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: |
             ~/.cargo
             target
-          key: ${{ runner.os }}-cargo-1.58
+          key: ${{ runner.os }}-cargo-1.62
       
       - run: cargo test -- trybuild_ui
         env:
@@ -64,7 +64,7 @@ jobs:
   coverage:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: dtolnay/rust-toolchain@stable
       
       - name: Get Rust Version
@@ -75,7 +75,7 @@ jobs:
         id: tarpaulin-version
         run: echo "::set-output name=VERSION::$(wget -qO- 'https://api.github.com/repos/xd009642/tarpaulin/releases/latest' | jq -r '.tag_name')"
       
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: |
             ~/.cargo
@@ -104,7 +104,7 @@ jobs:
           RUST_BACKTRACE: 1
           RUST_LOG: info
       
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: tarpaulin-report
           path: |
@@ -114,10 +114,10 @@ jobs:
   doc:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: dtolnay/rust-toolchain@stable
       
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: |
             ~/.cargo
@@ -127,7 +127,7 @@ jobs:
       - run: cargo doc --workspace --all-features
       
       - run: tar cfJ rustdoc.tar.xz target/doc/
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: rustdoc
           path: rustdoc.tar.xz
@@ -135,7 +135,7 @@ jobs:
   rustfmt:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: dtolnay/rust-toolchain@nightly
         with:
           components: rustfmt
@@ -145,7 +145,7 @@ jobs:
   readme:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: dtolnay/rust-toolchain@stable
       - run: cargo install cargo-readme
       - run: cargo readme >README.md.new
@@ -156,15 +156,15 @@ jobs:
     needs: [coverage, doc]
     if: github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: gh-pages
       
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: rustdoc
       
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: tarpaulin-report
       

@@ -4,4 +4,5 @@ error[E0277]: the trait bound `MyFormData: Validate` is not satisfied
 5 | #[derive(FormData)]
   |          ^^^^^^^^ the trait `Validate` is not implemented for `MyFormData`
   |
+  = help: the trait `Validate` is implemented for `&T`
   = note: this error originates in the derive macro `FormData` (in Nightly builds, run with -Z macro-backtrace for more info)

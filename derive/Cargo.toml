@@ -2,7 +2,7 @@
 
 [package]
 name = "gotham_formdata_derive"
-version = "0.0.4"
+version = "0.0.5"
 authors = ["Dominic Meiser <git@msrd0.de>"]
 edition = "2018"
 description = "Implementation detail of gotham_formdata"
@@ -12,10 +12,6 @@ include = ["src/**", "Cargo.toml", "LICENSE"]
 
 [lib]
 proc-macro = true
-
-[features]
-# This crate is only meant to be imported (and re-exported) by gotham_formdata, so default features make no sense.
-regex = []
 
 [dependencies]
 proc-macro2 = "1.0"

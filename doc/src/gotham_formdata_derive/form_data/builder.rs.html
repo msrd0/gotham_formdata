@@ -101,6 +101,7 @@
 <span id="96">96</span>
 <span id="97">97</span>
 <span id="98">98</span>
+<span id="99">99</span>
 </pre><pre class="rust"><code><span class="kw">use</span> <span class="ident"><span class="kw">super</span>::Field</span>;
 <span class="kw">use</span> <span class="ident">proc_macro2</span>::{<span class="ident">Ident</span>, <span class="ident">TokenStream</span>};
 <span class="kw">use</span> <span class="ident">syn</span>::{<span class="ident">ImplGenerics</span>, <span class="ident">TypeGenerics</span>, <span class="ident">WhereClause</span>};
@@ -192,7 +193,8 @@
 
 				<span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) -&gt; <span class="ident">::core::result::Result</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Data</span>, <span class="ident">::gotham_formdata::Error</span><span class="op">&gt;</span> {
 					<span class="ident">::core::result::Result::Ok</span>(<span class="ident"><span class="self">Self</span>::Data</span> {
-						#( #<span class="ident">field_names</span>: <span class="self">self</span>.#<span class="ident">field_names</span>.<span class="ident">ok_or</span>(<span class="ident">::gotham_formdata::Error::MissingField</span>(<span class="macro">stringify!</span>(#<span class="ident">field_names</span>).<span class="ident">to_owned</span>()))<span class="question-mark">?</span> ),<span class="op">*</span>
+						#( #<span class="ident">field_names</span>: <span class="self">self</span>.#<span class="ident">field_names</span>
+							.<span class="ident">ok_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">::gotham_formdata::Error::MissingField</span>(<span class="macro">stringify!</span>(#<span class="ident">field_names</span>).<span class="ident">to_owned</span>()))<span class="question-mark">?</span> ),<span class="op">*</span>
 					})
 				}
 			}

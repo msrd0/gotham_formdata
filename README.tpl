@@ -12,17 +12,17 @@
 <!-- badges -->
 <div align="center">
 	<a href="https://crates.io/crates/gotham_formdata">
-        <img alt="crates.io" src="https://img.shields.io/crates/v/gotham_formdata.svg"/>
-    </a>
+		<img alt="crates.io" src="https://img.shields.io/crates/v/gotham_formdata.svg"/>
+	</a>
 	<a href="https://docs.rs/crate/gotham_formdata">
-        <img alt="docs.rs" src="https://docs.rs/gotham_formdata/badge.svg"/>
-    </a>
+		<img alt="docs.rs" src="https://docs.rs/gotham_formdata/badge.svg"/>
+	</a>
 	<a href="https://msrd0.github.io/gotham_formdata/doc/gotham_formdata/index.html">
 		<img alt="docs for main" src="https://img.shields.io/badge/docs-main-blue.svg"/>
 	</a>
-    <a href="https://blog.rust-lang.org/2021/06/17/Rust-1.53.0.html">
-        <img alt="Rust 1.53+" src="https://img.shields.io/badge/rustc-1.53+-orange.svg"/>
-    </a>
+	<a href="https://blog.rust-lang.org/2021/12/02/Rust-1.57.0.html">
+		<img alt="Rust 1.57+" src="https://img.shields.io/badge/rustc-1.57+-orange.svg"/>
+	</a>
 	<a href="https://www.apache.org/licenses/LICENSE-2.0">
 		<img alt="License Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue.svg"/>
 	</a>

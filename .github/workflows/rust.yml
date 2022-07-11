@@ -9,14 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: dtolnay/rust-toolchain@1.53.0
+      - uses: dtolnay/rust-toolchain@1.57.0
       
       - uses: actions/cache@v3
         with:
           path: |
             ~/.cargo
             target
-          key: ${{ runner.os }}-cargo-1.53
+          key: ${{ runner.os }}-cargo-1.57
       
       - run: cargo test -- --skip trybuild_ui
         env:
@@ -27,14 +27,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: dtolnay/rust-toolchain@1.53.0
+      - uses: dtolnay/rust-toolchain@1.57.0
       
       - uses: actions/cache@v3
         with:
           path: |
             ~/.cargo
             target
-          key: ${{ runner.os }}-cargo-1.53
+          key: ${{ runner.os }}-cargo-1.57
       
       - run: cargo test --no-default-features --lib --tests -- --skip trybuild_ui
         env:

@@ -77,9 +77,9 @@
 	<span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">field</span>: <span class="ident">syn::Field</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
 		<span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="ident">field</span>.<span class="ident">span</span>();
 
-		<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">field</span>
-			.<span class="ident">ident</span>
-			.<span class="ident">ok_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">Error::new</span>(<span class="ident">span</span>, <span class="string">&quot;Fields without an ident are not supported&quot;</span>))<span class="question-mark">?</span>;
+		<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">field</span>.<span class="ident">ident</span>.<span class="ident">ok_or_else</span>(<span class="op">|</span><span class="op">|</span> {
+			<span class="ident">Error::new</span>(<span class="ident">span</span>, <span class="string">&quot;Fields without an ident are not supported&quot;</span>)
+		})<span class="question-mark">?</span>;
 		<span class="ident">ident</span>.<span class="ident">set_span</span>(<span class="ident">Span::call_site</span>());
 
 		<span class="prelude-val">Ok</span>(<span class="self">Self</span> { <span class="ident">ident</span>, <span class="ident">ty</span>: <span class="ident">field</span>.<span class="ident">ty</span> })

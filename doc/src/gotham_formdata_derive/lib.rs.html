@@ -40,6 +40,8 @@
 <span id="35">35</span>
 <span id="36">36</span>
 <span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
 </pre><pre class="rust"><code><span class="doccomment">//! This crate implements derive macros for the `gotham_formdata` crate.</span>
 <span class="attribute">#![<span class="ident">warn</span>(<span class="ident">missing_docs</span>, <span class="ident">rust_2018_idioms</span>)]</span>
 <span class="attribute">#![<span class="ident">deny</span>(<span class="ident">unreachable_pub</span>)]</span>
@@ -68,7 +70,9 @@
 <span class="kw">where</span>
 	<span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="ident">DeriveInput</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">TokenStream2</span><span class="op">&gt;</span>
 {
-	<span class="ident">print_tokens</span>(<span class="ident">expand</span>(<span class="macro">parse_macro_input!</span>(<span class="ident">input</span>)).<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="ident">err</span><span class="op">|</span> <span class="ident">err</span>.<span class="ident">to_compile_error</span>()))
+	<span class="ident">print_tokens</span>(
+		<span class="ident">expand</span>(<span class="macro">parse_macro_input!</span>(<span class="ident">input</span>)).<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="ident">err</span><span class="op">|</span> <span class="ident">err</span>.<span class="ident">to_compile_error</span>())
+	)
 }
 
 <span class="doccomment">/// This derive macro implements `FormData` for the struct it is invoked on. Enums, unions and</span>

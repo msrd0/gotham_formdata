@@ -33,7 +33,7 @@ impl Field {
 
 		let mut ident = field
 			.ident
-			.ok_or(Error::new(span, "Fields without an ident are not supported"))?;
+			.ok_or_else(|| Error::new(span, "Fields without an ident are not supported"))?;
 		ident.set_span(Span::call_site());
 
 		Ok(Self { ident, ty: field.ty })

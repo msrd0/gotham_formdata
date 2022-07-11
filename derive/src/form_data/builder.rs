@@ -89,7 +89,8 @@ impl<'a> FormDataBuilder<'a> {
 
 				fn build(self) -> ::core::result::Result<Self::Data, ::gotham_formdata::Error> {
 					::core::result::Result::Ok(Self::Data {
-						#( #field_names: self.#field_names.ok_or(::gotham_formdata::Error::MissingField(stringify!(#field_names).to_owned()))? ),*
+						#( #field_names: self.#field_names
+							.ok_or_else(|| ::gotham_formdata::Error::MissingField(stringify!(#field_names).to_owned()))? ),*
 					})
 				}
 			}

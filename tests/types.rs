@@ -1,3 +1,5 @@
+#![allow(clippy::blacklisted_name)]
+
 use futures_executor::block_on;
 use gotham::{
 	hyper::{
@@ -122,7 +124,9 @@ fn test_generic() {
 			}
 			fn build(self) -> ::core::result::Result<Self::Data, ::gotham_formdata::Error> {
 				::core::result::Result::Ok(Self::Data {
-					foo: self.foo.ok_or(::gotham_formdata::Error::MissingField("foo".to_owned()))?
+					foo: self
+						.foo
+						.ok_or_else(|| ::gotham_formdata::Error::MissingField("foo".to_owned()))?
 				})
 			}
 		}

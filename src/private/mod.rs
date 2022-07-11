@@ -117,7 +117,7 @@ where
 					while let Some(data) = stream.next().await {
 						buf.extend_from_slice(&data.map_err(|e| deserializer::Error(e.to_string()))?);
 					}
-					Deserializer::Bytes(buf.into())
+					Deserializer::Bytes(buf)
 				},
 				BytesOrString::String(s) => Deserializer::Text(s)
 			};

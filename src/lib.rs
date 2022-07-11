@@ -1,3 +1,8 @@
+#![allow(clippy::tabs_in_doc_comments)]
+#![warn(missing_debug_implementations, missing_docs, rust_2018_idioms)]
+#![deny(unreachable_pub)]
+#![forbid(elided_lifetimes_in_paths, unsafe_code)]
+
 /*!
 This crate is an extension to the popular [gotham web framework][gotham] for Rust. It aims to
 reduce boilerplate necessary to read request bodies today as a stop-gap until gotham finally
@@ -69,10 +74,6 @@ limitations under the License.
  [gotham]: https://github.com/gotham-rs/gotham
  [multipart]: https://crates.io/crates/multipart
 */
-
-#![warn(missing_docs, rust_2018_idioms)]
-#![deny(missing_debug_implementations, unreachable_pub)]
-#![forbid(unsafe_code)]
 
 #[doc(inline)]
 pub use gotham_formdata_derive::*;

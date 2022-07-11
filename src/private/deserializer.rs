@@ -53,18 +53,18 @@ impl<'short, 'long: 'short, T: ?Sized + ToOwned> Deref for Borrowed<'short, 'lon
 impl<'de> Deserializer<'de> {
 	fn text(&self) -> Borrowed<'_, 'de, str> {
 		match &self {
-			Self::Bytes(b) => match String::from_utf8_lossy(&b) {
+			Self::Bytes(b) => match String::from_utf8_lossy(b) {
 				Cow::Borrowed(s) => Borrowed::Short(s),
 				Cow::Owned(s) => Borrowed::Owned(s)
 			},
 			Self::Text(Cow::Borrowed(s)) => Borrowed::Long(s),
-			Self::Text(Cow::Owned(s)) => Borrowed::Short(&s)
+			Self::Text(Cow::Owned(s)) => Borrowed::Short(s)
 		}
 	}
 
 	fn bytes(&self) -> Borrowed<'_, 'de, [u8]> {
 		match self {
-			Self::Bytes(b) => Borrowed::Short(&b),
+			Self::Bytes(b) => Borrowed::Short(b),
 			Self::Text(Cow::Borrowed(s)) => Borrowed::Long(s.as_bytes()),
 			Self::Text(Cow::Owned(s)) => Borrowed::Short(s.as_bytes())
 		}
@@ -127,9 +127,9 @@ impl<'a, 'de> de::Deserializer<'de> for &'a mut Deserializer<'de> {
 	impl_deserializer! {
 		const deserialize_any = |this, visitor| {
 			match this {
-				Deserializer::Bytes(b) => visitor.visit_bytes(&b),
+				Deserializer::Bytes(b) => visitor.visit_bytes(b),
 				Deserializer::Text(Cow::Borrowed(s)) => visitor.visit_borrowed_str(s),
-				Deserializer::Text(Cow::Owned(s)) => visitor.visit_str(&s)
+				Deserializer::Text(Cow::Owned(s)) => visitor.visit_str(s)
 			}
 		};
 
@@ -157,8 +157,8 @@ impl<'a, 'de> de::Deserializer<'de> for &'a mut Deserializer<'de> {
 
 		const deserialize_seq = |this, visitor| {
 			match this {
-				Deserializer::Bytes(b) => visitor.visit_seq(Seq::Bytes(&b)),
-				Deserializer::Text(s) => visitor.visit_seq(Seq::Text(&s))
+				Deserializer::Bytes(b) => visitor.visit_seq(Seq::Bytes(b)),
+				Deserializer::Text(s) => visitor.visit_seq(Seq::Text(s))
 			}
 		};
 

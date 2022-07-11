@@ -1,7 +1,7 @@
 //! This crate implements derive macros for the `gotham_formdata` crate.
 #![warn(missing_docs, rust_2018_idioms)]
 #![deny(unreachable_pub)]
-#![forbid(unsafe_code)]
+#![forbid(elided_lifetimes_in_paths, unsafe_code)]
 
 #[macro_use]
 extern crate quote;

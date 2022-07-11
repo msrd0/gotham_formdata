@@ -33,7 +33,7 @@ pub(super) fn expand(input: DeriveInput) -> Result<TokenStream> {
 	};
 
 	let fields = match strukt.fields {
-		Fields::Named(named) => named.named.into_iter().map(|field| Field::new(field)).collect_to_result()?,
+		Fields::Named(named) => named.named.into_iter().map(Field::new).collect_to_result()?,
 		Fields::Unnamed(_) => {
 			return Err(Error::new(
 				Span::call_site(),

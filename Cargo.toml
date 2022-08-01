@@ -29,7 +29,7 @@ multer = "2.0"
 paste = "1.0"
 serde = "1.0"
 thiserror = "1.0"
-validator = "0.15"
+validator = "0.16"
 
 [dev-dependencies]
 futures-executor = "0.3.15"
@@ -37,4 +37,4 @@ gotham = { version = "0.7", features = ["testing"], default-features = false }
 percent-encoding = "2.1"
 pretty_env_logger = "0.4"
 trybuild = "=1.0.63"
-validator = { version = "0.15", features = ["derive"] }
+validator = { version = "0.16", features = ["derive"] }

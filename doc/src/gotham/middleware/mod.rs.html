@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/middleware/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/middleware/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -370,377 +370,377 @@
 <span id="370">370</span>
 <span id="371">371</span>
 <span id="372">372</span>
-</pre><pre class="rust"><code><span class="doccomment">//! Defines types for `Middleware`, a reusable unit of logic that can apply to a group of requests</span>
-<span class="doccomment">//! by being added to the `Pipeline` in a `Router`.</span>
+</pre><pre class="rust"><code><span class="doccomment">//! Defines types for `Middleware`, a reusable unit of logic that can apply to a group of requests
+//! by being added to the `Pipeline` in a `Router`.
 
-<span class="kw">use</span> <span class="ident">std::panic::RefUnwindSafe</span>;
-<span class="kw">use</span> <span class="ident">std::pin::Pin</span>;
+</span><span class="kw">use </span>std::panic::RefUnwindSafe;
+<span class="kw">use </span>std::pin::Pin;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::handler::HandlerFuture</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state::State</span>;
+<span class="kw">use </span><span class="kw">crate</span>::handler::HandlerFuture;
+<span class="kw">use </span><span class="kw">crate</span>::state::State;
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">chain</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">cookie</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">logger</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">security</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;session&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">session</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">state</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">timer</span>;
+<span class="kw">pub mod </span>chain;
+<span class="kw">pub mod </span>cookie;
+<span class="kw">pub mod </span>logger;
+<span class="kw">pub mod </span>security;
+<span class="attribute">#[cfg(feature = <span class="string">&quot;session&quot;</span>)]
+</span><span class="kw">pub mod </span>session;
+<span class="kw">pub mod </span>state;
+<span class="kw">pub mod </span>timer;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gotham_derive::NewMiddleware</span>;
+<span class="attribute">#[cfg(feature = <span class="string">&quot;derive&quot;</span>)]
+</span><span class="kw">pub use </span>gotham_derive::NewMiddleware;
 
-<span class="doccomment">/// `Middleware` has the opportunity to provide additional behaviour to the `Request` / `Response`</span>
-<span class="doccomment">/// interaction. For example:</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// * The request can be halted due to some unmet precondition;</span>
-<span class="doccomment">/// * Processing the request can be delayed until some other action has completed;</span>
-<span class="doccomment">/// * Middleware-specific state data can be recorded in the `State` struct for use elsewhere;</span>
-<span class="doccomment">/// * The returned future can be manipulated via continuations to provide additional behaviour</span>
-<span class="doccomment">///   after the request completes.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Taking no action, and immediately passing the `Request` through to the rest of the application:</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # #[macro_use]</span>
-<span class="doccomment">/// # extern crate gotham_derive;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # use std::pin::Pin;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
-<span class="doccomment">/// # use gotham::handler::HandlerFuture;</span>
-<span class="doccomment">/// # use gotham::middleware::Middleware;</span>
-<span class="doccomment">/// # use gotham::pipeline::*;</span>
-<span class="doccomment">/// # use gotham::router::builder::*;</span>
-<span class="doccomment">/// # use gotham::state::State;</span>
-<span class="doccomment">/// # use gotham::test::TestServer;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #[derive(NewMiddleware, Copy, Clone)]</span>
-<span class="doccomment">/// struct NoopMiddleware;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// impl Middleware for NoopMiddleware {</span>
-<span class="doccomment">///     fn call&lt;Chain&gt;(self, state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;</span>
-<span class="doccomment">///         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static</span>
-<span class="doccomment">///     {</span>
-<span class="doccomment">///         chain(state)</span>
-<span class="doccomment">///     }</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # fn main() {</span>
-<span class="doccomment">/// #   let (chain, pipelines) = single_pipeline(</span>
-<span class="doccomment">/// #       new_pipeline()</span>
-<span class="doccomment">/// #           .add(NoopMiddleware)</span>
-<span class="doccomment">/// #           .build()</span>
-<span class="doccomment">/// #   );</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #   let router = build_router(chain, pipelines, |route| {</span>
-<span class="doccomment">/// #       route</span>
-<span class="doccomment">/// #           .get(&quot;/&quot;)</span>
-<span class="doccomment">/// #           .to_new_handler(|| {</span>
-<span class="doccomment">/// #               Ok(|state| (state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap()))</span>
-<span class="doccomment">/// #           });</span>
-<span class="doccomment">/// #   });</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #   let test_server = TestServer::new(router).unwrap();</span>
-<span class="doccomment">/// #   let response = test_server.client().get(&quot;https://example.com/&quot;).perform().unwrap();</span>
-<span class="doccomment">/// #   assert_eq!(response.status(), StatusCode::ACCEPTED);</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Recording a piece of state data before passing the request through:</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # #[macro_use]</span>
-<span class="doccomment">/// # extern crate gotham_derive;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # use std::pin::Pin;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # use hyper::{Response, StatusCode};</span>
-<span class="doccomment">/// # use gotham::handler::HandlerFuture;</span>
-<span class="doccomment">/// # use gotham::middleware::Middleware;</span>
-<span class="doccomment">/// # use gotham::pipeline::*;</span>
-<span class="doccomment">/// # use gotham::router::builder::*;</span>
-<span class="doccomment">/// # use gotham::state::State;</span>
-<span class="doccomment">/// # use gotham::test::TestServer;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #[derive(NewMiddleware, Copy, Clone)]</span>
-<span class="doccomment">/// struct MiddlewareWithStateData;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// #[derive(StateData)]</span>
-<span class="doccomment">/// struct MiddlewareStateData {</span>
-<span class="doccomment">///     i: i32,</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// impl Middleware for MiddlewareWithStateData {</span>
-<span class="doccomment">///     fn call&lt;Chain&gt;(self, mut state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;</span>
-<span class="doccomment">///         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static</span>
-<span class="doccomment">///     {</span>
-<span class="doccomment">///         state.put(MiddlewareStateData { i: 10 });</span>
-<span class="doccomment">///         chain(state)</span>
-<span class="doccomment">///     }</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # fn main() {</span>
-<span class="doccomment">/// #   let (chain, pipelines) = single_pipeline(</span>
-<span class="doccomment">/// #       new_pipeline()</span>
-<span class="doccomment">/// #           .add(MiddlewareWithStateData)</span>
-<span class="doccomment">/// #           .build()</span>
-<span class="doccomment">/// #   );</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #   let router = build_router(chain, pipelines, |route| {</span>
-<span class="doccomment">/// #       route</span>
-<span class="doccomment">/// #           .get(&quot;/&quot;)</span>
-<span class="doccomment">/// #           .to_new_handler(|| {</span>
-<span class="doccomment">/// #               Ok(|mut state: State| {</span>
-<span class="doccomment">/// #                   let data = state.take::&lt;MiddlewareStateData&gt;();</span>
-<span class="doccomment">/// #                   let body = format!(&quot;{}&quot;, data.i).into_bytes();</span>
-<span class="doccomment">/// #                   (state, Response::builder().status(StatusCode::OK).body(body.into()).unwrap())</span>
-<span class="doccomment">/// #               })</span>
-<span class="doccomment">/// #           });</span>
-<span class="doccomment">/// #   });</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #   let test_server = TestServer::new(router).unwrap();</span>
-<span class="doccomment">/// #   let response = test_server.client().get(&quot;https://example.com/&quot;).perform().unwrap();</span>
-<span class="doccomment">/// #   assert_eq!(response.status(), StatusCode::OK);</span>
-<span class="doccomment">/// #   let body = response.read_utf8_body().unwrap();</span>
-<span class="doccomment">/// #   assert_eq!(&amp;body, &quot;10&quot;);</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Decorating the response after the request has completed:</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # #[macro_use]</span>
-<span class="doccomment">/// # extern crate gotham_derive;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # use std::pin::Pin;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # use futures_util::{FutureExt, TryFutureExt};</span>
-<span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
-<span class="doccomment">/// # use hyper::header::WARNING;</span>
-<span class="doccomment">/// # use gotham::handler::HandlerFuture;</span>
-<span class="doccomment">/// # use gotham::middleware::Middleware;</span>
-<span class="doccomment">/// # use gotham::pipeline::*;</span>
-<span class="doccomment">/// # use gotham::router::builder::*;</span>
-<span class="doccomment">/// # use gotham::state::State;</span>
-<span class="doccomment">/// # use gotham::test::TestServer;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #[derive(NewMiddleware, Copy, Clone)]</span>
-<span class="doccomment">/// struct MiddlewareAddingResponseHeader;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// impl Middleware for MiddlewareAddingResponseHeader {</span>
-<span class="doccomment">///     fn call&lt;Chain&gt;(self, state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;</span>
-<span class="doccomment">///         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static</span>
-<span class="doccomment">///     {</span>
-<span class="doccomment">///         chain(state)</span>
-<span class="doccomment">///             .map_ok(|(state, mut response)| {</span>
-<span class="doccomment">///                 response.headers_mut().insert(WARNING, &quot;299 example.com Deprecated&quot;.parse().unwrap());</span>
-<span class="doccomment">///                 (state, response)</span>
-<span class="doccomment">///             })</span>
-<span class="doccomment">///             .boxed()</span>
-<span class="doccomment">///     }</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # fn main() {</span>
-<span class="doccomment">/// #   let (chain, pipelines) = single_pipeline(</span>
-<span class="doccomment">/// #       new_pipeline()</span>
-<span class="doccomment">/// #           .add(MiddlewareAddingResponseHeader)</span>
-<span class="doccomment">/// #           .build()</span>
-<span class="doccomment">/// #   );</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #   let router = build_router(chain, pipelines, |route| {</span>
-<span class="doccomment">/// #       route</span>
-<span class="doccomment">/// #           .get(&quot;/&quot;)</span>
-<span class="doccomment">/// #           .to_new_handler(|| {</span>
-<span class="doccomment">/// #               Ok(|state| (state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap()))</span>
-<span class="doccomment">/// #           });</span>
-<span class="doccomment">/// #   });</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #   let test_server = TestServer::new(router).unwrap();</span>
-<span class="doccomment">/// #   let response = test_server.client().get(&quot;https://example.com/&quot;).perform().unwrap();</span>
-<span class="doccomment">/// #   assert_eq!(response.status(), StatusCode::ACCEPTED);</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #   {</span>
-<span class="doccomment">/// #       let warning = response.headers().get(WARNING).unwrap();</span>
-<span class="doccomment">/// #       assert_eq!(warning, &quot;299 example.com Deprecated&quot;);</span>
-<span class="doccomment">/// #   }</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Terminating the request early based on some arbitrary condition:</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # #[macro_use]</span>
-<span class="doccomment">/// # extern crate gotham_derive;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # use std::pin::Pin;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # use hyper::{Body, Response, Method, StatusCode};</span>
-<span class="doccomment">/// # use futures_util::future::{self, FutureExt};</span>
-<span class="doccomment">/// # use gotham::helpers::http::response::create_empty_response;</span>
-<span class="doccomment">/// # use gotham::handler::HandlerFuture;</span>
-<span class="doccomment">/// # use gotham::middleware::Middleware;</span>
-<span class="doccomment">/// # use gotham::pipeline::*;</span>
-<span class="doccomment">/// # use gotham::router::builder::*;</span>
-<span class="doccomment">/// # use gotham::state::{State, FromState};</span>
-<span class="doccomment">/// # use gotham::test::TestServer;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #[derive(NewMiddleware, Copy, Clone)]</span>
-<span class="doccomment">/// struct ConditionalMiddleware;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// impl Middleware for ConditionalMiddleware {</span>
-<span class="doccomment">///     fn call&lt;Chain&gt;(self, state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;</span>
-<span class="doccomment">///         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static</span>
-<span class="doccomment">///     {</span>
-<span class="doccomment">///         if *Method::borrow_from(&amp;state) == Method::GET {</span>
-<span class="doccomment">///             chain(state)</span>
-<span class="doccomment">///         } else {</span>
-<span class="doccomment">///             let response = create_empty_response(&amp;state, StatusCode::METHOD_NOT_ALLOWED);</span>
-<span class="doccomment">///             future::ok((state, response)).boxed()</span>
-<span class="doccomment">///         }</span>
-<span class="doccomment">///     }</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # fn main() {</span>
-<span class="doccomment">/// #   let (chain, pipelines) = single_pipeline(</span>
-<span class="doccomment">/// #       new_pipeline()</span>
-<span class="doccomment">/// #           .add(ConditionalMiddleware)</span>
-<span class="doccomment">/// #           .build()</span>
-<span class="doccomment">/// #   );</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #   let router = build_router(chain, pipelines, |route| {</span>
-<span class="doccomment">/// #       route</span>
-<span class="doccomment">/// #           .get_or_head(&quot;/&quot;)</span>
-<span class="doccomment">/// #           .to_new_handler(|| {</span>
-<span class="doccomment">/// #               Ok(|state| (state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap()))</span>
-<span class="doccomment">/// #           });</span>
-<span class="doccomment">/// #   });</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #   let test_server = TestServer::new(router).unwrap();</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #   let response = test_server.client().get(&quot;https://example.com/&quot;).perform().unwrap();</span>
-<span class="doccomment">/// #   assert_eq!(response.status(), StatusCode::ACCEPTED);</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #   let response = test_server.client().head(&quot;https://example.com/&quot;).perform().unwrap();</span>
-<span class="doccomment">/// #   assert_eq!(response.status(), StatusCode::METHOD_NOT_ALLOWED);</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Asynchronous middleware, which continues the request after some action completes:</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # #[macro_use]</span>
-<span class="doccomment">/// # extern crate gotham_derive;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # use std::pin::Pin;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # use futures_util::future::{self, FutureExt, TryFutureExt};</span>
-<span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
-<span class="doccomment">/// # use gotham::handler::HandlerFuture;</span>
-<span class="doccomment">/// # use gotham::middleware::Middleware;</span>
-<span class="doccomment">/// # use gotham::pipeline::*;</span>
-<span class="doccomment">/// # use gotham::router::builder::*;</span>
-<span class="doccomment">/// # use gotham::state::State;</span>
-<span class="doccomment">/// # use gotham::test::TestServer;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #[derive(NewMiddleware, Copy, Clone)]</span>
-<span class="doccomment">/// struct AsyncMiddleware;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// impl Middleware for AsyncMiddleware {</span>
-<span class="doccomment">///     fn call&lt;Chain&gt;(self, state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;</span>
-<span class="doccomment">///         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static</span>
-<span class="doccomment">///     {</span>
-<span class="doccomment">///         // This could be any asynchronous action. `future::lazy(_)` defers a function</span>
-<span class="doccomment">///         // until the next cycle of tokio&#39;s event loop.</span>
-<span class="doccomment">///         let f = future::lazy(|_| Ok(()));</span>
-<span class="doccomment">///         f.and_then(move |_| chain(state)).boxed()</span>
-<span class="doccomment">///     }</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # fn main() {</span>
-<span class="doccomment">/// #   let (chain, pipelines) = single_pipeline(</span>
-<span class="doccomment">/// #       new_pipeline()</span>
-<span class="doccomment">/// #           .add(AsyncMiddleware)</span>
-<span class="doccomment">/// #           .build()</span>
-<span class="doccomment">/// #   );</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #   let router = build_router(chain, pipelines, |route| {</span>
-<span class="doccomment">/// #       route</span>
-<span class="doccomment">/// #           .get(&quot;/&quot;)</span>
-<span class="doccomment">/// #           .to_new_handler(|| {</span>
-<span class="doccomment">/// #               Ok(|state| (state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap()))</span>
-<span class="doccomment">/// #           });</span>
-<span class="doccomment">/// #   });</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #   let test_server = TestServer::new(router).unwrap();</span>
-<span class="doccomment">/// #   let response = test_server.client().get(&quot;https://example.com/&quot;).perform().unwrap();</span>
-<span class="doccomment">/// #   assert_eq!(response.status(), StatusCode::ACCEPTED);</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// ```</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Middleware</span> {
-    <span class="doccomment">/// Entry point to the middleware. To pass the request on to the application, the middleware</span>
-    <span class="doccomment">/// invokes the `chain` function with the provided `state`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// By convention, the middleware should:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// * Not modify any request components added to `State` by Gotham.</span>
-    <span class="doccomment">/// * Avoid modifying parts of the `State` that don&#39;t strictly need to be modified to perform</span>
-    <span class="doccomment">///   its function.</span>
-    <span class="kw">fn</span> <span class="ident">call</span><span class="op">&lt;</span><span class="ident">Chain</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">state</span>: <span class="ident">State</span>, <span class="ident">chain</span>: <span class="ident">Chain</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">Chain</span>: <span class="ident">FnOnce</span>(<span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-        <span class="self">Self</span>: <span class="ident">Sized</span>;
+<span class="doccomment">/// `Middleware` has the opportunity to provide additional behaviour to the `Request` / `Response`
+/// interaction. For example:
+///
+/// * The request can be halted due to some unmet precondition;
+/// * Processing the request can be delayed until some other action has completed;
+/// * Middleware-specific state data can be recorded in the `State` struct for use elsewhere;
+/// * The returned future can be manipulated via continuations to provide additional behaviour
+///   after the request completes.
+///
+/// # Examples
+///
+/// Taking no action, and immediately passing the `Request` through to the rest of the application:
+///
+/// ```rust
+/// # #[macro_use]
+/// # extern crate gotham_derive;
+/// #
+/// # use std::pin::Pin;
+/// #
+/// # use hyper::{Body, Response, StatusCode};
+/// # use gotham::handler::HandlerFuture;
+/// # use gotham::middleware::Middleware;
+/// # use gotham::pipeline::*;
+/// # use gotham::router::builder::*;
+/// # use gotham::state::State;
+/// # use gotham::test::TestServer;
+/// #
+/// #[derive(NewMiddleware, Copy, Clone)]
+/// struct NoopMiddleware;
+///
+/// impl Middleware for NoopMiddleware {
+///     fn call&lt;Chain&gt;(self, state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+///         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static
+///     {
+///         chain(state)
+///     }
+/// }
+/// #
+/// # fn main() {
+/// #   let (chain, pipelines) = single_pipeline(
+/// #       new_pipeline()
+/// #           .add(NoopMiddleware)
+/// #           .build()
+/// #   );
+/// #
+/// #   let router = build_router(chain, pipelines, |route| {
+/// #       route
+/// #           .get(&quot;/&quot;)
+/// #           .to_new_handler(|| {
+/// #               Ok(|state| (state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap()))
+/// #           });
+/// #   });
+/// #
+/// #   let test_server = TestServer::new(router).unwrap();
+/// #   let response = test_server.client().get(&quot;https://example.com/&quot;).perform().unwrap();
+/// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
+/// # }
+/// ```
+///
+/// Recording a piece of state data before passing the request through:
+///
+/// ```rust
+/// # #[macro_use]
+/// # extern crate gotham_derive;
+/// #
+/// # use std::pin::Pin;
+/// #
+/// # use hyper::{Response, StatusCode};
+/// # use gotham::handler::HandlerFuture;
+/// # use gotham::middleware::Middleware;
+/// # use gotham::pipeline::*;
+/// # use gotham::router::builder::*;
+/// # use gotham::state::State;
+/// # use gotham::test::TestServer;
+/// #
+/// #[derive(NewMiddleware, Copy, Clone)]
+/// struct MiddlewareWithStateData;
+///
+/// #[derive(StateData)]
+/// struct MiddlewareStateData {
+///     i: i32,
+/// }
+///
+/// impl Middleware for MiddlewareWithStateData {
+///     fn call&lt;Chain&gt;(self, mut state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+///         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static
+///     {
+///         state.put(MiddlewareStateData { i: 10 });
+///         chain(state)
+///     }
+/// }
+/// #
+/// # fn main() {
+/// #   let (chain, pipelines) = single_pipeline(
+/// #       new_pipeline()
+/// #           .add(MiddlewareWithStateData)
+/// #           .build()
+/// #   );
+/// #
+/// #   let router = build_router(chain, pipelines, |route| {
+/// #       route
+/// #           .get(&quot;/&quot;)
+/// #           .to_new_handler(|| {
+/// #               Ok(|mut state: State| {
+/// #                   let data = state.take::&lt;MiddlewareStateData&gt;();
+/// #                   let body = format!(&quot;{}&quot;, data.i).into_bytes();
+/// #                   (state, Response::builder().status(StatusCode::OK).body(body.into()).unwrap())
+/// #               })
+/// #           });
+/// #   });
+/// #
+/// #   let test_server = TestServer::new(router).unwrap();
+/// #   let response = test_server.client().get(&quot;https://example.com/&quot;).perform().unwrap();
+/// #   assert_eq!(response.status(), StatusCode::OK);
+/// #   let body = response.read_utf8_body().unwrap();
+/// #   assert_eq!(&amp;body, &quot;10&quot;);
+/// # }
+/// ```
+///
+/// Decorating the response after the request has completed:
+///
+/// ```rust
+/// # #[macro_use]
+/// # extern crate gotham_derive;
+/// #
+/// # use std::pin::Pin;
+/// #
+/// # use futures_util::{FutureExt, TryFutureExt};
+/// # use hyper::{Body, Response, StatusCode};
+/// # use hyper::header::WARNING;
+/// # use gotham::handler::HandlerFuture;
+/// # use gotham::middleware::Middleware;
+/// # use gotham::pipeline::*;
+/// # use gotham::router::builder::*;
+/// # use gotham::state::State;
+/// # use gotham::test::TestServer;
+/// #
+/// #[derive(NewMiddleware, Copy, Clone)]
+/// struct MiddlewareAddingResponseHeader;
+///
+/// impl Middleware for MiddlewareAddingResponseHeader {
+///     fn call&lt;Chain&gt;(self, state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+///         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static
+///     {
+///         chain(state)
+///             .map_ok(|(state, mut response)| {
+///                 response.headers_mut().insert(WARNING, &quot;299 example.com Deprecated&quot;.parse().unwrap());
+///                 (state, response)
+///             })
+///             .boxed()
+///     }
+/// }
+/// #
+/// # fn main() {
+/// #   let (chain, pipelines) = single_pipeline(
+/// #       new_pipeline()
+/// #           .add(MiddlewareAddingResponseHeader)
+/// #           .build()
+/// #   );
+/// #
+/// #   let router = build_router(chain, pipelines, |route| {
+/// #       route
+/// #           .get(&quot;/&quot;)
+/// #           .to_new_handler(|| {
+/// #               Ok(|state| (state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap()))
+/// #           });
+/// #   });
+/// #
+/// #   let test_server = TestServer::new(router).unwrap();
+/// #   let response = test_server.client().get(&quot;https://example.com/&quot;).perform().unwrap();
+/// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
+/// #
+/// #   {
+/// #       let warning = response.headers().get(WARNING).unwrap();
+/// #       assert_eq!(warning, &quot;299 example.com Deprecated&quot;);
+/// #   }
+/// # }
+/// ```
+///
+/// Terminating the request early based on some arbitrary condition:
+///
+/// ```rust
+/// # #[macro_use]
+/// # extern crate gotham_derive;
+/// #
+/// # use std::pin::Pin;
+/// #
+/// # use hyper::{Body, Response, Method, StatusCode};
+/// # use futures_util::future::{self, FutureExt};
+/// # use gotham::helpers::http::response::create_empty_response;
+/// # use gotham::handler::HandlerFuture;
+/// # use gotham::middleware::Middleware;
+/// # use gotham::pipeline::*;
+/// # use gotham::router::builder::*;
+/// # use gotham::state::{State, FromState};
+/// # use gotham::test::TestServer;
+/// #
+/// #[derive(NewMiddleware, Copy, Clone)]
+/// struct ConditionalMiddleware;
+///
+/// impl Middleware for ConditionalMiddleware {
+///     fn call&lt;Chain&gt;(self, state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+///         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static
+///     {
+///         if *Method::borrow_from(&amp;state) == Method::GET {
+///             chain(state)
+///         } else {
+///             let response = create_empty_response(&amp;state, StatusCode::METHOD_NOT_ALLOWED);
+///             future::ok((state, response)).boxed()
+///         }
+///     }
+/// }
+/// #
+/// # fn main() {
+/// #   let (chain, pipelines) = single_pipeline(
+/// #       new_pipeline()
+/// #           .add(ConditionalMiddleware)
+/// #           .build()
+/// #   );
+/// #
+/// #   let router = build_router(chain, pipelines, |route| {
+/// #       route
+/// #           .get_or_head(&quot;/&quot;)
+/// #           .to_new_handler(|| {
+/// #               Ok(|state| (state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap()))
+/// #           });
+/// #   });
+/// #
+/// #   let test_server = TestServer::new(router).unwrap();
+/// #
+/// #   let response = test_server.client().get(&quot;https://example.com/&quot;).perform().unwrap();
+/// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
+/// #
+/// #   let response = test_server.client().head(&quot;https://example.com/&quot;).perform().unwrap();
+/// #   assert_eq!(response.status(), StatusCode::METHOD_NOT_ALLOWED);
+/// # }
+/// ```
+///
+/// Asynchronous middleware, which continues the request after some action completes:
+///
+/// ```rust
+/// # #[macro_use]
+/// # extern crate gotham_derive;
+/// #
+/// # use std::pin::Pin;
+/// #
+/// # use futures_util::future::{self, FutureExt, TryFutureExt};
+/// # use hyper::{Body, Response, StatusCode};
+/// # use gotham::handler::HandlerFuture;
+/// # use gotham::middleware::Middleware;
+/// # use gotham::pipeline::*;
+/// # use gotham::router::builder::*;
+/// # use gotham::state::State;
+/// # use gotham::test::TestServer;
+/// #
+/// #[derive(NewMiddleware, Copy, Clone)]
+/// struct AsyncMiddleware;
+///
+/// impl Middleware for AsyncMiddleware {
+///     fn call&lt;Chain&gt;(self, state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+///         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static
+///     {
+///         // This could be any asynchronous action. `future::lazy(_)` defers a function
+///         // until the next cycle of tokio&#39;s event loop.
+///         let f = future::lazy(|_| Ok(()));
+///         f.and_then(move |_| chain(state)).boxed()
+///     }
+/// }
+/// #
+/// # fn main() {
+/// #   let (chain, pipelines) = single_pipeline(
+/// #       new_pipeline()
+/// #           .add(AsyncMiddleware)
+/// #           .build()
+/// #   );
+/// #
+/// #   let router = build_router(chain, pipelines, |route| {
+/// #       route
+/// #           .get(&quot;/&quot;)
+/// #           .to_new_handler(|| {
+/// #               Ok(|state| (state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap()))
+/// #           });
+/// #   });
+/// #
+/// #   let test_server = TestServer::new(router).unwrap();
+/// #   let response = test_server.client().get(&quot;https://example.com/&quot;).perform().unwrap();
+/// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
+/// # }
+/// ```
+</span><span class="kw">pub trait </span>Middleware {
+    <span class="doccomment">/// Entry point to the middleware. To pass the request on to the application, the middleware
+    /// invokes the `chain` function with the provided `state`.
+    ///
+    /// By convention, the middleware should:
+    ///
+    /// * Not modify any request components added to `State` by Gotham.
+    /// * Avoid modifying parts of the `State` that don&#39;t strictly need to be modified to perform
+    ///   its function.
+    </span><span class="kw">fn </span>call&lt;Chain&gt;(<span class="self">self</span>, state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+    <span class="kw">where
+        </span>Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + <span class="lifetime">&#39;static</span>,
+        <span class="self">Self</span>: Sized;
 }
 
-<span class="doccomment">/// A type which is used to spawn new `Middleware` values. When implementing a `Middleware`, this</span>
-<span class="doccomment">/// defines how instances of the `Middleware` are created.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// This can be derived by `Middleware` that implement `Clone`, and will result in the following</span>
-<span class="doccomment">/// implementation:</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # extern crate gotham;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # use std::pin::Pin;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # use gotham::middleware::{NewMiddleware, Middleware};</span>
-<span class="doccomment">/// # use gotham::handler::HandlerFuture;</span>
-<span class="doccomment">/// # use gotham::pipeline::new_pipeline;</span>
-<span class="doccomment">/// # use gotham::state::State;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # #[allow(unused)]</span>
-<span class="doccomment">/// # #[derive(Copy, Clone)]</span>
-<span class="doccomment">/// struct MyMiddleware;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// impl NewMiddleware for MyMiddleware {</span>
-<span class="doccomment">///     type Instance = Self;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">///     fn new_middleware(&amp;self) -&gt; anyhow::Result&lt;Self::Instance&gt; {</span>
-<span class="doccomment">///         Ok(self.clone())</span>
-<span class="doccomment">///     }</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # impl Middleware for MyMiddleware {</span>
-<span class="doccomment">/// #   fn call&lt;Chain&gt;(self, _state: State, _chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;</span>
-<span class="doccomment">/// #       where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + &#39;static</span>
-<span class="doccomment">/// #   {</span>
-<span class="doccomment">/// #       unimplemented!()</span>
-<span class="doccomment">/// #   }</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # fn main() {</span>
-<span class="doccomment">/// #   // Just for the implied type assertion.</span>
-<span class="doccomment">/// #   new_pipeline().add(MyMiddleware).build();</span>
-<span class="doccomment">/// # }</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">NewMiddleware</span>: <span class="ident">Sync</span> <span class="op">+</span> <span class="ident">RefUnwindSafe</span> {
-    <span class="doccomment">/// The type of `Middleware` created by the `NewMiddleware`.</span>
-    <span class="kw">type</span> <span class="ident">Instance</span>: <span class="ident">Middleware</span>;
+<span class="doccomment">/// A type which is used to spawn new `Middleware` values. When implementing a `Middleware`, this
+/// defines how instances of the `Middleware` are created.
+///
+/// This can be derived by `Middleware` that implement `Clone`, and will result in the following
+/// implementation:
+///
+/// ```rust
+/// # extern crate gotham;
+/// #
+/// # use std::pin::Pin;
+/// #
+/// # use gotham::middleware::{NewMiddleware, Middleware};
+/// # use gotham::handler::HandlerFuture;
+/// # use gotham::pipeline::new_pipeline;
+/// # use gotham::state::State;
+/// #
+/// # #[allow(unused)]
+/// # #[derive(Copy, Clone)]
+/// struct MyMiddleware;
+///
+/// impl NewMiddleware for MyMiddleware {
+///     type Instance = Self;
+///
+///     fn new_middleware(&amp;self) -&gt; anyhow::Result&lt;Self::Instance&gt; {
+///         Ok(self.clone())
+///     }
+/// }
+/// #
+/// # impl Middleware for MyMiddleware {
+/// #   fn call&lt;Chain&gt;(self, _state: State, _chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+/// #       where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + &#39;static
+/// #   {
+/// #       unimplemented!()
+/// #   }
+/// # }
+/// #
+/// # fn main() {
+/// #   // Just for the implied type assertion.
+/// #   new_pipeline().add(MyMiddleware).build();
+/// # }
+</span><span class="kw">pub trait </span>NewMiddleware: Sync + RefUnwindSafe {
+    <span class="doccomment">/// The type of `Middleware` created by the `NewMiddleware`.
+    </span><span class="kw">type </span>Instance: Middleware;
 
-    <span class="doccomment">/// Create and return a new `Middleware` value.</span>
-    <span class="kw">fn</span> <span class="ident">new_middleware</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">anyhow::Result</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Instance</span><span class="op">&gt;</span>;
+    <span class="doccomment">/// Create and return a new `Middleware` value.
+    </span><span class="kw">fn </span>new_middleware(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; anyhow::Result&lt;<span class="self">Self</span>::Instance&gt;;
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

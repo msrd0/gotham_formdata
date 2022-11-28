@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/extractor/path.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>path.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/extractor/path.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>path.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -106,113 +106,113 @@
 <span id="106">106</span>
 <span id="107">107</span>
 <span id="108">108</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">hyper::body::HttpBody</span>;
-<span class="kw">use</span> <span class="ident">hyper</span>::{<span class="ident">Body</span>, <span class="ident">Response</span>};
-<span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Deserializer</span>};
+</pre><pre class="rust"><code><span class="kw">use </span>hyper::body::HttpBody;
+<span class="kw">use </span>hyper::{Body, Response};
+<span class="kw">use </span>serde::{Deserialize, Deserializer};
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::response::StaticResponseExtender</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state</span>::{<span class="ident">State</span>, <span class="ident">StateData</span>};
+<span class="kw">use </span><span class="kw">crate</span>::router::response::StaticResponseExtender;
+<span class="kw">use </span><span class="kw">crate</span>::state::{State, StateData};
 
-<span class="doccomment">/// Defines a binding for storing the dynamic segments of the `Request` path in `State`. On failure</span>
-<span class="doccomment">/// the `StaticResponseExtender` implementation extends the `Response` to indicate why the</span>
-<span class="doccomment">/// extraction process failed.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// This trait is automatically implemented when the struct implements the `Deserialize`,</span>
-<span class="doccomment">/// `StateData` and `StaticResponseExtender` traits. These traits can be derived, or implemented</span>
-<span class="doccomment">/// manually for greater control.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The default behaviour given by deriving all three traits will use the automatically derived</span>
-<span class="doccomment">/// behaviour from Serde, and result in a `400 Bad Request` HTTP response if the path segments are</span>
-<span class="doccomment">/// not able to be deserialized.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
-<span class="doccomment">/// # use gotham::state::{FromState, State};</span>
-<span class="doccomment">/// # use gotham::helpers::http::response::create_response;</span>
-<span class="doccomment">/// # use gotham::router::{build_simple_router, Router};</span>
-<span class="doccomment">/// # use gotham::prelude::*;</span>
-<span class="doccomment">/// # use gotham::test::TestServer;</span>
-<span class="doccomment">/// # use serde::Deserialize;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #[derive(Deserialize, StateData, StaticResponseExtender)]</span>
-<span class="doccomment">/// struct MyPathParams {</span>
-<span class="doccomment">///     id: i32,</span>
-<span class="doccomment">///     slug: String,</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// fn handler(mut state: State) -&gt; (State, Response&lt;Body&gt;) {</span>
-<span class="doccomment">///     let MyPathParams { id, slug } = MyPathParams::take_from(&amp;mut state);</span>
-<span class="doccomment">///     let body = format!(&quot;id = {}, slug = {}&quot;, id, slug);</span>
-<span class="doccomment">///</span>
-<span class="doccomment">///     let response = create_response(</span>
-<span class="doccomment">///         &amp;state,</span>
-<span class="doccomment">///         StatusCode::OK,</span>
-<span class="doccomment">///         mime::TEXT_PLAIN,</span>
-<span class="doccomment">///         body,</span>
-<span class="doccomment">///     );</span>
-<span class="doccomment">///</span>
-<span class="doccomment">///     (state, response)</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// fn router() -&gt; Router {</span>
-<span class="doccomment">///     build_simple_router(|route| {</span>
-<span class="doccomment">///         route</span>
-<span class="doccomment">///             .get(&quot;/article/:id/:slug&quot;)</span>
-<span class="doccomment">///             .with_path_extractor::&lt;MyPathParams&gt;()</span>
-<span class="doccomment">///             .to(handler);</span>
-<span class="doccomment">///     })</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # fn main() {</span>
-<span class="doccomment">/// #   let test_server = TestServer::new(router()).unwrap();</span>
-<span class="doccomment">/// #   let response = test_server</span>
-<span class="doccomment">/// #       .client()</span>
-<span class="doccomment">/// #       .get(&quot;http://example.com/article/1551/ten-reasons-serde-is-amazing&quot;)</span>
-<span class="doccomment">/// #       .perform()</span>
-<span class="doccomment">/// #       .unwrap();</span>
-<span class="doccomment">/// #   assert_eq!(response.status(), StatusCode::OK);</span>
-<span class="doccomment">/// #   let body = response.read_utf8_body().unwrap();</span>
-<span class="doccomment">/// #   assert_eq!(body, &quot;id = 1551, slug = ten-reasons-serde-is-amazing&quot;);</span>
-<span class="doccomment">/// # }</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">PathExtractor</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span>:
-    <span class="kw">for</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">Deserialize</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">StaticResponseExtender</span><span class="op">&lt;</span><span class="ident">ResBody</span> <span class="op">=</span> <span class="ident">B</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">StateData</span>
-<span class="kw">where</span>
-    <span class="ident">B</span>: <span class="ident">HttpBody</span>,
+<span class="doccomment">/// Defines a binding for storing the dynamic segments of the `Request` path in `State`. On failure
+/// the `StaticResponseExtender` implementation extends the `Response` to indicate why the
+/// extraction process failed.
+///
+/// This trait is automatically implemented when the struct implements the `Deserialize`,
+/// `StateData` and `StaticResponseExtender` traits. These traits can be derived, or implemented
+/// manually for greater control.
+///
+/// The default behaviour given by deriving all three traits will use the automatically derived
+/// behaviour from Serde, and result in a `400 Bad Request` HTTP response if the path segments are
+/// not able to be deserialized.
+///
+/// # Examples
+///
+/// ```rust
+/// # use hyper::{Body, Response, StatusCode};
+/// # use gotham::state::{FromState, State};
+/// # use gotham::helpers::http::response::create_response;
+/// # use gotham::router::{build_simple_router, Router};
+/// # use gotham::prelude::*;
+/// # use gotham::test::TestServer;
+/// # use serde::Deserialize;
+/// #
+/// #[derive(Deserialize, StateData, StaticResponseExtender)]
+/// struct MyPathParams {
+///     id: i32,
+///     slug: String,
+/// }
+///
+/// fn handler(mut state: State) -&gt; (State, Response&lt;Body&gt;) {
+///     let MyPathParams { id, slug } = MyPathParams::take_from(&amp;mut state);
+///     let body = format!(&quot;id = {}, slug = {}&quot;, id, slug);
+///
+///     let response = create_response(
+///         &amp;state,
+///         StatusCode::OK,
+///         mime::TEXT_PLAIN,
+///         body,
+///     );
+///
+///     (state, response)
+/// }
+///
+/// fn router() -&gt; Router {
+///     build_simple_router(|route| {
+///         route
+///             .get(&quot;/article/:id/:slug&quot;)
+///             .with_path_extractor::&lt;MyPathParams&gt;()
+///             .to(handler);
+///     })
+/// }
+/// #
+/// # fn main() {
+/// #   let test_server = TestServer::new(router()).unwrap();
+/// #   let response = test_server
+/// #       .client()
+/// #       .get(&quot;http://example.com/article/1551/ten-reasons-serde-is-amazing&quot;)
+/// #       .perform()
+/// #       .unwrap();
+/// #   assert_eq!(response.status(), StatusCode::OK);
+/// #   let body = response.read_utf8_body().unwrap();
+/// #   assert_eq!(body, &quot;id = 1551, slug = ten-reasons-serde-is-amazing&quot;);
+/// # }
+</span><span class="kw">pub trait </span>PathExtractor&lt;B&gt;:
+    <span class="kw">for</span>&lt;<span class="lifetime">&#39;de</span>&gt; Deserialize&lt;<span class="lifetime">&#39;de</span>&gt; + StaticResponseExtender&lt;ResBody = B&gt; + StateData
+<span class="kw">where
+    </span>B: HttpBody,
 {
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span> <span class="ident">PathExtractor</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">T</span>
-<span class="kw">where</span>
-    <span class="ident">B</span>: <span class="ident">HttpBody</span>,
-    <span class="kw">for</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">T</span>: <span class="ident">Deserialize</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">StaticResponseExtender</span><span class="op">&lt;</span><span class="ident">ResBody</span> <span class="op">=</span> <span class="ident">B</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">StateData</span>,
+<span class="kw">impl</span>&lt;T, B&gt; PathExtractor&lt;B&gt; <span class="kw">for </span>T
+<span class="kw">where
+    </span>B: HttpBody,
+    <span class="kw">for</span>&lt;<span class="lifetime">&#39;de</span>&gt; T: Deserialize&lt;<span class="lifetime">&#39;de</span>&gt; + StaticResponseExtender&lt;ResBody = B&gt; + StateData,
 {
 }
 
-<span class="doccomment">/// A `PathExtractor` that does not extract/store any data from the `Request` path.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// This is the default `PathExtractor` which is applied to a route when no other `PathExtractor`</span>
-<span class="doccomment">/// is provided. It ignores any dynamic path segments, and always succeeds during deserialization.</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">NoopPathExtractor</span>;
+<span class="doccomment">/// A `PathExtractor` that does not extract/store any data from the `Request` path.
+///
+/// This is the default `PathExtractor` which is applied to a route when no other `PathExtractor`
+/// is provided. It ignores any dynamic path segments, and always succeeds during deserialization.
+</span><span class="kw">pub struct </span>NoopPathExtractor;
 
-<span class="comment">// This doesn&#39;t get derived correctly if we just `#[derive(Deserialize)]` above, because the</span>
-<span class="comment">// Deserializer expects to _ignore_ a value, not just do nothing. By filling in the impl ourselves,</span>
-<span class="comment">// we can explicitly do nothing.</span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">Deserialize</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">NoopPathExtractor</span> {
-    <span class="kw">fn</span> <span class="ident">deserialize</span><span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>(<span class="ident">_de</span>: <span class="ident">D</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">D::Error</span><span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">D</span>: <span class="ident">Deserializer</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>,
+<span class="comment">// This doesn&#39;t get derived correctly if we just `#[derive(Deserialize)]` above, because the
+// Deserializer expects to _ignore_ a value, not just do nothing. By filling in the impl ourselves,
+// we can explicitly do nothing.
+</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;de</span>&gt; Deserialize&lt;<span class="lifetime">&#39;de</span>&gt; <span class="kw">for </span>NoopPathExtractor {
+    <span class="kw">fn </span>deserialize&lt;D&gt;(_de: D) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, D::Error&gt;
+    <span class="kw">where
+        </span>D: Deserializer&lt;<span class="lifetime">&#39;de</span>&gt;,
     {
-        <span class="prelude-val">Ok</span>(<span class="ident">NoopPathExtractor</span>)
+        <span class="prelude-val">Ok</span>(NoopPathExtractor)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">StateData</span> <span class="kw">for</span> <span class="ident">NoopPathExtractor</span> {}
+<span class="kw">impl </span>StateData <span class="kw">for </span>NoopPathExtractor {}
 
-<span class="kw">impl</span> <span class="ident">StaticResponseExtender</span> <span class="kw">for</span> <span class="ident">NoopPathExtractor</span> {
-    <span class="kw">type</span> <span class="ident">ResBody</span> <span class="op">=</span> <span class="ident">Body</span>;
-    <span class="kw">fn</span> <span class="ident">extend</span>(<span class="ident">_state</span>: <span class="kw-2">&amp;mut</span> <span class="ident">State</span>, <span class="ident">_res</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {}
+<span class="kw">impl </span>StaticResponseExtender <span class="kw">for </span>NoopPathExtractor {
+    <span class="kw">type </span>ResBody = Body;
+    <span class="kw">fn </span>extend(_state: <span class="kw-2">&amp;mut </span>State, _res: <span class="kw-2">&amp;mut </span>Response&lt;Body&gt;) {}
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/router/builder/single.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>single.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../gotham/index.html"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/router/builder/single.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>single.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../../normalize.css"><link rel="stylesheet" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../../ayu.css" disabled><link rel="stylesheet" href="../../../../dark.css" disabled><link rel="stylesheet" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../gotham/index.html"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -631,638 +631,638 @@
 <span id="631">631</span>
 <span id="632">632</span>
 <span id="633">633</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">futures_util::FutureExt</span>;
-<span class="kw">use</span> <span class="ident">hyper::Body</span>;
+</pre><pre class="rust"><code><span class="kw">use </span>futures_util::FutureExt;
+<span class="kw">use </span>hyper::Body;
 
-<span class="kw">use</span> <span class="ident">std::future::Future</span>;
-<span class="kw">use</span> <span class="ident">std::panic::RefUnwindSafe</span>;
-<span class="kw">use</span> <span class="ident">std::pin::Pin</span>;
+<span class="kw">use </span>std::future::Future;
+<span class="kw">use </span>std::panic::RefUnwindSafe;
+<span class="kw">use </span>std::pin::Pin;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::extractor</span>::{<span class="ident">PathExtractor</span>, <span class="ident">QueryStringExtractor</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::handler</span>::{
-    <span class="ident">DirHandler</span>, <span class="ident">FileHandler</span>, <span class="ident">FileOptions</span>, <span class="ident">FilePathExtractor</span>, <span class="ident">Handler</span>, <span class="ident">HandlerError</span>, <span class="ident">HandlerFuture</span>,
-    <span class="ident">HandlerResult</span>, <span class="ident">IntoResponse</span>, <span class="ident">NewHandler</span>,
+<span class="kw">use </span><span class="kw">crate</span>::extractor::{PathExtractor, QueryStringExtractor};
+<span class="kw">use </span><span class="kw">crate</span>::handler::{
+    DirHandler, FileHandler, FileOptions, FilePathExtractor, Handler, HandlerError, HandlerFuture,
+    HandlerResult, IntoResponse, NewHandler,
 };
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::pipeline::PipelineHandleChain</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::builder</span>::{
-    <span class="ident">ExtendRouteMatcher</span>, <span class="ident">ReplacePathExtractor</span>, <span class="ident">ReplaceQueryStringExtractor</span>, <span class="ident">SingleRouteBuilder</span>,
+<span class="kw">use </span><span class="kw">crate</span>::pipeline::PipelineHandleChain;
+<span class="kw">use </span><span class="kw">crate</span>::router::builder::{
+    ExtendRouteMatcher, ReplacePathExtractor, ReplaceQueryStringExtractor, SingleRouteBuilder,
 };
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::route::dispatch::DispatcherImpl</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::route::matcher::RouteMatcher</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::route</span>::{<span class="ident">Delegation</span>, <span class="ident">Extractors</span>, <span class="ident">RouteImpl</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state::State</span>;
+<span class="kw">use </span><span class="kw">crate</span>::router::route::dispatch::DispatcherImpl;
+<span class="kw">use </span><span class="kw">crate</span>::router::route::matcher::RouteMatcher;
+<span class="kw">use </span><span class="kw">crate</span>::router::route::{Delegation, Extractors, RouteImpl};
+<span class="kw">use </span><span class="kw">crate</span>::state::State;
 
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">HandlerMarker</span> {
-    <span class="kw">fn</span> <span class="ident">call_and_wrap</span>(<span class="self">self</span>, <span class="ident">state</span>: <span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span>;
+<span class="kw">pub trait </span>HandlerMarker {
+    <span class="kw">fn </span>call_and_wrap(<span class="self">self</span>, state: State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;;
 }
 
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">AsyncHandlerFn</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="kw">type</span> <span class="ident">Res</span>: <span class="ident">IntoResponse</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>;
-    <span class="kw">type</span> <span class="ident">Fut</span>: <span class="ident">std::future::Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Res</span>, <span class="ident">HandlerError</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;a</span>;
-    <span class="kw">fn</span> <span class="ident">call</span>(<span class="self">self</span>, <span class="ident">arg</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="ident">State</span>) -&gt; <span class="ident"><span class="self">Self</span>::Fut</span>;
+<span class="kw">pub trait </span>AsyncHandlerFn&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="kw">type </span>Res: IntoResponse + <span class="lifetime">&#39;static</span>;
+    <span class="kw">type </span>Fut: std::future::Future&lt;Output = <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>::Res, HandlerError&gt;&gt; + Send + <span class="lifetime">&#39;a</span>;
+    <span class="kw">fn </span>call(<span class="self">self</span>, arg: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>State) -&gt; <span class="self">Self</span>::Fut;
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Fut</span>, <span class="ident">R</span>, <span class="ident">F</span><span class="op">&gt;</span> <span class="ident">AsyncHandlerFn</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">F</span>
-<span class="kw">where</span>
-    <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="ident">State</span>) -&gt; <span class="ident">Fut</span>,
-    <span class="ident">R</span>: <span class="ident">IntoResponse</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">Fut</span>: <span class="ident">std::future::Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">HandlerError</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;a</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, Fut, R, F&gt; AsyncHandlerFn&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">for </span>F
+<span class="kw">where
+    </span>F: FnOnce(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>State) -&gt; Fut,
+    R: IntoResponse + <span class="lifetime">&#39;static</span>,
+    Fut: std::future::Future&lt;Output = <span class="prelude-ty">Result</span>&lt;R, HandlerError&gt;&gt; + Send + <span class="lifetime">&#39;a</span>,
 {
-    <span class="kw">type</span> <span class="ident">Res</span> <span class="op">=</span> <span class="ident">R</span>;
-    <span class="kw">type</span> <span class="ident">Fut</span> <span class="op">=</span> <span class="ident">Fut</span>;
-    <span class="kw">fn</span> <span class="ident">call</span>(<span class="self">self</span>, <span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="ident">State</span>) -&gt; <span class="ident">Fut</span> {
-        <span class="self">self</span>(<span class="ident">state</span>)
+    <span class="kw">type </span>Res = R;
+    <span class="kw">type </span>Fut = Fut;
+    <span class="kw">fn </span>call(<span class="self">self</span>, state: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>State) -&gt; Fut {
+        <span class="self">self</span>(state)
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">F</span>, <span class="ident">R</span><span class="op">&gt;</span> <span class="ident">HandlerMarker</span> <span class="kw">for</span> <span class="ident">F</span>
-<span class="kw">where</span>
-    <span class="ident">R</span>: <span class="ident">IntoResponse</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="kw">for</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">F</span>: <span class="ident">AsyncHandlerFn</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">Res</span> <span class="op">=</span> <span class="ident">R</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+<span class="kw">impl</span>&lt;F, R&gt; HandlerMarker <span class="kw">for </span>F
+<span class="kw">where
+    </span>R: IntoResponse + <span class="lifetime">&#39;static</span>,
+    <span class="kw">for</span>&lt;<span class="lifetime">&#39;a</span>&gt; F: AsyncHandlerFn&lt;<span class="lifetime">&#39;a</span>, Res = R&gt; + Send + <span class="lifetime">&#39;static</span>,
 {
-    <span class="kw">fn</span> <span class="ident">call_and_wrap</span>(<span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">state</span>: <span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">async</span> <span class="kw">move</span> {
-            <span class="kw">let</span> <span class="ident">fut</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">call</span>(<span class="kw-2">&amp;mut</span> <span class="ident">state</span>);
-            <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">fut</span>.<span class="kw">await</span>;
-            <span class="kw">match</span> <span class="ident">result</span> {
-                <span class="prelude-val">Ok</span>(<span class="ident">data</span>) =&gt; {
-                    <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">data</span>.<span class="ident">into_response</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>);
-                    <span class="prelude-val">Ok</span>((<span class="ident">state</span>, <span class="ident">response</span>))
+    <span class="kw">fn </span>call_and_wrap(<span class="self">self</span>, <span class="kw-2">mut </span>state: State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; {
+        <span class="kw">async move </span>{
+            <span class="kw">let </span>fut = <span class="self">self</span>.call(<span class="kw-2">&amp;mut </span>state);
+            <span class="kw">let </span>result = fut.<span class="kw">await</span>;
+            <span class="kw">match </span>result {
+                <span class="prelude-val">Ok</span>(data) =&gt; {
+                    <span class="kw">let </span>response = data.into_response(<span class="kw-2">&amp;</span>state);
+                    <span class="prelude-val">Ok</span>((state, response))
                 }
-                <span class="prelude-val">Err</span>(<span class="ident">err</span>) =&gt; <span class="prelude-val">Err</span>((<span class="ident">state</span>, <span class="ident">err</span>)),
+                <span class="prelude-val">Err</span>(err) =&gt; <span class="prelude-val">Err</span>((state, err)),
             }
         }
-        .<span class="ident">boxed</span>()
+        .boxed()
     }
 }
 
-<span class="doccomment">/// Describes the API for defining a single route, after determining which request paths will be</span>
-<span class="doccomment">/// dispatched here. The API here uses chained function calls to build and add the route into the</span>
-<span class="doccomment">/// `RouterBuilder` which created it.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
-<span class="doccomment">/// # use gotham::state::State;</span>
-<span class="doccomment">/// # use gotham::router::Router;</span>
-<span class="doccomment">/// # use gotham::router::builder::*;</span>
-<span class="doccomment">/// # use gotham::pipeline::*;</span>
-<span class="doccomment">/// # use gotham::middleware::session::NewSessionMiddleware;</span>
-<span class="doccomment">/// # use gotham::test::TestServer;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// fn my_handler(state: State) -&gt; (State, Response&lt;Body&gt;) {</span>
-<span class="doccomment">///     // Handler implementation elided.</span>
-<span class="doccomment">/// #   (state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap())</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # fn router() -&gt; Router {</span>
-<span class="doccomment">/// #   let (chain, pipelines) = single_pipeline(</span>
-<span class="doccomment">/// #       new_pipeline().add(NewSessionMiddleware::default()).build()</span>
-<span class="doccomment">/// #   );</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// build_router(chain, pipelines, |route| {</span>
-<span class="doccomment">///     route.get(&quot;/request/path&quot;) // &lt;- This value implements `DefineSingleRoute`</span>
-<span class="doccomment">///          .to(my_handler);</span>
-<span class="doccomment">/// })</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # fn main() {</span>
-<span class="doccomment">/// #   let test_server = TestServer::new(router()).unwrap();</span>
-<span class="doccomment">/// #   let response = test_server.client()</span>
-<span class="doccomment">/// #       .get(&quot;https://example.com/request/path&quot;)</span>
-<span class="doccomment">/// #       .perform()</span>
-<span class="doccomment">/// #       .unwrap();</span>
-<span class="doccomment">/// #   assert_eq!(response.status(), StatusCode::ACCEPTED);</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// ```</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">DefineSingleRoute</span> {
-    <span class="doccomment">/// Directs the route to the given `Handler`, automatically creating a `NewHandler` which</span>
-    <span class="doccomment">/// copies the `Handler`. This is the easiest option for code which is using bare functions as</span>
-    <span class="doccomment">/// `Handler` functions.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
-    <span class="doccomment">/// # use gotham::state::State;</span>
-    <span class="doccomment">/// # use gotham::router::Router;</span>
-    <span class="doccomment">/// # use gotham::router::builder::*;</span>
-    <span class="doccomment">/// # use gotham::pipeline::*;</span>
-    <span class="doccomment">/// # use gotham::middleware::session::NewSessionMiddleware;</span>
-    <span class="doccomment">/// # use gotham::test::TestServer;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// fn my_handler(state: State) -&gt; (State, Response&lt;Body&gt;) {</span>
-    <span class="doccomment">///     // Handler implementation elided.</span>
-    <span class="doccomment">/// #   (state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap())</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn router() -&gt; Router {</span>
-    <span class="doccomment">/// #   let (chain, pipelines) = single_pipeline(</span>
-    <span class="doccomment">/// #       new_pipeline().add(NewSessionMiddleware::default()).build()</span>
-    <span class="doccomment">/// #   );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// build_router(chain, pipelines, |route| {</span>
-    <span class="doccomment">///     route.get(&quot;/request/path&quot;).to(my_handler);</span>
-    <span class="doccomment">/// })</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn main() {</span>
-    <span class="doccomment">/// #   let test_server = TestServer::new(router()).unwrap();</span>
-    <span class="doccomment">/// #   let response = test_server.client()</span>
-    <span class="doccomment">/// #       .get(&quot;https://example.com/request/path&quot;)</span>
-    <span class="doccomment">/// #       .perform()</span>
-    <span class="doccomment">/// #       .unwrap();</span>
-    <span class="doccomment">/// #   assert_eq!(response.status(), StatusCode::ACCEPTED);</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">fn</span> <span class="ident">to</span><span class="op">&lt;</span><span class="ident">H</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">handler</span>: <span class="ident">H</span>)
-    <span class="kw">where</span>
-        <span class="ident">H</span>: <span class="ident">Handler</span> <span class="op">+</span> <span class="ident">RefUnwindSafe</span> <span class="op">+</span> <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>;
+<span class="doccomment">/// Describes the API for defining a single route, after determining which request paths will be
+/// dispatched here. The API here uses chained function calls to build and add the route into the
+/// `RouterBuilder` which created it.
+///
+/// # Examples
+///
+/// ```rust
+/// # use hyper::{Body, Response, StatusCode};
+/// # use gotham::state::State;
+/// # use gotham::router::Router;
+/// # use gotham::router::builder::*;
+/// # use gotham::pipeline::*;
+/// # use gotham::middleware::session::NewSessionMiddleware;
+/// # use gotham::test::TestServer;
+/// #
+/// fn my_handler(state: State) -&gt; (State, Response&lt;Body&gt;) {
+///     // Handler implementation elided.
+/// #   (state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap())
+/// }
+/// #
+/// # fn router() -&gt; Router {
+/// #   let (chain, pipelines) = single_pipeline(
+/// #       new_pipeline().add(NewSessionMiddleware::default()).build()
+/// #   );
+/// #
+/// build_router(chain, pipelines, |route| {
+///     route.get(&quot;/request/path&quot;) // &lt;- This value implements `DefineSingleRoute`
+///          .to(my_handler);
+/// })
+/// # }
+/// #
+/// # fn main() {
+/// #   let test_server = TestServer::new(router()).unwrap();
+/// #   let response = test_server.client()
+/// #       .get(&quot;https://example.com/request/path&quot;)
+/// #       .perform()
+/// #       .unwrap();
+/// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
+/// # }
+/// ```
+</span><span class="kw">pub trait </span>DefineSingleRoute {
+    <span class="doccomment">/// Directs the route to the given `Handler`, automatically creating a `NewHandler` which
+    /// copies the `Handler`. This is the easiest option for code which is using bare functions as
+    /// `Handler` functions.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// # use hyper::{Body, Response, StatusCode};
+    /// # use gotham::state::State;
+    /// # use gotham::router::Router;
+    /// # use gotham::router::builder::*;
+    /// # use gotham::pipeline::*;
+    /// # use gotham::middleware::session::NewSessionMiddleware;
+    /// # use gotham::test::TestServer;
+    /// #
+    /// fn my_handler(state: State) -&gt; (State, Response&lt;Body&gt;) {
+    ///     // Handler implementation elided.
+    /// #   (state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap())
+    /// }
+    /// #
+    /// # fn router() -&gt; Router {
+    /// #   let (chain, pipelines) = single_pipeline(
+    /// #       new_pipeline().add(NewSessionMiddleware::default()).build()
+    /// #   );
+    ///
+    /// build_router(chain, pipelines, |route| {
+    ///     route.get(&quot;/request/path&quot;).to(my_handler);
+    /// })
+    /// #
+    /// # }
+    /// #
+    /// # fn main() {
+    /// #   let test_server = TestServer::new(router()).unwrap();
+    /// #   let response = test_server.client()
+    /// #       .get(&quot;https://example.com/request/path&quot;)
+    /// #       .perform()
+    /// #       .unwrap();
+    /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
+    /// # }
+    /// ```
+    </span><span class="kw">fn </span>to&lt;H&gt;(<span class="self">self</span>, handler: H)
+    <span class="kw">where
+        </span>H: Handler + RefUnwindSafe + Copy + Send + Sync + <span class="lifetime">&#39;static</span>;
 
-    <span class="doccomment">/// Similar to `to`, but accepts an `async fn`</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
-    <span class="doccomment">/// # use gotham::handler::HandlerResult;</span>
-    <span class="doccomment">/// # use gotham::state::State;</span>
-    <span class="doccomment">/// # use gotham::router::Router;</span>
-    <span class="doccomment">/// # use gotham::router::builder::*;</span>
-    <span class="doccomment">/// # use gotham::pipeline::*;</span>
-    <span class="doccomment">/// # use gotham::middleware::session::NewSessionMiddleware;</span>
-    <span class="doccomment">/// # use gotham::test::TestServer;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// async fn my_handler(state: State) -&gt; HandlerResult {</span>
-    <span class="doccomment">///     // Handler implementation elided.</span>
-    <span class="doccomment">/// #   Ok((state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap()))</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn router() -&gt; Router {</span>
-    <span class="doccomment">/// #   let (chain, pipelines) = single_pipeline(</span>
-    <span class="doccomment">/// #       new_pipeline().add(NewSessionMiddleware::default()).build()</span>
-    <span class="doccomment">/// #   );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// build_router(chain, pipelines, |route| {</span>
-    <span class="doccomment">///     route.get(&quot;/request/path&quot;).to_async(my_handler);</span>
-    <span class="doccomment">/// })</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn main() {</span>
-    <span class="doccomment">/// #   let test_server = TestServer::new(router()).unwrap();</span>
-    <span class="doccomment">/// #   let response = test_server.client()</span>
-    <span class="doccomment">/// #       .get(&quot;https://example.com/request/path&quot;)</span>
-    <span class="doccomment">/// #       .perform()</span>
-    <span class="doccomment">/// #       .unwrap();</span>
-    <span class="doccomment">/// #   assert_eq!(response.status(), StatusCode::ACCEPTED);</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">fn</span> <span class="ident">to_async</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">Fut</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">handler</span>: <span class="ident">H</span>)
-    <span class="kw">where</span>
-        <span class="self">Self</span>: <span class="ident">Sized</span>,
-        <span class="ident">H</span>: (<span class="ident">FnOnce</span>(<span class="ident">State</span>) -&gt; <span class="ident">Fut</span>) <span class="op">+</span> <span class="ident">RefUnwindSafe</span> <span class="op">+</span> <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-        <span class="ident">Fut</span>: <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="ident">HandlerResult</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>;
+    <span class="doccomment">/// Similar to `to`, but accepts an `async fn`
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// # use hyper::{Body, Response, StatusCode};
+    /// # use gotham::handler::HandlerResult;
+    /// # use gotham::state::State;
+    /// # use gotham::router::Router;
+    /// # use gotham::router::builder::*;
+    /// # use gotham::pipeline::*;
+    /// # use gotham::middleware::session::NewSessionMiddleware;
+    /// # use gotham::test::TestServer;
+    /// #
+    /// async fn my_handler(state: State) -&gt; HandlerResult {
+    ///     // Handler implementation elided.
+    /// #   Ok((state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap()))
+    /// }
+    /// #
+    /// # fn router() -&gt; Router {
+    /// #   let (chain, pipelines) = single_pipeline(
+    /// #       new_pipeline().add(NewSessionMiddleware::default()).build()
+    /// #   );
+    ///
+    /// build_router(chain, pipelines, |route| {
+    ///     route.get(&quot;/request/path&quot;).to_async(my_handler);
+    /// })
+    /// #
+    /// # }
+    /// #
+    /// # fn main() {
+    /// #   let test_server = TestServer::new(router()).unwrap();
+    /// #   let response = test_server.client()
+    /// #       .get(&quot;https://example.com/request/path&quot;)
+    /// #       .perform()
+    /// #       .unwrap();
+    /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
+    /// # }
+    /// ```
+    </span><span class="kw">fn </span>to_async&lt;H, Fut&gt;(<span class="self">self</span>, handler: H)
+    <span class="kw">where
+        </span><span class="self">Self</span>: Sized,
+        H: (FnOnce(State) -&gt; Fut) + RefUnwindSafe + Copy + Send + Sync + <span class="lifetime">&#39;static</span>,
+        Fut: Future&lt;Output = HandlerResult&gt; + Send + <span class="lifetime">&#39;static</span>;
 
-    <span class="doccomment">/// Directs the route to the given `async fn`, passing `State` to it by mutable reference.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Note that, as of Rust 1.46.0, this does not work for closures due to</span>
-    <span class="doccomment">/// [rust-lang/rust#70263](https://github.com/rust-lang/rust/issues/70263).</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// On the other hand, one can easily use the `?` operator for error handling</span>
-    <span class="doccomment">/// in these async functions.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # use hyper::StatusCode;</span>
-    <span class="doccomment">/// # use gotham::handler::{HandlerError, IntoResponse, MapHandlerError};</span>
-    <span class="doccomment">/// # use gotham::state::State;</span>
-    <span class="doccomment">/// # use gotham::router::Router;</span>
-    <span class="doccomment">/// # use gotham::router::builder::*;</span>
-    <span class="doccomment">/// # use gotham::pipeline::*;</span>
-    <span class="doccomment">/// # use gotham::middleware::session::NewSessionMiddleware;</span>
-    <span class="doccomment">/// # use gotham::test::TestServer;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// async fn my_handler(_state: &amp;mut State) -&gt; Result&lt;impl IntoResponse, HandlerError&gt; {</span>
-    <span class="doccomment">///     let flavors =</span>
-    <span class="doccomment">///         std::fs::read(&quot;coffee-flavors.txt&quot;).map_err_with_status(StatusCode::IM_A_TEAPOT)?;</span>
-    <span class="doccomment">///     Ok(flavors)</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn router() -&gt; Router {</span>
-    <span class="doccomment">/// #   let (chain, pipelines) = single_pipeline(</span>
-    <span class="doccomment">/// #       new_pipeline().add(NewSessionMiddleware::default()).build()</span>
-    <span class="doccomment">/// #   );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// build_router(chain, pipelines, |route| {</span>
-    <span class="doccomment">///     route.get(&quot;/request/path&quot;).to_async_borrowing(my_handler);</span>
-    <span class="doccomment">/// })</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn main() {</span>
-    <span class="doccomment">/// #   let test_server = TestServer::new(router()).unwrap();</span>
-    <span class="doccomment">/// #   let response = test_server.client()</span>
-    <span class="doccomment">/// #       .get(&quot;https://example.com/request/path&quot;)</span>
-    <span class="doccomment">/// #       .perform()</span>
-    <span class="doccomment">/// #       .unwrap();</span>
-    <span class="doccomment">/// #   assert_eq!(response.status(), StatusCode::IM_A_TEAPOT);</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">fn</span> <span class="ident">to_async_borrowing</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">handler</span>: <span class="ident">F</span>)
-    <span class="kw">where</span>
-        <span class="self">Self</span>: <span class="ident">Sized</span>,
-        <span class="ident">F</span>: <span class="ident">HandlerMarker</span> <span class="op">+</span> <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="ident">RefUnwindSafe</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>;
+    <span class="doccomment">/// Directs the route to the given `async fn`, passing `State` to it by mutable reference.
+    ///
+    /// Note that, as of Rust 1.46.0, this does not work for closures due to
+    /// [rust-lang/rust#70263](https://github.com/rust-lang/rust/issues/70263).
+    ///
+    /// On the other hand, one can easily use the `?` operator for error handling
+    /// in these async functions.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// # use hyper::StatusCode;
+    /// # use gotham::handler::{HandlerError, IntoResponse, MapHandlerError};
+    /// # use gotham::state::State;
+    /// # use gotham::router::Router;
+    /// # use gotham::router::builder::*;
+    /// # use gotham::pipeline::*;
+    /// # use gotham::middleware::session::NewSessionMiddleware;
+    /// # use gotham::test::TestServer;
+    /// #
+    /// async fn my_handler(_state: &amp;mut State) -&gt; Result&lt;impl IntoResponse, HandlerError&gt; {
+    ///     let flavors =
+    ///         std::fs::read(&quot;coffee-flavors.txt&quot;).map_err_with_status(StatusCode::IM_A_TEAPOT)?;
+    ///     Ok(flavors)
+    /// }
+    /// #
+    /// # fn router() -&gt; Router {
+    /// #   let (chain, pipelines) = single_pipeline(
+    /// #       new_pipeline().add(NewSessionMiddleware::default()).build()
+    /// #   );
+    ///
+    /// build_router(chain, pipelines, |route| {
+    ///     route.get(&quot;/request/path&quot;).to_async_borrowing(my_handler);
+    /// })
+    /// #
+    /// # }
+    /// #
+    /// # fn main() {
+    /// #   let test_server = TestServer::new(router()).unwrap();
+    /// #   let response = test_server.client()
+    /// #       .get(&quot;https://example.com/request/path&quot;)
+    /// #       .perform()
+    /// #       .unwrap();
+    /// #   assert_eq!(response.status(), StatusCode::IM_A_TEAPOT);
+    /// # }
+    /// ```
+    </span><span class="kw">fn </span>to_async_borrowing&lt;F&gt;(<span class="self">self</span>, handler: F)
+    <span class="kw">where
+        </span><span class="self">Self</span>: Sized,
+        F: HandlerMarker + Copy + Send + Sync + RefUnwindSafe + <span class="lifetime">&#39;static</span>;
 
-    <span class="doccomment">/// Directs the route to the given `NewHandler`. This gives more control over how `Handler`</span>
-    <span class="doccomment">/// values are constructed.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # use std::pin::Pin;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # use futures_util::future::{self, FutureExt};</span>
-    <span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
-    <span class="doccomment">/// # use gotham::handler::{Handler, HandlerFuture, NewHandler};</span>
-    <span class="doccomment">/// # use gotham::state::State;</span>
-    <span class="doccomment">/// # use gotham::router::Router;</span>
-    <span class="doccomment">/// # use gotham::router::builder::*;</span>
-    <span class="doccomment">/// # use gotham::pipeline::*;</span>
-    <span class="doccomment">/// # use gotham::middleware::session::NewSessionMiddleware;</span>
-    <span class="doccomment">/// # use gotham::test::TestServer;</span>
-    <span class="doccomment">/// # use gotham::anyhow;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// struct MyNewHandler;</span>
-    <span class="doccomment">/// struct MyHandler;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// impl NewHandler for MyNewHandler {</span>
-    <span class="doccomment">///     type Instance = MyHandler;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     fn new_handler(&amp;self) -&gt; anyhow::Result&lt;Self::Instance&gt; {</span>
-    <span class="doccomment">///         Ok(MyHandler)</span>
-    <span class="doccomment">///     }</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// impl Handler for MyHandler {</span>
-    <span class="doccomment">///     fn handle(self, state: State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; {</span>
-    <span class="doccomment">///         // Handler implementation elided.</span>
-    <span class="doccomment">/// #       let response = Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap();</span>
-    <span class="doccomment">/// #       future::ok((state, response)).boxed()</span>
-    <span class="doccomment">///     }</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn router() -&gt; Router {</span>
-    <span class="doccomment">/// #   let (chain, pipelines) = single_pipeline(</span>
-    <span class="doccomment">/// #       new_pipeline().add(NewSessionMiddleware::default()).build()</span>
-    <span class="doccomment">/// #   );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// build_router(chain, pipelines, |route| {</span>
-    <span class="doccomment">///     route.get(&quot;/request/path&quot;).to_new_handler(MyNewHandler);</span>
-    <span class="doccomment">/// })</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn main() {</span>
-    <span class="doccomment">/// #   let test_server = TestServer::new(router()).unwrap();</span>
-    <span class="doccomment">/// #   let response = test_server.client()</span>
-    <span class="doccomment">/// #       .get(&quot;https://example.com/request/path&quot;)</span>
-    <span class="doccomment">/// #       .perform()</span>
-    <span class="doccomment">/// #       .unwrap();</span>
-    <span class="doccomment">/// #   assert_eq!(response.status(), StatusCode::ACCEPTED);</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">fn</span> <span class="ident">to_new_handler</span><span class="op">&lt;</span><span class="ident">NH</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">new_handler</span>: <span class="ident">NH</span>)
-    <span class="kw">where</span>
-        <span class="ident">NH</span>: <span class="ident">NewHandler</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>;
+    <span class="doccomment">/// Directs the route to the given `NewHandler`. This gives more control over how `Handler`
+    /// values are constructed.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// # use std::pin::Pin;
+    /// #
+    /// # use futures_util::future::{self, FutureExt};
+    /// # use hyper::{Body, Response, StatusCode};
+    /// # use gotham::handler::{Handler, HandlerFuture, NewHandler};
+    /// # use gotham::state::State;
+    /// # use gotham::router::Router;
+    /// # use gotham::router::builder::*;
+    /// # use gotham::pipeline::*;
+    /// # use gotham::middleware::session::NewSessionMiddleware;
+    /// # use gotham::test::TestServer;
+    /// # use gotham::anyhow;
+    /// #
+    /// struct MyNewHandler;
+    /// struct MyHandler;
+    ///
+    /// impl NewHandler for MyNewHandler {
+    ///     type Instance = MyHandler;
+    ///
+    ///     fn new_handler(&amp;self) -&gt; anyhow::Result&lt;Self::Instance&gt; {
+    ///         Ok(MyHandler)
+    ///     }
+    /// }
+    ///
+    /// impl Handler for MyHandler {
+    ///     fn handle(self, state: State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; {
+    ///         // Handler implementation elided.
+    /// #       let response = Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap();
+    /// #       future::ok((state, response)).boxed()
+    ///     }
+    /// }
+    /// #
+    /// # fn router() -&gt; Router {
+    /// #   let (chain, pipelines) = single_pipeline(
+    /// #       new_pipeline().add(NewSessionMiddleware::default()).build()
+    /// #   );
+    ///
+    /// build_router(chain, pipelines, |route| {
+    ///     route.get(&quot;/request/path&quot;).to_new_handler(MyNewHandler);
+    /// })
+    /// # }
+    /// #
+    /// # fn main() {
+    /// #   let test_server = TestServer::new(router()).unwrap();
+    /// #   let response = test_server.client()
+    /// #       .get(&quot;https://example.com/request/path&quot;)
+    /// #       .perform()
+    /// #       .unwrap();
+    /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
+    /// # }
+    /// ```
+    </span><span class="kw">fn </span>to_new_handler&lt;NH&gt;(<span class="self">self</span>, new_handler: NH)
+    <span class="kw">where
+        </span>NH: NewHandler + <span class="lifetime">&#39;static</span>;
 
-    <span class="doccomment">/// Directs the route to serve static files from the given root directory.</span>
-    <span class="doccomment">/// The route must contain a trailing glob segment, which will be used</span>
-    <span class="doccomment">/// to serve any matching names under the given path.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # use hyper::StatusCode;</span>
-    <span class="doccomment">/// # use gotham::router::Router;</span>
-    <span class="doccomment">/// # use gotham::router::builder::*;</span>
-    <span class="doccomment">/// # use gotham::pipeline::*;</span>
-    <span class="doccomment">/// # use gotham::middleware::session::NewSessionMiddleware;</span>
-    <span class="doccomment">/// # use gotham::test::TestServer;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn router() -&gt; Router {</span>
-    <span class="doccomment">/// #   let (chain, pipelines) = single_pipeline(</span>
-    <span class="doccomment">/// #       new_pipeline().add(NewSessionMiddleware::default()).build()</span>
-    <span class="doccomment">/// #   );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// build_router(chain, pipelines, |route| {</span>
-    <span class="doccomment">///     route.get(&quot;/*&quot;).to_dir(&quot;resources/test/assets&quot;);</span>
-    <span class="doccomment">/// })</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn main() {</span>
-    <span class="doccomment">/// #   let test_server = TestServer::new(router()).unwrap();</span>
-    <span class="doccomment">/// #   let response = test_server.client()</span>
-    <span class="doccomment">/// #       .get(&quot;https://example.com/doc.html&quot;)</span>
-    <span class="doccomment">/// #       .perform()</span>
-    <span class="doccomment">/// #       .unwrap();</span>
-    <span class="doccomment">/// #   assert_eq!(response.status(), StatusCode::OK);</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">fn</span> <span class="ident">to_dir</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">options</span>: <span class="ident">P</span>)
-    <span class="kw">where</span>
-        <span class="self">Self</span>: <span class="ident">ReplacePathExtractor</span><span class="op">&lt;</span><span class="ident">FilePathExtractor</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Sized</span>,
-        <span class="ident"><span class="self">Self</span>::Output</span>: <span class="ident">DefineSingleRoute</span>,
-        <span class="ident">FileOptions</span>: <span class="ident">From</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Directs the route to serve static files from the given root directory.
+    /// The route must contain a trailing glob segment, which will be used
+    /// to serve any matching names under the given path.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// # use hyper::StatusCode;
+    /// # use gotham::router::Router;
+    /// # use gotham::router::builder::*;
+    /// # use gotham::pipeline::*;
+    /// # use gotham::middleware::session::NewSessionMiddleware;
+    /// # use gotham::test::TestServer;
+    /// #
+    /// #
+    /// # fn router() -&gt; Router {
+    /// #   let (chain, pipelines) = single_pipeline(
+    /// #       new_pipeline().add(NewSessionMiddleware::default()).build()
+    /// #   );
+    ///
+    /// build_router(chain, pipelines, |route| {
+    ///     route.get(&quot;/*&quot;).to_dir(&quot;resources/test/assets&quot;);
+    /// })
+    /// # }
+    /// #
+    /// # fn main() {
+    /// #   let test_server = TestServer::new(router()).unwrap();
+    /// #   let response = test_server.client()
+    /// #       .get(&quot;https://example.com/doc.html&quot;)
+    /// #       .perform()
+    /// #       .unwrap();
+    /// #   assert_eq!(response.status(), StatusCode::OK);
+    /// # }
+    /// ```
+    </span><span class="kw">fn </span>to_dir&lt;P&gt;(<span class="self">self</span>, options: P)
+    <span class="kw">where
+        </span><span class="self">Self</span>: ReplacePathExtractor&lt;FilePathExtractor&gt; + Sized,
+        <span class="self">Self</span>::Output: DefineSingleRoute,
+        FileOptions: From&lt;P&gt;,
     {
-        <span class="self">self</span>.<span class="ident">with_path_extractor</span>::<span class="op">&lt;</span><span class="ident">FilePathExtractor</span><span class="op">&gt;</span>()
-            .<span class="ident">to_new_handler</span>(<span class="ident">DirHandler::new</span>(<span class="ident">options</span>));
+        <span class="self">self</span>.with_path_extractor::&lt;FilePathExtractor&gt;()
+            .to_new_handler(DirHandler::new(options));
     }
 
-    <span class="doccomment">/// Directs the route to serve a single static file from the given path.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # use hyper::StatusCode;</span>
-    <span class="doccomment">/// # use gotham::router::Router;</span>
-    <span class="doccomment">/// # use gotham::router::builder::*;</span>
-    <span class="doccomment">/// # use gotham::pipeline::*;</span>
-    <span class="doccomment">/// # use gotham::middleware::session::NewSessionMiddleware;</span>
-    <span class="doccomment">/// # use gotham::test::TestServer;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn router() -&gt; Router {</span>
-    <span class="doccomment">/// #   let (chain, pipelines) = single_pipeline(</span>
-    <span class="doccomment">/// #       new_pipeline().add(NewSessionMiddleware::default()).build()</span>
-    <span class="doccomment">/// #   );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// build_router(chain, pipelines, |route| {</span>
-    <span class="doccomment">///     route.get(&quot;/&quot;).to_file(&quot;resources/test/assets/doc.html&quot;);</span>
-    <span class="doccomment">/// })</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn main() {</span>
-    <span class="doccomment">/// #   let test_server = TestServer::new(router()).unwrap();</span>
-    <span class="doccomment">/// #   let response = test_server.client()</span>
-    <span class="doccomment">/// #       .get(&quot;https://example.com/&quot;)</span>
-    <span class="doccomment">/// #       .perform()</span>
-    <span class="doccomment">/// #       .unwrap();</span>
-    <span class="doccomment">/// #   assert_eq!(response.status(), StatusCode::OK);</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">fn</span> <span class="ident">to_file</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">options</span>: <span class="ident">P</span>)
-    <span class="kw">where</span>
-        <span class="self">Self</span>: <span class="ident">Sized</span>,
-        <span class="ident">FileOptions</span>: <span class="ident">From</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Directs the route to serve a single static file from the given path.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// # use hyper::StatusCode;
+    /// # use gotham::router::Router;
+    /// # use gotham::router::builder::*;
+    /// # use gotham::pipeline::*;
+    /// # use gotham::middleware::session::NewSessionMiddleware;
+    /// # use gotham::test::TestServer;
+    /// #
+    /// #
+    /// # fn router() -&gt; Router {
+    /// #   let (chain, pipelines) = single_pipeline(
+    /// #       new_pipeline().add(NewSessionMiddleware::default()).build()
+    /// #   );
+    ///
+    /// build_router(chain, pipelines, |route| {
+    ///     route.get(&quot;/&quot;).to_file(&quot;resources/test/assets/doc.html&quot;);
+    /// })
+    /// # }
+    /// #
+    /// # fn main() {
+    /// #   let test_server = TestServer::new(router()).unwrap();
+    /// #   let response = test_server.client()
+    /// #       .get(&quot;https://example.com/&quot;)
+    /// #       .perform()
+    /// #       .unwrap();
+    /// #   assert_eq!(response.status(), StatusCode::OK);
+    /// # }
+    /// ```
+    </span><span class="kw">fn </span>to_file&lt;P&gt;(<span class="self">self</span>, options: P)
+    <span class="kw">where
+        </span><span class="self">Self</span>: Sized,
+        FileOptions: From&lt;P&gt;,
     {
-        <span class="self">self</span>.<span class="ident">to_new_handler</span>(<span class="ident">FileHandler::new</span>(<span class="ident">options</span>));
+        <span class="self">self</span>.to_new_handler(FileHandler::new(options));
     }
 
-    <span class="doccomment">/// Applies a `PathExtractor` type to the current route, to extract path parameters into</span>
-    <span class="doccomment">/// `State` with the given type.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
-    <span class="doccomment">/// # use gotham::state::{State, FromState};</span>
-    <span class="doccomment">/// # use gotham::router::{build_router, Router};</span>
-    <span class="doccomment">/// # use gotham::prelude::*;</span>
-    <span class="doccomment">/// # use gotham::pipeline::*;</span>
-    <span class="doccomment">/// # use gotham::middleware::session::NewSessionMiddleware;</span>
-    <span class="doccomment">/// # use gotham::test::TestServer;</span>
-    <span class="doccomment">/// # use serde::Deserialize;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// #[derive(Deserialize, StateData, StaticResponseExtender)]</span>
-    <span class="doccomment">/// struct MyPathParams {</span>
-    <span class="doccomment">/// #   #[allow(dead_code)]</span>
-    <span class="doccomment">///     name: String,</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// fn my_handler(state: State) -&gt; (State, Response&lt;Body&gt;) {</span>
-    <span class="doccomment">/// #   {</span>
-    <span class="doccomment">///     let params = MyPathParams::borrow_from(&amp;state);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // Handler implementation elided.</span>
-    <span class="doccomment">/// #   assert_eq!(params.name, &quot;world&quot;);</span>
-    <span class="doccomment">/// #   }</span>
-    <span class="doccomment">/// #   (state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap())</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn router() -&gt; Router {</span>
-    <span class="doccomment">/// #   let pipelines = new_pipeline_set();</span>
-    <span class="doccomment">/// #   let (pipelines, default) =</span>
-    <span class="doccomment">/// #       pipelines.add(new_pipeline().add(NewSessionMiddleware::default()).build());</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// #   let pipelines = finalize_pipeline_set(pipelines);</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// #   let default_pipeline_chain = (default, ());</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// build_router(default_pipeline_chain, pipelines, |route| {</span>
-    <span class="doccomment">///     route.get(&quot;/hello/:name&quot;)</span>
-    <span class="doccomment">///          .with_path_extractor::&lt;MyPathParams&gt;()</span>
-    <span class="doccomment">///          .to(my_handler);</span>
-    <span class="doccomment">/// })</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn main() {</span>
-    <span class="doccomment">/// #   let test_server = TestServer::new(router()).unwrap();</span>
-    <span class="doccomment">/// #   let response = test_server.client()</span>
-    <span class="doccomment">/// #       .get(&quot;https://example.com/hello/world&quot;)</span>
-    <span class="doccomment">/// #       .perform()</span>
-    <span class="doccomment">/// #       .unwrap();</span>
-    <span class="doccomment">/// #   assert_eq!(response.status(), StatusCode::ACCEPTED);</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">fn</span> <span class="ident">with_path_extractor</span><span class="op">&lt;</span><span class="ident">NPE</span><span class="op">&gt;</span>(<span class="self">self</span>) -&gt; <span class="op">&lt;</span><span class="self">Self</span> <span class="kw">as</span> <span class="ident">ReplacePathExtractor</span><span class="op">&lt;</span><span class="ident">NPE</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="ident">::Output</span>
-    <span class="kw">where</span>
-        <span class="ident">NPE</span>: <span class="ident">PathExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-        <span class="self">Self</span>: <span class="ident">ReplacePathExtractor</span><span class="op">&lt;</span><span class="ident">NPE</span><span class="op">&gt;</span>,
-        <span class="ident"><span class="self">Self</span>::Output</span>: <span class="ident">DefineSingleRoute</span>;
+    <span class="doccomment">/// Applies a `PathExtractor` type to the current route, to extract path parameters into
+    /// `State` with the given type.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// # use hyper::{Body, Response, StatusCode};
+    /// # use gotham::state::{State, FromState};
+    /// # use gotham::router::{build_router, Router};
+    /// # use gotham::prelude::*;
+    /// # use gotham::pipeline::*;
+    /// # use gotham::middleware::session::NewSessionMiddleware;
+    /// # use gotham::test::TestServer;
+    /// # use serde::Deserialize;
+    /// #
+    /// #[derive(Deserialize, StateData, StaticResponseExtender)]
+    /// struct MyPathParams {
+    /// #   #[allow(dead_code)]
+    ///     name: String,
+    /// }
+    ///
+    /// fn my_handler(state: State) -&gt; (State, Response&lt;Body&gt;) {
+    /// #   {
+    ///     let params = MyPathParams::borrow_from(&amp;state);
+    ///
+    ///     // Handler implementation elided.
+    /// #   assert_eq!(params.name, &quot;world&quot;);
+    /// #   }
+    /// #   (state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap())
+    /// }
+    /// #
+    /// # fn router() -&gt; Router {
+    /// #   let pipelines = new_pipeline_set();
+    /// #   let (pipelines, default) =
+    /// #       pipelines.add(new_pipeline().add(NewSessionMiddleware::default()).build());
+    /// #
+    /// #   let pipelines = finalize_pipeline_set(pipelines);
+    /// #
+    /// #   let default_pipeline_chain = (default, ());
+    ///
+    /// build_router(default_pipeline_chain, pipelines, |route| {
+    ///     route.get(&quot;/hello/:name&quot;)
+    ///          .with_path_extractor::&lt;MyPathParams&gt;()
+    ///          .to(my_handler);
+    /// })
+    /// # }
+    /// #
+    /// # fn main() {
+    /// #   let test_server = TestServer::new(router()).unwrap();
+    /// #   let response = test_server.client()
+    /// #       .get(&quot;https://example.com/hello/world&quot;)
+    /// #       .perform()
+    /// #       .unwrap();
+    /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
+    /// # }
+    /// ```
+    </span><span class="kw">fn </span>with_path_extractor&lt;NPE&gt;(<span class="self">self</span>) -&gt; &lt;<span class="self">Self </span><span class="kw">as </span>ReplacePathExtractor&lt;NPE&gt;&gt;::Output
+    <span class="kw">where
+        </span>NPE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+        <span class="self">Self</span>: ReplacePathExtractor&lt;NPE&gt;,
+        <span class="self">Self</span>::Output: DefineSingleRoute;
 
-    <span class="doccomment">/// Applies a `QueryStringExtractor` type to the current route, to extract query parameters into</span>
-    <span class="doccomment">/// `State` with the given type.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
-    <span class="doccomment">/// # use gotham::state::{State, FromState};</span>
-    <span class="doccomment">/// # use gotham::router::{build_router, Router};</span>
-    <span class="doccomment">/// # use gotham::prelude::*;</span>
-    <span class="doccomment">/// # use gotham::pipeline::*;</span>
-    <span class="doccomment">/// # use gotham::middleware::session::NewSessionMiddleware;</span>
-    <span class="doccomment">/// # use gotham::test::TestServer;</span>
-    <span class="doccomment">/// # use serde::Deserialize;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// #[derive(StateData, Deserialize, StaticResponseExtender)]</span>
-    <span class="doccomment">/// struct MyQueryParams {</span>
-    <span class="doccomment">/// #   #[allow(dead_code)]</span>
-    <span class="doccomment">///     id: u64,</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// fn my_handler(state: State) -&gt; (State, Response&lt;Body&gt;) {</span>
-    <span class="doccomment">///     let id = MyQueryParams::borrow_from(&amp;state).id;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // Handler implementation elided.</span>
-    <span class="doccomment">/// #   assert_eq!(id, 42);</span>
-    <span class="doccomment">/// #   (state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap())</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn router() -&gt; Router {</span>
-    <span class="doccomment">/// #   let pipelines = new_pipeline_set();</span>
-    <span class="doccomment">/// #   let (pipelines, default) =</span>
-    <span class="doccomment">/// #       pipelines.add(new_pipeline().add(NewSessionMiddleware::default()).build());</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// #   let pipelines = finalize_pipeline_set(pipelines);</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// #   let default_pipeline_chain = (default, ());</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// build_router(default_pipeline_chain, pipelines, |route| {</span>
-    <span class="doccomment">///     route.get(&quot;/request/path&quot;)</span>
-    <span class="doccomment">///          .with_query_string_extractor::&lt;MyQueryParams&gt;()</span>
-    <span class="doccomment">///          .to(my_handler);</span>
-    <span class="doccomment">/// })</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn main() {</span>
-    <span class="doccomment">/// #   let test_server = TestServer::new(router()).unwrap();</span>
-    <span class="doccomment">/// #   let response = test_server.client()</span>
-    <span class="doccomment">/// #       .get(&quot;https://example.com/request/path?id=42&quot;)</span>
-    <span class="doccomment">/// #       .perform()</span>
-    <span class="doccomment">/// #       .unwrap();</span>
-    <span class="doccomment">/// #   assert_eq!(response.status(), StatusCode::ACCEPTED);</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">fn</span> <span class="ident">with_query_string_extractor</span><span class="op">&lt;</span><span class="ident">NQSE</span><span class="op">&gt;</span>(
+    <span class="doccomment">/// Applies a `QueryStringExtractor` type to the current route, to extract query parameters into
+    /// `State` with the given type.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// # use hyper::{Body, Response, StatusCode};
+    /// # use gotham::state::{State, FromState};
+    /// # use gotham::router::{build_router, Router};
+    /// # use gotham::prelude::*;
+    /// # use gotham::pipeline::*;
+    /// # use gotham::middleware::session::NewSessionMiddleware;
+    /// # use gotham::test::TestServer;
+    /// # use serde::Deserialize;
+    /// #
+    /// #[derive(StateData, Deserialize, StaticResponseExtender)]
+    /// struct MyQueryParams {
+    /// #   #[allow(dead_code)]
+    ///     id: u64,
+    /// }
+    ///
+    /// fn my_handler(state: State) -&gt; (State, Response&lt;Body&gt;) {
+    ///     let id = MyQueryParams::borrow_from(&amp;state).id;
+    ///
+    ///     // Handler implementation elided.
+    /// #   assert_eq!(id, 42);
+    /// #   (state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap())
+    /// }
+    /// #
+    /// # fn router() -&gt; Router {
+    /// #   let pipelines = new_pipeline_set();
+    /// #   let (pipelines, default) =
+    /// #       pipelines.add(new_pipeline().add(NewSessionMiddleware::default()).build());
+    /// #
+    /// #   let pipelines = finalize_pipeline_set(pipelines);
+    /// #
+    /// #   let default_pipeline_chain = (default, ());
+    ///
+    /// build_router(default_pipeline_chain, pipelines, |route| {
+    ///     route.get(&quot;/request/path&quot;)
+    ///          .with_query_string_extractor::&lt;MyQueryParams&gt;()
+    ///          .to(my_handler);
+    /// })
+    /// # }
+    /// #
+    /// # fn main() {
+    /// #   let test_server = TestServer::new(router()).unwrap();
+    /// #   let response = test_server.client()
+    /// #       .get(&quot;https://example.com/request/path?id=42&quot;)
+    /// #       .perform()
+    /// #       .unwrap();
+    /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
+    /// # }
+    /// ```
+    </span><span class="kw">fn </span>with_query_string_extractor&lt;NQSE&gt;(
         <span class="self">self</span>,
-    ) -&gt; <span class="op">&lt;</span><span class="self">Self</span> <span class="kw">as</span> <span class="ident">ReplaceQueryStringExtractor</span><span class="op">&lt;</span><span class="ident">NQSE</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="ident">::Output</span>
-    <span class="kw">where</span>
-        <span class="ident">NQSE</span>: <span class="ident">QueryStringExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-        <span class="self">Self</span>: <span class="ident">ReplaceQueryStringExtractor</span><span class="op">&lt;</span><span class="ident">NQSE</span><span class="op">&gt;</span>,
-        <span class="ident"><span class="self">Self</span>::Output</span>: <span class="ident">DefineSingleRoute</span>;
+    ) -&gt; &lt;<span class="self">Self </span><span class="kw">as </span>ReplaceQueryStringExtractor&lt;NQSE&gt;&gt;::Output
+    <span class="kw">where
+        </span>NQSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+        <span class="self">Self</span>: ReplaceQueryStringExtractor&lt;NQSE&gt;,
+        <span class="self">Self</span>::Output: DefineSingleRoute;
 
-    <span class="doccomment">/// Adds additional `RouteMatcher` requirements to the current route.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
-    <span class="doccomment">/// # use hyper::header::ACCEPT;</span>
-    <span class="doccomment">/// # use gotham::state::State;</span>
-    <span class="doccomment">/// # use gotham::router::route::matcher::AcceptHeaderRouteMatcher;</span>
-    <span class="doccomment">/// # use gotham::router::Router;</span>
-    <span class="doccomment">/// # use gotham::router::builder::*;</span>
-    <span class="doccomment">/// # use gotham::test::TestServer;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn my_handler(state: State) -&gt; (State, Response&lt;Body&gt;) {</span>
-    <span class="doccomment">/// #   (state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap())</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn router() -&gt; Router {</span>
-    <span class="doccomment">/// build_simple_router(|route| {</span>
-    <span class="doccomment">///     let matcher = AcceptHeaderRouteMatcher::new(vec![mime::APPLICATION_JSON]);</span>
-    <span class="doccomment">///     route.get(&quot;/request/path&quot;)</span>
-    <span class="doccomment">///          .add_route_matcher(matcher)</span>
-    <span class="doccomment">///          .to(my_handler);</span>
-    <span class="doccomment">/// })</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn main() {</span>
-    <span class="doccomment">/// #   let test_server = TestServer::new(router()).unwrap();</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// #   let response = test_server.client()</span>
-    <span class="doccomment">/// #       .get(&quot;https://example.com/request/path&quot;)</span>
-    <span class="doccomment">/// #       .with_header(ACCEPT, mime::APPLICATION_JSON.to_string().parse().unwrap())</span>
-    <span class="doccomment">/// #       .perform()</span>
-    <span class="doccomment">/// #       .unwrap();</span>
-    <span class="doccomment">/// #   assert_eq!(response.status(), StatusCode::ACCEPTED);</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// #   let response = test_server.client()</span>
-    <span class="doccomment">/// #       .get(&quot;https://example.com/request/path&quot;)</span>
-    <span class="doccomment">/// #       .with_header(ACCEPT, mime::TEXT_PLAIN.to_string().parse().unwrap())</span>
-    <span class="doccomment">/// #       .perform()</span>
-    <span class="doccomment">/// #       .unwrap();</span>
-    <span class="doccomment">/// #   assert_eq!(response.status(), StatusCode::NOT_ACCEPTABLE);</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">fn</span> <span class="ident">add_route_matcher</span><span class="op">&lt;</span><span class="ident">NRM</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">matcher</span>: <span class="ident">NRM</span>) -&gt; <span class="op">&lt;</span><span class="self">Self</span> <span class="kw">as</span> <span class="ident">ExtendRouteMatcher</span><span class="op">&lt;</span><span class="ident">NRM</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="ident">::Output</span>
-    <span class="kw">where</span>
-        <span class="ident">NRM</span>: <span class="ident">RouteMatcher</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-        <span class="self">Self</span>: <span class="ident">ExtendRouteMatcher</span><span class="op">&lt;</span><span class="ident">NRM</span><span class="op">&gt;</span>,
-        <span class="ident"><span class="self">Self</span>::Output</span>: <span class="ident">DefineSingleRoute</span>;
+    <span class="doccomment">/// Adds additional `RouteMatcher` requirements to the current route.
+    ///
+    /// ```
+    /// # use hyper::{Body, Response, StatusCode};
+    /// # use hyper::header::ACCEPT;
+    /// # use gotham::state::State;
+    /// # use gotham::router::route::matcher::AcceptHeaderRouteMatcher;
+    /// # use gotham::router::Router;
+    /// # use gotham::router::builder::*;
+    /// # use gotham::test::TestServer;
+    /// #
+    /// # fn my_handler(state: State) -&gt; (State, Response&lt;Body&gt;) {
+    /// #   (state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap())
+    /// # }
+    /// #
+    /// # fn router() -&gt; Router {
+    /// build_simple_router(|route| {
+    ///     let matcher = AcceptHeaderRouteMatcher::new(vec![mime::APPLICATION_JSON]);
+    ///     route.get(&quot;/request/path&quot;)
+    ///          .add_route_matcher(matcher)
+    ///          .to(my_handler);
+    /// })
+    /// # }
+    /// #
+    /// # fn main() {
+    /// #   let test_server = TestServer::new(router()).unwrap();
+    /// #
+    /// #   let response = test_server.client()
+    /// #       .get(&quot;https://example.com/request/path&quot;)
+    /// #       .with_header(ACCEPT, mime::APPLICATION_JSON.to_string().parse().unwrap())
+    /// #       .perform()
+    /// #       .unwrap();
+    /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
+    /// #
+    /// #   let response = test_server.client()
+    /// #       .get(&quot;https://example.com/request/path&quot;)
+    /// #       .with_header(ACCEPT, mime::TEXT_PLAIN.to_string().parse().unwrap())
+    /// #       .perform()
+    /// #       .unwrap();
+    /// #   assert_eq!(response.status(), StatusCode::NOT_ACCEPTABLE);
+    /// # }
+    /// ```
+    </span><span class="kw">fn </span>add_route_matcher&lt;NRM&gt;(<span class="self">self</span>, matcher: NRM) -&gt; &lt;<span class="self">Self </span><span class="kw">as </span>ExtendRouteMatcher&lt;NRM&gt;&gt;::Output
+    <span class="kw">where
+        </span>NRM: RouteMatcher + Send + Sync + <span class="lifetime">&#39;static</span>,
+        <span class="self">Self</span>: ExtendRouteMatcher&lt;NRM&gt;,
+        <span class="self">Self</span>::Output: DefineSingleRoute;
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">M</span>, <span class="ident">C</span>, <span class="ident">P</span>, <span class="ident">PE</span>, <span class="ident">QSE</span><span class="op">&gt;</span> <span class="ident">DefineSingleRoute</span> <span class="kw">for</span> <span class="ident">SingleRouteBuilder</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">M</span>, <span class="ident">C</span>, <span class="ident">P</span>, <span class="ident">PE</span>, <span class="ident">QSE</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">M</span>: <span class="ident">RouteMatcher</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">C</span>: <span class="ident">PipelineHandleChain</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">P</span>: <span class="ident">RefUnwindSafe</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">PE</span>: <span class="ident">PathExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">QSE</span>: <span class="ident">QueryStringExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, M, C, P, PE, QSE&gt; DefineSingleRoute <span class="kw">for </span>SingleRouteBuilder&lt;<span class="lifetime">&#39;a</span>, M, C, P, PE, QSE&gt;
+<span class="kw">where
+    </span>M: RouteMatcher + Send + Sync + <span class="lifetime">&#39;static</span>,
+    C: PipelineHandleChain&lt;P&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+    P: RefUnwindSafe + Send + Sync + <span class="lifetime">&#39;static</span>,
+    PE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+    QSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
 {
-    <span class="kw">fn</span> <span class="ident">to</span><span class="op">&lt;</span><span class="ident">H</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">handler</span>: <span class="ident">H</span>)
-    <span class="kw">where</span>
-        <span class="ident">H</span>: <span class="ident">Handler</span> <span class="op">+</span> <span class="ident">RefUnwindSafe</span> <span class="op">+</span> <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+    <span class="kw">fn </span>to&lt;H&gt;(<span class="self">self</span>, handler: H)
+    <span class="kw">where
+        </span>H: Handler + RefUnwindSafe + Copy + Send + Sync + <span class="lifetime">&#39;static</span>,
     {
-        <span class="self">self</span>.<span class="ident">to_new_handler</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> <span class="prelude-val">Ok</span>(<span class="ident">handler</span>))
+        <span class="self">self</span>.to_new_handler(<span class="kw">move </span>|| <span class="prelude-val">Ok</span>(handler))
     }
 
-    <span class="kw">fn</span> <span class="ident">to_async</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">Fut</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">handler</span>: <span class="ident">H</span>)
-    <span class="kw">where</span>
-        <span class="self">Self</span>: <span class="ident">Sized</span>,
-        <span class="ident">H</span>: (<span class="ident">FnOnce</span>(<span class="ident">State</span>) -&gt; <span class="ident">Fut</span>) <span class="op">+</span> <span class="ident">RefUnwindSafe</span> <span class="op">+</span> <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-        <span class="ident">Fut</span>: <span class="ident">Future</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="ident">HandlerResult</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+    <span class="kw">fn </span>to_async&lt;H, Fut&gt;(<span class="self">self</span>, handler: H)
+    <span class="kw">where
+        </span><span class="self">Self</span>: Sized,
+        H: (FnOnce(State) -&gt; Fut) + RefUnwindSafe + Copy + Send + Sync + <span class="lifetime">&#39;static</span>,
+        Fut: Future&lt;Output = HandlerResult&gt; + Send + <span class="lifetime">&#39;static</span>,
     {
-        <span class="self">self</span>.<span class="ident">to_new_handler</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> <span class="prelude-val">Ok</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">s</span>: <span class="ident">State</span><span class="op">|</span> <span class="ident">handler</span>(<span class="ident">s</span>).<span class="ident">boxed</span>()))
+        <span class="self">self</span>.to_new_handler(<span class="kw">move </span>|| <span class="prelude-val">Ok</span>(<span class="kw">move </span>|s: State| handler(s).boxed()))
     }
 
-    <span class="kw">fn</span> <span class="ident">to_async_borrowing</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">handler</span>: <span class="ident">F</span>)
-    <span class="kw">where</span>
-        <span class="self">Self</span>: <span class="ident">Sized</span>,
-        <span class="ident">F</span>: <span class="ident">HandlerMarker</span> <span class="op">+</span> <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="ident">RefUnwindSafe</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+    <span class="kw">fn </span>to_async_borrowing&lt;F&gt;(<span class="self">self</span>, handler: F)
+    <span class="kw">where
+        </span><span class="self">Self</span>: Sized,
+        F: HandlerMarker + Copy + Send + Sync + RefUnwindSafe + <span class="lifetime">&#39;static</span>,
     {
-        <span class="self">self</span>.<span class="ident">to_new_handler</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> <span class="prelude-val">Ok</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">state</span>: <span class="ident">State</span><span class="op">|</span> <span class="ident">handler</span>.<span class="ident">call_and_wrap</span>(<span class="ident">state</span>)))
+        <span class="self">self</span>.to_new_handler(<span class="kw">move </span>|| <span class="prelude-val">Ok</span>(<span class="kw">move </span>|state: State| handler.call_and_wrap(state)))
     }
 
-    <span class="kw">fn</span> <span class="ident">to_new_handler</span><span class="op">&lt;</span><span class="ident">NH</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">new_handler</span>: <span class="ident">NH</span>)
-    <span class="kw">where</span>
-        <span class="ident">NH</span>: <span class="ident">NewHandler</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+    <span class="kw">fn </span>to_new_handler&lt;NH&gt;(<span class="self">self</span>, new_handler: NH)
+    <span class="kw">where
+        </span>NH: NewHandler + <span class="lifetime">&#39;static</span>,
     {
-        <span class="kw">let</span> <span class="ident">dispatcher</span> <span class="op">=</span> <span class="ident">DispatcherImpl::new</span>(<span class="ident">new_handler</span>, <span class="self">self</span>.<span class="ident">pipeline_chain</span>, <span class="self">self</span>.<span class="ident">pipelines</span>);
-        <span class="kw">let</span> <span class="ident">route</span>: <span class="ident">RouteImpl</span><span class="op">&lt;</span><span class="ident">M</span>, <span class="ident">PE</span>, <span class="ident">QSE</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">RouteImpl::new</span>(
-            <span class="self">self</span>.<span class="ident">matcher</span>,
-            <span class="ident">Box::new</span>(<span class="ident">dispatcher</span>),
-            <span class="ident">Extractors::new</span>(),
-            <span class="ident">Delegation::Internal</span>,
+        <span class="kw">let </span>dispatcher = DispatcherImpl::new(new_handler, <span class="self">self</span>.pipeline_chain, <span class="self">self</span>.pipelines);
+        <span class="kw">let </span>route: RouteImpl&lt;M, PE, QSE&gt; = RouteImpl::new(
+            <span class="self">self</span>.matcher,
+            Box::new(dispatcher),
+            Extractors::new(),
+            Delegation::Internal,
         );
-        <span class="self">self</span>.<span class="ident">node_builder</span>.<span class="ident">add_route</span>(<span class="ident">Box::new</span>(<span class="ident">route</span>));
+        <span class="self">self</span>.node_builder.add_route(Box::new(route));
     }
 
-    <span class="kw">fn</span> <span class="ident">with_path_extractor</span><span class="op">&lt;</span><span class="ident">NPE</span><span class="op">&gt;</span>(<span class="self">self</span>) -&gt; <span class="op">&lt;</span><span class="self">Self</span> <span class="kw">as</span> <span class="ident">ReplacePathExtractor</span><span class="op">&lt;</span><span class="ident">NPE</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="ident">::Output</span>
-    <span class="kw">where</span>
-        <span class="ident">NPE</span>: <span class="ident">PathExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+    <span class="kw">fn </span>with_path_extractor&lt;NPE&gt;(<span class="self">self</span>) -&gt; &lt;<span class="self">Self </span><span class="kw">as </span>ReplacePathExtractor&lt;NPE&gt;&gt;::Output
+    <span class="kw">where
+        </span>NPE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
     {
-        <span class="self">self</span>.<span class="ident">replace_path_extractor</span>()
+        <span class="self">self</span>.replace_path_extractor()
     }
 
-    <span class="kw">fn</span> <span class="ident">with_query_string_extractor</span><span class="op">&lt;</span><span class="ident">NQSE</span><span class="op">&gt;</span>(
+    <span class="kw">fn </span>with_query_string_extractor&lt;NQSE&gt;(
         <span class="self">self</span>,
-    ) -&gt; <span class="op">&lt;</span><span class="self">Self</span> <span class="kw">as</span> <span class="ident">ReplaceQueryStringExtractor</span><span class="op">&lt;</span><span class="ident">NQSE</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="ident">::Output</span>
-    <span class="kw">where</span>
-        <span class="ident">NQSE</span>: <span class="ident">QueryStringExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+    ) -&gt; &lt;<span class="self">Self </span><span class="kw">as </span>ReplaceQueryStringExtractor&lt;NQSE&gt;&gt;::Output
+    <span class="kw">where
+        </span>NQSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
     {
-        <span class="self">self</span>.<span class="ident">replace_query_string_extractor</span>()
+        <span class="self">self</span>.replace_query_string_extractor()
     }
 
-    <span class="kw">fn</span> <span class="ident">add_route_matcher</span><span class="op">&lt;</span><span class="ident">NRM</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">matcher</span>: <span class="ident">NRM</span>) -&gt; <span class="op">&lt;</span><span class="self">Self</span> <span class="kw">as</span> <span class="ident">ExtendRouteMatcher</span><span class="op">&lt;</span><span class="ident">NRM</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="ident">::Output</span>
-    <span class="kw">where</span>
-        <span class="ident">NRM</span>: <span class="ident">RouteMatcher</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+    <span class="kw">fn </span>add_route_matcher&lt;NRM&gt;(<span class="self">self</span>, matcher: NRM) -&gt; &lt;<span class="self">Self </span><span class="kw">as </span>ExtendRouteMatcher&lt;NRM&gt;&gt;::Output
+    <span class="kw">where
+        </span>NRM: RouteMatcher + Send + Sync + <span class="lifetime">&#39;static</span>,
     {
-        <span class="self">self</span>.<span class="ident">extend_route_matcher</span>(<span class="ident">matcher</span>)
+        <span class="self">self</span>.extend_route_matcher(matcher)
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

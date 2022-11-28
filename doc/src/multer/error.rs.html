@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/multer-2.0.4/src/error.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>error.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../multer/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../multer/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../multer/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/multer-2.0.4/src/error.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>error.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../multer/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../multer/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../multer/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -111,118 +111,118 @@
 <span id="111">111</span>
 <span id="112">112</span>
 <span id="113">113</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">std::fmt</span>::{<span class="self">self</span>, <span class="ident">Debug</span>, <span class="ident">Display</span>, <span class="ident">Formatter</span>};
+</pre><pre class="rust"><code><span class="kw">use </span>std::fmt::{<span class="self">self</span>, Debug, Display, Formatter};
 
-<span class="kw">type</span> <span class="ident">BoxError</span> <span class="op">=</span> <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">std::error::Error</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span>;
+<span class="kw">type </span>BoxError = Box&lt;<span class="kw">dyn </span>std::error::Error + Send + Sync&gt;;
 
-<span class="doccomment">/// A set of errors that can occur during parsing multipart stream and in other</span>
-<span class="doccomment">/// operations.</span>
-<span class="attribute">#[<span class="ident">non_exhaustive</span>]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Error</span> {
-    <span class="doccomment">/// An unknown field is detected when multipart</span>
-    <span class="doccomment">/// [`constraints`](crate::Constraints::allowed_fields) are added.</span>
-    <span class="ident">UnknownField</span> { <span class="ident">field_name</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> },
+<span class="doccomment">/// A set of errors that can occur during parsing multipart stream and in other
+/// operations.
+</span><span class="attribute">#[non_exhaustive]
+</span><span class="kw">pub enum </span>Error {
+    <span class="doccomment">/// An unknown field is detected when multipart
+    /// [`constraints`](crate::Constraints::allowed_fields) are added.
+    </span>UnknownField { field_name: <span class="prelude-ty">Option</span>&lt;String&gt; },
 
-    <span class="doccomment">/// The field data is found incomplete.</span>
-    <span class="ident">IncompleteFieldData</span> { <span class="ident">field_name</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> },
+    <span class="doccomment">/// The field data is found incomplete.
+    </span>IncompleteFieldData { field_name: <span class="prelude-ty">Option</span>&lt;String&gt; },
 
-    <span class="doccomment">/// Couldn&#39;t read the field headers completely.</span>
-    <span class="ident">IncompleteHeaders</span>,
+    <span class="doccomment">/// Couldn&#39;t read the field headers completely.
+    </span>IncompleteHeaders,
 
-    <span class="doccomment">/// Failed to read headers.</span>
-    <span class="ident">ReadHeaderFailed</span>(<span class="ident">httparse::Error</span>),
+    <span class="doccomment">/// Failed to read headers.
+    </span>ReadHeaderFailed(httparse::Error),
 
-    <span class="doccomment">/// Failed to decode the field&#39;s raw header name to</span>
-    <span class="doccomment">/// [`HeaderName`](http::header::HeaderName) type.</span>
-    <span class="ident">DecodeHeaderName</span> { <span class="ident">name</span>: <span class="ident">String</span>, <span class="ident">cause</span>: <span class="ident">BoxError</span> },
+    <span class="doccomment">/// Failed to decode the field&#39;s raw header name to
+    /// [`HeaderName`](http::header::HeaderName) type.
+    </span>DecodeHeaderName { name: String, cause: BoxError },
 
-    <span class="doccomment">/// Failed to decode the field&#39;s raw header value to</span>
-    <span class="doccomment">/// [`HeaderValue`](http::header::HeaderValue) type.</span>
-    <span class="ident">DecodeHeaderValue</span> { <span class="ident">value</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>, <span class="ident">cause</span>: <span class="ident">BoxError</span> },
+    <span class="doccomment">/// Failed to decode the field&#39;s raw header value to
+    /// [`HeaderValue`](http::header::HeaderValue) type.
+    </span>DecodeHeaderValue { value: Vec&lt;u8&gt;, cause: BoxError },
 
-    <span class="doccomment">/// Multipart stream is incomplete.</span>
-    <span class="ident">IncompleteStream</span>,
+    <span class="doccomment">/// Multipart stream is incomplete.
+    </span>IncompleteStream,
 
-    <span class="doccomment">/// The incoming field size exceeded the maximum limit.</span>
-    <span class="ident">FieldSizeExceeded</span> { <span class="ident">limit</span>: <span class="ident">u64</span>, <span class="ident">field_name</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> },
+    <span class="doccomment">/// The incoming field size exceeded the maximum limit.
+    </span>FieldSizeExceeded { limit: u64, field_name: <span class="prelude-ty">Option</span>&lt;String&gt; },
 
-    <span class="doccomment">/// The incoming stream size exceeded the maximum limit.</span>
-    <span class="ident">StreamSizeExceeded</span> { <span class="ident">limit</span>: <span class="ident">u64</span> },
+    <span class="doccomment">/// The incoming stream size exceeded the maximum limit.
+    </span>StreamSizeExceeded { limit: u64 },
 
-    <span class="doccomment">/// Stream read failed.</span>
-    <span class="ident">StreamReadFailed</span>(<span class="ident">BoxError</span>),
+    <span class="doccomment">/// Stream read failed.
+    </span>StreamReadFailed(BoxError),
 
-    <span class="doccomment">/// Failed to lock the multipart shared state for any changes.</span>
-    <span class="ident">LockFailure</span>,
+    <span class="doccomment">/// Failed to lock the multipart shared state for any changes.
+    </span>LockFailure,
 
-    <span class="doccomment">/// The `Content-Type` header is not `multipart/form-data`.</span>
-    <span class="ident">NoMultipart</span>,
+    <span class="doccomment">/// The `Content-Type` header is not `multipart/form-data`.
+    </span>NoMultipart,
 
-    <span class="doccomment">/// Failed to convert the `Content-Type` to [`mime::Mime`] type.</span>
-    <span class="ident">DecodeContentType</span>(<span class="ident">mime::FromStrError</span>),
+    <span class="doccomment">/// Failed to convert the `Content-Type` to [`mime::Mime`] type.
+    </span>DecodeContentType(mime::FromStrError),
 
-    <span class="doccomment">/// No boundary found in `Content-Type` header.</span>
-    <span class="ident">NoBoundary</span>,
+    <span class="doccomment">/// No boundary found in `Content-Type` header.
+    </span>NoBoundary,
 
-    <span class="doccomment">/// Failed to decode the field data as `JSON` in</span>
-    <span class="doccomment">/// [`field.json()`](crate::Field::json) method.</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;json&quot;</span>)]</span>
-    <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">nightly</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;json&quot;</span>)))]</span>
-    <span class="ident">DecodeJson</span>(<span class="ident">serde_json::Error</span>),
+    <span class="doccomment">/// Failed to decode the field data as `JSON` in
+    /// [`field.json()`](crate::Field::json) method.
+    </span><span class="attribute">#[cfg(feature = <span class="string">&quot;json&quot;</span>)]
+    #[cfg_attr(nightly, doc(cfg(feature = <span class="string">&quot;json&quot;</span>)))]
+    </span>DecodeJson(serde_json::Error),
 }
 
-<span class="kw">impl</span> <span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">Error</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
-        <span class="ident">Display::fmt</span>(<span class="self">self</span>, <span class="ident">f</span>)
+<span class="kw">impl </span>Debug <span class="kw">for </span>Error {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+        Display::fmt(<span class="self">self</span>, f)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Display</span> <span class="kw">for</span> <span class="ident">Error</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
-        <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">Error::UnknownField</span> { <span class="ident">field_name</span> } =&gt; {
-                <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">field_name</span>.<span class="ident">as_deref</span>().<span class="ident">unwrap_or</span>(<span class="string">&quot;&lt;unknown&gt;&quot;</span>);
-                <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;unknown field received: {:?}&quot;</span>, <span class="ident">name</span>)
+<span class="kw">impl </span>Display <span class="kw">for </span>Error {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+        <span class="kw">match </span><span class="self">self </span>{
+            Error::UnknownField { field_name } =&gt; {
+                <span class="kw">let </span>name = field_name.as_deref().unwrap_or(<span class="string">&quot;&lt;unknown&gt;&quot;</span>);
+                <span class="macro">write!</span>(f, <span class="string">&quot;unknown field received: {:?}&quot;</span>, name)
             }
-            <span class="ident">Error::IncompleteFieldData</span> { <span class="ident">field_name</span> } =&gt; {
-                <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">field_name</span>.<span class="ident">as_deref</span>().<span class="ident">unwrap_or</span>(<span class="string">&quot;&lt;unknown&gt;&quot;</span>);
-                <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;field {:?} received with incomplete data&quot;</span>, <span class="ident">name</span>)
+            Error::IncompleteFieldData { field_name } =&gt; {
+                <span class="kw">let </span>name = field_name.as_deref().unwrap_or(<span class="string">&quot;&lt;unknown&gt;&quot;</span>);
+                <span class="macro">write!</span>(f, <span class="string">&quot;field {:?} received with incomplete data&quot;</span>, name)
             }
-            <span class="ident">Error::DecodeHeaderName</span> { <span class="ident">name</span>, <span class="ident">cause</span> } =&gt; {
-                <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to decode field&#39;s raw header name: {:?} {}&quot;</span>, <span class="ident">name</span>, <span class="ident">cause</span>)
+            Error::DecodeHeaderName { name, cause } =&gt; {
+                <span class="macro">write!</span>(f, <span class="string">&quot;failed to decode field&#39;s raw header name: {:?} {}&quot;</span>, name, cause)
             }
-            <span class="ident">Error::DecodeHeaderValue</span> { <span class="ident">cause</span>, .. } =&gt; {
-                <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to decode field&#39;s raw header value: {}&quot;</span>, <span class="ident">cause</span>)
+            Error::DecodeHeaderValue { cause, .. } =&gt; {
+                <span class="macro">write!</span>(f, <span class="string">&quot;failed to decode field&#39;s raw header value: {}&quot;</span>, cause)
             }
-            <span class="ident">Error::FieldSizeExceeded</span> { <span class="ident">limit</span>, <span class="ident">field_name</span> } =&gt; {
-                <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">field_name</span>.<span class="ident">as_deref</span>().<span class="ident">unwrap_or</span>(<span class="string">&quot;&lt;unknown&gt;&quot;</span>);
-                <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;field {:?} exceeded the size limit: {} bytes&quot;</span>, <span class="ident">name</span>, <span class="ident">limit</span>)
+            Error::FieldSizeExceeded { limit, field_name } =&gt; {
+                <span class="kw">let </span>name = field_name.as_deref().unwrap_or(<span class="string">&quot;&lt;unknown&gt;&quot;</span>);
+                <span class="macro">write!</span>(f, <span class="string">&quot;field {:?} exceeded the size limit: {} bytes&quot;</span>, name, limit)
             }
-            <span class="ident">Error::StreamSizeExceeded</span> { <span class="ident">limit</span> } =&gt; {
-                <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;stream size exceeded limit: {} bytes&quot;</span>, <span class="ident">limit</span>)
+            Error::StreamSizeExceeded { limit } =&gt; {
+                <span class="macro">write!</span>(f, <span class="string">&quot;stream size exceeded limit: {} bytes&quot;</span>, limit)
             }
-            <span class="ident">Error::ReadHeaderFailed</span>(<span class="ident">e</span>) =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to read headers: {}&quot;</span>, <span class="ident">e</span>),
-            <span class="ident">Error::StreamReadFailed</span>(<span class="ident">e</span>) =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to read stream: {}&quot;</span>, <span class="ident">e</span>),
-            <span class="ident">Error::DecodeContentType</span>(<span class="ident">e</span>) =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to decode Content-Type: {}&quot;</span>, <span class="ident">e</span>),
-            <span class="ident">Error::IncompleteHeaders</span> =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to read field complete headers&quot;</span>),
-            <span class="ident">Error::IncompleteStream</span> =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;incomplete multipart stream&quot;</span>),
-            <span class="ident">Error::LockFailure</span> =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to lock multipart state&quot;</span>),
-            <span class="ident">Error::NoMultipart</span> =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;Content-Type is not multipart/form-data&quot;</span>),
-            <span class="ident">Error::NoBoundary</span> =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;multipart boundary not found in Content-Type&quot;</span>),
-            <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;json&quot;</span>)]</span>
-            <span class="ident">Error::DecodeJson</span>(<span class="ident">e</span>) =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;failed to decode field data as JSON: {}&quot;</span>, <span class="ident">e</span>),
+            Error::ReadHeaderFailed(e) =&gt; <span class="macro">write!</span>(f, <span class="string">&quot;failed to read headers: {}&quot;</span>, e),
+            Error::StreamReadFailed(e) =&gt; <span class="macro">write!</span>(f, <span class="string">&quot;failed to read stream: {}&quot;</span>, e),
+            Error::DecodeContentType(e) =&gt; <span class="macro">write!</span>(f, <span class="string">&quot;failed to decode Content-Type: {}&quot;</span>, e),
+            Error::IncompleteHeaders =&gt; <span class="macro">write!</span>(f, <span class="string">&quot;failed to read field complete headers&quot;</span>),
+            Error::IncompleteStream =&gt; <span class="macro">write!</span>(f, <span class="string">&quot;incomplete multipart stream&quot;</span>),
+            Error::LockFailure =&gt; <span class="macro">write!</span>(f, <span class="string">&quot;failed to lock multipart state&quot;</span>),
+            Error::NoMultipart =&gt; <span class="macro">write!</span>(f, <span class="string">&quot;Content-Type is not multipart/form-data&quot;</span>),
+            Error::NoBoundary =&gt; <span class="macro">write!</span>(f, <span class="string">&quot;multipart boundary not found in Content-Type&quot;</span>),
+            <span class="attribute">#[cfg(feature = <span class="string">&quot;json&quot;</span>)]
+            </span>Error::DecodeJson(e) =&gt; <span class="macro">write!</span>(f, <span class="string">&quot;failed to decode field data as JSON: {}&quot;</span>, e),
         }
     }
 }
 
-<span class="kw">impl</span> <span class="ident">std::error::Error</span> <span class="kw">for</span> <span class="ident">Error</span> {}
+<span class="kw">impl </span>std::error::Error <span class="kw">for </span>Error {}
 
-<span class="kw">impl</span> <span class="ident">PartialEq</span> <span class="kw">for</span> <span class="ident">Error</span> {
-    <span class="kw">fn</span> <span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="self">Self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">to_string</span>().<span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="ident">other</span>.<span class="ident">to_string</span>())
+<span class="kw">impl </span>PartialEq <span class="kw">for </span>Error {
+    <span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span><span class="self">Self</span>) -&gt; bool {
+        <span class="self">self</span>.to_string().eq(<span class="kw-2">&amp;</span>other.to_string())
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Eq</span> <span class="kw">for</span> <span class="ident">Error</span> {}
+<span class="kw">impl </span>Eq <span class="kw">for </span>Error {}
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="multer" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="multer" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

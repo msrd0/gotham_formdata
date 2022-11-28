@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/router/route/matcher/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../../storage.js"></script><script defer src="../../../../../source-script.js"></script><script defer src="../../../../../source-files.js"></script><script defer src="../../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../../gotham/index.html"><img class="rust-logo" src="../../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/router/route/matcher/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../../../normalize.css"><link rel="stylesheet" href="../../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../../../ayu.css" disabled><link rel="stylesheet" href="../../../../../dark.css" disabled><link rel="stylesheet" href="../../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../../storage.js"></script><script defer src="../../../../../source-script.js"></script><script defer src="../../../../../source-files.js"></script><script defer src="../../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../../gotham/index.html"><img class="rust-logo" src="../../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -118,125 +118,125 @@
 <span id="118">118</span>
 <span id="119">119</span>
 <span id="120">120</span>
-</pre><pre class="rust"><code><span class="doccomment">//! Defines the type `RouteMatcher` and default implementations.</span>
+</pre><pre class="rust"><code><span class="doccomment">//! Defines the type `RouteMatcher` and default implementations.
 
-<span class="kw">mod</span> <span class="ident">accept</span>;
-<span class="kw">mod</span> <span class="ident">access_control_request_method</span>;
-<span class="kw">mod</span> <span class="ident">and</span>;
-<span class="kw">mod</span> <span class="ident">any</span>;
-<span class="kw">mod</span> <span class="ident">content_type</span>;
+</span><span class="kw">mod </span>accept;
+<span class="kw">mod </span>access_control_request_method;
+<span class="kw">mod </span>and;
+<span class="kw">mod </span>any;
+<span class="kw">mod </span>content_type;
 
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::accept::AcceptHeaderRouteMatcher</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::access_control_request_method::AccessControlRequestMethodMatcher</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::and::AndRouteMatcher</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::any::AnyRouteMatcher</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="self">self</span>::content_type::ContentTypeHeaderRouteMatcher</span>;
+<span class="kw">pub use </span><span class="self">self</span>::accept::AcceptHeaderRouteMatcher;
+<span class="kw">pub use </span><span class="self">self</span>::access_control_request_method::AccessControlRequestMethodMatcher;
+<span class="kw">pub use </span><span class="self">self</span>::and::AndRouteMatcher;
+<span class="kw">pub use </span><span class="self">self</span>::any::AnyRouteMatcher;
+<span class="kw">pub use </span><span class="self">self</span>::content_type::ContentTypeHeaderRouteMatcher;
 
-<span class="kw">mod</span> <span class="ident">lookup_table</span>;
-<span class="kw">use</span> <span class="ident"><span class="self">self</span>::lookup_table</span>::{<span class="ident">LookupTable</span>, <span class="ident">LookupTableFromTypes</span>};
+<span class="kw">mod </span>lookup_table;
+<span class="kw">use </span><span class="self">self</span>::lookup_table::{LookupTable, LookupTableFromTypes};
 
-<span class="kw">use</span> <span class="ident">std::panic::RefUnwindSafe</span>;
+<span class="kw">use </span>std::panic::RefUnwindSafe;
 
-<span class="kw">use</span> <span class="ident">hyper</span>::{<span class="ident">Method</span>, <span class="ident">StatusCode</span>};
-<span class="kw">use</span> <span class="ident">log::trace</span>;
+<span class="kw">use </span>hyper::{Method, StatusCode};
+<span class="kw">use </span>log::trace;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::non_match::RouteNonMatch</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state</span>::{<span class="ident">request_id</span>, <span class="ident">FromState</span>, <span class="ident">State</span>};
+<span class="kw">use </span><span class="kw">crate</span>::router::non_match::RouteNonMatch;
+<span class="kw">use </span><span class="kw">crate</span>::state::{request_id, FromState, State};
 
-<span class="doccomment">/// Determines if conditions required for the associated `Route` to be invoked by the `Router` have</span>
-<span class="doccomment">/// been met.</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">RouteMatcher</span>: <span class="ident">RefUnwindSafe</span> <span class="op">+</span> <span class="ident">Clone</span> {
-    <span class="doccomment">/// Determines if the `Request` meets pre-defined conditions.</span>
-    <span class="kw">fn</span> <span class="ident">is_match</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="ident">State</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">RouteNonMatch</span><span class="op">&gt;</span>;
+<span class="doccomment">/// Determines if conditions required for the associated `Route` to be invoked by the `Router` have
+/// been met.
+</span><span class="kw">pub trait </span>RouteMatcher: RefUnwindSafe + Clone {
+    <span class="doccomment">/// Determines if the `Request` meets pre-defined conditions.
+    </span><span class="kw">fn </span>is_match(<span class="kw-2">&amp;</span><span class="self">self</span>, state: <span class="kw-2">&amp;</span>State) -&gt; <span class="prelude-ty">Result</span>&lt;(), RouteNonMatch&gt;;
 }
 
-<span class="doccomment">/// Allow various types to represent themselves as a `RouteMatcher`</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">IntoRouteMatcher</span> {
-    <span class="doccomment">/// The concrete RouteMatcher each implementation will provide.</span>
-    <span class="kw">type</span> <span class="ident">Output</span>: <span class="ident">RouteMatcher</span>;
+<span class="doccomment">/// Allow various types to represent themselves as a `RouteMatcher`
+</span><span class="kw">pub trait </span>IntoRouteMatcher {
+    <span class="doccomment">/// The concrete RouteMatcher each implementation will provide.
+    </span><span class="kw">type </span>Output: RouteMatcher;
 
-    <span class="doccomment">/// Transform into a `RouteMatcher` of the the associated type identified by `Output`.</span>
-    <span class="kw">fn</span> <span class="ident">into_route_matcher</span>(<span class="self">self</span>) -&gt; <span class="ident"><span class="self">Self</span>::Output</span>;
+    <span class="doccomment">/// Transform into a `RouteMatcher` of the the associated type identified by `Output`.
+    </span><span class="kw">fn </span>into_route_matcher(<span class="self">self</span>) -&gt; <span class="self">Self</span>::Output;
 }
 
-<span class="kw">impl</span> <span class="ident">IntoRouteMatcher</span> <span class="kw">for</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Method</span><span class="op">&gt;</span> {
-    <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">MethodOnlyRouteMatcher</span>;
+<span class="kw">impl </span>IntoRouteMatcher <span class="kw">for </span>Vec&lt;Method&gt; {
+    <span class="kw">type </span>Output = MethodOnlyRouteMatcher;
 
-    <span class="kw">fn</span> <span class="ident">into_route_matcher</span>(<span class="self">self</span>) -&gt; <span class="ident"><span class="self">Self</span>::Output</span> {
-        <span class="ident">MethodOnlyRouteMatcher::new</span>(<span class="self">self</span>)
+    <span class="kw">fn </span>into_route_matcher(<span class="self">self</span>) -&gt; <span class="self">Self</span>::Output {
+        MethodOnlyRouteMatcher::new(<span class="self">self</span>)
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span> <span class="ident">IntoRouteMatcher</span> <span class="kw">for</span> <span class="ident">M</span>
-<span class="kw">where</span>
-    <span class="ident">M</span>: <span class="ident">RouteMatcher</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+<span class="kw">impl</span>&lt;M&gt; IntoRouteMatcher <span class="kw">for </span>M
+<span class="kw">where
+    </span>M: RouteMatcher + Send + Sync + <span class="lifetime">&#39;static</span>,
 {
-    <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">M</span>;
+    <span class="kw">type </span>Output = M;
 
-    <span class="kw">fn</span> <span class="ident">into_route_matcher</span>(<span class="self">self</span>) -&gt; <span class="ident"><span class="self">Self</span>::Output</span> {
-        <span class="self">self</span>
+    <span class="kw">fn </span>into_route_matcher(<span class="self">self</span>) -&gt; <span class="self">Self</span>::Output {
+        <span class="self">self
+    </span>}
+}
+
+<span class="doccomment">/// A `RouteMatcher` that succeeds when the `Request` has been made with an accepted HTTP request
+/// method.
+///
+/// # Examples
+///
+/// ```rust
+/// # extern crate gotham;
+/// # extern crate hyper;
+/// # fn main() {
+/// #   use hyper::Method;
+/// #   use gotham::state::State;
+/// #   use gotham::router::route::matcher::{RouteMatcher, MethodOnlyRouteMatcher};
+/// #
+/// #   State::with_new(|state| {
+/// #
+/// let methods = vec![Method::GET, Method::HEAD];
+/// let matcher = MethodOnlyRouteMatcher::new(methods);
+///
+/// state.put(Method::GET);
+/// assert!(matcher.is_match(&amp;state).is_ok());
+///
+/// state.put(Method::POST);
+/// assert!(matcher.is_match(&amp;state).is_err());
+/// #   });
+/// # }
+/// ```
+</span><span class="attribute">#[derive(Clone)]
+</span><span class="kw">pub struct </span>MethodOnlyRouteMatcher {
+    methods: Vec&lt;Method&gt;,
+}
+
+<span class="kw">impl </span>MethodOnlyRouteMatcher {
+    <span class="doccomment">/// Creates a new `MethodOnlyRouteMatcher`.
+    </span><span class="kw">pub fn </span>new(methods: Vec&lt;Method&gt;) -&gt; <span class="self">Self </span>{
+        MethodOnlyRouteMatcher { methods }
     }
 }
 
-<span class="doccomment">/// A `RouteMatcher` that succeeds when the `Request` has been made with an accepted HTTP request</span>
-<span class="doccomment">/// method.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # extern crate gotham;</span>
-<span class="doccomment">/// # extern crate hyper;</span>
-<span class="doccomment">/// # fn main() {</span>
-<span class="doccomment">/// #   use hyper::Method;</span>
-<span class="doccomment">/// #   use gotham::state::State;</span>
-<span class="doccomment">/// #   use gotham::router::route::matcher::{RouteMatcher, MethodOnlyRouteMatcher};</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #   State::with_new(|state| {</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// let methods = vec![Method::GET, Method::HEAD];</span>
-<span class="doccomment">/// let matcher = MethodOnlyRouteMatcher::new(methods);</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// state.put(Method::GET);</span>
-<span class="doccomment">/// assert!(matcher.is_match(&amp;state).is_ok());</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// state.put(Method::POST);</span>
-<span class="doccomment">/// assert!(matcher.is_match(&amp;state).is_err());</span>
-<span class="doccomment">/// #   });</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// ```</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">MethodOnlyRouteMatcher</span> {
-    <span class="ident">methods</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Method</span><span class="op">&gt;</span>,
-}
-
-<span class="kw">impl</span> <span class="ident">MethodOnlyRouteMatcher</span> {
-    <span class="doccomment">/// Creates a new `MethodOnlyRouteMatcher`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">methods</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Method</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">MethodOnlyRouteMatcher</span> { <span class="ident">methods</span> }
-    }
-}
-
-<span class="kw">impl</span> <span class="ident">RouteMatcher</span> <span class="kw">for</span> <span class="ident">MethodOnlyRouteMatcher</span> {
-    <span class="doccomment">/// Determines if the `Request` was made using a `Method` the instance contains.</span>
-    <span class="kw">fn</span> <span class="ident">is_match</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="ident">State</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">RouteNonMatch</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">method</span> <span class="op">=</span> <span class="ident">Method::borrow_from</span>(<span class="ident">state</span>);
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">methods</span>.<span class="ident">iter</span>().<span class="ident">any</span>(<span class="op">|</span><span class="ident">m</span><span class="op">|</span> <span class="ident">m</span> <span class="op">==</span> <span class="ident">method</span>) {
+<span class="kw">impl </span>RouteMatcher <span class="kw">for </span>MethodOnlyRouteMatcher {
+    <span class="doccomment">/// Determines if the `Request` was made using a `Method` the instance contains.
+    </span><span class="kw">fn </span>is_match(<span class="kw-2">&amp;</span><span class="self">self</span>, state: <span class="kw-2">&amp;</span>State) -&gt; <span class="prelude-ty">Result</span>&lt;(), RouteNonMatch&gt; {
+        <span class="kw">let </span>method = Method::borrow_from(state);
+        <span class="kw">if </span><span class="self">self</span>.methods.iter().any(|m| m == method) {
             <span class="macro">trace!</span>(
                 <span class="string">&quot;[{}] matched request method {} to permitted method&quot;</span>,
-                <span class="ident">request_id</span>(<span class="ident">state</span>),
-                <span class="ident">method</span>
+                request_id(state),
+                method
             );
             <span class="prelude-val">Ok</span>(())
-        } <span class="kw">else</span> {
+        } <span class="kw">else </span>{
             <span class="macro">trace!</span>(
                 <span class="string">&quot;[{}] did not match request method {}&quot;</span>,
-                <span class="ident">request_id</span>(<span class="ident">state</span>),
-                <span class="ident">method</span>
+                request_id(state),
+                method
             );
-            <span class="prelude-val">Err</span>(<span class="ident">RouteNonMatch::new</span>(<span class="ident">StatusCode::METHOD_NOT_ALLOWED</span>)
-                .<span class="ident">with_allow_list</span>(<span class="self">self</span>.<span class="ident">methods</span>.<span class="ident">as_slice</span>()))
+            <span class="prelude-val">Err</span>(RouteNonMatch::new(StatusCode::METHOD_NOT_ALLOWED)
+                .with_allow_list(<span class="self">self</span>.methods.as_slice()))
         }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

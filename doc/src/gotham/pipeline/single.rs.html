@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/pipeline/single.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>single.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/pipeline/single.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>single.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -72,79 +72,79 @@
 <span id="72">72</span>
 <span id="73">73</span>
 <span id="74">74</span>
-</pre><pre class="rust"><code><span class="doccomment">//! Defines helpers for applications that only require a single pipeline (i.e. only one set of</span>
-<span class="doccomment">//! middleware for the application).</span>
+</pre><pre class="rust"><code><span class="doccomment">//! Defines helpers for applications that only require a single pipeline (i.e. only one set of
+//! middleware for the application).
 
-<span class="kw">use</span> <span class="ident">borrow_bag</span>::{<span class="ident">Append</span>, <span class="ident">Handle</span>};
+</span><span class="kw">use </span>borrow_bag::{Append, Handle};
 
-<span class="kw">use</span> <span class="kw">super</span>::{<span class="ident">finalize_pipeline_set</span>, <span class="ident">new_pipeline_set</span>, <span class="ident">NewMiddlewareChain</span>, <span class="ident">Pipeline</span>, <span class="ident">PipelineSet</span>};
+<span class="kw">use super</span>::{finalize_pipeline_set, new_pipeline_set, NewMiddlewareChain, Pipeline, PipelineSet};
 
-<span class="doccomment">/// A `PipelineSet` which contains only a single pipeline.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">SinglePipelineSet</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">PipelineSet</span><span class="op">&lt;</span><span class="op">&lt;</span>() <span class="kw">as</span> <span class="ident">Append</span><span class="op">&lt;</span><span class="ident">Pipeline</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="ident">::Output</span><span class="op">&gt;</span>;
+<span class="doccomment">/// A `PipelineSet` which contains only a single pipeline.
+</span><span class="kw">pub type </span>SinglePipelineSet&lt;C&gt; = PipelineSet&lt;&lt;() <span class="kw">as </span>Append&lt;Pipeline&lt;C&gt;&gt;&gt;::Output&gt;;
 
-<span class="doccomment">/// A `Handle` for borrowing the only pipeline from a `SinglePipelineSet`.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">SinglePipelineHandle</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Handle</span><span class="op">&lt;</span><span class="ident">Pipeline</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>, <span class="op">&lt;</span>() <span class="kw">as</span> <span class="ident">Append</span><span class="op">&lt;</span><span class="ident">Pipeline</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="ident">::Navigator</span><span class="op">&gt;</span>;
+<span class="doccomment">/// A `Handle` for borrowing the only pipeline from a `SinglePipelineSet`.
+</span><span class="kw">pub type </span>SinglePipelineHandle&lt;C&gt; = Handle&lt;Pipeline&lt;C&gt;, &lt;() <span class="kw">as </span>Append&lt;Pipeline&lt;C&gt;&gt;&gt;::Navigator&gt;;
 
-<span class="doccomment">/// A pipeline chain which contains only the single pipeline in a `SinglePipelineSet`.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">SinglePipelineChain</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span> <span class="op">=</span> (<span class="ident">SinglePipelineHandle</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>, ());
+<span class="doccomment">/// A pipeline chain which contains only the single pipeline in a `SinglePipelineSet`.
+</span><span class="kw">pub type </span>SinglePipelineChain&lt;C&gt; = (SinglePipelineHandle&lt;C&gt;, ());
 
-<span class="doccomment">/// Creates a single pipeline for use in applications with straightforward use cases for</span>
-<span class="doccomment">/// middleware.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Returns instances of the required PipelineHandleChain and PipelineSet types ready for use with</span>
-<span class="doccomment">/// `build_router`.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # extern crate gotham;</span>
-<span class="doccomment">/// # use gotham::pipeline::{new_pipeline, single_pipeline};</span>
-<span class="doccomment">/// # use gotham::router::builder::build_router;</span>
-<span class="doccomment">/// # use gotham::middleware::session::NewSessionMiddleware;</span>
-<span class="doccomment">/// # use serde::{Deserialize, Serialize};</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # #[derive(Serialize, Deserialize, Default)]</span>
-<span class="doccomment">/// # struct Session;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # fn main() {</span>
-<span class="doccomment">/// let (chain, pipelines) = single_pipeline(</span>
-<span class="doccomment">///     new_pipeline()</span>
-<span class="doccomment">///         .add(NewSessionMiddleware::default().with_session_type::&lt;Session&gt;())</span>
-<span class="doccomment">///         .build(),</span>
-<span class="doccomment">/// );</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// build_router(chain, pipelines, |route| {</span>
-<span class="doccomment">///     // Implementation elided</span>
-<span class="doccomment">/// #   drop(route);</span>
-<span class="doccomment">/// });</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// ```</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">single_pipeline</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>(<span class="ident">c</span>: <span class="ident">Pipeline</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>) -&gt; (<span class="ident">SinglePipelineChain</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>, <span class="ident">SinglePipelineSet</span><span class="op">&lt;</span><span class="ident">C</span><span class="op">&gt;</span>)
-<span class="kw">where</span>
-    <span class="ident">C</span>: <span class="ident">NewMiddlewareChain</span>,
+<span class="doccomment">/// Creates a single pipeline for use in applications with straightforward use cases for
+/// middleware.
+///
+/// Returns instances of the required PipelineHandleChain and PipelineSet types ready for use with
+/// `build_router`.
+///
+/// # Examples
+///
+/// ```rust
+/// # extern crate gotham;
+/// # use gotham::pipeline::{new_pipeline, single_pipeline};
+/// # use gotham::router::builder::build_router;
+/// # use gotham::middleware::session::NewSessionMiddleware;
+/// # use serde::{Deserialize, Serialize};
+/// #
+/// # #[derive(Serialize, Deserialize, Default)]
+/// # struct Session;
+/// #
+/// # fn main() {
+/// let (chain, pipelines) = single_pipeline(
+///     new_pipeline()
+///         .add(NewSessionMiddleware::default().with_session_type::&lt;Session&gt;())
+///         .build(),
+/// );
+///
+/// build_router(chain, pipelines, |route| {
+///     // Implementation elided
+/// #   drop(route);
+/// });
+/// # }
+/// ```
+</span><span class="kw">pub fn </span>single_pipeline&lt;C&gt;(c: Pipeline&lt;C&gt;) -&gt; (SinglePipelineChain&lt;C&gt;, SinglePipelineSet&lt;C&gt;)
+<span class="kw">where
+    </span>C: NewMiddlewareChain,
 {
-    <span class="kw">let</span> <span class="ident">pipelines</span> <span class="op">=</span> <span class="ident">new_pipeline_set</span>();
-    <span class="kw">let</span> (<span class="ident">pipelines</span>, <span class="ident">single</span>) <span class="op">=</span> <span class="ident">pipelines</span>.<span class="ident">add</span>(<span class="ident">c</span>);
-    <span class="kw">let</span> <span class="ident">pipelines</span> <span class="op">=</span> <span class="ident">finalize_pipeline_set</span>(<span class="ident">pipelines</span>);
+    <span class="kw">let </span>pipelines = new_pipeline_set();
+    <span class="kw">let </span>(pipelines, single) = pipelines.add(c);
+    <span class="kw">let </span>pipelines = finalize_pipeline_set(pipelines);
 
-    <span class="kw">let</span> <span class="ident">chain</span> <span class="op">=</span> (<span class="ident">single</span>, ());
+    <span class="kw">let </span>chain = (single, ());
 
-    (<span class="ident">chain</span>, <span class="ident">pipelines</span>)
+    (chain, pipelines)
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">tests</span> {
-    <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+<span class="attribute">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
 
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::pipeline::new_pipeline</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::builder</span>::<span class="kw-2">*</span>;
+    <span class="kw">use </span><span class="kw">crate</span>::pipeline::new_pipeline;
+    <span class="kw">use </span><span class="kw">crate</span>::router::builder::<span class="kw-2">*</span>;
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_pipeline_construction</span>() {
-        <span class="kw">let</span> (<span class="ident">chain</span>, <span class="ident">pipelines</span>) <span class="op">=</span> <span class="ident">single_pipeline</span>(<span class="ident">new_pipeline</span>().<span class="ident">build</span>());
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_pipeline_construction() {
+        <span class="kw">let </span>(chain, pipelines) = single_pipeline(new_pipeline().build());
 
-        <span class="ident">build_router</span>(<span class="ident">chain</span>, <span class="ident">pipelines</span>, <span class="op">|</span><span class="ident">_route</span><span class="op">|</span> {});
+        build_router(chain, pipelines, |_route| {});
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

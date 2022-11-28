@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/private/deserializer.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>deserializer.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham_formdata/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham_formdata/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham_formdata/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/private/deserializer.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>deserializer.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham_formdata/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham_formdata/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham_formdata/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -344,351 +344,351 @@
 <span id="344">344</span>
 <span id="345">345</span>
 <span id="346">346</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">log::warn</span>;
-<span class="kw">use</span> <span class="ident">paste::paste</span>;
-<span class="kw">use</span> <span class="ident">serde::de</span>::{<span class="self">self</span>, <span class="ident">DeserializeSeed</span>, <span class="ident">SeqAccess</span>, <span class="ident">Visitor</span>};
-<span class="kw">use</span> <span class="ident">std</span>::{
-	<span class="ident">borrow</span>::{<span class="ident">Borrow</span>, <span class="ident">Cow</span>},
-	<span class="ident">fmt</span>::{<span class="self">self</span>, <span class="ident">Display</span>},
-	<span class="ident">ops::Deref</span>
+</pre><pre class="rust"><code><span class="kw">use </span>log::warn;
+<span class="kw">use </span>paste::paste;
+<span class="kw">use </span>serde::de::{<span class="self">self</span>, DeserializeSeed, SeqAccess, Visitor};
+<span class="kw">use </span>std::{
+	borrow::{Borrow, Cow},
+	fmt::{<span class="self">self</span>, Display},
+	ops::Deref
 };
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Error</span>(<span class="kw">pub</span>(<span class="kw">super</span>) <span class="ident">String</span>);
+<span class="attribute">#[derive(Debug)]
+</span><span class="kw">pub struct </span>Error(<span class="kw">pub</span>(<span class="kw">super</span>) String);
 
-<span class="kw">impl</span> <span class="ident">de::Error</span> <span class="kw">for</span> <span class="ident">Error</span> {
-	<span class="kw">fn</span> <span class="ident">custom</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Display</span><span class="op">&gt;</span>(<span class="ident">msg</span>: <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
-		<span class="ident">Error</span>(<span class="ident">msg</span>.<span class="ident">to_string</span>())
+<span class="kw">impl </span>de::Error <span class="kw">for </span>Error {
+	<span class="kw">fn </span>custom&lt;T: Display&gt;(msg: T) -&gt; <span class="self">Self </span>{
+		Error(msg.to_string())
 	}
 }
 
-<span class="kw">impl</span> <span class="ident">Display</span> <span class="kw">for</span> <span class="ident">Error</span> {
-	<span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
-		<span class="ident">f</span>.<span class="ident">write_str</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
+<span class="kw">impl </span>Display <span class="kw">for </span>Error {
+	<span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+		f.write_str(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
 	}
 }
 
-<span class="kw">impl</span> <span class="ident">std::error::Error</span> <span class="kw">for</span> <span class="ident">Error</span> {}
+<span class="kw">impl </span>std::error::Error <span class="kw">for </span>Error {}
 
-<span class="kw">type</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">std::result::Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">Error</span><span class="op">&gt;</span>;
+<span class="kw">type </span><span class="prelude-ty">Result</span>&lt;T&gt; = std::result::Result&lt;T, Error&gt;;
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Deserializer</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> {
-	<span class="ident">Bytes</span>(<span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>),
-	<span class="ident">Text</span>(<span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span>, <span class="ident">str</span><span class="op">&gt;</span>)
+<span class="attribute">#[derive(Debug)]
+</span><span class="kw">pub enum </span>Deserializer&lt;<span class="lifetime">&#39;de</span>&gt; {
+	Bytes(Vec&lt;u8&gt;),
+	Text(Cow&lt;<span class="lifetime">&#39;de</span>, str&gt;)
 }
 
-<span class="kw">enum</span> <span class="ident">Borrowed</span><span class="op">&lt;</span><span class="lifetime">&#39;short</span>, <span class="lifetime">&#39;long</span>: <span class="lifetime">&#39;short</span>, <span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span> <span class="op">+</span> <span class="ident">ToOwned</span><span class="op">&gt;</span> {
-	<span class="ident">Short</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;short</span> <span class="ident">T</span>),
-	<span class="ident">Long</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;long</span> <span class="ident">T</span>),
-	<span class="ident">Owned</span>(<span class="op">&lt;</span><span class="ident">T</span> <span class="kw">as</span> <span class="ident">ToOwned</span><span class="op">&gt;</span><span class="ident">::Owned</span>)
+<span class="kw">enum </span>Borrowed&lt;<span class="lifetime">&#39;short</span>, <span class="lifetime">&#39;long</span>: <span class="lifetime">&#39;short</span>, T: <span class="question-mark">?</span>Sized + ToOwned&gt; {
+	Short(<span class="kw-2">&amp;</span><span class="lifetime">&#39;short </span>T),
+	Long(<span class="kw-2">&amp;</span><span class="lifetime">&#39;long </span>T),
+	Owned(&lt;T <span class="kw">as </span>ToOwned&gt;::Owned)
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;short</span>, <span class="lifetime">&#39;long</span>: <span class="lifetime">&#39;short</span>, <span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span> <span class="op">+</span> <span class="ident">ToOwned</span><span class="op">&gt;</span> <span class="ident">Deref</span> <span class="kw">for</span> <span class="ident">Borrowed</span><span class="op">&lt;</span><span class="lifetime">&#39;short</span>, <span class="lifetime">&#39;long</span>, <span class="ident">T</span><span class="op">&gt;</span> {
-	<span class="kw">type</span> <span class="ident">Target</span> <span class="op">=</span> <span class="ident">T</span>;
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;short</span>, <span class="lifetime">&#39;long</span>: <span class="lifetime">&#39;short</span>, T: <span class="question-mark">?</span>Sized + ToOwned&gt; Deref <span class="kw">for </span>Borrowed&lt;<span class="lifetime">&#39;short</span>, <span class="lifetime">&#39;long</span>, T&gt; {
+	<span class="kw">type </span>Target = T;
 
-	<span class="kw">fn</span> <span class="ident">deref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">T</span> {
-		<span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-			<span class="ident"><span class="self">Self</span>::Short</span>(<span class="ident">b</span>) =&gt; <span class="ident">b</span>,
-			<span class="ident"><span class="self">Self</span>::Long</span>(<span class="ident">b</span>) =&gt; <span class="ident">b</span>,
-			<span class="ident"><span class="self">Self</span>::Owned</span>(<span class="kw-2">ref</span> <span class="ident">o</span>) =&gt; <span class="ident">o</span>.<span class="ident">borrow</span>()
+	<span class="kw">fn </span>deref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>T {
+		<span class="kw">match </span><span class="kw-2">*</span><span class="self">self </span>{
+			<span class="self">Self</span>::Short(b) =&gt; b,
+			<span class="self">Self</span>::Long(b) =&gt; b,
+			<span class="self">Self</span>::Owned(<span class="kw-2">ref </span>o) =&gt; o.borrow()
 		}
 	}
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">Deserializer</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> {
-	<span class="kw">fn</span> <span class="ident">text</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Borrowed</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="lifetime">&#39;de</span>, <span class="ident">str</span><span class="op">&gt;</span> {
-		<span class="kw">match</span> <span class="kw-2">&amp;</span><span class="self">self</span> {
-			<span class="ident"><span class="self">Self</span>::Bytes</span>(<span class="ident">b</span>) =&gt; <span class="kw">match</span> <span class="ident">String::from_utf8_lossy</span>(<span class="ident">b</span>) {
-				<span class="ident">Cow::Borrowed</span>(<span class="ident">s</span>) =&gt; <span class="ident">Borrowed::Short</span>(<span class="ident">s</span>),
-				<span class="ident">Cow::Owned</span>(<span class="ident">s</span>) =&gt; <span class="ident">Borrowed::Owned</span>(<span class="ident">s</span>)
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;de</span>&gt; Deserializer&lt;<span class="lifetime">&#39;de</span>&gt; {
+	<span class="kw">fn </span>text(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Borrowed&lt;<span class="lifetime">&#39;_</span>, <span class="lifetime">&#39;de</span>, str&gt; {
+		<span class="kw">match </span><span class="kw-2">&amp;</span><span class="self">self </span>{
+			<span class="self">Self</span>::Bytes(b) =&gt; <span class="kw">match </span>String::from_utf8_lossy(b) {
+				Cow::Borrowed(s) =&gt; Borrowed::Short(s),
+				Cow::Owned(s) =&gt; Borrowed::Owned(s)
 			},
-			<span class="ident"><span class="self">Self</span>::Text</span>(<span class="ident">Cow::Borrowed</span>(<span class="ident">s</span>)) =&gt; <span class="ident">Borrowed::Long</span>(<span class="ident">s</span>),
-			<span class="ident"><span class="self">Self</span>::Text</span>(<span class="ident">Cow::Owned</span>(<span class="ident">s</span>)) =&gt; <span class="ident">Borrowed::Short</span>(<span class="ident">s</span>)
+			<span class="self">Self</span>::Text(Cow::Borrowed(s)) =&gt; Borrowed::Long(s),
+			<span class="self">Self</span>::Text(Cow::Owned(s)) =&gt; Borrowed::Short(s)
 		}
 	}
 
-	<span class="kw">fn</span> <span class="ident">bytes</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Borrowed</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span>, <span class="lifetime">&#39;de</span>, [<span class="ident">u8</span>]<span class="op">&gt;</span> {
-		<span class="kw">match</span> <span class="self">self</span> {
-			<span class="ident"><span class="self">Self</span>::Bytes</span>(<span class="ident">b</span>) =&gt; <span class="ident">Borrowed::Short</span>(<span class="ident">b</span>),
-			<span class="ident"><span class="self">Self</span>::Text</span>(<span class="ident">Cow::Borrowed</span>(<span class="ident">s</span>)) =&gt; <span class="ident">Borrowed::Long</span>(<span class="ident">s</span>.<span class="ident">as_bytes</span>()),
-			<span class="ident"><span class="self">Self</span>::Text</span>(<span class="ident">Cow::Owned</span>(<span class="ident">s</span>)) =&gt; <span class="ident">Borrowed::Short</span>(<span class="ident">s</span>.<span class="ident">as_bytes</span>())
+	<span class="kw">fn </span>bytes(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Borrowed&lt;<span class="lifetime">&#39;_</span>, <span class="lifetime">&#39;de</span>, [u8]&gt; {
+		<span class="kw">match </span><span class="self">self </span>{
+			<span class="self">Self</span>::Bytes(b) =&gt; Borrowed::Short(b),
+			<span class="self">Self</span>::Text(Cow::Borrowed(s)) =&gt; Borrowed::Long(s.as_bytes()),
+			<span class="self">Self</span>::Text(Cow::Owned(s)) =&gt; Borrowed::Short(s.as_bytes())
 		}
 	}
 }
 
-<span class="macro">macro_rules!</span> <span class="ident">impl_deserializer</span> {
+<span class="macro">macro_rules! </span>impl_deserializer {
 	(
-		$(<span class="kw">const</span> <span class="macro-nonterminal">$</span><span class="kw">const</span>:<span class="macro-nonterminal">ident</span> <span class="op">=</span> <span class="op">|</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">this</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">visitor</span>:<span class="ident">ident</span><span class="op">|</span> { $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">body</span>:<span class="ident">tt</span>)<span class="op">*</span> };)<span class="op">*</span>
-		$(<span class="ident">parse</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">parse</span>:<span class="ident">ty</span>;)<span class="op">*</span>
-		$(<span class="ident">forward</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">forward</span>:<span class="ident">ident</span> <span class="ident">to</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">to</span>:<span class="ident">ident</span>;)<span class="op">*</span>
-		$(<span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="kw">fn</span>:<span class="macro-nonterminal">ident</span><span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">V</span>:<span class="ident">ident</span><span class="op">&gt;</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">this0</span>:<span class="ident">ident</span> $(, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">arg</span>:<span class="ident">ident</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>:<span class="ident">ty</span>)<span class="kw-2">*</span>) { $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">body0</span>:<span class="ident">tt</span>)<span class="op">*</span> })<span class="op">*</span>
+		$(<span class="kw">const </span><span class="macro-nonterminal">$</span><span class="kw">const</span>:<span class="macro-nonterminal">ident </span>= |<span class="macro-nonterminal">$this</span>:ident, <span class="macro-nonterminal">$visitor</span>:ident| { $(<span class="macro-nonterminal">$body</span>:tt)* };)*
+		$(parse <span class="macro-nonterminal">$parse</span>:ty;)*
+		$(forward <span class="macro-nonterminal">$forward</span>:ident to <span class="macro-nonterminal">$to</span>:ident;)*
+		$(<span class="kw">fn </span><span class="macro-nonterminal">$</span><span class="kw">fn</span>:<span class="macro-nonterminal">ident</span>&lt;<span class="macro-nonterminal">$V</span>:ident&gt;(<span class="macro-nonterminal">$this0</span>:ident $(, <span class="macro-nonterminal">$arg</span>:ident : <span class="macro-nonterminal">$ty</span>:ty)<span class="kw-2">*</span>) { $(<span class="macro-nonterminal">$body0</span>:tt)* })*
 	) =&gt; {
-		<span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Error</span>;
+		<span class="kw">type </span>Error = Error;
 
-		<span class="macro">paste!</span> {
+		<span class="macro">paste! </span>{
 			$(
-				<span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="kw">const</span><span class="op">&lt;</span><span class="macro-nonterminal">V</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">visitor</span>: <span class="ident">V</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">V::Value</span><span class="op">&gt;</span>
-				<span class="kw">where</span>
-					<span class="ident">V</span>: <span class="ident">Visitor</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>
+				<span class="kw">fn </span><span class="macro-nonterminal">$</span><span class="kw">const</span>&lt;<span class="macro-nonterminal">V</span>&gt;(<span class="self">self</span>, <span class="macro-nonterminal">$visitor</span>: V) -&gt; <span class="prelude-ty">Result</span>&lt;V::Value&gt;
+				<span class="kw">where
+					</span>V: Visitor&lt;<span class="lifetime">&#39;de</span>&gt;
 				{
-					<span class="kw">let</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">this</span> <span class="op">=</span> <span class="self">self</span>;
-					$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">body</span>)<span class="op">*</span>
+					<span class="kw">let </span><span class="macro-nonterminal">$this </span>= <span class="self">self</span>;
+					$(<span class="macro-nonterminal">$body</span>)*
 				}
-			)<span class="op">*</span>
-
-			$(
-				<span class="kw">fn</span> [<span class="op">&lt;</span><span class="ident">deserialize_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">parse</span><span class="op">&gt;</span>]<span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">visitor</span>: <span class="ident">V</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">V::Value</span><span class="op">&gt;</span>
-				<span class="kw">where</span>
-					<span class="ident">V</span>: <span class="ident">Visitor</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>
-				{
-					<span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">text</span>().<span class="ident">parse</span>::<span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">parse</span><span class="op">&gt;</span>().<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="ident">Error</span>(<span class="ident">e</span>.<span class="ident">to_string</span>()))<span class="question-mark">?</span>;
-					<span class="ident">visitor</span>.[<span class="op">&lt;</span><span class="ident">visit_</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">parse</span><span class="op">&gt;</span>](<span class="ident">value</span>)
-				}
-			)<span class="op">*</span>
+			)*
 
 			$(
-				<span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">forward</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">visitor</span>: <span class="ident">V</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">V::Value</span><span class="op">&gt;</span>
-				<span class="kw">where</span>
-					<span class="ident">V</span>: <span class="ident">Visitor</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>
+				<span class="kw">fn </span>[&lt;deserialize_ <span class="macro-nonterminal">$parse</span>&gt;]&lt;V&gt;(<span class="self">self</span>, visitor: V) -&gt; <span class="prelude-ty">Result</span>&lt;V::Value&gt;
+				<span class="kw">where
+					</span>V: Visitor&lt;<span class="lifetime">&#39;de</span>&gt;
 				{
-					<span class="self">self</span>.<span class="macro-nonterminal">$</span><span class="macro-nonterminal">to</span>(<span class="ident">visitor</span>)
+					<span class="kw">let </span>value = <span class="self">self</span>.text().parse::&lt;<span class="macro-nonterminal">$parse</span>&gt;().map_err(|e| Error(e.to_string()))<span class="question-mark">?</span>;
+					visitor.[&lt;visit_ <span class="macro-nonterminal">$parse</span>&gt;](value)
 				}
-			)<span class="op">*</span>
+			)*
 
 			$(
-				<span class="kw">fn</span> <span class="macro-nonterminal">$</span><span class="kw">fn</span><span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">V</span><span class="op">&gt;</span>(<span class="self">self</span>$(, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">arg</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>)<span class="kw-2">*</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">V::Value</span><span class="op">&gt;</span>
-				<span class="kw">where</span>
-					<span class="macro-nonterminal">$</span><span class="macro-nonterminal">V</span>: <span class="ident">Visitor</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>
+				<span class="kw">fn </span><span class="macro-nonterminal">$forward</span>&lt;V&gt;(<span class="self">self</span>, visitor: V) -&gt; <span class="prelude-ty">Result</span>&lt;V::Value&gt;
+				<span class="kw">where
+					</span>V: Visitor&lt;<span class="lifetime">&#39;de</span>&gt;
 				{
-					<span class="kw">let</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">this0</span> <span class="op">=</span> <span class="self">self</span>;
-					$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">body0</span>)<span class="op">*</span>
+					<span class="self">self</span>.<span class="macro-nonterminal">$to</span>(visitor)
 				}
-			)<span class="op">*</span>
+			)*
+
+			$(
+				<span class="kw">fn </span><span class="macro-nonterminal">$</span><span class="kw">fn</span>&lt;<span class="macro-nonterminal">$V</span>&gt;(<span class="self">self</span>$(, <span class="macro-nonterminal">$arg </span>: <span class="macro-nonterminal">$ty</span>)<span class="kw-2">*</span>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="macro-nonterminal">$V::Value</span>&gt;
+				<span class="kw">where
+					</span><span class="macro-nonterminal">$V</span>: Visitor&lt;<span class="lifetime">&#39;de</span>&gt;
+				{
+					<span class="kw">let </span><span class="macro-nonterminal">$this0 </span>= <span class="self">self</span>;
+					$(<span class="macro-nonterminal">$body0</span>)*
+				}
+			)*
 		}
 	};
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">de::Deserializer</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="ident">Deserializer</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> {
-	<span class="macro">impl_deserializer!</span> {
-		<span class="kw">const</span> <span class="ident">deserialize_any</span> <span class="op">=</span> <span class="op">|</span><span class="ident">this</span>, <span class="ident">visitor</span><span class="op">|</span> {
-			<span class="kw">match</span> <span class="ident">this</span> {
-				<span class="ident">Deserializer::Bytes</span>(<span class="ident">b</span>) =&gt; <span class="ident">visitor</span>.<span class="ident">visit_bytes</span>(<span class="ident">b</span>),
-				<span class="ident">Deserializer::Text</span>(<span class="ident">Cow::Borrowed</span>(<span class="ident">s</span>)) =&gt; <span class="ident">visitor</span>.<span class="ident">visit_borrowed_str</span>(<span class="ident">s</span>),
-				<span class="ident">Deserializer::Text</span>(<span class="ident">Cow::Owned</span>(<span class="ident">s</span>)) =&gt; <span class="ident">visitor</span>.<span class="ident">visit_str</span>(<span class="ident">s</span>)
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, <span class="lifetime">&#39;de</span>&gt; de::Deserializer&lt;<span class="lifetime">&#39;de</span>&gt; <span class="kw">for </span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>Deserializer&lt;<span class="lifetime">&#39;de</span>&gt; {
+	<span class="macro">impl_deserializer! </span>{
+		<span class="kw">const </span>deserialize_any = |this, visitor| {
+			<span class="kw">match </span>this {
+				Deserializer::Bytes(b) =&gt; visitor.visit_bytes(b),
+				Deserializer::Text(Cow::Borrowed(s)) =&gt; visitor.visit_borrowed_str(s),
+				Deserializer::Text(Cow::Owned(s)) =&gt; visitor.visit_str(s)
 			}
 		};
 
-		<span class="kw">const</span> <span class="ident">deserialize_bool</span> <span class="op">=</span> <span class="op">|</span><span class="ident">this</span>, <span class="ident">visitor</span><span class="op">|</span> {
-			<span class="kw">let</span> <span class="ident">text</span> <span class="op">=</span> <span class="ident">this</span>.<span class="ident">text</span>().<span class="ident">to_ascii_lowercase</span>();
-			<span class="kw">let</span> <span class="ident">value</span> <span class="op">=</span> <span class="ident">text</span> <span class="op">==</span> <span class="string">&quot;true&quot;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">text</span> <span class="op">==</span> <span class="string">&quot;y&quot;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">text</span> <span class="op">==</span> <span class="string">&quot;on&quot;</span> <span class="op">|</span><span class="op">|</span> <span class="ident">text</span> <span class="op">==</span> <span class="string">&quot;1&quot;</span>;
-			<span class="ident">visitor</span>.<span class="ident">visit_bool</span>(<span class="ident">value</span>)
+		<span class="kw">const </span>deserialize_bool = |this, visitor| {
+			<span class="kw">let </span>text = this.text().to_ascii_lowercase();
+			<span class="kw">let </span>value = text == <span class="string">&quot;true&quot; </span>|| text == <span class="string">&quot;y&quot; </span>|| text == <span class="string">&quot;on&quot; </span>|| text == <span class="string">&quot;1&quot;</span>;
+			visitor.visit_bool(value)
 		};
 
-		<span class="kw">const</span> <span class="ident">deserialize_str</span> <span class="op">=</span> <span class="op">|</span><span class="ident">this</span>, <span class="ident">visitor</span><span class="op">|</span> {
-			<span class="kw">match</span> <span class="ident">this</span>.<span class="ident">text</span>() {
-				<span class="ident">Borrowed::Short</span>(<span class="ident">s</span>) =&gt; <span class="ident">visitor</span>.<span class="ident">visit_str</span>(<span class="ident">s</span>),
-				<span class="ident">Borrowed::Long</span>(<span class="ident">s</span>) =&gt; <span class="ident">visitor</span>.<span class="ident">visit_borrowed_str</span>(<span class="ident">s</span>),
-				<span class="ident">Borrowed::Owned</span>(<span class="ident">s</span>) =&gt; <span class="ident">visitor</span>.<span class="ident">visit_string</span>(<span class="ident">s</span>)
+		<span class="kw">const </span>deserialize_str = |this, visitor| {
+			<span class="kw">match </span>this.text() {
+				Borrowed::Short(s) =&gt; visitor.visit_str(s),
+				Borrowed::Long(s) =&gt; visitor.visit_borrowed_str(s),
+				Borrowed::Owned(s) =&gt; visitor.visit_string(s)
 			}
 		};
 
-		<span class="kw">const</span> <span class="ident">deserialize_bytes</span> <span class="op">=</span> <span class="op">|</span><span class="ident">this</span>, <span class="ident">visitor</span><span class="op">|</span> {
-			<span class="kw">match</span> <span class="ident">this</span>.<span class="ident">bytes</span>() {
-				<span class="ident">Borrowed::Short</span>(<span class="ident">b</span>) =&gt; <span class="ident">visitor</span>.<span class="ident">visit_bytes</span>(<span class="ident">b</span>),
-				<span class="ident">Borrowed::Long</span>(<span class="ident">b</span>) =&gt; <span class="ident">visitor</span>.<span class="ident">visit_borrowed_bytes</span>(<span class="ident">b</span>),
-				<span class="ident">Borrowed::Owned</span>(<span class="ident">b</span>) =&gt; <span class="ident">visitor</span>.<span class="ident">visit_byte_buf</span>(<span class="ident">b</span>)
+		<span class="kw">const </span>deserialize_bytes = |this, visitor| {
+			<span class="kw">match </span>this.bytes() {
+				Borrowed::Short(b) =&gt; visitor.visit_bytes(b),
+				Borrowed::Long(b) =&gt; visitor.visit_borrowed_bytes(b),
+				Borrowed::Owned(b) =&gt; visitor.visit_byte_buf(b)
 			}
 		};
 
-		<span class="kw">const</span> <span class="ident">deserialize_seq</span> <span class="op">=</span> <span class="op">|</span><span class="ident">this</span>, <span class="ident">visitor</span><span class="op">|</span> {
-			<span class="kw">match</span> <span class="ident">this</span> {
-				<span class="ident">Deserializer::Bytes</span>(<span class="ident">b</span>) =&gt; <span class="ident">visitor</span>.<span class="ident">visit_seq</span>(<span class="ident">Seq::Bytes</span>(<span class="ident">b</span>)),
-				<span class="ident">Deserializer::Text</span>(<span class="ident">s</span>) =&gt; <span class="ident">visitor</span>.<span class="ident">visit_seq</span>(<span class="ident">Seq::Text</span>(<span class="ident">s</span>))
+		<span class="kw">const </span>deserialize_seq = |this, visitor| {
+			<span class="kw">match </span>this {
+				Deserializer::Bytes(b) =&gt; visitor.visit_seq(Seq::Bytes(b)),
+				Deserializer::Text(s) =&gt; visitor.visit_seq(Seq::Text(s))
 			}
 		};
 
-		<span class="ident">parse</span> <span class="ident">i8</span>;
-		<span class="ident">parse</span> <span class="ident">i16</span>;
-		<span class="ident">parse</span> <span class="ident">i32</span>;
-		<span class="ident">parse</span> <span class="ident">i64</span>;
-		<span class="ident">parse</span> <span class="ident">i128</span>;
-		<span class="ident">parse</span> <span class="ident">u8</span>;
-		<span class="ident">parse</span> <span class="ident">u16</span>;
-		<span class="ident">parse</span> <span class="ident">u32</span>;
-		<span class="ident">parse</span> <span class="ident">u64</span>;
-		<span class="ident">parse</span> <span class="ident">u128</span>;
-		<span class="ident">parse</span> <span class="ident">f32</span>;
-		<span class="ident">parse</span> <span class="ident">f64</span>;
+		parse i8;
+		parse i16;
+		parse i32;
+		parse i64;
+		parse i128;
+		parse u8;
+		parse u16;
+		parse u32;
+		parse u64;
+		parse u128;
+		parse f32;
+		parse f64;
 
-		<span class="ident">forward</span> <span class="ident">deserialize_char</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_string</span> <span class="ident">to</span> <span class="ident">deserialize_str</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_byte_buf</span> <span class="ident">to</span> <span class="ident">deserialize_bytes</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_option</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_unit</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_map</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_identifier</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_ignored_any</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
+		forward deserialize_char to deserialize_any;
+		forward deserialize_string to deserialize_str;
+		forward deserialize_byte_buf to deserialize_bytes;
+		forward deserialize_option to deserialize_any;
+		forward deserialize_unit to deserialize_any;
+		forward deserialize_map to deserialize_any;
+		forward deserialize_identifier to deserialize_any;
+		forward deserialize_ignored_any to deserialize_any;
 
-		<span class="kw">fn</span> <span class="ident">deserialize_unit_struct</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span>(<span class="ident">this</span>, <span class="ident">_name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">visitor</span>: <span class="ident">V</span>) {
-			<span class="ident">this</span>.<span class="ident">deserialize_any</span>(<span class="ident">visitor</span>)
+		<span class="kw">fn </span>deserialize_unit_struct&lt;V&gt;(this, _name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, visitor: V) {
+			this.deserialize_any(visitor)
 		}
 
-		<span class="kw">fn</span> <span class="ident">deserialize_newtype_struct</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span>(<span class="ident">this</span>, <span class="ident">_name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">visitor</span>: <span class="ident">V</span>) {
-			<span class="ident">this</span>.<span class="ident">deserialize_any</span>(<span class="ident">visitor</span>)
+		<span class="kw">fn </span>deserialize_newtype_struct&lt;V&gt;(this, _name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, visitor: V) {
+			this.deserialize_any(visitor)
 		}
 
-		<span class="kw">fn</span> <span class="ident">deserialize_tuple</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span>(<span class="ident">this</span>, <span class="ident">_len</span>: <span class="ident">usize</span>, <span class="ident">visitor</span>: <span class="ident">V</span>) {
-			<span class="ident">this</span>.<span class="ident">deserialize_any</span>(<span class="ident">visitor</span>)
+		<span class="kw">fn </span>deserialize_tuple&lt;V&gt;(this, _len: usize, visitor: V) {
+			this.deserialize_any(visitor)
 		}
 
-		<span class="kw">fn</span> <span class="ident">deserialize_tuple_struct</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span>(<span class="ident">this</span>, <span class="ident">_name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">_len</span>: <span class="ident">usize</span>, <span class="ident">visitor</span>: <span class="ident">V</span>) {
-			<span class="ident">this</span>.<span class="ident">deserialize_any</span>(<span class="ident">visitor</span>)
+		<span class="kw">fn </span>deserialize_tuple_struct&lt;V&gt;(this, _name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, _len: usize, visitor: V) {
+			this.deserialize_any(visitor)
 		}
 
-		<span class="kw">fn</span> <span class="ident">deserialize_struct</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span>(<span class="ident">this</span>, <span class="ident">_name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">_fields</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> [<span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>], <span class="ident">visitor</span>: <span class="ident">V</span>) {
-			<span class="ident">this</span>.<span class="ident">deserialize_any</span>(<span class="ident">visitor</span>)
+		<span class="kw">fn </span>deserialize_struct&lt;V&gt;(this, _name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, _fields: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str], visitor: V) {
+			this.deserialize_any(visitor)
 		}
 
-		<span class="kw">fn</span> <span class="ident">deserialize_enum</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span>(<span class="ident">this</span>, <span class="ident">_name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">_variants</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> [<span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>], <span class="ident">visitor</span>: <span class="ident">V</span>) {
-			<span class="ident">this</span>.<span class="ident">deserialize_any</span>(<span class="ident">visitor</span>)
+		<span class="kw">fn </span>deserialize_enum&lt;V&gt;(this, _name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, _variants: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str], visitor: V) {
+			this.deserialize_any(visitor)
 		}
 	}
 }
 
-<span class="kw">enum</span> <span class="ident">Seq</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-	<span class="ident">Bytes</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">u8</span>]),
-	<span class="ident">Text</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>),
-	<span class="ident">String</span>(<span class="ident">String</span>, <span class="ident">usize</span>)
+<span class="kw">enum </span>Seq&lt;<span class="lifetime">&#39;a</span>&gt; {
+	Bytes(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>[u8]),
+	Text(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str),
+	String(String, usize)
 }
 
-<span class="kw">impl</span> <span class="ident">Seq</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-	<span class="kw">fn</span> <span class="ident">is_empty</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-		<span class="kw">match</span> <span class="self">self</span> {
-			<span class="ident"><span class="self">Self</span>::Bytes</span>(<span class="ident">b</span>) =&gt; <span class="ident">b</span>.<span class="ident">is_empty</span>(),
-			<span class="ident"><span class="self">Self</span>::Text</span>(<span class="ident">s</span>) =&gt; <span class="ident">s</span>.<span class="ident">is_empty</span>(),
-			<span class="ident"><span class="self">Self</span>::String</span>(<span class="ident">s</span>, <span class="ident">i</span>) =&gt; <span class="ident">s</span>.<span class="ident">len</span>() <span class="op">&lt;</span> <span class="kw-2">*</span><span class="ident">i</span>
+<span class="kw">impl </span>Seq&lt;<span class="lifetime">&#39;_</span>&gt; {
+	<span class="kw">fn </span>is_empty(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+		<span class="kw">match </span><span class="self">self </span>{
+			<span class="self">Self</span>::Bytes(b) =&gt; b.is_empty(),
+			<span class="self">Self</span>::Text(s) =&gt; s.is_empty(),
+			<span class="self">Self</span>::String(s, i) =&gt; s.len() &lt; <span class="kw-2">*</span>i
 		}
 	}
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">SeqAccess</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Seq</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-	<span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">Error</span>;
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, <span class="lifetime">&#39;de</span>&gt; SeqAccess&lt;<span class="lifetime">&#39;de</span>&gt; <span class="kw">for </span>Seq&lt;<span class="lifetime">&#39;a</span>&gt; {
+	<span class="kw">type </span>Error = Error;
 
-	<span class="kw">fn</span> <span class="ident">next_element_seed</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">seed</span>: <span class="ident">T</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T::Value</span><span class="op">&gt;</span><span class="op">&gt;</span>
-	<span class="kw">where</span>
-		<span class="ident">T</span>: <span class="ident">DeserializeSeed</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>
+	<span class="kw">fn </span>next_element_seed&lt;T&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>, seed: T) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;T::Value&gt;&gt;
+	<span class="kw">where
+		</span>T: DeserializeSeed&lt;<span class="lifetime">&#39;de</span>&gt;
 	{
-		<span class="kw">if</span> <span class="self">self</span>.<span class="ident">is_empty</span>() {
-			<span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>);
+		<span class="kw">if </span><span class="self">self</span>.is_empty() {
+			<span class="kw">return </span><span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>);
 		}
 
-		<span class="kw">let</span> <span class="ident">v</span> <span class="op">=</span> <span class="ident">seed</span>.<span class="ident">deserialize</span>(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="self">self</span>)<span class="question-mark">?</span>;
-		<span class="kw">match</span> <span class="self">self</span> {
-			<span class="ident"><span class="self">Self</span>::Bytes</span>(<span class="ident">b</span>) =&gt; <span class="kw-2">*</span><span class="self">self</span> <span class="op">=</span> <span class="ident"><span class="self">Self</span>::Bytes</span>(<span class="kw-2">&amp;</span><span class="ident">b</span>[<span class="number">1</span> ..]),
-			<span class="ident"><span class="self">Self</span>::Text</span>(<span class="ident">s</span>) =&gt; <span class="kw-2">*</span><span class="self">self</span> <span class="op">=</span> <span class="ident"><span class="self">Self</span>::Text</span>(<span class="kw-2">&amp;</span><span class="ident">s</span>[<span class="number">1</span> ..]),
-			<span class="ident"><span class="self">Self</span>::String</span>(<span class="kw">_</span>, <span class="ident">i</span>) =&gt; <span class="kw-2">*</span><span class="ident">i</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>
-		};
-		<span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="ident">v</span>))
+		<span class="kw">let </span>v = seed.deserialize(<span class="kw-2">&amp;mut *</span><span class="self">self</span>)<span class="question-mark">?</span>;
+		<span class="kw">match </span><span class="self">self </span>{
+			<span class="self">Self</span>::Bytes(b) =&gt; <span class="kw-2">*</span><span class="self">self </span>= <span class="self">Self</span>::Bytes(<span class="kw-2">&amp;</span>b[<span class="number">1 </span>..]),
+			<span class="self">Self</span>::Text(s) =&gt; <span class="kw-2">*</span><span class="self">self </span>= <span class="self">Self</span>::Text(<span class="kw-2">&amp;</span>s[<span class="number">1 </span>..]),
+			<span class="self">Self</span>::String(<span class="kw">_</span>, i) =&gt; <span class="kw-2">*</span>i += <span class="number">1
+		</span>};
+		<span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(v))
 	}
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="lifetime">&#39;b</span>, <span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">de::Deserializer</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="ident">Seq</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span><span class="op">&gt;</span> {
-	<span class="macro">impl_deserializer!</span> {
-		<span class="kw">const</span> <span class="ident">deserialize_any</span> <span class="op">=</span> <span class="op">|</span><span class="ident">this</span>, <span class="ident">visitor</span><span class="op">|</span> {
-			<span class="kw">match</span> <span class="ident">this</span> {
-				<span class="ident">Seq::Bytes</span>(<span class="ident">b</span>) =&gt; <span class="ident">visitor</span>.<span class="ident">visit_u8</span>(<span class="ident">b</span>[<span class="number">0</span>]),
-				<span class="ident">Seq::Text</span>(<span class="ident">s</span>) =&gt; <span class="ident">visitor</span>.<span class="ident">visit_char</span>(<span class="ident">s</span>.<span class="ident">chars</span>().<span class="ident">next</span>().<span class="ident">unwrap</span>()),
-				<span class="ident">Seq::String</span>(<span class="ident">s</span>, <span class="ident">i</span>) =&gt; <span class="ident">visitor</span>.<span class="ident">visit_char</span>(<span class="ident">s</span>.<span class="ident">chars</span>().<span class="ident">nth</span>(<span class="kw-2">*</span><span class="ident">i</span>).<span class="ident">unwrap</span>())
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, <span class="lifetime">&#39;b</span>, <span class="lifetime">&#39;de</span>&gt; de::Deserializer&lt;<span class="lifetime">&#39;de</span>&gt; <span class="kw">for </span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>Seq&lt;<span class="lifetime">&#39;b</span>&gt; {
+	<span class="macro">impl_deserializer! </span>{
+		<span class="kw">const </span>deserialize_any = |this, visitor| {
+			<span class="kw">match </span>this {
+				Seq::Bytes(b) =&gt; visitor.visit_u8(b[<span class="number">0</span>]),
+				Seq::Text(s) =&gt; visitor.visit_char(s.chars().next().unwrap()),
+				Seq::String(s, i) =&gt; visitor.visit_char(s.chars().nth(<span class="kw-2">*</span>i).unwrap())
 			}
 		};
 
-		<span class="kw">const</span> <span class="ident">deserialize_u8</span> <span class="op">=</span> <span class="op">|</span><span class="ident">this</span>, <span class="ident">visitor</span><span class="op">|</span> {
-			<span class="kw">match</span> <span class="ident">this</span> {
-				<span class="ident">Seq::Bytes</span>(<span class="ident">b</span>) =&gt; <span class="ident">visitor</span>.<span class="ident">visit_u8</span>(<span class="ident">b</span>[<span class="number">0</span>]),
-				<span class="comment">// convert the string to bytes</span>
-				<span class="ident">Seq::Text</span>(<span class="ident">s</span>) =&gt; {
-					<span class="kw">let</span> <span class="ident">bytes</span> <span class="op">=</span> <span class="ident">s</span>.<span class="ident">as_bytes</span>();
-					<span class="kw-2">*</span><span class="ident">this</span> <span class="op">=</span> <span class="ident">Seq::Bytes</span>(<span class="ident">bytes</span>);
-					<span class="ident">visitor</span>.<span class="ident">visit_u8</span>(<span class="ident">bytes</span>[<span class="number">0</span>])
+		<span class="kw">const </span>deserialize_u8 = |this, visitor| {
+			<span class="kw">match </span>this {
+				Seq::Bytes(b) =&gt; visitor.visit_u8(b[<span class="number">0</span>]),
+				<span class="comment">// convert the string to bytes
+				</span>Seq::Text(s) =&gt; {
+					<span class="kw">let </span>bytes = s.as_bytes();
+					<span class="kw-2">*</span>this = Seq::Bytes(bytes);
+					visitor.visit_u8(bytes[<span class="number">0</span>])
 				},
-				<span class="comment">// someone asked for a string explicitly and now wants bytes again.</span>
-				<span class="comment">// I won&#39;t convert the string back to bytes.</span>
-				<span class="ident">Seq::String</span>(<span class="ident">s</span>, <span class="ident">i</span>) =&gt; {
+				<span class="comment">// someone asked for a string explicitly and now wants bytes again.
+				// I won&#39;t convert the string back to bytes.
+				</span>Seq::String(s, i) =&gt; {
 					<span class="macro">warn!</span>(<span class="string">&quot;You asked for a char from byte sequence, and now want bytes again. Make up your mind please!&quot;</span>);
-					<span class="ident">visitor</span>.<span class="ident">visit_char</span>(<span class="ident">s</span>.<span class="ident">chars</span>().<span class="ident">nth</span>(<span class="kw-2">*</span><span class="ident">i</span>).<span class="ident">unwrap</span>())
+					visitor.visit_char(s.chars().nth(<span class="kw-2">*</span>i).unwrap())
 				}
 			}
 		};
 
-		<span class="kw">const</span> <span class="ident">deserialize_char</span> <span class="op">=</span> <span class="op">|</span><span class="ident">this</span>, <span class="ident">visitor</span><span class="op">|</span> {
-			<span class="kw">match</span> <span class="ident">this</span> {
-				<span class="comment">// convert the bytes to a lossy string</span>
-				<span class="ident">Seq::Bytes</span>(<span class="ident">b</span>) =&gt; {
-					<span class="kw">match</span> <span class="ident">String::from_utf8_lossy</span>(<span class="ident">b</span>) {
-						<span class="ident">Cow::Borrowed</span>(<span class="ident">s</span>) =&gt; {
-							<span class="kw-2">*</span><span class="ident">this</span> <span class="op">=</span> <span class="ident">Seq::Text</span>(<span class="ident">s</span>);
-							<span class="ident">visitor</span>.<span class="ident">visit_char</span>(<span class="ident">s</span>.<span class="ident">chars</span>().<span class="ident">next</span>().<span class="ident">unwrap</span>())
+		<span class="kw">const </span>deserialize_char = |this, visitor| {
+			<span class="kw">match </span>this {
+				<span class="comment">// convert the bytes to a lossy string
+				</span>Seq::Bytes(b) =&gt; {
+					<span class="kw">match </span>String::from_utf8_lossy(b) {
+						Cow::Borrowed(s) =&gt; {
+							<span class="kw-2">*</span>this = Seq::Text(s);
+							visitor.visit_char(s.chars().next().unwrap())
 						},
-						<span class="ident">Cow::Owned</span>(<span class="ident">s</span>) =&gt; {
-							<span class="kw">let</span> <span class="ident">ch</span> <span class="op">=</span> <span class="ident">s</span>.<span class="ident">chars</span>().<span class="ident">next</span>().<span class="ident">unwrap</span>();
-							<span class="kw-2">*</span><span class="ident">this</span> <span class="op">=</span> <span class="ident">Seq::String</span>(<span class="ident">s</span>, <span class="number">0</span>);
-							<span class="ident">visitor</span>.<span class="ident">visit_char</span>(<span class="ident">ch</span>)
+						Cow::Owned(s) =&gt; {
+							<span class="kw">let </span>ch = s.chars().next().unwrap();
+							<span class="kw-2">*</span>this = Seq::String(s, <span class="number">0</span>);
+							visitor.visit_char(ch)
 						}
 					}
 				}
-				<span class="ident">Seq::Text</span>(<span class="ident">s</span>) =&gt; <span class="ident">visitor</span>.<span class="ident">visit_char</span>(<span class="ident">s</span>.<span class="ident">chars</span>().<span class="ident">next</span>().<span class="ident">unwrap</span>()),
-				<span class="ident">Seq::String</span>(<span class="ident">s</span>, <span class="ident">i</span>) =&gt; <span class="ident">visitor</span>.<span class="ident">visit_char</span>(<span class="ident">s</span>.<span class="ident">chars</span>().<span class="ident">nth</span>(<span class="kw-2">*</span><span class="ident">i</span>).<span class="ident">unwrap</span>())
+				Seq::Text(s) =&gt; visitor.visit_char(s.chars().next().unwrap()),
+				Seq::String(s, i) =&gt; visitor.visit_char(s.chars().nth(<span class="kw-2">*</span>i).unwrap())
 			}
 		};
 
-		<span class="ident">forward</span> <span class="ident">deserialize_bool</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_i8</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_i16</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_i32</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_i64</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_i128</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_u16</span> <span class="ident">to</span> <span class="ident">deserialize_u8</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_u32</span> <span class="ident">to</span> <span class="ident">deserialize_u8</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_u64</span> <span class="ident">to</span> <span class="ident">deserialize_u8</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_u128</span> <span class="ident">to</span> <span class="ident">deserialize_u8</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_f32</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_f64</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_str</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_string</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_bytes</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_byte_buf</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_option</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_unit</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_seq</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_map</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_identifier</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
-		<span class="ident">forward</span> <span class="ident">deserialize_ignored_any</span> <span class="ident">to</span> <span class="ident">deserialize_any</span>;
+		forward deserialize_bool to deserialize_any;
+		forward deserialize_i8 to deserialize_any;
+		forward deserialize_i16 to deserialize_any;
+		forward deserialize_i32 to deserialize_any;
+		forward deserialize_i64 to deserialize_any;
+		forward deserialize_i128 to deserialize_any;
+		forward deserialize_u16 to deserialize_u8;
+		forward deserialize_u32 to deserialize_u8;
+		forward deserialize_u64 to deserialize_u8;
+		forward deserialize_u128 to deserialize_u8;
+		forward deserialize_f32 to deserialize_any;
+		forward deserialize_f64 to deserialize_any;
+		forward deserialize_str to deserialize_any;
+		forward deserialize_string to deserialize_any;
+		forward deserialize_bytes to deserialize_any;
+		forward deserialize_byte_buf to deserialize_any;
+		forward deserialize_option to deserialize_any;
+		forward deserialize_unit to deserialize_any;
+		forward deserialize_seq to deserialize_any;
+		forward deserialize_map to deserialize_any;
+		forward deserialize_identifier to deserialize_any;
+		forward deserialize_ignored_any to deserialize_any;
 
-		<span class="kw">fn</span> <span class="ident">deserialize_unit_struct</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span>(<span class="ident">this</span>, <span class="ident">_name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">visitor</span>: <span class="ident">V</span>) {
-			<span class="ident">this</span>.<span class="ident">deserialize_any</span>(<span class="ident">visitor</span>)
+		<span class="kw">fn </span>deserialize_unit_struct&lt;V&gt;(this, _name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, visitor: V) {
+			this.deserialize_any(visitor)
 		}
 
-		<span class="kw">fn</span> <span class="ident">deserialize_newtype_struct</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span>(<span class="ident">this</span>, <span class="ident">_name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">visitor</span>: <span class="ident">V</span>) {
-			<span class="ident">this</span>.<span class="ident">deserialize_any</span>(<span class="ident">visitor</span>)
+		<span class="kw">fn </span>deserialize_newtype_struct&lt;V&gt;(this, _name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, visitor: V) {
+			this.deserialize_any(visitor)
 		}
 
-		<span class="kw">fn</span> <span class="ident">deserialize_tuple</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span>(<span class="ident">this</span>, <span class="ident">_len</span>: <span class="ident">usize</span>, <span class="ident">visitor</span>: <span class="ident">V</span>) {
-			<span class="ident">this</span>.<span class="ident">deserialize_any</span>(<span class="ident">visitor</span>)
+		<span class="kw">fn </span>deserialize_tuple&lt;V&gt;(this, _len: usize, visitor: V) {
+			this.deserialize_any(visitor)
 		}
 
-		<span class="kw">fn</span> <span class="ident">deserialize_tuple_struct</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span>(<span class="ident">this</span>, <span class="ident">_name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">_len</span>: <span class="ident">usize</span>, <span class="ident">visitor</span>: <span class="ident">V</span>) {
-			<span class="ident">this</span>.<span class="ident">deserialize_any</span>(<span class="ident">visitor</span>)
+		<span class="kw">fn </span>deserialize_tuple_struct&lt;V&gt;(this, _name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, _len: usize, visitor: V) {
+			this.deserialize_any(visitor)
 		}
 
-		<span class="kw">fn</span> <span class="ident">deserialize_struct</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span>(<span class="ident">this</span>, <span class="ident">_name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">_fields</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> [<span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>], <span class="ident">visitor</span>: <span class="ident">V</span>) {
-			<span class="ident">this</span>.<span class="ident">deserialize_any</span>(<span class="ident">visitor</span>)
+		<span class="kw">fn </span>deserialize_struct&lt;V&gt;(this, _name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, _fields: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str], visitor: V) {
+			this.deserialize_any(visitor)
 		}
 
-		<span class="kw">fn</span> <span class="ident">deserialize_enum</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span>(<span class="ident">this</span>, <span class="ident">_name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">_variants</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> [<span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>], <span class="ident">visitor</span>: <span class="ident">V</span>) {
-			<span class="ident">this</span>.<span class="ident">deserialize_any</span>(<span class="ident">visitor</span>)
+		<span class="kw">fn </span>deserialize_enum&lt;V&gt;(this, _name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, _variants: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str], visitor: V) {
+			this.deserialize_any(visitor)
 		}
 	}
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham_formdata" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham_formdata" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

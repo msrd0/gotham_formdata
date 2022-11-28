@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/service/trap.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>trap.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/service/trap.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>trap.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -224,231 +224,231 @@
 <span id="224">224</span>
 <span id="225">225</span>
 <span id="226">226</span>
-</pre><pre class="rust"><code><span class="doccomment">//! Defines functionality for processing a request and trapping errors and panics in response</span>
-<span class="doccomment">//! generation.</span>
+</pre><pre class="rust"><code><span class="doccomment">//! Defines functionality for processing a request and trapping errors and panics in response
+//! generation.
 
-<span class="kw">use</span> <span class="ident">std::panic</span>::{<span class="ident">catch_unwind</span>, <span class="ident">AssertUnwindSafe</span>, <span class="ident">UnwindSafe</span>};
+</span><span class="kw">use </span>std::panic::{catch_unwind, AssertUnwindSafe, UnwindSafe};
 
-<span class="kw">use</span> <span class="ident">futures_util::future::FutureExt</span>;
-<span class="kw">use</span> <span class="ident">hyper</span>::{<span class="ident">Body</span>, <span class="ident">Response</span>, <span class="ident">StatusCode</span>};
-<span class="kw">use</span> <span class="ident">log::error</span>;
+<span class="kw">use </span>futures_util::future::FutureExt;
+<span class="kw">use </span>hyper::{Body, Response, StatusCode};
+<span class="kw">use </span>log::error;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::handler</span>::{<span class="ident">Handler</span>, <span class="ident">HandlerError</span>, <span class="ident">IntoResponse</span>, <span class="ident">NewHandler</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state</span>::{<span class="ident">request_id</span>, <span class="ident">State</span>};
+<span class="kw">use </span><span class="kw">crate</span>::handler::{Handler, HandlerError, IntoResponse, NewHandler};
+<span class="kw">use </span><span class="kw">crate</span>::state::{request_id, State};
 
-<span class="kw">async</span> <span class="kw">fn</span> <span class="ident">handle</span><span class="op">&lt;</span><span class="ident">H</span><span class="op">&gt;</span>(
-    <span class="ident">handler</span>: <span class="ident">H</span>,
-    <span class="ident">state</span>: <span class="ident">AssertUnwindSafe</span><span class="op">&lt;</span><span class="ident">State</span><span class="op">&gt;</span>,
-) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>), (<span class="ident">State</span>, <span class="ident">HandlerError</span>)<span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">H</span>: <span class="ident">Handler</span>,
+<span class="kw">async fn </span>handle&lt;H&gt;(
+    handler: H,
+    state: AssertUnwindSafe&lt;State&gt;,
+) -&gt; <span class="prelude-ty">Result</span>&lt;(State, Response&lt;Body&gt;), (State, HandlerError)&gt;
+<span class="kw">where
+    </span>H: Handler,
 {
-    <span class="kw">let</span> <span class="ident">AssertUnwindSafe</span>(<span class="ident">state</span>) <span class="op">=</span> <span class="ident">state</span>;
-    <span class="ident">handler</span>.<span class="ident">handle</span>(<span class="ident">state</span>).<span class="kw">await</span>
-}
+    <span class="kw">let </span>AssertUnwindSafe(state) = state;
+    handler.handle(state).<span class="kw">await
+</span>}
 
-<span class="doccomment">/// Instantiates a `Handler` from the given `NewHandler`, and invokes it with the request. If a</span>
-<span class="doccomment">/// panic occurs from `NewHandler::new_handler` or `Handler::handle`, it is trapped and will result</span>
-<span class="doccomment">/// in a `500 Internal Server Error` response.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Timing information is recorded and logged, except in the case of a panic where the timer is</span>
-<span class="doccomment">/// moved and cannot be recovered.</span>
-<span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">call_handler</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">t</span>: <span class="ident">T</span>, <span class="ident">state</span>: <span class="ident">AssertUnwindSafe</span><span class="op">&lt;</span><span class="ident">State</span><span class="op">&gt;</span>) -&gt; <span class="ident">anyhow::Result</span><span class="op">&lt;</span><span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">T</span>: <span class="ident">NewHandler</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">UnwindSafe</span>,
+<span class="doccomment">/// Instantiates a `Handler` from the given `NewHandler`, and invokes it with the request. If a
+/// panic occurs from `NewHandler::new_handler` or `Handler::handle`, it is trapped and will result
+/// in a `500 Internal Server Error` response.
+///
+/// Timing information is recorded and logged, except in the case of a panic where the timer is
+/// moved and cannot be recovered.
+</span><span class="kw">pub async fn </span>call_handler&lt;T&gt;(t: T, state: AssertUnwindSafe&lt;State&gt;) -&gt; anyhow::Result&lt;Response&lt;Body&gt;&gt;
+<span class="kw">where
+    </span>T: NewHandler + Send + UnwindSafe,
 {
-    <span class="kw">match</span> <span class="ident">catch_unwind</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> <span class="ident">t</span>.<span class="ident">new_handler</span>()) {
-        <span class="prelude-val">Ok</span>(<span class="ident">handler</span>) =&gt; {
-            <span class="kw">let</span> <span class="ident">unwind_result</span> <span class="op">=</span> <span class="ident">AssertUnwindSafe</span>(<span class="ident">handle</span>(<span class="ident">handler</span><span class="question-mark">?</span>, <span class="ident">state</span>))
-                .<span class="ident">catch_unwind</span>()
+    <span class="kw">match </span>catch_unwind(<span class="kw">move </span>|| t.new_handler()) {
+        <span class="prelude-val">Ok</span>(handler) =&gt; {
+            <span class="kw">let </span>unwind_result = AssertUnwindSafe(handle(handler<span class="question-mark">?</span>, state))
+                .catch_unwind()
                 .<span class="kw">await</span>;
-            <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">unwind_result</span> {
-                <span class="prelude-val">Ok</span>(<span class="ident">result</span>) =&gt; <span class="ident">result</span>.<span class="ident">map</span>(<span class="op">|</span>(<span class="kw">_</span>, <span class="ident">res</span>)<span class="op">|</span> <span class="ident">res</span>),
-                <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="ident">finalize_panic_response</span>()),
+            <span class="kw">let </span>result = <span class="kw">match </span>unwind_result {
+                <span class="prelude-val">Ok</span>(result) =&gt; result.map(|(<span class="kw">_</span>, res)| res),
+                <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="prelude-val">Ok</span>(finalize_panic_response()),
             };
-            <span class="prelude-val">Ok</span>(<span class="kw">match</span> <span class="ident">result</span> {
-                <span class="prelude-val">Ok</span>(<span class="ident">res</span>) =&gt; <span class="ident">res</span>,
-                <span class="prelude-val">Err</span>((<span class="ident">state</span>, <span class="ident">err</span>)) =&gt; <span class="ident">finalize_error_response</span>(<span class="ident">state</span>, <span class="ident">err</span>),
+            <span class="prelude-val">Ok</span>(<span class="kw">match </span>result {
+                <span class="prelude-val">Ok</span>(res) =&gt; res,
+                <span class="prelude-val">Err</span>((state, err)) =&gt; finalize_error_response(state, err),
             })
         }
-        <span class="comment">// Error while creating the handler from NewHandler</span>
-        <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="ident">finalize_panic_response</span>()),
+        <span class="comment">// Error while creating the handler from NewHandler
+        </span><span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="prelude-val">Ok</span>(finalize_panic_response()),
     }
 }
 
-<span class="kw">fn</span> <span class="ident">finalize_error_response</span>(<span class="ident">state</span>: <span class="ident">State</span>, <span class="ident">err</span>: <span class="ident">HandlerError</span>) -&gt; <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> {
-    <span class="macro">error!</span>(<span class="string">&quot;[ERROR][{}][Error: {:?}]&quot;</span>, <span class="ident">request_id</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>), <span class="ident">err</span>);
+<span class="kw">fn </span>finalize_error_response(state: State, err: HandlerError) -&gt; Response&lt;Body&gt; {
+    <span class="macro">error!</span>(<span class="string">&quot;[ERROR][{}][Error: {:?}]&quot;</span>, request_id(<span class="kw-2">&amp;</span>state), err);
 
-    <span class="ident">err</span>.<span class="ident">into_response</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>)
+    err.into_response(<span class="kw-2">&amp;</span>state)
 }
 
-<span class="kw">fn</span> <span class="ident">finalize_panic_response</span>() -&gt; <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> {
+<span class="kw">fn </span>finalize_panic_response() -&gt; Response&lt;Body&gt; {
     <span class="macro">error!</span>(<span class="string">&quot;[PANIC][A panic occurred while invoking the handler]&quot;</span>);
 
-    <span class="ident">Response::builder</span>()
-        .<span class="ident">status</span>(<span class="ident">StatusCode::INTERNAL_SERVER_ERROR</span>)
-        .<span class="ident">body</span>(<span class="ident">Body::default</span>())
-        .<span class="ident">unwrap</span>()
+    Response::builder()
+        .status(StatusCode::INTERNAL_SERVER_ERROR)
+        .body(Body::default())
+        .unwrap()
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">tests</span> {
-    <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+<span class="attribute">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
 
-    <span class="kw">use</span> <span class="ident">futures_util::future</span>;
-    <span class="kw">use</span> <span class="ident">hyper</span>::{<span class="ident">HeaderMap</span>, <span class="ident">Method</span>, <span class="ident">StatusCode</span>};
-    <span class="kw">use</span> <span class="ident">std::io</span>;
-    <span class="kw">use</span> <span class="ident">std::pin::Pin</span>;
+    <span class="kw">use </span>futures_util::future;
+    <span class="kw">use </span>hyper::{HeaderMap, Method, StatusCode};
+    <span class="kw">use </span>std::io;
+    <span class="kw">use </span>std::pin::Pin;
 
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::handler::HandlerFuture</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::helpers::http::response::create_empty_response</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state::set_request_id</span>;
+    <span class="kw">use </span><span class="kw">crate</span>::handler::HandlerFuture;
+    <span class="kw">use </span><span class="kw">crate</span>::helpers::http::response::create_empty_response;
+    <span class="kw">use </span><span class="kw">crate</span>::state::set_request_id;
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">success</span>() {
-        <span class="kw">let</span> <span class="ident">new_handler</span> <span class="op">=</span> <span class="op">|</span><span class="op">|</span> {
-            <span class="prelude-val">Ok</span>(<span class="op">|</span><span class="ident">state</span><span class="op">|</span> {
-                <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">create_empty_response</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>, <span class="ident">StatusCode::ACCEPTED</span>);
-                (<span class="ident">state</span>, <span class="ident">res</span>)
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>success() {
+        <span class="kw">let </span>new_handler = || {
+            <span class="prelude-val">Ok</span>(|state| {
+                <span class="kw">let </span>res = create_empty_response(<span class="kw-2">&amp;</span>state, StatusCode::ACCEPTED);
+                (state, res)
             })
         };
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">state</span> <span class="op">=</span> <span class="ident">State::new</span>();
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">HeaderMap::new</span>());
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">Method::GET</span>);
-        <span class="ident">set_request_id</span>(<span class="kw-2">&amp;mut</span> <span class="ident">state</span>);
+        <span class="kw">let </span><span class="kw-2">mut </span>state = State::new();
+        state.put(HeaderMap::new());
+        state.put(Method::GET);
+        set_request_id(<span class="kw-2">&amp;mut </span>state);
 
-        <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">call_handler</span>(<span class="kw-2">&amp;</span><span class="ident">new_handler</span>, <span class="ident">AssertUnwindSafe</span>(<span class="ident">state</span>));
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">futures_executor::block_on</span>(<span class="ident">r</span>).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">status</span>(), <span class="ident">StatusCode::ACCEPTED</span>);
+        <span class="kw">let </span>r = call_handler(<span class="kw-2">&amp;</span>new_handler, AssertUnwindSafe(state));
+        <span class="kw">let </span>response = futures_executor::block_on(r).unwrap();
+        <span class="macro">assert_eq!</span>(response.status(), StatusCode::ACCEPTED);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">async_success_repeat_poll</span>() {
-        <span class="kw">let</span> <span class="ident">new_handler</span> <span class="op">=</span> <span class="op">|</span><span class="op">|</span> {
-            <span class="prelude-val">Ok</span>(<span class="op">|</span><span class="ident">state</span><span class="op">|</span> {
-                <span class="kw">let</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">future::lazy</span>(<span class="kw">move</span> <span class="op">|</span><span class="kw">_</span><span class="op">|</span> {
-                    <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">create_empty_response</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>, <span class="ident">StatusCode::ACCEPTED</span>);
-                    <span class="prelude-val">Ok</span>((<span class="ident">state</span>, <span class="ident">res</span>))
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>async_success_repeat_poll() {
+        <span class="kw">let </span>new_handler = || {
+            <span class="prelude-val">Ok</span>(|state| {
+                <span class="kw">let </span>f = future::lazy(<span class="kw">move </span>|<span class="kw">_</span>| {
+                    <span class="kw">let </span>res = create_empty_response(<span class="kw-2">&amp;</span>state, StatusCode::ACCEPTED);
+                    <span class="prelude-val">Ok</span>((state, res))
                 });
 
-                <span class="kw">let</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">f</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>);
-                <span class="kw">let</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">f</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>);
-                <span class="kw">let</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">f</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>);
+                <span class="kw">let </span>f = f.map(|v| v);
+                <span class="kw">let </span>f = f.map(|v| v);
+                <span class="kw">let </span>f = f.map(|v| v);
 
-                <span class="ident">f</span>.<span class="ident">boxed</span>()
+                f.boxed()
             })
         };
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">state</span> <span class="op">=</span> <span class="ident">State::new</span>();
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">HeaderMap::new</span>());
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">Method::GET</span>);
-        <span class="ident">set_request_id</span>(<span class="kw-2">&amp;mut</span> <span class="ident">state</span>);
+        <span class="kw">let </span><span class="kw-2">mut </span>state = State::new();
+        state.put(HeaderMap::new());
+        state.put(Method::GET);
+        set_request_id(<span class="kw-2">&amp;mut </span>state);
 
-        <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">call_handler</span>(<span class="kw-2">&amp;</span><span class="ident">new_handler</span>, <span class="ident">AssertUnwindSafe</span>(<span class="ident">state</span>));
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">futures_executor::block_on</span>(<span class="ident">r</span>).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">status</span>(), <span class="ident">StatusCode::ACCEPTED</span>);
+        <span class="kw">let </span>r = call_handler(<span class="kw-2">&amp;</span>new_handler, AssertUnwindSafe(state));
+        <span class="kw">let </span>response = futures_executor::block_on(r).unwrap();
+        <span class="macro">assert_eq!</span>(response.status(), StatusCode::ACCEPTED);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">error</span>() {
-        <span class="kw">let</span> <span class="ident">new_handler</span> <span class="op">=</span>
-            <span class="op">|</span><span class="op">|</span> <span class="prelude-val">Ok</span>(<span class="op">|</span><span class="ident">state</span><span class="op">|</span> <span class="ident">future::err</span>((<span class="ident">state</span>, <span class="ident">io::Error::last_os_error</span>().<span class="ident">into</span>())).<span class="ident">boxed</span>());
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>error() {
+        <span class="kw">let </span>new_handler =
+            || <span class="prelude-val">Ok</span>(|state| future::err((state, io::Error::last_os_error().into())).boxed());
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">state</span> <span class="op">=</span> <span class="ident">State::new</span>();
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">HeaderMap::new</span>());
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">Method::GET</span>);
-        <span class="ident">set_request_id</span>(<span class="kw-2">&amp;mut</span> <span class="ident">state</span>);
+        <span class="kw">let </span><span class="kw-2">mut </span>state = State::new();
+        state.put(HeaderMap::new());
+        state.put(Method::GET);
+        set_request_id(<span class="kw-2">&amp;mut </span>state);
 
-        <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">call_handler</span>(<span class="kw-2">&amp;</span><span class="ident">new_handler</span>, <span class="ident">AssertUnwindSafe</span>(<span class="ident">state</span>));
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">futures_executor::block_on</span>(<span class="ident">r</span>).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">status</span>(), <span class="ident">StatusCode::INTERNAL_SERVER_ERROR</span>);
+        <span class="kw">let </span>r = call_handler(<span class="kw-2">&amp;</span>new_handler, AssertUnwindSafe(state));
+        <span class="kw">let </span>response = futures_executor::block_on(r).unwrap();
+        <span class="macro">assert_eq!</span>(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">panic</span>() {
-        <span class="kw">let</span> <span class="ident">new_handler</span> <span class="op">=</span> <span class="op">|</span><span class="op">|</span> {
-            <span class="prelude-val">Ok</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> {
-                <span class="kw">let</span> <span class="ident">val</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="prelude-val">None</span>;
-                <span class="ident">val</span>.<span class="ident">expect</span>(<span class="string">&quot;test panic&quot;</span>)
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>panic() {
+        <span class="kw">let </span>new_handler = || {
+            <span class="prelude-val">Ok</span>(|<span class="kw">_</span>| {
+                <span class="kw">let </span>val: <span class="prelude-ty">Option</span>&lt;Pin&lt;Box&lt;HandlerFuture&gt;&gt;&gt; = <span class="prelude-val">None</span>;
+                val.expect(<span class="string">&quot;test panic&quot;</span>)
             })
         };
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">state</span> <span class="op">=</span> <span class="ident">State::new</span>();
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">HeaderMap::new</span>());
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">Method::GET</span>);
-        <span class="ident">set_request_id</span>(<span class="kw-2">&amp;mut</span> <span class="ident">state</span>);
+        <span class="kw">let </span><span class="kw-2">mut </span>state = State::new();
+        state.put(HeaderMap::new());
+        state.put(Method::GET);
+        set_request_id(<span class="kw-2">&amp;mut </span>state);
 
-        <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">call_handler</span>(<span class="kw-2">&amp;</span><span class="ident">new_handler</span>, <span class="ident">AssertUnwindSafe</span>(<span class="ident">state</span>));
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">futures_executor::block_on</span>(<span class="ident">r</span>).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">status</span>(), <span class="ident">StatusCode::INTERNAL_SERVER_ERROR</span>);
+        <span class="kw">let </span>r = call_handler(<span class="kw-2">&amp;</span>new_handler, AssertUnwindSafe(state));
+        <span class="kw">let </span>response = futures_executor::block_on(r).unwrap();
+        <span class="macro">assert_eq!</span>(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">async_panic</span>() {
-        <span class="kw">let</span> <span class="ident">new_handler</span> <span class="op">=</span> <span class="op">|</span><span class="op">|</span> <span class="prelude-val">Ok</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">future::lazy</span>(<span class="kw">move</span> <span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="macro">panic!</span>(<span class="string">&quot;test panic&quot;</span>)).<span class="ident">boxed</span>());
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>async_panic() {
+        <span class="kw">let </span>new_handler = || <span class="prelude-val">Ok</span>(|<span class="kw">_</span>| future::lazy(<span class="kw">move </span>|<span class="kw">_</span>| <span class="macro">panic!</span>(<span class="string">&quot;test panic&quot;</span>)).boxed());
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">state</span> <span class="op">=</span> <span class="ident">State::new</span>();
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">HeaderMap::new</span>());
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">Method::GET</span>);
-        <span class="ident">set_request_id</span>(<span class="kw-2">&amp;mut</span> <span class="ident">state</span>);
+        <span class="kw">let </span><span class="kw-2">mut </span>state = State::new();
+        state.put(HeaderMap::new());
+        state.put(Method::GET);
+        set_request_id(<span class="kw-2">&amp;mut </span>state);
 
-        <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">call_handler</span>(<span class="kw-2">&amp;</span><span class="ident">new_handler</span>, <span class="ident">AssertUnwindSafe</span>(<span class="ident">state</span>));
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">futures_executor::block_on</span>(<span class="ident">r</span>).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">status</span>(), <span class="ident">StatusCode::INTERNAL_SERVER_ERROR</span>);
+        <span class="kw">let </span>r = call_handler(<span class="kw-2">&amp;</span>new_handler, AssertUnwindSafe(state));
+        <span class="kw">let </span>response = futures_executor::block_on(r).unwrap();
+        <span class="macro">assert_eq!</span>(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">async_panic_repeat_poll</span>() {
-        <span class="kw">let</span> <span class="ident">new_handler</span> <span class="op">=</span> <span class="op">|</span><span class="op">|</span> {
-            <span class="prelude-val">Ok</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> {
-                <span class="kw">let</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">future::lazy</span>(<span class="kw">move</span> <span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="macro">panic!</span>(<span class="string">&quot;test panic&quot;</span>));
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>async_panic_repeat_poll() {
+        <span class="kw">let </span>new_handler = || {
+            <span class="prelude-val">Ok</span>(|<span class="kw">_</span>| {
+                <span class="kw">let </span>f = future::lazy(<span class="kw">move </span>|<span class="kw">_</span>| <span class="macro">panic!</span>(<span class="string">&quot;test panic&quot;</span>));
 
-                <span class="kw">let</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">f</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>);
-                <span class="kw">let</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">f</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>);
-                <span class="kw">let</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">f</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>);
+                <span class="kw">let </span>f = f.map(|v| v);
+                <span class="kw">let </span>f = f.map(|v| v);
+                <span class="kw">let </span>f = f.map(|v| v);
 
-                <span class="ident">f</span>.<span class="ident">boxed</span>()
+                f.boxed()
             })
         };
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">state</span> <span class="op">=</span> <span class="ident">State::new</span>();
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">HeaderMap::new</span>());
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">Method::GET</span>);
-        <span class="ident">set_request_id</span>(<span class="kw-2">&amp;mut</span> <span class="ident">state</span>);
+        <span class="kw">let </span><span class="kw-2">mut </span>state = State::new();
+        state.put(HeaderMap::new());
+        state.put(Method::GET);
+        set_request_id(<span class="kw-2">&amp;mut </span>state);
 
-        <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">call_handler</span>(<span class="kw-2">&amp;</span><span class="ident">new_handler</span>, <span class="ident">AssertUnwindSafe</span>(<span class="ident">state</span>));
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">futures_executor::block_on</span>(<span class="ident">r</span>).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">status</span>(), <span class="ident">StatusCode::INTERNAL_SERVER_ERROR</span>);
+        <span class="kw">let </span>r = call_handler(<span class="kw-2">&amp;</span>new_handler, AssertUnwindSafe(state));
+        <span class="kw">let </span>response = futures_executor::block_on(r).unwrap();
+        <span class="macro">assert_eq!</span>(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">new_handler_panic</span>() {
-        <span class="kw">struct</span> <span class="ident">PanicNewHandler</span>;
-        <span class="kw">impl</span> <span class="ident">NewHandler</span> <span class="kw">for</span> <span class="ident">PanicNewHandler</span> {
-            <span class="kw">type</span> <span class="ident">Instance</span> <span class="op">=</span> <span class="self">Self</span>;
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>new_handler_panic() {
+        <span class="kw">struct </span>PanicNewHandler;
+        <span class="kw">impl </span>NewHandler <span class="kw">for </span>PanicNewHandler {
+            <span class="kw">type </span>Instance = <span class="self">Self</span>;
 
-            <span class="kw">fn</span> <span class="ident">new_handler</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">anyhow::Result</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Instance</span><span class="op">&gt;</span> {
+            <span class="kw">fn </span>new_handler(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; anyhow::Result&lt;<span class="self">Self</span>::Instance&gt; {
                 <span class="macro">panic!</span>(<span class="string">&quot;Pannicked creating a new handler&quot;</span>);
             }
         }
 
-        <span class="kw">impl</span> <span class="ident">Handler</span> <span class="kw">for</span> <span class="ident">PanicNewHandler</span> {
-            <span class="kw">fn</span> <span class="ident">handle</span>(<span class="self">self</span>, <span class="ident">_state</span>: <span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+        <span class="kw">impl </span>Handler <span class="kw">for </span>PanicNewHandler {
+            <span class="kw">fn </span>handle(<span class="self">self</span>, _state: State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; {
                 <span class="macro">unreachable!</span>();
             }
         }
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">state</span> <span class="op">=</span> <span class="ident">State::new</span>();
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">HeaderMap::new</span>());
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">Method::GET</span>);
-        <span class="ident">set_request_id</span>(<span class="kw-2">&amp;mut</span> <span class="ident">state</span>);
+        <span class="kw">let </span><span class="kw-2">mut </span>state = State::new();
+        state.put(HeaderMap::new());
+        state.put(Method::GET);
+        set_request_id(<span class="kw-2">&amp;mut </span>state);
 
-        <span class="kw">let</span> <span class="ident">new_handler</span> <span class="op">=</span> <span class="ident">PanicNewHandler</span> {};
-        <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">call_handler</span>(<span class="ident">new_handler</span>, <span class="ident">AssertUnwindSafe</span>(<span class="ident">state</span>));
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">futures_executor::block_on</span>(<span class="ident">r</span>).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">status</span>(), <span class="ident">StatusCode::INTERNAL_SERVER_ERROR</span>);
+        <span class="kw">let </span>new_handler = PanicNewHandler {};
+        <span class="kw">let </span>r = call_handler(new_handler, AssertUnwindSafe(state));
+        <span class="kw">let </span>response = futures_executor::block_on(r).unwrap();
+        <span class="macro">assert_eq!</span>(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

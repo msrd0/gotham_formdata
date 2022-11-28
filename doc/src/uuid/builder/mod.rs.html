@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/uuid-0.8.2/src/builder/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="icon" href="https://www.rust-lang.org/favicon.ico"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../uuid/index.html"><div class="logo-container"><img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../uuid/index.html"><div class="logo-container">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/uuid-0.8.2/src/builder/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="icon" href="https://www.rust-lang.org/favicon.ico"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../uuid/index.html"><div class="logo-container"><img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../uuid/index.html"><div class="logo-container">
                     <img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../uuid/index.html">
                         <img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
@@ -473,478 +473,478 @@
 <span id="471">471</span>
 <span id="472">472</span>
 <span id="473">473</span>
-</pre><pre class="rust"><code><span class="comment">// Copyright 2013-2014 The Rust Project Developers.</span>
-<span class="comment">// Copyright 2018 The Uuid Project Developers.</span>
-<span class="comment">//</span>
-<span class="comment">// See the COPYRIGHT file at the top-level directory of this distribution.</span>
-<span class="comment">//</span>
-<span class="comment">// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or</span>
-<span class="comment">// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your</span>
-<span class="comment">// option. This file may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
+</pre><pre class="rust"><code><span class="comment">// Copyright 2013-2014 The Rust Project Developers.
+// Copyright 2018 The Uuid Project Developers.
+//
+// See the COPYRIGHT file at the top-level directory of this distribution.
+//
+// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or
+// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your
+// option. This file may not be copied, modified, or distributed
+// except according to those terms.
 
-<span class="doccomment">//! A Builder type for [`Uuid`]s.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! [`Uuid`]: ../struct.Uuid.html</span>
+</span><span class="doccomment">//! A Builder type for [`Uuid`]s.
+//!
+//! [`Uuid`]: ../struct.Uuid.html
 
-<span class="kw">mod</span> <span class="ident">error</span>;
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="ident"><span class="self">self</span>::error::Error</span>;
+</span><span class="kw">mod </span>error;
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use </span><span class="self">self</span>::error::Error;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::prelude</span>::<span class="kw-2">*</span>;
+<span class="kw">use </span><span class="kw">crate</span>::prelude::<span class="kw-2">*</span>;
 
-<span class="kw">impl</span> <span class="ident">Uuid</span> {
-    <span class="doccomment">/// The &#39;nil UUID&#39;.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The nil UUID is special form of UUID that is specified to have all</span>
-    <span class="doccomment">/// 128 bits set to zero, as defined in [IETF RFC 4122 Section 4.1.7][RFC].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [RFC]: https://tools.ietf.org/html/rfc4122.html#section-4.1.7</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Basic usage:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let uuid = Uuid::nil();</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(</span>
-    <span class="doccomment">///     uuid.to_hyphenated().to_string(),</span>
-    <span class="doccomment">///     &quot;00000000-0000-0000-0000-000000000000&quot;</span>
-    <span class="doccomment">/// );</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">nil</span>() -&gt; <span class="self">Self</span> {
-        <span class="ident">Uuid::from_bytes</span>([<span class="number">0</span>; <span class="number">16</span>])
+<span class="kw">impl </span>Uuid {
+    <span class="doccomment">/// The &#39;nil UUID&#39;.
+    ///
+    /// The nil UUID is special form of UUID that is specified to have all
+    /// 128 bits set to zero, as defined in [IETF RFC 4122 Section 4.1.7][RFC].
+    ///
+    /// [RFC]: https://tools.ietf.org/html/rfc4122.html#section-4.1.7
+    ///
+    /// # Examples
+    ///
+    /// Basic usage:
+    ///
+    /// ```
+    /// use uuid::Uuid;
+    ///
+    /// let uuid = Uuid::nil();
+    ///
+    /// assert_eq!(
+    ///     uuid.to_hyphenated().to_string(),
+    ///     &quot;00000000-0000-0000-0000-000000000000&quot;
+    /// );
+    /// ```
+    </span><span class="kw">pub const fn </span>nil() -&gt; <span class="self">Self </span>{
+        Uuid::from_bytes([<span class="number">0</span>; <span class="number">16</span>])
     }
 
-    <span class="doccomment">/// Creates a UUID from four field values in big-endian order.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Errors</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This function will return an error if `d4`&#39;s length is not 8 bytes.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Basic usage:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let d4 = [12, 3, 9, 56, 54, 43, 8, 9];</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let uuid = Uuid::from_fields(42, 12, 5, &amp;d4);</span>
-    <span class="doccomment">/// let uuid = uuid.map(|uuid| uuid.to_hyphenated().to_string());</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let expected_uuid =</span>
-    <span class="doccomment">///     Ok(String::from(&quot;0000002a-000c-0005-0c03-0938362b0809&quot;));</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(expected_uuid, uuid);</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_fields</span>(
-        <span class="ident">d1</span>: <span class="ident">u32</span>,
-        <span class="ident">d2</span>: <span class="ident">u16</span>,
-        <span class="ident">d3</span>: <span class="ident">u16</span>,
-        <span class="ident">d4</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
-    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Uuid</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span> {
-        <span class="kw">const</span> <span class="ident">D4_LEN</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">8</span>;
+    <span class="doccomment">/// Creates a UUID from four field values in big-endian order.
+    ///
+    /// # Errors
+    ///
+    /// This function will return an error if `d4`&#39;s length is not 8 bytes.
+    ///
+    /// # Examples
+    ///
+    /// Basic usage:
+    ///
+    /// ```
+    /// use uuid::Uuid;
+    ///
+    /// let d4 = [12, 3, 9, 56, 54, 43, 8, 9];
+    ///
+    /// let uuid = Uuid::from_fields(42, 12, 5, &amp;d4);
+    /// let uuid = uuid.map(|uuid| uuid.to_hyphenated().to_string());
+    ///
+    /// let expected_uuid =
+    ///     Ok(String::from(&quot;0000002a-000c-0005-0c03-0938362b0809&quot;));
+    ///
+    /// assert_eq!(expected_uuid, uuid);
+    /// ```
+    </span><span class="kw">pub fn </span>from_fields(
+        d1: u32,
+        d2: u16,
+        d3: u16,
+        d4: <span class="kw-2">&amp;</span>[u8],
+    ) -&gt; <span class="prelude-ty">Result</span>&lt;Uuid, <span class="kw">crate</span>::Error&gt; {
+        <span class="kw">const </span>D4_LEN: usize = <span class="number">8</span>;
 
-        <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">d4</span>.<span class="ident">len</span>();
+        <span class="kw">let </span>len = d4.len();
 
-        <span class="kw">if</span> <span class="ident">len</span> <span class="op">!</span><span class="op">=</span> <span class="ident">D4_LEN</span> {
-            <span class="prelude-val">Err</span>(<span class="ident">Error::new</span>(<span class="ident">D4_LEN</span>, <span class="ident">len</span>))<span class="question-mark">?</span>;
+        <span class="kw">if </span>len != D4_LEN {
+            <span class="prelude-val">Err</span>(Error::new(D4_LEN, len))<span class="question-mark">?</span>;
         }
 
-        <span class="prelude-val">Ok</span>(<span class="ident">Uuid::from_bytes</span>([
-            (<span class="ident">d1</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">24</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">d1</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">16</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">d1</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">8</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            <span class="ident">d1</span> <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">d2</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">8</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            <span class="ident">d2</span> <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">d3</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">8</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            <span class="ident">d3</span> <span class="kw">as</span> <span class="ident">u8</span>,
-            <span class="ident">d4</span>[<span class="number">0</span>],
-            <span class="ident">d4</span>[<span class="number">1</span>],
-            <span class="ident">d4</span>[<span class="number">2</span>],
-            <span class="ident">d4</span>[<span class="number">3</span>],
-            <span class="ident">d4</span>[<span class="number">4</span>],
-            <span class="ident">d4</span>[<span class="number">5</span>],
-            <span class="ident">d4</span>[<span class="number">6</span>],
-            <span class="ident">d4</span>[<span class="number">7</span>],
+        <span class="prelude-val">Ok</span>(Uuid::from_bytes([
+            (d1 &gt;&gt; <span class="number">24</span>) <span class="kw">as </span>u8,
+            (d1 &gt;&gt; <span class="number">16</span>) <span class="kw">as </span>u8,
+            (d1 &gt;&gt; <span class="number">8</span>) <span class="kw">as </span>u8,
+            d1 <span class="kw">as </span>u8,
+            (d2 &gt;&gt; <span class="number">8</span>) <span class="kw">as </span>u8,
+            d2 <span class="kw">as </span>u8,
+            (d3 &gt;&gt; <span class="number">8</span>) <span class="kw">as </span>u8,
+            d3 <span class="kw">as </span>u8,
+            d4[<span class="number">0</span>],
+            d4[<span class="number">1</span>],
+            d4[<span class="number">2</span>],
+            d4[<span class="number">3</span>],
+            d4[<span class="number">4</span>],
+            d4[<span class="number">5</span>],
+            d4[<span class="number">6</span>],
+            d4[<span class="number">7</span>],
         ]))
     }
 
-    <span class="doccomment">/// Creates a UUID from four field values in little-endian order.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The bytes in the `d1`, `d2` and `d3` fields will</span>
-    <span class="doccomment">/// be converted into big-endian order.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let d1 = 0xAB3F1097u32;</span>
-    <span class="doccomment">/// let d2 = 0x501Eu16;</span>
-    <span class="doccomment">/// let d3 = 0xB736u16;</span>
-    <span class="doccomment">/// let d4 = [12, 3, 9, 56, 54, 43, 8, 9];</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let uuid = Uuid::from_fields_le(d1, d2, d3, &amp;d4);</span>
-    <span class="doccomment">/// let uuid = uuid.map(|uuid| uuid.to_hyphenated().to_string());</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let expected_uuid =</span>
-    <span class="doccomment">///     Ok(String::from(&quot;97103fab-1e50-36b7-0c03-0938362b0809&quot;));</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(expected_uuid, uuid);</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_fields_le</span>(
-        <span class="ident">d1</span>: <span class="ident">u32</span>,
-        <span class="ident">d2</span>: <span class="ident">u16</span>,
-        <span class="ident">d3</span>: <span class="ident">u16</span>,
-        <span class="ident">d4</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
-    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Uuid</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span> {
-        <span class="kw">const</span> <span class="ident">D4_LEN</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">8</span>;
+    <span class="doccomment">/// Creates a UUID from four field values in little-endian order.
+    ///
+    /// The bytes in the `d1`, `d2` and `d3` fields will
+    /// be converted into big-endian order.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use uuid::Uuid;
+    ///
+    /// let d1 = 0xAB3F1097u32;
+    /// let d2 = 0x501Eu16;
+    /// let d3 = 0xB736u16;
+    /// let d4 = [12, 3, 9, 56, 54, 43, 8, 9];
+    ///
+    /// let uuid = Uuid::from_fields_le(d1, d2, d3, &amp;d4);
+    /// let uuid = uuid.map(|uuid| uuid.to_hyphenated().to_string());
+    ///
+    /// let expected_uuid =
+    ///     Ok(String::from(&quot;97103fab-1e50-36b7-0c03-0938362b0809&quot;));
+    ///
+    /// assert_eq!(expected_uuid, uuid);
+    /// ```
+    </span><span class="kw">pub fn </span>from_fields_le(
+        d1: u32,
+        d2: u16,
+        d3: u16,
+        d4: <span class="kw-2">&amp;</span>[u8],
+    ) -&gt; <span class="prelude-ty">Result</span>&lt;Uuid, <span class="kw">crate</span>::Error&gt; {
+        <span class="kw">const </span>D4_LEN: usize = <span class="number">8</span>;
 
-        <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">d4</span>.<span class="ident">len</span>();
+        <span class="kw">let </span>len = d4.len();
 
-        <span class="kw">if</span> <span class="ident">len</span> <span class="op">!</span><span class="op">=</span> <span class="ident">D4_LEN</span> {
-            <span class="prelude-val">Err</span>(<span class="ident">Error::new</span>(<span class="ident">D4_LEN</span>, <span class="ident">len</span>))<span class="question-mark">?</span>;
+        <span class="kw">if </span>len != D4_LEN {
+            <span class="prelude-val">Err</span>(Error::new(D4_LEN, len))<span class="question-mark">?</span>;
         }
 
-        <span class="prelude-val">Ok</span>(<span class="ident">Uuid::from_bytes</span>([
-            <span class="ident">d1</span> <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">d1</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">8</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">d1</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">16</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">d1</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">24</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">d2</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">d2</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">8</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            <span class="ident">d3</span> <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">d3</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">8</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            <span class="ident">d4</span>[<span class="number">0</span>],
-            <span class="ident">d4</span>[<span class="number">1</span>],
-            <span class="ident">d4</span>[<span class="number">2</span>],
-            <span class="ident">d4</span>[<span class="number">3</span>],
-            <span class="ident">d4</span>[<span class="number">4</span>],
-            <span class="ident">d4</span>[<span class="number">5</span>],
-            <span class="ident">d4</span>[<span class="number">6</span>],
-            <span class="ident">d4</span>[<span class="number">7</span>],
+        <span class="prelude-val">Ok</span>(Uuid::from_bytes([
+            d1 <span class="kw">as </span>u8,
+            (d1 &gt;&gt; <span class="number">8</span>) <span class="kw">as </span>u8,
+            (d1 &gt;&gt; <span class="number">16</span>) <span class="kw">as </span>u8,
+            (d1 &gt;&gt; <span class="number">24</span>) <span class="kw">as </span>u8,
+            (d2) <span class="kw">as </span>u8,
+            (d2 &gt;&gt; <span class="number">8</span>) <span class="kw">as </span>u8,
+            d3 <span class="kw">as </span>u8,
+            (d3 &gt;&gt; <span class="number">8</span>) <span class="kw">as </span>u8,
+            d4[<span class="number">0</span>],
+            d4[<span class="number">1</span>],
+            d4[<span class="number">2</span>],
+            d4[<span class="number">3</span>],
+            d4[<span class="number">4</span>],
+            d4[<span class="number">5</span>],
+            d4[<span class="number">6</span>],
+            d4[<span class="number">7</span>],
         ]))
     }
 
-    <span class="doccomment">/// Creates a UUID from a 128bit value in big-endian order.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">from_u128</span>(<span class="ident">v</span>: <span class="ident">u128</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">Uuid::from_bytes</span>([
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">120</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">112</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">104</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">96</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">88</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">80</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">72</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">64</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">56</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">48</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">40</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">32</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">24</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">16</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">8</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            <span class="ident">v</span> <span class="kw">as</span> <span class="ident">u8</span>,
+    <span class="doccomment">/// Creates a UUID from a 128bit value in big-endian order.
+    </span><span class="kw">pub const fn </span>from_u128(v: u128) -&gt; <span class="self">Self </span>{
+        Uuid::from_bytes([
+            (v &gt;&gt; <span class="number">120</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">112</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">104</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">96</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">88</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">80</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">72</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">64</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">56</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">48</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">40</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">32</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">24</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">16</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">8</span>) <span class="kw">as </span>u8,
+            v <span class="kw">as </span>u8,
         ])
     }
 
-    <span class="doccomment">/// Creates a UUID from a 128bit value in little-endian order.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">from_u128_le</span>(<span class="ident">v</span>: <span class="ident">u128</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">Uuid::from_bytes</span>([
-            <span class="ident">v</span> <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">8</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">16</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">24</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">32</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">40</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">48</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">56</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">64</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">72</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">80</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">88</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">96</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">104</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">112</span>) <span class="kw">as</span> <span class="ident">u8</span>,
-            (<span class="ident">v</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">120</span>) <span class="kw">as</span> <span class="ident">u8</span>,
+    <span class="doccomment">/// Creates a UUID from a 128bit value in little-endian order.
+    </span><span class="kw">pub const fn </span>from_u128_le(v: u128) -&gt; <span class="self">Self </span>{
+        Uuid::from_bytes([
+            v <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">8</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">16</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">24</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">32</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">40</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">48</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">56</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">64</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">72</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">80</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">88</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">96</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">104</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">112</span>) <span class="kw">as </span>u8,
+            (v &gt;&gt; <span class="number">120</span>) <span class="kw">as </span>u8,
         ])
     }
 
-    <span class="doccomment">/// Creates a UUID using the supplied big-endian bytes.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Errors</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This function will return an error if `b` has any length other than 16.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Basic usage:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let bytes = [4, 54, 67, 12, 43, 2, 98, 76, 32, 50, 87, 5, 1, 33, 43, 87];</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let uuid = Uuid::from_slice(&amp;bytes);</span>
-    <span class="doccomment">/// let uuid = uuid.map(|uuid| uuid.to_hyphenated().to_string());</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let expected_uuid =</span>
-    <span class="doccomment">///     Ok(String::from(&quot;0436430c-2b02-624c-2032-570501212b57&quot;));</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(expected_uuid, uuid);</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// An incorrect number of bytes:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let bytes = [4, 54, 67, 12, 43, 2, 98, 76];</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let uuid = Uuid::from_slice(&amp;bytes);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert!(uuid.is_err());</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_slice</span>(<span class="ident">b</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Uuid</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span> {
-        <span class="kw">const</span> <span class="ident">BYTES_LEN</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">16</span>;
+    <span class="doccomment">/// Creates a UUID using the supplied big-endian bytes.
+    ///
+    /// # Errors
+    ///
+    /// This function will return an error if `b` has any length other than 16.
+    ///
+    /// # Examples
+    ///
+    /// Basic usage:
+    ///
+    /// ```
+    /// use uuid::Uuid;
+    ///
+    /// let bytes = [4, 54, 67, 12, 43, 2, 98, 76, 32, 50, 87, 5, 1, 33, 43, 87];
+    ///
+    /// let uuid = Uuid::from_slice(&amp;bytes);
+    /// let uuid = uuid.map(|uuid| uuid.to_hyphenated().to_string());
+    ///
+    /// let expected_uuid =
+    ///     Ok(String::from(&quot;0436430c-2b02-624c-2032-570501212b57&quot;));
+    ///
+    /// assert_eq!(expected_uuid, uuid);
+    /// ```
+    ///
+    /// An incorrect number of bytes:
+    ///
+    /// ```
+    /// use uuid::Uuid;
+    ///
+    /// let bytes = [4, 54, 67, 12, 43, 2, 98, 76];
+    ///
+    /// let uuid = Uuid::from_slice(&amp;bytes);
+    ///
+    /// assert!(uuid.is_err());
+    /// ```
+    </span><span class="kw">pub fn </span>from_slice(b: <span class="kw-2">&amp;</span>[u8]) -&gt; <span class="prelude-ty">Result</span>&lt;Uuid, <span class="kw">crate</span>::Error&gt; {
+        <span class="kw">const </span>BYTES_LEN: usize = <span class="number">16</span>;
 
-        <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">b</span>.<span class="ident">len</span>();
+        <span class="kw">let </span>len = b.len();
 
-        <span class="kw">if</span> <span class="ident">len</span> <span class="op">!</span><span class="op">=</span> <span class="ident">BYTES_LEN</span> {
-            <span class="prelude-val">Err</span>(<span class="ident">Error::new</span>(<span class="ident">BYTES_LEN</span>, <span class="ident">len</span>))<span class="question-mark">?</span>;
+        <span class="kw">if </span>len != BYTES_LEN {
+            <span class="prelude-val">Err</span>(Error::new(BYTES_LEN, len))<span class="question-mark">?</span>;
         }
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">bytes</span>: <span class="ident">Bytes</span> <span class="op">=</span> [<span class="number">0</span>; <span class="number">16</span>];
-        <span class="ident">bytes</span>.<span class="ident">copy_from_slice</span>(<span class="ident">b</span>);
-        <span class="prelude-val">Ok</span>(<span class="ident">Uuid::from_bytes</span>(<span class="ident">bytes</span>))
+        <span class="kw">let </span><span class="kw-2">mut </span>bytes: Bytes = [<span class="number">0</span>; <span class="number">16</span>];
+        bytes.copy_from_slice(b);
+        <span class="prelude-val">Ok</span>(Uuid::from_bytes(bytes))
     }
 
-    <span class="doccomment">/// Creates a UUID using the supplied big-endian bytes.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">from_bytes</span>(<span class="ident">bytes</span>: <span class="ident">Bytes</span>) -&gt; <span class="ident">Uuid</span> {
-        <span class="ident">Uuid</span>(<span class="ident">bytes</span>)
+    <span class="doccomment">/// Creates a UUID using the supplied big-endian bytes.
+    </span><span class="kw">pub const fn </span>from_bytes(bytes: Bytes) -&gt; Uuid {
+        Uuid(bytes)
     }
 }
 
-<span class="doccomment">/// A builder struct for creating a UUID.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Creating a v4 UUID from externally generated bytes:</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">/// use uuid::{Builder, Variant, Version};</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # let rng = || [</span>
-<span class="doccomment">/// #     70, 235, 208, 238, 14, 109, 67, 201, 185, 13, 204, 195, 90,</span>
-<span class="doccomment">/// # 145, 63, 62,</span>
-<span class="doccomment">/// # ];</span>
-<span class="doccomment">/// let random_bytes = rng();</span>
-<span class="doccomment">/// let uuid = Builder::from_bytes(random_bytes)</span>
-<span class="doccomment">///     .set_variant(Variant::RFC4122)</span>
-<span class="doccomment">///     .set_version(Version::Random)</span>
-<span class="doccomment">///     .build();</span>
-<span class="doccomment">/// ```</span>
-<span class="comment">// TODO: remove in 1.0.0</span>
-<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">dead_code</span>)]</span>
-<span class="attribute">#[<span class="ident">deprecated</span>]</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Builder</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::Builder</span>;
+<span class="doccomment">/// A builder struct for creating a UUID.
+///
+/// # Examples
+///
+/// Creating a v4 UUID from externally generated bytes:
+///
+/// ```
+/// use uuid::{Builder, Variant, Version};
+///
+/// # let rng = || [
+/// #     70, 235, 208, 238, 14, 109, 67, 201, 185, 13, 204, 195, 90,
+/// # 145, 63, 62,
+/// # ];
+/// let random_bytes = rng();
+/// let uuid = Builder::from_bytes(random_bytes)
+///     .set_variant(Variant::RFC4122)
+///     .set_version(Version::Random)
+///     .build();
+/// ```
+</span><span class="comment">// TODO: remove in 1.0.0
+</span><span class="attribute">#[allow(dead_code)]
+#[deprecated]
+</span><span class="kw">pub type </span>Builder = <span class="kw">crate</span>::Builder;
 
-<span class="kw">impl</span> <span class="ident"><span class="kw">crate</span>::Builder</span> {
-    <span class="doccomment">/// Creates a `Builder` using the supplied big-endian bytes.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Basic usage:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// let bytes: uuid::Bytes = [</span>
-    <span class="doccomment">///     70, 235, 208, 238, 14, 109, 67, 201, 185, 13, 204, 195, 90, 145, 63, 62,</span>
-    <span class="doccomment">/// ];</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let mut builder = uuid::Builder::from_bytes(bytes);</span>
-    <span class="doccomment">/// let uuid = builder.build().to_hyphenated().to_string();</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let expected_uuid = String::from(&quot;46ebd0ee-0e6d-43c9-b90d-ccc35a913f3e&quot;);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(expected_uuid, uuid);</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// An incorrect number of bytes:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```compile_fail</span>
-    <span class="doccomment">/// let bytes: uuid::Bytes = [4, 54, 67, 12, 43, 2, 98, 76]; // doesn&#39;t compile</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let uuid = uuid::Builder::from_bytes(bytes);</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">from_bytes</span>(<span class="ident">b</span>: <span class="ident">Bytes</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">Builder</span>(<span class="ident">b</span>)
+<span class="kw">impl </span><span class="kw">crate</span>::Builder {
+    <span class="doccomment">/// Creates a `Builder` using the supplied big-endian bytes.
+    ///
+    /// # Examples
+    ///
+    /// Basic usage:
+    ///
+    /// ```
+    /// let bytes: uuid::Bytes = [
+    ///     70, 235, 208, 238, 14, 109, 67, 201, 185, 13, 204, 195, 90, 145, 63, 62,
+    /// ];
+    ///
+    /// let mut builder = uuid::Builder::from_bytes(bytes);
+    /// let uuid = builder.build().to_hyphenated().to_string();
+    ///
+    /// let expected_uuid = String::from(&quot;46ebd0ee-0e6d-43c9-b90d-ccc35a913f3e&quot;);
+    ///
+    /// assert_eq!(expected_uuid, uuid);
+    /// ```
+    ///
+    /// An incorrect number of bytes:
+    ///
+    /// ```compile_fail
+    /// let bytes: uuid::Bytes = [4, 54, 67, 12, 43, 2, 98, 76]; // doesn&#39;t compile
+    ///
+    /// let uuid = uuid::Builder::from_bytes(bytes);
+    /// ```
+    </span><span class="kw">pub const fn </span>from_bytes(b: Bytes) -&gt; <span class="self">Self </span>{
+        Builder(b)
     }
 
-    <span class="doccomment">/// Creates a `Builder` using the supplied big-endian bytes.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Errors</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This function will return an error if `b` has any length other than 16.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Basic usage:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// let bytes = [4, 54, 67, 12, 43, 2, 98, 76, 32, 50, 87, 5, 1, 33, 43, 87];</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let builder = uuid::Builder::from_slice(&amp;bytes);</span>
-    <span class="doccomment">/// let uuid =</span>
-    <span class="doccomment">///     builder.map(|mut builder| builder.build().to_hyphenated().to_string());</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let expected_uuid =</span>
-    <span class="doccomment">///     Ok(String::from(&quot;0436430c-2b02-624c-2032-570501212b57&quot;));</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(expected_uuid, uuid);</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// An incorrect number of bytes:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// let bytes = [4, 54, 67, 12, 43, 2, 98, 76];</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let builder = uuid::Builder::from_slice(&amp;bytes);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert!(builder.is_err());</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_slice</span>(<span class="ident">b</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span> {
-        <span class="kw">const</span> <span class="ident">BYTES_LEN</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">16</span>;
+    <span class="doccomment">/// Creates a `Builder` using the supplied big-endian bytes.
+    ///
+    /// # Errors
+    ///
+    /// This function will return an error if `b` has any length other than 16.
+    ///
+    /// # Examples
+    ///
+    /// Basic usage:
+    ///
+    /// ```
+    /// let bytes = [4, 54, 67, 12, 43, 2, 98, 76, 32, 50, 87, 5, 1, 33, 43, 87];
+    ///
+    /// let builder = uuid::Builder::from_slice(&amp;bytes);
+    /// let uuid =
+    ///     builder.map(|mut builder| builder.build().to_hyphenated().to_string());
+    ///
+    /// let expected_uuid =
+    ///     Ok(String::from(&quot;0436430c-2b02-624c-2032-570501212b57&quot;));
+    ///
+    /// assert_eq!(expected_uuid, uuid);
+    /// ```
+    ///
+    /// An incorrect number of bytes:
+    ///
+    /// ```
+    /// let bytes = [4, 54, 67, 12, 43, 2, 98, 76];
+    ///
+    /// let builder = uuid::Builder::from_slice(&amp;bytes);
+    ///
+    /// assert!(builder.is_err());
+    /// ```
+    </span><span class="kw">pub fn </span>from_slice(b: <span class="kw-2">&amp;</span>[u8]) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, <span class="kw">crate</span>::Error&gt; {
+        <span class="kw">const </span>BYTES_LEN: usize = <span class="number">16</span>;
 
-        <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">b</span>.<span class="ident">len</span>();
+        <span class="kw">let </span>len = b.len();
 
-        <span class="kw">if</span> <span class="ident">len</span> <span class="op">!</span><span class="op">=</span> <span class="ident">BYTES_LEN</span> {
-            <span class="prelude-val">Err</span>(<span class="ident">Error::new</span>(<span class="ident">BYTES_LEN</span>, <span class="ident">len</span>))<span class="question-mark">?</span>;
+        <span class="kw">if </span>len != BYTES_LEN {
+            <span class="prelude-val">Err</span>(Error::new(BYTES_LEN, len))<span class="question-mark">?</span>;
         }
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">bytes</span>: <span class="ident"><span class="kw">crate</span>::Bytes</span> <span class="op">=</span> [<span class="number">0</span>; <span class="number">16</span>];
-        <span class="ident">bytes</span>.<span class="ident">copy_from_slice</span>(<span class="ident">b</span>);
-        <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::from_bytes</span>(<span class="ident">bytes</span>))
+        <span class="kw">let </span><span class="kw-2">mut </span>bytes: <span class="kw">crate</span>::Bytes = [<span class="number">0</span>; <span class="number">16</span>];
+        bytes.copy_from_slice(b);
+        <span class="prelude-val">Ok</span>(<span class="self">Self</span>::from_bytes(bytes))
     }
 
-    <span class="doccomment">/// Creates a `Builder` from four big-endian field values.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Errors</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This function will return an error if `d4`&#39;s length is not 8 bytes.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Basic usage:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// let d4 = [12, 3, 9, 56, 54, 43, 8, 9];</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let builder = uuid::Builder::from_fields(42, 12, 5, &amp;d4);</span>
-    <span class="doccomment">/// let uuid =</span>
-    <span class="doccomment">///     builder.map(|mut builder| builder.build().to_hyphenated().to_string());</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let expected_uuid =</span>
-    <span class="doccomment">///     Ok(String::from(&quot;0000002a-000c-0005-0c03-0938362b0809&quot;));</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(expected_uuid, uuid);</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// An invalid length:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// let d4 = [12];</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let builder = uuid::Builder::from_fields(42, 12, 5, &amp;d4);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert!(builder.is_err());</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_fields</span>(
-        <span class="ident">d1</span>: <span class="ident">u32</span>,
-        <span class="ident">d2</span>: <span class="ident">u16</span>,
-        <span class="ident">d3</span>: <span class="ident">u16</span>,
-        <span class="ident">d4</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
-    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span> {
-        <span class="ident">Uuid::from_fields</span>(<span class="ident">d1</span>, <span class="ident">d2</span>, <span class="ident">d3</span>, <span class="ident">d4</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">uuid</span><span class="op">|</span> {
-            <span class="kw">let</span> <span class="ident">bytes</span> <span class="op">=</span> <span class="kw-2">*</span><span class="ident">uuid</span>.<span class="ident">as_bytes</span>();
+    <span class="doccomment">/// Creates a `Builder` from four big-endian field values.
+    ///
+    /// # Errors
+    ///
+    /// This function will return an error if `d4`&#39;s length is not 8 bytes.
+    ///
+    /// # Examples
+    ///
+    /// Basic usage:
+    ///
+    /// ```
+    /// let d4 = [12, 3, 9, 56, 54, 43, 8, 9];
+    ///
+    /// let builder = uuid::Builder::from_fields(42, 12, 5, &amp;d4);
+    /// let uuid =
+    ///     builder.map(|mut builder| builder.build().to_hyphenated().to_string());
+    ///
+    /// let expected_uuid =
+    ///     Ok(String::from(&quot;0000002a-000c-0005-0c03-0938362b0809&quot;));
+    ///
+    /// assert_eq!(expected_uuid, uuid);
+    /// ```
+    ///
+    /// An invalid length:
+    ///
+    /// ```
+    /// let d4 = [12];
+    ///
+    /// let builder = uuid::Builder::from_fields(42, 12, 5, &amp;d4);
+    ///
+    /// assert!(builder.is_err());
+    /// ```
+    </span><span class="kw">pub fn </span>from_fields(
+        d1: u32,
+        d2: u16,
+        d3: u16,
+        d4: <span class="kw-2">&amp;</span>[u8],
+    ) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, <span class="kw">crate</span>::Error&gt; {
+        Uuid::from_fields(d1, d2, d3, d4).map(|uuid| {
+            <span class="kw">let </span>bytes = <span class="kw-2">*</span>uuid.as_bytes();
 
-            <span class="ident"><span class="kw">crate</span>::Builder::from_bytes</span>(<span class="ident">bytes</span>)
+            <span class="kw">crate</span>::Builder::from_bytes(bytes)
         })
     }
 
-    <span class="doccomment">/// Creates a `Builder` from a big-endian 128bit value.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_u128</span>(<span class="ident">v</span>: <span class="ident">u128</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident"><span class="kw">crate</span>::Builder::from_bytes</span>(<span class="kw-2">*</span><span class="ident">Uuid::from_u128</span>(<span class="ident">v</span>).<span class="ident">as_bytes</span>())
+    <span class="doccomment">/// Creates a `Builder` from a big-endian 128bit value.
+    </span><span class="kw">pub fn </span>from_u128(v: u128) -&gt; <span class="self">Self </span>{
+        <span class="kw">crate</span>::Builder::from_bytes(<span class="kw-2">*</span>Uuid::from_u128(v).as_bytes())
     }
 
-    <span class="doccomment">/// Creates a `Builder` with an initial [`Uuid::nil`].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Basic usage:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use uuid::Builder;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let mut builder = Builder::nil();</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(</span>
-    <span class="doccomment">///     builder.build().to_hyphenated().to_string(),</span>
-    <span class="doccomment">///     &quot;00000000-0000-0000-0000-000000000000&quot;</span>
-    <span class="doccomment">/// );</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">nil</span>() -&gt; <span class="self">Self</span> {
-        <span class="ident">Builder</span>([<span class="number">0</span>; <span class="number">16</span>])
+    <span class="doccomment">/// Creates a `Builder` with an initial [`Uuid::nil`].
+    ///
+    /// # Examples
+    ///
+    /// Basic usage:
+    ///
+    /// ```
+    /// use uuid::Builder;
+    ///
+    /// let mut builder = Builder::nil();
+    ///
+    /// assert_eq!(
+    ///     builder.build().to_hyphenated().to_string(),
+    ///     &quot;00000000-0000-0000-0000-000000000000&quot;
+    /// );
+    /// ```
+    </span><span class="kw">pub const fn </span>nil() -&gt; <span class="self">Self </span>{
+        Builder([<span class="number">0</span>; <span class="number">16</span>])
     }
 
-    <span class="doccomment">/// Specifies the variant of the UUID.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_variant</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">v</span>: <span class="ident"><span class="kw">crate</span>::Variant</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="self">Self</span> {
-        <span class="kw">let</span> <span class="ident">byte</span> <span class="op">=</span> <span class="self">self</span>.<span class="number">0</span>[<span class="number">8</span>];
+    <span class="doccomment">/// Specifies the variant of the UUID.
+    </span><span class="kw">pub fn </span>set_variant(<span class="kw-2">&amp;mut </span><span class="self">self</span>, v: <span class="kw">crate</span>::Variant) -&gt; <span class="kw-2">&amp;mut </span><span class="self">Self </span>{
+        <span class="kw">let </span>byte = <span class="self">self</span>.<span class="number">0</span>[<span class="number">8</span>];
 
-        <span class="self">self</span>.<span class="number">0</span>[<span class="number">8</span>] <span class="op">=</span> <span class="kw">match</span> <span class="ident">v</span> {
-            <span class="ident"><span class="kw">crate</span>::Variant::NCS</span> =&gt; <span class="ident">byte</span> <span class="op">&amp;</span> <span class="number">0x7f</span>,
-            <span class="ident"><span class="kw">crate</span>::Variant::RFC4122</span> =&gt; (<span class="ident">byte</span> <span class="op">&amp;</span> <span class="number">0x3f</span>) <span class="op">|</span> <span class="number">0x80</span>,
-            <span class="ident"><span class="kw">crate</span>::Variant::Microsoft</span> =&gt; (<span class="ident">byte</span> <span class="op">&amp;</span> <span class="number">0x1f</span>) <span class="op">|</span> <span class="number">0xc0</span>,
-            <span class="ident"><span class="kw">crate</span>::Variant::Future</span> =&gt; (<span class="ident">byte</span> <span class="op">&amp;</span> <span class="number">0x1f</span>) <span class="op">|</span> <span class="number">0xe0</span>,
+        <span class="self">self</span>.<span class="number">0</span>[<span class="number">8</span>] = <span class="kw">match </span>v {
+            <span class="kw">crate</span>::Variant::NCS =&gt; byte &amp; <span class="number">0x7f</span>,
+            <span class="kw">crate</span>::Variant::RFC4122 =&gt; (byte &amp; <span class="number">0x3f</span>) | <span class="number">0x80</span>,
+            <span class="kw">crate</span>::Variant::Microsoft =&gt; (byte &amp; <span class="number">0x1f</span>) | <span class="number">0xc0</span>,
+            <span class="kw">crate</span>::Variant::Future =&gt; (byte &amp; <span class="number">0x1f</span>) | <span class="number">0xe0</span>,
         };
 
-        <span class="self">self</span>
-    }
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Specifies the version number of the UUID.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_version</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">v</span>: <span class="ident"><span class="kw">crate</span>::Version</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="number">0</span>[<span class="number">6</span>] <span class="op">=</span> (<span class="self">self</span>.<span class="number">0</span>[<span class="number">6</span>] <span class="op">&amp;</span> <span class="number">0x0f</span>) <span class="op">|</span> ((<span class="ident">v</span> <span class="kw">as</span> <span class="ident">u8</span>) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">4</span>);
+    <span class="doccomment">/// Specifies the version number of the UUID.
+    </span><span class="kw">pub fn </span>set_version(<span class="kw-2">&amp;mut </span><span class="self">self</span>, v: <span class="kw">crate</span>::Version) -&gt; <span class="kw-2">&amp;mut </span><span class="self">Self </span>{
+        <span class="self">self</span>.<span class="number">0</span>[<span class="number">6</span>] = (<span class="self">self</span>.<span class="number">0</span>[<span class="number">6</span>] &amp; <span class="number">0x0f</span>) | ((v <span class="kw">as </span>u8) &lt;&lt; <span class="number">4</span>);
 
-        <span class="self">self</span>
-    }
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Hands over the internal constructed [`Uuid`].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Basic usage:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use uuid::Builder;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let uuid = Builder::nil().build();</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(</span>
-    <span class="doccomment">///     uuid.to_hyphenated().to_string(),</span>
-    <span class="doccomment">///     &quot;00000000-0000-0000-0000-000000000000&quot;</span>
-    <span class="doccomment">/// );</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: struct.Uuid.html</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">Uuid</span> {
-        <span class="ident">Uuid::from_bytes</span>(<span class="self">self</span>.<span class="number">0</span>)
+    <span class="doccomment">/// Hands over the internal constructed [`Uuid`].
+    ///
+    /// # Examples
+    ///
+    /// Basic usage:
+    ///
+    /// ```
+    /// use uuid::Builder;
+    ///
+    /// let uuid = Builder::nil().build();
+    ///
+    /// assert_eq!(
+    ///     uuid.to_hyphenated().to_string(),
+    ///     &quot;00000000-0000-0000-0000-000000000000&quot;
+    /// );
+    /// ```
+    ///
+    /// [`Uuid`]: struct.Uuid.html
+    </span><span class="kw">pub fn </span>build(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; Uuid {
+        Uuid::from_bytes(<span class="self">self</span>.<span class="number">0</span>)
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="uuid" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="uuid" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

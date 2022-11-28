@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/borrow-bag-1.1.0/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../borrow_bag/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../borrow_bag/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../borrow_bag/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/borrow-bag-1.1.0/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../borrow_bag/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../borrow_bag/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../borrow_bag/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -119,126 +119,126 @@
 <span id="119">119</span>
 <span id="120">120</span>
 <span id="121">121</span>
-</pre><pre class="rust"><code><span class="doccomment">//! A type-safe, heterogeneous collection with zero-cost add and borrow.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! `BorrowBag` allows the storage of any value, and returns a `Handle` which can be used to borrow</span>
-<span class="doccomment">//! the value back later. As the `BorrowBag` is add-only, `Handle` values remain valid for the</span>
-<span class="doccomment">//! lifetime of the `BorrowBag`.</span>
+</pre><pre class="rust"><code><span class="doccomment">//! A type-safe, heterogeneous collection with zero-cost add and borrow.
+//!
+//! `BorrowBag` allows the storage of any value, and returns a `Handle` which can be used to borrow
+//! the value back later. As the `BorrowBag` is add-only, `Handle` values remain valid for the
+//! lifetime of the `BorrowBag`.
 
-<span class="attribute">#![<span class="ident">doc</span>(<span class="ident">html_root_url</span> <span class="op">=</span> <span class="string">&quot;https://docs.rs/borrow-bag/1.1.0&quot;</span>)]</span> <span class="comment">// Update when changed in Cargo.toml</span>
-<span class="attribute">#![<span class="ident">warn</span>(<span class="ident">missing_docs</span>, <span class="ident">deprecated</span>)]</span>
-<span class="comment">// Stricter requirements once we get to pull request stage, all warnings must be resolved.</span>
-<span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;ci&quot;</span>, <span class="ident">deny</span>(<span class="ident">warnings</span>))]</span>
-<span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;cargo-clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">clippy::should_implement_trait</span>))]</span>
-<span class="attribute">#![<span class="ident">doc</span>(<span class="ident">test</span>(<span class="ident">attr</span>(<span class="ident">deny</span>(<span class="ident">warnings</span>))))]</span>
-<span class="comment">// TODO: Remove this when it&#39;s a hard error by default (error E0446).</span>
-<span class="comment">// See Rust issue #34537 &lt;https://github.com/rust-lang/rust/issues/34537&gt;</span>
-<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">private_in_public</span>)]</span>
+</span><span class="attribute">#![doc(html_root_url = <span class="string">&quot;https://docs.rs/borrow-bag/1.1.0&quot;</span>)] </span><span class="comment">// Update when changed in Cargo.toml
+</span><span class="attribute">#![warn(missing_docs, deprecated)]
+</span><span class="comment">// Stricter requirements once we get to pull request stage, all warnings must be resolved.
+</span><span class="attribute">#![cfg_attr(feature = <span class="string">&quot;ci&quot;</span>, deny(warnings))]
+#![cfg_attr(feature = <span class="string">&quot;cargo-clippy&quot;</span>, allow(clippy::should_implement_trait))]
+#![doc(test(attr(deny(warnings))))]
+</span><span class="comment">// TODO: Remove this when it&#39;s a hard error by default (error E0446).
+// See Rust issue #34537 &lt;https://github.com/rust-lang/rust/issues/34537&gt;
+</span><span class="attribute">#![deny(private_in_public)]
 
-<span class="kw">mod</span> <span class="ident">append</span>;
-<span class="kw">mod</span> <span class="ident">handle</span>;
-<span class="kw">mod</span> <span class="ident">lookup</span>;
+</span><span class="kw">mod </span>append;
+<span class="kw">mod </span>handle;
+<span class="kw">mod </span>lookup;
 
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">append::Append</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">handle::Handle</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">lookup::Lookup</span>;
+<span class="kw">pub use </span>append::Append;
+<span class="kw">pub use </span>handle::Handle;
+<span class="kw">pub use </span>lookup::Lookup;
 
-<span class="doccomment">/// `BorrowBag` allows the storage of any value using `add(T)`, and returns a `Handle` which can be</span>
-<span class="doccomment">/// used to borrow the value back later. As the `BorrowBag` is add-only, `Handle` values remain</span>
-<span class="doccomment">/// valid for the lifetime of the `BorrowBag`.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// After being added, the `Handle` can be passed to `borrow(Handle)`, which will return a</span>
-<span class="doccomment">/// reference to the value.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ## Example</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// use borrow_bag::BorrowBag;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// #[derive(PartialEq, Debug)]</span>
-<span class="doccomment">/// struct X;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// #[derive(PartialEq, Debug)]</span>
-<span class="doccomment">/// struct Y;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// #[derive(PartialEq, Debug)]</span>
-<span class="doccomment">/// struct Z;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// let bag = BorrowBag::new();</span>
-<span class="doccomment">/// let (bag, x_handle) = bag.add(X);</span>
-<span class="doccomment">/// let (bag, y_handle) = bag.add(Y);</span>
-<span class="doccomment">/// let (bag, z_handle) = bag.add(Z);</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// let x: &amp;X = bag.borrow(x_handle);</span>
-<span class="doccomment">/// assert_eq!(x, &amp;X);</span>
-<span class="doccomment">/// let y: &amp;Y = bag.borrow(y_handle);</span>
-<span class="doccomment">/// assert_eq!(y, &amp;Y);</span>
-<span class="doccomment">/// let z: &amp;Z = bag.borrow(z_handle);</span>
-<span class="doccomment">/// assert_eq!(z, &amp;Z);</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// // Can borrow multiple times using the same handle</span>
-<span class="doccomment">/// let x: &amp;X = bag.borrow(x_handle);</span>
-<span class="doccomment">/// assert_eq!(x, &amp;X);</span>
-<span class="doccomment">/// ```</span>
+<span class="doccomment">/// `BorrowBag` allows the storage of any value using `add(T)`, and returns a `Handle` which can be
+/// used to borrow the value back later. As the `BorrowBag` is add-only, `Handle` values remain
+/// valid for the lifetime of the `BorrowBag`.
+///
+/// After being added, the `Handle` can be passed to `borrow(Handle)`, which will return a
+/// reference to the value.
+///
+/// ## Example
+///
+/// ```rust
+/// use borrow_bag::BorrowBag;
+///
+/// #[derive(PartialEq, Debug)]
+/// struct X;
+///
+/// #[derive(PartialEq, Debug)]
+/// struct Y;
+///
+/// #[derive(PartialEq, Debug)]
+/// struct Z;
+///
+/// let bag = BorrowBag::new();
+/// let (bag, x_handle) = bag.add(X);
+/// let (bag, y_handle) = bag.add(Y);
+/// let (bag, z_handle) = bag.add(Z);
+///
+/// let x: &amp;X = bag.borrow(x_handle);
+/// assert_eq!(x, &amp;X);
+/// let y: &amp;Y = bag.borrow(y_handle);
+/// assert_eq!(y, &amp;Y);
+/// let z: &amp;Z = bag.borrow(z_handle);
+/// assert_eq!(z, &amp;Z);
+///
+/// // Can borrow multiple times using the same handle
+/// let x: &amp;X = bag.borrow(x_handle);
+/// assert_eq!(x, &amp;X);
+/// ```
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Default</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">BorrowBag</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span> {
-    <span class="ident">v</span>: <span class="ident">V</span>,
+</span><span class="attribute">#[derive(Default)]
+</span><span class="kw">pub struct </span>BorrowBag&lt;V&gt; {
+    v: V,
 }
 
-<span class="kw">impl</span> <span class="ident">BorrowBag</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
-    <span class="doccomment">/// Creates a new, empty `BorrowBag`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() -&gt; <span class="self">Self</span> {
-        <span class="ident">BorrowBag</span> { <span class="ident">v</span>: () }
+<span class="kw">impl </span>BorrowBag&lt;()&gt; {
+    <span class="doccomment">/// Creates a new, empty `BorrowBag`.
+    </span><span class="kw">pub fn </span>new() -&gt; <span class="self">Self </span>{
+        BorrowBag { v: () }
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span> <span class="ident">BorrowBag</span><span class="op">&lt;</span><span class="ident">V</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Adds a value to the bag, and returns a tuple containing:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// 1. The new bag containing the added element; and</span>
-    <span class="doccomment">/// 2. A `Handle` which can be used to retrieve the added element.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The trait bound is used to constrain and define the `BorrowBag` implementation, but is not</span>
-    <span class="doccomment">/// intended to provide any restrictions on the value being added.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # use borrow_bag::BorrowBag;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// let bag = BorrowBag::new();</span>
-    <span class="doccomment">/// // Consumes the empty `bag`, and produces a new `bag` containing the value. The `handle`</span>
-    <span class="doccomment">/// // can be used to borrow the value back later.</span>
-    <span class="doccomment">/// let (bag, handle) = bag.add(15u8);</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # let _ = (bag, handle);</span>
-    <span class="doccomment">/// ```</span>
-    <span class="comment">// This isn&#39;t add like +..</span>
-    <span class="comment">// Consider renaming this method?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">t</span>: <span class="ident">T</span>) -&gt; (<span class="ident">BorrowBag</span><span class="op">&lt;</span><span class="ident">V::Output</span><span class="op">&gt;</span>, <span class="ident">Handle</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">V::Navigator</span><span class="op">&gt;</span>)
-    <span class="kw">where</span>
-        <span class="ident">V</span>: <span class="ident">Append</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
+<span class="kw">impl</span>&lt;V&gt; BorrowBag&lt;V&gt; {
+    <span class="doccomment">/// Adds a value to the bag, and returns a tuple containing:
+    ///
+    /// 1. The new bag containing the added element; and
+    /// 2. A `Handle` which can be used to retrieve the added element.
+    ///
+    /// The trait bound is used to constrain and define the `BorrowBag` implementation, but is not
+    /// intended to provide any restrictions on the value being added.
+    ///
+    /// ```rust
+    /// # use borrow_bag::BorrowBag;
+    /// #
+    /// let bag = BorrowBag::new();
+    /// // Consumes the empty `bag`, and produces a new `bag` containing the value. The `handle`
+    /// // can be used to borrow the value back later.
+    /// let (bag, handle) = bag.add(15u8);
+    /// #
+    /// # let _ = (bag, handle);
+    /// ```
+    </span><span class="comment">// This isn&#39;t add like +..
+    // Consider renaming this method?
+    </span><span class="kw">pub fn </span>add&lt;T&gt;(<span class="self">self</span>, t: T) -&gt; (BorrowBag&lt;V::Output&gt;, Handle&lt;T, V::Navigator&gt;)
+    <span class="kw">where
+        </span>V: Append&lt;T&gt;,
     {
-        <span class="kw">let</span> (<span class="ident">v</span>, <span class="ident">handle</span>) <span class="op">=</span> <span class="ident">Append::append</span>(<span class="self">self</span>.<span class="ident">v</span>, <span class="ident">t</span>);
-        (<span class="ident">BorrowBag</span> { <span class="ident">v</span> }, <span class="ident">handle</span>)
+        <span class="kw">let </span>(v, handle) = Append::append(<span class="self">self</span>.v, t);
+        (BorrowBag { v }, handle)
     }
 
-    <span class="doccomment">/// Borrows a value previously added to the bag.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # use borrow_bag::BorrowBag;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # let bag = BorrowBag::new();</span>
-    <span class="doccomment">/// # let (bag, handle) = bag.add(15u8);</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// let i: &amp;u8 = bag.borrow(handle);</span>
-    <span class="doccomment">/// assert_eq!(*i, 15);</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">borrow</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">N</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">_handle</span>: <span class="ident">Handle</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">N</span><span class="op">&gt;</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">T</span>
-    <span class="kw">where</span>
-        <span class="ident">V</span>: <span class="ident">Lookup</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">N</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Borrows a value previously added to the bag.
+    ///
+    /// ```rust
+    /// # use borrow_bag::BorrowBag;
+    /// #
+    /// # let bag = BorrowBag::new();
+    /// # let (bag, handle) = bag.add(15u8);
+    /// #
+    /// let i: &amp;u8 = bag.borrow(handle);
+    /// assert_eq!(*i, 15);
+    /// ```
+    </span><span class="kw">pub fn </span>borrow&lt;T, N&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, _handle: Handle&lt;T, N&gt;) -&gt; <span class="kw-2">&amp;</span>T
+    <span class="kw">where
+        </span>V: Lookup&lt;T, N&gt;,
     {
-        <span class="ident">Lookup</span>::<span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">N</span><span class="op">&gt;</span><span class="ident">::get_from</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">v</span>)
+        Lookup::&lt;T, N&gt;::get_from(<span class="kw-2">&amp;</span><span class="self">self</span>.v)
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="borrow_bag" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="borrow_bag" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

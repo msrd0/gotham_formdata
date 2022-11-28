@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/uuid-0.8.2/src/parser/error.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>error.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="icon" href="https://www.rust-lang.org/favicon.ico"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../uuid/index.html"><div class="logo-container"><img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../uuid/index.html"><div class="logo-container">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/uuid-0.8.2/src/parser/error.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>error.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="icon" href="https://www.rust-lang.org/favicon.ico"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../uuid/index.html"><div class="logo-container"><img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../uuid/index.html"><div class="logo-container">
                     <img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../uuid/index.html">
                         <img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
@@ -149,154 +149,154 @@
 <span id="147">147</span>
 <span id="148">148</span>
 <span id="149">149</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::std::fmt</span>;
+</pre><pre class="rust"><code><span class="kw">use </span><span class="kw">crate</span>::std::fmt;
 
-<span class="doccomment">/// An error that can occur while parsing a [`Uuid`] string.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::enum_variant_names</span>)]</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">enum</span> <span class="ident">Error</span> {
-    <span class="doccomment">/// Invalid character in the [`Uuid`] string.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="ident">InvalidCharacter</span> {
-        <span class="doccomment">/// The expected characters.</span>
-        <span class="ident">expected</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>,
-        <span class="doccomment">/// The invalid character found.</span>
-        <span class="ident">found</span>: <span class="ident">char</span>,
-        <span class="doccomment">/// The invalid character position.</span>
-        <span class="ident">index</span>: <span class="ident">usize</span>,
-        <span class="doccomment">/// Indicates the [`Uuid`] starts with `urn:uuid:`.</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// This is a special case for [`Urn`] adapter parsing.</span>
-        <span class="doccomment">///</span>
-        <span class="doccomment">/// [`Uuid`]: ../Uuid.html</span>
-        <span class="ident">urn</span>: <span class="ident">UrnPrefix</span>,
+<span class="doccomment">/// An error that can occur while parsing a [`Uuid`] string.
+///
+/// [`Uuid`]: ../struct.Uuid.html
+</span><span class="attribute">#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
+#[allow(clippy::enum_variant_names)]
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">enum </span>Error {
+    <span class="doccomment">/// Invalid character in the [`Uuid`] string.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    </span>InvalidCharacter {
+        <span class="doccomment">/// The expected characters.
+        </span>expected: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str,
+        <span class="doccomment">/// The invalid character found.
+        </span>found: char,
+        <span class="doccomment">/// The invalid character position.
+        </span>index: usize,
+        <span class="doccomment">/// Indicates the [`Uuid`] starts with `urn:uuid:`.
+        ///
+        /// This is a special case for [`Urn`] adapter parsing.
+        ///
+        /// [`Uuid`]: ../Uuid.html
+        </span>urn: UrnPrefix,
     },
-    <span class="doccomment">/// Invalid number of segments in the [`Uuid`] string.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="ident">InvalidGroupCount</span> {
-        <span class="doccomment">/// The expected number of segments.</span>
-        <span class="comment">// TODO: explain multiple segment count.</span>
-        <span class="comment">// BODY: Parsers can expect a range of Uuid segment count.</span>
-        <span class="comment">//       This needs to be expanded on.</span>
-        <span class="ident">expected</span>: <span class="ident">ExpectedLength</span>,
-        <span class="doccomment">/// The number of segments found.</span>
-        <span class="ident">found</span>: <span class="ident">usize</span>,
+    <span class="doccomment">/// Invalid number of segments in the [`Uuid`] string.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    </span>InvalidGroupCount {
+        <span class="doccomment">/// The expected number of segments.
+        </span><span class="comment">// TODO: explain multiple segment count.
+        // BODY: Parsers can expect a range of Uuid segment count.
+        //       This needs to be expanded on.
+        </span>expected: ExpectedLength,
+        <span class="doccomment">/// The number of segments found.
+        </span>found: usize,
     },
-    <span class="doccomment">/// Invalid length of a segment in a [`Uuid`] string.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="ident">InvalidGroupLength</span> {
-        <span class="doccomment">/// The expected length of the segment.</span>
-        <span class="ident">expected</span>: <span class="ident">ExpectedLength</span>,
-        <span class="doccomment">/// The length of segment found.</span>
-        <span class="ident">found</span>: <span class="ident">usize</span>,
-        <span class="doccomment">/// The segment with invalid length.</span>
-        <span class="ident">group</span>: <span class="ident">usize</span>,
+    <span class="doccomment">/// Invalid length of a segment in a [`Uuid`] string.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    </span>InvalidGroupLength {
+        <span class="doccomment">/// The expected length of the segment.
+        </span>expected: ExpectedLength,
+        <span class="doccomment">/// The length of segment found.
+        </span>found: usize,
+        <span class="doccomment">/// The segment with invalid length.
+        </span>group: usize,
     },
-    <span class="doccomment">/// Invalid length of the [`Uuid`] string.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="ident">InvalidLength</span> {
-        <span class="doccomment">/// The expected length(s).</span>
-        <span class="comment">// TODO: explain multiple lengths.</span>
-        <span class="comment">// BODY: Parsers can expect a range of Uuid lenghts.</span>
-        <span class="comment">//       This needs to be expanded on.</span>
-        <span class="ident">expected</span>: <span class="ident">ExpectedLength</span>,
-        <span class="doccomment">/// The invalid length found.</span>
-        <span class="ident">found</span>: <span class="ident">usize</span>,
+    <span class="doccomment">/// Invalid length of the [`Uuid`] string.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    </span>InvalidLength {
+        <span class="doccomment">/// The expected length(s).
+        </span><span class="comment">// TODO: explain multiple lengths.
+        // BODY: Parsers can expect a range of Uuid lenghts.
+        //       This needs to be expanded on.
+        </span>expected: ExpectedLength,
+        <span class="doccomment">/// The invalid length found.
+        </span>found: usize,
     },
 }
 
-<span class="doccomment">/// The expected length.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Ord</span>, <span class="ident">PartialEq</span>, <span class="ident">PartialOrd</span>)]</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">enum</span> <span class="ident">ExpectedLength</span> {
-    <span class="doccomment">/// Expected any one of the given values.</span>
-    <span class="ident">Any</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> [<span class="ident">usize</span>]),
-    <span class="doccomment">/// Expected the given value.</span>
-    <span class="ident">Exact</span>(<span class="ident">usize</span>),
+<span class="doccomment">/// The expected length.
+</span><span class="attribute">#[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">enum </span>ExpectedLength {
+    <span class="doccomment">/// Expected any one of the given values.
+    </span>Any(<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>[usize]),
+    <span class="doccomment">/// Expected the given value.
+    </span>Exact(usize),
 }
 
-<span class="doccomment">/// Urn prefix value.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Ord</span>, <span class="ident">PartialEq</span>, <span class="ident">PartialOrd</span>)]</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">enum</span> <span class="ident">UrnPrefix</span> {
-    <span class="doccomment">/// The `urn:uuid:` prefix should optionally provided.</span>
-    <span class="ident">Optional</span>,
+<span class="doccomment">/// Urn prefix value.
+</span><span class="attribute">#[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">enum </span>UrnPrefix {
+    <span class="doccomment">/// The `urn:uuid:` prefix should optionally provided.
+    </span>Optional,
 }
 
-<span class="kw">impl</span> <span class="ident">Error</span> {
-    <span class="kw">fn</span> <span class="ident">_description</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">str</span> {
-        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">Error::InvalidCharacter</span> { .. } =&gt; <span class="string">&quot;invalid character&quot;</span>,
-            <span class="ident">Error::InvalidGroupCount</span> { .. } =&gt; <span class="string">&quot;invalid number of groups&quot;</span>,
-            <span class="ident">Error::InvalidGroupLength</span> { .. } =&gt; <span class="string">&quot;invalid group length&quot;</span>,
-            <span class="ident">Error::InvalidLength</span> { .. } =&gt; <span class="string">&quot;invalid length&quot;</span>,
+<span class="kw">impl </span>Error {
+    <span class="kw">fn </span>_description(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>str {
+        <span class="kw">match </span><span class="kw-2">*</span><span class="self">self </span>{
+            Error::InvalidCharacter { .. } =&gt; <span class="string">&quot;invalid character&quot;</span>,
+            Error::InvalidGroupCount { .. } =&gt; <span class="string">&quot;invalid number of groups&quot;</span>,
+            Error::InvalidGroupLength { .. } =&gt; <span class="string">&quot;invalid group length&quot;</span>,
+            Error::InvalidLength { .. } =&gt; <span class="string">&quot;invalid length&quot;</span>,
         }
     }
 }
 
-<span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">ExpectedLength</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
-        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">ExpectedLength::Any</span>(<span class="ident">crits</span>) =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;one of {:?}&quot;</span>, <span class="ident">crits</span>),
-            <span class="ident">ExpectedLength::Exact</span>(<span class="ident">crit</span>) =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;{}&quot;</span>, <span class="ident">crit</span>),
+<span class="kw">impl </span>fmt::Display <span class="kw">for </span>ExpectedLength {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+        <span class="kw">match </span><span class="kw-2">*</span><span class="self">self </span>{
+            ExpectedLength::Any(crits) =&gt; <span class="macro">write!</span>(f, <span class="string">&quot;one of {:?}&quot;</span>, crits),
+            ExpectedLength::Exact(crit) =&gt; <span class="macro">write!</span>(f, <span class="string">&quot;{}&quot;</span>, crit),
         }
     }
 }
 
-<span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">Error</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
-        <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;{}: &quot;</span>, <span class="self">self</span>.<span class="ident">_description</span>())<span class="question-mark">?</span>;
+<span class="kw">impl </span>fmt::Display <span class="kw">for </span>Error {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+        <span class="macro">write!</span>(f, <span class="string">&quot;{}: &quot;</span>, <span class="self">self</span>._description())<span class="question-mark">?</span>;
 
-        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">Error::InvalidCharacter</span> {
-                <span class="ident">expected</span>,
-                <span class="ident">found</span>,
-                <span class="ident">index</span>,
-                <span class="ident">urn</span>,
+        <span class="kw">match </span><span class="kw-2">*</span><span class="self">self </span>{
+            Error::InvalidCharacter {
+                expected,
+                found,
+                index,
+                urn,
             } =&gt; {
-                <span class="kw">let</span> <span class="ident">urn_str</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">urn</span> {
-                    <span class="ident">UrnPrefix::Optional</span> =&gt; {
-                        <span class="string">&quot; an optional prefix of `urn:uuid:` followed by&quot;</span>
-                    }
+                <span class="kw">let </span>urn_str = <span class="kw">match </span>urn {
+                    UrnPrefix::Optional =&gt; {
+                        <span class="string">&quot; an optional prefix of `urn:uuid:` followed by&quot;
+                    </span>}
                 };
 
                 <span class="macro">write!</span>(
-                    <span class="ident">f</span>,
+                    f,
                     <span class="string">&quot;expected{} {}, found {} at {}&quot;</span>,
-                    <span class="ident">urn_str</span>, <span class="ident">expected</span>, <span class="ident">found</span>, <span class="ident">index</span>
+                    urn_str, expected, found, index
                 )
             }
-            <span class="ident">Error::InvalidGroupCount</span> {
-                <span class="kw-2">ref</span> <span class="ident">expected</span>,
-                <span class="ident">found</span>,
-            } =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;expected {}, found {}&quot;</span>, <span class="ident">expected</span>, <span class="ident">found</span>),
-            <span class="ident">Error::InvalidGroupLength</span> {
-                <span class="kw-2">ref</span> <span class="ident">expected</span>,
-                <span class="ident">found</span>,
-                <span class="ident">group</span>,
+            Error::InvalidGroupCount {
+                <span class="kw-2">ref </span>expected,
+                found,
+            } =&gt; <span class="macro">write!</span>(f, <span class="string">&quot;expected {}, found {}&quot;</span>, expected, found),
+            Error::InvalidGroupLength {
+                <span class="kw-2">ref </span>expected,
+                found,
+                group,
             } =&gt; <span class="macro">write!</span>(
-                <span class="ident">f</span>,
+                f,
                 <span class="string">&quot;expected {}, found {} in group {}&quot;</span>,
-                <span class="ident">expected</span>, <span class="ident">found</span>, <span class="ident">group</span>,
+                expected, found, group,
             ),
-            <span class="ident">Error::InvalidLength</span> {
-                <span class="kw-2">ref</span> <span class="ident">expected</span>,
-                <span class="ident">found</span>,
-            } =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;expected {}, found {}&quot;</span>, <span class="ident">expected</span>, <span class="ident">found</span>),
+            Error::InvalidLength {
+                <span class="kw-2">ref </span>expected,
+                found,
+            } =&gt; <span class="macro">write!</span>(f, <span class="string">&quot;expected {}, found {}&quot;</span>, expected, found),
         }
     }
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
-<span class="kw">mod</span> <span class="ident">std_support</span> {
-    <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::std::error</span>;
+<span class="attribute">#[cfg(feature = <span class="string">&quot;std&quot;</span>)]
+</span><span class="kw">mod </span>std_support {
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
+    <span class="kw">use </span><span class="kw">crate</span>::std::error;
 
-    <span class="kw">impl</span> <span class="ident">error::Error</span> <span class="kw">for</span> <span class="ident">Error</span> {}
+    <span class="kw">impl </span>error::Error <span class="kw">for </span>Error {}
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="uuid" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="uuid" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

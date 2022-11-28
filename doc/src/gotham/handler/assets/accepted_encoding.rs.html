@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/handler/assets/accepted_encoding.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>accepted_encoding.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../gotham/index.html"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/handler/assets/accepted_encoding.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>accepted_encoding.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../../normalize.css"><link rel="stylesheet" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../../ayu.css" disabled><link rel="stylesheet" href="../../../../dark.css" disabled><link rel="stylesheet" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../gotham/index.html"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -143,150 +143,150 @@
 <span id="143">143</span>
 <span id="144">144</span>
 <span id="145">145</span>
-</pre><pre class="rust"><code><span class="doccomment">//! Defines `AcceptedEncoding` for parsing &#39;Accept-Encoding&#39; header</span>
-<span class="doccomment">//! values in requests, used to determine whether compressed versions</span>
-<span class="doccomment">//! of static assets are supported by the client.</span>
+</pre><pre class="rust"><code><span class="doccomment">//! Defines `AcceptedEncoding` for parsing &#39;Accept-Encoding&#39; header
+//! values in requests, used to determine whether compressed versions
+//! of static assets are supported by the client.
 
-<span class="kw">use</span> <span class="ident">hyper::header</span>::{<span class="ident">HeaderMap</span>, <span class="ident">ACCEPT_ENCODING</span>};
+</span><span class="kw">use </span>hyper::header::{HeaderMap, ACCEPT_ENCODING};
 
-<span class="kw">use</span> <span class="ident">std::result</span>;
-<span class="kw">use</span> <span class="ident">std::str::FromStr</span>;
+<span class="kw">use </span>std::result;
+<span class="kw">use </span>std::str::FromStr;
 
-<span class="doccomment">/// An error returned from the `FromStr` implementation</span>
-<span class="doccomment">/// for `AcceptedEncoding`</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">enum</span> <span class="ident">ParseEncodingError</span> {
-    <span class="ident">InvalidEncoding</span>,
+<span class="doccomment">/// An error returned from the `FromStr` implementation
+/// for `AcceptedEncoding`
+</span><span class="attribute">#[derive(Debug)]
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">enum </span>ParseEncodingError {
+    InvalidEncoding,
 }
 
-<span class="doccomment">/// A value for a single accepted encoding,</span>
-<span class="doccomment">/// with an encoding name and quality value.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">PartialEq</span>, <span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct</span> <span class="ident">AcceptedEncoding</span> {
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">encoding</span>: <span class="ident">String</span>,
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">quality</span>: <span class="ident">f32</span>,
+<span class="doccomment">/// A value for a single accepted encoding,
+/// with an encoding name and quality value.
+</span><span class="attribute">#[derive(PartialEq, Debug)]
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct </span>AcceptedEncoding {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) encoding: String,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) quality: f32,
 }
 
-<span class="comment">// Parses a single &quot;accept-encoding&quot; value, with optional quality value</span>
-<span class="comment">// e.g. &quot;gzip&quot; or  &quot;gzip;q=0.8&quot;</span>
-<span class="comment">// quality defaults to 1 if not supplied</span>
-<span class="kw">impl</span> <span class="ident">FromStr</span> <span class="kw">for</span> <span class="ident">AcceptedEncoding</span> {
-    <span class="kw">type</span> <span class="prelude-val">Err</span> <span class="op">=</span> <span class="ident">ParseEncodingError</span>;
+<span class="comment">// Parses a single &quot;accept-encoding&quot; value, with optional quality value
+// e.g. &quot;gzip&quot; or  &quot;gzip;q=0.8&quot;
+// quality defaults to 1 if not supplied
+</span><span class="kw">impl </span>FromStr <span class="kw">for </span>AcceptedEncoding {
+    <span class="kw">type </span><span class="prelude-val">Err </span>= ParseEncodingError;
 
-    <span class="kw">fn</span> <span class="ident">from_str</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">result::Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident"><span class="self">Self</span>::Err</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">iter</span> <span class="op">=</span> <span class="ident">s</span>.<span class="ident">split</span>(<span class="string">&#39;;&#39;</span>);
-        <span class="ident">iter</span>.<span class="ident">next</span>()
-            .<span class="ident">map</span>(<span class="ident">str::trim</span>)
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">encoding_str</span><span class="op">|</span> {
-                <span class="kw">let</span> <span class="ident">encoding</span> <span class="op">=</span> <span class="ident">encoding_str</span>.<span class="ident">to_string</span>();
-                <span class="kw">let</span> <span class="ident">quality</span> <span class="op">=</span> <span class="ident">iter</span>
-                    .<span class="ident">next</span>()
-                    .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">qval</span><span class="op">|</span> <span class="ident">qval</span>.<span class="ident">replace</span>(<span class="string">&quot;q=&quot;</span>, <span class="string">&quot;&quot;</span>).<span class="ident">trim</span>().<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span>().<span class="ident">ok</span>())
-                    .<span class="ident">unwrap_or</span>(<span class="number">1f32</span>);
-                <span class="ident">AcceptedEncoding</span> { <span class="ident">encoding</span>, <span class="ident">quality</span> }
+    <span class="kw">fn </span>from_str(s: <span class="kw-2">&amp;</span>str) -&gt; result::Result&lt;<span class="self">Self</span>, <span class="self">Self</span>::Err&gt; {
+        <span class="kw">let </span><span class="kw-2">mut </span>iter = s.split(<span class="string">&#39;;&#39;</span>);
+        iter.next()
+            .map(str::trim)
+            .map(|encoding_str| {
+                <span class="kw">let </span>encoding = encoding_str.to_string();
+                <span class="kw">let </span>quality = iter
+                    .next()
+                    .and_then(|qval| qval.replace(<span class="string">&quot;q=&quot;</span>, <span class="string">&quot;&quot;</span>).trim().parse::&lt;f32&gt;().ok())
+                    .unwrap_or(<span class="number">1f32</span>);
+                AcceptedEncoding { encoding, quality }
             })
-            .<span class="ident">ok_or</span>(<span class="ident">ParseEncodingError::InvalidEncoding</span>)
+            .ok_or(ParseEncodingError::InvalidEncoding)
     }
 }
 
-<span class="doccomment">/// Returns an Iterator of encodings accepted by the client sorted by quality,</span>
-<span class="doccomment">/// with the preferred encoding first.</span>
-<span class="doccomment">/// Multiple encodings can be in single &quot;Accept-Encoding&quot; header value,</span>
-<span class="doccomment">/// e.g.</span>
-<span class="doccomment">/// Accept-Encoding: deflate, gzip;q=1.0, *;q=0.5</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// or in multiple headers,</span>
-<span class="doccomment">/// e.g.</span>
-<span class="doccomment">/// Accept-Encoding: deflate</span>
-<span class="doccomment">/// Accept-Encoding: gzip;q=1.0</span>
-<span class="doccomment">/// Accept-Encoding: *;q=0.5</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">accepted_encodings</span>(<span class="ident">headers</span>: <span class="kw-2">&amp;</span><span class="ident">HeaderMap</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">AcceptedEncoding</span><span class="op">&gt;</span> {
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">accepted_encodings</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">AcceptedEncoding</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">headers</span>
-        .<span class="ident">get_all</span>(<span class="ident">ACCEPT_ENCODING</span>)
-        .<span class="ident">iter</span>()
-        .<span class="ident">filter_map</span>(<span class="op">|</span><span class="ident">val</span><span class="op">|</span> <span class="ident">val</span>.<span class="ident">to_str</span>().<span class="ident">ok</span>())
-        .<span class="ident">flat_map</span>(<span class="op">|</span><span class="ident">val</span><span class="op">|</span> <span class="ident">val</span>.<span class="ident">split</span>(<span class="string">&#39;,&#39;</span>))
-        .<span class="ident">filter_map</span>(<span class="op">|</span><span class="ident">val</span><span class="op">|</span> <span class="ident">val</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">AcceptedEncoding</span><span class="op">&gt;</span>().<span class="ident">ok</span>())
-        .<span class="ident">collect</span>();
+<span class="doccomment">/// Returns an Iterator of encodings accepted by the client sorted by quality,
+/// with the preferred encoding first.
+/// Multiple encodings can be in single &quot;Accept-Encoding&quot; header value,
+/// e.g.
+/// Accept-Encoding: deflate, gzip;q=1.0, *;q=0.5
+///
+/// or in multiple headers,
+/// e.g.
+/// Accept-Encoding: deflate
+/// Accept-Encoding: gzip;q=1.0
+/// Accept-Encoding: *;q=0.5
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>accepted_encodings(headers: <span class="kw-2">&amp;</span>HeaderMap) -&gt; Vec&lt;AcceptedEncoding&gt; {
+    <span class="kw">let </span><span class="kw-2">mut </span>accepted_encodings: Vec&lt;AcceptedEncoding&gt; = headers
+        .get_all(ACCEPT_ENCODING)
+        .iter()
+        .filter_map(|val| val.to_str().ok())
+        .flat_map(|val| val.split(<span class="string">&#39;,&#39;</span>))
+        .filter_map(|val| val.parse::&lt;AcceptedEncoding&gt;().ok())
+        .collect();
 
-    <span class="ident">accepted_encodings</span>.<span class="ident">sort_by</span>(<span class="op">|</span><span class="ident">a</span>, <span class="ident">b</span><span class="op">|</span> <span class="ident">b</span>.<span class="ident">quality</span>.<span class="ident">partial_cmp</span>(<span class="kw-2">&amp;</span><span class="ident">a</span>.<span class="ident">quality</span>).<span class="ident">unwrap</span>());
-    <span class="ident">accepted_encodings</span>
+    accepted_encodings.sort_by(|a, b| b.quality.partial_cmp(<span class="kw-2">&amp;</span>a.quality).unwrap());
+    accepted_encodings
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">tests</span> {
-    <span class="kw">use</span> <span class="kw">super</span>::{<span class="ident">accepted_encodings</span>, <span class="ident">AcceptedEncoding</span>};
-    <span class="kw">use</span> <span class="ident">hyper::header</span>::{<span class="ident">HeaderMap</span>, <span class="ident">ACCEPT_ENCODING</span>};
+<span class="attribute">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use super</span>::{accepted_encodings, AcceptedEncoding};
+    <span class="kw">use </span>hyper::header::{HeaderMap, ACCEPT_ENCODING};
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">accepted_encoding_single</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">headers</span> <span class="op">=</span> <span class="ident">HeaderMap::new</span>();
-        <span class="ident">headers</span>.<span class="ident">insert</span>(<span class="ident">ACCEPT_ENCODING</span>, <span class="string">&quot;gzip&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>());
-        <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">AcceptedEncoding</span> {
-            <span class="ident">encoding</span>: <span class="string">&quot;gzip&quot;</span>.<span class="ident">to_string</span>(),
-            <span class="ident">quality</span>: <span class="number">1f32</span>,
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>accepted_encoding_single() {
+        <span class="kw">let </span><span class="kw-2">mut </span>headers = HeaderMap::new();
+        headers.insert(ACCEPT_ENCODING, <span class="string">&quot;gzip&quot;</span>.parse().unwrap());
+        <span class="kw">let </span>expected = <span class="macro">vec!</span>[AcceptedEncoding {
+            encoding: <span class="string">&quot;gzip&quot;</span>.to_string(),
+            quality: <span class="number">1f32</span>,
         }];
 
-        <span class="macro">assert_eq!</span>(<span class="ident">accepted_encodings</span>(<span class="kw-2">&amp;</span><span class="ident">headers</span>), <span class="ident">expected</span>);
+        <span class="macro">assert_eq!</span>(accepted_encodings(<span class="kw-2">&amp;</span>headers), expected);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">accepted_encoding_single_with_quality</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">headers</span> <span class="op">=</span> <span class="ident">HeaderMap::new</span>();
-        <span class="ident">headers</span>.<span class="ident">insert</span>(<span class="ident">ACCEPT_ENCODING</span>, <span class="string">&quot;gzip;q=0.8&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>());
-        <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">AcceptedEncoding</span> {
-            <span class="ident">encoding</span>: <span class="string">&quot;gzip&quot;</span>.<span class="ident">to_string</span>(),
-            <span class="ident">quality</span>: <span class="number">0.8f32</span>,
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>accepted_encoding_single_with_quality() {
+        <span class="kw">let </span><span class="kw-2">mut </span>headers = HeaderMap::new();
+        headers.insert(ACCEPT_ENCODING, <span class="string">&quot;gzip;q=0.8&quot;</span>.parse().unwrap());
+        <span class="kw">let </span>expected = <span class="macro">vec!</span>[AcceptedEncoding {
+            encoding: <span class="string">&quot;gzip&quot;</span>.to_string(),
+            quality: <span class="number">0.8f32</span>,
         }];
 
-        <span class="macro">assert_eq!</span>(<span class="ident">accepted_encodings</span>(<span class="kw-2">&amp;</span><span class="ident">headers</span>), <span class="ident">expected</span>);
+        <span class="macro">assert_eq!</span>(accepted_encodings(<span class="kw-2">&amp;</span>headers), expected);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">accepted_encoding_multiple_headers</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">headers</span> <span class="op">=</span> <span class="ident">HeaderMap::new</span>();
-        <span class="ident">headers</span>.<span class="ident">append</span>(<span class="ident">ACCEPT_ENCODING</span>, <span class="string">&quot;br;q=0.8&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>());
-        <span class="ident">headers</span>.<span class="ident">append</span>(<span class="ident">ACCEPT_ENCODING</span>, <span class="string">&quot;gzip&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>());
-        <span class="ident">headers</span>.<span class="ident">append</span>(<span class="ident">ACCEPT_ENCODING</span>, <span class="string">&quot;*;q=0.5&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>());
-        <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="macro">vec!</span>[
-            <span class="ident">AcceptedEncoding</span> {
-                <span class="ident">encoding</span>: <span class="string">&quot;gzip&quot;</span>.<span class="ident">to_string</span>(),
-                <span class="ident">quality</span>: <span class="number">1.0f32</span>,
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>accepted_encoding_multiple_headers() {
+        <span class="kw">let </span><span class="kw-2">mut </span>headers = HeaderMap::new();
+        headers.append(ACCEPT_ENCODING, <span class="string">&quot;br;q=0.8&quot;</span>.parse().unwrap());
+        headers.append(ACCEPT_ENCODING, <span class="string">&quot;gzip&quot;</span>.parse().unwrap());
+        headers.append(ACCEPT_ENCODING, <span class="string">&quot;*;q=0.5&quot;</span>.parse().unwrap());
+        <span class="kw">let </span>expected = <span class="macro">vec!</span>[
+            AcceptedEncoding {
+                encoding: <span class="string">&quot;gzip&quot;</span>.to_string(),
+                quality: <span class="number">1.0f32</span>,
             },
-            <span class="ident">AcceptedEncoding</span> {
-                <span class="ident">encoding</span>: <span class="string">&quot;br&quot;</span>.<span class="ident">to_string</span>(),
-                <span class="ident">quality</span>: <span class="number">0.8f32</span>,
+            AcceptedEncoding {
+                encoding: <span class="string">&quot;br&quot;</span>.to_string(),
+                quality: <span class="number">0.8f32</span>,
             },
-            <span class="ident">AcceptedEncoding</span> {
-                <span class="ident">encoding</span>: <span class="string">&quot;*&quot;</span>.<span class="ident">to_string</span>(),
-                <span class="ident">quality</span>: <span class="number">0.5f32</span>,
+            AcceptedEncoding {
+                encoding: <span class="string">&quot;*&quot;</span>.to_string(),
+                quality: <span class="number">0.5f32</span>,
             },
         ];
 
-        <span class="macro">assert_eq!</span>(<span class="ident">accepted_encodings</span>(<span class="kw-2">&amp;</span><span class="ident">headers</span>), <span class="ident">expected</span>);
+        <span class="macro">assert_eq!</span>(accepted_encodings(<span class="kw-2">&amp;</span>headers), expected);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">accepted_encoding_multiple_values</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">headers</span> <span class="op">=</span> <span class="ident">HeaderMap::new</span>();
-        <span class="ident">headers</span>.<span class="ident">insert</span>(<span class="ident">ACCEPT_ENCODING</span>, <span class="string">&quot;*;q=0.5, gzip;q=0.9, br&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>());
-        <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="macro">vec!</span>[
-            <span class="ident">AcceptedEncoding</span> {
-                <span class="ident">encoding</span>: <span class="string">&quot;br&quot;</span>.<span class="ident">to_string</span>(),
-                <span class="ident">quality</span>: <span class="number">1.0f32</span>,
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>accepted_encoding_multiple_values() {
+        <span class="kw">let </span><span class="kw-2">mut </span>headers = HeaderMap::new();
+        headers.insert(ACCEPT_ENCODING, <span class="string">&quot;*;q=0.5, gzip;q=0.9, br&quot;</span>.parse().unwrap());
+        <span class="kw">let </span>expected = <span class="macro">vec!</span>[
+            AcceptedEncoding {
+                encoding: <span class="string">&quot;br&quot;</span>.to_string(),
+                quality: <span class="number">1.0f32</span>,
             },
-            <span class="ident">AcceptedEncoding</span> {
-                <span class="ident">encoding</span>: <span class="string">&quot;gzip&quot;</span>.<span class="ident">to_string</span>(),
-                <span class="ident">quality</span>: <span class="number">0.9f32</span>,
+            AcceptedEncoding {
+                encoding: <span class="string">&quot;gzip&quot;</span>.to_string(),
+                quality: <span class="number">0.9f32</span>,
             },
-            <span class="ident">AcceptedEncoding</span> {
-                <span class="ident">encoding</span>: <span class="string">&quot;*&quot;</span>.<span class="ident">to_string</span>(),
-                <span class="ident">quality</span>: <span class="number">0.5f32</span>,
+            AcceptedEncoding {
+                encoding: <span class="string">&quot;*&quot;</span>.to_string(),
+                quality: <span class="number">0.5f32</span>,
             },
         ];
 
-        <span class="macro">assert_eq!</span>(<span class="ident">accepted_encodings</span>(<span class="kw-2">&amp;</span><span class="ident">headers</span>), <span class="ident">expected</span>);
+        <span class="macro">assert_eq!</span>(accepted_encodings(<span class="kw-2">&amp;</span>headers), expected);
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

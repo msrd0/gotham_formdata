@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/helpers/http/request/path.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>path.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../../storage.js"></script><script defer src="../../../../../source-script.js"></script><script defer src="../../../../../source-files.js"></script><script defer src="../../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../../gotham/index.html"><img class="rust-logo" src="../../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/helpers/http/request/path.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>path.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../../../normalize.css"><link rel="stylesheet" href="../../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../../../ayu.css" disabled><link rel="stylesheet" href="../../../../../dark.css" disabled><link rel="stylesheet" href="../../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../../storage.js"></script><script defer src="../../../../../source-script.js"></script><script defer src="../../../../../source-files.js"></script><script defer src="../../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../../gotham/index.html"><img class="rust-logo" src="../../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -67,74 +67,74 @@
 <span id="67">67</span>
 <span id="68">68</span>
 <span id="69">69</span>
-</pre><pre class="rust"><code><span class="doccomment">//! Defines helper functions for processing the request path</span>
+</pre><pre class="rust"><code><span class="doccomment">//! Defines helper functions for processing the request path
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::helpers::http::PercentDecoded</span>;
+</span><span class="kw">use </span><span class="kw">crate</span>::helpers::http::PercentDecoded;
 
-<span class="kw">const</span> <span class="ident">EXCLUDED_SEGMENTS</span>: [<span class="kw-2">&amp;</span><span class="ident">str</span>; <span class="number">1</span>] <span class="op">=</span> [<span class="string">&quot;&quot;</span>];
+<span class="kw">const </span>EXCLUDED_SEGMENTS: [<span class="kw-2">&amp;</span>str; <span class="number">1</span>] = [<span class="string">&quot;&quot;</span>];
 
-<span class="doccomment">/// Holder for `Request` URI path segments that have been split into individual segments.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Used internally by the `Router` when traversing its internal `Tree`.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">RequestPathSegments</span> {
-    <span class="ident">segments</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">PercentDecoded</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Holder for `Request` URI path segments that have been split into individual segments.
+///
+/// Used internally by the `Router` when traversing its internal `Tree`.
+</span><span class="attribute">#[derive(Clone, Debug, PartialEq)]
+</span><span class="kw">pub struct </span>RequestPathSegments {
+    segments: Vec&lt;PercentDecoded&gt;,
 }
 
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">split_path_segments</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>) -&gt; <span class="kw">impl</span> <span class="ident">Iterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span><span class="op">&gt;</span> {
-    <span class="ident">path</span>.<span class="ident">split</span>(<span class="string">&#39;/&#39;</span>).<span class="ident">filter</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="op">!</span><span class="ident">EXCLUDED_SEGMENTS</span>.<span class="ident">contains</span>(<span class="ident">s</span>))
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>split_path_segments&lt;<span class="lifetime">&#39;a</span>&gt;(path: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str) -&gt; <span class="kw">impl </span>Iterator&lt;Item = <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str&gt; {
+    path.split(<span class="string">&#39;/&#39;</span>).filter(|s| !EXCLUDED_SEGMENTS.contains(s))
 }
 
-<span class="kw">impl</span> <span class="ident">RequestPathSegments</span> {
-    <span class="doccomment">/// Creates a new RequestPathSegments instance by splitting a `Request` URI path.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Empty segments are skipped when generating the `RequestPathSegments` value, and a leading</span>
-    <span class="doccomment">/// `/` segment is added to represent the root (and the beginning of traversal). So, a request</span>
-    <span class="doccomment">/// path of `/some/path/to//my/handler` will be split into segments:</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```plain</span>
-    <span class="doccomment">/// [&quot;/&quot;, &quot;some&quot;, &quot;path&quot;, &quot;to&quot;, &quot;my&quot;, &quot;handler&quot;]</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="self">Self</span> {
-        <span class="kw">let</span> <span class="ident">segments</span> <span class="op">=</span> <span class="ident">split_path_segments</span>(<span class="ident">path</span>)
-            .<span class="ident">filter_map</span>(<span class="ident">PercentDecoded::new</span>)
-            .<span class="ident">collect</span>();
+<span class="kw">impl </span>RequestPathSegments {
+    <span class="doccomment">/// Creates a new RequestPathSegments instance by splitting a `Request` URI path.
+    ///
+    /// Empty segments are skipped when generating the `RequestPathSegments` value, and a leading
+    /// `/` segment is added to represent the root (and the beginning of traversal). So, a request
+    /// path of `/some/path/to//my/handler` will be split into segments:
+    ///
+    /// ```plain
+    /// [&quot;/&quot;, &quot;some&quot;, &quot;path&quot;, &quot;to&quot;, &quot;my&quot;, &quot;handler&quot;]
+    /// ```
+    </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>new(path: <span class="kw-2">&amp;</span>str) -&gt; <span class="self">Self </span>{
+        <span class="kw">let </span>segments = split_path_segments(path)
+            .filter_map(PercentDecoded::new)
+            .collect();
 
-        <span class="ident">RequestPathSegments</span> { <span class="ident">segments</span> }
+        RequestPathSegments { segments }
     }
 
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">subsegments</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">offset</span>: <span class="ident">usize</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">RequestPathSegments</span> {
-            <span class="ident">segments</span>: <span class="self">self</span>.<span class="ident">segments</span>.<span class="ident">split_at</span>(<span class="ident">offset</span>).<span class="number">1</span>.<span class="ident">to_vec</span>(),
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>subsegments(<span class="kw-2">&amp;</span><span class="self">self</span>, offset: usize) -&gt; <span class="self">Self </span>{
+        RequestPathSegments {
+            segments: <span class="self">self</span>.segments.split_at(offset).<span class="number">1</span>.to_vec(),
         }
     }
 
-    <span class="doccomment">/// Provide segments that still need to be processed.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This will always include a &quot;/&quot; node to represent the root as well as all segments</span>
-    <span class="doccomment">/// that remain as of the current offset.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The offset starts at 0 meaning all segments of the initial Request path will be provided</span>
-    <span class="doccomment">/// until the offset is updated.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">segments</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">PercentDecoded</span><span class="op">&gt;</span> {
-        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">segments</span>
+    <span class="doccomment">/// Provide segments that still need to be processed.
+    ///
+    /// This will always include a &quot;/&quot; node to represent the root as well as all segments
+    /// that remain as of the current offset.
+    ///
+    /// The offset starts at 0 meaning all segments of the initial Request path will be provided
+    /// until the offset is updated.
+    </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>segments(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>Vec&lt;PercentDecoded&gt; {
+        <span class="kw-2">&amp;</span><span class="self">self</span>.segments
     }
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">tests</span> {
-    <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+<span class="attribute">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">request_path_segments_tests</span>() {
-        <span class="comment">// Validate the claim made in the doc comment above.</span>
-        <span class="kw">let</span> <span class="ident">rps</span> <span class="op">=</span> <span class="ident">RequestPathSegments::new</span>(<span class="string">&quot;/some/path/to//my/handler&quot;</span>);
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>request_path_segments_tests() {
+        <span class="comment">// Validate the claim made in the doc comment above.
+        </span><span class="kw">let </span>rps = RequestPathSegments::new(<span class="string">&quot;/some/path/to//my/handler&quot;</span>);
 
         <span class="macro">assert_eq!</span>(
-            <span class="ident">rps</span>.<span class="ident">segments</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="ident">AsRef::as_ref</span>).<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>(),
+            rps.segments.iter().map(AsRef::as_ref).collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;(),
             <span class="macro">vec!</span>[<span class="string">&quot;some&quot;</span>, <span class="string">&quot;path&quot;</span>, <span class="string">&quot;to&quot;</span>, <span class="string">&quot;my&quot;</span>, <span class="string">&quot;handler&quot;</span>]
         );
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

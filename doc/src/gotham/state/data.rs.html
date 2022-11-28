@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/state/data.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>data.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/state/data.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>data.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -41,48 +41,48 @@
 <span id="41">41</span>
 <span id="42">42</span>
 <span id="43">43</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">std::any::Any</span>;
+</pre><pre class="rust"><code><span class="kw">use </span>std::any::Any;
 
-<span class="kw">use</span> <span class="ident">cookie::CookieJar</span>;
-<span class="kw">use</span> <span class="ident">hyper::upgrade::OnUpgrade</span>;
-<span class="kw">use</span> <span class="ident">hyper</span>::{<span class="ident">Body</span>, <span class="ident">HeaderMap</span>, <span class="ident">Method</span>, <span class="ident">Uri</span>, <span class="ident">Version</span>};
+<span class="kw">use </span>cookie::CookieJar;
+<span class="kw">use </span>hyper::upgrade::OnUpgrade;
+<span class="kw">use </span>hyper::{Body, HeaderMap, Method, Uri, Version};
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::helpers::http::request::path::RequestPathSegments</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state::request_id::RequestId</span>;
+<span class="kw">use </span><span class="kw">crate</span>::helpers::http::request::path::RequestPathSegments;
+<span class="kw">use </span><span class="kw">crate</span>::state::request_id::RequestId;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gotham_derive::StateData</span>;
+<span class="attribute">#[cfg(feature = <span class="string">&quot;derive&quot;</span>)]
+</span><span class="kw">pub use </span>gotham_derive::StateData;
 
-<span class="doccomment">/// A marker trait for types that can be stored in `State`.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// This is typically implemented using `#[derive(StateData)]`.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # use gotham::state::{FromState, State};</span>
-<span class="doccomment">/// use gotham::state::StateData;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// #[derive(StateData)]</span>
-<span class="doccomment">/// struct MyStateData {</span>
-<span class="doccomment">///     x: u32,</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// # fn main() {</span>
-<span class="doccomment">/// #   State::with_new(|state| {</span>
-<span class="doccomment">/// #       state.put(MyStateData { x: 1 });</span>
-<span class="doccomment">/// #       assert_eq!(MyStateData::borrow_from(state).x, 1);</span>
-<span class="doccomment">/// #   });</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// ```</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">StateData</span>: <span class="ident">Any</span> <span class="op">+</span> <span class="ident">Send</span> {}
+<span class="doccomment">/// A marker trait for types that can be stored in `State`.
+///
+/// This is typically implemented using `#[derive(StateData)]`.
+///
+/// ```rust
+/// # use gotham::state::{FromState, State};
+/// use gotham::state::StateData;
+///
+/// #[derive(StateData)]
+/// struct MyStateData {
+///     x: u32,
+/// }
+/// # fn main() {
+/// #   State::with_new(|state| {
+/// #       state.put(MyStateData { x: 1 });
+/// #       assert_eq!(MyStateData::borrow_from(state).x, 1);
+/// #   });
+/// # }
+/// ```
+</span><span class="kw">pub trait </span>StateData: Any + Send {}
 
-<span class="kw">impl</span> <span class="ident">StateData</span> <span class="kw">for</span> <span class="ident">Body</span> {}
-<span class="kw">impl</span> <span class="ident">StateData</span> <span class="kw">for</span> <span class="ident">Method</span> {}
-<span class="kw">impl</span> <span class="ident">StateData</span> <span class="kw">for</span> <span class="ident">Uri</span> {}
-<span class="kw">impl</span> <span class="ident">StateData</span> <span class="kw">for</span> <span class="ident">Version</span> {}
-<span class="kw">impl</span> <span class="ident">StateData</span> <span class="kw">for</span> <span class="ident">HeaderMap</span> {}
-<span class="kw">impl</span> <span class="ident">StateData</span> <span class="kw">for</span> <span class="ident">CookieJar</span> {}
-<span class="kw">impl</span> <span class="ident">StateData</span> <span class="kw">for</span> <span class="ident">OnUpgrade</span> {}
+<span class="kw">impl </span>StateData <span class="kw">for </span>Body {}
+<span class="kw">impl </span>StateData <span class="kw">for </span>Method {}
+<span class="kw">impl </span>StateData <span class="kw">for </span>Uri {}
+<span class="kw">impl </span>StateData <span class="kw">for </span>Version {}
+<span class="kw">impl </span>StateData <span class="kw">for </span>HeaderMap {}
+<span class="kw">impl </span>StateData <span class="kw">for </span>CookieJar {}
+<span class="kw">impl </span>StateData <span class="kw">for </span>OnUpgrade {}
 
-<span class="kw">impl</span> <span class="ident">StateData</span> <span class="kw">for</span> <span class="ident">RequestPathSegments</span> {}
-<span class="kw">impl</span> <span class="ident">StateData</span> <span class="kw">for</span> <span class="ident">RequestId</span> {}
+<span class="kw">impl </span>StateData <span class="kw">for </span>RequestPathSegments {}
+<span class="kw">impl </span>StateData <span class="kw">for </span>RequestId {}
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

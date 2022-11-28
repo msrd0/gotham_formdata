@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/router/route/matcher/accept.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>accept.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../../storage.js"></script><script defer src="../../../../../source-script.js"></script><script defer src="../../../../../source-files.js"></script><script defer src="../../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../../gotham/index.html"><img class="rust-logo" src="../../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/router/route/matcher/accept.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>accept.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../../../normalize.css"><link rel="stylesheet" href="../../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../../../ayu.css" disabled><link rel="stylesheet" href="../../../../../dark.css" disabled><link rel="stylesheet" href="../../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../../storage.js"></script><script defer src="../../../../../source-script.js"></script><script defer src="../../../../../source-files.js"></script><script defer src="../../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../../gotham/index.html"><img class="rust-logo" src="../../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -254,261 +254,261 @@
 <span id="254">254</span>
 <span id="255">255</span>
 <span id="256">256</span>
-</pre><pre class="rust"><code><span class="doccomment">//! Defines the `AcceptHeaderRouterMatcher`.</span>
+</pre><pre class="rust"><code><span class="doccomment">//! Defines the `AcceptHeaderRouterMatcher`.
 
-<span class="kw">use</span> <span class="ident">hyper::header</span>::{<span class="ident">HeaderMap</span>, <span class="ident">ACCEPT</span>};
-<span class="kw">use</span> <span class="ident">hyper::StatusCode</span>;
-<span class="kw">use</span> <span class="ident">log::trace</span>;
-<span class="kw">use</span> <span class="ident">mime::Mime</span>;
+</span><span class="kw">use </span>hyper::header::{HeaderMap, ACCEPT};
+<span class="kw">use </span>hyper::StatusCode;
+<span class="kw">use </span>log::trace;
+<span class="kw">use </span>mime::Mime;
 
-<span class="kw">use</span> <span class="kw">super</span>::{<span class="ident">LookupTable</span>, <span class="ident">LookupTableFromTypes</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::route::RouteMatcher</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::RouteNonMatch</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state</span>::{<span class="ident">request_id</span>, <span class="ident">FromState</span>, <span class="ident">State</span>};
+<span class="kw">use super</span>::{LookupTable, LookupTableFromTypes};
+<span class="kw">use </span><span class="kw">crate</span>::router::route::RouteMatcher;
+<span class="kw">use </span><span class="kw">crate</span>::router::RouteNonMatch;
+<span class="kw">use </span><span class="kw">crate</span>::state::{request_id, FromState, State};
 
-<span class="doccomment">/// A mime type that is optionally weighted with a quality.</span>
-<span class="kw">struct</span> <span class="ident">QMime</span> {
-    <span class="ident">mime</span>: <span class="ident">Mime</span>,
-    <span class="ident">_weight</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span>,
+<span class="doccomment">/// A mime type that is optionally weighted with a quality.
+</span><span class="kw">struct </span>QMime {
+    mime: Mime,
+    _weight: <span class="prelude-ty">Option</span>&lt;f32&gt;,
 }
 
-<span class="kw">impl</span> <span class="ident">QMime</span> {
-    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">mime</span>: <span class="ident">Mime</span>, <span class="ident">weight</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">mime</span>,
-            <span class="ident">_weight</span>: <span class="ident">weight</span>,
+<span class="kw">impl </span>QMime {
+    <span class="kw">fn </span>new(mime: Mime, weight: <span class="prelude-ty">Option</span>&lt;f32&gt;) -&gt; <span class="self">Self </span>{
+        <span class="self">Self </span>{
+            mime,
+            _weight: weight,
         }
     }
 }
 
-<span class="kw">impl</span> <span class="ident">core::str::FromStr</span> <span class="kw">for</span> <span class="ident">QMime</span> {
-    <span class="kw">type</span> <span class="prelude-val">Err</span> <span class="op">=</span> <span class="ident">anyhow::Error</span>;
+<span class="kw">impl </span>core::str::FromStr <span class="kw">for </span>QMime {
+    <span class="kw">type </span><span class="prelude-val">Err </span>= anyhow::Error;
 
-    <span class="kw">fn</span> <span class="ident">from_str</span>(<span class="ident">str</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">anyhow::Result</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-        <span class="kw">match</span> <span class="ident">str</span>.<span class="ident">find</span>(<span class="string">&quot;;q=&quot;</span>) {
-            <span class="prelude-val">None</span> =&gt; <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::new</span>(<span class="ident">str</span>.<span class="ident">parse</span>()<span class="question-mark">?</span>, <span class="prelude-val">None</span>)),
-            <span class="prelude-val">Some</span>(<span class="ident">index</span>) =&gt; {
-                <span class="kw">let</span> <span class="ident">mime</span> <span class="op">=</span> <span class="ident">str</span>[..<span class="ident">index</span>].<span class="ident">parse</span>()<span class="question-mark">?</span>;
-                <span class="kw">let</span> <span class="ident">weight</span> <span class="op">=</span> <span class="ident">str</span>[<span class="ident">index</span> <span class="op">+</span> <span class="number">3</span>..].<span class="ident">parse</span>()<span class="question-mark">?</span>;
-                <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::new</span>(<span class="ident">mime</span>, <span class="prelude-val">Some</span>(<span class="ident">weight</span>)))
+    <span class="kw">fn </span>from_str(str: <span class="kw-2">&amp;</span>str) -&gt; anyhow::Result&lt;<span class="self">Self</span>&gt; {
+        <span class="kw">match </span>str.find(<span class="string">&quot;;q=&quot;</span>) {
+            <span class="prelude-val">None </span>=&gt; <span class="prelude-val">Ok</span>(<span class="self">Self</span>::new(str.parse()<span class="question-mark">?</span>, <span class="prelude-val">None</span>)),
+            <span class="prelude-val">Some</span>(index) =&gt; {
+                <span class="kw">let </span>mime = str[..index].parse()<span class="question-mark">?</span>;
+                <span class="kw">let </span>weight = str[index + <span class="number">3</span>..].parse()<span class="question-mark">?</span>;
+                <span class="prelude-val">Ok</span>(<span class="self">Self</span>::new(mime, <span class="prelude-val">Some</span>(weight)))
             }
         }
     }
 }
 
-<span class="doccomment">/// A `RouteMatcher` that succeeds when the `Request` has been made with an `Accept` header that</span>
-<span class="doccomment">/// includes one or more supported media types. A missing `Accept` header, or the value of `*/*`</span>
-<span class="doccomment">/// will also positvely match. It supports the quality weighted syntax, but does not take the quality</span>
-<span class="doccomment">/// into consideration when matching.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # fn main() {</span>
-<span class="doccomment">/// #   use hyper::header::{HeaderMap, ACCEPT};</span>
-<span class="doccomment">/// #   use gotham::state::State;</span>
-<span class="doccomment">/// #   use gotham::router::route::matcher::{AcceptHeaderRouteMatcher, RouteMatcher};</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #   State::with_new(|state| {</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// let supported_media_types = vec![mime::APPLICATION_JSON, mime::IMAGE_STAR];</span>
-<span class="doccomment">/// let matcher = AcceptHeaderRouteMatcher::new(supported_media_types);</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// // No accept header</span>
-<span class="doccomment">/// state.put(HeaderMap::new());</span>
-<span class="doccomment">/// assert!(matcher.is_match(&amp;state).is_ok());</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// // Accept header of `*/*`</span>
-<span class="doccomment">/// let mut headers = HeaderMap::new();</span>
-<span class="doccomment">/// headers.insert(ACCEPT, &quot;*/*&quot;.parse().unwrap());</span>
-<span class="doccomment">/// state.put(headers);</span>
-<span class="doccomment">/// assert!(matcher.is_match(&amp;state).is_ok());</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// // Accept header of `application/json`</span>
-<span class="doccomment">/// let mut headers = HeaderMap::new();</span>
-<span class="doccomment">/// headers.insert(ACCEPT, &quot;application/json&quot;.parse().unwrap());</span>
-<span class="doccomment">/// state.put(headers);</span>
-<span class="doccomment">/// assert!(matcher.is_match(&amp;state).is_ok());</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// // Not a valid Accept header</span>
-<span class="doccomment">/// let mut headers = HeaderMap::new();</span>
-<span class="doccomment">/// headers.insert(ACCEPT, &quot;text/plain&quot;.parse().unwrap());</span>
-<span class="doccomment">/// state.put(headers);</span>
-<span class="doccomment">/// assert!(matcher.is_match(&amp;state).is_err());</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// // At least one supported accept header</span>
-<span class="doccomment">/// let mut headers = HeaderMap::new();</span>
-<span class="doccomment">/// headers.insert(ACCEPT, &quot;text/plain&quot;.parse().unwrap());</span>
-<span class="doccomment">/// headers.insert(ACCEPT, &quot;application/json&quot;.parse().unwrap());</span>
-<span class="doccomment">/// state.put(headers);</span>
-<span class="doccomment">/// assert!(matcher.is_match(&amp;state).is_ok());</span>
+<span class="doccomment">/// A `RouteMatcher` that succeeds when the `Request` has been made with an `Accept` header that
+/// includes one or more supported media types. A missing `Accept` header, or the value of `*/*`
+/// will also positvely match. It supports the quality weighted syntax, but does not take the quality
+/// into consideration when matching.
+///
+/// # Examples
+///
+/// ```rust
+/// # fn main() {
+/// #   use hyper::header::{HeaderMap, ACCEPT};
+/// #   use gotham::state::State;
+/// #   use gotham::router::route::matcher::{AcceptHeaderRouteMatcher, RouteMatcher};
+/// #
+/// #   State::with_new(|state| {
+/// #
+/// let supported_media_types = vec![mime::APPLICATION_JSON, mime::IMAGE_STAR];
+/// let matcher = AcceptHeaderRouteMatcher::new(supported_media_types);
+///
+/// // No accept header
+/// state.put(HeaderMap::new());
+/// assert!(matcher.is_match(&amp;state).is_ok());
+///
+/// // Accept header of `*/*`
+/// let mut headers = HeaderMap::new();
+/// headers.insert(ACCEPT, &quot;*/*&quot;.parse().unwrap());
+/// state.put(headers);
+/// assert!(matcher.is_match(&amp;state).is_ok());
+///
+/// // Accept header of `application/json`
+/// let mut headers = HeaderMap::new();
+/// headers.insert(ACCEPT, &quot;application/json&quot;.parse().unwrap());
+/// state.put(headers);
+/// assert!(matcher.is_match(&amp;state).is_ok());
+///
+/// // Not a valid Accept header
+/// let mut headers = HeaderMap::new();
+/// headers.insert(ACCEPT, &quot;text/plain&quot;.parse().unwrap());
+/// state.put(headers);
+/// assert!(matcher.is_match(&amp;state).is_err());
+///
+/// // At least one supported accept header
+/// let mut headers = HeaderMap::new();
+/// headers.insert(ACCEPT, &quot;text/plain&quot;.parse().unwrap());
+/// headers.insert(ACCEPT, &quot;application/json&quot;.parse().unwrap());
+/// state.put(headers);
+/// assert!(matcher.is_match(&amp;state).is_ok());
 
-<span class="doccomment">/// // Accept header of `image/*`</span>
-<span class="doccomment">/// let mut headers = HeaderMap::new();</span>
-<span class="doccomment">/// headers.insert(ACCEPT, &quot;image/*&quot;.parse().unwrap());</span>
-<span class="doccomment">/// state.put(headers);</span>
-<span class="doccomment">/// assert!(matcher.is_match(&amp;state).is_ok());</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #   });</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// ```</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">AcceptHeaderRouteMatcher</span> {
-    <span class="ident">supported_media_types</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">mime::Mime</span><span class="op">&gt;</span>,
-    <span class="ident">lookup_table</span>: <span class="ident">LookupTable</span>,
+/// // Accept header of `image/*`
+/// let mut headers = HeaderMap::new();
+/// headers.insert(ACCEPT, &quot;image/*&quot;.parse().unwrap());
+/// state.put(headers);
+/// assert!(matcher.is_match(&amp;state).is_ok());
+/// #
+/// #   });
+/// # }
+/// ```
+</span><span class="attribute">#[derive(Clone)]
+</span><span class="kw">pub struct </span>AcceptHeaderRouteMatcher {
+    supported_media_types: Vec&lt;mime::Mime&gt;,
+    lookup_table: LookupTable,
 }
 
-<span class="kw">impl</span> <span class="ident">AcceptHeaderRouteMatcher</span> {
-    <span class="doccomment">/// Creates a new `AcceptHeaderRouteMatcher`</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">supported_media_types</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">mime::Mime</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
-        <span class="kw">let</span> <span class="ident">lookup_table</span> <span class="op">=</span> <span class="ident">LookupTable::from_types</span>(<span class="ident">supported_media_types</span>.<span class="ident">iter</span>(), <span class="bool-val">true</span>);
-        <span class="self">Self</span> {
-            <span class="ident">supported_media_types</span>,
-            <span class="ident">lookup_table</span>,
+<span class="kw">impl </span>AcceptHeaderRouteMatcher {
+    <span class="doccomment">/// Creates a new `AcceptHeaderRouteMatcher`
+    </span><span class="kw">pub fn </span>new(supported_media_types: Vec&lt;mime::Mime&gt;) -&gt; <span class="self">Self </span>{
+        <span class="kw">let </span>lookup_table = LookupTable::from_types(supported_media_types.iter(), <span class="bool-val">true</span>);
+        <span class="self">Self </span>{
+            supported_media_types,
+            lookup_table,
         }
     }
 }
 
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">fn</span> <span class="ident">err</span>(<span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="ident">State</span>) -&gt; <span class="ident">RouteNonMatch</span> {
+<span class="attribute">#[inline]
+</span><span class="kw">fn </span>err(state: <span class="kw-2">&amp;</span>State) -&gt; RouteNonMatch {
     <span class="macro">trace!</span>(
         <span class="string">&quot;[{}] did not provide an Accept with media types supported by this Route&quot;</span>,
-        <span class="ident">request_id</span>(<span class="ident">state</span>)
+        request_id(state)
     );
 
-    <span class="ident">RouteNonMatch::new</span>(<span class="ident">StatusCode::NOT_ACCEPTABLE</span>)
+    RouteNonMatch::new(StatusCode::NOT_ACCEPTABLE)
 }
 
-<span class="kw">impl</span> <span class="ident">RouteMatcher</span> <span class="kw">for</span> <span class="ident">AcceptHeaderRouteMatcher</span> {
-    <span class="doccomment">/// Determines if the `Request` was made using an `Accept` header that includes one or more</span>
-    <span class="doccomment">/// supported media types. A missing `Accept` header, or the value of `*/*` will also positvely</span>
-    <span class="doccomment">/// match.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Quality values within `Accept` header values are not considered by the matcher, as the</span>
-    <span class="doccomment">/// matcher is only able to indicate whether a successful match has been found.</span>
-    <span class="kw">fn</span> <span class="ident">is_match</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="ident">State</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">RouteNonMatch</span><span class="op">&gt;</span> {
-        <span class="ident">HeaderMap::borrow_from</span>(<span class="ident">state</span>)
-            .<span class="ident">get</span>(<span class="ident">ACCEPT</span>)
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">header</span><span class="op">|</span> {
-                <span class="comment">// parse mime types from the accept header</span>
-                <span class="kw">let</span> <span class="ident">acceptable</span> <span class="op">=</span> <span class="ident">header</span>
-                    .<span class="ident">to_str</span>()
-                    .<span class="ident">map_err</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">err</span>(<span class="ident">state</span>))<span class="question-mark">?</span>
-                    .<span class="ident">split</span>(<span class="string">&#39;,&#39;</span>)
-                    .<span class="ident">map</span>(<span class="op">|</span><span class="ident">str</span><span class="op">|</span> <span class="ident">str</span>.<span class="ident">trim</span>().<span class="ident">parse</span>())
-                    .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">QMime</span><span class="op">&gt;</span>, <span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>()
-                    .<span class="ident">map_err</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">err</span>(<span class="ident">state</span>))<span class="question-mark">?</span>;
+<span class="kw">impl </span>RouteMatcher <span class="kw">for </span>AcceptHeaderRouteMatcher {
+    <span class="doccomment">/// Determines if the `Request` was made using an `Accept` header that includes one or more
+    /// supported media types. A missing `Accept` header, or the value of `*/*` will also positvely
+    /// match.
+    ///
+    /// Quality values within `Accept` header values are not considered by the matcher, as the
+    /// matcher is only able to indicate whether a successful match has been found.
+    </span><span class="kw">fn </span>is_match(<span class="kw-2">&amp;</span><span class="self">self</span>, state: <span class="kw-2">&amp;</span>State) -&gt; <span class="prelude-ty">Result</span>&lt;(), RouteNonMatch&gt; {
+        HeaderMap::borrow_from(state)
+            .get(ACCEPT)
+            .map(|header| {
+                <span class="comment">// parse mime types from the accept header
+                </span><span class="kw">let </span>acceptable = header
+                    .to_str()
+                    .map_err(|<span class="kw">_</span>| err(state))<span class="question-mark">?
+                    </span>.split(<span class="string">&#39;,&#39;</span>)
+                    .map(|str| str.trim().parse())
+                    .collect::&lt;<span class="prelude-ty">Result</span>&lt;Vec&lt;QMime&gt;, <span class="kw">_</span>&gt;&gt;()
+                    .map_err(|<span class="kw">_</span>| err(state))<span class="question-mark">?</span>;
 
-                <span class="kw">for</span> <span class="ident">qmime</span> <span class="kw">in</span> <span class="ident">acceptable</span> {
-                    <span class="comment">// get mime type candidates from the lookup table</span>
-                    <span class="kw">let</span> <span class="ident">essence</span> <span class="op">=</span> <span class="ident">qmime</span>.<span class="ident">mime</span>.<span class="ident">essence_str</span>();
-                    <span class="kw">let</span> <span class="ident">candidates</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">lookup_table</span>.<span class="ident">get</span>(<span class="ident">essence</span>) {
-                        <span class="prelude-val">Some</span>(<span class="ident">candidates</span>) =&gt; <span class="ident">candidates</span>,
-                        <span class="prelude-val">None</span> =&gt; <span class="kw">continue</span>,
+                <span class="kw">for </span>qmime <span class="kw">in </span>acceptable {
+                    <span class="comment">// get mime type candidates from the lookup table
+                    </span><span class="kw">let </span>essence = qmime.mime.essence_str();
+                    <span class="kw">let </span>candidates = <span class="kw">match </span><span class="self">self</span>.lookup_table.get(essence) {
+                        <span class="prelude-val">Some</span>(candidates) =&gt; candidates,
+                        <span class="prelude-val">None </span>=&gt; <span class="kw">continue</span>,
                     };
-                    <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="ident">candidates</span> {
-                        <span class="kw">let</span> <span class="ident">candidate</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">supported_media_types</span>[<span class="kw-2">*</span><span class="ident">i</span>];
+                    <span class="kw">for </span>i <span class="kw">in </span>candidates {
+                        <span class="kw">let </span>candidate = <span class="kw-2">&amp;</span><span class="self">self</span>.supported_media_types[<span class="kw-2">*</span>i];
 
-                        <span class="comment">// check that the candidates have the same suffix - this is not included in the</span>
-                        <span class="comment">// essence string</span>
-                        <span class="kw">if</span> <span class="ident">candidate</span>.<span class="ident">suffix</span>() <span class="op">!</span><span class="op">=</span> <span class="ident">qmime</span>.<span class="ident">mime</span>.<span class="ident">suffix</span>() <span class="op">&amp;&amp;</span> <span class="ident">qmime</span>.<span class="ident">mime</span>.<span class="ident">subtype</span>() <span class="op">!</span><span class="op">=</span> <span class="string">&quot;*&quot;</span>
-                        {
+                        <span class="comment">// check that the candidates have the same suffix - this is not included in the
+                        // essence string
+                        </span><span class="kw">if </span>candidate.suffix() != qmime.mime.suffix() &amp;&amp; qmime.mime.subtype() != <span class="string">&quot;*&quot;
+                        </span>{
                             <span class="kw">continue</span>;
                         }
 
-                        <span class="comment">// this candidate matches - params don&#39;t play a role in accept header matching</span>
-                        <span class="kw">return</span> <span class="prelude-val">Ok</span>(());
+                        <span class="comment">// this candidate matches - params don&#39;t play a role in accept header matching
+                        </span><span class="kw">return </span><span class="prelude-val">Ok</span>(());
                     }
                 }
 
-                <span class="comment">// no candidates found</span>
-                <span class="prelude-val">Err</span>(<span class="ident">err</span>(<span class="ident">state</span>))
+                <span class="comment">// no candidates found
+                </span><span class="prelude-val">Err</span>(err(state))
             })
-            .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> {
-                <span class="comment">// no accept header - assume all types are acceptable</span>
-                <span class="prelude-val">Ok</span>(())
+            .unwrap_or_else(|| {
+                <span class="comment">// no accept header - assume all types are acceptable
+                </span><span class="prelude-val">Ok</span>(())
             })
     }
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">test</span> {
-    <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+<span class="attribute">#[cfg(test)]
+</span><span class="kw">mod </span>test {
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
 
-    <span class="kw">fn</span> <span class="ident">with_state</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="ident">accept</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">block</span>: <span class="ident">F</span>)
-    <span class="kw">where</span>
-        <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;mut</span> <span class="ident">State</span>),
+    <span class="kw">fn </span>with_state&lt;F&gt;(accept: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>str&gt;, block: F)
+    <span class="kw">where
+        </span>F: FnOnce(<span class="kw-2">&amp;mut </span>State),
     {
-        <span class="ident">State::with_new</span>(<span class="op">|</span><span class="ident">state</span><span class="op">|</span> {
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">headers</span> <span class="op">=</span> <span class="ident">HeaderMap::new</span>();
-            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">acc</span>) <span class="op">=</span> <span class="ident">accept</span> {
-                <span class="ident">headers</span>.<span class="ident">insert</span>(<span class="ident">ACCEPT</span>, <span class="ident">acc</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>());
+        State::with_new(|state| {
+            <span class="kw">let </span><span class="kw-2">mut </span>headers = HeaderMap::new();
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(acc) = accept {
+                headers.insert(ACCEPT, acc.parse().unwrap());
             }
-            <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">headers</span>);
-            <span class="ident">block</span>(<span class="ident">state</span>);
+            state.put(headers);
+            block(state);
         });
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">no_accept_header</span>() {
-        <span class="kw">let</span> <span class="ident">matcher</span> <span class="op">=</span> <span class="ident">AcceptHeaderRouteMatcher::new</span>(<span class="macro">vec!</span>[<span class="ident">mime::TEXT_PLAIN</span>]);
-        <span class="ident">with_state</span>(<span class="prelude-val">None</span>, <span class="op">|</span><span class="ident">state</span><span class="op">|</span> <span class="macro">assert!</span>(<span class="ident">matcher</span>.<span class="ident">is_match</span>(<span class="ident">state</span>).<span class="ident">is_ok</span>()));
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>no_accept_header() {
+        <span class="kw">let </span>matcher = AcceptHeaderRouteMatcher::new(<span class="macro">vec!</span>[mime::TEXT_PLAIN]);
+        with_state(<span class="prelude-val">None</span>, |state| <span class="macro">assert!</span>(matcher.is_match(state).is_ok()));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">single_mime_type</span>() {
-        <span class="kw">let</span> <span class="ident">matcher</span> <span class="op">=</span> <span class="ident">AcceptHeaderRouteMatcher::new</span>(<span class="macro">vec!</span>[<span class="ident">mime::TEXT_PLAIN</span>, <span class="ident">mime::IMAGE_PNG</span>]);
-        <span class="ident">with_state</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;text/plain&quot;</span>), <span class="op">|</span><span class="ident">state</span><span class="op">|</span> {
-            <span class="macro">assert!</span>(<span class="ident">matcher</span>.<span class="ident">is_match</span>(<span class="ident">state</span>).<span class="ident">is_ok</span>())
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>single_mime_type() {
+        <span class="kw">let </span>matcher = AcceptHeaderRouteMatcher::new(<span class="macro">vec!</span>[mime::TEXT_PLAIN, mime::IMAGE_PNG]);
+        with_state(<span class="prelude-val">Some</span>(<span class="string">&quot;text/plain&quot;</span>), |state| {
+            <span class="macro">assert!</span>(matcher.is_match(state).is_ok())
         });
-        <span class="ident">with_state</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;text/html&quot;</span>), <span class="op">|</span><span class="ident">state</span><span class="op">|</span> {
-            <span class="macro">assert!</span>(<span class="ident">matcher</span>.<span class="ident">is_match</span>(<span class="ident">state</span>).<span class="ident">is_err</span>())
+        with_state(<span class="prelude-val">Some</span>(<span class="string">&quot;text/html&quot;</span>), |state| {
+            <span class="macro">assert!</span>(matcher.is_match(state).is_err())
         });
-        <span class="ident">with_state</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;image/png&quot;</span>), <span class="op">|</span><span class="ident">state</span><span class="op">|</span> {
-            <span class="macro">assert!</span>(<span class="ident">matcher</span>.<span class="ident">is_match</span>(<span class="ident">state</span>).<span class="ident">is_ok</span>())
+        with_state(<span class="prelude-val">Some</span>(<span class="string">&quot;image/png&quot;</span>), |state| {
+            <span class="macro">assert!</span>(matcher.is_match(state).is_ok())
         });
-        <span class="ident">with_state</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;image/webp&quot;</span>), <span class="op">|</span><span class="ident">state</span><span class="op">|</span> {
-            <span class="macro">assert!</span>(<span class="ident">matcher</span>.<span class="ident">is_match</span>(<span class="ident">state</span>).<span class="ident">is_err</span>())
-        });
-    }
-
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">star_star</span>() {
-        <span class="kw">let</span> <span class="ident">matcher</span> <span class="op">=</span> <span class="ident">AcceptHeaderRouteMatcher::new</span>(<span class="macro">vec!</span>[<span class="ident">mime::IMAGE_PNG</span>]);
-        <span class="ident">with_state</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;*/*&quot;</span>), <span class="op">|</span><span class="ident">state</span><span class="op">|</span> {
-            <span class="macro">assert!</span>(<span class="ident">matcher</span>.<span class="ident">is_match</span>(<span class="ident">state</span>).<span class="ident">is_ok</span>())
+        with_state(<span class="prelude-val">Some</span>(<span class="string">&quot;image/webp&quot;</span>), |state| {
+            <span class="macro">assert!</span>(matcher.is_match(state).is_err())
         });
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">image_star</span>() {
-        <span class="kw">let</span> <span class="ident">matcher</span> <span class="op">=</span> <span class="ident">AcceptHeaderRouteMatcher::new</span>(<span class="macro">vec!</span>[<span class="ident">mime::IMAGE_PNG</span>]);
-        <span class="ident">with_state</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;image/*&quot;</span>), <span class="op">|</span><span class="ident">state</span><span class="op">|</span> {
-            <span class="macro">assert!</span>(<span class="ident">matcher</span>.<span class="ident">is_match</span>(<span class="ident">state</span>).<span class="ident">is_ok</span>())
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>star_star() {
+        <span class="kw">let </span>matcher = AcceptHeaderRouteMatcher::new(<span class="macro">vec!</span>[mime::IMAGE_PNG]);
+        with_state(<span class="prelude-val">Some</span>(<span class="string">&quot;*/*&quot;</span>), |state| {
+            <span class="macro">assert!</span>(matcher.is_match(state).is_ok())
         });
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">suffix_matched_by_wildcard</span>() {
-        <span class="kw">let</span> <span class="ident">matcher</span> <span class="op">=</span> <span class="ident">AcceptHeaderRouteMatcher::new</span>(<span class="macro">vec!</span>[<span class="string">&quot;application/rss+xml&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>()]);
-        <span class="ident">with_state</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;*/*&quot;</span>), <span class="op">|</span><span class="ident">state</span><span class="op">|</span> {
-            <span class="macro">assert!</span>(<span class="ident">matcher</span>.<span class="ident">is_match</span>(<span class="ident">state</span>).<span class="ident">is_ok</span>())
-        });
-        <span class="ident">with_state</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;application/*&quot;</span>), <span class="op">|</span><span class="ident">state</span><span class="op">|</span> {
-            <span class="macro">assert!</span>(<span class="ident">matcher</span>.<span class="ident">is_match</span>(<span class="ident">state</span>).<span class="ident">is_ok</span>())
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>image_star() {
+        <span class="kw">let </span>matcher = AcceptHeaderRouteMatcher::new(<span class="macro">vec!</span>[mime::IMAGE_PNG]);
+        with_state(<span class="prelude-val">Some</span>(<span class="string">&quot;image/*&quot;</span>), |state| {
+            <span class="macro">assert!</span>(matcher.is_match(state).is_ok())
         });
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">complex_header</span>() {
-        <span class="kw">let</span> <span class="ident">matcher</span> <span class="op">=</span> <span class="ident">AcceptHeaderRouteMatcher::new</span>(<span class="macro">vec!</span>[<span class="ident">mime::IMAGE_PNG</span>]);
-        <span class="ident">with_state</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;text/html,image/webp;q=0.8&quot;</span>), <span class="op">|</span><span class="ident">state</span><span class="op">|</span> {
-            <span class="macro">assert!</span>(<span class="ident">matcher</span>.<span class="ident">is_match</span>(<span class="ident">state</span>).<span class="ident">is_err</span>())
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>suffix_matched_by_wildcard() {
+        <span class="kw">let </span>matcher = AcceptHeaderRouteMatcher::new(<span class="macro">vec!</span>[<span class="string">&quot;application/rss+xml&quot;</span>.parse().unwrap()]);
+        with_state(<span class="prelude-val">Some</span>(<span class="string">&quot;*/*&quot;</span>), |state| {
+            <span class="macro">assert!</span>(matcher.is_match(state).is_ok())
         });
-        <span class="ident">with_state</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;text/html,image/webp;q=0.8,*/*;q=0.1&quot;</span>), <span class="op">|</span><span class="ident">state</span><span class="op">|</span> {
-            <span class="macro">assert!</span>(<span class="ident">matcher</span>.<span class="ident">is_match</span>(<span class="ident">state</span>).<span class="ident">is_ok</span>())
+        with_state(<span class="prelude-val">Some</span>(<span class="string">&quot;application/*&quot;</span>), |state| {
+            <span class="macro">assert!</span>(matcher.is_match(state).is_ok())
+        });
+    }
+
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>complex_header() {
+        <span class="kw">let </span>matcher = AcceptHeaderRouteMatcher::new(<span class="macro">vec!</span>[mime::IMAGE_PNG]);
+        with_state(<span class="prelude-val">Some</span>(<span class="string">&quot;text/html,image/webp;q=0.8&quot;</span>), |state| {
+            <span class="macro">assert!</span>(matcher.is_match(state).is_err())
+        });
+        with_state(<span class="prelude-val">Some</span>(<span class="string">&quot;text/html,image/webp;q=0.8,*/*;q=0.1&quot;</span>), |state| {
+            <span class="macro">assert!</span>(matcher.is_match(state).is_ok())
         });
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

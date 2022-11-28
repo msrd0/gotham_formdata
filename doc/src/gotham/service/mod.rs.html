@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/service/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/service/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -122,129 +122,129 @@
 <span id="122">122</span>
 <span id="123">123</span>
 <span id="124">124</span>
-</pre><pre class="rust"><code><span class="doccomment">//! Defines the `GothamService` type which is used to wrap a Gotham application and interface with</span>
-<span class="doccomment">//! Hyper.</span>
+</pre><pre class="rust"><code><span class="doccomment">//! Defines the `GothamService` type which is used to wrap a Gotham application and interface with
+//! Hyper.
 
-<span class="kw">use</span> <span class="ident">std::net::SocketAddr</span>;
-<span class="kw">use</span> <span class="ident">std::panic::AssertUnwindSafe</span>;
-<span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
-<span class="kw">use</span> <span class="ident">std::task</span>::{<span class="self">self</span>, <span class="ident">Poll</span>};
+</span><span class="kw">use </span>std::net::SocketAddr;
+<span class="kw">use </span>std::panic::AssertUnwindSafe;
+<span class="kw">use </span>std::sync::Arc;
+<span class="kw">use </span>std::task::{<span class="self">self</span>, Poll};
 
-<span class="kw">use</span> <span class="ident">futures_util::future</span>::{<span class="ident">BoxFuture</span>, <span class="ident">FutureExt</span>};
-<span class="kw">use</span> <span class="ident">hyper::service::Service</span>;
-<span class="kw">use</span> <span class="ident">hyper</span>::{<span class="ident">Body</span>, <span class="ident">Request</span>, <span class="ident">Response</span>};
+<span class="kw">use </span>futures_util::future::{BoxFuture, FutureExt};
+<span class="kw">use </span>hyper::service::Service;
+<span class="kw">use </span>hyper::{Body, Request, Response};
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::handler::NewHandler</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state::State</span>;
+<span class="kw">use </span><span class="kw">crate</span>::handler::NewHandler;
+<span class="kw">use </span><span class="kw">crate</span>::state::State;
 
-<span class="kw">mod</span> <span class="ident">trap</span>;
+<span class="kw">mod </span>trap;
 
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">trap::call_handler</span>;
+<span class="kw">pub use </span>trap::call_handler;
 
-<span class="doccomment">/// Wraps a `NewHandler` which will be used to serve requests. Used in `gotham::os::*` to bind</span>
-<span class="doccomment">/// incoming connections to `ConnectedGothamService` values.</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct</span> <span class="ident">GothamService</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">T</span>: <span class="ident">NewHandler</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+<span class="doccomment">/// Wraps a `NewHandler` which will be used to serve requests. Used in `gotham::os::*` to bind
+/// incoming connections to `ConnectedGothamService` values.
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct </span>GothamService&lt;T&gt;
+<span class="kw">where
+    </span>T: NewHandler + <span class="lifetime">&#39;static</span>,
 {
-    <span class="ident">handler</span>: <span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
+    handler: Arc&lt;T&gt;,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">GothamService</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">T</span>: <span class="ident">NewHandler</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+<span class="kw">impl</span>&lt;T&gt; GothamService&lt;T&gt;
+<span class="kw">where
+    </span>T: NewHandler + <span class="lifetime">&#39;static</span>,
 {
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">handler</span>: <span class="ident">T</span>) -&gt; <span class="ident">GothamService</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-        <span class="ident">GothamService</span> {
-            <span class="ident">handler</span>: <span class="ident">Arc::new</span>(<span class="ident">handler</span>),
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>new(handler: T) -&gt; GothamService&lt;T&gt; {
+        GothamService {
+            handler: Arc::new(handler),
         }
     }
 
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">connect</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">client_addr</span>: <span class="ident">SocketAddr</span>) -&gt; <span class="ident">ConnectedGothamService</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-        <span class="ident">ConnectedGothamService</span> {
-            <span class="ident">client_addr</span>,
-            <span class="ident">handler</span>: <span class="self">self</span>.<span class="ident">handler</span>.<span class="ident">clone</span>(),
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>connect(<span class="kw-2">&amp;</span><span class="self">self</span>, client_addr: SocketAddr) -&gt; ConnectedGothamService&lt;T&gt; {
+        ConnectedGothamService {
+            client_addr,
+            handler: <span class="self">self</span>.handler.clone(),
         }
     }
 }
 
-<span class="doccomment">/// A `GothamService` which has been connected to a client. The major difference is that a</span>
-<span class="doccomment">/// `client_addr` has been assigned (as this isn&#39;t available from Hyper).</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct</span> <span class="ident">ConnectedGothamService</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">T</span>: <span class="ident">NewHandler</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+<span class="doccomment">/// A `GothamService` which has been connected to a client. The major difference is that a
+/// `client_addr` has been assigned (as this isn&#39;t available from Hyper).
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct </span>ConnectedGothamService&lt;T&gt;
+<span class="kw">where
+    </span>T: NewHandler + <span class="lifetime">&#39;static</span>,
 {
-    <span class="ident">handler</span>: <span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
-    <span class="ident">client_addr</span>: <span class="ident">SocketAddr</span>,
+    handler: Arc&lt;T&gt;,
+    client_addr: SocketAddr,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">Service</span><span class="op">&lt;</span><span class="ident">Request</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">ConnectedGothamService</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">T</span>: <span class="ident">NewHandler</span>,
+<span class="kw">impl</span>&lt;T&gt; Service&lt;Request&lt;Body&gt;&gt; <span class="kw">for </span>ConnectedGothamService&lt;T&gt;
+<span class="kw">where
+    </span>T: NewHandler,
 {
-    <span class="kw">type</span> <span class="ident">Response</span> <span class="op">=</span> <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>;
-    <span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> <span class="ident">anyhow::Error</span>;
-    <span class="kw">type</span> <span class="ident">Future</span> <span class="op">=</span> <span class="ident">BoxFuture</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Response</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span><span class="op">&gt;</span>;
+    <span class="kw">type </span>Response = Response&lt;Body&gt;;
+    <span class="kw">type </span>Error = anyhow::Error;
+    <span class="kw">type </span>Future = BoxFuture&lt;<span class="lifetime">&#39;static</span>, <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>::Response, <span class="self">Self</span>::Error&gt;&gt;;
 
-    <span class="kw">fn</span> <span class="ident">poll_ready</span>(
-        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
-        <span class="ident">_cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">task::Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
-    ) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident">std::result::Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="ident">Poll::Ready</span>(<span class="prelude-val">Ok</span>(()))
+    <span class="kw">fn </span>poll_ready(
+        <span class="kw-2">&amp;mut </span><span class="self">self</span>,
+        _cx: <span class="kw-2">&amp;mut </span>task::Context&lt;<span class="lifetime">&#39;_</span>&gt;,
+    ) -&gt; Poll&lt;std::result::Result&lt;(), <span class="self">Self</span>::Error&gt;&gt; {
+        Poll::Ready(<span class="prelude-val">Ok</span>(()))
     }
 
-    <span class="kw">fn</span> <span class="ident">call</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">req</span>: <span class="ident">Request</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) -&gt; <span class="ident"><span class="self">Self</span>::Future</span> {
-        <span class="kw">let</span> <span class="ident">state</span> <span class="op">=</span> <span class="ident">State::from_request</span>(<span class="ident">req</span>, <span class="self">self</span>.<span class="ident">client_addr</span>);
-        <span class="ident">call_handler</span>(<span class="self">self</span>.<span class="ident">handler</span>.<span class="ident">clone</span>(), <span class="ident">AssertUnwindSafe</span>(<span class="ident">state</span>)).<span class="ident">boxed</span>()
+    <span class="kw">fn </span>call&lt;<span class="lifetime">&#39;a</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span><span class="self">self</span>, req: Request&lt;Body&gt;) -&gt; <span class="self">Self</span>::Future {
+        <span class="kw">let </span>state = State::from_request(req, <span class="self">self</span>.client_addr);
+        call_handler(<span class="self">self</span>.handler.clone(), AssertUnwindSafe(state)).boxed()
     }
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">tests</span> {
-    <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+<span class="attribute">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
 
-    <span class="kw">use</span> <span class="ident">hyper</span>::{<span class="ident">Body</span>, <span class="ident">StatusCode</span>};
+    <span class="kw">use </span>hyper::{Body, StatusCode};
 
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::helpers::http::response::create_empty_response</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::builder</span>::<span class="kw-2">*</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state::State</span>;
+    <span class="kw">use </span><span class="kw">crate</span>::helpers::http::response::create_empty_response;
+    <span class="kw">use </span><span class="kw">crate</span>::router::builder::<span class="kw-2">*</span>;
+    <span class="kw">use </span><span class="kw">crate</span>::state::State;
 
-    <span class="kw">fn</span> <span class="ident">handler</span>(<span class="ident">state</span>: <span class="ident">State</span>) -&gt; (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
-        <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">create_empty_response</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>, <span class="ident">StatusCode::ACCEPTED</span>);
-        (<span class="ident">state</span>, <span class="ident">res</span>)
+    <span class="kw">fn </span>handler(state: State) -&gt; (State, Response&lt;Body&gt;) {
+        <span class="kw">let </span>res = create_empty_response(<span class="kw-2">&amp;</span>state, StatusCode::ACCEPTED);
+        (state, res)
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">new_handler_closure</span>() {
-        <span class="kw">let</span> <span class="ident">service</span> <span class="op">=</span> <span class="ident">GothamService::new</span>(<span class="op">|</span><span class="op">|</span> <span class="prelude-val">Ok</span>(<span class="ident">handler</span>));
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>new_handler_closure() {
+        <span class="kw">let </span>service = GothamService::new(|| <span class="prelude-val">Ok</span>(handler));
 
-        <span class="kw">let</span> <span class="ident">req</span> <span class="op">=</span> <span class="ident">Request::get</span>(<span class="string">&quot;http://localhost/&quot;</span>)
-            .<span class="ident">body</span>(<span class="ident">Body::empty</span>())
-            .<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">service</span>
-            .<span class="ident">connect</span>(<span class="string">&quot;127.0.0.1:10000&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>())
-            .<span class="ident">call</span>(<span class="ident">req</span>);
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">futures_executor::block_on</span>(<span class="ident">f</span>).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">status</span>(), <span class="ident">StatusCode::ACCEPTED</span>);
+        <span class="kw">let </span>req = Request::get(<span class="string">&quot;http://localhost/&quot;</span>)
+            .body(Body::empty())
+            .unwrap();
+        <span class="kw">let </span>f = service
+            .connect(<span class="string">&quot;127.0.0.1:10000&quot;</span>.parse().unwrap())
+            .call(req);
+        <span class="kw">let </span>response = futures_executor::block_on(f).unwrap();
+        <span class="macro">assert_eq!</span>(response.status(), StatusCode::ACCEPTED);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">router</span>() {
-        <span class="kw">let</span> <span class="ident">router</span> <span class="op">=</span> <span class="ident">build_simple_router</span>(<span class="op">|</span><span class="ident">route</span><span class="op">|</span> {
-            <span class="ident">route</span>.<span class="ident">get</span>(<span class="string">&quot;/&quot;</span>).<span class="ident">to</span>(<span class="ident">handler</span>);
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>router() {
+        <span class="kw">let </span>router = build_simple_router(|route| {
+            route.get(<span class="string">&quot;/&quot;</span>).to(handler);
         });
 
-        <span class="kw">let</span> <span class="ident">service</span> <span class="op">=</span> <span class="ident">GothamService::new</span>(<span class="ident">router</span>);
+        <span class="kw">let </span>service = GothamService::new(router);
 
-        <span class="kw">let</span> <span class="ident">req</span> <span class="op">=</span> <span class="ident">Request::get</span>(<span class="string">&quot;http://localhost/&quot;</span>)
-            .<span class="ident">body</span>(<span class="ident">Body::empty</span>())
-            .<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">service</span>
-            .<span class="ident">connect</span>(<span class="string">&quot;127.0.0.1:10000&quot;</span>.<span class="ident">parse</span>().<span class="ident">unwrap</span>())
-            .<span class="ident">call</span>(<span class="ident">req</span>);
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">futures_executor::block_on</span>(<span class="ident">f</span>).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">status</span>(), <span class="ident">StatusCode::ACCEPTED</span>);
+        <span class="kw">let </span>req = Request::get(<span class="string">&quot;http://localhost/&quot;</span>)
+            .body(Body::empty())
+            .unwrap();
+        <span class="kw">let </span>f = service
+            .connect(<span class="string">&quot;127.0.0.1:10000&quot;</span>.parse().unwrap())
+            .call(req);
+        <span class="kw">let </span>response = futures_executor::block_on(f).unwrap();
+        <span class="macro">assert_eq!</span>(response.status(), StatusCode::ACCEPTED);
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

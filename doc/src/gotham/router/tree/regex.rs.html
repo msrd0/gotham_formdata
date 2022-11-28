@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/router/tree/regex.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>regex.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../gotham/index.html"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/router/tree/regex.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>regex.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../../normalize.css"><link rel="stylesheet" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../../ayu.css" disabled><link rel="stylesheet" href="../../../../dark.css" disabled><link rel="stylesheet" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../gotham/index.html"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -67,74 +67,74 @@
 <span id="67">67</span>
 <span id="68">68</span>
 <span id="69">69</span>
-</pre><pre class="rust"><code><span class="doccomment">//! Defines the wrapping type for a segment-matching regex.</span>
+</pre><pre class="rust"><code><span class="doccomment">//! Defines the wrapping type for a segment-matching regex.
 
-<span class="kw">use</span> <span class="ident">regex::Regex</span>;
+</span><span class="kw">use </span>regex::Regex;
 
-<span class="kw">use</span> <span class="ident">std::cmp::Ordering</span>;
-<span class="kw">use</span> <span class="ident">std::panic::AssertUnwindSafe</span>;
+<span class="kw">use </span>std::cmp::Ordering;
+<span class="kw">use </span>std::panic::AssertUnwindSafe;
 
-<span class="doccomment">/// A unwind-safe wrapper for Regex that implements PartialEq, Eq, PartialOrd, and Ord.  These</span>
-<span class="doccomment">/// traits are implemented in a potentially error-prone way by comparing the underlying &amp;str</span>
-<span class="doccomment">/// representations of the regular expression.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// If the `ConstrainedSegmentRegex::is_match` traps a panic from `Regex::is_match`,</span>
-<span class="doccomment">/// `std::process::abort()` will be called and the program will terminate.</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ConstrainedSegmentRegex</span> {
-    <span class="ident">regex</span>: <span class="ident">AssertUnwindSafe</span><span class="op">&lt;</span><span class="ident">Regex</span><span class="op">&gt;</span>,
+<span class="doccomment">/// A unwind-safe wrapper for Regex that implements PartialEq, Eq, PartialOrd, and Ord.  These
+/// traits are implemented in a potentially error-prone way by comparing the underlying &amp;str
+/// representations of the regular expression.
+///
+/// If the `ConstrainedSegmentRegex::is_match` traps a panic from `Regex::is_match`,
+/// `std::process::abort()` will be called and the program will terminate.
+</span><span class="kw">pub struct </span>ConstrainedSegmentRegex {
+    regex: AssertUnwindSafe&lt;Regex&gt;,
 }
 
-<span class="kw">impl</span> <span class="ident">ConstrainedSegmentRegex</span> {
-    <span class="doccomment">/// Creates a new ConstrainedSegmentRegex from a provided string.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// It wraps the string in begin and end of line anchors to prevent it from matching more than</span>
-    <span class="doccomment">/// intended.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">regex</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">ConstrainedSegmentRegex</span> {
-            <span class="ident">regex</span>: <span class="ident">AssertUnwindSafe</span>(<span class="ident">Regex::new</span>(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">&quot;^{}$&quot;</span>, <span class="ident">regex</span>)).<span class="ident">unwrap</span>()),
+<span class="kw">impl </span>ConstrainedSegmentRegex {
+    <span class="doccomment">/// Creates a new ConstrainedSegmentRegex from a provided string.
+    ///
+    /// It wraps the string in begin and end of line anchors to prevent it from matching more than
+    /// intended.
+    </span><span class="kw">pub fn </span>new(regex: <span class="kw-2">&amp;</span>str) -&gt; <span class="self">Self </span>{
+        ConstrainedSegmentRegex {
+            regex: AssertUnwindSafe(Regex::new(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">&quot;^{}$&quot;</span>, regex)).unwrap()),
         }
     }
 
-    <span class="doccomment">/// Returns the pattern backing this regex as a `&amp;str`.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">as_str</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">str</span> {
-        <span class="self">self</span>.<span class="ident">regex</span>.<span class="ident">as_str</span>()
+    <span class="doccomment">/// Returns the pattern backing this regex as a `&amp;str`.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>as_str(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>str {
+        <span class="self">self</span>.regex.as_str()
     }
 
-    <span class="doccomment">/// Wraps `regex::Regex::is_match` to return true if and only if the regex matches the string</span>
-    <span class="doccomment">/// given.</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">is_match</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">regex</span>.<span class="ident">is_match</span>(<span class="ident">s</span>)
-    }
-}
-
-<span class="kw">impl</span> <span class="ident">PartialEq</span> <span class="kw">for</span> <span class="ident">ConstrainedSegmentRegex</span> {
-    <span class="kw">fn</span> <span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="self">Self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">regex</span>.<span class="ident">as_str</span>() <span class="op">==</span> <span class="ident">other</span>.<span class="ident">regex</span>.<span class="ident">as_str</span>()
+    <span class="doccomment">/// Wraps `regex::Regex::is_match` to return true if and only if the regex matches the string
+    /// given.
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>is_match(<span class="kw-2">&amp;</span><span class="self">self</span>, s: <span class="kw-2">&amp;</span>str) -&gt; bool {
+        <span class="self">self</span>.regex.is_match(s)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Eq</span> <span class="kw">for</span> <span class="ident">ConstrainedSegmentRegex</span> {}
-
-<span class="kw">impl</span> <span class="ident">PartialOrd</span> <span class="kw">for</span> <span class="ident">ConstrainedSegmentRegex</span> {
-    <span class="kw">fn</span> <span class="ident">partial_cmp</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="ident">ConstrainedSegmentRegex</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Ordering</span><span class="op">&gt;</span> {
-        <span class="prelude-val">Some</span>(<span class="self">self</span>.<span class="ident">as_str</span>().<span class="ident">cmp</span>(<span class="ident">other</span>.<span class="ident">as_str</span>()))
+<span class="kw">impl </span>PartialEq <span class="kw">for </span>ConstrainedSegmentRegex {
+    <span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span><span class="self">Self</span>) -&gt; bool {
+        <span class="self">self</span>.regex.as_str() == other.regex.as_str()
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Ord</span> <span class="kw">for</span> <span class="ident">ConstrainedSegmentRegex</span> {
-    <span class="kw">fn</span> <span class="ident">cmp</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="self">Self</span>) -&gt; <span class="ident">Ordering</span> {
-        <span class="self">self</span>.<span class="ident">as_str</span>().<span class="ident">cmp</span>(<span class="ident">other</span>.<span class="ident">as_str</span>())
+<span class="kw">impl </span>Eq <span class="kw">for </span>ConstrainedSegmentRegex {}
+
+<span class="kw">impl </span>PartialOrd <span class="kw">for </span>ConstrainedSegmentRegex {
+    <span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>ConstrainedSegmentRegex) -&gt; <span class="prelude-ty">Option</span>&lt;Ordering&gt; {
+        <span class="prelude-val">Some</span>(<span class="self">self</span>.as_str().cmp(other.as_str()))
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Clone</span> <span class="kw">for</span> <span class="ident">ConstrainedSegmentRegex</span> {
-    <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">ConstrainedSegmentRegex</span> {
-        <span class="ident">ConstrainedSegmentRegex</span> {
-            <span class="ident">regex</span>: <span class="ident">AssertUnwindSafe</span>(<span class="self">self</span>.<span class="ident">regex</span>.<span class="number">0</span>.<span class="ident">clone</span>()),
+<span class="kw">impl </span>Ord <span class="kw">for </span>ConstrainedSegmentRegex {
+    <span class="kw">fn </span>cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span><span class="self">Self</span>) -&gt; Ordering {
+        <span class="self">self</span>.as_str().cmp(other.as_str())
+    }
+}
+
+<span class="kw">impl </span>Clone <span class="kw">for </span>ConstrainedSegmentRegex {
+    <span class="kw">fn </span>clone(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; ConstrainedSegmentRegex {
+        ConstrainedSegmentRegex {
+            regex: AssertUnwindSafe(<span class="self">self</span>.regex.<span class="number">0</span>.clone()),
         }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/multer-2.0.4/src/multipart.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>multipart.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../multer/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../multer/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../multer/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/multer-2.0.4/src/multipart.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>multipart.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../multer/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../multer/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../multer/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -457,464 +457,464 @@
 <span id="457">457</span>
 <span id="458">458</span>
 <span id="459">459</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
-<span class="kw">use</span> <span class="ident">std::task</span>::{<span class="ident">Context</span>, <span class="ident">Poll</span>};
+</pre><pre class="rust"><code><span class="kw">use </span>std::sync::Arc;
+<span class="kw">use </span>std::task::{Context, Poll};
 
-<span class="kw">use</span> <span class="ident">bytes::Bytes</span>;
-<span class="kw">use</span> <span class="ident">futures_util::future</span>;
-<span class="kw">use</span> <span class="ident">futures_util::stream</span>::{<span class="ident">Stream</span>, <span class="ident">TryStreamExt</span>};
-<span class="kw">use</span> <span class="ident">spin::mutex::spin::SpinMutex</span> <span class="kw">as</span> <span class="ident">Mutex</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;tokio-io&quot;</span>)]</span>
-<span class="kw">use</span> {<span class="ident">tokio::io::AsyncRead</span>, <span class="ident">tokio_util::io::ReaderStream</span>};
+<span class="kw">use </span>bytes::Bytes;
+<span class="kw">use </span>futures_util::future;
+<span class="kw">use </span>futures_util::stream::{Stream, TryStreamExt};
+<span class="kw">use </span>spin::mutex::spin::SpinMutex <span class="kw">as </span>Mutex;
+<span class="attribute">#[cfg(feature = <span class="string">&quot;tokio-io&quot;</span>)]
+</span><span class="kw">use </span>{tokio::io::AsyncRead, tokio_util::io::ReaderStream};
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::buffer::StreamBuffer</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::constraints::Constraints</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::content_disposition::ContentDisposition</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::error::Error</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::field::Field</span>;
-<span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">constants</span>, <span class="ident">helpers</span>, <span class="prelude-ty">Result</span>};
+<span class="kw">use </span><span class="kw">crate</span>::buffer::StreamBuffer;
+<span class="kw">use </span><span class="kw">crate</span>::constraints::Constraints;
+<span class="kw">use </span><span class="kw">crate</span>::content_disposition::ContentDisposition;
+<span class="kw">use </span><span class="kw">crate</span>::error::Error;
+<span class="kw">use </span><span class="kw">crate</span>::field::Field;
+<span class="kw">use crate</span>::{constants, helpers, <span class="prelude-ty">Result</span>};
 
-<span class="doccomment">/// Represents the implementation of `multipart/form-data` formatted data.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// This will parse the source stream into [`Field`] instances via</span>
-<span class="doccomment">/// [`next_field()`](Self::next_field).</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Field Exclusivity</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// A `Field` represents a raw, self-decoding stream into multipart data. As</span>
-<span class="doccomment">/// such, only _one_ `Field` from a given `Multipart` instance may be live at</span>
-<span class="doccomment">/// once. That is, a `Field` emitted by `next_field()` must be dropped before</span>
-<span class="doccomment">/// calling `next_field()` again. Failure to do so will result in an error.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// use std::convert::Infallible;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// use bytes::Bytes;</span>
-<span class="doccomment">/// use futures_util::stream::once;</span>
-<span class="doccomment">/// use multer::Multipart;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # async fn run() {</span>
-<span class="doccomment">/// let data = &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; \</span>
-<span class="doccomment">///     name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// let stream = once(async move { Result::&lt;Bytes, Infallible&gt;::Ok(Bytes::from(data)) });</span>
-<span class="doccomment">/// let mut multipart = Multipart::new(stream, &quot;X-BOUNDARY&quot;);</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// let field1 = multipart.next_field().await;</span>
-<span class="doccomment">/// let field2 = multipart.next_field().await;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// assert!(field2.is_err());</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// # tokio::runtime::Runtime::new().unwrap().block_on(run());</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">/// use std::convert::Infallible;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// use bytes::Bytes;</span>
-<span class="doccomment">/// use futures_util::stream::once;</span>
-<span class="doccomment">/// use multer::Multipart;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # async fn run() {</span>
-<span class="doccomment">/// let data = &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; \</span>
-<span class="doccomment">///     name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// let stream = once(async move { Result::&lt;Bytes, Infallible&gt;::Ok(Bytes::from(data)) });</span>
-<span class="doccomment">/// let mut multipart = Multipart::new(stream, &quot;X-BOUNDARY&quot;);</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// while let Some(field) = multipart.next_field().await.unwrap() {</span>
-<span class="doccomment">///     println!(&quot;Field: {:?}&quot;, field.text().await)</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// # tokio::runtime::Runtime::new().unwrap().block_on(run());</span>
-<span class="doccomment">/// ```</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Multipart</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span> {
-    <span class="ident">state</span>: <span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">Mutex</span><span class="op">&lt;</span><span class="ident">MultipartState</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Represents the implementation of `multipart/form-data` formatted data.
+///
+/// This will parse the source stream into [`Field`] instances via
+/// [`next_field()`](Self::next_field).
+///
+/// # Field Exclusivity
+///
+/// A `Field` represents a raw, self-decoding stream into multipart data. As
+/// such, only _one_ `Field` from a given `Multipart` instance may be live at
+/// once. That is, a `Field` emitted by `next_field()` must be dropped before
+/// calling `next_field()` again. Failure to do so will result in an error.
+///
+/// ```rust
+/// use std::convert::Infallible;
+///
+/// use bytes::Bytes;
+/// use futures_util::stream::once;
+/// use multer::Multipart;
+///
+/// # async fn run() {
+/// let data = &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; \
+///     name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;
+///
+/// let stream = once(async move { Result::&lt;Bytes, Infallible&gt;::Ok(Bytes::from(data)) });
+/// let mut multipart = Multipart::new(stream, &quot;X-BOUNDARY&quot;);
+///
+/// let field1 = multipart.next_field().await;
+/// let field2 = multipart.next_field().await;
+///
+/// assert!(field2.is_err());
+/// # }
+/// # tokio::runtime::Runtime::new().unwrap().block_on(run());
+/// ```
+///
+/// # Examples
+///
+/// ```
+/// use std::convert::Infallible;
+///
+/// use bytes::Bytes;
+/// use futures_util::stream::once;
+/// use multer::Multipart;
+///
+/// # async fn run() {
+/// let data = &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; \
+///     name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;
+///
+/// let stream = once(async move { Result::&lt;Bytes, Infallible&gt;::Ok(Bytes::from(data)) });
+/// let mut multipart = Multipart::new(stream, &quot;X-BOUNDARY&quot;);
+///
+/// while let Some(field) = multipart.next_field().await.unwrap() {
+///     println!(&quot;Field: {:?}&quot;, field.text().await)
+/// }
+/// # }
+/// # tokio::runtime::Runtime::new().unwrap().block_on(run());
+/// ```
+</span><span class="attribute">#[derive(Debug)]
+</span><span class="kw">pub struct </span>Multipart&lt;<span class="lifetime">&#39;r</span>&gt; {
+    state: Arc&lt;Mutex&lt;MultipartState&lt;<span class="lifetime">&#39;r</span>&gt;&gt;&gt;,
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct</span> <span class="ident">MultipartState</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span> {
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">buffer</span>: <span class="ident">StreamBuffer</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">boundary</span>: <span class="ident">String</span>,
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">stage</span>: <span class="ident">StreamingStage</span>,
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">next_field_idx</span>: <span class="ident">usize</span>,
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">curr_field_name</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">curr_field_size_limit</span>: <span class="ident">u64</span>,
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">curr_field_size_counter</span>: <span class="ident">u64</span>,
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">constraints</span>: <span class="ident">Constraints</span>,
+<span class="attribute">#[derive(Debug)]
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct </span>MultipartState&lt;<span class="lifetime">&#39;r</span>&gt; {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) buffer: StreamBuffer&lt;<span class="lifetime">&#39;r</span>&gt;,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) boundary: String,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) stage: StreamingStage,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) next_field_idx: usize,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) curr_field_name: <span class="prelude-ty">Option</span>&lt;String&gt;,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) curr_field_size_limit: u64,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) curr_field_size_counter: u64,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) constraints: Constraints,
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">enum</span> <span class="ident">StreamingStage</span> {
-    <span class="ident">FindingFirstBoundary</span>,
-    <span class="ident">ReadingBoundary</span>,
-    <span class="ident">DeterminingBoundaryType</span>,
-    <span class="ident">ReadingTransportPadding</span>,
-    <span class="ident">ReadingFieldHeaders</span>,
-    <span class="ident">ReadingFieldData</span>,
-    <span class="ident">Eof</span>,
+<span class="attribute">#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">enum </span>StreamingStage {
+    FindingFirstBoundary,
+    ReadingBoundary,
+    DeterminingBoundaryType,
+    ReadingTransportPadding,
+    ReadingFieldHeaders,
+    ReadingFieldData,
+    Eof,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span> <span class="ident">Multipart</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// Construct a new `Multipart` instance with the given [`Bytes`] stream and</span>
-    <span class="doccomment">/// the boundary.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">S</span>, <span class="ident">O</span>, <span class="ident">E</span>, <span class="ident">B</span><span class="op">&gt;</span>(<span class="ident">stream</span>: <span class="ident">S</span>, <span class="ident">boundary</span>: <span class="ident">B</span>) -&gt; <span class="self">Self</span>
-    <span class="kw">where</span>
-        <span class="ident">S</span>: <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">O</span>, <span class="ident">E</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;r</span>,
-        <span class="ident">O</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Bytes</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-        <span class="ident">E</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">std::error::Error</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;r</span>,
-        <span class="ident">B</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;r</span>&gt; Multipart&lt;<span class="lifetime">&#39;r</span>&gt; {
+    <span class="doccomment">/// Construct a new `Multipart` instance with the given [`Bytes`] stream and
+    /// the boundary.
+    </span><span class="kw">pub fn </span>new&lt;S, O, E, B&gt;(stream: S, boundary: B) -&gt; <span class="self">Self
+    </span><span class="kw">where
+        </span>S: Stream&lt;Item = <span class="prelude-ty">Result</span>&lt;O, E&gt;&gt; + Send + <span class="lifetime">&#39;r</span>,
+        O: Into&lt;Bytes&gt; + <span class="lifetime">&#39;static</span>,
+        E: Into&lt;Box&lt;<span class="kw">dyn </span>std::error::Error + Send + Sync&gt;&gt; + <span class="lifetime">&#39;r</span>,
+        B: Into&lt;String&gt;,
     {
-        <span class="ident">Multipart::with_constraints</span>(<span class="ident">stream</span>, <span class="ident">boundary</span>, <span class="ident">Constraints::default</span>())
+        Multipart::with_constraints(stream, boundary, Constraints::default())
     }
 
-    <span class="doccomment">/// Construct a new `Multipart` instance with the given [`Bytes`] stream and</span>
-    <span class="doccomment">/// the boundary.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_constraints</span><span class="op">&lt;</span><span class="ident">S</span>, <span class="ident">O</span>, <span class="ident">E</span>, <span class="ident">B</span><span class="op">&gt;</span>(<span class="ident">stream</span>: <span class="ident">S</span>, <span class="ident">boundary</span>: <span class="ident">B</span>, <span class="ident">constraints</span>: <span class="ident">Constraints</span>) -&gt; <span class="self">Self</span>
-    <span class="kw">where</span>
-        <span class="ident">S</span>: <span class="ident">Stream</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">O</span>, <span class="ident">E</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;r</span>,
-        <span class="ident">O</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Bytes</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-        <span class="ident">E</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">std::error::Error</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;r</span>,
-        <span class="ident">B</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Construct a new `Multipart` instance with the given [`Bytes`] stream and
+    /// the boundary.
+    </span><span class="kw">pub fn </span>with_constraints&lt;S, O, E, B&gt;(stream: S, boundary: B, constraints: Constraints) -&gt; <span class="self">Self
+    </span><span class="kw">where
+        </span>S: Stream&lt;Item = <span class="prelude-ty">Result</span>&lt;O, E&gt;&gt; + Send + <span class="lifetime">&#39;r</span>,
+        O: Into&lt;Bytes&gt; + <span class="lifetime">&#39;static</span>,
+        E: Into&lt;Box&lt;<span class="kw">dyn </span>std::error::Error + Send + Sync&gt;&gt; + <span class="lifetime">&#39;r</span>,
+        B: Into&lt;String&gt;,
     {
-        <span class="kw">let</span> <span class="ident">stream</span> <span class="op">=</span> <span class="ident">stream</span>
-            .<span class="ident">map_ok</span>(<span class="op">|</span><span class="ident">b</span><span class="op">|</span> <span class="ident">b</span>.<span class="ident">into</span>())
-            .<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">err</span><span class="op">|</span> <span class="ident"><span class="kw">crate</span>::Error::StreamReadFailed</span>(<span class="ident">err</span>.<span class="ident">into</span>()));
+        <span class="kw">let </span>stream = stream
+            .map_ok(|b| b.into())
+            .map_err(|err| <span class="kw">crate</span>::Error::StreamReadFailed(err.into()));
 
-        <span class="ident">Multipart</span> {
-            <span class="ident">state</span>: <span class="ident">Arc::new</span>(<span class="ident">Mutex::new</span>(<span class="ident">MultipartState</span> {
-                <span class="ident">buffer</span>: <span class="ident">StreamBuffer::new</span>(<span class="ident">stream</span>, <span class="ident">constraints</span>.<span class="ident">size_limit</span>.<span class="ident">whole_stream</span>),
-                <span class="ident">boundary</span>: <span class="ident">boundary</span>.<span class="ident">into</span>(),
-                <span class="ident">stage</span>: <span class="ident">StreamingStage::FindingFirstBoundary</span>,
-                <span class="ident">next_field_idx</span>: <span class="number">0</span>,
-                <span class="ident">curr_field_name</span>: <span class="prelude-val">None</span>,
-                <span class="ident">curr_field_size_limit</span>: <span class="ident">constraints</span>.<span class="ident">size_limit</span>.<span class="ident">per_field</span>,
-                <span class="ident">curr_field_size_counter</span>: <span class="number">0</span>,
-                <span class="ident">constraints</span>,
+        Multipart {
+            state: Arc::new(Mutex::new(MultipartState {
+                buffer: StreamBuffer::new(stream, constraints.size_limit.whole_stream),
+                boundary: boundary.into(),
+                stage: StreamingStage::FindingFirstBoundary,
+                next_field_idx: <span class="number">0</span>,
+                curr_field_name: <span class="prelude-val">None</span>,
+                curr_field_size_limit: constraints.size_limit.per_field,
+                curr_field_size_counter: <span class="number">0</span>,
+                constraints,
             })),
         }
     }
 
-    <span class="doccomment">/// Construct a new `Multipart` instance with the given [`AsyncRead`] reader</span>
-    <span class="doccomment">/// and the boundary.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Optional</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This requires the optional `tokio-io` feature to be enabled.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use multer::Multipart;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # async fn run() {</span>
-    <span class="doccomment">/// let data =</span>
-    <span class="doccomment">///     &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;</span>
-    <span class="doccomment">/// let reader = data.as_bytes();</span>
-    <span class="doccomment">/// let mut multipart = Multipart::with_reader(reader, &quot;X-BOUNDARY&quot;);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// while let Some(mut field) = multipart.next_field().await.unwrap() {</span>
-    <span class="doccomment">///     while let Some(chunk) = field.chunk().await.unwrap() {</span>
-    <span class="doccomment">///         println!(&quot;Chunk: {:?}&quot;, chunk);</span>
-    <span class="doccomment">///     }</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// # tokio::runtime::Runtime::new().unwrap().block_on(run());</span>
-    <span class="doccomment">/// ```</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;tokio-io&quot;</span>)]</span>
-    <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">nightly</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;tokio-io&quot;</span>)))]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_reader</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">B</span><span class="op">&gt;</span>(<span class="ident">reader</span>: <span class="ident">R</span>, <span class="ident">boundary</span>: <span class="ident">B</span>) -&gt; <span class="self">Self</span>
-    <span class="kw">where</span>
-        <span class="ident">R</span>: <span class="ident">AsyncRead</span> <span class="op">+</span> <span class="ident">Unpin</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;r</span>,
-        <span class="ident">B</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Construct a new `Multipart` instance with the given [`AsyncRead`] reader
+    /// and the boundary.
+    ///
+    /// # Optional
+    ///
+    /// This requires the optional `tokio-io` feature to be enabled.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use multer::Multipart;
+    ///
+    /// # async fn run() {
+    /// let data =
+    ///     &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;
+    /// let reader = data.as_bytes();
+    /// let mut multipart = Multipart::with_reader(reader, &quot;X-BOUNDARY&quot;);
+    ///
+    /// while let Some(mut field) = multipart.next_field().await.unwrap() {
+    ///     while let Some(chunk) = field.chunk().await.unwrap() {
+    ///         println!(&quot;Chunk: {:?}&quot;, chunk);
+    ///     }
+    /// }
+    /// # }
+    /// # tokio::runtime::Runtime::new().unwrap().block_on(run());
+    /// ```
+    </span><span class="attribute">#[cfg(feature = <span class="string">&quot;tokio-io&quot;</span>)]
+    #[cfg_attr(nightly, doc(cfg(feature = <span class="string">&quot;tokio-io&quot;</span>)))]
+    </span><span class="kw">pub fn </span>with_reader&lt;R, B&gt;(reader: R, boundary: B) -&gt; <span class="self">Self
+    </span><span class="kw">where
+        </span>R: AsyncRead + Unpin + Send + <span class="lifetime">&#39;r</span>,
+        B: Into&lt;String&gt;,
     {
-        <span class="kw">let</span> <span class="ident">stream</span> <span class="op">=</span> <span class="ident">ReaderStream::new</span>(<span class="ident">reader</span>);
-        <span class="ident">Multipart::new</span>(<span class="ident">stream</span>, <span class="ident">boundary</span>)
+        <span class="kw">let </span>stream = ReaderStream::new(reader);
+        Multipart::new(stream, boundary)
     }
 
-    <span class="doccomment">/// Construct a new `Multipart` instance with the given [`AsyncRead`] reader</span>
-    <span class="doccomment">/// and the boundary.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Optional</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This requires the optional `tokio-io` feature to be enabled.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use multer::Multipart;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # async fn run() {</span>
-    <span class="doccomment">/// let data =</span>
-    <span class="doccomment">///     &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;</span>
-    <span class="doccomment">/// let reader = data.as_bytes();</span>
-    <span class="doccomment">/// let mut multipart = Multipart::with_reader(reader, &quot;X-BOUNDARY&quot;);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// while let Some(mut field) = multipart.next_field().await.unwrap() {</span>
-    <span class="doccomment">///     while let Some(chunk) = field.chunk().await.unwrap() {</span>
-    <span class="doccomment">///         println!(&quot;Chunk: {:?}&quot;, chunk);</span>
-    <span class="doccomment">///     }</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// # tokio::runtime::Runtime::new().unwrap().block_on(run());</span>
-    <span class="doccomment">/// ```</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;tokio-io&quot;</span>)]</span>
-    <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">nightly</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;tokio-io&quot;</span>)))]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_reader_with_constraints</span><span class="op">&lt;</span><span class="ident">R</span>, <span class="ident">B</span><span class="op">&gt;</span>(<span class="ident">reader</span>: <span class="ident">R</span>, <span class="ident">boundary</span>: <span class="ident">B</span>, <span class="ident">constraints</span>: <span class="ident">Constraints</span>) -&gt; <span class="self">Self</span>
-    <span class="kw">where</span>
-        <span class="ident">R</span>: <span class="ident">AsyncRead</span> <span class="op">+</span> <span class="ident">Unpin</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;r</span>,
-        <span class="ident">B</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Construct a new `Multipart` instance with the given [`AsyncRead`] reader
+    /// and the boundary.
+    ///
+    /// # Optional
+    ///
+    /// This requires the optional `tokio-io` feature to be enabled.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use multer::Multipart;
+    ///
+    /// # async fn run() {
+    /// let data =
+    ///     &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;
+    /// let reader = data.as_bytes();
+    /// let mut multipart = Multipart::with_reader(reader, &quot;X-BOUNDARY&quot;);
+    ///
+    /// while let Some(mut field) = multipart.next_field().await.unwrap() {
+    ///     while let Some(chunk) = field.chunk().await.unwrap() {
+    ///         println!(&quot;Chunk: {:?}&quot;, chunk);
+    ///     }
+    /// }
+    /// # }
+    /// # tokio::runtime::Runtime::new().unwrap().block_on(run());
+    /// ```
+    </span><span class="attribute">#[cfg(feature = <span class="string">&quot;tokio-io&quot;</span>)]
+    #[cfg_attr(nightly, doc(cfg(feature = <span class="string">&quot;tokio-io&quot;</span>)))]
+    </span><span class="kw">pub fn </span>with_reader_with_constraints&lt;R, B&gt;(reader: R, boundary: B, constraints: Constraints) -&gt; <span class="self">Self
+    </span><span class="kw">where
+        </span>R: AsyncRead + Unpin + Send + <span class="lifetime">&#39;r</span>,
+        B: Into&lt;String&gt;,
     {
-        <span class="kw">let</span> <span class="ident">stream</span> <span class="op">=</span> <span class="ident">ReaderStream::new</span>(<span class="ident">reader</span>);
-        <span class="ident">Multipart::with_constraints</span>(<span class="ident">stream</span>, <span class="ident">boundary</span>, <span class="ident">constraints</span>)
+        <span class="kw">let </span>stream = ReaderStream::new(reader);
+        Multipart::with_constraints(stream, boundary, constraints)
     }
 
-    <span class="doccomment">/// Yields the next [`Field`] if available.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Any previous `Field` returned by this method must be dropped before</span>
-    <span class="doccomment">/// calling this method or [`Multipart::next_field_with_idx()`] again. See</span>
-    <span class="doccomment">/// [field-exclusivity](#field-exclusivity) for details.</span>
-    <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">next_field</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Field</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="comment">// This is consistent as we have an `&amp;mut` and `Field` is not `Clone`.</span>
-        <span class="comment">// Here, we are guaranteeing that the returned `Field` will be the</span>
-        <span class="comment">// _only_ field with access to the multipart parsing state. This ensure</span>
-        <span class="comment">// that lock failure can never occur. This is effectively a dynamic</span>
-        <span class="comment">// version of passing an `&amp;mut` of `self` to the `Field`.</span>
-        <span class="kw">if</span> <span class="ident">Arc::strong_count</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">state</span>) <span class="op">!</span><span class="op">=</span> <span class="number">1</span> {
-            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">Error::LockFailure</span>);
+    <span class="doccomment">/// Yields the next [`Field`] if available.
+    ///
+    /// Any previous `Field` returned by this method must be dropped before
+    /// calling this method or [`Multipart::next_field_with_idx()`] again. See
+    /// [field-exclusivity](#field-exclusivity) for details.
+    </span><span class="kw">pub async fn </span>next_field(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Field&lt;<span class="lifetime">&#39;r</span>&gt;&gt;&gt; {
+        <span class="comment">// This is consistent as we have an `&amp;mut` and `Field` is not `Clone`.
+        // Here, we are guaranteeing that the returned `Field` will be the
+        // _only_ field with access to the multipart parsing state. This ensure
+        // that lock failure can never occur. This is effectively a dynamic
+        // version of passing an `&amp;mut` of `self` to the `Field`.
+        </span><span class="kw">if </span>Arc::strong_count(<span class="kw-2">&amp;</span><span class="self">self</span>.state) != <span class="number">1 </span>{
+            <span class="kw">return </span><span class="prelude-val">Err</span>(Error::LockFailure);
         }
 
-        <span class="ident">future::poll_fn</span>(<span class="op">|</span><span class="ident">cx</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">poll_next_field</span>(<span class="ident">cx</span>)).<span class="kw">await</span>
-    }
+        future::poll_fn(|cx| <span class="self">self</span>.poll_next_field(cx)).<span class="kw">await
+    </span>}
 
-    <span class="comment">// CORRECTNESS: This method must only be called only when it is guaranteed</span>
-    <span class="comment">// that `self.state` is an exlusive `Arc`!</span>
-    <span class="kw">fn</span> <span class="ident">poll_next_field</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Field</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="macro">debug_assert_eq!</span>(<span class="ident">Arc::strong_count</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">state</span>), <span class="number">1</span>);
-        <span class="macro">debug_assert!</span>(<span class="self">self</span>.<span class="ident">state</span>.<span class="ident">try_lock</span>().<span class="ident">is_some</span>(), <span class="string">&quot;expected exlusive lock&quot;</span>);
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">lock</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">state</span>.<span class="ident">try_lock</span>() {
-            <span class="prelude-val">Some</span>(<span class="ident">lock</span>) =&gt; <span class="ident">lock</span>,
-            <span class="prelude-val">None</span> =&gt; <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident">Error::LockFailure</span>)),
+    <span class="comment">// CORRECTNESS: This method must only be called only when it is guaranteed
+    // that `self.state` is an exlusive `Arc`!
+    </span><span class="kw">fn </span>poll_next_field(<span class="kw-2">&amp;mut </span><span class="self">self</span>, cx: <span class="kw-2">&amp;mut </span>Context&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; Poll&lt;<span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Field&lt;<span class="lifetime">&#39;r</span>&gt;&gt;&gt;&gt; {
+        <span class="macro">debug_assert_eq!</span>(Arc::strong_count(<span class="kw-2">&amp;</span><span class="self">self</span>.state), <span class="number">1</span>);
+        <span class="macro">debug_assert!</span>(<span class="self">self</span>.state.try_lock().is_some(), <span class="string">&quot;expected exlusive lock&quot;</span>);
+        <span class="kw">let </span><span class="kw-2">mut </span>lock = <span class="kw">match </span><span class="self">self</span>.state.try_lock() {
+            <span class="prelude-val">Some</span>(lock) =&gt; lock,
+            <span class="prelude-val">None </span>=&gt; <span class="kw">return </span>Poll::Ready(<span class="prelude-val">Err</span>(Error::LockFailure)),
         };
 
-        <span class="kw">let</span> <span class="ident">state</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">lock</span>;
-        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">==</span> <span class="ident">StreamingStage::Eof</span> {
-            <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>));
+        <span class="kw">let </span>state = <span class="kw-2">&amp;mut *</span>lock;
+        <span class="kw">if </span>state.stage == StreamingStage::Eof {
+            <span class="kw">return </span>Poll::Ready(<span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>));
         }
 
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">err</span>) <span class="op">=</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">poll_stream</span>(<span class="ident">cx</span>) {
-            <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::StreamReadFailed</span>(<span class="ident">err</span>.<span class="ident">into</span>())));
+        <span class="kw">if let </span><span class="prelude-val">Err</span>(err) = state.buffer.poll_stream(cx) {
+            <span class="kw">return </span>Poll::Ready(<span class="prelude-val">Err</span>(<span class="kw">crate</span>::Error::StreamReadFailed(err.into())));
         }
 
-        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">==</span> <span class="ident">StreamingStage::FindingFirstBoundary</span> {
-            <span class="kw">let</span> <span class="ident">boundary</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">state</span>.<span class="ident">boundary</span>;
-            <span class="kw">let</span> <span class="ident">boundary_deriv</span> <span class="op">=</span> <span class="macro">format!</span>(<span class="string">&quot;{}{}&quot;</span>, <span class="ident">constants::BOUNDARY_EXT</span>, <span class="ident">boundary</span>);
-            <span class="kw">match</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">read_to</span>(<span class="ident">boundary_deriv</span>.<span class="ident">as_bytes</span>()) {
-                <span class="prelude-val">Some</span>(<span class="kw">_</span>) =&gt; <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">=</span> <span class="ident">StreamingStage::ReadingBoundary</span>,
-                <span class="prelude-val">None</span> =&gt; {
-                    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">err</span>) <span class="op">=</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">poll_stream</span>(<span class="ident">cx</span>) {
-                        <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::StreamReadFailed</span>(<span class="ident">err</span>.<span class="ident">into</span>())));
+        <span class="kw">if </span>state.stage == StreamingStage::FindingFirstBoundary {
+            <span class="kw">let </span>boundary = <span class="kw-2">&amp;</span>state.boundary;
+            <span class="kw">let </span>boundary_deriv = <span class="macro">format!</span>(<span class="string">&quot;{}{}&quot;</span>, constants::BOUNDARY_EXT, boundary);
+            <span class="kw">match </span>state.buffer.read_to(boundary_deriv.as_bytes()) {
+                <span class="prelude-val">Some</span>(<span class="kw">_</span>) =&gt; state.stage = StreamingStage::ReadingBoundary,
+                <span class="prelude-val">None </span>=&gt; {
+                    <span class="kw">if let </span><span class="prelude-val">Err</span>(err) = state.buffer.poll_stream(cx) {
+                        <span class="kw">return </span>Poll::Ready(<span class="prelude-val">Err</span>(<span class="kw">crate</span>::Error::StreamReadFailed(err.into())));
                     }
-                    <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">eof</span> {
-                        <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::IncompleteStream</span>));
+                    <span class="kw">if </span>state.buffer.eof {
+                        <span class="kw">return </span>Poll::Ready(<span class="prelude-val">Err</span>(<span class="kw">crate</span>::Error::IncompleteStream));
                     }
                 }
             }
         }
 
-        <span class="comment">// The previous field did not finish reading its data.</span>
-        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">==</span> <span class="ident">StreamingStage::ReadingFieldData</span> {
-            <span class="kw">match</span> <span class="ident">state</span>
-                .<span class="ident">buffer</span>
-                .<span class="ident">read_field_data</span>(<span class="ident">state</span>.<span class="ident">boundary</span>.<span class="ident">as_str</span>(), <span class="ident">state</span>.<span class="ident">curr_field_name</span>.<span class="ident">as_deref</span>())<span class="question-mark">?</span>
-            {
-                <span class="prelude-val">Some</span>((<span class="ident">done</span>, <span class="ident">bytes</span>)) =&gt; {
-                    <span class="ident">state</span>.<span class="ident">curr_field_size_counter</span> <span class="op">+</span><span class="op">=</span> <span class="ident">bytes</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">u64</span>;
+        <span class="comment">// The previous field did not finish reading its data.
+        </span><span class="kw">if </span>state.stage == StreamingStage::ReadingFieldData {
+            <span class="kw">match </span>state
+                .buffer
+                .read_field_data(state.boundary.as_str(), state.curr_field_name.as_deref())<span class="question-mark">?
+            </span>{
+                <span class="prelude-val">Some</span>((done, bytes)) =&gt; {
+                    state.curr_field_size_counter += bytes.len() <span class="kw">as </span>u64;
 
-                    <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">curr_field_size_counter</span> <span class="op">&gt;</span> <span class="ident">state</span>.<span class="ident">curr_field_size_limit</span> {
-                        <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::FieldSizeExceeded</span> {
-                            <span class="ident">limit</span>: <span class="ident">state</span>.<span class="ident">curr_field_size_limit</span>,
-                            <span class="ident">field_name</span>: <span class="ident">state</span>.<span class="ident">curr_field_name</span>.<span class="ident">clone</span>(),
+                    <span class="kw">if </span>state.curr_field_size_counter &gt; state.curr_field_size_limit {
+                        <span class="kw">return </span>Poll::Ready(<span class="prelude-val">Err</span>(<span class="kw">crate</span>::Error::FieldSizeExceeded {
+                            limit: state.curr_field_size_limit,
+                            field_name: state.curr_field_name.clone(),
                         }));
                     }
 
-                    <span class="kw">if</span> <span class="ident">done</span> {
-                        <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">=</span> <span class="ident">StreamingStage::ReadingBoundary</span>;
-                    } <span class="kw">else</span> {
-                        <span class="kw">return</span> <span class="ident">Poll::Pending</span>;
+                    <span class="kw">if </span>done {
+                        state.stage = StreamingStage::ReadingBoundary;
+                    } <span class="kw">else </span>{
+                        <span class="kw">return </span>Poll::Pending;
                     }
                 }
-                <span class="prelude-val">None</span> =&gt; {
-                    <span class="kw">return</span> <span class="ident">Poll::Pending</span>;
+                <span class="prelude-val">None </span>=&gt; {
+                    <span class="kw">return </span>Poll::Pending;
                 }
             }
         }
 
-        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">==</span> <span class="ident">StreamingStage::ReadingBoundary</span> {
-            <span class="kw">let</span> <span class="ident">boundary</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">state</span>.<span class="ident">boundary</span>;
-            <span class="kw">let</span> <span class="ident">boundary_deriv_len</span> <span class="op">=</span> <span class="ident">constants::BOUNDARY_EXT</span>.<span class="ident">len</span>() <span class="op">+</span> <span class="ident">boundary</span>.<span class="ident">len</span>();
+        <span class="kw">if </span>state.stage == StreamingStage::ReadingBoundary {
+            <span class="kw">let </span>boundary = <span class="kw-2">&amp;</span>state.boundary;
+            <span class="kw">let </span>boundary_deriv_len = constants::BOUNDARY_EXT.len() + boundary.len();
 
-            <span class="kw">let</span> <span class="ident">boundary_bytes</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">read_exact</span>(<span class="ident">boundary_deriv_len</span>) {
-                <span class="prelude-val">Some</span>(<span class="ident">bytes</span>) =&gt; <span class="ident">bytes</span>,
-                <span class="prelude-val">None</span> =&gt; {
-                    <span class="kw">return</span> <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">eof</span> {
-                        <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::IncompleteStream</span>))
-                    } <span class="kw">else</span> {
-                        <span class="ident">Poll::Pending</span>
+            <span class="kw">let </span>boundary_bytes = <span class="kw">match </span>state.buffer.read_exact(boundary_deriv_len) {
+                <span class="prelude-val">Some</span>(bytes) =&gt; bytes,
+                <span class="prelude-val">None </span>=&gt; {
+                    <span class="kw">return if </span>state.buffer.eof {
+                        Poll::Ready(<span class="prelude-val">Err</span>(<span class="kw">crate</span>::Error::IncompleteStream))
+                    } <span class="kw">else </span>{
+                        Poll::Pending
                     };
                 }
             };
 
-            <span class="kw">if</span> <span class="kw-2">&amp;</span><span class="ident">boundary_bytes</span>[..] <span class="op">==</span> <span class="macro">format!</span>(<span class="string">&quot;{}{}&quot;</span>, <span class="ident">constants::BOUNDARY_EXT</span>, <span class="ident">boundary</span>).<span class="ident">as_bytes</span>() {
-                <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">=</span> <span class="ident">StreamingStage::DeterminingBoundaryType</span>;
-            } <span class="kw">else</span> {
-                <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::IncompleteStream</span>));
+            <span class="kw">if </span><span class="kw-2">&amp;</span>boundary_bytes[..] == <span class="macro">format!</span>(<span class="string">&quot;{}{}&quot;</span>, constants::BOUNDARY_EXT, boundary).as_bytes() {
+                state.stage = StreamingStage::DeterminingBoundaryType;
+            } <span class="kw">else </span>{
+                <span class="kw">return </span>Poll::Ready(<span class="prelude-val">Err</span>(<span class="kw">crate</span>::Error::IncompleteStream));
             }
         }
 
-        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">==</span> <span class="ident">StreamingStage::DeterminingBoundaryType</span> {
-            <span class="kw">let</span> <span class="ident">ext_len</span> <span class="op">=</span> <span class="ident">constants::BOUNDARY_EXT</span>.<span class="ident">len</span>();
-            <span class="kw">let</span> <span class="ident">next_bytes</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">peek_exact</span>(<span class="ident">ext_len</span>) {
-                <span class="prelude-val">Some</span>(<span class="ident">bytes</span>) =&gt; <span class="ident">bytes</span>,
-                <span class="prelude-val">None</span> =&gt; {
-                    <span class="kw">return</span> <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">eof</span> {
-                        <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::IncompleteStream</span>))
-                    } <span class="kw">else</span> {
-                        <span class="ident">Poll::Pending</span>
+        <span class="kw">if </span>state.stage == StreamingStage::DeterminingBoundaryType {
+            <span class="kw">let </span>ext_len = constants::BOUNDARY_EXT.len();
+            <span class="kw">let </span>next_bytes = <span class="kw">match </span>state.buffer.peek_exact(ext_len) {
+                <span class="prelude-val">Some</span>(bytes) =&gt; bytes,
+                <span class="prelude-val">None </span>=&gt; {
+                    <span class="kw">return if </span>state.buffer.eof {
+                        Poll::Ready(<span class="prelude-val">Err</span>(<span class="kw">crate</span>::Error::IncompleteStream))
+                    } <span class="kw">else </span>{
+                        Poll::Pending
                     };
                 }
             };
 
-            <span class="kw">if</span> <span class="ident">next_bytes</span> <span class="op">==</span> <span class="ident">constants::BOUNDARY_EXT</span>.<span class="ident">as_bytes</span>() {
-                <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">=</span> <span class="ident">StreamingStage::Eof</span>;
-                <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>));
-            } <span class="kw">else</span> {
-                <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">=</span> <span class="ident">StreamingStage::ReadingTransportPadding</span>;
+            <span class="kw">if </span>next_bytes == constants::BOUNDARY_EXT.as_bytes() {
+                state.stage = StreamingStage::Eof;
+                <span class="kw">return </span>Poll::Ready(<span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>));
+            } <span class="kw">else </span>{
+                state.stage = StreamingStage::ReadingTransportPadding;
             }
         }
 
-        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">==</span> <span class="ident">StreamingStage::ReadingTransportPadding</span> {
-            <span class="kw">if</span> <span class="op">!</span><span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">advance_past_transport_padding</span>() {
-                <span class="kw">return</span> <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">eof</span> {
-                    <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::IncompleteStream</span>))
-                } <span class="kw">else</span> {
-                    <span class="ident">Poll::Pending</span>
+        <span class="kw">if </span>state.stage == StreamingStage::ReadingTransportPadding {
+            <span class="kw">if </span>!state.buffer.advance_past_transport_padding() {
+                <span class="kw">return if </span>state.buffer.eof {
+                    Poll::Ready(<span class="prelude-val">Err</span>(<span class="kw">crate</span>::Error::IncompleteStream))
+                } <span class="kw">else </span>{
+                    Poll::Pending
                 };
             }
 
-            <span class="kw">let</span> <span class="ident">crlf_len</span> <span class="op">=</span> <span class="ident">constants::CRLF</span>.<span class="ident">len</span>();
-            <span class="kw">let</span> <span class="ident">crlf_bytes</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">read_exact</span>(<span class="ident">crlf_len</span>) {
-                <span class="prelude-val">Some</span>(<span class="ident">bytes</span>) =&gt; <span class="ident">bytes</span>,
-                <span class="prelude-val">None</span> =&gt; {
-                    <span class="kw">return</span> <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">eof</span> {
-                        <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::IncompleteStream</span>))
-                    } <span class="kw">else</span> {
-                        <span class="ident">Poll::Pending</span>
+            <span class="kw">let </span>crlf_len = constants::CRLF.len();
+            <span class="kw">let </span>crlf_bytes = <span class="kw">match </span>state.buffer.read_exact(crlf_len) {
+                <span class="prelude-val">Some</span>(bytes) =&gt; bytes,
+                <span class="prelude-val">None </span>=&gt; {
+                    <span class="kw">return if </span>state.buffer.eof {
+                        Poll::Ready(<span class="prelude-val">Err</span>(<span class="kw">crate</span>::Error::IncompleteStream))
+                    } <span class="kw">else </span>{
+                        Poll::Pending
                     };
                 }
             };
 
-            <span class="kw">if</span> <span class="kw-2">&amp;</span><span class="ident">crlf_bytes</span>[..] <span class="op">==</span> <span class="ident">constants::CRLF</span>.<span class="ident">as_bytes</span>() {
-                <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">=</span> <span class="ident">StreamingStage::ReadingFieldHeaders</span>;
-            } <span class="kw">else</span> {
-                <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::IncompleteStream</span>));
+            <span class="kw">if </span><span class="kw-2">&amp;</span>crlf_bytes[..] == constants::CRLF.as_bytes() {
+                state.stage = StreamingStage::ReadingFieldHeaders;
+            } <span class="kw">else </span>{
+                <span class="kw">return </span>Poll::Ready(<span class="prelude-val">Err</span>(<span class="kw">crate</span>::Error::IncompleteStream));
             }
         }
 
-        <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">==</span> <span class="ident">StreamingStage::ReadingFieldHeaders</span> {
-            <span class="kw">let</span> <span class="ident">header_bytes</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">read_until</span>(<span class="ident">constants::CRLF_CRLF</span>.<span class="ident">as_bytes</span>()) {
-                <span class="prelude-val">Some</span>(<span class="ident">bytes</span>) =&gt; <span class="ident">bytes</span>,
-                <span class="prelude-val">None</span> =&gt; {
-                    <span class="kw">return</span> <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">eof</span> {
-                        <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::IncompleteStream</span>));
-                    } <span class="kw">else</span> {
-                        <span class="ident">Poll::Pending</span>
+        <span class="kw">if </span>state.stage == StreamingStage::ReadingFieldHeaders {
+            <span class="kw">let </span>header_bytes = <span class="kw">match </span>state.buffer.read_until(constants::CRLF_CRLF.as_bytes()) {
+                <span class="prelude-val">Some</span>(bytes) =&gt; bytes,
+                <span class="prelude-val">None </span>=&gt; {
+                    <span class="kw">return if </span>state.buffer.eof {
+                        <span class="kw">return </span>Poll::Ready(<span class="prelude-val">Err</span>(<span class="kw">crate</span>::Error::IncompleteStream));
+                    } <span class="kw">else </span>{
+                        Poll::Pending
                     };
                 }
             };
 
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">headers</span> <span class="op">=</span> [<span class="ident">httparse::EMPTY_HEADER</span>; <span class="ident">constants::MAX_HEADERS</span>];
+            <span class="kw">let </span><span class="kw-2">mut </span>headers = [httparse::EMPTY_HEADER; constants::MAX_HEADERS];
 
-            <span class="kw">let</span> <span class="ident">headers</span> <span class="op">=</span>
-                <span class="kw">match</span> <span class="ident">httparse::parse_headers</span>(<span class="kw-2">&amp;</span><span class="ident">header_bytes</span>, <span class="kw-2">&amp;mut</span> <span class="ident">headers</span>).<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::ReadHeaderFailed</span>)<span class="question-mark">?</span> {
-                    <span class="ident">httparse::Status::Complete</span>((<span class="kw">_</span>, <span class="ident">raw_headers</span>)) =&gt; {
-                        <span class="kw">match</span> <span class="ident">helpers::convert_raw_headers_to_header_map</span>(<span class="ident">raw_headers</span>) {
-                            <span class="prelude-val">Ok</span>(<span class="ident">headers</span>) =&gt; <span class="ident">headers</span>,
-                            <span class="prelude-val">Err</span>(<span class="ident">err</span>) =&gt; {
-                                <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident">err</span>));
+            <span class="kw">let </span>headers =
+                <span class="kw">match </span>httparse::parse_headers(<span class="kw-2">&amp;</span>header_bytes, <span class="kw-2">&amp;mut </span>headers).map_err(<span class="kw">crate</span>::Error::ReadHeaderFailed)<span class="question-mark">? </span>{
+                    httparse::Status::Complete((<span class="kw">_</span>, raw_headers)) =&gt; {
+                        <span class="kw">match </span>helpers::convert_raw_headers_to_header_map(raw_headers) {
+                            <span class="prelude-val">Ok</span>(headers) =&gt; headers,
+                            <span class="prelude-val">Err</span>(err) =&gt; {
+                                <span class="kw">return </span>Poll::Ready(<span class="prelude-val">Err</span>(err));
                             }
                         }
                     }
-                    <span class="ident">httparse::Status::Partial</span> =&gt; {
-                        <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::IncompleteHeaders</span>));
+                    httparse::Status::Partial =&gt; {
+                        <span class="kw">return </span>Poll::Ready(<span class="prelude-val">Err</span>(<span class="kw">crate</span>::Error::IncompleteHeaders));
                     }
                 };
 
-            <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">=</span> <span class="ident">StreamingStage::ReadingFieldData</span>;
+            state.stage = StreamingStage::ReadingFieldData;
 
-            <span class="kw">let</span> <span class="ident">field_idx</span> <span class="op">=</span> <span class="ident">state</span>.<span class="ident">next_field_idx</span>;
-            <span class="ident">state</span>.<span class="ident">next_field_idx</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
+            <span class="kw">let </span>field_idx = state.next_field_idx;
+            state.next_field_idx += <span class="number">1</span>;
 
-            <span class="kw">let</span> <span class="ident">content_disposition</span> <span class="op">=</span> <span class="ident">ContentDisposition::parse</span>(<span class="kw-2">&amp;</span><span class="ident">headers</span>);
-            <span class="kw">let</span> <span class="ident">field_size_limit</span> <span class="op">=</span> <span class="ident">state</span>
-                .<span class="ident">constraints</span>
-                .<span class="ident">size_limit</span>
-                .<span class="ident">extract_size_limit_for</span>(<span class="ident">content_disposition</span>.<span class="ident">field_name</span>.<span class="ident">as_deref</span>());
+            <span class="kw">let </span>content_disposition = ContentDisposition::parse(<span class="kw-2">&amp;</span>headers);
+            <span class="kw">let </span>field_size_limit = state
+                .constraints
+                .size_limit
+                .extract_size_limit_for(content_disposition.field_name.as_deref());
 
-            <span class="ident">state</span>.<span class="ident">curr_field_name</span> <span class="op">=</span> <span class="ident">content_disposition</span>.<span class="ident">field_name</span>.<span class="ident">clone</span>();
-            <span class="ident">state</span>.<span class="ident">curr_field_size_limit</span> <span class="op">=</span> <span class="ident">field_size_limit</span>;
-            <span class="ident">state</span>.<span class="ident">curr_field_size_counter</span> <span class="op">=</span> <span class="number">0</span>;
+            state.curr_field_name = content_disposition.field_name.clone();
+            state.curr_field_size_limit = field_size_limit;
+            state.curr_field_size_counter = <span class="number">0</span>;
 
-            <span class="kw">let</span> <span class="ident">field_name</span> <span class="op">=</span> <span class="ident">content_disposition</span>.<span class="ident">field_name</span>.<span class="ident">as_deref</span>();
-            <span class="kw">if</span> <span class="op">!</span><span class="ident">state</span>.<span class="ident">constraints</span>.<span class="ident">is_it_allowed</span>(<span class="ident">field_name</span>) {
-                <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::UnknownField</span> {
-                    <span class="ident">field_name</span>: <span class="ident">field_name</span>.<span class="ident">map</span>(<span class="ident">str::to_owned</span>),
+            <span class="kw">let </span>field_name = content_disposition.field_name.as_deref();
+            <span class="kw">if </span>!state.constraints.is_it_allowed(field_name) {
+                <span class="kw">return </span>Poll::Ready(<span class="prelude-val">Err</span>(<span class="kw">crate</span>::Error::UnknownField {
+                    field_name: field_name.map(str::to_owned),
                 }));
             }
 
-            <span class="ident">drop</span>(<span class="ident">lock</span>); <span class="comment">// The lock will be dropped anyway, but let&#39;s be explicit.</span>
-            <span class="kw">let</span> <span class="ident">field</span> <span class="op">=</span> <span class="ident">Field::new</span>(<span class="self">self</span>.<span class="ident">state</span>.<span class="ident">clone</span>(), <span class="ident">headers</span>, <span class="ident">field_idx</span>, <span class="ident">content_disposition</span>);
-            <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(<span class="ident">field</span>)));
+            drop(lock); <span class="comment">// The lock will be dropped anyway, but let&#39;s be explicit.
+            </span><span class="kw">let </span>field = Field::new(<span class="self">self</span>.state.clone(), headers, field_idx, content_disposition);
+            <span class="kw">return </span>Poll::Ready(<span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(field)));
         }
 
-        <span class="ident">Poll::Pending</span>
+        Poll::Pending
     }
 
-    <span class="doccomment">/// Yields the next [`Field`] with their positioning index as a tuple</span>
-    <span class="doccomment">/// `(`[`usize`]`, `[`Field`]`)`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Any previous `Field` returned by this method must be dropped before</span>
-    <span class="doccomment">/// calling this method or [`Multipart::next_field()`] again. See</span>
-    <span class="doccomment">/// [field-exclusivity](#field-exclusivity) for details.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use std::convert::Infallible;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// use bytes::Bytes;</span>
-    <span class="doccomment">/// use futures_util::stream::once;</span>
-    <span class="doccomment">/// use multer::Multipart;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # async fn run() {</span>
-    <span class="doccomment">/// let data = &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; \</span>
-    <span class="doccomment">///     name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let stream = once(async move { Result::&lt;Bytes, Infallible&gt;::Ok(Bytes::from(data)) });</span>
-    <span class="doccomment">/// let mut multipart = Multipart::new(stream, &quot;X-BOUNDARY&quot;);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// while let Some((idx, field)) = multipart.next_field_with_idx().await.unwrap() {</span>
-    <span class="doccomment">///     println!(&quot;Index: {:?}, Content: {:?}&quot;, idx, field.text().await)</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// # tokio::runtime::Runtime::new().unwrap().block_on(run());</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">next_field_with_idx</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span>(<span class="ident">usize</span>, <span class="ident">Field</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span>)<span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">next_field</span>().<span class="kw">await</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">f</span><span class="op">|</span> <span class="ident">f</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">field</span><span class="op">|</span> (<span class="ident">field</span>.<span class="ident">index</span>(), <span class="ident">field</span>)))
+    <span class="doccomment">/// Yields the next [`Field`] with their positioning index as a tuple
+    /// `(`[`usize`]`, `[`Field`]`)`.
+    ///
+    /// Any previous `Field` returned by this method must be dropped before
+    /// calling this method or [`Multipart::next_field()`] again. See
+    /// [field-exclusivity](#field-exclusivity) for details.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use std::convert::Infallible;
+    ///
+    /// use bytes::Bytes;
+    /// use futures_util::stream::once;
+    /// use multer::Multipart;
+    ///
+    /// # async fn run() {
+    /// let data = &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; \
+    ///     name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;
+    ///
+    /// let stream = once(async move { Result::&lt;Bytes, Infallible&gt;::Ok(Bytes::from(data)) });
+    /// let mut multipart = Multipart::new(stream, &quot;X-BOUNDARY&quot;);
+    ///
+    /// while let Some((idx, field)) = multipart.next_field_with_idx().await.unwrap() {
+    ///     println!(&quot;Index: {:?}, Content: {:?}&quot;, idx, field.text().await)
+    /// }
+    /// # }
+    /// # tokio::runtime::Runtime::new().unwrap().block_on(run());
+    /// ```
+    </span><span class="kw">pub async fn </span>next_field_with_idx(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;(usize, Field&lt;<span class="lifetime">&#39;r</span>&gt;)&gt;&gt; {
+        <span class="self">self</span>.next_field().<span class="kw">await</span>.map(|f| f.map(|field| (field.index(), field)))
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="multer" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="multer" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

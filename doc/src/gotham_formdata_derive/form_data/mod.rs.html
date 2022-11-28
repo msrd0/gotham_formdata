@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `derive/src/form_data/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham_formdata_derive/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham_formdata_derive/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham_formdata_derive/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `derive/src/form_data/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham_formdata_derive/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham_formdata_derive/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham_formdata_derive/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -199,206 +199,206 @@
 <span id="199">199</span>
 <span id="200">200</span>
 <span id="201">201</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::util</span>::<span class="kw-2">*</span>;
-<span class="kw">use</span> <span class="ident">proc_macro2</span>::{<span class="ident">Span</span>, <span class="ident">TokenStream</span>};
-<span class="kw">use</span> <span class="ident">std::iter</span>;
-<span class="kw">use</span> <span class="ident">syn</span>::{
-	<span class="ident">AngleBracketedGenericArguments</span>, <span class="ident">BoundLifetimes</span>, <span class="ident">Data</span>, <span class="ident">DeriveInput</span>, <span class="ident">Error</span>, <span class="ident">Fields</span>,
-	<span class="ident">GenericArgument</span>, <span class="ident">Lifetime</span>, <span class="ident">LifetimeDef</span>, <span class="ident">PathArguments</span>, <span class="ident">PredicateType</span>, <span class="prelude-ty">Result</span>,
-	<span class="ident">TraitBound</span>, <span class="ident">TraitBoundModifier</span>, <span class="ident">Type</span>, <span class="ident">TypeParamBound</span>, <span class="ident">TypePath</span>, <span class="ident">WhereClause</span>,
-	<span class="ident">WherePredicate</span>
+</pre><pre class="rust"><code><span class="kw">use </span><span class="kw">crate</span>::util::<span class="kw-2">*</span>;
+<span class="kw">use </span>proc_macro2::{Span, TokenStream};
+<span class="kw">use </span>std::iter;
+<span class="kw">use </span>syn::{
+	AngleBracketedGenericArguments, BoundLifetimes, Data, DeriveInput, Error, Fields,
+	GenericArgument, Lifetime, LifetimeDef, PathArguments, PredicateType, <span class="prelude-ty">Result</span>,
+	TraitBound, TraitBoundModifier, Type, TypeParamBound, TypePath, WhereClause,
+	WherePredicate
 };
-<span class="kw">use</span> <span class="ident">syn_path::path</span>;
+<span class="kw">use </span>syn_path::path;
 
-<span class="kw">mod</span> <span class="ident">builder</span>;
-<span class="kw">use</span> <span class="ident">builder::FormDataBuilder</span>;
+<span class="kw">mod </span>builder;
+<span class="kw">use </span>builder::FormDataBuilder;
 
-<span class="kw">mod</span> <span class="ident">field</span>;
-<span class="kw">use</span> <span class="ident">field::Field</span>;
+<span class="kw">mod </span>field;
+<span class="kw">use </span>field::Field;
 
-<span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn</span> <span class="ident">expand</span>(<span class="ident">input</span>: <span class="ident">DeriveInput</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">TokenStream</span><span class="op">&gt;</span> {
-	<span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">ident</span>;
+<span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn </span>expand(input: DeriveInput) -&gt; <span class="prelude-ty">Result</span>&lt;TokenStream&gt; {
+	<span class="kw">let </span>name = <span class="kw-2">&amp;</span>input.ident;
 
-	<span class="kw">let</span> (<span class="ident">impl_generics</span>, <span class="ident">ty_generics</span>, <span class="ident">where_clause</span>) <span class="op">=</span> <span class="ident">input</span>.<span class="ident">generics</span>.<span class="ident">split_for_impl</span>();
-	<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">where_clause</span> <span class="op">=</span> <span class="ident">where_clause</span>.<span class="ident">cloned</span>().<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">WhereClause</span> {
-		<span class="ident">where_token</span>: <span class="ident">Default::default</span>(),
-		<span class="ident">predicates</span>: <span class="ident">Default::default</span>()
+	<span class="kw">let </span>(impl_generics, ty_generics, where_clause) = input.generics.split_for_impl();
+	<span class="kw">let </span><span class="kw-2">mut </span>where_clause = where_clause.cloned().unwrap_or_else(|| WhereClause {
+		where_token: Default::default(),
+		predicates: Default::default()
 	});
 
-	<span class="kw">let</span> <span class="ident">strukt</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">input</span>.<span class="ident">data</span> {
-		<span class="ident">Data::Struct</span>(<span class="ident">strukt</span>) =&gt; <span class="ident">strukt</span>,
-		<span class="kw">_</span> =&gt; {
-			<span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">Error::new</span>(
-				<span class="ident">Span::call_site</span>(),
-				<span class="string">&quot;#[derive(FormData)] can only be used on structs&quot;</span>
-			))
+	<span class="kw">let </span>strukt = <span class="kw">match </span>input.data {
+		Data::Struct(strukt) =&gt; strukt,
+		<span class="kw">_ </span>=&gt; {
+			<span class="kw">return </span><span class="prelude-val">Err</span>(Error::new(
+				Span::call_site(),
+				<span class="string">&quot;#[derive(FormData)] can only be used on structs&quot;
+			</span>))
 		},
 	};
 
-	<span class="kw">let</span> <span class="ident">fields</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">strukt</span>.<span class="ident">fields</span> {
-		<span class="ident">Fields::Named</span>(<span class="ident">named</span>) =&gt; <span class="ident">named</span>
-			.<span class="ident">named</span>
-			.<span class="ident">into_iter</span>()
-			.<span class="ident">map</span>(<span class="ident">Field::new</span>)
-			.<span class="ident">collect_to_result</span>()<span class="question-mark">?</span>,
-		<span class="ident">Fields::Unnamed</span>(<span class="kw">_</span>) =&gt; {
-			<span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">Error::new</span>(
-				<span class="ident">Span::call_site</span>(),
-				<span class="string">&quot;#[derive(FormData)] cannot be used on tuple structs&quot;</span>
-			))
+	<span class="kw">let </span>fields = <span class="kw">match </span>strukt.fields {
+		Fields::Named(named) =&gt; named
+			.named
+			.into_iter()
+			.map(Field::new)
+			.collect_to_result()<span class="question-mark">?</span>,
+		Fields::Unnamed(<span class="kw">_</span>) =&gt; {
+			<span class="kw">return </span><span class="prelude-val">Err</span>(Error::new(
+				Span::call_site(),
+				<span class="string">&quot;#[derive(FormData)] cannot be used on tuple structs&quot;
+			</span>))
 		},
-		<span class="ident">Fields::Unit</span> =&gt; <span class="ident">Vec::new</span>()
+		Fields::Unit =&gt; Vec::new()
 	};
 
-	<span class="kw">for</span> <span class="ident">f</span> <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="ident">fields</span> {
-		<span class="comment">// T: Send</span>
-		<span class="ident">where_clause</span>
-			.<span class="ident">predicates</span>
-			.<span class="ident">push</span>(<span class="ident">where_predicate_t_send</span>(<span class="ident">f</span>.<span class="ident">ty</span>.<span class="ident">clone</span>()));
+	<span class="kw">for </span>f <span class="kw">in </span><span class="kw-2">&amp;</span>fields {
+		<span class="comment">// T: Send
+		</span>where_clause
+			.predicates
+			.push(where_predicate_t_send(f.ty.clone()));
 
-		<span class="comment">// for&lt;&#39;a&gt; Value&lt;&#39;a&gt;: Parse&lt;T&gt;</span>
-		<span class="ident">where_clause</span>
-			.<span class="ident">predicates</span>
-			.<span class="ident">push</span>(<span class="ident">where_predicate_value_parse_t</span>(<span class="ident">f</span>.<span class="ident">ty</span>.<span class="ident">clone</span>()));
+		<span class="comment">// for&lt;&#39;a&gt; Value&lt;&#39;a&gt;: Parse&lt;T&gt;
+		</span>where_clause
+			.predicates
+			.push(where_predicate_value_parse_t(f.ty.clone()));
 	}
 
-	<span class="kw">let</span> <span class="ident">builder</span> <span class="op">=</span> <span class="ident">FormDataBuilder</span> {
-		<span class="ident">name</span>,
-		<span class="ident">ident</span>: <span class="macro">format_ident!</span>(<span class="string">&quot;{}FormDataBuilder&quot;</span>, <span class="ident">name</span>),
-		<span class="ident">impl_generics</span>: <span class="kw-2">&amp;</span><span class="ident">impl_generics</span>,
-		<span class="ident">ty_generics</span>: <span class="kw-2">&amp;</span><span class="ident">ty_generics</span>,
-		<span class="ident">where_clause</span>: <span class="kw-2">&amp;</span><span class="ident">where_clause</span>,
-		<span class="ident">fields</span>: <span class="kw-2">&amp;</span><span class="ident">fields</span>
+	<span class="kw">let </span>builder = FormDataBuilder {
+		name,
+		ident: <span class="macro">format_ident!</span>(<span class="string">&quot;{}FormDataBuilder&quot;</span>, name),
+		impl_generics: <span class="kw-2">&amp;</span>impl_generics,
+		ty_generics: <span class="kw-2">&amp;</span>ty_generics,
+		where_clause: <span class="kw-2">&amp;</span>where_clause,
+		fields: <span class="kw-2">&amp;</span>fields
 	};
-	<span class="kw">let</span> <span class="ident">builder_ident</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">builder</span>.<span class="ident">ident</span>;
+	<span class="kw">let </span>builder_ident = <span class="kw-2">&amp;</span>builder.ident;
 
-	<span class="kw">let</span> <span class="ident">builder_struct</span> <span class="op">=</span> <span class="ident">builder</span>.<span class="ident">gen_struct</span>();
-	<span class="kw">let</span> <span class="ident">builder_default_impl</span> <span class="op">=</span> <span class="ident">builder</span>.<span class="ident">gen_default_impl</span>();
-	<span class="kw">let</span> <span class="ident">builder_builder_impl</span> <span class="op">=</span> <span class="ident">builder</span>.<span class="ident">gen_builder_impl</span>();
+	<span class="kw">let </span>builder_struct = builder.gen_struct();
+	<span class="kw">let </span>builder_default_impl = builder.gen_default_impl();
+	<span class="kw">let </span>builder_builder_impl = builder.gen_builder_impl();
 
-	<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">dummy</span> <span class="op">=</span> <span class="macro">format_ident!</span>(<span class="string">&quot;_IMPL_FORMDATA_FOR_{}&quot;</span>, <span class="ident">name</span>);
-	<span class="ident">dummy</span>.<span class="ident">set_span</span>(<span class="ident">Span::call_site</span>());
-	<span class="prelude-val">Ok</span>(<span class="macro">quote!</span> {
-		<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
-		<span class="kw">static</span> #<span class="ident">dummy</span>: () <span class="op">=</span> {
-			#<span class="ident">builder_struct</span>
-			#<span class="ident">builder_default_impl</span>
-			#<span class="ident">builder_builder_impl</span>
+	<span class="kw">let </span><span class="kw-2">mut </span>dummy = <span class="macro">format_ident!</span>(<span class="string">&quot;_IMPL_FORMDATA_FOR_{}&quot;</span>, name);
+	dummy.set_span(Span::call_site());
+	<span class="prelude-val">Ok</span>(<span class="macro">quote! </span>{
+		<span class="attribute">#[allow(non_upper_case_globals)]
+		</span><span class="kw">static </span>#dummy: () = {
+			#builder_struct
+			#builder_default_impl
+			#builder_builder_impl
 
-			<span class="kw">impl</span> #<span class="ident">impl_generics</span> <span class="ident">::gotham_formdata::FormData</span> <span class="kw">for</span> #<span class="ident">name</span> #<span class="ident">ty_generics</span>
-			#<span class="ident">where_clause</span>
+			<span class="kw">impl </span>#impl_generics ::gotham_formdata::FormData <span class="kw">for </span>#name #ty_generics
+			#where_clause
 			{
-				<span class="kw">type</span> <span class="prelude-val">Err</span> <span class="op">=</span> <span class="ident">::gotham_formdata::Error</span>;
+				<span class="kw">type </span><span class="prelude-val">Err </span>= ::gotham_formdata::Error;
 
-				<span class="kw">fn</span> <span class="ident">parse_form_data</span>(<span class="ident">state</span>: <span class="kw-2">&amp;mut</span> <span class="ident">::gotham_formdata::private::State</span>) -&gt; <span class="ident">::gotham_formdata::FormDataFuture</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-					<span class="kw">use</span> <span class="ident">::gotham_formdata::private::FutureExt</span> <span class="kw">as</span> <span class="kw">_</span>;
+				<span class="kw">fn </span>parse_form_data(state: <span class="kw-2">&amp;mut </span>::gotham_formdata::private::State) -&gt; ::gotham_formdata::FormDataFuture&lt;<span class="self">Self</span>&gt; {
+					<span class="kw">use </span>::gotham_formdata::private::FutureExt <span class="kw">as _</span>;
 
-					<span class="kw">let</span> <span class="ident">content_type</span> <span class="op">=</span> <span class="ident">::gotham_formdata::private::get_content_type</span>(<span class="ident">state</span>);
-					<span class="kw">let</span> <span class="ident">body</span> <span class="op">=</span> <span class="ident">::gotham_formdata::private::get_body</span>(<span class="ident">state</span>);
+					<span class="kw">let </span>content_type = ::gotham_formdata::private::get_content_type(state);
+					<span class="kw">let </span>body = ::gotham_formdata::private::get_body(state);
 
-					<span class="kw">async</span> <span class="kw">move</span> {
-						<span class="kw">let</span> <span class="ident">content_type</span> <span class="op">=</span> <span class="ident">content_type</span><span class="question-mark">?</span>;
-						<span class="macro">::gotham_formdata::private::debug!</span>(<span class="string">&quot;Parsing Form Data for type {} with Content-Type {}&quot;</span>, <span class="macro">stringify!</span>(#<span class="ident">name</span>), <span class="ident">content_type</span>);
+					<span class="kw">async move </span>{
+						<span class="kw">let </span>content_type = content_type<span class="question-mark">?</span>;
+						<span class="macro">::gotham_formdata::private::debug!</span>(<span class="string">&quot;Parsing Form Data for type {} with Content-Type {}&quot;</span>, <span class="macro">stringify!</span>(#name), content_type);
 
-						<span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">::gotham_formdata::private::parse</span>::<span class="op">&lt;</span>#<span class="ident">builder_ident</span> #<span class="ident">ty_generics</span><span class="op">&gt;</span>(<span class="ident">body</span>, <span class="ident">content_type</span>).<span class="kw">await</span><span class="question-mark">?</span>;
-						<span class="ident">::gotham_formdata::private::Validate::validate</span>(<span class="kw-2">&amp;</span><span class="ident">res</span>)<span class="question-mark">?</span>;
-						<span class="prelude-val">Ok</span>(<span class="ident">res</span>)
-					}.<span class="ident">boxed</span>()
+						<span class="kw">let </span>res = ::gotham_formdata::private::parse::&lt;#builder_ident #ty_generics&gt;(body, content_type).<span class="kw">await</span><span class="question-mark">?</span>;
+						::gotham_formdata::private::Validate::validate(<span class="kw-2">&amp;</span>res)<span class="question-mark">?</span>;
+						<span class="prelude-val">Ok</span>(res)
+					}.boxed()
 				}
 			}
 		};
 	})
 }
 
-<span class="doccomment">/// `T: Send`</span>
-<span class="kw">fn</span> <span class="ident">where_predicate_t_send</span>(<span class="ident">t</span>: <span class="ident">Type</span>) -&gt; <span class="ident">WherePredicate</span> {
-	<span class="ident">WherePredicate::Type</span>(<span class="ident">PredicateType</span> {
-		<span class="ident">lifetimes</span>: <span class="prelude-val">None</span>,
-		<span class="ident">bounded_ty</span>: <span class="ident">t</span>,
-		<span class="ident">colon_token</span>: <span class="ident">Default::default</span>(),
-		<span class="ident">bounds</span>: <span class="ident">iter::once</span>(<span class="ident">TypeParamBound::Trait</span>(<span class="ident">TraitBound</span> {
-			<span class="ident">paren_token</span>: <span class="prelude-val">None</span>,
-			<span class="ident">modifier</span>: <span class="ident">TraitBoundModifier::None</span>,
-			<span class="ident">lifetimes</span>: <span class="prelude-val">None</span>,
-			<span class="ident">path</span>: <span class="macro">path!</span>(<span class="ident">::std::marker::Send</span>)
+<span class="doccomment">/// `T: Send`
+</span><span class="kw">fn </span>where_predicate_t_send(t: Type) -&gt; WherePredicate {
+	WherePredicate::Type(PredicateType {
+		lifetimes: <span class="prelude-val">None</span>,
+		bounded_ty: t,
+		colon_token: Default::default(),
+		bounds: iter::once(TypeParamBound::Trait(TraitBound {
+			paren_token: <span class="prelude-val">None</span>,
+			modifier: TraitBoundModifier::None,
+			lifetimes: <span class="prelude-val">None</span>,
+			path: <span class="macro">path!</span>(::std::marker::Send)
 		}))
-		.<span class="ident">collect</span>()
+		.collect()
 	})
 }
 
-<span class="doccomment">/// `for&lt;&#39;a&gt; Value&lt;&#39;a&gt;: Parse&lt;T&gt;`</span>
-<span class="kw">fn</span> <span class="ident">where_predicate_value_parse_t</span>(<span class="ident">t</span>: <span class="ident">Type</span>) -&gt; <span class="ident">WherePredicate</span> {
-	<span class="kw">let</span> <span class="ident">lt</span> <span class="op">=</span> <span class="ident">Lifetime</span> {
-		<span class="ident">apostrophe</span>: <span class="ident">Span::call_site</span>(),
-		<span class="ident">ident</span>: <span class="macro">format_ident!</span>(<span class="string">&quot;gotham_formdata_value&quot;</span>)
+<span class="doccomment">/// `for&lt;&#39;a&gt; Value&lt;&#39;a&gt;: Parse&lt;T&gt;`
+</span><span class="kw">fn </span>where_predicate_value_parse_t(t: Type) -&gt; WherePredicate {
+	<span class="kw">let </span>lt = Lifetime {
+		apostrophe: Span::call_site(),
+		ident: <span class="macro">format_ident!</span>(<span class="string">&quot;gotham_formdata_value&quot;</span>)
 	};
-	<span class="ident">WherePredicate::Type</span>(<span class="ident">PredicateType</span> {
-		<span class="ident">lifetimes</span>: <span class="prelude-val">Some</span>(<span class="ident">BoundLifetimes</span> {
-			<span class="ident">for_token</span>: <span class="ident">Default::default</span>(),
-			<span class="ident">lt_token</span>: <span class="ident">Default::default</span>(),
-			<span class="ident">lifetimes</span>: <span class="ident">iter::once</span>(<span class="ident">LifetimeDef</span> {
-				<span class="ident">attrs</span>: <span class="ident">Vec::new</span>(),
-				<span class="ident">lifetime</span>: <span class="ident">lt</span>.<span class="ident">clone</span>(),
-				<span class="ident">colon_token</span>: <span class="prelude-val">None</span>,
-				<span class="ident">bounds</span>: <span class="ident">Default::default</span>()
+	WherePredicate::Type(PredicateType {
+		lifetimes: <span class="prelude-val">Some</span>(BoundLifetimes {
+			for_token: Default::default(),
+			lt_token: Default::default(),
+			lifetimes: iter::once(LifetimeDef {
+				attrs: Vec::new(),
+				lifetime: lt.clone(),
+				colon_token: <span class="prelude-val">None</span>,
+				bounds: Default::default()
 			})
-			.<span class="ident">collect</span>(),
-			<span class="ident">gt_token</span>: <span class="ident">Default::default</span>()
+			.collect(),
+			gt_token: Default::default()
 		}),
-		<span class="ident">bounded_ty</span>: {
-			<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">path</span> <span class="op">=</span> <span class="macro">path!</span>(<span class="ident">::gotham_formdata::private::Value</span>);
-			<span class="ident">path</span>.<span class="ident">segments</span>.<span class="ident">last_mut</span>().<span class="ident">unwrap</span>().<span class="ident">arguments</span> <span class="op">=</span>
-				<span class="ident">PathArguments::AngleBracketed</span>(<span class="ident">AngleBracketedGenericArguments</span> {
-					<span class="ident">colon2_token</span>: <span class="prelude-val">None</span>,
-					<span class="ident">lt_token</span>: <span class="ident">Default::default</span>(),
-					<span class="ident">args</span>: <span class="ident">iter::once</span>(<span class="ident">GenericArgument::Lifetime</span>(<span class="ident">lt</span>)).<span class="ident">collect</span>(),
-					<span class="ident">gt_token</span>: <span class="ident">Default::default</span>()
+		bounded_ty: {
+			<span class="kw">let </span><span class="kw-2">mut </span>path = <span class="macro">path!</span>(::gotham_formdata::private::Value);
+			path.segments.last_mut().unwrap().arguments =
+				PathArguments::AngleBracketed(AngleBracketedGenericArguments {
+					colon2_token: <span class="prelude-val">None</span>,
+					lt_token: Default::default(),
+					args: iter::once(GenericArgument::Lifetime(lt)).collect(),
+					gt_token: Default::default()
 				});
-			<span class="ident">Type::Path</span>(<span class="ident">TypePath</span> { <span class="ident">qself</span>: <span class="prelude-val">None</span>, <span class="ident">path</span> })
+			Type::Path(TypePath { qself: <span class="prelude-val">None</span>, path })
 		},
-		<span class="ident">colon_token</span>: <span class="ident">Default::default</span>(),
-		<span class="ident">bounds</span>: <span class="ident">iter::once</span>(<span class="ident">TypeParamBound::Trait</span>(<span class="ident">TraitBound</span> {
-			<span class="ident">paren_token</span>: <span class="prelude-val">None</span>,
-			<span class="ident">modifier</span>: <span class="ident">TraitBoundModifier::None</span>,
-			<span class="ident">lifetimes</span>: <span class="prelude-val">None</span>,
-			<span class="ident">path</span>: {
-				<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">path</span> <span class="op">=</span> <span class="macro">path!</span>(<span class="ident">::gotham_formdata::private::Parse</span>);
-				<span class="ident">path</span>.<span class="ident">segments</span>.<span class="ident">last_mut</span>().<span class="ident">unwrap</span>().<span class="ident">arguments</span> <span class="op">=</span>
-					<span class="ident">PathArguments::AngleBracketed</span>(<span class="ident">AngleBracketedGenericArguments</span> {
-						<span class="ident">colon2_token</span>: <span class="prelude-val">None</span>,
-						<span class="ident">lt_token</span>: <span class="ident">Default::default</span>(),
-						<span class="ident">args</span>: <span class="ident">iter::once</span>(<span class="ident">GenericArgument::Type</span>(<span class="ident">t</span>)).<span class="ident">collect</span>(),
-						<span class="ident">gt_token</span>: <span class="ident">Default::default</span>()
+		colon_token: Default::default(),
+		bounds: iter::once(TypeParamBound::Trait(TraitBound {
+			paren_token: <span class="prelude-val">None</span>,
+			modifier: TraitBoundModifier::None,
+			lifetimes: <span class="prelude-val">None</span>,
+			path: {
+				<span class="kw">let </span><span class="kw-2">mut </span>path = <span class="macro">path!</span>(::gotham_formdata::private::Parse);
+				path.segments.last_mut().unwrap().arguments =
+					PathArguments::AngleBracketed(AngleBracketedGenericArguments {
+						colon2_token: <span class="prelude-val">None</span>,
+						lt_token: Default::default(),
+						args: iter::once(GenericArgument::Type(t)).collect(),
+						gt_token: Default::default()
 					});
-				<span class="ident">path</span>
+				path
 			}
 		}))
-		.<span class="ident">collect</span>()
+		.collect()
 	})
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">tests</span> {
-	<span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+<span class="attribute">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+	<span class="kw">use super</span>::<span class="kw-2">*</span>;
 
-	<span class="attribute">#[<span class="ident">test</span>]</span>
-	<span class="kw">fn</span> <span class="ident">test_where_predicate_t_send</span>() {
-		<span class="kw">let</span> <span class="ident">t</span> <span class="op">=</span> <span class="ident">syn::parse_str</span>(<span class="string">&quot;FooBar&lt;&#39;a, String, &amp;&#39;static [u8]&gt;&quot;</span>).<span class="ident">unwrap</span>();
-		<span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="macro">quote!</span> { <span class="ident">FooBar</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">String</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> [<span class="ident">u8</span>]<span class="op">&gt;</span>: <span class="ident">::std::marker::Send</span> };
-		<span class="kw">let</span> <span class="ident">actual</span> <span class="op">=</span> <span class="ident">where_predicate_t_send</span>(<span class="ident">t</span>);
-		<span class="macro">assert_eq!</span>(<span class="ident">syn::parse2</span>::<span class="op">&lt;</span><span class="ident">WherePredicate</span><span class="op">&gt;</span>(<span class="ident">expected</span>).<span class="ident">unwrap</span>(), <span class="ident">actual</span>);
+	<span class="attribute">#[test]
+	</span><span class="kw">fn </span>test_where_predicate_t_send() {
+		<span class="kw">let </span>t = syn::parse_str(<span class="string">&quot;FooBar&lt;&#39;a, String, &amp;&#39;static [u8]&gt;&quot;</span>).unwrap();
+		<span class="kw">let </span>expected = <span class="macro">quote! </span>{ FooBar&lt;<span class="lifetime">&#39;a</span>, String, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>[u8]&gt;: ::std::marker::Send };
+		<span class="kw">let </span>actual = where_predicate_t_send(t);
+		<span class="macro">assert_eq!</span>(syn::parse2::&lt;WherePredicate&gt;(expected).unwrap(), actual);
 	}
 
-	<span class="attribute">#[<span class="ident">test</span>]</span>
-	<span class="kw">fn</span> <span class="ident">test_where_predicate_value_parse_t</span>() {
-		<span class="kw">let</span> <span class="ident">t</span> <span class="op">=</span> <span class="ident">syn::parse_str</span>(<span class="string">&quot;FooBar&lt;&#39;a, String, &amp;&#39;static [u8]&gt;&quot;</span>).<span class="ident">unwrap</span>();
-		<span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="macro">quote!</span> {
-			<span class="kw">for</span><span class="op">&lt;</span><span class="lifetime">&#39;gotham_formdata_value</span><span class="op">&gt;</span> <span class="ident">::gotham_formdata::private::Value</span><span class="op">&lt;</span><span class="lifetime">&#39;gotham_formdata_value</span><span class="op">&gt;</span>:
-				<span class="ident">::gotham_formdata::private::Parse</span><span class="op">&lt;</span><span class="ident">FooBar</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">String</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> [<span class="ident">u8</span>]<span class="op">&gt;</span><span class="op">&gt;</span>
+	<span class="attribute">#[test]
+	</span><span class="kw">fn </span>test_where_predicate_value_parse_t() {
+		<span class="kw">let </span>t = syn::parse_str(<span class="string">&quot;FooBar&lt;&#39;a, String, &amp;&#39;static [u8]&gt;&quot;</span>).unwrap();
+		<span class="kw">let </span>expected = <span class="macro">quote! </span>{
+			<span class="kw">for</span>&lt;<span class="lifetime">&#39;gotham_formdata_value</span>&gt; ::gotham_formdata::private::Value&lt;<span class="lifetime">&#39;gotham_formdata_value</span>&gt;:
+				::gotham_formdata::private::Parse&lt;FooBar&lt;<span class="lifetime">&#39;a</span>, String, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>[u8]&gt;&gt;
 		};
-		<span class="kw">let</span> <span class="ident">actual</span> <span class="op">=</span> <span class="ident">where_predicate_value_parse_t</span>(<span class="ident">t</span>);
-		<span class="macro">assert_eq!</span>(<span class="ident">syn::parse2</span>::<span class="op">&lt;</span><span class="ident">WherePredicate</span><span class="op">&gt;</span>(<span class="ident">expected</span>).<span class="ident">unwrap</span>(), <span class="ident">actual</span>);
+		<span class="kw">let </span>actual = where_predicate_value_parse_t(t);
+		<span class="macro">assert_eq!</span>(syn::parse2::&lt;WherePredicate&gt;(expected).unwrap(), actual);
 	}
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham_formdata_derive" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham_formdata_derive" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

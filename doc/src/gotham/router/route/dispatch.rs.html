@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/router/route/dispatch.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>dispatch.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../gotham/index.html"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/router/route/dispatch.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>dispatch.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../../normalize.css"><link rel="stylesheet" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../../ayu.css" disabled><link rel="stylesheet" href="../../../../dark.css" disabled><link rel="stylesheet" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../gotham/index.html"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -216,223 +216,223 @@
 <span id="216">216</span>
 <span id="217">217</span>
 <span id="218">218</span>
-</pre><pre class="rust"><code><span class="doccomment">//! Defines the route `Dispatcher` and supporting types.</span>
+</pre><pre class="rust"><code><span class="doccomment">//! Defines the route `Dispatcher` and supporting types.
 
-<span class="kw">use</span> <span class="ident">futures_util::future</span>::{<span class="self">self</span>, <span class="ident">FutureExt</span>};
-<span class="kw">use</span> <span class="ident">log::trace</span>;
-<span class="kw">use</span> <span class="ident">std::panic::RefUnwindSafe</span>;
-<span class="kw">use</span> <span class="ident">std::pin::Pin</span>;
+</span><span class="kw">use </span>futures_util::future::{<span class="self">self</span>, FutureExt};
+<span class="kw">use </span>log::trace;
+<span class="kw">use </span>std::panic::RefUnwindSafe;
+<span class="kw">use </span>std::pin::Pin;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::handler</span>::{<span class="ident">Handler</span>, <span class="ident">HandlerFuture</span>, <span class="ident">NewHandler</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::pipeline</span>::{<span class="ident">PipelineHandleChain</span>, <span class="ident">PipelineSet</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state</span>::{<span class="ident">request_id</span>, <span class="ident">State</span>};
+<span class="kw">use </span><span class="kw">crate</span>::handler::{Handler, HandlerFuture, NewHandler};
+<span class="kw">use </span><span class="kw">crate</span>::pipeline::{PipelineHandleChain, PipelineSet};
+<span class="kw">use </span><span class="kw">crate</span>::state::{request_id, State};
 
-<span class="doccomment">/// Used by `Router` to dispatch requests via pipelines and finally into the configured `Handler`.</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Dispatcher</span>: <span class="ident">RefUnwindSafe</span> {
-    <span class="doccomment">/// Dispatches a request via pipelines and `Handler` represented by this `Dispatcher`.</span>
-    <span class="kw">fn</span> <span class="ident">dispatch</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">state</span>: <span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span>;
+<span class="doccomment">/// Used by `Router` to dispatch requests via pipelines and finally into the configured `Handler`.
+</span><span class="kw">pub trait </span>Dispatcher: RefUnwindSafe {
+    <span class="doccomment">/// Dispatches a request via pipelines and `Handler` represented by this `Dispatcher`.
+    </span><span class="kw">fn </span>dispatch(<span class="kw-2">&amp;</span><span class="self">self</span>, state: State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;;
 }
 
-<span class="doccomment">/// Default implementation of the `Dispatcher` trait.</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">DispatcherImpl</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">C</span>, <span class="ident">P</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">H</span>: <span class="ident">NewHandler</span>,
-    <span class="ident">C</span>: <span class="ident">PipelineHandleChain</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>,
-    <span class="ident">P</span>: <span class="ident">RefUnwindSafe</span>,
+<span class="doccomment">/// Default implementation of the `Dispatcher` trait.
+</span><span class="kw">pub struct </span>DispatcherImpl&lt;H, C, P&gt;
+<span class="kw">where
+    </span>H: NewHandler,
+    C: PipelineHandleChain&lt;P&gt;,
+    P: RefUnwindSafe,
 {
-    <span class="ident">new_handler</span>: <span class="ident">H</span>,
-    <span class="ident">pipeline_chain</span>: <span class="ident">C</span>,
-    <span class="ident">pipelines</span>: <span class="ident">PipelineSet</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>,
+    new_handler: H,
+    pipeline_chain: C,
+    pipelines: PipelineSet&lt;P&gt;,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">C</span>, <span class="ident">P</span><span class="op">&gt;</span> <span class="ident">DispatcherImpl</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">C</span>, <span class="ident">P</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">H</span>: <span class="ident">NewHandler</span>,
-    <span class="ident">H::Instance</span>: <span class="lifetime">&#39;static</span>,
-    <span class="ident">C</span>: <span class="ident">PipelineHandleChain</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>,
-    <span class="ident">P</span>: <span class="ident">RefUnwindSafe</span>,
+<span class="kw">impl</span>&lt;H, C, P&gt; DispatcherImpl&lt;H, C, P&gt;
+<span class="kw">where
+    </span>H: NewHandler,
+    H::Instance: <span class="lifetime">&#39;static</span>,
+    C: PipelineHandleChain&lt;P&gt;,
+    P: RefUnwindSafe,
 {
-    <span class="doccomment">/// Creates a new `DispatcherImpl`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// * `new_handler` - The `Handler` that will be called once the `pipeline_chain` is complete.</span>
-    <span class="doccomment">/// * `pipeline_chain` - A chain of `Pipeline` instance handles that indicate which `Pipelines`</span>
-    <span class="doccomment">///   will be invoked.</span>
-    <span class="doccomment">/// * `pipelines` - All `Pipeline` instances, accessible by the handles provided in</span>
-    <span class="doccomment">///   `pipeline_chain`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">new_handler</span>: <span class="ident">H</span>, <span class="ident">pipeline_chain</span>: <span class="ident">C</span>, <span class="ident">pipelines</span>: <span class="ident">PipelineSet</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">DispatcherImpl</span> {
-            <span class="ident">new_handler</span>,
-            <span class="ident">pipeline_chain</span>,
-            <span class="ident">pipelines</span>,
+    <span class="doccomment">/// Creates a new `DispatcherImpl`.
+    ///
+    /// * `new_handler` - The `Handler` that will be called once the `pipeline_chain` is complete.
+    /// * `pipeline_chain` - A chain of `Pipeline` instance handles that indicate which `Pipelines`
+    ///   will be invoked.
+    /// * `pipelines` - All `Pipeline` instances, accessible by the handles provided in
+    ///   `pipeline_chain`.
+    </span><span class="kw">pub fn </span>new(new_handler: H, pipeline_chain: C, pipelines: PipelineSet&lt;P&gt;) -&gt; <span class="self">Self </span>{
+        DispatcherImpl {
+            new_handler,
+            pipeline_chain,
+            pipelines,
         }
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">C</span>, <span class="ident">P</span><span class="op">&gt;</span> <span class="ident">Dispatcher</span> <span class="kw">for</span> <span class="ident">DispatcherImpl</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">C</span>, <span class="ident">P</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">H</span>: <span class="ident">NewHandler</span>,
-    <span class="ident">H::Instance</span>: <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">C</span>: <span class="ident">PipelineHandleChain</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>,
-    <span class="ident">P</span>: <span class="ident">RefUnwindSafe</span>,
+<span class="kw">impl</span>&lt;H, C, P&gt; Dispatcher <span class="kw">for </span>DispatcherImpl&lt;H, C, P&gt;
+<span class="kw">where
+    </span>H: NewHandler,
+    H::Instance: Send + <span class="lifetime">&#39;static</span>,
+    C: PipelineHandleChain&lt;P&gt;,
+    P: RefUnwindSafe,
 {
-    <span class="kw">fn</span> <span class="ident">dispatch</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">state</span>: <span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">match</span> <span class="self">self</span>.<span class="ident">new_handler</span>.<span class="ident">new_handler</span>() {
-            <span class="prelude-val">Ok</span>(<span class="ident">h</span>) =&gt; {
-                <span class="macro">trace!</span>(<span class="string">&quot;[{}] cloning handler&quot;</span>, <span class="ident">request_id</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>));
-                <span class="self">self</span>.<span class="ident">pipeline_chain</span>
-                    .<span class="ident">call</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">pipelines</span>, <span class="ident">state</span>, <span class="kw">move</span> <span class="op">|</span><span class="ident">state</span><span class="op">|</span> <span class="ident">h</span>.<span class="ident">handle</span>(<span class="ident">state</span>))
+    <span class="kw">fn </span>dispatch(<span class="kw-2">&amp;</span><span class="self">self</span>, state: State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; {
+        <span class="kw">match </span><span class="self">self</span>.new_handler.new_handler() {
+            <span class="prelude-val">Ok</span>(h) =&gt; {
+                <span class="macro">trace!</span>(<span class="string">&quot;[{}] cloning handler&quot;</span>, request_id(<span class="kw-2">&amp;</span>state));
+                <span class="self">self</span>.pipeline_chain
+                    .call(<span class="kw-2">&amp;</span><span class="self">self</span>.pipelines, state, <span class="kw">move </span>|state| h.handle(state))
             }
-            <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; {
-                <span class="macro">trace!</span>(<span class="string">&quot;[{}] error cloning handler&quot;</span>, <span class="ident">request_id</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>));
-                <span class="ident">future::err</span>((<span class="ident">state</span>, <span class="ident">e</span>.<span class="ident">into</span>())).<span class="ident">boxed</span>()
+            <span class="prelude-val">Err</span>(e) =&gt; {
+                <span class="macro">trace!</span>(<span class="string">&quot;[{}] error cloning handler&quot;</span>, request_id(<span class="kw-2">&amp;</span>state));
+                future::err((state, e.into())).boxed()
             }
         }
     }
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">tests</span> {
-    <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
-    <span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
+<span class="attribute">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
+    <span class="kw">use </span>std::sync::Arc;
 
-    <span class="kw">use</span> <span class="ident">hyper</span>::{<span class="ident">Body</span>, <span class="ident">Response</span>, <span class="ident">StatusCode</span>};
+    <span class="kw">use </span>hyper::{Body, Response, StatusCode};
 
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::middleware</span>::{<span class="ident">Middleware</span>, <span class="ident">NewMiddleware</span>};
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::pipeline</span>::{<span class="ident">new_pipeline</span>, <span class="ident">new_pipeline_set</span>};
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state::StateData</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::test::TestServer</span>;
+    <span class="kw">use </span><span class="kw">crate</span>::middleware::{Middleware, NewMiddleware};
+    <span class="kw">use </span><span class="kw">crate</span>::pipeline::{new_pipeline, new_pipeline_set};
+    <span class="kw">use </span><span class="kw">crate</span>::state::StateData;
+    <span class="kw">use </span><span class="kw">crate</span>::test::TestServer;
 
-    <span class="kw">fn</span> <span class="ident">handler</span>(<span class="ident">state</span>: <span class="ident">State</span>) -&gt; (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
-        <span class="kw">let</span> <span class="ident">number</span> <span class="op">=</span> <span class="ident">state</span>.<span class="ident">borrow</span>::<span class="op">&lt;</span><span class="ident">Number</span><span class="op">&gt;</span>().<span class="ident">value</span>;
+    <span class="kw">fn </span>handler(state: State) -&gt; (State, Response&lt;Body&gt;) {
+        <span class="kw">let </span>number = state.borrow::&lt;Number&gt;().value;
         (
-            <span class="ident">state</span>,
-            <span class="ident">Response::builder</span>()
-                .<span class="ident">status</span>(<span class="ident">StatusCode::OK</span>)
-                .<span class="ident">body</span>(<span class="macro">format!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">number</span>).<span class="ident">into</span>())
-                .<span class="ident">unwrap</span>(),
+            state,
+            Response::builder()
+                .status(StatusCode::OK)
+                .body(<span class="macro">format!</span>(<span class="string">&quot;{}&quot;</span>, number).into())
+                .unwrap(),
         )
     }
 
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>)]</span>
-    <span class="kw">struct</span> <span class="ident">Number</span> {
-        <span class="ident">value</span>: <span class="ident">i32</span>,
+    <span class="attribute">#[derive(Clone)]
+    </span><span class="kw">struct </span>Number {
+        value: i32,
     }
 
-    <span class="kw">impl</span> <span class="ident">NewMiddleware</span> <span class="kw">for</span> <span class="ident">Number</span> {
-        <span class="kw">type</span> <span class="ident">Instance</span> <span class="op">=</span> <span class="ident">Number</span>;
+    <span class="kw">impl </span>NewMiddleware <span class="kw">for </span>Number {
+        <span class="kw">type </span>Instance = Number;
 
-        <span class="kw">fn</span> <span class="ident">new_middleware</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">anyhow::Result</span><span class="op">&lt;</span><span class="ident">Number</span><span class="op">&gt;</span> {
-            <span class="prelude-val">Ok</span>(<span class="self">self</span>.<span class="ident">clone</span>())
+        <span class="kw">fn </span>new_middleware(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; anyhow::Result&lt;Number&gt; {
+            <span class="prelude-val">Ok</span>(<span class="self">self</span>.clone())
         }
     }
 
-    <span class="kw">impl</span> <span class="ident">Middleware</span> <span class="kw">for</span> <span class="ident">Number</span> {
-        <span class="kw">fn</span> <span class="ident">call</span><span class="op">&lt;</span><span class="ident">Chain</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">state</span>: <span class="ident">State</span>, <span class="ident">chain</span>: <span class="ident">Chain</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span>
-        <span class="kw">where</span>
-            <span class="ident">Chain</span>: <span class="ident">FnOnce</span>(<span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-            <span class="self">Self</span>: <span class="ident">Sized</span>,
+    <span class="kw">impl </span>Middleware <span class="kw">for </span>Number {
+        <span class="kw">fn </span>call&lt;Chain&gt;(<span class="self">self</span>, <span class="kw-2">mut </span>state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+        <span class="kw">where
+            </span>Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + <span class="lifetime">&#39;static</span>,
+            <span class="self">Self</span>: Sized,
         {
-            <span class="ident">state</span>.<span class="ident">put</span>(<span class="self">self</span>);
-            <span class="ident">chain</span>(<span class="ident">state</span>)
+            state.put(<span class="self">self</span>);
+            chain(state)
         }
     }
 
-    <span class="kw">impl</span> <span class="ident">StateData</span> <span class="kw">for</span> <span class="ident">Number</span> {}
+    <span class="kw">impl </span>StateData <span class="kw">for </span>Number {}
 
-    <span class="kw">struct</span> <span class="ident">Addition</span> {
-        <span class="ident">value</span>: <span class="ident">i32</span>,
+    <span class="kw">struct </span>Addition {
+        value: i32,
     }
 
-    <span class="kw">impl</span> <span class="ident">NewMiddleware</span> <span class="kw">for</span> <span class="ident">Addition</span> {
-        <span class="kw">type</span> <span class="ident">Instance</span> <span class="op">=</span> <span class="ident">Addition</span>;
+    <span class="kw">impl </span>NewMiddleware <span class="kw">for </span>Addition {
+        <span class="kw">type </span>Instance = Addition;
 
-        <span class="kw">fn</span> <span class="ident">new_middleware</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">anyhow::Result</span><span class="op">&lt;</span><span class="ident">Addition</span><span class="op">&gt;</span> {
-            <span class="prelude-val">Ok</span>(<span class="ident">Addition</span> { ..<span class="kw-2">*</span><span class="self">self</span> })
+        <span class="kw">fn </span>new_middleware(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; anyhow::Result&lt;Addition&gt; {
+            <span class="prelude-val">Ok</span>(Addition { ..<span class="kw-2">*</span><span class="self">self </span>})
         }
     }
 
-    <span class="kw">impl</span> <span class="ident">Middleware</span> <span class="kw">for</span> <span class="ident">Addition</span> {
-        <span class="kw">fn</span> <span class="ident">call</span><span class="op">&lt;</span><span class="ident">Chain</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">state</span>: <span class="ident">State</span>, <span class="ident">chain</span>: <span class="ident">Chain</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span>
-        <span class="kw">where</span>
-            <span class="ident">Chain</span>: <span class="ident">FnOnce</span>(<span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-            <span class="self">Self</span>: <span class="ident">Sized</span>,
+    <span class="kw">impl </span>Middleware <span class="kw">for </span>Addition {
+        <span class="kw">fn </span>call&lt;Chain&gt;(<span class="self">self</span>, <span class="kw-2">mut </span>state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+        <span class="kw">where
+            </span>Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + <span class="lifetime">&#39;static</span>,
+            <span class="self">Self</span>: Sized,
         {
-            <span class="ident">state</span>.<span class="ident">borrow_mut</span>::<span class="op">&lt;</span><span class="ident">Number</span><span class="op">&gt;</span>().<span class="ident">value</span> <span class="op">+</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">value</span>;
-            <span class="ident">chain</span>(<span class="ident">state</span>)
+            state.borrow_mut::&lt;Number&gt;().value += <span class="self">self</span>.value;
+            chain(state)
         }
     }
 
-    <span class="kw">struct</span> <span class="ident">Multiplication</span> {
-        <span class="ident">value</span>: <span class="ident">i32</span>,
+    <span class="kw">struct </span>Multiplication {
+        value: i32,
     }
 
-    <span class="kw">impl</span> <span class="ident">NewMiddleware</span> <span class="kw">for</span> <span class="ident">Multiplication</span> {
-        <span class="kw">type</span> <span class="ident">Instance</span> <span class="op">=</span> <span class="ident">Multiplication</span>;
+    <span class="kw">impl </span>NewMiddleware <span class="kw">for </span>Multiplication {
+        <span class="kw">type </span>Instance = Multiplication;
 
-        <span class="kw">fn</span> <span class="ident">new_middleware</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">anyhow::Result</span><span class="op">&lt;</span><span class="ident">Multiplication</span><span class="op">&gt;</span> {
-            <span class="prelude-val">Ok</span>(<span class="ident">Multiplication</span> { ..<span class="kw-2">*</span><span class="self">self</span> })
+        <span class="kw">fn </span>new_middleware(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; anyhow::Result&lt;Multiplication&gt; {
+            <span class="prelude-val">Ok</span>(Multiplication { ..<span class="kw-2">*</span><span class="self">self </span>})
         }
     }
 
-    <span class="kw">impl</span> <span class="ident">Middleware</span> <span class="kw">for</span> <span class="ident">Multiplication</span> {
-        <span class="kw">fn</span> <span class="ident">call</span><span class="op">&lt;</span><span class="ident">Chain</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">state</span>: <span class="ident">State</span>, <span class="ident">chain</span>: <span class="ident">Chain</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span>
-        <span class="kw">where</span>
-            <span class="ident">Chain</span>: <span class="ident">FnOnce</span>(<span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-            <span class="self">Self</span>: <span class="ident">Sized</span>,
+    <span class="kw">impl </span>Middleware <span class="kw">for </span>Multiplication {
+        <span class="kw">fn </span>call&lt;Chain&gt;(<span class="self">self</span>, <span class="kw-2">mut </span>state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+        <span class="kw">where
+            </span>Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + <span class="lifetime">&#39;static</span>,
+            <span class="self">Self</span>: Sized,
         {
-            <span class="ident">state</span>.<span class="ident">borrow_mut</span>::<span class="op">&lt;</span><span class="ident">Number</span><span class="op">&gt;</span>().<span class="ident">value</span> <span class="kw-2">*</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">value</span>;
-            <span class="ident">chain</span>(<span class="ident">state</span>)
+            state.borrow_mut::&lt;Number&gt;().value <span class="kw-2">*</span>= <span class="self">self</span>.value;
+            chain(state)
         }
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">pipeline_chain_ordering_test</span>() {
-        <span class="kw">let</span> <span class="ident">test_server</span> <span class="op">=</span> <span class="ident">TestServer::new</span>(<span class="op">|</span><span class="op">|</span> {
-            <span class="prelude-val">Ok</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">state</span><span class="op">|</span> {
-                <span class="kw">let</span> <span class="ident">pipelines</span> <span class="op">=</span> <span class="ident">new_pipeline_set</span>();
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>pipeline_chain_ordering_test() {
+        <span class="kw">let </span>test_server = TestServer::new(|| {
+            <span class="prelude-val">Ok</span>(<span class="kw">move </span>|state| {
+                <span class="kw">let </span>pipelines = new_pipeline_set();
 
-                <span class="kw">let</span> (<span class="ident">pipelines</span>, <span class="ident">p1</span>) <span class="op">=</span> <span class="ident">pipelines</span>.<span class="ident">add</span>(
-                    <span class="ident">new_pipeline</span>()
-                        .<span class="ident">add</span>(<span class="ident">Number</span> { <span class="ident">value</span>: <span class="number">0</span> }) <span class="comment">// 0</span>
-                        .<span class="ident">add</span>(<span class="ident">Addition</span> { <span class="ident">value</span>: <span class="number">1</span> }) <span class="comment">// 1</span>
-                        .<span class="ident">add</span>(<span class="ident">Multiplication</span> { <span class="ident">value</span>: <span class="number">2</span> }) <span class="comment">// 2</span>
-                        .<span class="ident">build</span>(),
+                <span class="kw">let </span>(pipelines, p1) = pipelines.add(
+                    new_pipeline()
+                        .add(Number { value: <span class="number">0 </span>}) <span class="comment">// 0
+                        </span>.add(Addition { value: <span class="number">1 </span>}) <span class="comment">// 1
+                        </span>.add(Multiplication { value: <span class="number">2 </span>}) <span class="comment">// 2
+                        </span>.build(),
                 );
 
-                <span class="kw">let</span> (<span class="ident">pipelines</span>, <span class="ident">p2</span>) <span class="op">=</span> <span class="ident">pipelines</span>.<span class="ident">add</span>(
-                    <span class="ident">new_pipeline</span>()
-                        .<span class="ident">add</span>(<span class="ident">Addition</span> { <span class="ident">value</span>: <span class="number">1</span> }) <span class="comment">// 3</span>
-                        .<span class="ident">add</span>(<span class="ident">Multiplication</span> { <span class="ident">value</span>: <span class="number">2</span> }) <span class="comment">// 6</span>
-                        .<span class="ident">build</span>(),
+                <span class="kw">let </span>(pipelines, p2) = pipelines.add(
+                    new_pipeline()
+                        .add(Addition { value: <span class="number">1 </span>}) <span class="comment">// 3
+                        </span>.add(Multiplication { value: <span class="number">2 </span>}) <span class="comment">// 6
+                        </span>.build(),
                 );
 
-                <span class="kw">let</span> (<span class="ident">pipelines</span>, <span class="ident">p3</span>) <span class="op">=</span> <span class="ident">pipelines</span>.<span class="ident">add</span>(
-                    <span class="ident">new_pipeline</span>()
-                        .<span class="ident">add</span>(<span class="ident">Addition</span> { <span class="ident">value</span>: <span class="number">2</span> }) <span class="comment">// 8</span>
-                        .<span class="ident">add</span>(<span class="ident">Multiplication</span> { <span class="ident">value</span>: <span class="number">3</span> }) <span class="comment">// 24</span>
-                        .<span class="ident">build</span>(),
+                <span class="kw">let </span>(pipelines, p3) = pipelines.add(
+                    new_pipeline()
+                        .add(Addition { value: <span class="number">2 </span>}) <span class="comment">// 8
+                        </span>.add(Multiplication { value: <span class="number">3 </span>}) <span class="comment">// 24
+                        </span>.build(),
                 );
 
-                <span class="kw">let</span> <span class="ident">pipelines</span> <span class="op">=</span> <span class="ident">Arc::new</span>(<span class="ident">pipelines</span>);
+                <span class="kw">let </span>pipelines = Arc::new(pipelines);
 
-                <span class="kw">let</span> <span class="ident">new_handler</span> <span class="op">=</span> <span class="op">|</span><span class="op">|</span> <span class="prelude-val">Ok</span>(<span class="ident">handler</span>);
+                <span class="kw">let </span>new_handler = || <span class="prelude-val">Ok</span>(handler);
 
-                <span class="kw">let</span> <span class="ident">pipeline_chain</span> <span class="op">=</span> (<span class="ident">p3</span>, (<span class="ident">p2</span>, (<span class="ident">p1</span>, ())));
-                <span class="kw">let</span> <span class="ident">dispatcher</span> <span class="op">=</span> <span class="ident">DispatcherImpl::new</span>(<span class="ident">new_handler</span>, <span class="ident">pipeline_chain</span>, <span class="ident">pipelines</span>);
-                <span class="ident">dispatcher</span>.<span class="ident">dispatch</span>(<span class="ident">state</span>)
+                <span class="kw">let </span>pipeline_chain = (p3, (p2, (p1, ())));
+                <span class="kw">let </span>dispatcher = DispatcherImpl::new(new_handler, pipeline_chain, pipelines);
+                dispatcher.dispatch(state)
             })
         })
-        .<span class="ident">unwrap</span>();
+        .unwrap();
 
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">test_server</span>
-            .<span class="ident">client</span>()
-            .<span class="ident">get</span>(<span class="string">&quot;http://localhost/&quot;</span>)
-            .<span class="ident">perform</span>()
-            .<span class="ident">unwrap</span>();
+        <span class="kw">let </span>response = test_server
+            .client()
+            .get(<span class="string">&quot;http://localhost/&quot;</span>)
+            .perform()
+            .unwrap();
 
-        <span class="kw">let</span> <span class="ident">buf</span> <span class="op">=</span> <span class="ident">response</span>.<span class="ident">read_body</span>().<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">buf</span>.<span class="ident">as_slice</span>(), <span class="string">b&quot;24&quot;</span>);
+        <span class="kw">let </span>buf = response.read_body().unwrap();
+        <span class="macro">assert_eq!</span>(buf.as_slice(), <span class="string">b&quot;24&quot;</span>);
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

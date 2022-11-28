@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/plain/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/plain/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -68,75 +68,75 @@
 <span id="68">68</span>
 <span id="69">69</span>
 <span id="70">70</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">futures_util::future</span>;
-<span class="kw">use</span> <span class="ident">log::info</span>;
-<span class="kw">use</span> <span class="ident">std::net::ToSocketAddrs</span>;
+</pre><pre class="rust"><code><span class="kw">use </span>futures_util::future;
+<span class="kw">use </span>log::info;
+<span class="kw">use </span>std::net::ToSocketAddrs;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">super</span>::handler::NewHandler</span>;
-<span class="kw">use</span> <span class="kw">super</span>::{<span class="ident">bind_server</span>, <span class="ident">new_runtime</span>, <span class="ident">tcp_listener</span>, <span class="ident">StartError</span>};
+<span class="kw">use </span><span class="kw">super</span>::handler::NewHandler;
+<span class="kw">use super</span>::{bind_server, new_runtime, tcp_listener, StartError};
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;testing&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">test</span>;
+<span class="attribute">#[cfg(feature = <span class="string">&quot;testing&quot;</span>)]
+</span><span class="kw">pub mod </span>test;
 
-<span class="doccomment">/// Starts a Gotham application on plain, unsecured HTTP.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">start</span><span class="op">&lt;</span><span class="ident">NH</span>, <span class="ident">A</span><span class="op">&gt;</span>(<span class="ident">addr</span>: <span class="ident">A</span>, <span class="ident">new_handler</span>: <span class="ident">NH</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">StartError</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">NH</span>: <span class="ident">NewHandler</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">A</span>: <span class="ident">ToSocketAddrs</span> <span class="op">+</span> <span class="lifetime">&#39;static</span> <span class="op">+</span> <span class="ident">Send</span>,
+<span class="doccomment">/// Starts a Gotham application on plain, unsecured HTTP.
+</span><span class="kw">pub fn </span>start&lt;NH, A&gt;(addr: A, new_handler: NH) -&gt; <span class="prelude-ty">Result</span>&lt;(), StartError&gt;
+<span class="kw">where
+    </span>NH: NewHandler + <span class="lifetime">&#39;static</span>,
+    A: ToSocketAddrs + <span class="lifetime">&#39;static </span>+ Send,
 {
-    <span class="ident">start_with_num_threads</span>(<span class="ident">addr</span>, <span class="ident">new_handler</span>, <span class="ident">num_cpus::get</span>())
+    start_with_num_threads(addr, new_handler, num_cpus::get())
 }
 
-<span class="doccomment">/// Starts a Gotham application with a designated number of threads.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">start_with_num_threads</span><span class="op">&lt;</span><span class="ident">NH</span>, <span class="ident">A</span><span class="op">&gt;</span>(
-    <span class="ident">addr</span>: <span class="ident">A</span>,
-    <span class="ident">new_handler</span>: <span class="ident">NH</span>,
-    <span class="ident">threads</span>: <span class="ident">usize</span>,
-) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">StartError</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">NH</span>: <span class="ident">NewHandler</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">A</span>: <span class="ident">ToSocketAddrs</span> <span class="op">+</span> <span class="lifetime">&#39;static</span> <span class="op">+</span> <span class="ident">Send</span>,
+<span class="doccomment">/// Starts a Gotham application with a designated number of threads.
+</span><span class="kw">pub fn </span>start_with_num_threads&lt;NH, A&gt;(
+    addr: A,
+    new_handler: NH,
+    threads: usize,
+) -&gt; <span class="prelude-ty">Result</span>&lt;(), StartError&gt;
+<span class="kw">where
+    </span>NH: NewHandler + <span class="lifetime">&#39;static</span>,
+    A: ToSocketAddrs + <span class="lifetime">&#39;static </span>+ Send,
 {
-    <span class="kw">let</span> <span class="ident">runtime</span> <span class="op">=</span> <span class="ident">new_runtime</span>(<span class="ident">threads</span>);
-    <span class="ident">runtime</span>.<span class="ident">block_on</span>(<span class="ident">init_server</span>(<span class="ident">addr</span>, <span class="ident">new_handler</span>))
+    <span class="kw">let </span>runtime = new_runtime(threads);
+    runtime.block_on(init_server(addr, new_handler))
 }
 
-<span class="doccomment">/// Returns a `Future` used to spawn an Gotham application.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// This is used internally, but exposed in case the developer intends on doing any</span>
-<span class="doccomment">/// manual wiring that isn&#39;t supported by the Gotham API. It&#39;s unlikely that this will</span>
-<span class="doccomment">/// be required in most use cases; it&#39;s mainly exposed for shutdown handling.</span>
-<span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">init_server</span><span class="op">&lt;</span><span class="ident">NH</span>, <span class="ident">A</span><span class="op">&gt;</span>(<span class="ident">addr</span>: <span class="ident">A</span>, <span class="ident">new_handler</span>: <span class="ident">NH</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">StartError</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">NH</span>: <span class="ident">NewHandler</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">A</span>: <span class="ident">ToSocketAddrs</span> <span class="op">+</span> <span class="lifetime">&#39;static</span> <span class="op">+</span> <span class="ident">Send</span>,
+<span class="doccomment">/// Returns a `Future` used to spawn an Gotham application.
+///
+/// This is used internally, but exposed in case the developer intends on doing any
+/// manual wiring that isn&#39;t supported by the Gotham API. It&#39;s unlikely that this will
+/// be required in most use cases; it&#39;s mainly exposed for shutdown handling.
+</span><span class="kw">pub async fn </span>init_server&lt;NH, A&gt;(addr: A, new_handler: NH) -&gt; <span class="prelude-ty">Result</span>&lt;(), StartError&gt;
+<span class="kw">where
+    </span>NH: NewHandler + <span class="lifetime">&#39;static</span>,
+    A: ToSocketAddrs + <span class="lifetime">&#39;static </span>+ Send,
 {
-    <span class="kw">let</span> <span class="ident">listener</span> <span class="op">=</span> <span class="ident">tcp_listener</span>(<span class="ident">addr</span>).<span class="kw">await</span><span class="question-mark">?</span>;
-    <span class="kw">let</span> <span class="ident">addr</span> <span class="op">=</span> <span class="ident">listener</span>.<span class="ident">local_addr</span>().<span class="ident">unwrap</span>();
+    <span class="kw">let </span>listener = tcp_listener(addr).<span class="kw">await</span><span class="question-mark">?</span>;
+    <span class="kw">let </span>addr = listener.local_addr().unwrap();
 
-    <span class="macro">info!</span> {
-        <span class="ident">target</span>: <span class="string">&quot;gotham::start&quot;</span>,
-        <span class="string">&quot; Gotham listening on http://{}&quot;</span>, <span class="ident">addr</span>
+    <span class="macro">info! </span>{
+        target: <span class="string">&quot;gotham::start&quot;</span>,
+        <span class="string">&quot; Gotham listening on http://{}&quot;</span>, addr
     }
 
-    <span class="ident">bind_server</span>(<span class="ident">listener</span>, <span class="ident">new_handler</span>, <span class="ident">future::ok</span>).<span class="kw">await</span>
-}
+    bind_server(listener, new_handler, future::ok).<span class="kw">await
+</span>}
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">tests</span> {
-    <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state::State</span>;
-    <span class="kw">use</span> <span class="ident">hyper</span>::{<span class="ident">Body</span>, <span class="ident">Response</span>};
+<span class="attribute">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
+    <span class="kw">use </span><span class="kw">crate</span>::state::State;
+    <span class="kw">use </span>hyper::{Body, Response};
 
-    <span class="kw">fn</span> <span class="ident">handler</span>(<span class="kw">_</span>: <span class="ident">State</span>) -&gt; (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
+    <span class="kw">fn </span>handler(<span class="kw">_</span>: State) -&gt; (State, Response&lt;Body&gt;) {
         <span class="macro">unimplemented!</span>()
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_error_on_invalid_port</span>() {
-        <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">start</span>(<span class="string">&quot;0.0.0.0:99999&quot;</span>, <span class="op">|</span><span class="op">|</span> <span class="prelude-val">Ok</span>(<span class="ident">handler</span>));
-        <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_error_on_invalid_port() {
+        <span class="kw">let </span>res = start(<span class="string">&quot;0.0.0.0:99999&quot;</span>, || <span class="prelude-val">Ok</span>(handler));
+        <span class="macro">assert!</span>(res.is_err());
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

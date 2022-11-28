@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/helpers/http/response.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>response.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../gotham/index.html"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/helpers/http/response.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>response.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../../normalize.css"><link rel="stylesheet" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../../ayu.css" disabled><link rel="stylesheet" href="../../../../dark.css" disabled><link rel="stylesheet" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../gotham/index.html"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -205,212 +205,212 @@
 <span id="205">205</span>
 <span id="206">206</span>
 <span id="207">207</span>
-</pre><pre class="rust"><code><span class="doccomment">//! Helpers for HTTP response generation</span>
+</pre><pre class="rust"><code><span class="doccomment">//! Helpers for HTTP response generation
 
-<span class="kw">use</span> <span class="ident">hyper::header</span>::{<span class="ident">CONTENT_TYPE</span>, <span class="ident">LOCATION</span>};
-<span class="kw">use</span> <span class="ident">hyper</span>::{<span class="ident">Body</span>, <span class="ident">Method</span>, <span class="ident">Response</span>, <span class="ident">StatusCode</span>};
-<span class="kw">use</span> <span class="ident">mime::Mime</span>;
-<span class="kw">use</span> <span class="ident">std::borrow::Cow</span>;
+</span><span class="kw">use </span>hyper::header::{CONTENT_TYPE, LOCATION};
+<span class="kw">use </span>hyper::{Body, Method, Response, StatusCode};
+<span class="kw">use </span>mime::Mime;
+<span class="kw">use </span>std::borrow::Cow;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::helpers::http::header::X_REQUEST_ID</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state</span>::{<span class="ident">request_id</span>, <span class="ident">FromState</span>, <span class="ident">State</span>};
+<span class="kw">use </span><span class="kw">crate</span>::helpers::http::header::X_REQUEST_ID;
+<span class="kw">use </span><span class="kw">crate</span>::state::{request_id, FromState, State};
 
-<span class="doccomment">/// Creates a `Response` object and populates it with a set of default headers that help to improve</span>
-<span class="doccomment">/// security and conformance to best practice.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// `create_response` utilises `extend_response`, which delegates to `set_headers` for setting</span>
-<span class="doccomment">/// security headers. See `set_headers` for information about the headers which are populated.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # extern crate gotham;</span>
-<span class="doccomment">/// # extern crate hyper;</span>
-<span class="doccomment">/// # extern crate mime;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
-<span class="doccomment">/// # use hyper::header::{CONTENT_LENGTH, CONTENT_TYPE};</span>
-<span class="doccomment">/// # use gotham::state::State;</span>
-<span class="doccomment">/// # use gotham::helpers::http::header::X_REQUEST_ID;</span>
-<span class="doccomment">/// # use gotham::helpers::http::response::create_response;</span>
-<span class="doccomment">/// # use gotham::test::TestServer;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// static BODY: &amp;&#39;static [u8] = b&quot;Hello, world!&quot;;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// fn handler(state: State) -&gt; (State, Response&lt;Body&gt;) {</span>
-<span class="doccomment">///     let response = create_response(&amp;state, StatusCode::OK, mime::TEXT_PLAIN, BODY);</span>
-<span class="doccomment">///</span>
-<span class="doccomment">///     (state, response)</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # fn main() {</span>
-<span class="doccomment">/// #     let test_server = TestServer::new(|| Ok(handler)).unwrap();</span>
-<span class="doccomment">/// #     let response = test_server</span>
-<span class="doccomment">/// #         .client()</span>
-<span class="doccomment">/// #         .get(&quot;http://example.com/&quot;)</span>
-<span class="doccomment">/// #         .perform()</span>
-<span class="doccomment">/// #         .unwrap();</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #     assert_eq!(response.status(), StatusCode::OK);</span>
-<span class="doccomment">/// #     assert!(response.headers().get(X_REQUEST_ID).is_some());</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #     assert_eq!(</span>
-<span class="doccomment">/// #         *response.headers().get(CONTENT_TYPE).unwrap(),</span>
-<span class="doccomment">/// #         mime::TEXT_PLAIN.to_string()</span>
-<span class="doccomment">/// #     );</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #     assert_eq!(</span>
-<span class="doccomment">/// #         *response.headers().get(CONTENT_LENGTH).unwrap(),</span>
-<span class="doccomment">/// #         format!(&quot;{}&quot;, BODY.len() as u64)</span>
-<span class="doccomment">/// #     );</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// ```</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create_response</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span>(<span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="ident">State</span>, <span class="ident">status</span>: <span class="ident">StatusCode</span>, <span class="ident">mime</span>: <span class="ident">Mime</span>, <span class="ident">body</span>: <span class="ident">B</span>) -&gt; <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">B</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Creates a `Response` object and populates it with a set of default headers that help to improve
+/// security and conformance to best practice.
+///
+/// `create_response` utilises `extend_response`, which delegates to `set_headers` for setting
+/// security headers. See `set_headers` for information about the headers which are populated.
+///
+/// # Examples
+///
+/// ```rust
+/// # extern crate gotham;
+/// # extern crate hyper;
+/// # extern crate mime;
+/// #
+/// # use hyper::{Body, Response, StatusCode};
+/// # use hyper::header::{CONTENT_LENGTH, CONTENT_TYPE};
+/// # use gotham::state::State;
+/// # use gotham::helpers::http::header::X_REQUEST_ID;
+/// # use gotham::helpers::http::response::create_response;
+/// # use gotham::test::TestServer;
+/// #
+/// static BODY: &amp;&#39;static [u8] = b&quot;Hello, world!&quot;;
+///
+/// fn handler(state: State) -&gt; (State, Response&lt;Body&gt;) {
+///     let response = create_response(&amp;state, StatusCode::OK, mime::TEXT_PLAIN, BODY);
+///
+///     (state, response)
+/// }
+/// #
+/// # fn main() {
+/// #     let test_server = TestServer::new(|| Ok(handler)).unwrap();
+/// #     let response = test_server
+/// #         .client()
+/// #         .get(&quot;http://example.com/&quot;)
+/// #         .perform()
+/// #         .unwrap();
+/// #
+/// #     assert_eq!(response.status(), StatusCode::OK);
+/// #     assert!(response.headers().get(X_REQUEST_ID).is_some());
+/// #
+/// #     assert_eq!(
+/// #         *response.headers().get(CONTENT_TYPE).unwrap(),
+/// #         mime::TEXT_PLAIN.to_string()
+/// #     );
+/// #
+/// #     assert_eq!(
+/// #         *response.headers().get(CONTENT_LENGTH).unwrap(),
+/// #         format!(&quot;{}&quot;, BODY.len() as u64)
+/// #     );
+/// # }
+/// ```
+</span><span class="kw">pub fn </span>create_response&lt;B&gt;(state: <span class="kw-2">&amp;</span>State, status: StatusCode, mime: Mime, body: B) -&gt; Response&lt;Body&gt;
+<span class="kw">where
+    </span>B: Into&lt;Body&gt;,
 {
-    <span class="comment">// use the basic empty response as a base</span>
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">create_empty_response</span>(<span class="ident">state</span>, <span class="ident">status</span>);
+    <span class="comment">// use the basic empty response as a base
+    </span><span class="kw">let </span><span class="kw-2">mut </span>res = create_empty_response(state, status);
 
-    <span class="comment">// insert the content type header</span>
-    <span class="ident">res</span>.<span class="ident">headers_mut</span>()
-        .<span class="ident">insert</span>(<span class="ident">CONTENT_TYPE</span>, <span class="ident">mime</span>.<span class="ident">as_ref</span>().<span class="ident">parse</span>().<span class="ident">unwrap</span>());
+    <span class="comment">// insert the content type header
+    </span>res.headers_mut()
+        .insert(CONTENT_TYPE, mime.as_ref().parse().unwrap());
 
-    <span class="comment">// add the body on non-HEAD requests</span>
-    <span class="kw">if</span> <span class="ident">Method::borrow_from</span>(<span class="ident">state</span>) <span class="op">!</span><span class="op">=</span> <span class="ident">Method::HEAD</span> {
-        <span class="kw-2">*</span><span class="ident">res</span>.<span class="ident">body_mut</span>() <span class="op">=</span> <span class="ident">body</span>.<span class="ident">into</span>();
+    <span class="comment">// add the body on non-HEAD requests
+    </span><span class="kw">if </span>Method::borrow_from(state) != Method::HEAD {
+        <span class="kw-2">*</span>res.body_mut() = body.into();
     }
 
-    <span class="ident">res</span>
+    res
 }
 
-<span class="doccomment">/// Produces a simple empty `Response` with a provided status.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # extern crate gotham;</span>
-<span class="doccomment">/// # extern crate hyper;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
-<span class="doccomment">/// # use gotham::state::State;</span>
-<span class="doccomment">/// # use gotham::helpers::http::response::create_empty_response;</span>
-<span class="doccomment">/// # use gotham::test::TestServer;</span>
-<span class="doccomment">/// fn handler(state: State) -&gt; (State, Response&lt;Body&gt;) {</span>
-<span class="doccomment">///     let resp = create_empty_response(&amp;state, StatusCode::NO_CONTENT);</span>
-<span class="doccomment">///</span>
-<span class="doccomment">///     (state, resp)</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// # fn main() {</span>
-<span class="doccomment">/// #     let test_server = TestServer::new(|| Ok(handler)).unwrap();</span>
-<span class="doccomment">/// #     let response = test_server</span>
-<span class="doccomment">/// #         .client()</span>
-<span class="doccomment">/// #         .get(&quot;http://example.com/&quot;)</span>
-<span class="doccomment">/// #         .perform()</span>
-<span class="doccomment">/// #         .unwrap();</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #     assert_eq!(response.status(), StatusCode::NO_CONTENT);</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// ```</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create_empty_response</span>(<span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="ident">State</span>, <span class="ident">status</span>: <span class="ident">StatusCode</span>) -&gt; <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> {
-    <span class="comment">// new builder for the response</span>
-    <span class="kw">let</span> <span class="ident">built</span> <span class="op">=</span> <span class="ident">Response::builder</span>()
-        <span class="comment">// always add status and req-id</span>
-        .<span class="ident">status</span>(<span class="ident">status</span>)
-        .<span class="ident">header</span>(<span class="ident">X_REQUEST_ID</span>, <span class="ident">request_id</span>(<span class="ident">state</span>))
-        <span class="comment">// attach an empty body by default</span>
-        .<span class="ident">body</span>(<span class="ident">Body::empty</span>());
+<span class="doccomment">/// Produces a simple empty `Response` with a provided status.
+///
+/// # Examples
+///
+/// ```rust
+/// # extern crate gotham;
+/// # extern crate hyper;
+/// #
+/// # use hyper::{Body, Response, StatusCode};
+/// # use gotham::state::State;
+/// # use gotham::helpers::http::response::create_empty_response;
+/// # use gotham::test::TestServer;
+/// fn handler(state: State) -&gt; (State, Response&lt;Body&gt;) {
+///     let resp = create_empty_response(&amp;state, StatusCode::NO_CONTENT);
+///
+///     (state, resp)
+/// }
+/// # fn main() {
+/// #     let test_server = TestServer::new(|| Ok(handler)).unwrap();
+/// #     let response = test_server
+/// #         .client()
+/// #         .get(&quot;http://example.com/&quot;)
+/// #         .perform()
+/// #         .unwrap();
+/// #
+/// #     assert_eq!(response.status(), StatusCode::NO_CONTENT);
+/// # }
+/// ```
+</span><span class="kw">pub fn </span>create_empty_response(state: <span class="kw-2">&amp;</span>State, status: StatusCode) -&gt; Response&lt;Body&gt; {
+    <span class="comment">// new builder for the response
+    </span><span class="kw">let </span>built = Response::builder()
+        <span class="comment">// always add status and req-id
+        </span>.status(status)
+        .header(X_REQUEST_ID, request_id(state))
+        <span class="comment">// attach an empty body by default
+        </span>.body(Body::empty());
 
-    <span class="comment">// this expect should be safe due to generic bounds</span>
-    <span class="ident">built</span>.<span class="ident">expect</span>(<span class="string">&quot;Response built from a compatible type&quot;</span>)
+    <span class="comment">// this expect should be safe due to generic bounds
+    </span>built.expect(<span class="string">&quot;Response built from a compatible type&quot;</span>)
 }
 
-<span class="doccomment">/// Produces a simple empty `Response` with a `Location` header and a 308</span>
-<span class="doccomment">/// status.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # extern crate gotham;</span>
-<span class="doccomment">/// # extern crate hyper;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
-<span class="doccomment">/// # use gotham::state::State;</span>
-<span class="doccomment">/// # use gotham::helpers::http::response::create_permanent_redirect;</span>
-<span class="doccomment">/// # use gotham::test::TestServer;</span>
-<span class="doccomment">/// # use hyper::header::LOCATION;</span>
-<span class="doccomment">/// fn handler(state: State) -&gt; (State, Response&lt;Body&gt;) {</span>
-<span class="doccomment">///     let resp = create_permanent_redirect(&amp;state, &quot;/over-there&quot;);</span>
-<span class="doccomment">///</span>
-<span class="doccomment">///     (state, resp)</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// # fn main() {</span>
-<span class="doccomment">/// #     let test_server = TestServer::new(|| Ok(handler)).unwrap();</span>
-<span class="doccomment">/// #     let response = test_server</span>
-<span class="doccomment">/// #         .client()</span>
-<span class="doccomment">/// #         .get(&quot;http://example.com/&quot;)</span>
-<span class="doccomment">/// #         .perform()</span>
-<span class="doccomment">/// #         .unwrap();</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #     assert_eq!(response.status(), StatusCode::PERMANENT_REDIRECT);</span>
-<span class="doccomment">/// #     assert_eq!(</span>
-<span class="doccomment">/// #         response.headers().get(LOCATION).unwrap(),</span>
-<span class="doccomment">/// #         &quot;/over-there&quot;</span>
-<span class="doccomment">/// #     );</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// ```</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create_permanent_redirect</span><span class="op">&lt;</span><span class="ident">L</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-    <span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="ident">State</span>,
-    <span class="ident">location</span>: <span class="ident">L</span>,
-) -&gt; <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> {
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">create_empty_response</span>(<span class="ident">state</span>, <span class="ident">StatusCode::PERMANENT_REDIRECT</span>);
-    <span class="ident">res</span>.<span class="ident">headers_mut</span>()
-        .<span class="ident">insert</span>(<span class="ident">LOCATION</span>, <span class="ident">location</span>.<span class="ident">into</span>().<span class="ident">to_string</span>().<span class="ident">parse</span>().<span class="ident">unwrap</span>());
-    <span class="ident">res</span>
+<span class="doccomment">/// Produces a simple empty `Response` with a `Location` header and a 308
+/// status.
+///
+/// # Examples
+///
+/// ```rust
+/// # extern crate gotham;
+/// # extern crate hyper;
+/// #
+/// # use hyper::{Body, Response, StatusCode};
+/// # use gotham::state::State;
+/// # use gotham::helpers::http::response::create_permanent_redirect;
+/// # use gotham::test::TestServer;
+/// # use hyper::header::LOCATION;
+/// fn handler(state: State) -&gt; (State, Response&lt;Body&gt;) {
+///     let resp = create_permanent_redirect(&amp;state, &quot;/over-there&quot;);
+///
+///     (state, resp)
+/// }
+/// # fn main() {
+/// #     let test_server = TestServer::new(|| Ok(handler)).unwrap();
+/// #     let response = test_server
+/// #         .client()
+/// #         .get(&quot;http://example.com/&quot;)
+/// #         .perform()
+/// #         .unwrap();
+/// #
+/// #     assert_eq!(response.status(), StatusCode::PERMANENT_REDIRECT);
+/// #     assert_eq!(
+/// #         response.headers().get(LOCATION).unwrap(),
+/// #         &quot;/over-there&quot;
+/// #     );
+/// # }
+/// ```
+</span><span class="kw">pub fn </span>create_permanent_redirect&lt;L: Into&lt;Cow&lt;<span class="lifetime">&#39;static</span>, str&gt;&gt;&gt;(
+    state: <span class="kw-2">&amp;</span>State,
+    location: L,
+) -&gt; Response&lt;Body&gt; {
+    <span class="kw">let </span><span class="kw-2">mut </span>res = create_empty_response(state, StatusCode::PERMANENT_REDIRECT);
+    res.headers_mut()
+        .insert(LOCATION, location.into().to_string().parse().unwrap());
+    res
 }
 
-<span class="doccomment">/// Produces a simple empty `Response` with a `Location` header and a 307</span>
-<span class="doccomment">/// status.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # extern crate gotham;</span>
-<span class="doccomment">/// # extern crate hyper;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
-<span class="doccomment">/// # use gotham::state::State;</span>
-<span class="doccomment">/// # use gotham::helpers::http::response::create_temporary_redirect;</span>
-<span class="doccomment">/// # use gotham::test::TestServer;</span>
-<span class="doccomment">/// # use hyper::header::LOCATION;</span>
-<span class="doccomment">/// fn handler(state: State) -&gt; (State, Response&lt;Body&gt;) {</span>
-<span class="doccomment">///     let resp = create_temporary_redirect(&amp;state, &quot;/quick-detour&quot;);</span>
-<span class="doccomment">///</span>
-<span class="doccomment">///     (state, resp)</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// # fn main() {</span>
-<span class="doccomment">/// #     let test_server = TestServer::new(|| Ok(handler)).unwrap();</span>
-<span class="doccomment">/// #     let response = test_server</span>
-<span class="doccomment">/// #         .client()</span>
-<span class="doccomment">/// #         .get(&quot;http://example.com/&quot;)</span>
-<span class="doccomment">/// #         .perform()</span>
-<span class="doccomment">/// #         .unwrap();</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #     assert_eq!(response.status(), StatusCode::TEMPORARY_REDIRECT);</span>
-<span class="doccomment">/// #     assert_eq!(</span>
-<span class="doccomment">/// #         response.headers().get(LOCATION).unwrap(),</span>
-<span class="doccomment">/// #         &quot;/quick-detour&quot;</span>
-<span class="doccomment">/// #     );</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// ```</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create_temporary_redirect</span><span class="op">&lt;</span><span class="ident">L</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>(
-    <span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="ident">State</span>,
-    <span class="ident">location</span>: <span class="ident">L</span>,
-) -&gt; <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> {
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">create_empty_response</span>(<span class="ident">state</span>, <span class="ident">StatusCode::TEMPORARY_REDIRECT</span>);
-    <span class="ident">res</span>.<span class="ident">headers_mut</span>()
-        .<span class="ident">insert</span>(<span class="ident">LOCATION</span>, <span class="ident">location</span>.<span class="ident">into</span>().<span class="ident">to_string</span>().<span class="ident">parse</span>().<span class="ident">unwrap</span>());
-    <span class="ident">res</span>
+<span class="doccomment">/// Produces a simple empty `Response` with a `Location` header and a 307
+/// status.
+///
+/// # Examples
+///
+/// ```rust
+/// # extern crate gotham;
+/// # extern crate hyper;
+/// #
+/// # use hyper::{Body, Response, StatusCode};
+/// # use gotham::state::State;
+/// # use gotham::helpers::http::response::create_temporary_redirect;
+/// # use gotham::test::TestServer;
+/// # use hyper::header::LOCATION;
+/// fn handler(state: State) -&gt; (State, Response&lt;Body&gt;) {
+///     let resp = create_temporary_redirect(&amp;state, &quot;/quick-detour&quot;);
+///
+///     (state, resp)
+/// }
+/// # fn main() {
+/// #     let test_server = TestServer::new(|| Ok(handler)).unwrap();
+/// #     let response = test_server
+/// #         .client()
+/// #         .get(&quot;http://example.com/&quot;)
+/// #         .perform()
+/// #         .unwrap();
+/// #
+/// #     assert_eq!(response.status(), StatusCode::TEMPORARY_REDIRECT);
+/// #     assert_eq!(
+/// #         response.headers().get(LOCATION).unwrap(),
+/// #         &quot;/quick-detour&quot;
+/// #     );
+/// # }
+/// ```
+</span><span class="kw">pub fn </span>create_temporary_redirect&lt;L: Into&lt;Cow&lt;<span class="lifetime">&#39;static</span>, str&gt;&gt;&gt;(
+    state: <span class="kw-2">&amp;</span>State,
+    location: L,
+) -&gt; Response&lt;Body&gt; {
+    <span class="kw">let </span><span class="kw-2">mut </span>res = create_empty_response(state, StatusCode::TEMPORARY_REDIRECT);
+    res.headers_mut()
+        .insert(LOCATION, location.into().to_string().parse().unwrap());
+    res
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

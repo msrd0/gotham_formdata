@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/uuid-0.8.2/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" href="https://www.rust-lang.org/favicon.ico"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../uuid/index.html"><div class="logo-container"><img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../uuid/index.html"><div class="logo-container">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/uuid-0.8.2/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" href="https://www.rust-lang.org/favicon.ico"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../uuid/index.html"><div class="logo-container"><img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../uuid/index.html"><div class="logo-container">
                     <img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../uuid/index.html">
                         <img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
@@ -1070,1075 +1070,1075 @@
 <span id="1068">1068</span>
 <span id="1069">1069</span>
 <span id="1070">1070</span>
-</pre><pre class="rust"><code><span class="comment">// Copyright 2013-2014 The Rust Project Developers.</span>
-<span class="comment">// Copyright 2018 The Uuid Project Developers.</span>
-<span class="comment">//</span>
-<span class="comment">// See the COPYRIGHT file at the top-level directory of this distribution.</span>
-<span class="comment">//</span>
-<span class="comment">// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or</span>
-<span class="comment">// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your</span>
-<span class="comment">// option. This file may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
+</pre><pre class="rust"><code><span class="comment">// Copyright 2013-2014 The Rust Project Developers.
+// Copyright 2018 The Uuid Project Developers.
+//
+// See the COPYRIGHT file at the top-level directory of this distribution.
+//
+// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or
+// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your
+// option. This file may not be copied, modified, or distributed
+// except according to those terms.
 
-<span class="doccomment">//! Generate and parse UUIDs.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! Provides support for Universally Unique Identifiers (UUIDs). A UUID is a</span>
-<span class="doccomment">//! unique 128-bit number, stored as 16 octets. UUIDs are used to  assign</span>
-<span class="doccomment">//! unique identifiers to entities without requiring a central allocating</span>
-<span class="doccomment">//! authority.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! They are particularly useful in distributed systems, though can be used in</span>
-<span class="doccomment">//! disparate areas, such as databases and network protocols.  Typically a UUID</span>
-<span class="doccomment">//! is displayed in a readable string form as a sequence of hexadecimal digits,</span>
-<span class="doccomment">//! separated into groups by hyphens.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! The uniqueness property is not strictly guaranteed, however for all</span>
-<span class="doccomment">//! practical purposes, it can be assumed that an unintentional collision would</span>
-<span class="doccomment">//! be extremely unlikely.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! # Dependencies</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! By default, this crate depends on nothing but `std` and cannot generate</span>
-<span class="doccomment">//! UUIDs. You need to enable the following Cargo features to enable</span>
-<span class="doccomment">//! various pieces of functionality:</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! * `v1` - adds the [`Uuid::new_v1`] function and the ability to create a V1</span>
-<span class="doccomment">//!   using an implementation of [`v1::ClockSequence`] (usually</span>
-<span class="doccomment">//! [`v1::Context`]) and a timestamp from `time::timespec`.</span>
-<span class="doccomment">//! * `v3` - adds the [`Uuid::new_v3`] function and the ability to create a V3</span>
-<span class="doccomment">//!   UUID based on the MD5 hash of some data.</span>
-<span class="doccomment">//! * `v4` - adds the [`Uuid::new_v4`] function and the ability to randomly</span>
-<span class="doccomment">//!   generate a UUID.</span>
-<span class="doccomment">//! * `v5` - adds the [`Uuid::new_v5`] function and the ability to create a V5</span>
-<span class="doccomment">//!   UUID based on the SHA1 hash of some data.</span>
-<span class="doccomment">//! * `serde` - adds the ability to serialize and deserialize a UUID using the</span>
-<span class="doccomment">//!   `serde` crate.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! For WebAssembly, enable one of the following features depending</span>
-<span class="doccomment">//! on your JavaScript interop toolchain of choice:</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! * `stdweb` - for [`stdweb`] combined with [`cargo-web`]</span>
-<span class="doccomment">//! * `wasm-bindgen` - for [`wasm-bindgen`]</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! By default, `uuid` can be depended on with:</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! ```toml</span>
-<span class="doccomment">//! [dependencies]</span>
-<span class="doccomment">//! uuid = &quot;0.8&quot;</span>
-<span class="doccomment">//! ```</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! To activate various features, use syntax like:</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! ```toml</span>
-<span class="doccomment">//! [dependencies]</span>
-<span class="doccomment">//! uuid = { version = &quot;0.8&quot;, features = [&quot;serde&quot;, &quot;v4&quot;] }</span>
-<span class="doccomment">//! ```</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! You can disable default features with:</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! ```toml</span>
-<span class="doccomment">//! [dependencies]</span>
-<span class="doccomment">//! uuid = { version = &quot;0.8&quot;, default-features = false }</span>
-<span class="doccomment">//! ```</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! # Examples</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! To parse a UUID given in the simple format and print it as a urn:</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! ```rust</span>
-<span class="doccomment">//! use uuid::Uuid;</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! fn main() -&gt; Result&lt;(), uuid::Error&gt; {</span>
-<span class="doccomment">//!     let my_uuid =</span>
-<span class="doccomment">//!         Uuid::parse_str(&quot;936DA01F9ABD4d9d80C702AF85C822A8&quot;)?;</span>
-<span class="doccomment">//!     println!(&quot;{}&quot;, my_uuid.to_urn());</span>
-<span class="doccomment">//!     Ok(())</span>
-<span class="doccomment">//! }</span>
-<span class="doccomment">//! ```</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! To create a new random (V4) UUID and print it out in hexadecimal form:</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! ```ignore,rust</span>
-<span class="doccomment">//! // Note that this requires the `v4` feature enabled in the uuid crate.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! use uuid::Uuid;</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! fn main() -&gt; Result&lt;(), Box&lt;dyn std::error::Error&gt;&gt; {</span>
-<span class="doccomment">//!     #[cfg(feature = &quot;v4&quot;)] {</span>
-<span class="doccomment">//!         let my_uuid = Uuid::new_v4()?;</span>
-<span class="doccomment">//!         println!(&quot;{}&quot;, my_uuid);</span>
-<span class="doccomment">//!     }</span>
-<span class="doccomment">//!     Ok(())</span>
-<span class="doccomment">//! }</span>
-<span class="doccomment">//! ```</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! # Strings</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! Examples of string representations:</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! * simple: `936DA01F9ABD4d9d80C702AF85C822A8`</span>
-<span class="doccomment">//! * hyphenated: `550e8400-e29b-41d4-a716-446655440000`</span>
-<span class="doccomment">//! * urn: `urn:uuid:F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4`</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! # References</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! * [Wikipedia: Universally Unique Identifier](http://en.wikipedia.org/wiki/Universally_unique_identifier)</span>
-<span class="doccomment">//! * [RFC4122: A Universally Unique IDentifier (UUID) URN Namespace](http://tools.ietf.org/html/rfc4122)</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! [`wasm-bindgen`]: https://crates.io/crates/wasm-bindgen</span>
-<span class="doccomment">//! [`cargo-web`]: https://crates.io/crates/cargo-web</span>
-<span class="doccomment">//! [`stdweb`]: https://crates.io/crates/stdweb</span>
-<span class="doccomment">//! [`Uuid`]: struct.Uuid.html</span>
-<span class="doccomment">//! [`Uuid::new_v1`]: struct.Uuid.html#method.new_v1</span>
-<span class="doccomment">//! [`Uuid::new_v3`]: struct.Uuid.html#method.new_v3</span>
-<span class="doccomment">//! [`Uuid::new_v4`]: struct.Uuid.html#method.new_v4</span>
-<span class="doccomment">//! [`Uuid::new_v5`]: struct.Uuid.html#method.new_v5</span>
-<span class="doccomment">//! [`v1::ClockSequence`]: v1/trait.ClockSequence.html</span>
-<span class="doccomment">//! [`v1::Context`]: v1/struct.Context.html</span>
+</span><span class="doccomment">//! Generate and parse UUIDs.
+//!
+//! Provides support for Universally Unique Identifiers (UUIDs). A UUID is a
+//! unique 128-bit number, stored as 16 octets. UUIDs are used to  assign
+//! unique identifiers to entities without requiring a central allocating
+//! authority.
+//!
+//! They are particularly useful in distributed systems, though can be used in
+//! disparate areas, such as databases and network protocols.  Typically a UUID
+//! is displayed in a readable string form as a sequence of hexadecimal digits,
+//! separated into groups by hyphens.
+//!
+//! The uniqueness property is not strictly guaranteed, however for all
+//! practical purposes, it can be assumed that an unintentional collision would
+//! be extremely unlikely.
+//!
+//! # Dependencies
+//!
+//! By default, this crate depends on nothing but `std` and cannot generate
+//! UUIDs. You need to enable the following Cargo features to enable
+//! various pieces of functionality:
+//!
+//! * `v1` - adds the [`Uuid::new_v1`] function and the ability to create a V1
+//!   using an implementation of [`v1::ClockSequence`] (usually
+//! [`v1::Context`]) and a timestamp from `time::timespec`.
+//! * `v3` - adds the [`Uuid::new_v3`] function and the ability to create a V3
+//!   UUID based on the MD5 hash of some data.
+//! * `v4` - adds the [`Uuid::new_v4`] function and the ability to randomly
+//!   generate a UUID.
+//! * `v5` - adds the [`Uuid::new_v5`] function and the ability to create a V5
+//!   UUID based on the SHA1 hash of some data.
+//! * `serde` - adds the ability to serialize and deserialize a UUID using the
+//!   `serde` crate.
+//!
+//! For WebAssembly, enable one of the following features depending
+//! on your JavaScript interop toolchain of choice:
+//!
+//! * `stdweb` - for [`stdweb`] combined with [`cargo-web`]
+//! * `wasm-bindgen` - for [`wasm-bindgen`]
+//!
+//! By default, `uuid` can be depended on with:
+//!
+//! ```toml
+//! [dependencies]
+//! uuid = &quot;0.8&quot;
+//! ```
+//!
+//! To activate various features, use syntax like:
+//!
+//! ```toml
+//! [dependencies]
+//! uuid = { version = &quot;0.8&quot;, features = [&quot;serde&quot;, &quot;v4&quot;] }
+//! ```
+//!
+//! You can disable default features with:
+//!
+//! ```toml
+//! [dependencies]
+//! uuid = { version = &quot;0.8&quot;, default-features = false }
+//! ```
+//!
+//! # Examples
+//!
+//! To parse a UUID given in the simple format and print it as a urn:
+//!
+//! ```rust
+//! use uuid::Uuid;
+//!
+//! fn main() -&gt; Result&lt;(), uuid::Error&gt; {
+//!     let my_uuid =
+//!         Uuid::parse_str(&quot;936DA01F9ABD4d9d80C702AF85C822A8&quot;)?;
+//!     println!(&quot;{}&quot;, my_uuid.to_urn());
+//!     Ok(())
+//! }
+//! ```
+//!
+//! To create a new random (V4) UUID and print it out in hexadecimal form:
+//!
+//! ```ignore,rust
+//! // Note that this requires the `v4` feature enabled in the uuid crate.
+//!
+//! use uuid::Uuid;
+//!
+//! fn main() -&gt; Result&lt;(), Box&lt;dyn std::error::Error&gt;&gt; {
+//!     #[cfg(feature = &quot;v4&quot;)] {
+//!         let my_uuid = Uuid::new_v4()?;
+//!         println!(&quot;{}&quot;, my_uuid);
+//!     }
+//!     Ok(())
+//! }
+//! ```
+//!
+//! # Strings
+//!
+//! Examples of string representations:
+//!
+//! * simple: `936DA01F9ABD4d9d80C702AF85C822A8`
+//! * hyphenated: `550e8400-e29b-41d4-a716-446655440000`
+//! * urn: `urn:uuid:F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4`
+//!
+//! # References
+//!
+//! * [Wikipedia: Universally Unique Identifier](http://en.wikipedia.org/wiki/Universally_unique_identifier)
+//! * [RFC4122: A Universally Unique IDentifier (UUID) URN Namespace](http://tools.ietf.org/html/rfc4122)
+//!
+//! [`wasm-bindgen`]: https://crates.io/crates/wasm-bindgen
+//! [`cargo-web`]: https://crates.io/crates/cargo-web
+//! [`stdweb`]: https://crates.io/crates/stdweb
+//! [`Uuid`]: struct.Uuid.html
+//! [`Uuid::new_v1`]: struct.Uuid.html#method.new_v1
+//! [`Uuid::new_v3`]: struct.Uuid.html#method.new_v3
+//! [`Uuid::new_v4`]: struct.Uuid.html#method.new_v4
+//! [`Uuid::new_v5`]: struct.Uuid.html#method.new_v5
+//! [`v1::ClockSequence`]: v1/trait.ClockSequence.html
+//! [`v1::Context`]: v1/struct.Context.html
 
-<span class="attribute">#![<span class="ident">no_std</span>]</span>
-<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">missing_debug_implementations</span>, <span class="ident">missing_docs</span>)]</span>
-<span class="attribute">#![<span class="ident">doc</span>(
-    <span class="ident">html_logo_url</span> <span class="op">=</span> <span class="string">&quot;https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png&quot;</span>,
-    <span class="ident">html_favicon_url</span> <span class="op">=</span> <span class="string">&quot;https://www.rust-lang.org/favicon.ico&quot;</span>,
-    <span class="ident">html_root_url</span> <span class="op">=</span> <span class="string">&quot;https://docs.rs/uuid/0.8.2&quot;</span>
-)]</span>
+</span><span class="attribute">#![no_std]
+#![deny(missing_debug_implementations, missing_docs)]
+#![doc(
+    html_logo_url = <span class="string">&quot;https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png&quot;</span>,
+    html_favicon_url = <span class="string">&quot;https://www.rust-lang.org/favicon.ico&quot;</span>,
+    html_root_url = <span class="string">&quot;https://docs.rs/uuid/0.8.2&quot;
+</span>)]
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>, <span class="ident">test</span>))]</span>
-<span class="attribute">#[<span class="ident">macro_use</span>]</span>
-<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">std</span>;
+#[cfg(any(feature = <span class="string">&quot;std&quot;</span>, test))]
+#[macro_use]
+</span><span class="kw">extern crate </span>std;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>), <span class="ident">not</span>(<span class="ident">test</span>)))]</span>
-<span class="attribute">#[<span class="ident">macro_use</span>]</span>
-<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">core</span> <span class="kw">as</span> <span class="ident">std</span>;
+<span class="attribute">#[cfg(all(not(feature = <span class="string">&quot;std&quot;</span>), not(test)))]
+#[macro_use]
+</span><span class="kw">extern crate </span>core <span class="kw">as </span>std;
 
-<span class="kw">mod</span> <span class="ident">builder</span>;
-<span class="kw">mod</span> <span class="ident">error</span>;
-<span class="kw">mod</span> <span class="ident">parser</span>;
-<span class="kw">mod</span> <span class="ident">prelude</span>;
+<span class="kw">mod </span>builder;
+<span class="kw">mod </span>error;
+<span class="kw">mod </span>parser;
+<span class="kw">mod </span>prelude;
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">adapter</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v1&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">v1</span>;
+<span class="kw">pub mod </span>adapter;
+<span class="attribute">#[cfg(feature = <span class="string">&quot;v1&quot;</span>)]
+</span><span class="kw">pub mod </span>v1;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
-<span class="kw">mod</span> <span class="ident">serde_support</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;slog&quot;</span>)]</span>
-<span class="kw">mod</span> <span class="ident">slog_support</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">test_util</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(
-    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v3&quot;</span>,
-    <span class="ident">any</span>(
-        <span class="ident">not</span>(<span class="ident">target_arch</span> <span class="op">=</span> <span class="string">&quot;wasm32&quot;</span>),
-        <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;wasi&quot;</span>,
-        <span class="ident">all</span>(
-            <span class="ident">target_arch</span> <span class="op">=</span> <span class="string">&quot;wasm32&quot;</span>,
-            <span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;stdweb&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;wasm-bindgen&quot;</span>)
+<span class="attribute">#[cfg(feature = <span class="string">&quot;serde&quot;</span>)]
+</span><span class="kw">mod </span>serde_support;
+<span class="attribute">#[cfg(feature = <span class="string">&quot;slog&quot;</span>)]
+</span><span class="kw">mod </span>slog_support;
+<span class="attribute">#[cfg(test)]
+</span><span class="kw">mod </span>test_util;
+<span class="attribute">#[cfg(all(
+    feature = <span class="string">&quot;v3&quot;</span>,
+    any(
+        not(target_arch = <span class="string">&quot;wasm32&quot;</span>),
+        target_os = <span class="string">&quot;wasi&quot;</span>,
+        all(
+            target_arch = <span class="string">&quot;wasm32&quot;</span>,
+            any(feature = <span class="string">&quot;stdweb&quot;</span>, feature = <span class="string">&quot;wasm-bindgen&quot;</span>)
         )
     )
-))]</span>
-<span class="kw">mod</span> <span class="ident">v3</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(
-    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v4&quot;</span>,
-    <span class="ident">any</span>(
-        <span class="ident">not</span>(<span class="ident">target_arch</span> <span class="op">=</span> <span class="string">&quot;wasm32&quot;</span>),
-        <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;wasi&quot;</span>,
-        <span class="ident">all</span>(
-            <span class="ident">target_arch</span> <span class="op">=</span> <span class="string">&quot;wasm32&quot;</span>,
-            <span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;stdweb&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;wasm-bindgen&quot;</span>)
+))]
+</span><span class="kw">mod </span>v3;
+<span class="attribute">#[cfg(all(
+    feature = <span class="string">&quot;v4&quot;</span>,
+    any(
+        not(target_arch = <span class="string">&quot;wasm32&quot;</span>),
+        target_os = <span class="string">&quot;wasi&quot;</span>,
+        all(
+            target_arch = <span class="string">&quot;wasm32&quot;</span>,
+            any(feature = <span class="string">&quot;stdweb&quot;</span>, feature = <span class="string">&quot;wasm-bindgen&quot;</span>)
         )
     )
-))]</span>
-<span class="kw">mod</span> <span class="ident">v4</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(
-    <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v5&quot;</span>,
-    <span class="ident">any</span>(
-        <span class="ident">not</span>(<span class="ident">target_arch</span> <span class="op">=</span> <span class="string">&quot;wasm32&quot;</span>),
-        <span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;wasi&quot;</span>,
-        <span class="ident">all</span>(
-            <span class="ident">target_arch</span> <span class="op">=</span> <span class="string">&quot;wasm32&quot;</span>,
-            <span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;stdweb&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;wasm-bindgen&quot;</span>)
+))]
+</span><span class="kw">mod </span>v4;
+<span class="attribute">#[cfg(all(
+    feature = <span class="string">&quot;v5&quot;</span>,
+    any(
+        not(target_arch = <span class="string">&quot;wasm32&quot;</span>),
+        target_os = <span class="string">&quot;wasi&quot;</span>,
+        all(
+            target_arch = <span class="string">&quot;wasm32&quot;</span>,
+            any(feature = <span class="string">&quot;stdweb&quot;</span>, feature = <span class="string">&quot;wasm-bindgen&quot;</span>)
         )
     )
-))]</span>
-<span class="kw">mod</span> <span class="ident">v5</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">windows</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;winapi&quot;</span>))]</span>
-<span class="kw">mod</span> <span class="ident">winapi_support</span>;
+))]
+</span><span class="kw">mod </span>v5;
+<span class="attribute">#[cfg(all(windows, feature = <span class="string">&quot;winapi&quot;</span>))]
+</span><span class="kw">mod </span>winapi_support;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::std</span>::{<span class="ident">fmt</span>, <span class="ident">str</span>};
+<span class="kw">use </span><span class="kw">crate</span>::std::{fmt, str};
 
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::error::Error</span>;
+<span class="kw">pub use </span><span class="kw">crate</span>::error::Error;
 
-<span class="doccomment">/// A builder struct for creating a UUID.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Creating a v4 UUID from externally generated bytes:</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">/// use uuid::{Builder, Variant, Version};</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # let rng = || [</span>
-<span class="doccomment">/// #     70, 235, 208, 238, 14, 109, 67, 201, 185, 13, 204, 195, 90,</span>
-<span class="doccomment">/// # 145, 63, 62,</span>
-<span class="doccomment">/// # ];</span>
-<span class="doccomment">/// let random_bytes = rng();</span>
-<span class="doccomment">/// let uuid = Builder::from_bytes(random_bytes)</span>
-<span class="doccomment">///     .set_variant(Variant::RFC4122)</span>
-<span class="doccomment">///     .set_version(Version::Random)</span>
-<span class="doccomment">///     .build();</span>
-<span class="doccomment">/// ```</span>
-<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">missing_copy_implementations</span>)]</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Builder</span>(<span class="ident">Bytes</span>);
+<span class="doccomment">/// A builder struct for creating a UUID.
+///
+/// # Examples
+///
+/// Creating a v4 UUID from externally generated bytes:
+///
+/// ```
+/// use uuid::{Builder, Variant, Version};
+///
+/// # let rng = || [
+/// #     70, 235, 208, 238, 14, 109, 67, 201, 185, 13, 204, 195, 90,
+/// # 145, 63, 62,
+/// # ];
+/// let random_bytes = rng();
+/// let uuid = Builder::from_bytes(random_bytes)
+///     .set_variant(Variant::RFC4122)
+///     .set_version(Version::Random)
+///     .build();
+/// ```
+</span><span class="attribute">#[allow(missing_copy_implementations)]
+#[derive(Debug)]
+</span><span class="kw">pub struct </span>Builder(Bytes);
 
-<span class="doccomment">/// A 128-bit (16 byte) buffer containing the ID.</span>
-<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Bytes</span> <span class="op">=</span> [<span class="ident">u8</span>; <span class="number">16</span>];
+<span class="doccomment">/// A 128-bit (16 byte) buffer containing the ID.
+</span><span class="kw">pub type </span>Bytes = [u8; <span class="number">16</span>];
 
-<span class="doccomment">/// The version of the UUID, denoting the generating algorithm.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Version</span> {
-    <span class="doccomment">/// Special case for `nil` UUID.</span>
-    <span class="ident">Nil</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="doccomment">/// Version 1: MAC address.</span>
-    <span class="ident">Mac</span>,
-    <span class="doccomment">/// Version 2: DCE Security.</span>
-    <span class="ident">Dce</span>,
-    <span class="doccomment">/// Version 3: MD5 hash.</span>
-    <span class="ident">Md5</span>,
-    <span class="doccomment">/// Version 4: Random.</span>
-    <span class="ident">Random</span>,
-    <span class="doccomment">/// Version 5: SHA-1 hash.</span>
-    <span class="ident">Sha1</span>,
+<span class="doccomment">/// The version of the UUID, denoting the generating algorithm.
+</span><span class="attribute">#[derive(Clone, Copy, Debug, PartialEq)]
+</span><span class="kw">pub enum </span>Version {
+    <span class="doccomment">/// Special case for `nil` UUID.
+    </span>Nil = <span class="number">0</span>,
+    <span class="doccomment">/// Version 1: MAC address.
+    </span>Mac,
+    <span class="doccomment">/// Version 2: DCE Security.
+    </span>Dce,
+    <span class="doccomment">/// Version 3: MD5 hash.
+    </span>Md5,
+    <span class="doccomment">/// Version 4: Random.
+    </span>Random,
+    <span class="doccomment">/// Version 5: SHA-1 hash.
+    </span>Sha1,
 }
 
-<span class="doccomment">/// The reserved variants of UUIDs.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Variant</span> {
-    <span class="doccomment">/// Reserved by the NCS for backward compatibility.</span>
-    <span class="ident">NCS</span> <span class="op">=</span> <span class="number">0</span>,
-    <span class="doccomment">/// As described in the RFC4122 Specification (default).</span>
-    <span class="ident">RFC4122</span>,
-    <span class="doccomment">/// Reserved by Microsoft for backward compatibility.</span>
-    <span class="ident">Microsoft</span>,
-    <span class="doccomment">/// Reserved for future expansion.</span>
-    <span class="ident">Future</span>,
+<span class="doccomment">/// The reserved variants of UUIDs.
+</span><span class="attribute">#[derive(Clone, Copy, Debug, PartialEq)]
+</span><span class="kw">pub enum </span>Variant {
+    <span class="doccomment">/// Reserved by the NCS for backward compatibility.
+    </span>NCS = <span class="number">0</span>,
+    <span class="doccomment">/// As described in the RFC4122 Specification (default).
+    </span>RFC4122,
+    <span class="doccomment">/// Reserved by Microsoft for backward compatibility.
+    </span>Microsoft,
+    <span class="doccomment">/// Reserved for future expansion.
+    </span>Future,
 }
 
-<span class="doccomment">/// A Universally Unique Identifier (UUID).</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Ord</span>, <span class="ident">PartialEq</span>, <span class="ident">PartialOrd</span>)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">transparent</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Uuid</span>(<span class="ident">Bytes</span>);
+<span class="doccomment">/// A Universally Unique Identifier (UUID).
+</span><span class="attribute">#[derive(Clone, Copy, Eq, Hash, Ord, PartialEq, PartialOrd)]
+#[repr(transparent)]
+</span><span class="kw">pub struct </span>Uuid(Bytes);
 
-<span class="kw">impl</span> <span class="ident">Uuid</span> {
-    <span class="doccomment">/// UUID namespace for Domain Name System (DNS).</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NAMESPACE_DNS</span>: <span class="self">Self</span> <span class="op">=</span> <span class="ident">Uuid</span>([
+<span class="kw">impl </span>Uuid {
+    <span class="doccomment">/// UUID namespace for Domain Name System (DNS).
+    </span><span class="kw">pub const </span>NAMESPACE_DNS: <span class="self">Self </span>= Uuid([
         <span class="number">0x6b</span>, <span class="number">0xa7</span>, <span class="number">0xb8</span>, <span class="number">0x10</span>, <span class="number">0x9d</span>, <span class="number">0xad</span>, <span class="number">0x11</span>, <span class="number">0xd1</span>, <span class="number">0x80</span>, <span class="number">0xb4</span>, <span class="number">0x00</span>, <span class="number">0xc0</span>,
         <span class="number">0x4f</span>, <span class="number">0xd4</span>, <span class="number">0x30</span>, <span class="number">0xc8</span>,
     ]);
 
-    <span class="doccomment">/// UUID namespace for ISO Object Identifiers (OIDs).</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NAMESPACE_OID</span>: <span class="self">Self</span> <span class="op">=</span> <span class="ident">Uuid</span>([
+    <span class="doccomment">/// UUID namespace for ISO Object Identifiers (OIDs).
+    </span><span class="kw">pub const </span>NAMESPACE_OID: <span class="self">Self </span>= Uuid([
         <span class="number">0x6b</span>, <span class="number">0xa7</span>, <span class="number">0xb8</span>, <span class="number">0x12</span>, <span class="number">0x9d</span>, <span class="number">0xad</span>, <span class="number">0x11</span>, <span class="number">0xd1</span>, <span class="number">0x80</span>, <span class="number">0xb4</span>, <span class="number">0x00</span>, <span class="number">0xc0</span>,
         <span class="number">0x4f</span>, <span class="number">0xd4</span>, <span class="number">0x30</span>, <span class="number">0xc8</span>,
     ]);
 
-    <span class="doccomment">/// UUID namespace for Uniform Resource Locators (URLs).</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NAMESPACE_URL</span>: <span class="self">Self</span> <span class="op">=</span> <span class="ident">Uuid</span>([
+    <span class="doccomment">/// UUID namespace for Uniform Resource Locators (URLs).
+    </span><span class="kw">pub const </span>NAMESPACE_URL: <span class="self">Self </span>= Uuid([
         <span class="number">0x6b</span>, <span class="number">0xa7</span>, <span class="number">0xb8</span>, <span class="number">0x11</span>, <span class="number">0x9d</span>, <span class="number">0xad</span>, <span class="number">0x11</span>, <span class="number">0xd1</span>, <span class="number">0x80</span>, <span class="number">0xb4</span>, <span class="number">0x00</span>, <span class="number">0xc0</span>,
         <span class="number">0x4f</span>, <span class="number">0xd4</span>, <span class="number">0x30</span>, <span class="number">0xc8</span>,
     ]);
 
-    <span class="doccomment">/// UUID namespace for X.500 Distinguished Names (DNs).</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NAMESPACE_X500</span>: <span class="self">Self</span> <span class="op">=</span> <span class="ident">Uuid</span>([
+    <span class="doccomment">/// UUID namespace for X.500 Distinguished Names (DNs).
+    </span><span class="kw">pub const </span>NAMESPACE_X500: <span class="self">Self </span>= Uuid([
         <span class="number">0x6b</span>, <span class="number">0xa7</span>, <span class="number">0xb8</span>, <span class="number">0x14</span>, <span class="number">0x9d</span>, <span class="number">0xad</span>, <span class="number">0x11</span>, <span class="number">0xd1</span>, <span class="number">0x80</span>, <span class="number">0xb4</span>, <span class="number">0x00</span>, <span class="number">0xc0</span>,
         <span class="number">0x4f</span>, <span class="number">0xd4</span>, <span class="number">0x30</span>, <span class="number">0xc8</span>,
     ]);
 
-    <span class="doccomment">/// Returns the variant of the UUID structure.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This determines the interpretation of the structure of the UUID.</span>
-    <span class="doccomment">/// Currently only the RFC4122 variant is generated by this module.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// * [Variant Reference](http://tools.ietf.org/html/rfc4122#section-4.1.1)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_variant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Variant</span><span class="op">&gt;</span> {
-        <span class="kw">match</span> <span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">8</span>] {
-            <span class="ident">x</span> <span class="kw">if</span> <span class="ident">x</span> <span class="op">&amp;</span> <span class="number">0x80</span> <span class="op">==</span> <span class="number">0x00</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">Variant::NCS</span>),
-            <span class="ident">x</span> <span class="kw">if</span> <span class="ident">x</span> <span class="op">&amp;</span> <span class="number">0xc0</span> <span class="op">==</span> <span class="number">0x80</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">Variant::RFC4122</span>),
-            <span class="ident">x</span> <span class="kw">if</span> <span class="ident">x</span> <span class="op">&amp;</span> <span class="number">0xe0</span> <span class="op">==</span> <span class="number">0xc0</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">Variant::Microsoft</span>),
-            <span class="ident">x</span> <span class="kw">if</span> <span class="ident">x</span> <span class="op">&amp;</span> <span class="number">0xe0</span> <span class="op">==</span> <span class="number">0xe0</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">Variant::Future</span>),
-            <span class="kw">_</span> =&gt; <span class="prelude-val">None</span>,
+    <span class="doccomment">/// Returns the variant of the UUID structure.
+    ///
+    /// This determines the interpretation of the structure of the UUID.
+    /// Currently only the RFC4122 variant is generated by this module.
+    ///
+    /// * [Variant Reference](http://tools.ietf.org/html/rfc4122#section-4.1.1)
+    </span><span class="kw">pub fn </span>get_variant(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Variant&gt; {
+        <span class="kw">match </span><span class="self">self</span>.as_bytes()[<span class="number">8</span>] {
+            x <span class="kw">if </span>x &amp; <span class="number">0x80 </span>== <span class="number">0x00 </span>=&gt; <span class="prelude-val">Some</span>(Variant::NCS),
+            x <span class="kw">if </span>x &amp; <span class="number">0xc0 </span>== <span class="number">0x80 </span>=&gt; <span class="prelude-val">Some</span>(Variant::RFC4122),
+            x <span class="kw">if </span>x &amp; <span class="number">0xe0 </span>== <span class="number">0xc0 </span>=&gt; <span class="prelude-val">Some</span>(Variant::Microsoft),
+            x <span class="kw">if </span>x &amp; <span class="number">0xe0 </span>== <span class="number">0xe0 </span>=&gt; <span class="prelude-val">Some</span>(Variant::Future),
+            <span class="kw">_ </span>=&gt; <span class="prelude-val">None</span>,
         }
     }
 
-    <span class="doccomment">/// Returns the version number of the UUID.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This represents the algorithm used to generate the contents.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Currently only the Random (V4) algorithm is supported by this</span>
-    <span class="doccomment">/// module.  There are security and privacy implications for using</span>
-    <span class="doccomment">/// older versions - see [Wikipedia: Universally Unique Identifier](</span>
-    <span class="doccomment">/// http://en.wikipedia.org/wiki/Universally_unique_identifier) for</span>
-    <span class="doccomment">/// details.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// * [Version Reference](http://tools.ietf.org/html/rfc4122#section-4.1.3)</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">get_version_num</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
-        (<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">6</span>] <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">4</span>) <span class="kw">as</span> <span class="ident">usize</span>
+    <span class="doccomment">/// Returns the version number of the UUID.
+    ///
+    /// This represents the algorithm used to generate the contents.
+    ///
+    /// Currently only the Random (V4) algorithm is supported by this
+    /// module.  There are security and privacy implications for using
+    /// older versions - see [Wikipedia: Universally Unique Identifier](
+    /// http://en.wikipedia.org/wiki/Universally_unique_identifier) for
+    /// details.
+    ///
+    /// * [Version Reference](http://tools.ietf.org/html/rfc4122#section-4.1.3)
+    </span><span class="kw">pub const fn </span>get_version_num(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize {
+        (<span class="self">self</span>.as_bytes()[<span class="number">6</span>] &gt;&gt; <span class="number">4</span>) <span class="kw">as </span>usize
     }
 
-    <span class="doccomment">/// Returns the version of the UUID.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This represents the algorithm used to generate the contents</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_version</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Version</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">v</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">6</span>] <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">4</span>;
-        <span class="kw">match</span> <span class="ident">v</span> {
-            <span class="number">0</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">is_nil</span>() =&gt; <span class="prelude-val">Some</span>(<span class="ident">Version::Nil</span>),
-            <span class="number">1</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">Version::Mac</span>),
-            <span class="number">2</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">Version::Dce</span>),
-            <span class="number">3</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">Version::Md5</span>),
-            <span class="number">4</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">Version::Random</span>),
-            <span class="number">5</span> =&gt; <span class="prelude-val">Some</span>(<span class="ident">Version::Sha1</span>),
-            <span class="kw">_</span> =&gt; <span class="prelude-val">None</span>,
+    <span class="doccomment">/// Returns the version of the UUID.
+    ///
+    /// This represents the algorithm used to generate the contents
+    </span><span class="kw">pub fn </span>get_version(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Version&gt; {
+        <span class="kw">let </span>v = <span class="self">self</span>.as_bytes()[<span class="number">6</span>] &gt;&gt; <span class="number">4</span>;
+        <span class="kw">match </span>v {
+            <span class="number">0 </span><span class="kw">if </span><span class="self">self</span>.is_nil() =&gt; <span class="prelude-val">Some</span>(Version::Nil),
+            <span class="number">1 </span>=&gt; <span class="prelude-val">Some</span>(Version::Mac),
+            <span class="number">2 </span>=&gt; <span class="prelude-val">Some</span>(Version::Dce),
+            <span class="number">3 </span>=&gt; <span class="prelude-val">Some</span>(Version::Md5),
+            <span class="number">4 </span>=&gt; <span class="prelude-val">Some</span>(Version::Random),
+            <span class="number">5 </span>=&gt; <span class="prelude-val">Some</span>(Version::Sha1),
+            <span class="kw">_ </span>=&gt; <span class="prelude-val">None</span>,
         }
     }
 
-    <span class="doccomment">/// Returns the four field values of the UUID in big-endian order.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// These values can be passed to the `from_fields()` method to get the</span>
-    <span class="doccomment">/// original `Uuid` back.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// * The first field value represents the first group of (eight) hex</span>
-    <span class="doccomment">///   digits, taken as a big-endian `u32` value.  For V1 UUIDs, this field</span>
-    <span class="doccomment">///   represents the low 32 bits of the timestamp.</span>
-    <span class="doccomment">/// * The second field value represents the second group of (four) hex</span>
-    <span class="doccomment">///   digits, taken as a big-endian `u16` value.  For V1 UUIDs, this field</span>
-    <span class="doccomment">///   represents the middle 16 bits of the timestamp.</span>
-    <span class="doccomment">/// * The third field value represents the third group of (four) hex digits,</span>
-    <span class="doccomment">///   taken as a big-endian `u16` value.  The 4 most significant bits give</span>
-    <span class="doccomment">///   the UUID version, and for V1 UUIDs, the last 12 bits represent the</span>
-    <span class="doccomment">///   high 12 bits of the timestamp.</span>
-    <span class="doccomment">/// * The last field value represents the last two groups of four and twelve</span>
-    <span class="doccomment">///   hex digits, taken in order.  The first 1-3 bits of this indicate the</span>
-    <span class="doccomment">///   UUID variant, and for V1 UUIDs, the next 13-15 bits indicate the clock</span>
-    <span class="doccomment">///   sequence and the last 48 bits indicate the node ID.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// fn main() -&gt; Result&lt;(), uuid::Error&gt; {</span>
-    <span class="doccomment">///     let uuid = Uuid::nil();</span>
-    <span class="doccomment">///     assert_eq!(uuid.as_fields(), (0, 0, 0, &amp;[0u8; 8]));</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     let uuid = Uuid::parse_str(&quot;936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;)?;</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.as_fields(),</span>
-    <span class="doccomment">///         (</span>
-    <span class="doccomment">///             0x936DA01F,</span>
-    <span class="doccomment">///             0x9ABD,</span>
-    <span class="doccomment">///             0x4D9D,</span>
-    <span class="doccomment">///             b&quot;\x80\xC7\x02\xAF\x85\xC8\x22\xA8&quot;</span>
-    <span class="doccomment">///         )</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     Ok(())</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_fields</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">u32</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="kw-2">&amp;</span>[<span class="ident">u8</span>; <span class="number">8</span>]) {
-        <span class="kw">let</span> <span class="ident">d1</span> <span class="op">=</span> <span class="ident">u32::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">0</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">24</span>
-            <span class="op">|</span> <span class="ident">u32::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">1</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">16</span>
-            <span class="op">|</span> <span class="ident">u32::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">2</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">8</span>
-            <span class="op">|</span> <span class="ident">u32::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">3</span>]);
+    <span class="doccomment">/// Returns the four field values of the UUID in big-endian order.
+    ///
+    /// These values can be passed to the `from_fields()` method to get the
+    /// original `Uuid` back.
+    ///
+    /// * The first field value represents the first group of (eight) hex
+    ///   digits, taken as a big-endian `u32` value.  For V1 UUIDs, this field
+    ///   represents the low 32 bits of the timestamp.
+    /// * The second field value represents the second group of (four) hex
+    ///   digits, taken as a big-endian `u16` value.  For V1 UUIDs, this field
+    ///   represents the middle 16 bits of the timestamp.
+    /// * The third field value represents the third group of (four) hex digits,
+    ///   taken as a big-endian `u16` value.  The 4 most significant bits give
+    ///   the UUID version, and for V1 UUIDs, the last 12 bits represent the
+    ///   high 12 bits of the timestamp.
+    /// * The last field value represents the last two groups of four and twelve
+    ///   hex digits, taken in order.  The first 1-3 bits of this indicate the
+    ///   UUID variant, and for V1 UUIDs, the next 13-15 bits indicate the clock
+    ///   sequence and the last 48 bits indicate the node ID.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use uuid::Uuid;
+    ///
+    /// fn main() -&gt; Result&lt;(), uuid::Error&gt; {
+    ///     let uuid = Uuid::nil();
+    ///     assert_eq!(uuid.as_fields(), (0, 0, 0, &amp;[0u8; 8]));
+    ///
+    ///     let uuid = Uuid::parse_str(&quot;936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;)?;
+    ///     assert_eq!(
+    ///         uuid.as_fields(),
+    ///         (
+    ///             0x936DA01F,
+    ///             0x9ABD,
+    ///             0x4D9D,
+    ///             b&quot;\x80\xC7\x02\xAF\x85\xC8\x22\xA8&quot;
+    ///         )
+    ///     );
+    ///
+    ///     Ok(())
+    /// }
+    /// ```
+    </span><span class="kw">pub fn </span>as_fields(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (u32, u16, u16, <span class="kw-2">&amp;</span>[u8; <span class="number">8</span>]) {
+        <span class="kw">let </span>d1 = u32::from(<span class="self">self</span>.as_bytes()[<span class="number">0</span>]) &lt;&lt; <span class="number">24
+            </span>| u32::from(<span class="self">self</span>.as_bytes()[<span class="number">1</span>]) &lt;&lt; <span class="number">16
+            </span>| u32::from(<span class="self">self</span>.as_bytes()[<span class="number">2</span>]) &lt;&lt; <span class="number">8
+            </span>| u32::from(<span class="self">self</span>.as_bytes()[<span class="number">3</span>]);
 
-        <span class="kw">let</span> <span class="ident">d2</span> <span class="op">=</span>
-            <span class="ident">u16::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">4</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">8</span> <span class="op">|</span> <span class="ident">u16::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">5</span>]);
+        <span class="kw">let </span>d2 =
+            u16::from(<span class="self">self</span>.as_bytes()[<span class="number">4</span>]) &lt;&lt; <span class="number">8 </span>| u16::from(<span class="self">self</span>.as_bytes()[<span class="number">5</span>]);
 
-        <span class="kw">let</span> <span class="ident">d3</span> <span class="op">=</span>
-            <span class="ident">u16::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">6</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">8</span> <span class="op">|</span> <span class="ident">u16::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">7</span>]);
+        <span class="kw">let </span>d3 =
+            u16::from(<span class="self">self</span>.as_bytes()[<span class="number">6</span>]) &lt;&lt; <span class="number">8 </span>| u16::from(<span class="self">self</span>.as_bytes()[<span class="number">7</span>]);
 
-        <span class="kw">let</span> <span class="ident">d4</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>; <span class="number">8</span>] <span class="op">=</span>
-            <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">8</span>..<span class="number">16</span>].<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> [<span class="ident">u8</span>; <span class="number">8</span>]) };
-        (<span class="ident">d1</span>, <span class="ident">d2</span>, <span class="ident">d3</span>, <span class="ident">d4</span>)
+        <span class="kw">let </span>d4: <span class="kw-2">&amp;</span>[u8; <span class="number">8</span>] =
+            <span class="kw">unsafe </span>{ <span class="kw-2">&amp;*</span>(<span class="self">self</span>.as_bytes()[<span class="number">8</span>..<span class="number">16</span>].as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>[u8; <span class="number">8</span>]) };
+        (d1, d2, d3, d4)
     }
 
-    <span class="doccomment">/// Returns the four field values of the UUID in little-endian order.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The bytes in the returned integer fields will</span>
-    <span class="doccomment">/// be converted from big-endian order.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// fn main() -&gt; Result&lt;(), uuid::Error&gt; {</span>
-    <span class="doccomment">///     let uuid = Uuid::parse_str(&quot;936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;)?;</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_fields_le(),</span>
-    <span class="doccomment">///         (</span>
-    <span class="doccomment">///             0x1FA06D93,</span>
-    <span class="doccomment">///             0xBD9A,</span>
-    <span class="doccomment">///             0x9D4D,</span>
-    <span class="doccomment">///             b&quot;\x80\xC7\x02\xAF\x85\xC8\x22\xA8&quot;</span>
-    <span class="doccomment">///         )</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///     Ok(())</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_fields_le</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="ident">u32</span>, <span class="ident">u16</span>, <span class="ident">u16</span>, <span class="kw-2">&amp;</span>[<span class="ident">u8</span>; <span class="number">8</span>]) {
-        <span class="kw">let</span> <span class="ident">d1</span> <span class="op">=</span> <span class="ident">u32::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">0</span>])
-            <span class="op">|</span> <span class="ident">u32::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">1</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">8</span>
-            <span class="op">|</span> <span class="ident">u32::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">2</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">16</span>
-            <span class="op">|</span> <span class="ident">u32::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">3</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">24</span>;
+    <span class="doccomment">/// Returns the four field values of the UUID in little-endian order.
+    ///
+    /// The bytes in the returned integer fields will
+    /// be converted from big-endian order.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use uuid::Uuid;
+    ///
+    /// fn main() -&gt; Result&lt;(), uuid::Error&gt; {
+    ///     let uuid = Uuid::parse_str(&quot;936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;)?;
+    ///     assert_eq!(
+    ///         uuid.to_fields_le(),
+    ///         (
+    ///             0x1FA06D93,
+    ///             0xBD9A,
+    ///             0x9D4D,
+    ///             b&quot;\x80\xC7\x02\xAF\x85\xC8\x22\xA8&quot;
+    ///         )
+    ///     );
+    ///     Ok(())
+    /// }
+    /// ```
+    </span><span class="kw">pub fn </span>to_fields_le(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (u32, u16, u16, <span class="kw-2">&amp;</span>[u8; <span class="number">8</span>]) {
+        <span class="kw">let </span>d1 = u32::from(<span class="self">self</span>.as_bytes()[<span class="number">0</span>])
+            | u32::from(<span class="self">self</span>.as_bytes()[<span class="number">1</span>]) &lt;&lt; <span class="number">8
+            </span>| u32::from(<span class="self">self</span>.as_bytes()[<span class="number">2</span>]) &lt;&lt; <span class="number">16
+            </span>| u32::from(<span class="self">self</span>.as_bytes()[<span class="number">3</span>]) &lt;&lt; <span class="number">24</span>;
 
-        <span class="kw">let</span> <span class="ident">d2</span> <span class="op">=</span>
-            <span class="ident">u16::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">4</span>]) <span class="op">|</span> <span class="ident">u16::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">5</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">8</span>;
+        <span class="kw">let </span>d2 =
+            u16::from(<span class="self">self</span>.as_bytes()[<span class="number">4</span>]) | u16::from(<span class="self">self</span>.as_bytes()[<span class="number">5</span>]) &lt;&lt; <span class="number">8</span>;
 
-        <span class="kw">let</span> <span class="ident">d3</span> <span class="op">=</span>
-            <span class="ident">u16::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">6</span>]) <span class="op">|</span> <span class="ident">u16::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">7</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">8</span>;
+        <span class="kw">let </span>d3 =
+            u16::from(<span class="self">self</span>.as_bytes()[<span class="number">6</span>]) | u16::from(<span class="self">self</span>.as_bytes()[<span class="number">7</span>]) &lt;&lt; <span class="number">8</span>;
 
-        <span class="kw">let</span> <span class="ident">d4</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>; <span class="number">8</span>] <span class="op">=</span>
-            <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">*</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">8</span>..<span class="number">16</span>].<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="kw-2">*const</span> [<span class="ident">u8</span>; <span class="number">8</span>]) };
-        (<span class="ident">d1</span>, <span class="ident">d2</span>, <span class="ident">d3</span>, <span class="ident">d4</span>)
+        <span class="kw">let </span>d4: <span class="kw-2">&amp;</span>[u8; <span class="number">8</span>] =
+            <span class="kw">unsafe </span>{ <span class="kw-2">&amp;*</span>(<span class="self">self</span>.as_bytes()[<span class="number">8</span>..<span class="number">16</span>].as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>[u8; <span class="number">8</span>]) };
+        (d1, d2, d3, d4)
     }
 
-    <span class="doccomment">/// Returns a 128bit value containing the UUID data.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The bytes in the UUID will be packed into a `u128`, like the</span>
-    <span class="doccomment">/// [`Uuid::as_bytes`] method.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// fn main() -&gt; Result&lt;(), uuid::Error&gt; {</span>
-    <span class="doccomment">///     let uuid = Uuid::parse_str(&quot;936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;)?;</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.as_u128(),</span>
-    <span class="doccomment">///         0x936DA01F9ABD4D9D80C702AF85C822A8,</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///     Ok(())</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_u128</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u128</span> {
-        <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">0</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">120</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">1</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">112</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">2</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">104</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">3</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">96</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">4</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">88</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">5</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">80</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">6</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">72</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">7</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">64</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">8</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">56</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">9</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">48</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">10</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">40</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">11</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">32</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">12</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">24</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">13</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">16</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">14</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">8</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">15</span>])
+    <span class="doccomment">/// Returns a 128bit value containing the UUID data.
+    ///
+    /// The bytes in the UUID will be packed into a `u128`, like the
+    /// [`Uuid::as_bytes`] method.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use uuid::Uuid;
+    ///
+    /// fn main() -&gt; Result&lt;(), uuid::Error&gt; {
+    ///     let uuid = Uuid::parse_str(&quot;936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;)?;
+    ///     assert_eq!(
+    ///         uuid.as_u128(),
+    ///         0x936DA01F9ABD4D9D80C702AF85C822A8,
+    ///     );
+    ///     Ok(())
+    /// }
+    /// ```
+    </span><span class="kw">pub fn </span>as_u128(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u128 {
+        u128::from(<span class="self">self</span>.as_bytes()[<span class="number">0</span>]) &lt;&lt; <span class="number">120
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">1</span>]) &lt;&lt; <span class="number">112
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">2</span>]) &lt;&lt; <span class="number">104
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">3</span>]) &lt;&lt; <span class="number">96
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">4</span>]) &lt;&lt; <span class="number">88
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">5</span>]) &lt;&lt; <span class="number">80
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">6</span>]) &lt;&lt; <span class="number">72
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">7</span>]) &lt;&lt; <span class="number">64
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">8</span>]) &lt;&lt; <span class="number">56
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">9</span>]) &lt;&lt; <span class="number">48
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">10</span>]) &lt;&lt; <span class="number">40
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">11</span>]) &lt;&lt; <span class="number">32
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">12</span>]) &lt;&lt; <span class="number">24
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">13</span>]) &lt;&lt; <span class="number">16
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">14</span>]) &lt;&lt; <span class="number">8
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">15</span>])
     }
 
-    <span class="doccomment">/// Returns a 128bit little-endian value containing the UUID data.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The bytes in the UUID will be reversed and packed into a `u128`.</span>
-    <span class="doccomment">/// Note that this will produce a different result than</span>
-    <span class="doccomment">/// [`Uuid::to_fields_le`], because the entire UUID is reversed, rather</span>
-    <span class="doccomment">/// than reversing the individual fields in-place.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// fn main() -&gt; Result&lt;(), uuid::Error&gt; {</span>
-    <span class="doccomment">///     let uuid = Uuid::parse_str(&quot;936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;)?;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_u128_le(),</span>
-    <span class="doccomment">///         0xA822C885AF02C7809D4DBD9A1FA06D93,</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///     Ok(())</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_u128_le</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u128</span> {
-        <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">0</span>])
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">1</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">8</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">2</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">16</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">3</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">24</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">4</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">32</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">5</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">40</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">6</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">48</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">7</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">56</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">8</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">64</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">9</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">72</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">10</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">80</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">11</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">88</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">12</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">96</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">13</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">104</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">14</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">112</span>
-            <span class="op">|</span> <span class="ident">u128::from</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>()[<span class="number">15</span>]) <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">120</span>
+    <span class="doccomment">/// Returns a 128bit little-endian value containing the UUID data.
+    ///
+    /// The bytes in the UUID will be reversed and packed into a `u128`.
+    /// Note that this will produce a different result than
+    /// [`Uuid::to_fields_le`], because the entire UUID is reversed, rather
+    /// than reversing the individual fields in-place.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use uuid::Uuid;
+    ///
+    /// fn main() -&gt; Result&lt;(), uuid::Error&gt; {
+    ///     let uuid = Uuid::parse_str(&quot;936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;)?;
+    ///
+    ///     assert_eq!(
+    ///         uuid.to_u128_le(),
+    ///         0xA822C885AF02C7809D4DBD9A1FA06D93,
+    ///     );
+    ///     Ok(())
+    /// }
+    /// ```
+    </span><span class="kw">pub fn </span>to_u128_le(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u128 {
+        u128::from(<span class="self">self</span>.as_bytes()[<span class="number">0</span>])
+            | u128::from(<span class="self">self</span>.as_bytes()[<span class="number">1</span>]) &lt;&lt; <span class="number">8
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">2</span>]) &lt;&lt; <span class="number">16
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">3</span>]) &lt;&lt; <span class="number">24
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">4</span>]) &lt;&lt; <span class="number">32
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">5</span>]) &lt;&lt; <span class="number">40
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">6</span>]) &lt;&lt; <span class="number">48
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">7</span>]) &lt;&lt; <span class="number">56
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">8</span>]) &lt;&lt; <span class="number">64
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">9</span>]) &lt;&lt; <span class="number">72
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">10</span>]) &lt;&lt; <span class="number">80
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">11</span>]) &lt;&lt; <span class="number">88
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">12</span>]) &lt;&lt; <span class="number">96
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">13</span>]) &lt;&lt; <span class="number">104
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">14</span>]) &lt;&lt; <span class="number">112
+            </span>| u128::from(<span class="self">self</span>.as_bytes()[<span class="number">15</span>]) &lt;&lt; <span class="number">120
+    </span>}
+
+    <span class="doccomment">/// Returns an array of 16 octets containing the UUID data.
+    </span><span class="kw">pub const fn </span>as_bytes(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>Bytes {
+        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0
+    </span>}
+
+    <span class="doccomment">/// Tests if the UUID is nil.
+    </span><span class="kw">pub fn </span>is_nil(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="self">self</span>.as_bytes().iter().all(|<span class="kw-2">&amp;</span>b| b == <span class="number">0</span>)
     }
 
-    <span class="doccomment">/// Returns an array of 16 octets containing the UUID data.</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">as_bytes</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">Bytes</span> {
-        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>
-    }
-
-    <span class="doccomment">/// Tests if the UUID is nil.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_nil</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">as_bytes</span>().<span class="ident">iter</span>().<span class="ident">all</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">b</span><span class="op">|</span> <span class="ident">b</span> <span class="op">==</span> <span class="number">0</span>)
-    }
-
-    <span class="doccomment">/// A buffer that can be used for `encode_...` calls, that is</span>
-    <span class="doccomment">/// guaranteed to be long enough for any of the adapters.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// let uuid = Uuid::nil();</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(</span>
-    <span class="doccomment">///     uuid.to_simple().encode_lower(&amp;mut Uuid::encode_buffer()),</span>
-    <span class="doccomment">///     &quot;00000000000000000000000000000000&quot;</span>
-    <span class="doccomment">/// );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(</span>
-    <span class="doccomment">///     uuid.to_hyphenated()</span>
-    <span class="doccomment">///         .encode_lower(&amp;mut Uuid::encode_buffer()),</span>
-    <span class="doccomment">///     &quot;00000000-0000-0000-0000-000000000000&quot;</span>
-    <span class="doccomment">/// );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(</span>
-    <span class="doccomment">///     uuid.to_urn().encode_lower(&amp;mut Uuid::encode_buffer()),</span>
-    <span class="doccomment">///     &quot;urn:uuid:00000000-0000-0000-0000-000000000000&quot;</span>
-    <span class="doccomment">/// );</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">encode_buffer</span>() -&gt; [<span class="ident">u8</span>; <span class="ident">adapter::Urn::LENGTH</span>] {
-        [<span class="number">0</span>; <span class="ident">adapter::Urn::LENGTH</span>]
-    }
-}
-
-<span class="kw">impl</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">Uuid</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
-        <span class="ident">fmt::LowerHex::fmt</span>(<span class="self">self</span>, <span class="ident">f</span>)
+    <span class="doccomment">/// A buffer that can be used for `encode_...` calls, that is
+    /// guaranteed to be long enough for any of the adapters.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use uuid::Uuid;
+    ///
+    /// let uuid = Uuid::nil();
+    ///
+    /// assert_eq!(
+    ///     uuid.to_simple().encode_lower(&amp;mut Uuid::encode_buffer()),
+    ///     &quot;00000000000000000000000000000000&quot;
+    /// );
+    ///
+    /// assert_eq!(
+    ///     uuid.to_hyphenated()
+    ///         .encode_lower(&amp;mut Uuid::encode_buffer()),
+    ///     &quot;00000000-0000-0000-0000-000000000000&quot;
+    /// );
+    ///
+    /// assert_eq!(
+    ///     uuid.to_urn().encode_lower(&amp;mut Uuid::encode_buffer()),
+    ///     &quot;urn:uuid:00000000-0000-0000-0000-000000000000&quot;
+    /// );
+    /// ```
+    </span><span class="kw">pub const fn </span>encode_buffer() -&gt; [u8; adapter::Urn::LENGTH] {
+        [<span class="number">0</span>; adapter::Urn::LENGTH]
     }
 }
 
-<span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">Uuid</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
-        <span class="ident">fmt::LowerHex::fmt</span>(<span class="self">self</span>, <span class="ident">f</span>)
+<span class="kw">impl </span>fmt::Debug <span class="kw">for </span>Uuid {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+        fmt::LowerHex::fmt(<span class="self">self</span>, f)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">Variant</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
-        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">Variant::NCS</span> =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;NCS&quot;</span>),
-            <span class="ident">Variant::RFC4122</span> =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;RFC4122&quot;</span>),
-            <span class="ident">Variant::Microsoft</span> =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;Microsoft&quot;</span>),
-            <span class="ident">Variant::Future</span> =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;Future&quot;</span>),
+<span class="kw">impl </span>fmt::Display <span class="kw">for </span>Uuid {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+        fmt::LowerHex::fmt(<span class="self">self</span>, f)
+    }
+}
+
+<span class="kw">impl </span>fmt::Display <span class="kw">for </span>Variant {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+        <span class="kw">match </span><span class="kw-2">*</span><span class="self">self </span>{
+            Variant::NCS =&gt; <span class="macro">write!</span>(f, <span class="string">&quot;NCS&quot;</span>),
+            Variant::RFC4122 =&gt; <span class="macro">write!</span>(f, <span class="string">&quot;RFC4122&quot;</span>),
+            Variant::Microsoft =&gt; <span class="macro">write!</span>(f, <span class="string">&quot;Microsoft&quot;</span>),
+            Variant::Future =&gt; <span class="macro">write!</span>(f, <span class="string">&quot;Future&quot;</span>),
         }
     }
 }
 
-<span class="kw">impl</span> <span class="ident">fmt::LowerHex</span> <span class="kw">for</span> <span class="ident">Uuid</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
-        <span class="ident">fmt::LowerHex::fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">to_hyphenated_ref</span>(), <span class="ident">f</span>)
+<span class="kw">impl </span>fmt::LowerHex <span class="kw">for </span>Uuid {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+        fmt::LowerHex::fmt(<span class="kw-2">&amp;</span><span class="self">self</span>.to_hyphenated_ref(), f)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">fmt::UpperHex</span> <span class="kw">for</span> <span class="ident">Uuid</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
-        <span class="ident">fmt::UpperHex::fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">to_hyphenated_ref</span>(), <span class="ident">f</span>)
+<span class="kw">impl </span>fmt::UpperHex <span class="kw">for </span>Uuid {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+        fmt::UpperHex::fmt(<span class="kw-2">&amp;</span><span class="self">self</span>.to_hyphenated_ref(), f)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">str::FromStr</span> <span class="kw">for</span> <span class="ident">Uuid</span> {
-    <span class="kw">type</span> <span class="prelude-val">Err</span> <span class="op">=</span> <span class="ident">Error</span>;
+<span class="kw">impl </span>str::FromStr <span class="kw">for </span>Uuid {
+    <span class="kw">type </span><span class="prelude-val">Err </span>= Error;
 
-    <span class="kw">fn</span> <span class="ident">from_str</span>(<span class="ident">uuid_str</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident"><span class="self">Self</span>::Err</span><span class="op">&gt;</span> {
-        <span class="ident">Uuid::parse_str</span>(<span class="ident">uuid_str</span>)
+    <span class="kw">fn </span>from_str(uuid_str: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, <span class="self">Self</span>::Err&gt; {
+        Uuid::parse_str(uuid_str)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">Uuid</span> {
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="self">Self</span> {
-        <span class="ident">Uuid::nil</span>()
+<span class="kw">impl </span>Default <span class="kw">for </span>Uuid {
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
+        Uuid::nil()
     }
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">tests</span> {
-    <span class="kw">use</span> <span class="kw">crate</span>::{
-        <span class="ident">prelude</span>::<span class="kw-2">*</span>,
-        <span class="ident">std::string</span>::{<span class="ident">String</span>, <span class="ident">ToString</span>},
-        <span class="ident">test_util</span>,
+<span class="attribute">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use crate</span>::{
+        prelude::<span class="kw-2">*</span>,
+        std::string::{String, ToString},
+        test_util,
     };
 
-    <span class="macro">macro_rules!</span> <span class="ident">check</span> {
-        (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">buf</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">format</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">target</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">len</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">cond</span>:<span class="ident">expr</span>) =&gt; {
-            <span class="macro-nonterminal">$</span><span class="macro-nonterminal">buf</span>.<span class="ident">clear</span>();
-            <span class="macro">write!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">buf</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">format</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">target</span>).<span class="ident">unwrap</span>();
-            <span class="macro">assert!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">buf</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">len</span>);
-            <span class="macro">assert!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">buf</span>.<span class="ident">chars</span>().<span class="ident">all</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">cond</span>), <span class="string">&quot;{}&quot;</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">buf</span>);
+    <span class="macro">macro_rules! </span>check {
+        (<span class="macro-nonterminal">$buf</span>:ident, <span class="macro-nonterminal">$format</span>:expr, <span class="macro-nonterminal">$target</span>:expr, <span class="macro-nonterminal">$len</span>:expr, <span class="macro-nonterminal">$cond</span>:expr) =&gt; {
+            <span class="macro-nonterminal">$buf</span>.clear();
+            <span class="macro">write!</span>(<span class="macro-nonterminal">$buf</span>, <span class="macro-nonterminal">$format</span>, <span class="macro-nonterminal">$target</span>).unwrap();
+            <span class="macro">assert!</span>(<span class="macro-nonterminal">$buf</span>.len() == <span class="macro-nonterminal">$len</span>);
+            <span class="macro">assert!</span>(<span class="macro-nonterminal">$buf</span>.chars().all(<span class="macro-nonterminal">$cond</span>), <span class="string">&quot;{}&quot;</span>, <span class="macro-nonterminal">$buf</span>);
         };
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_uuid_compare</span>() {
-        <span class="kw">let</span> <span class="ident">uuid1</span> <span class="op">=</span> <span class="ident">test_util::new</span>();
-        <span class="kw">let</span> <span class="ident">uuid2</span> <span class="op">=</span> <span class="ident">test_util::new2</span>();
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_uuid_compare() {
+        <span class="kw">let </span>uuid1 = test_util::new();
+        <span class="kw">let </span>uuid2 = test_util::new2();
 
-        <span class="macro">assert_eq!</span>(<span class="ident">uuid1</span>, <span class="ident">uuid1</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">uuid2</span>, <span class="ident">uuid2</span>);
+        <span class="macro">assert_eq!</span>(uuid1, uuid1);
+        <span class="macro">assert_eq!</span>(uuid2, uuid2);
 
-        <span class="macro">assert_ne!</span>(<span class="ident">uuid1</span>, <span class="ident">uuid2</span>);
-        <span class="macro">assert_ne!</span>(<span class="ident">uuid2</span>, <span class="ident">uuid1</span>);
+        <span class="macro">assert_ne!</span>(uuid1, uuid2);
+        <span class="macro">assert_ne!</span>(uuid2, uuid1);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_uuid_default</span>() {
-        <span class="kw">let</span> <span class="ident">default_uuid</span> <span class="op">=</span> <span class="ident">Uuid::default</span>();
-        <span class="kw">let</span> <span class="ident">nil_uuid</span> <span class="op">=</span> <span class="ident">Uuid::nil</span>();
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_uuid_default() {
+        <span class="kw">let </span>default_uuid = Uuid::default();
+        <span class="kw">let </span>nil_uuid = Uuid::nil();
 
-        <span class="macro">assert_eq!</span>(<span class="ident">default_uuid</span>, <span class="ident">nil_uuid</span>);
+        <span class="macro">assert_eq!</span>(default_uuid, nil_uuid);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_uuid_display</span>() {
-        <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::fmt::Write</span>;
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_uuid_display() {
+        <span class="kw">use </span><span class="kw">super</span>::fmt::Write;
 
-        <span class="kw">let</span> <span class="ident">uuid</span> <span class="op">=</span> <span class="ident">test_util::new</span>();
-        <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">uuid</span>.<span class="ident">to_string</span>();
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="ident">String::new</span>();
+        <span class="kw">let </span>uuid = test_util::new();
+        <span class="kw">let </span>s = uuid.to_string();
+        <span class="kw">let </span><span class="kw-2">mut </span>buffer = String::new();
 
-        <span class="macro">assert_eq!</span>(<span class="ident">s</span>, <span class="ident">uuid</span>.<span class="ident">to_hyphenated</span>().<span class="ident">to_string</span>());
+        <span class="macro">assert_eq!</span>(s, uuid.to_hyphenated().to_string());
 
-        <span class="macro">check!</span>(<span class="ident">buffer</span>, <span class="string">&quot;{}&quot;</span>, <span class="ident">uuid</span>, <span class="number">36</span>, <span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_lowercase</span>()
-            <span class="op">|</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_digit</span>(<span class="number">10</span>)
-            <span class="op">|</span><span class="op">|</span> <span class="ident">c</span> <span class="op">==</span> <span class="string">&#39;-&#39;</span>);
+        <span class="macro">check!</span>(buffer, <span class="string">&quot;{}&quot;</span>, uuid, <span class="number">36</span>, |c| c.is_lowercase()
+            || c.is_digit(<span class="number">10</span>)
+            || c == <span class="string">&#39;-&#39;</span>);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_uuid_lowerhex</span>() {
-        <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::fmt::Write</span>;
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_uuid_lowerhex() {
+        <span class="kw">use </span><span class="kw">super</span>::fmt::Write;
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="ident">String::new</span>();
-        <span class="kw">let</span> <span class="ident">uuid</span> <span class="op">=</span> <span class="ident">test_util::new</span>();
+        <span class="kw">let </span><span class="kw-2">mut </span>buffer = String::new();
+        <span class="kw">let </span>uuid = test_util::new();
 
-        <span class="macro">check!</span>(<span class="ident">buffer</span>, <span class="string">&quot;{:x}&quot;</span>, <span class="ident">uuid</span>, <span class="number">36</span>, <span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_lowercase</span>()
-            <span class="op">|</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_digit</span>(<span class="number">10</span>)
-            <span class="op">|</span><span class="op">|</span> <span class="ident">c</span> <span class="op">==</span> <span class="string">&#39;-&#39;</span>);
+        <span class="macro">check!</span>(buffer, <span class="string">&quot;{:x}&quot;</span>, uuid, <span class="number">36</span>, |c| c.is_lowercase()
+            || c.is_digit(<span class="number">10</span>)
+            || c == <span class="string">&#39;-&#39;</span>);
     }
 
-    <span class="comment">// noinspection RsAssertEqual</span>
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_uuid_operator_eq</span>() {
-        <span class="kw">let</span> <span class="ident">uuid1</span> <span class="op">=</span> <span class="ident">test_util::new</span>();
-        <span class="kw">let</span> <span class="ident">uuid1_dup</span> <span class="op">=</span> <span class="ident">uuid1</span>.<span class="ident">clone</span>();
-        <span class="kw">let</span> <span class="ident">uuid2</span> <span class="op">=</span> <span class="ident">test_util::new2</span>();
+    <span class="comment">// noinspection RsAssertEqual
+    </span><span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_uuid_operator_eq() {
+        <span class="kw">let </span>uuid1 = test_util::new();
+        <span class="kw">let </span>uuid1_dup = uuid1.clone();
+        <span class="kw">let </span>uuid2 = test_util::new2();
 
-        <span class="macro">assert!</span>(<span class="ident">uuid1</span> <span class="op">==</span> <span class="ident">uuid1</span>);
-        <span class="macro">assert!</span>(<span class="ident">uuid1</span> <span class="op">==</span> <span class="ident">uuid1_dup</span>);
-        <span class="macro">assert!</span>(<span class="ident">uuid1_dup</span> <span class="op">==</span> <span class="ident">uuid1</span>);
+        <span class="macro">assert!</span>(uuid1 == uuid1);
+        <span class="macro">assert!</span>(uuid1 == uuid1_dup);
+        <span class="macro">assert!</span>(uuid1_dup == uuid1);
 
-        <span class="macro">assert!</span>(<span class="ident">uuid1</span> <span class="op">!</span><span class="op">=</span> <span class="ident">uuid2</span>);
-        <span class="macro">assert!</span>(<span class="ident">uuid2</span> <span class="op">!</span><span class="op">=</span> <span class="ident">uuid1</span>);
-        <span class="macro">assert!</span>(<span class="ident">uuid1_dup</span> <span class="op">!</span><span class="op">=</span> <span class="ident">uuid2</span>);
-        <span class="macro">assert!</span>(<span class="ident">uuid2</span> <span class="op">!</span><span class="op">=</span> <span class="ident">uuid1_dup</span>);
+        <span class="macro">assert!</span>(uuid1 != uuid2);
+        <span class="macro">assert!</span>(uuid2 != uuid1);
+        <span class="macro">assert!</span>(uuid1_dup != uuid2);
+        <span class="macro">assert!</span>(uuid2 != uuid1_dup);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_uuid_to_string</span>() {
-        <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::fmt::Write</span>;
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_uuid_to_string() {
+        <span class="kw">use </span><span class="kw">super</span>::fmt::Write;
 
-        <span class="kw">let</span> <span class="ident">uuid</span> <span class="op">=</span> <span class="ident">test_util::new</span>();
-        <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">uuid</span>.<span class="ident">to_string</span>();
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="ident">String::new</span>();
+        <span class="kw">let </span>uuid = test_util::new();
+        <span class="kw">let </span>s = uuid.to_string();
+        <span class="kw">let </span><span class="kw-2">mut </span>buffer = String::new();
 
-        <span class="macro">assert_eq!</span>(<span class="ident">s</span>.<span class="ident">len</span>(), <span class="number">36</span>);
+        <span class="macro">assert_eq!</span>(s.len(), <span class="number">36</span>);
 
-        <span class="macro">check!</span>(<span class="ident">buffer</span>, <span class="string">&quot;{}&quot;</span>, <span class="ident">s</span>, <span class="number">36</span>, <span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_lowercase</span>()
-            <span class="op">|</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_digit</span>(<span class="number">10</span>)
-            <span class="op">|</span><span class="op">|</span> <span class="ident">c</span> <span class="op">==</span> <span class="string">&#39;-&#39;</span>);
+        <span class="macro">check!</span>(buffer, <span class="string">&quot;{}&quot;</span>, s, <span class="number">36</span>, |c| c.is_lowercase()
+            || c.is_digit(<span class="number">10</span>)
+            || c == <span class="string">&#39;-&#39;</span>);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_uuid_upperhex</span>() {
-        <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::fmt::Write</span>;
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_uuid_upperhex() {
+        <span class="kw">use </span><span class="kw">super</span>::fmt::Write;
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="ident">String::new</span>();
-        <span class="kw">let</span> <span class="ident">uuid</span> <span class="op">=</span> <span class="ident">test_util::new</span>();
+        <span class="kw">let </span><span class="kw-2">mut </span>buffer = String::new();
+        <span class="kw">let </span>uuid = test_util::new();
 
-        <span class="macro">check!</span>(<span class="ident">buffer</span>, <span class="string">&quot;{:X}&quot;</span>, <span class="ident">uuid</span>, <span class="number">36</span>, <span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_uppercase</span>()
-            <span class="op">|</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_digit</span>(<span class="number">10</span>)
-            <span class="op">|</span><span class="op">|</span> <span class="ident">c</span> <span class="op">==</span> <span class="string">&#39;-&#39;</span>);
+        <span class="macro">check!</span>(buffer, <span class="string">&quot;{:X}&quot;</span>, uuid, <span class="number">36</span>, |c| c.is_uppercase()
+            || c.is_digit(<span class="number">10</span>)
+            || c == <span class="string">&#39;-&#39;</span>);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_nil</span>() {
-        <span class="kw">let</span> <span class="ident">nil</span> <span class="op">=</span> <span class="ident">Uuid::nil</span>();
-        <span class="kw">let</span> <span class="ident">not_nil</span> <span class="op">=</span> <span class="ident">test_util::new</span>();
-        <span class="kw">let</span> <span class="ident">from_bytes</span> <span class="op">=</span> <span class="ident">Uuid::from_bytes</span>([
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_nil() {
+        <span class="kw">let </span>nil = Uuid::nil();
+        <span class="kw">let </span>not_nil = test_util::new();
+        <span class="kw">let </span>from_bytes = Uuid::from_bytes([
             <span class="number">4</span>, <span class="number">54</span>, <span class="number">67</span>, <span class="number">12</span>, <span class="number">43</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">76</span>, <span class="number">32</span>, <span class="number">50</span>, <span class="number">87</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">33</span>, <span class="number">43</span>, <span class="number">87</span>,
         ]);
 
-        <span class="macro">assert_eq!</span>(<span class="ident">from_bytes</span>.<span class="ident">get_version</span>(), <span class="prelude-val">None</span>);
+        <span class="macro">assert_eq!</span>(from_bytes.get_version(), <span class="prelude-val">None</span>);
 
-        <span class="macro">assert!</span>(<span class="ident">nil</span>.<span class="ident">is_nil</span>());
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">not_nil</span>.<span class="ident">is_nil</span>());
+        <span class="macro">assert!</span>(nil.is_nil());
+        <span class="macro">assert!</span>(!not_nil.is_nil());
 
-        <span class="macro">assert_eq!</span>(<span class="ident">nil</span>.<span class="ident">get_version</span>(), <span class="prelude-val">Some</span>(<span class="ident">Version::Nil</span>));
-        <span class="macro">assert_eq!</span>(<span class="ident">not_nil</span>.<span class="ident">get_version</span>(), <span class="prelude-val">Some</span>(<span class="ident">Version::Random</span>))
+        <span class="macro">assert_eq!</span>(nil.get_version(), <span class="prelude-val">Some</span>(Version::Nil));
+        <span class="macro">assert_eq!</span>(not_nil.get_version(), <span class="prelude-val">Some</span>(Version::Random))
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_predefined_namespaces</span>() {
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_predefined_namespaces() {
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::NAMESPACE_DNS</span>.<span class="ident">to_hyphenated</span>().<span class="ident">to_string</span>(),
-            <span class="string">&quot;6ba7b810-9dad-11d1-80b4-00c04fd430c8&quot;</span>
-        );
+            Uuid::NAMESPACE_DNS.to_hyphenated().to_string(),
+            <span class="string">&quot;6ba7b810-9dad-11d1-80b4-00c04fd430c8&quot;
+        </span>);
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::NAMESPACE_URL</span>.<span class="ident">to_hyphenated</span>().<span class="ident">to_string</span>(),
-            <span class="string">&quot;6ba7b811-9dad-11d1-80b4-00c04fd430c8&quot;</span>
-        );
+            Uuid::NAMESPACE_URL.to_hyphenated().to_string(),
+            <span class="string">&quot;6ba7b811-9dad-11d1-80b4-00c04fd430c8&quot;
+        </span>);
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::NAMESPACE_OID</span>.<span class="ident">to_hyphenated</span>().<span class="ident">to_string</span>(),
-            <span class="string">&quot;6ba7b812-9dad-11d1-80b4-00c04fd430c8&quot;</span>
-        );
+            Uuid::NAMESPACE_OID.to_hyphenated().to_string(),
+            <span class="string">&quot;6ba7b812-9dad-11d1-80b4-00c04fd430c8&quot;
+        </span>);
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::NAMESPACE_X500</span>.<span class="ident">to_hyphenated</span>().<span class="ident">to_string</span>(),
-            <span class="string">&quot;6ba7b814-9dad-11d1-80b4-00c04fd430c8&quot;</span>
-        );
+            Uuid::NAMESPACE_X500.to_hyphenated().to_string(),
+            <span class="string">&quot;6ba7b814-9dad-11d1-80b4-00c04fd430c8&quot;
+        </span>);
     }
 
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;v3&quot;</span>)]</span>
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_get_version_v3</span>() {
-        <span class="kw">let</span> <span class="ident">uuid</span> <span class="op">=</span>
-            <span class="ident">Uuid::new_v3</span>(<span class="kw-2">&amp;</span><span class="ident">Uuid::NAMESPACE_DNS</span>, <span class="string">&quot;rust-lang.org&quot;</span>.<span class="ident">as_bytes</span>());
+    <span class="attribute">#[cfg(feature = <span class="string">&quot;v3&quot;</span>)]
+    #[test]
+    </span><span class="kw">fn </span>test_get_version_v3() {
+        <span class="kw">let </span>uuid =
+            Uuid::new_v3(<span class="kw-2">&amp;</span>Uuid::NAMESPACE_DNS, <span class="string">&quot;rust-lang.org&quot;</span>.as_bytes());
 
-        <span class="macro">assert_eq!</span>(<span class="ident">uuid</span>.<span class="ident">get_version</span>().<span class="ident">unwrap</span>(), <span class="ident">Version::Md5</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">uuid</span>.<span class="ident">get_version_num</span>(), <span class="number">3</span>);
+        <span class="macro">assert_eq!</span>(uuid.get_version().unwrap(), Version::Md5);
+        <span class="macro">assert_eq!</span>(uuid.get_version_num(), <span class="number">3</span>);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_get_variant</span>() {
-        <span class="kw">let</span> <span class="ident">uuid1</span> <span class="op">=</span> <span class="ident">test_util::new</span>();
-        <span class="kw">let</span> <span class="ident">uuid2</span> <span class="op">=</span>
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;550e8400-e29b-41d4-a716-446655440000&quot;</span>).<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">uuid3</span> <span class="op">=</span>
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;67e55044-10b1-426f-9247-bb680e5fe0c8&quot;</span>).<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">uuid4</span> <span class="op">=</span>
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;936DA01F9ABD4d9dC0C702AF85C822A8&quot;</span>).<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">uuid5</span> <span class="op">=</span>
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;F9168C5E-CEB2-4faa-D6BF-329BF39FA1E4&quot;</span>).<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">uuid6</span> <span class="op">=</span>
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;f81d4fae-7dec-11d0-7765-00a0c91e6bf6&quot;</span>).<span class="ident">unwrap</span>();
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_get_variant() {
+        <span class="kw">let </span>uuid1 = test_util::new();
+        <span class="kw">let </span>uuid2 =
+            Uuid::parse_str(<span class="string">&quot;550e8400-e29b-41d4-a716-446655440000&quot;</span>).unwrap();
+        <span class="kw">let </span>uuid3 =
+            Uuid::parse_str(<span class="string">&quot;67e55044-10b1-426f-9247-bb680e5fe0c8&quot;</span>).unwrap();
+        <span class="kw">let </span>uuid4 =
+            Uuid::parse_str(<span class="string">&quot;936DA01F9ABD4d9dC0C702AF85C822A8&quot;</span>).unwrap();
+        <span class="kw">let </span>uuid5 =
+            Uuid::parse_str(<span class="string">&quot;F9168C5E-CEB2-4faa-D6BF-329BF39FA1E4&quot;</span>).unwrap();
+        <span class="kw">let </span>uuid6 =
+            Uuid::parse_str(<span class="string">&quot;f81d4fae-7dec-11d0-7765-00a0c91e6bf6&quot;</span>).unwrap();
 
-        <span class="macro">assert_eq!</span>(<span class="ident">uuid1</span>.<span class="ident">get_variant</span>().<span class="ident">unwrap</span>(), <span class="ident">Variant::RFC4122</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">uuid2</span>.<span class="ident">get_variant</span>().<span class="ident">unwrap</span>(), <span class="ident">Variant::RFC4122</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">uuid3</span>.<span class="ident">get_variant</span>().<span class="ident">unwrap</span>(), <span class="ident">Variant::RFC4122</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">uuid4</span>.<span class="ident">get_variant</span>().<span class="ident">unwrap</span>(), <span class="ident">Variant::Microsoft</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">uuid5</span>.<span class="ident">get_variant</span>().<span class="ident">unwrap</span>(), <span class="ident">Variant::Microsoft</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">uuid6</span>.<span class="ident">get_variant</span>().<span class="ident">unwrap</span>(), <span class="ident">Variant::NCS</span>);
+        <span class="macro">assert_eq!</span>(uuid1.get_variant().unwrap(), Variant::RFC4122);
+        <span class="macro">assert_eq!</span>(uuid2.get_variant().unwrap(), Variant::RFC4122);
+        <span class="macro">assert_eq!</span>(uuid3.get_variant().unwrap(), Variant::RFC4122);
+        <span class="macro">assert_eq!</span>(uuid4.get_variant().unwrap(), Variant::Microsoft);
+        <span class="macro">assert_eq!</span>(uuid5.get_variant().unwrap(), Variant::Microsoft);
+        <span class="macro">assert_eq!</span>(uuid6.get_variant().unwrap(), Variant::NCS);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_to_simple_string</span>() {
-        <span class="kw">let</span> <span class="ident">uuid1</span> <span class="op">=</span> <span class="ident">test_util::new</span>();
-        <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">uuid1</span>.<span class="ident">to_simple</span>().<span class="ident">to_string</span>();
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_to_simple_string() {
+        <span class="kw">let </span>uuid1 = test_util::new();
+        <span class="kw">let </span>s = uuid1.to_simple().to_string();
 
-        <span class="macro">assert_eq!</span>(<span class="ident">s</span>.<span class="ident">len</span>(), <span class="number">32</span>);
-        <span class="macro">assert!</span>(<span class="ident">s</span>.<span class="ident">chars</span>().<span class="ident">all</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_digit</span>(<span class="number">16</span>)));
+        <span class="macro">assert_eq!</span>(s.len(), <span class="number">32</span>);
+        <span class="macro">assert!</span>(s.chars().all(|c| c.is_digit(<span class="number">16</span>)));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_to_hyphenated_string</span>() {
-        <span class="kw">let</span> <span class="ident">uuid1</span> <span class="op">=</span> <span class="ident">test_util::new</span>();
-        <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">uuid1</span>.<span class="ident">to_hyphenated</span>().<span class="ident">to_string</span>();
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_to_hyphenated_string() {
+        <span class="kw">let </span>uuid1 = test_util::new();
+        <span class="kw">let </span>s = uuid1.to_hyphenated().to_string();
 
-        <span class="macro">assert!</span>(<span class="ident">s</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">36</span>);
-        <span class="macro">assert!</span>(<span class="ident">s</span>.<span class="ident">chars</span>().<span class="ident">all</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_digit</span>(<span class="number">16</span>) <span class="op">|</span><span class="op">|</span> <span class="ident">c</span> <span class="op">==</span> <span class="string">&#39;-&#39;</span>));
+        <span class="macro">assert!</span>(s.len() == <span class="number">36</span>);
+        <span class="macro">assert!</span>(s.chars().all(|c| c.is_digit(<span class="number">16</span>) || c == <span class="string">&#39;-&#39;</span>));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_upper_lower_hex</span>() {
-        <span class="kw">use</span> <span class="ident">std::fmt::Write</span>;
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_upper_lower_hex() {
+        <span class="kw">use </span>std::fmt::Write;
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> <span class="ident">String::new</span>();
-        <span class="kw">let</span> <span class="ident">u</span> <span class="op">=</span> <span class="ident">test_util::new</span>();
+        <span class="kw">let </span><span class="kw-2">mut </span>buf = String::new();
+        <span class="kw">let </span>u = test_util::new();
 
-        <span class="macro">macro_rules!</span> <span class="ident">check</span> {
-            (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">buf</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">format</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">target</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">len</span>:<span class="ident">expr</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">cond</span>:<span class="ident">expr</span>) =&gt; {
-                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">buf</span>.<span class="ident">clear</span>();
-                <span class="macro">write!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">buf</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">format</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">target</span>).<span class="ident">unwrap</span>();
-                <span class="macro">assert!</span>(<span class="ident">buf</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">len</span>);
-                <span class="macro">assert!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">buf</span>.<span class="ident">chars</span>().<span class="ident">all</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">cond</span>), <span class="string">&quot;{}&quot;</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">buf</span>);
+        <span class="macro">macro_rules! </span>check {
+            (<span class="macro-nonterminal">$buf</span>:ident, <span class="macro-nonterminal">$format</span>:expr, <span class="macro-nonterminal">$target</span>:expr, <span class="macro-nonterminal">$len</span>:expr, <span class="macro-nonterminal">$cond</span>:expr) =&gt; {
+                <span class="macro-nonterminal">$buf</span>.clear();
+                <span class="macro">write!</span>(<span class="macro-nonterminal">$buf</span>, <span class="macro-nonterminal">$format</span>, <span class="macro-nonterminal">$target</span>).unwrap();
+                <span class="macro">assert!</span>(buf.len() == <span class="macro-nonterminal">$len</span>);
+                <span class="macro">assert!</span>(<span class="macro-nonterminal">$buf</span>.chars().all(<span class="macro-nonterminal">$cond</span>), <span class="string">&quot;{}&quot;</span>, <span class="macro-nonterminal">$buf</span>);
             };
         }
 
-        <span class="macro">check!</span>(<span class="ident">buf</span>, <span class="string">&quot;{:X}&quot;</span>, <span class="ident">u</span>, <span class="number">36</span>, <span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_uppercase</span>()
-            <span class="op">|</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_digit</span>(<span class="number">10</span>)
-            <span class="op">|</span><span class="op">|</span> <span class="ident">c</span> <span class="op">==</span> <span class="string">&#39;-&#39;</span>);
-        <span class="macro">check!</span>(<span class="ident">buf</span>, <span class="string">&quot;{:X}&quot;</span>, <span class="ident">u</span>.<span class="ident">to_hyphenated</span>(), <span class="number">36</span>, <span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_uppercase</span>()
-            <span class="op">|</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_digit</span>(<span class="number">10</span>)
-            <span class="op">|</span><span class="op">|</span> <span class="ident">c</span> <span class="op">==</span> <span class="string">&#39;-&#39;</span>);
-        <span class="macro">check!</span>(<span class="ident">buf</span>, <span class="string">&quot;{:X}&quot;</span>, <span class="ident">u</span>.<span class="ident">to_simple</span>(), <span class="number">32</span>, <span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_uppercase</span>()
-            <span class="op">|</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_digit</span>(<span class="number">10</span>));
+        <span class="macro">check!</span>(buf, <span class="string">&quot;{:X}&quot;</span>, u, <span class="number">36</span>, |c| c.is_uppercase()
+            || c.is_digit(<span class="number">10</span>)
+            || c == <span class="string">&#39;-&#39;</span>);
+        <span class="macro">check!</span>(buf, <span class="string">&quot;{:X}&quot;</span>, u.to_hyphenated(), <span class="number">36</span>, |c| c.is_uppercase()
+            || c.is_digit(<span class="number">10</span>)
+            || c == <span class="string">&#39;-&#39;</span>);
+        <span class="macro">check!</span>(buf, <span class="string">&quot;{:X}&quot;</span>, u.to_simple(), <span class="number">32</span>, |c| c.is_uppercase()
+            || c.is_digit(<span class="number">10</span>));
 
-        <span class="macro">check!</span>(<span class="ident">buf</span>, <span class="string">&quot;{:x}&quot;</span>, <span class="ident">u</span>.<span class="ident">to_hyphenated</span>(), <span class="number">36</span>, <span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_lowercase</span>()
-            <span class="op">|</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_digit</span>(<span class="number">10</span>)
-            <span class="op">|</span><span class="op">|</span> <span class="ident">c</span> <span class="op">==</span> <span class="string">&#39;-&#39;</span>);
-        <span class="macro">check!</span>(<span class="ident">buf</span>, <span class="string">&quot;{:x}&quot;</span>, <span class="ident">u</span>.<span class="ident">to_simple</span>(), <span class="number">32</span>, <span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_lowercase</span>()
-            <span class="op">|</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_digit</span>(<span class="number">10</span>));
+        <span class="macro">check!</span>(buf, <span class="string">&quot;{:x}&quot;</span>, u.to_hyphenated(), <span class="number">36</span>, |c| c.is_lowercase()
+            || c.is_digit(<span class="number">10</span>)
+            || c == <span class="string">&#39;-&#39;</span>);
+        <span class="macro">check!</span>(buf, <span class="string">&quot;{:x}&quot;</span>, u.to_simple(), <span class="number">32</span>, |c| c.is_lowercase()
+            || c.is_digit(<span class="number">10</span>));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_to_urn_string</span>() {
-        <span class="kw">let</span> <span class="ident">uuid1</span> <span class="op">=</span> <span class="ident">test_util::new</span>();
-        <span class="kw">let</span> <span class="ident">ss</span> <span class="op">=</span> <span class="ident">uuid1</span>.<span class="ident">to_urn</span>().<span class="ident">to_string</span>();
-        <span class="kw">let</span> <span class="ident">s</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">ss</span>[<span class="number">9</span>..];
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_to_urn_string() {
+        <span class="kw">let </span>uuid1 = test_util::new();
+        <span class="kw">let </span>ss = uuid1.to_urn().to_string();
+        <span class="kw">let </span>s = <span class="kw-2">&amp;</span>ss[<span class="number">9</span>..];
 
-        <span class="macro">assert!</span>(<span class="ident">ss</span>.<span class="ident">starts_with</span>(<span class="string">&quot;urn:uuid:&quot;</span>));
-        <span class="macro">assert_eq!</span>(<span class="ident">s</span>.<span class="ident">len</span>(), <span class="number">36</span>);
-        <span class="macro">assert!</span>(<span class="ident">s</span>.<span class="ident">chars</span>().<span class="ident">all</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span>.<span class="ident">is_digit</span>(<span class="number">16</span>) <span class="op">|</span><span class="op">|</span> <span class="ident">c</span> <span class="op">==</span> <span class="string">&#39;-&#39;</span>));
+        <span class="macro">assert!</span>(ss.starts_with(<span class="string">&quot;urn:uuid:&quot;</span>));
+        <span class="macro">assert_eq!</span>(s.len(), <span class="number">36</span>);
+        <span class="macro">assert!</span>(s.chars().all(|c| c.is_digit(<span class="number">16</span>) || c == <span class="string">&#39;-&#39;</span>));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_to_simple_string_matching</span>() {
-        <span class="kw">let</span> <span class="ident">uuid1</span> <span class="op">=</span> <span class="ident">test_util::new</span>();
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_to_simple_string_matching() {
+        <span class="kw">let </span>uuid1 = test_util::new();
 
-        <span class="kw">let</span> <span class="ident">hs</span> <span class="op">=</span> <span class="ident">uuid1</span>.<span class="ident">to_hyphenated</span>().<span class="ident">to_string</span>();
-        <span class="kw">let</span> <span class="ident">ss</span> <span class="op">=</span> <span class="ident">uuid1</span>.<span class="ident">to_simple</span>().<span class="ident">to_string</span>();
+        <span class="kw">let </span>hs = uuid1.to_hyphenated().to_string();
+        <span class="kw">let </span>ss = uuid1.to_simple().to_string();
 
-        <span class="kw">let</span> <span class="ident">hsn</span> <span class="op">=</span> <span class="ident">hs</span>.<span class="ident">chars</span>().<span class="ident">filter</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">c</span><span class="op">|</span> <span class="ident">c</span> <span class="op">!</span><span class="op">=</span> <span class="string">&#39;-&#39;</span>).<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>();
+        <span class="kw">let </span>hsn = hs.chars().filter(|<span class="kw-2">&amp;</span>c| c != <span class="string">&#39;-&#39;</span>).collect::&lt;String&gt;();
 
-        <span class="macro">assert_eq!</span>(<span class="ident">hsn</span>, <span class="ident">ss</span>);
+        <span class="macro">assert_eq!</span>(hsn, ss);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_string_roundtrip</span>() {
-        <span class="kw">let</span> <span class="ident">uuid</span> <span class="op">=</span> <span class="ident">test_util::new</span>();
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_string_roundtrip() {
+        <span class="kw">let </span>uuid = test_util::new();
 
-        <span class="kw">let</span> <span class="ident">hs</span> <span class="op">=</span> <span class="ident">uuid</span>.<span class="ident">to_hyphenated</span>().<span class="ident">to_string</span>();
-        <span class="kw">let</span> <span class="ident">uuid_hs</span> <span class="op">=</span> <span class="ident">Uuid::parse_str</span>(<span class="kw-2">&amp;</span><span class="ident">hs</span>).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">uuid_hs</span>, <span class="ident">uuid</span>);
+        <span class="kw">let </span>hs = uuid.to_hyphenated().to_string();
+        <span class="kw">let </span>uuid_hs = Uuid::parse_str(<span class="kw-2">&amp;</span>hs).unwrap();
+        <span class="macro">assert_eq!</span>(uuid_hs, uuid);
 
-        <span class="kw">let</span> <span class="ident">ss</span> <span class="op">=</span> <span class="ident">uuid</span>.<span class="ident">to_string</span>();
-        <span class="kw">let</span> <span class="ident">uuid_ss</span> <span class="op">=</span> <span class="ident">Uuid::parse_str</span>(<span class="kw-2">&amp;</span><span class="ident">ss</span>).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">uuid_ss</span>, <span class="ident">uuid</span>);
+        <span class="kw">let </span>ss = uuid.to_string();
+        <span class="kw">let </span>uuid_ss = Uuid::parse_str(<span class="kw-2">&amp;</span>ss).unwrap();
+        <span class="macro">assert_eq!</span>(uuid_ss, uuid);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_from_fields</span>() {
-        <span class="kw">let</span> <span class="ident">d1</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">0xa1a2a3a4</span>;
-        <span class="kw">let</span> <span class="ident">d2</span>: <span class="ident">u16</span> <span class="op">=</span> <span class="number">0xb1b2</span>;
-        <span class="kw">let</span> <span class="ident">d3</span>: <span class="ident">u16</span> <span class="op">=</span> <span class="number">0xc1c2</span>;
-        <span class="kw">let</span> <span class="ident">d4</span> <span class="op">=</span> [<span class="number">0xd1</span>, <span class="number">0xd2</span>, <span class="number">0xd3</span>, <span class="number">0xd4</span>, <span class="number">0xd5</span>, <span class="number">0xd6</span>, <span class="number">0xd7</span>, <span class="number">0xd8</span>];
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_from_fields() {
+        <span class="kw">let </span>d1: u32 = <span class="number">0xa1a2a3a4</span>;
+        <span class="kw">let </span>d2: u16 = <span class="number">0xb1b2</span>;
+        <span class="kw">let </span>d3: u16 = <span class="number">0xc1c2</span>;
+        <span class="kw">let </span>d4 = [<span class="number">0xd1</span>, <span class="number">0xd2</span>, <span class="number">0xd3</span>, <span class="number">0xd4</span>, <span class="number">0xd5</span>, <span class="number">0xd6</span>, <span class="number">0xd7</span>, <span class="number">0xd8</span>];
 
-        <span class="kw">let</span> <span class="ident">u</span> <span class="op">=</span> <span class="ident">Uuid::from_fields</span>(<span class="ident">d1</span>, <span class="ident">d2</span>, <span class="ident">d3</span>, <span class="kw-2">&amp;</span><span class="ident">d4</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let </span>u = Uuid::from_fields(d1, d2, d3, <span class="kw-2">&amp;</span>d4).unwrap();
 
-        <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="string">&quot;a1a2a3a4b1b2c1c2d1d2d3d4d5d6d7d8&quot;</span>;
-        <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">u</span>.<span class="ident">to_simple</span>().<span class="ident">to_string</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">result</span>, <span class="ident">expected</span>);
+        <span class="kw">let </span>expected = <span class="string">&quot;a1a2a3a4b1b2c1c2d1d2d3d4d5d6d7d8&quot;</span>;
+        <span class="kw">let </span>result = u.to_simple().to_string();
+        <span class="macro">assert_eq!</span>(result, expected);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_from_fields_le</span>() {
-        <span class="kw">let</span> <span class="ident">d1</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">0xa4a3a2a1</span>;
-        <span class="kw">let</span> <span class="ident">d2</span>: <span class="ident">u16</span> <span class="op">=</span> <span class="number">0xb2b1</span>;
-        <span class="kw">let</span> <span class="ident">d3</span>: <span class="ident">u16</span> <span class="op">=</span> <span class="number">0xc2c1</span>;
-        <span class="kw">let</span> <span class="ident">d4</span> <span class="op">=</span> [<span class="number">0xd1</span>, <span class="number">0xd2</span>, <span class="number">0xd3</span>, <span class="number">0xd4</span>, <span class="number">0xd5</span>, <span class="number">0xd6</span>, <span class="number">0xd7</span>, <span class="number">0xd8</span>];
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_from_fields_le() {
+        <span class="kw">let </span>d1: u32 = <span class="number">0xa4a3a2a1</span>;
+        <span class="kw">let </span>d2: u16 = <span class="number">0xb2b1</span>;
+        <span class="kw">let </span>d3: u16 = <span class="number">0xc2c1</span>;
+        <span class="kw">let </span>d4 = [<span class="number">0xd1</span>, <span class="number">0xd2</span>, <span class="number">0xd3</span>, <span class="number">0xd4</span>, <span class="number">0xd5</span>, <span class="number">0xd6</span>, <span class="number">0xd7</span>, <span class="number">0xd8</span>];
 
-        <span class="kw">let</span> <span class="ident">u</span> <span class="op">=</span> <span class="ident">Uuid::from_fields_le</span>(<span class="ident">d1</span>, <span class="ident">d2</span>, <span class="ident">d3</span>, <span class="kw-2">&amp;</span><span class="ident">d4</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let </span>u = Uuid::from_fields_le(d1, d2, d3, <span class="kw-2">&amp;</span>d4).unwrap();
 
-        <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="string">&quot;a1a2a3a4b1b2c1c2d1d2d3d4d5d6d7d8&quot;</span>;
-        <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">u</span>.<span class="ident">to_simple</span>().<span class="ident">to_string</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">result</span>, <span class="ident">expected</span>);
+        <span class="kw">let </span>expected = <span class="string">&quot;a1a2a3a4b1b2c1c2d1d2d3d4d5d6d7d8&quot;</span>;
+        <span class="kw">let </span>result = u.to_simple().to_string();
+        <span class="macro">assert_eq!</span>(result, expected);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_as_fields</span>() {
-        <span class="kw">let</span> <span class="ident">u</span> <span class="op">=</span> <span class="ident">test_util::new</span>();
-        <span class="kw">let</span> (<span class="ident">d1</span>, <span class="ident">d2</span>, <span class="ident">d3</span>, <span class="ident">d4</span>) <span class="op">=</span> <span class="ident">u</span>.<span class="ident">as_fields</span>();
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_as_fields() {
+        <span class="kw">let </span>u = test_util::new();
+        <span class="kw">let </span>(d1, d2, d3, d4) = u.as_fields();
 
-        <span class="macro">assert_ne!</span>(<span class="ident">d1</span>, <span class="number">0</span>);
-        <span class="macro">assert_ne!</span>(<span class="ident">d2</span>, <span class="number">0</span>);
-        <span class="macro">assert_ne!</span>(<span class="ident">d3</span>, <span class="number">0</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">d4</span>.<span class="ident">len</span>(), <span class="number">8</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">d4</span>.<span class="ident">iter</span>().<span class="ident">all</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">b</span><span class="op">|</span> <span class="ident">b</span> <span class="op">==</span> <span class="number">0</span>));
+        <span class="macro">assert_ne!</span>(d1, <span class="number">0</span>);
+        <span class="macro">assert_ne!</span>(d2, <span class="number">0</span>);
+        <span class="macro">assert_ne!</span>(d3, <span class="number">0</span>);
+        <span class="macro">assert_eq!</span>(d4.len(), <span class="number">8</span>);
+        <span class="macro">assert!</span>(!d4.iter().all(|<span class="kw-2">&amp;</span>b| b == <span class="number">0</span>));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_fields_roundtrip</span>() {
-        <span class="kw">let</span> <span class="ident">d1_in</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">0xa1a2a3a4</span>;
-        <span class="kw">let</span> <span class="ident">d2_in</span>: <span class="ident">u16</span> <span class="op">=</span> <span class="number">0xb1b2</span>;
-        <span class="kw">let</span> <span class="ident">d3_in</span>: <span class="ident">u16</span> <span class="op">=</span> <span class="number">0xc1c2</span>;
-        <span class="kw">let</span> <span class="ident">d4_in</span> <span class="op">=</span> <span class="kw-2">&amp;</span>[<span class="number">0xd1</span>, <span class="number">0xd2</span>, <span class="number">0xd3</span>, <span class="number">0xd4</span>, <span class="number">0xd5</span>, <span class="number">0xd6</span>, <span class="number">0xd7</span>, <span class="number">0xd8</span>];
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_fields_roundtrip() {
+        <span class="kw">let </span>d1_in: u32 = <span class="number">0xa1a2a3a4</span>;
+        <span class="kw">let </span>d2_in: u16 = <span class="number">0xb1b2</span>;
+        <span class="kw">let </span>d3_in: u16 = <span class="number">0xc1c2</span>;
+        <span class="kw">let </span>d4_in = <span class="kw-2">&amp;</span>[<span class="number">0xd1</span>, <span class="number">0xd2</span>, <span class="number">0xd3</span>, <span class="number">0xd4</span>, <span class="number">0xd5</span>, <span class="number">0xd6</span>, <span class="number">0xd7</span>, <span class="number">0xd8</span>];
 
-        <span class="kw">let</span> <span class="ident">u</span> <span class="op">=</span> <span class="ident">Uuid::from_fields</span>(<span class="ident">d1_in</span>, <span class="ident">d2_in</span>, <span class="ident">d3_in</span>, <span class="ident">d4_in</span>).<span class="ident">unwrap</span>();
-        <span class="kw">let</span> (<span class="ident">d1_out</span>, <span class="ident">d2_out</span>, <span class="ident">d3_out</span>, <span class="ident">d4_out</span>) <span class="op">=</span> <span class="ident">u</span>.<span class="ident">as_fields</span>();
+        <span class="kw">let </span>u = Uuid::from_fields(d1_in, d2_in, d3_in, d4_in).unwrap();
+        <span class="kw">let </span>(d1_out, d2_out, d3_out, d4_out) = u.as_fields();
 
-        <span class="macro">assert_eq!</span>(<span class="ident">d1_in</span>, <span class="ident">d1_out</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">d2_in</span>, <span class="ident">d2_out</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">d3_in</span>, <span class="ident">d3_out</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">d4_in</span>, <span class="ident">d4_out</span>);
+        <span class="macro">assert_eq!</span>(d1_in, d1_out);
+        <span class="macro">assert_eq!</span>(d2_in, d2_out);
+        <span class="macro">assert_eq!</span>(d3_in, d3_out);
+        <span class="macro">assert_eq!</span>(d4_in, d4_out);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_fields_le_roundtrip</span>() {
-        <span class="kw">let</span> <span class="ident">d1_in</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">0xa4a3a2a1</span>;
-        <span class="kw">let</span> <span class="ident">d2_in</span>: <span class="ident">u16</span> <span class="op">=</span> <span class="number">0xb2b1</span>;
-        <span class="kw">let</span> <span class="ident">d3_in</span>: <span class="ident">u16</span> <span class="op">=</span> <span class="number">0xc2c1</span>;
-        <span class="kw">let</span> <span class="ident">d4_in</span> <span class="op">=</span> <span class="kw-2">&amp;</span>[<span class="number">0xd1</span>, <span class="number">0xd2</span>, <span class="number">0xd3</span>, <span class="number">0xd4</span>, <span class="number">0xd5</span>, <span class="number">0xd6</span>, <span class="number">0xd7</span>, <span class="number">0xd8</span>];
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_fields_le_roundtrip() {
+        <span class="kw">let </span>d1_in: u32 = <span class="number">0xa4a3a2a1</span>;
+        <span class="kw">let </span>d2_in: u16 = <span class="number">0xb2b1</span>;
+        <span class="kw">let </span>d3_in: u16 = <span class="number">0xc2c1</span>;
+        <span class="kw">let </span>d4_in = <span class="kw-2">&amp;</span>[<span class="number">0xd1</span>, <span class="number">0xd2</span>, <span class="number">0xd3</span>, <span class="number">0xd4</span>, <span class="number">0xd5</span>, <span class="number">0xd6</span>, <span class="number">0xd7</span>, <span class="number">0xd8</span>];
 
-        <span class="kw">let</span> <span class="ident">u</span> <span class="op">=</span> <span class="ident">Uuid::from_fields_le</span>(<span class="ident">d1_in</span>, <span class="ident">d2_in</span>, <span class="ident">d3_in</span>, <span class="ident">d4_in</span>).<span class="ident">unwrap</span>();
-        <span class="kw">let</span> (<span class="ident">d1_out</span>, <span class="ident">d2_out</span>, <span class="ident">d3_out</span>, <span class="ident">d4_out</span>) <span class="op">=</span> <span class="ident">u</span>.<span class="ident">to_fields_le</span>();
+        <span class="kw">let </span>u = Uuid::from_fields_le(d1_in, d2_in, d3_in, d4_in).unwrap();
+        <span class="kw">let </span>(d1_out, d2_out, d3_out, d4_out) = u.to_fields_le();
 
-        <span class="macro">assert_eq!</span>(<span class="ident">d1_in</span>, <span class="ident">d1_out</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">d2_in</span>, <span class="ident">d2_out</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">d3_in</span>, <span class="ident">d3_out</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">d4_in</span>, <span class="ident">d4_out</span>);
+        <span class="macro">assert_eq!</span>(d1_in, d1_out);
+        <span class="macro">assert_eq!</span>(d2_in, d2_out);
+        <span class="macro">assert_eq!</span>(d3_in, d3_out);
+        <span class="macro">assert_eq!</span>(d4_in, d4_out);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_fields_le_are_actually_le</span>() {
-        <span class="kw">let</span> <span class="ident">d1_in</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">0xa1a2a3a4</span>;
-        <span class="kw">let</span> <span class="ident">d2_in</span>: <span class="ident">u16</span> <span class="op">=</span> <span class="number">0xb1b2</span>;
-        <span class="kw">let</span> <span class="ident">d3_in</span>: <span class="ident">u16</span> <span class="op">=</span> <span class="number">0xc1c2</span>;
-        <span class="kw">let</span> <span class="ident">d4_in</span> <span class="op">=</span> <span class="kw-2">&amp;</span>[<span class="number">0xd1</span>, <span class="number">0xd2</span>, <span class="number">0xd3</span>, <span class="number">0xd4</span>, <span class="number">0xd5</span>, <span class="number">0xd6</span>, <span class="number">0xd7</span>, <span class="number">0xd8</span>];
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_fields_le_are_actually_le() {
+        <span class="kw">let </span>d1_in: u32 = <span class="number">0xa1a2a3a4</span>;
+        <span class="kw">let </span>d2_in: u16 = <span class="number">0xb1b2</span>;
+        <span class="kw">let </span>d3_in: u16 = <span class="number">0xc1c2</span>;
+        <span class="kw">let </span>d4_in = <span class="kw-2">&amp;</span>[<span class="number">0xd1</span>, <span class="number">0xd2</span>, <span class="number">0xd3</span>, <span class="number">0xd4</span>, <span class="number">0xd5</span>, <span class="number">0xd6</span>, <span class="number">0xd7</span>, <span class="number">0xd8</span>];
 
-        <span class="kw">let</span> <span class="ident">u</span> <span class="op">=</span> <span class="ident">Uuid::from_fields</span>(<span class="ident">d1_in</span>, <span class="ident">d2_in</span>, <span class="ident">d3_in</span>, <span class="ident">d4_in</span>).<span class="ident">unwrap</span>();
-        <span class="kw">let</span> (<span class="ident">d1_out</span>, <span class="ident">d2_out</span>, <span class="ident">d3_out</span>, <span class="ident">d4_out</span>) <span class="op">=</span> <span class="ident">u</span>.<span class="ident">to_fields_le</span>();
+        <span class="kw">let </span>u = Uuid::from_fields(d1_in, d2_in, d3_in, d4_in).unwrap();
+        <span class="kw">let </span>(d1_out, d2_out, d3_out, d4_out) = u.to_fields_le();
 
-        <span class="macro">assert_eq!</span>(<span class="ident">d1_in</span>, <span class="ident">d1_out</span>.<span class="ident">swap_bytes</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">d2_in</span>, <span class="ident">d2_out</span>.<span class="ident">swap_bytes</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">d3_in</span>, <span class="ident">d3_out</span>.<span class="ident">swap_bytes</span>());
-        <span class="macro">assert_eq!</span>(<span class="ident">d4_in</span>, <span class="ident">d4_out</span>);
+        <span class="macro">assert_eq!</span>(d1_in, d1_out.swap_bytes());
+        <span class="macro">assert_eq!</span>(d2_in, d2_out.swap_bytes());
+        <span class="macro">assert_eq!</span>(d3_in, d3_out.swap_bytes());
+        <span class="macro">assert_eq!</span>(d4_in, d4_out);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_from_u128</span>() {
-        <span class="kw">let</span> <span class="ident">v_in</span>: <span class="ident">u128</span> <span class="op">=</span> <span class="number">0xa1a2a3a4b1b2c1c2d1d2d3d4d5d6d7d8</span>;
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_from_u128() {
+        <span class="kw">let </span>v_in: u128 = <span class="number">0xa1a2a3a4b1b2c1c2d1d2d3d4d5d6d7d8</span>;
 
-        <span class="kw">let</span> <span class="ident">u</span> <span class="op">=</span> <span class="ident">Uuid::from_u128</span>(<span class="ident">v_in</span>);
+        <span class="kw">let </span>u = Uuid::from_u128(v_in);
 
-        <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="string">&quot;a1a2a3a4b1b2c1c2d1d2d3d4d5d6d7d8&quot;</span>;
-        <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">u</span>.<span class="ident">to_simple</span>().<span class="ident">to_string</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">result</span>, <span class="ident">expected</span>);
+        <span class="kw">let </span>expected = <span class="string">&quot;a1a2a3a4b1b2c1c2d1d2d3d4d5d6d7d8&quot;</span>;
+        <span class="kw">let </span>result = u.to_simple().to_string();
+        <span class="macro">assert_eq!</span>(result, expected);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_from_u128_le</span>() {
-        <span class="kw">let</span> <span class="ident">v_in</span>: <span class="ident">u128</span> <span class="op">=</span> <span class="number">0xd8d7d6d5d4d3d2d1c2c1b2b1a4a3a2a1</span>;
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_from_u128_le() {
+        <span class="kw">let </span>v_in: u128 = <span class="number">0xd8d7d6d5d4d3d2d1c2c1b2b1a4a3a2a1</span>;
 
-        <span class="kw">let</span> <span class="ident">u</span> <span class="op">=</span> <span class="ident">Uuid::from_u128_le</span>(<span class="ident">v_in</span>);
+        <span class="kw">let </span>u = Uuid::from_u128_le(v_in);
 
-        <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="string">&quot;a1a2a3a4b1b2c1c2d1d2d3d4d5d6d7d8&quot;</span>;
-        <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">u</span>.<span class="ident">to_simple</span>().<span class="ident">to_string</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">result</span>, <span class="ident">expected</span>);
+        <span class="kw">let </span>expected = <span class="string">&quot;a1a2a3a4b1b2c1c2d1d2d3d4d5d6d7d8&quot;</span>;
+        <span class="kw">let </span>result = u.to_simple().to_string();
+        <span class="macro">assert_eq!</span>(result, expected);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_u128_roundtrip</span>() {
-        <span class="kw">let</span> <span class="ident">v_in</span>: <span class="ident">u128</span> <span class="op">=</span> <span class="number">0xa1a2a3a4b1b2c1c2d1d2d3d4d5d6d7d8</span>;
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_u128_roundtrip() {
+        <span class="kw">let </span>v_in: u128 = <span class="number">0xa1a2a3a4b1b2c1c2d1d2d3d4d5d6d7d8</span>;
 
-        <span class="kw">let</span> <span class="ident">u</span> <span class="op">=</span> <span class="ident">Uuid::from_u128</span>(<span class="ident">v_in</span>);
-        <span class="kw">let</span> <span class="ident">v_out</span> <span class="op">=</span> <span class="ident">u</span>.<span class="ident">as_u128</span>();
+        <span class="kw">let </span>u = Uuid::from_u128(v_in);
+        <span class="kw">let </span>v_out = u.as_u128();
 
-        <span class="macro">assert_eq!</span>(<span class="ident">v_in</span>, <span class="ident">v_out</span>);
+        <span class="macro">assert_eq!</span>(v_in, v_out);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_u128_le_roundtrip</span>() {
-        <span class="kw">let</span> <span class="ident">v_in</span>: <span class="ident">u128</span> <span class="op">=</span> <span class="number">0xd8d7d6d5d4d3d2d1c2c1b2b1a4a3a2a1</span>;
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_u128_le_roundtrip() {
+        <span class="kw">let </span>v_in: u128 = <span class="number">0xd8d7d6d5d4d3d2d1c2c1b2b1a4a3a2a1</span>;
 
-        <span class="kw">let</span> <span class="ident">u</span> <span class="op">=</span> <span class="ident">Uuid::from_u128_le</span>(<span class="ident">v_in</span>);
-        <span class="kw">let</span> <span class="ident">v_out</span> <span class="op">=</span> <span class="ident">u</span>.<span class="ident">to_u128_le</span>();
+        <span class="kw">let </span>u = Uuid::from_u128_le(v_in);
+        <span class="kw">let </span>v_out = u.to_u128_le();
 
-        <span class="macro">assert_eq!</span>(<span class="ident">v_in</span>, <span class="ident">v_out</span>);
+        <span class="macro">assert_eq!</span>(v_in, v_out);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_u128_le_is_actually_le</span>() {
-        <span class="kw">let</span> <span class="ident">v_in</span>: <span class="ident">u128</span> <span class="op">=</span> <span class="number">0xa1a2a3a4b1b2c1c2d1d2d3d4d5d6d7d8</span>;
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_u128_le_is_actually_le() {
+        <span class="kw">let </span>v_in: u128 = <span class="number">0xa1a2a3a4b1b2c1c2d1d2d3d4d5d6d7d8</span>;
 
-        <span class="kw">let</span> <span class="ident">u</span> <span class="op">=</span> <span class="ident">Uuid::from_u128</span>(<span class="ident">v_in</span>);
-        <span class="kw">let</span> <span class="ident">v_out</span> <span class="op">=</span> <span class="ident">u</span>.<span class="ident">to_u128_le</span>();
+        <span class="kw">let </span>u = Uuid::from_u128(v_in);
+        <span class="kw">let </span>v_out = u.to_u128_le();
 
-        <span class="macro">assert_eq!</span>(<span class="ident">v_in</span>, <span class="ident">v_out</span>.<span class="ident">swap_bytes</span>());
+        <span class="macro">assert_eq!</span>(v_in, v_out.swap_bytes());
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_from_slice</span>() {
-        <span class="kw">let</span> <span class="ident">b</span> <span class="op">=</span> [
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_from_slice() {
+        <span class="kw">let </span>b = [
             <span class="number">0xa1</span>, <span class="number">0xa2</span>, <span class="number">0xa3</span>, <span class="number">0xa4</span>, <span class="number">0xb1</span>, <span class="number">0xb2</span>, <span class="number">0xc1</span>, <span class="number">0xc2</span>, <span class="number">0xd1</span>, <span class="number">0xd2</span>, <span class="number">0xd3</span>,
             <span class="number">0xd4</span>, <span class="number">0xd5</span>, <span class="number">0xd6</span>, <span class="number">0xd7</span>, <span class="number">0xd8</span>,
         ];
 
-        <span class="kw">let</span> <span class="ident">u</span> <span class="op">=</span> <span class="ident">Uuid::from_slice</span>(<span class="kw-2">&amp;</span><span class="ident">b</span>).<span class="ident">unwrap</span>();
-        <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="string">&quot;a1a2a3a4b1b2c1c2d1d2d3d4d5d6d7d8&quot;</span>;
+        <span class="kw">let </span>u = Uuid::from_slice(<span class="kw-2">&amp;</span>b).unwrap();
+        <span class="kw">let </span>expected = <span class="string">&quot;a1a2a3a4b1b2c1c2d1d2d3d4d5d6d7d8&quot;</span>;
 
-        <span class="macro">assert_eq!</span>(<span class="ident">u</span>.<span class="ident">to_simple</span>().<span class="ident">to_string</span>(), <span class="ident">expected</span>);
+        <span class="macro">assert_eq!</span>(u.to_simple().to_string(), expected);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_from_bytes</span>() {
-        <span class="kw">let</span> <span class="ident">b</span> <span class="op">=</span> [
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_from_bytes() {
+        <span class="kw">let </span>b = [
             <span class="number">0xa1</span>, <span class="number">0xa2</span>, <span class="number">0xa3</span>, <span class="number">0xa4</span>, <span class="number">0xb1</span>, <span class="number">0xb2</span>, <span class="number">0xc1</span>, <span class="number">0xc2</span>, <span class="number">0xd1</span>, <span class="number">0xd2</span>, <span class="number">0xd3</span>,
             <span class="number">0xd4</span>, <span class="number">0xd5</span>, <span class="number">0xd6</span>, <span class="number">0xd7</span>, <span class="number">0xd8</span>,
         ];
 
-        <span class="kw">let</span> <span class="ident">u</span> <span class="op">=</span> <span class="ident">Uuid::from_bytes</span>(<span class="ident">b</span>);
-        <span class="kw">let</span> <span class="ident">expected</span> <span class="op">=</span> <span class="string">&quot;a1a2a3a4b1b2c1c2d1d2d3d4d5d6d7d8&quot;</span>;
+        <span class="kw">let </span>u = Uuid::from_bytes(b);
+        <span class="kw">let </span>expected = <span class="string">&quot;a1a2a3a4b1b2c1c2d1d2d3d4d5d6d7d8&quot;</span>;
 
-        <span class="macro">assert_eq!</span>(<span class="ident">u</span>.<span class="ident">to_simple</span>().<span class="ident">to_string</span>(), <span class="ident">expected</span>);
+        <span class="macro">assert_eq!</span>(u.to_simple().to_string(), expected);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_as_bytes</span>() {
-        <span class="kw">let</span> <span class="ident">u</span> <span class="op">=</span> <span class="ident">test_util::new</span>();
-        <span class="kw">let</span> <span class="ident">ub</span> <span class="op">=</span> <span class="ident">u</span>.<span class="ident">as_bytes</span>();
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_as_bytes() {
+        <span class="kw">let </span>u = test_util::new();
+        <span class="kw">let </span>ub = u.as_bytes();
 
-        <span class="macro">assert_eq!</span>(<span class="ident">ub</span>.<span class="ident">len</span>(), <span class="number">16</span>);
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">ub</span>.<span class="ident">iter</span>().<span class="ident">all</span>(<span class="op">|</span><span class="kw-2">&amp;</span><span class="ident">b</span><span class="op">|</span> <span class="ident">b</span> <span class="op">==</span> <span class="number">0</span>));
+        <span class="macro">assert_eq!</span>(ub.len(), <span class="number">16</span>);
+        <span class="macro">assert!</span>(!ub.iter().all(|<span class="kw-2">&amp;</span>b| b == <span class="number">0</span>));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_bytes_roundtrip</span>() {
-        <span class="kw">let</span> <span class="ident">b_in</span>: <span class="ident"><span class="kw">crate</span>::Bytes</span> <span class="op">=</span> [
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_bytes_roundtrip() {
+        <span class="kw">let </span>b_in: <span class="kw">crate</span>::Bytes = [
             <span class="number">0xa1</span>, <span class="number">0xa2</span>, <span class="number">0xa3</span>, <span class="number">0xa4</span>, <span class="number">0xb1</span>, <span class="number">0xb2</span>, <span class="number">0xc1</span>, <span class="number">0xc2</span>, <span class="number">0xd1</span>, <span class="number">0xd2</span>, <span class="number">0xd3</span>,
             <span class="number">0xd4</span>, <span class="number">0xd5</span>, <span class="number">0xd6</span>, <span class="number">0xd7</span>, <span class="number">0xd8</span>,
         ];
 
-        <span class="kw">let</span> <span class="ident">u</span> <span class="op">=</span> <span class="ident">Uuid::from_slice</span>(<span class="kw-2">&amp;</span><span class="ident">b_in</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let </span>u = Uuid::from_slice(<span class="kw-2">&amp;</span>b_in).unwrap();
 
-        <span class="kw">let</span> <span class="ident">b_out</span> <span class="op">=</span> <span class="ident">u</span>.<span class="ident">as_bytes</span>();
+        <span class="kw">let </span>b_out = u.as_bytes();
 
-        <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span><span class="ident">b_in</span>, <span class="ident">b_out</span>);
+        <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>b_in, b_out);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_iterbytes_impl_for_uuid</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">set</span> <span class="op">=</span> <span class="ident">std::collections::HashSet::new</span>();
-        <span class="kw">let</span> <span class="ident">id1</span> <span class="op">=</span> <span class="ident">test_util::new</span>();
-        <span class="kw">let</span> <span class="ident">id2</span> <span class="op">=</span> <span class="ident">test_util::new2</span>();
-        <span class="ident">set</span>.<span class="ident">insert</span>(<span class="ident">id1</span>.<span class="ident">clone</span>());
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_iterbytes_impl_for_uuid() {
+        <span class="kw">let </span><span class="kw-2">mut </span>set = std::collections::HashSet::new();
+        <span class="kw">let </span>id1 = test_util::new();
+        <span class="kw">let </span>id2 = test_util::new2();
+        set.insert(id1.clone());
 
-        <span class="macro">assert!</span>(<span class="ident">set</span>.<span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="ident">id1</span>));
-        <span class="macro">assert!</span>(<span class="op">!</span><span class="ident">set</span>.<span class="ident">contains</span>(<span class="kw-2">&amp;</span><span class="ident">id2</span>));
+        <span class="macro">assert!</span>(set.contains(<span class="kw-2">&amp;</span>id1));
+        <span class="macro">assert!</span>(!set.contains(<span class="kw-2">&amp;</span>id2));
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="uuid" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="uuid" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

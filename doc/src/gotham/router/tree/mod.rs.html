@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/router/tree/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../gotham/index.html"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/router/tree/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../../normalize.css"><link rel="stylesheet" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../../ayu.css" disabled><link rel="stylesheet" href="../../../../dark.css" disabled><link rel="stylesheet" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../gotham/index.html"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -125,132 +125,132 @@
 <span id="125">125</span>
 <span id="126">126</span>
 <span id="127">127</span>
-</pre><pre class="rust"><code><span class="doccomment">//! Defines a hierarchial `Tree` with subtrees of `Node`.</span>
+</pre><pre class="rust"><code><span class="doccomment">//! Defines a hierarchial `Tree` with subtrees of `Node`.
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::helpers::http::PercentDecoded</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::route::Route</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::tree::node::Node</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::tree::segment</span>::{<span class="ident">SegmentMapping</span>, <span class="ident">SegmentType</span>};
-<span class="kw">use</span> <span class="ident">hyper::Body</span>;
-<span class="kw">use</span> <span class="ident">log::trace</span>;
+</span><span class="kw">use </span><span class="kw">crate</span>::helpers::http::PercentDecoded;
+<span class="kw">use </span><span class="kw">crate</span>::router::route::Route;
+<span class="kw">use </span><span class="kw">crate</span>::router::tree::node::Node;
+<span class="kw">use </span><span class="kw">crate</span>::router::tree::segment::{SegmentMapping, SegmentType};
+<span class="kw">use </span>hyper::Body;
+<span class="kw">use </span>log::trace;
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">node</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">regex</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">segment</span>;
+<span class="kw">pub mod </span>node;
+<span class="kw">pub mod </span>regex;
+<span class="kw">pub mod </span>segment;
 
-<span class="doccomment">/// A hierarchical structure that provides a root `Node` and subtrees of linked nodes</span>
-<span class="doccomment">/// that represent valid `Request` paths.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The `Tree` is created by the `gotham::router::builder` API and used internally by the `Router`</span>
-<span class="doccomment">/// to determine the valid `Route` instances for a request path before dispatch.</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Tree</span> {
-    <span class="ident">root</span>: <span class="ident">Node</span>,
+<span class="doccomment">/// A hierarchical structure that provides a root `Node` and subtrees of linked nodes
+/// that represent valid `Request` paths.
+///
+/// The `Tree` is created by the `gotham::router::builder` API and used internally by the `Router`
+/// to determine the valid `Route` instances for a request path before dispatch.
+</span><span class="kw">pub struct </span>Tree {
+    root: Node,
 }
 
-<span class="kw">impl</span> <span class="ident">Tree</span> {
-    <span class="doccomment">/// Creates a new `Tree` and root `Node`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() -&gt; <span class="self">Self</span> {
+<span class="kw">impl </span>Tree {
+    <span class="doccomment">/// Creates a new `Tree` and root `Node`.
+    </span><span class="kw">pub fn </span>new() -&gt; <span class="self">Self </span>{
         <span class="macro">trace!</span>(<span class="string">&quot; creating new tree&quot;</span>);
-        <span class="ident">Tree</span> {
-            <span class="ident">root</span>: <span class="ident">Node::new</span>(<span class="string">&quot;/&quot;</span>, <span class="ident">SegmentType::Static</span>),
+        Tree {
+            root: Node::new(<span class="string">&quot;/&quot;</span>, SegmentType::Static),
         }
     }
 
-    <span class="doccomment">/// Adds a direct child to the root of the `Tree`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_child</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">child</span>: <span class="ident">Node</span>) {
-        <span class="self">self</span>.<span class="ident">root</span>.<span class="ident">add_child</span>(<span class="ident">child</span>);
+    <span class="doccomment">/// Adds a direct child to the root of the `Tree`.
+    </span><span class="kw">pub fn </span>add_child(<span class="kw-2">&amp;mut </span><span class="self">self</span>, child: Node) {
+        <span class="self">self</span>.root.add_child(child);
     }
 
-    <span class="doccomment">/// Adds a `Route` be evaluated by the `Router` when the root of the `Tree` is requested.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_route</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">route</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Route</span><span class="op">&lt;</span><span class="ident">ResBody</span> <span class="op">=</span> <span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span>) {
-        <span class="self">self</span>.<span class="ident">root</span>.<span class="ident">add_route</span>(<span class="ident">route</span>);
+    <span class="doccomment">/// Adds a `Route` be evaluated by the `Router` when the root of the `Tree` is requested.
+    </span><span class="kw">pub fn </span>add_route(<span class="kw-2">&amp;mut </span><span class="self">self</span>, route: Box&lt;<span class="kw">dyn </span>Route&lt;ResBody = Body&gt; + Send + Sync&gt;) {
+        <span class="self">self</span>.root.add_route(route);
     }
 
-    <span class="doccomment">/// Borrow the root `NodeBuilder` as mutable.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">borrow_root_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">Node</span> {
-        <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">root</span>
+    <span class="doccomment">/// Borrow the root `NodeBuilder` as mutable.
+    </span><span class="kw">pub fn </span>borrow_root_mut(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut </span>Node {
+        <span class="kw-2">&amp;mut </span><span class="self">self</span>.root
     }
 
-    <span class="doccomment">/// Determines if a child `Node` representing the exact segment provided exists at the root of</span>
-    <span class="doccomment">/// the `Tree`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// To be used in building a `Tree` structure only.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has_child</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">segment</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">segment_type</span>: <span class="ident">SegmentType</span>) -&gt; <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">root</span>.<span class="ident">has_child</span>(<span class="ident">segment</span>, <span class="ident">segment_type</span>)
+    <span class="doccomment">/// Determines if a child `Node` representing the exact segment provided exists at the root of
+    /// the `Tree`.
+    ///
+    /// To be used in building a `Tree` structure only.
+    </span><span class="kw">pub fn </span>has_child(<span class="kw-2">&amp;</span><span class="self">self</span>, segment: <span class="kw-2">&amp;</span>str, segment_type: SegmentType) -&gt; bool {
+        <span class="self">self</span>.root.has_child(segment, segment_type)
     }
 
-    <span class="doccomment">/// Attempt to acquire a path from the `Tree` which matches the `Request` path and is routable.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">traverse</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>,
-        <span class="ident">req_path_segments</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">PercentDecoded</span>],
-    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span>(<span class="kw-2">&amp;</span><span class="ident">Node</span>, <span class="ident">SegmentMapping</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>, <span class="ident">usize</span>)<span class="op">&gt;</span> {
+    <span class="doccomment">/// Attempt to acquire a path from the `Tree` which matches the `Request` path and is routable.
+    </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>traverse&lt;<span class="lifetime">&#39;a</span>&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="self">self</span>,
+        req_path_segments: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>[PercentDecoded],
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;(<span class="kw-2">&amp;</span>Node, SegmentMapping&lt;<span class="lifetime">&#39;a</span>&gt;, usize)&gt; {
         <span class="macro">trace!</span>(<span class="string">&quot; starting tree traversal&quot;</span>);
-        <span class="self">self</span>.<span class="ident">root</span>.<span class="ident">match_node</span>(<span class="ident">req_path_segments</span>)
+        <span class="self">self</span>.root.match_node(req_path_segments)
     }
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">tests</span> {
-    <span class="kw">use</span> <span class="ident">hyper</span>::{<span class="ident">Method</span>, <span class="ident">Response</span>, <span class="ident">StatusCode</span>};
+<span class="attribute">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use </span>hyper::{Method, Response, StatusCode};
 
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::extractor</span>::{<span class="ident">NoopPathExtractor</span>, <span class="ident">NoopQueryStringExtractor</span>};
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::helpers::http::request::path::RequestPathSegments</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::helpers::http::response::create_empty_response</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::pipeline</span>::{<span class="ident">finalize_pipeline_set</span>, <span class="ident">new_pipeline_set</span>};
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::route::dispatch::DispatcherImpl</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::route::matcher::MethodOnlyRouteMatcher</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::route</span>::{<span class="ident">Delegation</span>, <span class="ident">Extractors</span>, <span class="ident">RouteImpl</span>};
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state::State</span>;
+    <span class="kw">use </span><span class="kw">crate</span>::extractor::{NoopPathExtractor, NoopQueryStringExtractor};
+    <span class="kw">use </span><span class="kw">crate</span>::helpers::http::request::path::RequestPathSegments;
+    <span class="kw">use </span><span class="kw">crate</span>::helpers::http::response::create_empty_response;
+    <span class="kw">use </span><span class="kw">crate</span>::pipeline::{finalize_pipeline_set, new_pipeline_set};
+    <span class="kw">use </span><span class="kw">crate</span>::router::route::dispatch::DispatcherImpl;
+    <span class="kw">use </span><span class="kw">crate</span>::router::route::matcher::MethodOnlyRouteMatcher;
+    <span class="kw">use </span><span class="kw">crate</span>::router::route::{Delegation, Extractors, RouteImpl};
+    <span class="kw">use </span><span class="kw">crate</span>::state::State;
 
-    <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
 
-    <span class="kw">fn</span> <span class="ident">handler</span>(<span class="ident">state</span>: <span class="ident">State</span>) -&gt; (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
-        <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">create_empty_response</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>, <span class="ident">StatusCode::OK</span>);
-        (<span class="ident">state</span>, <span class="ident">res</span>)
+    <span class="kw">fn </span>handler(state: State) -&gt; (State, Response&lt;Body&gt;) {
+        <span class="kw">let </span>res = create_empty_response(<span class="kw-2">&amp;</span>state, StatusCode::OK);
+        (state, res)
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">tree_traversal_tests</span>() {
-        <span class="kw">let</span> <span class="ident">pipeline_set</span> <span class="op">=</span> <span class="ident">finalize_pipeline_set</span>(<span class="ident">new_pipeline_set</span>());
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tree</span> <span class="op">=</span> <span class="ident">Tree::new</span>();
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>tree_traversal_tests() {
+        <span class="kw">let </span>pipeline_set = finalize_pipeline_set(new_pipeline_set());
+        <span class="kw">let </span><span class="kw-2">mut </span>tree = Tree::new();
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">activate_node_builder</span> <span class="op">=</span> <span class="ident">Node::new</span>(<span class="string">&quot;activate&quot;</span>, <span class="ident">SegmentType::Static</span>);
+        <span class="kw">let </span><span class="kw-2">mut </span>activate_node_builder = Node::new(<span class="string">&quot;activate&quot;</span>, SegmentType::Static);
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">thing_node_builder</span> <span class="op">=</span> <span class="ident">Node::new</span>(<span class="string">&quot;thing&quot;</span>, <span class="ident">SegmentType::Dynamic</span>);
-        <span class="kw">let</span> <span class="ident">thing_route</span> <span class="op">=</span> {
-            <span class="kw">let</span> <span class="ident">methods</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">Method::GET</span>];
-            <span class="kw">let</span> <span class="ident">matcher</span> <span class="op">=</span> <span class="ident">MethodOnlyRouteMatcher::new</span>(<span class="ident">methods</span>);
-            <span class="kw">let</span> <span class="ident">dispatcher</span> <span class="op">=</span> <span class="ident">Box::new</span>(<span class="ident">DispatcherImpl::new</span>(<span class="op">|</span><span class="op">|</span> <span class="prelude-val">Ok</span>(<span class="ident">handler</span>), (), <span class="ident">pipeline_set</span>));
-            <span class="kw">let</span> <span class="ident">extractors</span>: <span class="ident">Extractors</span><span class="op">&lt;</span><span class="ident">NoopPathExtractor</span>, <span class="ident">NoopQueryStringExtractor</span><span class="op">&gt;</span> <span class="op">=</span>
-                <span class="ident">Extractors::new</span>();
-            <span class="kw">let</span> <span class="ident">route</span> <span class="op">=</span> <span class="ident">RouteImpl::new</span>(<span class="ident">matcher</span>, <span class="ident">dispatcher</span>, <span class="ident">extractors</span>, <span class="ident">Delegation::Internal</span>);
-            <span class="ident">Box::new</span>(<span class="ident">route</span>)
+        <span class="kw">let </span><span class="kw-2">mut </span>thing_node_builder = Node::new(<span class="string">&quot;thing&quot;</span>, SegmentType::Dynamic);
+        <span class="kw">let </span>thing_route = {
+            <span class="kw">let </span>methods = <span class="macro">vec!</span>[Method::GET];
+            <span class="kw">let </span>matcher = MethodOnlyRouteMatcher::new(methods);
+            <span class="kw">let </span>dispatcher = Box::new(DispatcherImpl::new(|| <span class="prelude-val">Ok</span>(handler), (), pipeline_set));
+            <span class="kw">let </span>extractors: Extractors&lt;NoopPathExtractor, NoopQueryStringExtractor&gt; =
+                Extractors::new();
+            <span class="kw">let </span>route = RouteImpl::new(matcher, dispatcher, extractors, Delegation::Internal);
+            Box::new(route)
         };
-        <span class="ident">thing_node_builder</span>.<span class="ident">add_route</span>(<span class="ident">thing_route</span>);
+        thing_node_builder.add_route(thing_route);
 
-        <span class="ident">activate_node_builder</span>.<span class="ident">add_child</span>(<span class="ident">thing_node_builder</span>);
-        <span class="ident">tree</span>.<span class="ident">add_child</span>(<span class="ident">activate_node_builder</span>);
+        activate_node_builder.add_child(thing_node_builder);
+        tree.add_child(activate_node_builder);
 
-        <span class="kw">let</span> <span class="ident">request_path_segments</span> <span class="op">=</span> <span class="ident">RequestPathSegments::new</span>(<span class="string">&quot;/%61ctiv%61te/workflow5&quot;</span>);
-        <span class="kw">match</span> <span class="ident">tree</span>.<span class="ident">traverse</span>(<span class="ident">request_path_segments</span>.<span class="ident">segments</span>().<span class="ident">as_slice</span>()) {
-            <span class="prelude-val">Some</span>((<span class="ident">node</span>, <span class="ident">params</span>, <span class="ident">processed</span>)) =&gt; {
-                <span class="macro">assert!</span>(<span class="ident">node</span>.<span class="ident">is_routable</span>());
-                <span class="macro">assert_eq!</span>(<span class="ident">processed</span>, <span class="number">2</span>);
+        <span class="kw">let </span>request_path_segments = RequestPathSegments::new(<span class="string">&quot;/%61ctiv%61te/workflow5&quot;</span>);
+        <span class="kw">match </span>tree.traverse(request_path_segments.segments().as_slice()) {
+            <span class="prelude-val">Some</span>((node, params, processed)) =&gt; {
+                <span class="macro">assert!</span>(node.is_routable());
+                <span class="macro">assert_eq!</span>(processed, <span class="number">2</span>);
                 <span class="macro">assert_eq!</span>(
-                    <span class="ident">params</span>.<span class="ident">get</span>(<span class="string">&quot;thing&quot;</span>).<span class="ident">unwrap</span>().<span class="ident">last</span>().<span class="ident">unwrap</span>().<span class="ident">as_ref</span>(),
-                    <span class="string">&quot;workflow5&quot;</span>
-                );
+                    params.get(<span class="string">&quot;thing&quot;</span>).unwrap().last().unwrap().as_ref(),
+                    <span class="string">&quot;workflow5&quot;
+                </span>);
             }
-            <span class="prelude-val">None</span> =&gt; <span class="macro">panic!</span>(),
+            <span class="prelude-val">None </span>=&gt; <span class="macro">panic!</span>(),
         }
 
-        <span class="macro">assert!</span>(<span class="ident">tree</span>
-            .<span class="ident">traverse</span>(<span class="kw-2">&amp;</span>[<span class="ident">PercentDecoded::new</span>(<span class="string">&quot;/&quot;</span>).<span class="ident">unwrap</span>()])
-            .<span class="ident">is_none</span>());
-        <span class="macro">assert!</span>(<span class="ident">tree</span>
-            .<span class="ident">traverse</span>(<span class="kw-2">&amp;</span>[<span class="ident">PercentDecoded::new</span>(<span class="string">&quot;/activate&quot;</span>).<span class="ident">unwrap</span>()])
-            .<span class="ident">is_none</span>());
+        <span class="macro">assert!</span>(tree
+            .traverse(<span class="kw-2">&amp;</span>[PercentDecoded::new(<span class="string">&quot;/&quot;</span>).unwrap()])
+            .is_none());
+        <span class="macro">assert!</span>(tree
+            .traverse(<span class="kw-2">&amp;</span>[PercentDecoded::new(<span class="string">&quot;/activate&quot;</span>).unwrap()])
+            .is_none());
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/validator-0.16.0/src/types.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>types.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../validator/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../validator/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../validator/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/validator-0.16.0/src/types.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>types.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../validator/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../validator/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../validator/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -175,182 +175,182 @@
 <span id="175">175</span>
 <span id="176">176</span>
 <span id="177">177</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">std::borrow::Cow</span>;
-<span class="kw">use</span> <span class="ident">std::collections</span>::{<span class="ident">hash_map::Entry::Vacant</span>, <span class="ident">BTreeMap</span>, <span class="ident">HashMap</span>};
+</pre><pre class="rust"><code><span class="kw">use </span>std::borrow::Cow;
+<span class="kw">use </span>std::collections::{hash_map::Entry::Vacant, BTreeMap, HashMap};
 
-<span class="kw">use</span> <span class="ident">serde::ser::Serialize</span>;
-<span class="kw">use</span> <span class="ident">serde_derive</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
-<span class="kw">use</span> <span class="ident">serde_json</span>::{<span class="ident">to_value</span>, <span class="ident">Value</span>};
+<span class="kw">use </span>serde::ser::Serialize;
+<span class="kw">use </span>serde_derive::{Deserialize, Serialize};
+<span class="kw">use </span>serde_json::{to_value, Value};
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Clone</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ValidationError</span> {
-    <span class="kw">pub</span> <span class="ident">code</span>: <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">str</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">message</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">str</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">params</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">Value</span><span class="op">&gt;</span>,
+<span class="attribute">#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+</span><span class="kw">pub struct </span>ValidationError {
+    <span class="kw">pub </span>code: Cow&lt;<span class="lifetime">&#39;static</span>, str&gt;,
+    <span class="kw">pub </span>message: <span class="prelude-ty">Option</span>&lt;Cow&lt;<span class="lifetime">&#39;static</span>, str&gt;&gt;,
+    <span class="kw">pub </span>params: HashMap&lt;Cow&lt;<span class="lifetime">&#39;static</span>, str&gt;, Value&gt;,
 }
 
-<span class="kw">impl</span> <span class="ident">ValidationError</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">code</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>) -&gt; <span class="ident">ValidationError</span> {
-        <span class="ident">ValidationError</span> { <span class="ident">code</span>: <span class="ident">Cow::from</span>(<span class="ident">code</span>), <span class="ident">message</span>: <span class="prelude-val">None</span>, <span class="ident">params</span>: <span class="ident">HashMap::new</span>() }
+<span class="kw">impl </span>ValidationError {
+    <span class="kw">pub fn </span>new(code: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str) -&gt; ValidationError {
+        ValidationError { code: Cow::from(code), message: <span class="prelude-val">None</span>, params: HashMap::new() }
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_param</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Serialize</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">name</span>: <span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">val</span>: <span class="kw-2">&amp;</span><span class="ident">T</span>) {
-        <span class="self">self</span>.<span class="ident">params</span>.<span class="ident">insert</span>(<span class="ident">name</span>, <span class="ident">to_value</span>(<span class="ident">val</span>).<span class="ident">unwrap</span>());
-    }
-}
-
-<span class="kw">impl</span> <span class="ident">std::error::Error</span> <span class="kw">for</span> <span class="ident">ValidationError</span> {
-    <span class="kw">fn</span> <span class="ident">description</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">str</span> {
-        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">code</span>
-    }
-    <span class="kw">fn</span> <span class="ident">cause</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">std::error::Error</span><span class="op">&gt;</span> {
-        <span class="prelude-val">None</span>
+    <span class="kw">pub fn </span>add_param&lt;T: Serialize&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>, name: Cow&lt;<span class="lifetime">&#39;static</span>, str&gt;, val: <span class="kw-2">&amp;</span>T) {
+        <span class="self">self</span>.params.insert(name, to_value(val).unwrap());
     }
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Serialize</span>, <span class="ident">Clone</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="attribute">#[<span class="ident">serde</span>(<span class="ident">untagged</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">ValidationErrorsKind</span> {
-    <span class="ident">Struct</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="ident">ValidationErrors</span><span class="op">&gt;</span>),
-    <span class="ident">List</span>(<span class="ident">BTreeMap</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">ValidationErrors</span><span class="op">&gt;</span><span class="op">&gt;</span>),
-    <span class="ident">Field</span>(<span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ValidationError</span><span class="op">&gt;</span>),
+<span class="kw">impl </span>std::error::Error <span class="kw">for </span>ValidationError {
+    <span class="kw">fn </span>description(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>str {
+        <span class="kw-2">&amp;</span><span class="self">self</span>.code
+    }
+    <span class="kw">fn </span>cause(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">dyn </span>std::error::Error&gt; {
+        <span class="prelude-val">None
+    </span>}
 }
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Default</span>, <span class="ident">Debug</span>, <span class="ident">Serialize</span>, <span class="ident">Clone</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ValidationErrors</span>(<span class="ident">HashMap</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">ValidationErrorsKind</span><span class="op">&gt;</span>);
+<span class="attribute">#[derive(Debug, Serialize, Clone, PartialEq)]
+#[serde(untagged)]
+</span><span class="kw">pub enum </span>ValidationErrorsKind {
+    Struct(Box&lt;ValidationErrors&gt;),
+    List(BTreeMap&lt;usize, Box&lt;ValidationErrors&gt;&gt;),
+    Field(Vec&lt;ValidationError&gt;),
+}
 
-<span class="kw">impl</span> <span class="ident">ValidationErrors</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() -&gt; <span class="ident">ValidationErrors</span> {
-        <span class="ident">ValidationErrors</span>(<span class="ident">HashMap::new</span>())
+<span class="attribute">#[derive(Default, Debug, Serialize, Clone, PartialEq)]
+</span><span class="kw">pub struct </span>ValidationErrors(HashMap&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, ValidationErrorsKind&gt;);
+
+<span class="kw">impl </span>ValidationErrors {
+    <span class="kw">pub fn </span>new() -&gt; ValidationErrors {
+        ValidationErrors(HashMap::new())
     }
 
-    <span class="doccomment">/// Returns a boolean indicating whether a validation result includes validation errors for a</span>
-    <span class="doccomment">/// given field. May be used as a condition for performing nested struct validations on a field</span>
-    <span class="doccomment">/// in the absence of field-level validation errors.</span>
-    <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has_error</span>(<span class="ident">result</span>: <span class="kw-2">&amp;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ValidationErrors</span><span class="op">&gt;</span>, <span class="ident">field</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
-        <span class="kw">match</span> <span class="ident">result</span> {
+    <span class="doccomment">/// Returns a boolean indicating whether a validation result includes validation errors for a
+    /// given field. May be used as a condition for performing nested struct validations on a field
+    /// in the absence of field-level validation errors.
+    </span><span class="attribute">#[must_use]
+    </span><span class="kw">pub fn </span>has_error(result: <span class="kw-2">&amp;</span><span class="prelude-ty">Result</span>&lt;(), ValidationErrors&gt;, field: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str) -&gt; bool {
+        <span class="kw">match </span>result {
             <span class="prelude-val">Ok</span>(()) =&gt; <span class="bool-val">false</span>,
-            <span class="prelude-val">Err</span>(<span class="kw-2">ref</span> <span class="ident">errs</span>) =&gt; <span class="ident">errs</span>.<span class="ident">contains_key</span>(<span class="ident">field</span>),
+            <span class="prelude-val">Err</span>(<span class="kw-2">ref </span>errs) =&gt; errs.contains_key(field),
         }
     }
 
-    <span class="doccomment">/// Returns the combined outcome of a struct&#39;s validation result along with the nested</span>
-    <span class="doccomment">/// validation result for one of its fields.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">merge</span>(
-        <span class="ident">parent</span>: <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ValidationErrors</span><span class="op">&gt;</span>,
-        <span class="ident">field</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>,
-        <span class="ident">child</span>: <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ValidationErrors</span><span class="op">&gt;</span>,
-    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ValidationErrors</span><span class="op">&gt;</span> {
-        <span class="kw">match</span> <span class="ident">child</span> {
-            <span class="prelude-val">Ok</span>(()) =&gt; <span class="ident">parent</span>,
-            <span class="prelude-val">Err</span>(<span class="ident">errors</span>) =&gt; {
-                <span class="ident">parent</span>.<span class="ident">and_then</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="prelude-val">Err</span>(<span class="ident">ValidationErrors::new</span>())).<span class="ident">map_err</span>(<span class="op">|</span><span class="kw-2">mut</span> <span class="ident">parent_errors</span><span class="op">|</span> {
-                    <span class="ident">parent_errors</span>.<span class="ident">add_nested</span>(<span class="ident">field</span>, <span class="ident">ValidationErrorsKind::Struct</span>(<span class="ident">Box::new</span>(<span class="ident">errors</span>)));
-                    <span class="ident">parent_errors</span>
+    <span class="doccomment">/// Returns the combined outcome of a struct&#39;s validation result along with the nested
+    /// validation result for one of its fields.
+    </span><span class="kw">pub fn </span>merge(
+        parent: <span class="prelude-ty">Result</span>&lt;(), ValidationErrors&gt;,
+        field: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str,
+        child: <span class="prelude-ty">Result</span>&lt;(), ValidationErrors&gt;,
+    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), ValidationErrors&gt; {
+        <span class="kw">match </span>child {
+            <span class="prelude-val">Ok</span>(()) =&gt; parent,
+            <span class="prelude-val">Err</span>(errors) =&gt; {
+                parent.and_then(|<span class="kw">_</span>| <span class="prelude-val">Err</span>(ValidationErrors::new())).map_err(|<span class="kw-2">mut </span>parent_errors| {
+                    parent_errors.add_nested(field, ValidationErrorsKind::Struct(Box::new(errors)));
+                    parent_errors
                 })
             }
         }
     }
 
-    <span class="doccomment">/// Returns the combined outcome of a struct&#39;s validation result along with the nested</span>
-    <span class="doccomment">/// validation result for one of its fields where that field is a vector of validating structs.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">merge_all</span>(
-        <span class="ident">parent</span>: <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ValidationErrors</span><span class="op">&gt;</span>,
-        <span class="ident">field</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>,
-        <span class="ident">children</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ValidationErrors</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ValidationErrors</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">errors</span> <span class="op">=</span> <span class="ident">children</span>
-            .<span class="ident">into_iter</span>()
-            .<span class="ident">enumerate</span>()
-            .<span class="ident">filter_map</span>(<span class="op">|</span>(<span class="ident">i</span>, <span class="ident">res</span>)<span class="op">|</span> <span class="ident">res</span>.<span class="ident">err</span>().<span class="ident">map</span>(<span class="op">|</span><span class="kw-2">mut</span> <span class="ident">err</span><span class="op">|</span> (<span class="ident">i</span>, <span class="ident">err</span>.<span class="ident">remove</span>(<span class="ident">field</span>))))
-            .<span class="ident">filter_map</span>(<span class="op">|</span>(<span class="ident">i</span>, <span class="ident">entry</span>)<span class="op">|</span> <span class="kw">match</span> <span class="ident">entry</span> {
-                <span class="prelude-val">Some</span>(<span class="ident">ValidationErrorsKind::Struct</span>(<span class="ident">errors</span>)) =&gt; <span class="prelude-val">Some</span>((<span class="ident">i</span>, <span class="ident">errors</span>)),
-                <span class="kw">_</span> =&gt; <span class="prelude-val">None</span>,
+    <span class="doccomment">/// Returns the combined outcome of a struct&#39;s validation result along with the nested
+    /// validation result for one of its fields where that field is a vector of validating structs.
+    </span><span class="kw">pub fn </span>merge_all(
+        parent: <span class="prelude-ty">Result</span>&lt;(), ValidationErrors&gt;,
+        field: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str,
+        children: Vec&lt;<span class="prelude-ty">Result</span>&lt;(), ValidationErrors&gt;&gt;,
+    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), ValidationErrors&gt; {
+        <span class="kw">let </span>errors = children
+            .into_iter()
+            .enumerate()
+            .filter_map(|(i, res)| res.err().map(|<span class="kw-2">mut </span>err| (i, err.remove(field))))
+            .filter_map(|(i, entry)| <span class="kw">match </span>entry {
+                <span class="prelude-val">Some</span>(ValidationErrorsKind::Struct(errors)) =&gt; <span class="prelude-val">Some</span>((i, errors)),
+                <span class="kw">_ </span>=&gt; <span class="prelude-val">None</span>,
             })
-            .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">BTreeMap</span><span class="op">&lt;</span><span class="kw">_</span>, <span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>();
+            .collect::&lt;BTreeMap&lt;<span class="kw">_</span>, <span class="kw">_</span>&gt;&gt;();
 
-        <span class="kw">if</span> <span class="ident">errors</span>.<span class="ident">is_empty</span>() {
-            <span class="ident">parent</span>
-        } <span class="kw">else</span> {
-            <span class="ident">parent</span>.<span class="ident">and_then</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="prelude-val">Err</span>(<span class="ident">ValidationErrors::new</span>())).<span class="ident">map_err</span>(<span class="op">|</span><span class="kw-2">mut</span> <span class="ident">parent_errors</span><span class="op">|</span> {
-                <span class="ident">parent_errors</span>.<span class="ident">add_nested</span>(<span class="ident">field</span>, <span class="ident">ValidationErrorsKind::List</span>(<span class="ident">errors</span>));
-                <span class="ident">parent_errors</span>
+        <span class="kw">if </span>errors.is_empty() {
+            parent
+        } <span class="kw">else </span>{
+            parent.and_then(|<span class="kw">_</span>| <span class="prelude-val">Err</span>(ValidationErrors::new())).map_err(|<span class="kw-2">mut </span>parent_errors| {
+                parent_errors.add_nested(field, ValidationErrorsKind::List(errors));
+                parent_errors
             })
         }
     }
 
-    <span class="doccomment">/// Returns a map of field-level validation errors found for the struct that was validated and</span>
-    <span class="doccomment">/// any of it&#39;s nested structs that are tagged for validation.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">errors</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">HashMap</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">ValidationErrorsKind</span><span class="op">&gt;</span> {
-        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>
-    }
+    <span class="doccomment">/// Returns a map of field-level validation errors found for the struct that was validated and
+    /// any of it&#39;s nested structs that are tagged for validation.
+    </span><span class="kw">pub fn </span>errors(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>HashMap&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, ValidationErrorsKind&gt; {
+        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0
+    </span>}
 
-    <span class="doccomment">/// Returns a mutable map of field-level validation errors found for the struct that was validated and</span>
-    <span class="doccomment">/// any of it&#39;s nested structs that are tagged for validation.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">errors_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">HashMap</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">ValidationErrorsKind</span><span class="op">&gt;</span> {
-        <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="number">0</span>
-    }
+    <span class="doccomment">/// Returns a mutable map of field-level validation errors found for the struct that was validated and
+    /// any of it&#39;s nested structs that are tagged for validation.
+    </span><span class="kw">pub fn </span>errors_mut(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut </span>HashMap&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, ValidationErrorsKind&gt; {
+        <span class="kw-2">&amp;mut </span><span class="self">self</span>.<span class="number">0
+    </span>}
 
-    <span class="doccomment">/// Consume the struct, returning the validation errors found</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_errors</span>(<span class="self">self</span>) -&gt; <span class="ident">HashMap</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">ValidationErrorsKind</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="number">0</span>
-    }
+    <span class="doccomment">/// Consume the struct, returning the validation errors found
+    </span><span class="kw">pub fn </span>into_errors(<span class="self">self</span>) -&gt; HashMap&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, ValidationErrorsKind&gt; {
+        <span class="self">self</span>.<span class="number">0
+    </span>}
 
-    <span class="doccomment">/// Returns a map of only field-level validation errors found for the struct that was validated.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">field_errors</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">HashMap</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="kw-2">&amp;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ValidationError</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="number">0</span>
-            .<span class="ident">iter</span>()
-            .<span class="ident">filter_map</span>(<span class="op">|</span>(<span class="ident">k</span>, <span class="ident">v</span>)<span class="op">|</span> {
-                <span class="kw">if</span> <span class="kw">let</span> <span class="ident">ValidationErrorsKind::Field</span>(<span class="ident">errors</span>) <span class="op">=</span> <span class="ident">v</span> {
-                    <span class="prelude-val">Some</span>((<span class="kw-2">*</span><span class="ident">k</span>, <span class="ident">errors</span>))
-                } <span class="kw">else</span> {
-                    <span class="prelude-val">None</span>
-                }
+    <span class="doccomment">/// Returns a map of only field-level validation errors found for the struct that was validated.
+    </span><span class="kw">pub fn </span>field_errors(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; HashMap&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, <span class="kw-2">&amp;</span>Vec&lt;ValidationError&gt;&gt; {
+        <span class="self">self</span>.<span class="number">0
+            </span>.iter()
+            .filter_map(|(k, v)| {
+                <span class="kw">if let </span>ValidationErrorsKind::Field(errors) = v {
+                    <span class="prelude-val">Some</span>((<span class="kw-2">*</span>k, errors))
+                } <span class="kw">else </span>{
+                    <span class="prelude-val">None
+                </span>}
             })
-            .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">HashMap</span><span class="op">&lt;</span><span class="kw">_</span>, <span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>()
+            .collect::&lt;HashMap&lt;<span class="kw">_</span>, <span class="kw">_</span>&gt;&gt;()
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">field</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">error</span>: <span class="ident">ValidationError</span>) {
-        <span class="kw">if</span> <span class="kw">let</span> <span class="ident">ValidationErrorsKind::Field</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">vec</span>) <span class="op">=</span>
-            <span class="self">self</span>.<span class="number">0</span>.<span class="ident">entry</span>(<span class="ident">field</span>).<span class="ident">or_insert_with</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">ValidationErrorsKind::Field</span>(<span class="macro">vec!</span>[]))
+    <span class="kw">pub fn </span>add(<span class="kw-2">&amp;mut </span><span class="self">self</span>, field: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, error: ValidationError) {
+        <span class="kw">if let </span>ValidationErrorsKind::Field(<span class="kw-2">ref mut </span>vec) =
+            <span class="self">self</span>.<span class="number">0</span>.entry(field).or_insert_with(|| ValidationErrorsKind::Field(<span class="macro">vec!</span>[]))
         {
-            <span class="ident">vec</span>.<span class="ident">push</span>(<span class="ident">error</span>);
-        } <span class="kw">else</span> {
+            vec.push(error);
+        } <span class="kw">else </span>{
             <span class="macro">panic!</span>(<span class="string">&quot;Attempt to add field validation to a non-Field ValidationErrorsKind instance&quot;</span>);
         }
     }
 
-    <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_empty</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">is_empty</span>()
+    <span class="attribute">#[must_use]
+    </span><span class="kw">pub fn </span>is_empty(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="self">self</span>.<span class="number">0</span>.is_empty()
     }
 
-    <span class="kw">fn</span> <span class="ident">add_nested</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">field</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>, <span class="ident">errors</span>: <span class="ident">ValidationErrorsKind</span>) {
-        <span class="kw">if</span> <span class="kw">let</span> <span class="ident">Vacant</span>(<span class="ident">entry</span>) <span class="op">=</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">entry</span>(<span class="ident">field</span>) {
-            <span class="ident">entry</span>.<span class="ident">insert</span>(<span class="ident">errors</span>);
-        } <span class="kw">else</span> {
+    <span class="kw">fn </span>add_nested(<span class="kw-2">&amp;mut </span><span class="self">self</span>, field: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, errors: ValidationErrorsKind) {
+        <span class="kw">if let </span>Vacant(entry) = <span class="self">self</span>.<span class="number">0</span>.entry(field) {
+            entry.insert(errors);
+        } <span class="kw">else </span>{
             <span class="macro">panic!</span>(<span class="string">&quot;Attempt to replace non-empty ValidationErrors entry&quot;</span>);
         }
     }
 
-    <span class="attribute">#[<span class="ident">must_use</span>]</span>
-    <span class="kw">fn</span> <span class="ident">contains_key</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">field</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>) -&gt; <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">contains_key</span>(<span class="ident">field</span>)
+    <span class="attribute">#[must_use]
+    </span><span class="kw">fn </span>contains_key(<span class="kw-2">&amp;</span><span class="self">self</span>, field: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str) -&gt; bool {
+        <span class="self">self</span>.<span class="number">0</span>.contains_key(field)
     }
 
-    <span class="kw">fn</span> <span class="ident">remove</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">field</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">ValidationErrorsKind</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">remove</span>(<span class="ident">field</span>)
+    <span class="kw">fn </span>remove(<span class="kw-2">&amp;mut </span><span class="self">self</span>, field: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str) -&gt; <span class="prelude-ty">Option</span>&lt;ValidationErrorsKind&gt; {
+        <span class="self">self</span>.<span class="number">0</span>.remove(field)
     }
 }
 
-<span class="kw">impl</span> <span class="ident">std::error::Error</span> <span class="kw">for</span> <span class="ident">ValidationErrors</span> {
-    <span class="kw">fn</span> <span class="ident">description</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">str</span> {
-        <span class="string">&quot;Validation failed&quot;</span>
-    }
-    <span class="kw">fn</span> <span class="ident">cause</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw">dyn</span> <span class="ident">std::error::Error</span><span class="op">&gt;</span> {
-        <span class="prelude-val">None</span>
-    }
+<span class="kw">impl </span>std::error::Error <span class="kw">for </span>ValidationErrors {
+    <span class="kw">fn </span>description(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>str {
+        <span class="string">&quot;Validation failed&quot;
+    </span>}
+    <span class="kw">fn </span>cause(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="kw">dyn </span>std::error::Error&gt; {
+        <span class="prelude-val">None
+    </span>}
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="validator" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="validator" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/handler/assets/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../gotham/index.html"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/handler/assets/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../../normalize.css"><link rel="stylesheet" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../../ayu.css" disabled><link rel="stylesheet" href="../../../../dark.css" disabled><link rel="stylesheet" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../gotham/index.html"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -849,499 +849,499 @@
 <span id="849">849</span>
 <span id="850">850</span>
 <span id="851">851</span>
-</pre><pre class="rust"><code><span class="doccomment">//! Defines handlers for static assets, used by `to_file` and `to_dir` routes.</span>
-<span class="doccomment">//! Both &#39;If-None-Match&#39; (etags) and &#39;If-Modified-Since&#39; are supported to check</span>
-<span class="doccomment">//! file modification.</span>
-<span class="doccomment">//! Side-by-side compressed files for gzip and brotli are supported if enabled</span>
-<span class="doccomment">//! See &#39;FileOptions&#39; for more details.</span>
+</pre><pre class="rust"><code><span class="doccomment">//! Defines handlers for static assets, used by `to_file` and `to_dir` routes.
+//! Both &#39;If-None-Match&#39; (etags) and &#39;If-Modified-Since&#39; are supported to check
+//! file modification.
+//! Side-by-side compressed files for gzip and brotli are supported if enabled
+//! See &#39;FileOptions&#39; for more details.
 
-<span class="kw">mod</span> <span class="ident">accepted_encoding</span>;
+</span><span class="kw">mod </span>accepted_encoding;
 
-<span class="kw">use</span> <span class="ident">bytes</span>::{<span class="ident">BufMut</span>, <span class="ident">Bytes</span>, <span class="ident">BytesMut</span>};
-<span class="kw">use</span> <span class="ident">futures_util::stream</span>::{<span class="self">self</span>, <span class="ident">TryStream</span>, <span class="ident">TryStreamExt</span>};
-<span class="kw">use</span> <span class="ident">futures_util</span>::{<span class="ident">ready</span>, <span class="ident">FutureExt</span>, <span class="ident">TryFutureExt</span>};
-<span class="kw">use</span> <span class="ident">httpdate::parse_http_date</span>;
-<span class="kw">use</span> <span class="ident">hyper::header</span>::<span class="kw-2">*</span>;
-<span class="kw">use</span> <span class="ident">hyper</span>::{<span class="ident">Body</span>, <span class="ident">Response</span>, <span class="ident">StatusCode</span>};
-<span class="kw">use</span> <span class="ident">log::debug</span>;
-<span class="kw">use</span> <span class="ident">mime</span>::{<span class="self">self</span>, <span class="ident">Mime</span>};
-<span class="kw">use</span> <span class="ident">mime_guess::from_path</span>;
-<span class="kw">use</span> <span class="ident">serde::Deserialize</span>;
-<span class="kw">use</span> <span class="ident">tokio::fs::File</span>;
-<span class="kw">use</span> <span class="ident">tokio::io</span>::{<span class="ident">AsyncRead</span>, <span class="ident">ReadBuf</span>};
+<span class="kw">use </span>bytes::{BufMut, Bytes, BytesMut};
+<span class="kw">use </span>futures_util::stream::{<span class="self">self</span>, TryStream, TryStreamExt};
+<span class="kw">use </span>futures_util::{ready, FutureExt, TryFutureExt};
+<span class="kw">use </span>httpdate::parse_http_date;
+<span class="kw">use </span>hyper::header::<span class="kw-2">*</span>;
+<span class="kw">use </span>hyper::{Body, Response, StatusCode};
+<span class="kw">use </span>log::debug;
+<span class="kw">use </span>mime::{<span class="self">self</span>, Mime};
+<span class="kw">use </span>mime_guess::from_path;
+<span class="kw">use </span>serde::Deserialize;
+<span class="kw">use </span>tokio::fs::File;
+<span class="kw">use </span>tokio::io::{AsyncRead, ReadBuf};
 
-<span class="kw">use</span> <span class="ident"><span class="self">self</span>::accepted_encoding::accepted_encodings</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::handler</span>::{<span class="ident">Handler</span>, <span class="ident">HandlerError</span>, <span class="ident">HandlerFuture</span>, <span class="ident">NewHandler</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::response::StaticResponseExtender</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state</span>::{<span class="ident">FromState</span>, <span class="ident">State</span>, <span class="ident">StateData</span>};
+<span class="kw">use </span><span class="self">self</span>::accepted_encoding::accepted_encodings;
+<span class="kw">use </span><span class="kw">crate</span>::handler::{Handler, HandlerError, HandlerFuture, NewHandler};
+<span class="kw">use </span><span class="kw">crate</span>::router::response::StaticResponseExtender;
+<span class="kw">use </span><span class="kw">crate</span>::state::{FromState, State, StateData};
 
-<span class="kw">use</span> <span class="ident">std::convert::From</span>;
-<span class="kw">use</span> <span class="ident">std::fs::Metadata</span>;
-<span class="kw">use</span> <span class="ident">std::iter::FromIterator</span>;
-<span class="kw">use</span> <span class="ident">std::mem::MaybeUninit</span>;
-<span class="kw">use</span> <span class="ident">std::path</span>::{<span class="ident">Component</span>, <span class="ident">Path</span>, <span class="ident">PathBuf</span>};
-<span class="kw">use</span> <span class="ident">std::pin::Pin</span>;
-<span class="kw">use</span> <span class="ident">std::task::Poll</span>;
-<span class="kw">use</span> <span class="ident">std::time::UNIX_EPOCH</span>;
-<span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">cmp</span>, <span class="ident">io</span>};
+<span class="kw">use </span>std::convert::From;
+<span class="kw">use </span>std::fs::Metadata;
+<span class="kw">use </span>std::iter::FromIterator;
+<span class="kw">use </span>std::mem::MaybeUninit;
+<span class="kw">use </span>std::path::{Component, Path, PathBuf};
+<span class="kw">use </span>std::pin::Pin;
+<span class="kw">use </span>std::task::Poll;
+<span class="kw">use </span>std::time::UNIX_EPOCH;
+<span class="kw">use </span>std::{cmp, io};
 
-<span class="doccomment">/// Represents a handler for any files under a directory.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">DirHandler</span> {
-    <span class="ident">options</span>: <span class="ident">FileOptions</span>,
+<span class="doccomment">/// Represents a handler for any files under a directory.
+</span><span class="attribute">#[derive(Clone)]
+</span><span class="kw">pub struct </span>DirHandler {
+    options: FileOptions,
 }
 
-<span class="doccomment">/// Represents a handler for a single file.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">FileHandler</span> {
-    <span class="ident">options</span>: <span class="ident">FileOptions</span>,
+<span class="doccomment">/// Represents a handler for a single file.
+</span><span class="attribute">#[derive(Clone)]
+</span><span class="kw">pub struct </span>FileHandler {
+    options: FileOptions,
 }
 
-<span class="doccomment">/// Options to pass to file or dir handlers.</span>
-<span class="doccomment">/// Allows overriding default behaviour for compression, cache control headers, etc.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// `FileOptions` implements `From` for `String` and `PathBuf` (and related reference types) - so that a</span>
-<span class="doccomment">/// path can be passed to router builder methods if only default options are required.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// For overridding default options, `FileOptions` provides builder methods. The default</span>
-<span class="doccomment">/// values and use of the builder methods are shown in the example below.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # use gotham::handler::FileOptions;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// let default_options = FileOptions::from(&quot;my_static_path&quot;);</span>
-<span class="doccomment">/// let from_builder = FileOptions::new(&quot;my_static_path&quot;)</span>
-<span class="doccomment">///     .with_cache_control(&quot;public&quot;)</span>
-<span class="doccomment">///     .with_gzip(false)</span>
-<span class="doccomment">///     .with_brotli(false)</span>
-<span class="doccomment">///     .build();</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// assert_eq!(default_options, from_builder);</span>
-<span class="doccomment">/// ```</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">FileOptions</span> {
-    <span class="ident">path</span>: <span class="ident">PathBuf</span>,
-    <span class="ident">cache_control</span>: <span class="ident">String</span>,
-    <span class="ident">gzip</span>: <span class="ident">bool</span>,
-    <span class="ident">brotli</span>: <span class="ident">bool</span>,
+<span class="doccomment">/// Options to pass to file or dir handlers.
+/// Allows overriding default behaviour for compression, cache control headers, etc.
+///
+/// `FileOptions` implements `From` for `String` and `PathBuf` (and related reference types) - so that a
+/// path can be passed to router builder methods if only default options are required.
+///
+/// For overridding default options, `FileOptions` provides builder methods. The default
+/// values and use of the builder methods are shown in the example below.
+///
+///
+/// ```rust
+/// # use gotham::handler::FileOptions;
+///
+/// let default_options = FileOptions::from(&quot;my_static_path&quot;);
+/// let from_builder = FileOptions::new(&quot;my_static_path&quot;)
+///     .with_cache_control(&quot;public&quot;)
+///     .with_gzip(false)
+///     .with_brotli(false)
+///     .build();
+///
+/// assert_eq!(default_options, from_builder);
+/// ```
+</span><span class="attribute">#[derive(Clone, Debug, PartialEq)]
+</span><span class="kw">pub struct </span>FileOptions {
+    path: PathBuf,
+    cache_control: String,
+    gzip: bool,
+    brotli: bool,
 }
 
-<span class="kw">impl</span> <span class="ident">FileOptions</span> {
-    <span class="doccomment">/// Create a new `FileOptions` with default values.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">P</span>: <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">Path</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="ident">path</span>: <span class="ident">P</span>) -&gt; <span class="self">Self</span>
-    <span class="kw">where</span>
-        <span class="ident">PathBuf</span>: <span class="ident">From</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>,
+<span class="kw">impl </span>FileOptions {
+    <span class="doccomment">/// Create a new `FileOptions` with default values.
+    </span><span class="kw">pub fn </span>new&lt;P: AsRef&lt;Path&gt;&gt;(path: P) -&gt; <span class="self">Self
+    </span><span class="kw">where
+        </span>PathBuf: From&lt;P&gt;,
     {
-        <span class="ident">FileOptions</span> {
-            <span class="ident">path</span>: <span class="ident">PathBuf::from</span>(<span class="ident">path</span>),
-            <span class="ident">cache_control</span>: <span class="string">&quot;public&quot;</span>.<span class="ident">to_string</span>(),
-            <span class="ident">gzip</span>: <span class="bool-val">false</span>,
-            <span class="ident">brotli</span>: <span class="bool-val">false</span>,
+        FileOptions {
+            path: PathBuf::from(path),
+            cache_control: <span class="string">&quot;public&quot;</span>.to_string(),
+            gzip: <span class="bool-val">false</span>,
+            brotli: <span class="bool-val">false</span>,
         }
     }
 
-    <span class="doccomment">/// Sets the &quot;cache_control&quot; header in static file responses to the given value.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_cache_control</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">cache_control</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">cache_control</span> <span class="op">=</span> <span class="ident">cache_control</span>.<span class="ident">to_owned</span>();
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// Sets the &quot;cache_control&quot; header in static file responses to the given value.
+    </span><span class="kw">pub fn </span>with_cache_control(<span class="kw-2">&amp;mut </span><span class="self">self</span>, cache_control: <span class="kw-2">&amp;</span>str) -&gt; <span class="kw-2">&amp;mut </span><span class="self">Self </span>{
+        <span class="self">self</span>.cache_control = cache_control.to_owned();
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// If `true`, given a request for FILE, serves FILE.gz if it exists in the static directory and</span>
-    <span class="doccomment">/// if the accept-encoding header is set to allow gzipped content (defaults to false).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_gzip</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">gzip</span>: <span class="ident">bool</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">gzip</span> <span class="op">=</span> <span class="ident">gzip</span>;
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// If `true`, given a request for FILE, serves FILE.gz if it exists in the static directory and
+    /// if the accept-encoding header is set to allow gzipped content (defaults to false).
+    </span><span class="kw">pub fn </span>with_gzip(<span class="kw-2">&amp;mut </span><span class="self">self</span>, gzip: bool) -&gt; <span class="kw-2">&amp;mut </span><span class="self">Self </span>{
+        <span class="self">self</span>.gzip = gzip;
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// If `true`, given a request for FILE, serves FILE.br if it exists in the static directory and</span>
-    <span class="doccomment">/// if the accept-encoding header is set to allow brotli content (defaults to false).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_brotli</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">brotli</span>: <span class="ident">bool</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">brotli</span> <span class="op">=</span> <span class="ident">brotli</span>;
-        <span class="self">self</span>
-    }
+    <span class="doccomment">/// If `true`, given a request for FILE, serves FILE.br if it exists in the static directory and
+    /// if the accept-encoding header is set to allow brotli content (defaults to false).
+    </span><span class="kw">pub fn </span>with_brotli(<span class="kw-2">&amp;mut </span><span class="self">self</span>, brotli: bool) -&gt; <span class="kw-2">&amp;mut </span><span class="self">Self </span>{
+        <span class="self">self</span>.brotli = brotli;
+        <span class="self">self
+    </span>}
 
-    <span class="doccomment">/// Clones `self` to return an owned value for passing to a handler.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="self">Self</span> {
-        <span class="self">self</span>.<span class="ident">clone</span>()
+    <span class="doccomment">/// Clones `self` to return an owned value for passing to a handler.
+    </span><span class="kw">pub fn </span>build(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.clone()
     }
 }
 
-<span class="doccomment">/// Create a `FileOptions` from various types, used in</span>
-<span class="doccomment">/// the router builder `to_file` and `to_dir` implementations</span>
-<span class="doccomment">/// which have a constraint `FileOptions: From&lt;P&gt;` for default options.</span>
-<span class="macro">macro_rules!</span> <span class="ident">derive_from</span> {
+<span class="doccomment">/// Create a `FileOptions` from various types, used in
+/// the router builder `to_file` and `to_dir` implementations
+/// which have a constraint `FileOptions: From&lt;P&gt;` for default options.
+</span><span class="macro">macro_rules! </span>derive_from {
     (<span class="macro-nonterminal">$</span><span class="kw">type</span>:<span class="macro-nonterminal">ty</span>) =&gt; {
-        <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="kw">type</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="macro-nonterminal">FileOptions</span> {
-            <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">t</span>: <span class="macro-nonterminal">$</span><span class="kw">type</span>) -&gt; <span class="macro-nonterminal">FileOptions</span> {
-                <span class="ident">FileOptions::new</span>(<span class="ident">t</span>)
+        <span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; From&lt;<span class="macro-nonterminal">$</span><span class="kw">type</span>&gt; <span class="kw">for </span><span class="macro-nonterminal">FileOptions </span>{
+            <span class="kw">fn </span>from(t: <span class="macro-nonterminal">$</span><span class="kw">type</span>) -&gt; <span class="macro-nonterminal">FileOptions </span>{
+                FileOptions::new(t)
             }
         }
     };
 }
 
-<span class="macro">derive_from!</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Path</span>);
-<span class="macro">derive_from!</span>(<span class="ident">PathBuf</span>);
-<span class="macro">derive_from!</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">str</span>);
-<span class="macro">derive_from!</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">String</span>);
-<span class="macro">derive_from!</span>(<span class="ident">String</span>);
+<span class="macro">derive_from!</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>Path);
+<span class="macro">derive_from!</span>(PathBuf);
+<span class="macro">derive_from!</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str);
+<span class="macro">derive_from!</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>String);
+<span class="macro">derive_from!</span>(String);
 
-<span class="kw">impl</span> <span class="ident">FileHandler</span> {
-    <span class="doccomment">/// Create a new `FileHandler` for the given path.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>(<span class="ident">path</span>: <span class="ident">P</span>) -&gt; <span class="ident">FileHandler</span>
-    <span class="kw">where</span>
-        <span class="ident">FileOptions</span>: <span class="ident">From</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>,
+<span class="kw">impl </span>FileHandler {
+    <span class="doccomment">/// Create a new `FileHandler` for the given path.
+    </span><span class="kw">pub fn </span>new&lt;P&gt;(path: P) -&gt; FileHandler
+    <span class="kw">where
+        </span>FileOptions: From&lt;P&gt;,
     {
-        <span class="ident">FileHandler</span> {
-            <span class="ident">options</span>: <span class="ident">FileOptions::from</span>(<span class="ident">path</span>),
+        FileHandler {
+            options: FileOptions::from(path),
         }
     }
 }
 
-<span class="kw">impl</span> <span class="ident">DirHandler</span> {
-    <span class="doccomment">/// Create a new `DirHandler` with the given root path.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>(<span class="ident">path</span>: <span class="ident">P</span>) -&gt; <span class="ident">DirHandler</span>
-    <span class="kw">where</span>
-        <span class="ident">FileOptions</span>: <span class="ident">From</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span>,
+<span class="kw">impl </span>DirHandler {
+    <span class="doccomment">/// Create a new `DirHandler` with the given root path.
+    </span><span class="kw">pub fn </span>new&lt;P&gt;(path: P) -&gt; DirHandler
+    <span class="kw">where
+        </span>FileOptions: From&lt;P&gt;,
     {
-        <span class="ident">DirHandler</span> {
-            <span class="ident">options</span>: <span class="ident">FileOptions::from</span>(<span class="ident">path</span>),
+        DirHandler {
+            options: FileOptions::from(path),
         }
     }
 }
 
-<span class="kw">impl</span> <span class="ident">NewHandler</span> <span class="kw">for</span> <span class="ident">FileHandler</span> {
-    <span class="kw">type</span> <span class="ident">Instance</span> <span class="op">=</span> <span class="self">Self</span>;
+<span class="kw">impl </span>NewHandler <span class="kw">for </span>FileHandler {
+    <span class="kw">type </span>Instance = <span class="self">Self</span>;
 
-    <span class="kw">fn</span> <span class="ident">new_handler</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">anyhow::Result</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Instance</span><span class="op">&gt;</span> {
-        <span class="prelude-val">Ok</span>(<span class="self">self</span>.<span class="ident">clone</span>())
+    <span class="kw">fn </span>new_handler(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; anyhow::Result&lt;<span class="self">Self</span>::Instance&gt; {
+        <span class="prelude-val">Ok</span>(<span class="self">self</span>.clone())
     }
 }
 
-<span class="kw">impl</span> <span class="ident">NewHandler</span> <span class="kw">for</span> <span class="ident">DirHandler</span> {
-    <span class="kw">type</span> <span class="ident">Instance</span> <span class="op">=</span> <span class="self">Self</span>;
+<span class="kw">impl </span>NewHandler <span class="kw">for </span>DirHandler {
+    <span class="kw">type </span>Instance = <span class="self">Self</span>;
 
-    <span class="kw">fn</span> <span class="ident">new_handler</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">anyhow::Result</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Instance</span><span class="op">&gt;</span> {
-        <span class="prelude-val">Ok</span>(<span class="self">self</span>.<span class="ident">clone</span>())
+    <span class="kw">fn </span>new_handler(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; anyhow::Result&lt;<span class="self">Self</span>::Instance&gt; {
+        <span class="prelude-val">Ok</span>(<span class="self">self</span>.clone())
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Handler</span> <span class="kw">for</span> <span class="ident">DirHandler</span> {
-    <span class="kw">fn</span> <span class="ident">handle</span>(<span class="self">self</span>, <span class="ident">state</span>: <span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">path</span> <span class="op">=</span> {
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">base_path</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">options</span>.<span class="ident">path</span>;
-            <span class="kw">let</span> <span class="ident">file_path</span> <span class="op">=</span> <span class="ident">PathBuf::from_iter</span>(<span class="kw-2">&amp;</span><span class="ident">FilePathExtractor::borrow_from</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>).<span class="ident">parts</span>);
-            <span class="ident">base_path</span>.<span class="ident">extend</span>(<span class="kw-2">&amp;</span><span class="ident">normalize_path</span>(<span class="kw-2">&amp;</span><span class="ident">file_path</span>));
-            <span class="ident">base_path</span>
+<span class="kw">impl </span>Handler <span class="kw">for </span>DirHandler {
+    <span class="kw">fn </span>handle(<span class="self">self</span>, state: State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; {
+        <span class="kw">let </span>path = {
+            <span class="kw">let </span><span class="kw-2">mut </span>base_path = <span class="self">self</span>.options.path;
+            <span class="kw">let </span>file_path = PathBuf::from_iter(<span class="kw-2">&amp;</span>FilePathExtractor::borrow_from(<span class="kw-2">&amp;</span>state).parts);
+            base_path.extend(<span class="kw-2">&amp;</span>normalize_path(<span class="kw-2">&amp;</span>file_path));
+            base_path
         };
-        <span class="ident">create_file_response</span>(
-            <span class="ident">FileOptions</span> {
-                <span class="ident">path</span>,
-                ..<span class="self">self</span>.<span class="ident">options</span>
+        create_file_response(
+            FileOptions {
+                path,
+                ..<span class="self">self</span>.options
             },
-            <span class="ident">state</span>,
+            state,
         )
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Handler</span> <span class="kw">for</span> <span class="ident">FileHandler</span> {
-    <span class="kw">fn</span> <span class="ident">handle</span>(<span class="self">self</span>, <span class="ident">state</span>: <span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="ident">create_file_response</span>(<span class="self">self</span>.<span class="ident">options</span>, <span class="ident">state</span>)
+<span class="kw">impl </span>Handler <span class="kw">for </span>FileHandler {
+    <span class="kw">fn </span>handle(<span class="self">self</span>, state: State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; {
+        create_file_response(<span class="self">self</span>.options, state)
     }
 }
 
-<span class="comment">// Creates the `HandlerFuture` response based on the given `FileOptions`.</span>
-<span class="kw">fn</span> <span class="ident">create_file_response</span>(<span class="ident">options</span>: <span class="ident">FileOptions</span>, <span class="ident">state</span>: <span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-    <span class="kw">let</span> <span class="ident">mime_type</span> <span class="op">=</span> <span class="ident">mime_for_path</span>(<span class="kw-2">&amp;</span><span class="ident">options</span>.<span class="ident">path</span>);
-    <span class="kw">let</span> <span class="ident">headers</span> <span class="op">=</span> <span class="ident">HeaderMap::borrow_from</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>).<span class="ident">clone</span>();
+<span class="comment">// Creates the `HandlerFuture` response based on the given `FileOptions`.
+</span><span class="kw">fn </span>create_file_response(options: FileOptions, state: State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; {
+    <span class="kw">let </span>mime_type = mime_for_path(<span class="kw-2">&amp;</span>options.path);
+    <span class="kw">let </span>headers = HeaderMap::borrow_from(<span class="kw-2">&amp;</span>state).clone();
 
-    <span class="kw">let</span> (<span class="ident">path</span>, <span class="ident">encoding</span>) <span class="op">=</span> <span class="ident">check_compressed_options</span>(<span class="kw-2">&amp;</span><span class="ident">options</span>, <span class="kw-2">&amp;</span><span class="ident">headers</span>);
+    <span class="kw">let </span>(path, encoding) = check_compressed_options(<span class="kw-2">&amp;</span>options, <span class="kw-2">&amp;</span>headers);
 
-    <span class="kw">let</span> <span class="ident">response_future</span> <span class="op">=</span> <span class="ident">File::open</span>(<span class="ident">path</span>).<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">file</span><span class="op">|</span> <span class="kw">async</span> <span class="kw">move</span> {
-        <span class="kw">let</span> <span class="ident">meta</span> <span class="op">=</span> <span class="ident">file</span>.<span class="ident">metadata</span>().<span class="kw">await</span><span class="question-mark">?</span>;
-        <span class="kw">if</span> <span class="ident">not_modified</span>(<span class="kw-2">&amp;</span><span class="ident">meta</span>, <span class="kw-2">&amp;</span><span class="ident">headers</span>) {
-            <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">hyper::Response::builder</span>()
-                .<span class="ident">status</span>(<span class="ident">StatusCode::NOT_MODIFIED</span>)
-                .<span class="ident">body</span>(<span class="ident">Body::empty</span>())
-                .<span class="ident">unwrap</span>());
+    <span class="kw">let </span>response_future = File::open(path).and_then(|file| <span class="kw">async move </span>{
+        <span class="kw">let </span>meta = file.metadata().<span class="kw">await</span><span class="question-mark">?</span>;
+        <span class="kw">if </span>not_modified(<span class="kw-2">&amp;</span>meta, <span class="kw-2">&amp;</span>headers) {
+            <span class="kw">return </span><span class="prelude-val">Ok</span>(hyper::Response::builder()
+                .status(StatusCode::NOT_MODIFIED)
+                .body(Body::empty())
+                .unwrap());
         }
-        <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">meta</span>.<span class="ident">len</span>();
-        <span class="kw">let</span> <span class="ident">buf_size</span> <span class="op">=</span> <span class="ident">optimal_buf_size</span>(<span class="kw-2">&amp;</span><span class="ident">meta</span>);
+        <span class="kw">let </span>len = meta.len();
+        <span class="kw">let </span>buf_size = optimal_buf_size(<span class="kw-2">&amp;</span>meta);
 
-        <span class="kw">let</span> <span class="ident">stream</span> <span class="op">=</span> <span class="ident">file_stream</span>(<span class="ident">file</span>, <span class="ident">buf_size</span>, <span class="ident">len</span>);
-        <span class="kw">let</span> <span class="ident">body</span> <span class="op">=</span> <span class="ident">Body::wrap_stream</span>(<span class="ident">stream</span>.<span class="ident">into_stream</span>());
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">hyper::Response::builder</span>()
-            .<span class="ident">status</span>(<span class="ident">StatusCode::OK</span>)
-            .<span class="ident">header</span>(<span class="ident">CONTENT_LENGTH</span>, <span class="ident">len</span>)
-            .<span class="ident">header</span>(<span class="ident">CONTENT_TYPE</span>, <span class="ident">mime_type</span>.<span class="ident">as_ref</span>())
-            .<span class="ident">header</span>(<span class="ident">CACHE_CONTROL</span>, <span class="ident">options</span>.<span class="ident">cache_control</span>);
+        <span class="kw">let </span>stream = file_stream(file, buf_size, len);
+        <span class="kw">let </span>body = Body::wrap_stream(stream.into_stream());
+        <span class="kw">let </span><span class="kw-2">mut </span>response = hyper::Response::builder()
+            .status(StatusCode::OK)
+            .header(CONTENT_LENGTH, len)
+            .header(CONTENT_TYPE, mime_type.as_ref())
+            .header(CACHE_CONTROL, options.cache_control);
 
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">etag</span>) <span class="op">=</span> <span class="ident">entity_tag</span>(<span class="kw-2">&amp;</span><span class="ident">meta</span>) {
-            <span class="ident">response</span> <span class="op">=</span> <span class="ident">response</span>.<span class="ident">header</span>(<span class="ident">ETAG</span>, <span class="ident">etag</span>);
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(etag) = entity_tag(<span class="kw-2">&amp;</span>meta) {
+            response = response.header(ETAG, etag);
         }
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">content_encoding</span>) <span class="op">=</span> <span class="ident">encoding</span> {
-            <span class="ident">response</span> <span class="op">=</span> <span class="ident">response</span>.<span class="ident">header</span>(<span class="ident">CONTENT_ENCODING</span>, <span class="ident">content_encoding</span>);
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(content_encoding) = encoding {
+            response = response.header(CONTENT_ENCODING, content_encoding);
         }
 
-        <span class="prelude-val">Ok</span>(<span class="ident">response</span>.<span class="ident">body</span>(<span class="ident">body</span>).<span class="ident">unwrap</span>())
+        <span class="prelude-val">Ok</span>(response.body(body).unwrap())
     });
 
-    <span class="ident">response_future</span>
-        .<span class="ident">map</span>(<span class="op">|</span><span class="ident">result</span><span class="op">|</span> <span class="kw">match</span> <span class="ident">result</span> {
-            <span class="prelude-val">Ok</span>(<span class="ident">response</span>) =&gt; <span class="prelude-val">Ok</span>((<span class="ident">state</span>, <span class="ident">response</span>)),
-            <span class="prelude-val">Err</span>(<span class="ident">err</span>) =&gt; {
-                <span class="kw">let</span> <span class="ident">status</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">err</span>.<span class="ident">kind</span>() {
-                    <span class="ident">io::ErrorKind::NotFound</span> =&gt; <span class="ident">StatusCode::NOT_FOUND</span>,
-                    <span class="ident">io::ErrorKind::PermissionDenied</span> =&gt; <span class="ident">StatusCode::FORBIDDEN</span>,
-                    <span class="kw">_</span> =&gt; <span class="ident">StatusCode::INTERNAL_SERVER_ERROR</span>,
+    response_future
+        .map(|result| <span class="kw">match </span>result {
+            <span class="prelude-val">Ok</span>(response) =&gt; <span class="prelude-val">Ok</span>((state, response)),
+            <span class="prelude-val">Err</span>(err) =&gt; {
+                <span class="kw">let </span>status = <span class="kw">match </span>err.kind() {
+                    io::ErrorKind::NotFound =&gt; StatusCode::NOT_FOUND,
+                    io::ErrorKind::PermissionDenied =&gt; StatusCode::FORBIDDEN,
+                    <span class="kw">_ </span>=&gt; StatusCode::INTERNAL_SERVER_ERROR,
                 };
-                <span class="kw">let</span> <span class="ident">err</span>: <span class="ident">HandlerError</span> <span class="op">=</span> <span class="ident">err</span>.<span class="ident">into</span>();
-                <span class="prelude-val">Err</span>((<span class="ident">state</span>, <span class="ident">err</span>.<span class="ident">with_status</span>(<span class="ident">status</span>)))
+                <span class="kw">let </span>err: HandlerError = err.into();
+                <span class="prelude-val">Err</span>((state, err.with_status(status)))
             }
         })
-        .<span class="ident">boxed</span>()
+        .boxed()
 }
 
-<span class="comment">// Checks for existence of compressed files if `FileOptions` and</span>
-<span class="comment">// &quot;Accept-Encoding&quot; headers allow. Returns the final path to read,</span>
-<span class="comment">// along with an optional encoding to return as the &quot;Content-Encoding&quot;.</span>
-<span class="kw">fn</span> <span class="ident">check_compressed_options</span>(
-    <span class="ident">options</span>: <span class="kw-2">&amp;</span><span class="ident">FileOptions</span>,
-    <span class="ident">headers</span>: <span class="kw-2">&amp;</span><span class="ident">HeaderMap</span>,
-) -&gt; (<span class="ident">PathBuf</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>) {
-    <span class="ident">options</span>
-        .<span class="ident">path</span>
-        .<span class="ident">file_name</span>()
-        .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">filename</span><span class="op">|</span> {
-            <span class="ident">accepted_encodings</span>(<span class="ident">headers</span>)
-                .<span class="ident">iter</span>()
-                .<span class="ident">filter_map</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> {
-                    <span class="ident">get_extension</span>(<span class="kw-2">&amp;</span><span class="ident">e</span>.<span class="ident">encoding</span>, <span class="ident">options</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">ext</span><span class="op">|</span> (<span class="ident">e</span>.<span class="ident">encoding</span>.<span class="ident">to_string</span>(), <span class="ident">ext</span>))
+<span class="comment">// Checks for existence of compressed files if `FileOptions` and
+// &quot;Accept-Encoding&quot; headers allow. Returns the final path to read,
+// along with an optional encoding to return as the &quot;Content-Encoding&quot;.
+</span><span class="kw">fn </span>check_compressed_options(
+    options: <span class="kw-2">&amp;</span>FileOptions,
+    headers: <span class="kw-2">&amp;</span>HeaderMap,
+) -&gt; (PathBuf, <span class="prelude-ty">Option</span>&lt;String&gt;) {
+    options
+        .path
+        .file_name()
+        .and_then(|filename| {
+            accepted_encodings(headers)
+                .iter()
+                .filter_map(|e| {
+                    get_extension(<span class="kw-2">&amp;</span>e.encoding, options).map(|ext| (e.encoding.to_string(), ext))
                 })
-                .<span class="ident">find_map</span>(<span class="op">|</span>(<span class="ident">encoding</span>, <span class="ident">ext</span>)<span class="op">|</span> {
-                    <span class="kw">let</span> <span class="ident">path</span> <span class="op">=</span> <span class="ident">options</span>.<span class="ident">path</span>.<span class="ident">with_file_name</span>(<span class="macro">format!</span>(
+                .find_map(|(encoding, ext)| {
+                    <span class="kw">let </span>path = options.path.with_file_name(<span class="macro">format!</span>(
                         <span class="string">&quot;{}.{}&quot;</span>,
-                        <span class="ident">filename</span>.<span class="ident">to_string_lossy</span>(),
-                        <span class="ident">ext</span>
+                        filename.to_string_lossy(),
+                        ext
                     ));
-                    <span class="kw">if</span> <span class="ident">path</span>.<span class="ident">exists</span>() {
-                        <span class="prelude-val">Some</span>((<span class="ident">path</span>, <span class="prelude-val">Some</span>(<span class="ident">encoding</span>)))
-                    } <span class="kw">else</span> {
-                        <span class="prelude-val">None</span>
-                    }
+                    <span class="kw">if </span>path.exists() {
+                        <span class="prelude-val">Some</span>((path, <span class="prelude-val">Some</span>(encoding)))
+                    } <span class="kw">else </span>{
+                        <span class="prelude-val">None
+                    </span>}
                 })
         })
-        .<span class="ident">unwrap_or</span>((<span class="ident">options</span>.<span class="ident">path</span>.<span class="ident">clone</span>(), <span class="prelude-val">None</span>))
+        .unwrap_or((options.path.clone(), <span class="prelude-val">None</span>))
 }
 
-<span class="comment">// Gets the file extension for the compressed version of a file</span>
-<span class="comment">// for a given encoding, if allowed by `FileOptions`.</span>
-<span class="kw">fn</span> <span class="ident">get_extension</span>(<span class="ident">encoding</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">options</span>: <span class="kw-2">&amp;</span><span class="ident">FileOptions</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
-    <span class="kw">if</span> <span class="ident">encoding</span> <span class="op">==</span> <span class="string">&quot;gzip&quot;</span> <span class="op">&amp;&amp;</span> <span class="ident">options</span>.<span class="ident">gzip</span> {
-        <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="string">&quot;gz&quot;</span>.<span class="ident">to_string</span>());
+<span class="comment">// Gets the file extension for the compressed version of a file
+// for a given encoding, if allowed by `FileOptions`.
+</span><span class="kw">fn </span>get_extension(encoding: <span class="kw-2">&amp;</span>str, options: <span class="kw-2">&amp;</span>FileOptions) -&gt; <span class="prelude-ty">Option</span>&lt;String&gt; {
+    <span class="kw">if </span>encoding == <span class="string">&quot;gzip&quot; </span>&amp;&amp; options.gzip {
+        <span class="kw">return </span><span class="prelude-val">Some</span>(<span class="string">&quot;gz&quot;</span>.to_string());
     }
-    <span class="kw">if</span> <span class="ident">encoding</span> <span class="op">==</span> <span class="string">&quot;br&quot;</span> <span class="op">&amp;&amp;</span> <span class="ident">options</span>.<span class="ident">brotli</span> {
-        <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="string">&quot;br&quot;</span>.<span class="ident">to_string</span>());
+    <span class="kw">if </span>encoding == <span class="string">&quot;br&quot; </span>&amp;&amp; options.brotli {
+        <span class="kw">return </span><span class="prelude-val">Some</span>(<span class="string">&quot;br&quot;</span>.to_string());
     }
-    <span class="prelude-val">None</span>
+    <span class="prelude-val">None
+</span>}
+
+<span class="kw">fn </span>mime_for_path(path: <span class="kw-2">&amp;</span>Path) -&gt; Mime {
+    from_path(path).first_or_octet_stream()
 }
 
-<span class="kw">fn</span> <span class="ident">mime_for_path</span>(<span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) -&gt; <span class="ident">Mime</span> {
-    <span class="ident">from_path</span>(<span class="ident">path</span>).<span class="ident">first_or_octet_stream</span>()
-}
-
-<span class="kw">fn</span> <span class="ident">normalize_path</span>(<span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">Path</span>) -&gt; <span class="ident">PathBuf</span> {
-    <span class="ident">path</span>.<span class="ident">components</span>()
-        .<span class="ident">fold</span>(<span class="ident">PathBuf::new</span>(), <span class="op">|</span><span class="kw-2">mut</span> <span class="ident">result</span>, <span class="ident">p</span><span class="op">|</span> <span class="kw">match</span> <span class="ident">p</span> {
-            <span class="ident">Component::Normal</span>(<span class="ident">x</span>) =&gt; {
-                <span class="ident">result</span>.<span class="ident">push</span>(<span class="ident">x</span>);
-                <span class="ident">result</span>
+<span class="kw">fn </span>normalize_path(path: <span class="kw-2">&amp;</span>Path) -&gt; PathBuf {
+    path.components()
+        .fold(PathBuf::new(), |<span class="kw-2">mut </span>result, p| <span class="kw">match </span>p {
+            Component::Normal(x) =&gt; {
+                result.push(x);
+                result
             }
-            <span class="ident">Component::ParentDir</span> =&gt; {
-                <span class="ident">result</span>.<span class="ident">pop</span>();
-                <span class="ident">result</span>
+            Component::ParentDir =&gt; {
+                result.pop();
+                result
             }
-            <span class="kw">_</span> =&gt; <span class="ident">result</span>,
+            <span class="kw">_ </span>=&gt; result,
         })
 }
 
-<span class="comment">// Checks whether a file is modified based on metadata and request headers.</span>
-<span class="kw">fn</span> <span class="ident">not_modified</span>(<span class="ident">metadata</span>: <span class="kw-2">&amp;</span><span class="ident">Metadata</span>, <span class="ident">headers</span>: <span class="kw-2">&amp;</span><span class="ident">HeaderMap</span>) -&gt; <span class="ident">bool</span> {
-    <span class="comment">// If-None-Match header takes precedence over If-Modified-Since</span>
-    <span class="kw">match</span> <span class="ident">headers</span>.<span class="ident">get</span>(<span class="ident">IF_NONE_MATCH</span>) {
-        <span class="prelude-val">Some</span>(<span class="kw">_</span>) =&gt; <span class="ident">entity_tag</span>(<span class="ident">metadata</span>)
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">etag</span><span class="op">|</span> <span class="ident">headers</span>.<span class="ident">get_all</span>(<span class="ident">IF_NONE_MATCH</span>).<span class="ident">iter</span>().<span class="ident">any</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span> <span class="op">==</span> <span class="kw-2">&amp;</span><span class="ident">etag</span>))
-            .<span class="ident">unwrap_or</span>(<span class="bool-val">false</span>),
-        <span class="kw">_</span> =&gt; <span class="ident">headers</span>
-            .<span class="ident">get</span>(<span class="ident">IF_MODIFIED_SINCE</span>)
-            .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>.<span class="ident">to_str</span>().<span class="ident">ok</span>())
-            .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">parse_http_date</span>(<span class="ident">v</span>).<span class="ident">ok</span>())
-            .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">if_modified_time</span><span class="op">|</span> {
-                <span class="ident">metadata</span>
-                    .<span class="ident">modified</span>()
-                    .<span class="ident">map</span>(<span class="op">|</span><span class="ident">modified</span><span class="op">|</span> <span class="ident">modified</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">if_modified_time</span>)
-                    .<span class="ident">ok</span>()
+<span class="comment">// Checks whether a file is modified based on metadata and request headers.
+</span><span class="kw">fn </span>not_modified(metadata: <span class="kw-2">&amp;</span>Metadata, headers: <span class="kw-2">&amp;</span>HeaderMap) -&gt; bool {
+    <span class="comment">// If-None-Match header takes precedence over If-Modified-Since
+    </span><span class="kw">match </span>headers.get(IF_NONE_MATCH) {
+        <span class="prelude-val">Some</span>(<span class="kw">_</span>) =&gt; entity_tag(metadata)
+            .map(|etag| headers.get_all(IF_NONE_MATCH).iter().any(|v| v == <span class="kw-2">&amp;</span>etag))
+            .unwrap_or(<span class="bool-val">false</span>),
+        <span class="kw">_ </span>=&gt; headers
+            .get(IF_MODIFIED_SINCE)
+            .and_then(|v| v.to_str().ok())
+            .and_then(|v| parse_http_date(v).ok())
+            .and_then(|if_modified_time| {
+                metadata
+                    .modified()
+                    .map(|modified| modified &lt;= if_modified_time)
+                    .ok()
             })
-            .<span class="ident">unwrap_or</span>(<span class="bool-val">false</span>),
+            .unwrap_or(<span class="bool-val">false</span>),
     }
 }
 
-<span class="kw">fn</span> <span class="ident">entity_tag</span>(<span class="ident">metadata</span>: <span class="kw-2">&amp;</span><span class="ident">Metadata</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
-    <span class="ident">metadata</span>.<span class="ident">modified</span>().<span class="ident">ok</span>().<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">modified</span><span class="op">|</span> {
-        <span class="ident">modified</span>.<span class="ident">duration_since</span>(<span class="ident">UNIX_EPOCH</span>).<span class="ident">ok</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">duration</span><span class="op">|</span> {
+<span class="kw">fn </span>entity_tag(metadata: <span class="kw-2">&amp;</span>Metadata) -&gt; <span class="prelude-ty">Option</span>&lt;String&gt; {
+    metadata.modified().ok().and_then(|modified| {
+        modified.duration_since(UNIX_EPOCH).ok().map(|duration| {
             <span class="macro">format!</span>(
                 <span class="string">&quot;W/\&quot;{0:x}-{1:x}.{2:x}\&quot;&quot;</span>,
-                <span class="ident">metadata</span>.<span class="ident">len</span>(),
-                <span class="ident">duration</span>.<span class="ident">as_secs</span>(),
-                <span class="ident">duration</span>.<span class="ident">subsec_nanos</span>()
+                metadata.len(),
+                duration.as_secs(),
+                duration.subsec_nanos()
             )
         })
     })
 }
 
-<span class="doccomment">/// Responsible for extracting the file path matched by the glob segment from the URL.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Deserialize</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">FilePathExtractor</span> {
-    <span class="attribute">#[<span class="ident">serde</span>(<span class="ident">rename</span> <span class="op">=</span> <span class="string">&quot;*&quot;</span>)]</span>
-    <span class="ident">parts</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Responsible for extracting the file path matched by the glob segment from the URL.
+</span><span class="attribute">#[derive(Debug, Deserialize)]
+</span><span class="kw">pub struct </span>FilePathExtractor {
+    <span class="attribute">#[serde(rename = <span class="string">&quot;*&quot;</span>)]
+    </span>parts: Vec&lt;String&gt;,
 }
 
-<span class="kw">impl</span> <span class="ident">StateData</span> <span class="kw">for</span> <span class="ident">FilePathExtractor</span> {}
+<span class="kw">impl </span>StateData <span class="kw">for </span>FilePathExtractor {}
 
-<span class="kw">impl</span> <span class="ident">StaticResponseExtender</span> <span class="kw">for</span> <span class="ident">FilePathExtractor</span> {
-    <span class="kw">type</span> <span class="ident">ResBody</span> <span class="op">=</span> <span class="ident">Body</span>;
-    <span class="kw">fn</span> <span class="ident">extend</span>(<span class="ident">_state</span>: <span class="kw-2">&amp;mut</span> <span class="ident">State</span>, <span class="ident">_res</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Response</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::ResBody</span><span class="op">&gt;</span>) {}
+<span class="kw">impl </span>StaticResponseExtender <span class="kw">for </span>FilePathExtractor {
+    <span class="kw">type </span>ResBody = Body;
+    <span class="kw">fn </span>extend(_state: <span class="kw-2">&amp;mut </span>State, _res: <span class="kw-2">&amp;mut </span>Response&lt;<span class="self">Self</span>::ResBody&gt;) {}
 }
 
-<span class="comment">// Creates a Stream from the given file, for streaming as part of the Response.</span>
-<span class="comment">// Inspired by Warp https://github.com/seanmonstar/warp/blob/master/src/filters/fs.rs</span>
-<span class="comment">// Inspired by tokio https://github.com/tokio-rs/tokio/blob/master/tokio/src/io/util/read_buf.rs</span>
-<span class="comment">// Thanks @seanmonstar and @carllerche.</span>
-<span class="kw">fn</span> <span class="ident">file_stream</span>(
-    <span class="kw-2">mut</span> <span class="ident">f</span>: <span class="ident">File</span>,
-    <span class="ident">buf_size</span>: <span class="ident">usize</span>,
-    <span class="kw-2">mut</span> <span class="ident">len</span>: <span class="ident">u64</span>,
-) -&gt; <span class="kw">impl</span> <span class="ident">TryStream</span><span class="op">&lt;</span><span class="prelude-val">Ok</span> <span class="op">=</span> <span class="ident">Bytes</span>, <span class="ident">Error</span> <span class="op">=</span> <span class="ident">io::Error</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> {
-    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> <span class="ident">BytesMut::with_capacity</span>(<span class="ident">buf_size</span>);
-    <span class="ident">stream::poll_fn</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">cx</span><span class="op">|</span> {
-        <span class="kw">if</span> <span class="ident">len</span> <span class="op">==</span> <span class="number">0</span> {
-            <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">None</span>);
+<span class="comment">// Creates a Stream from the given file, for streaming as part of the Response.
+// Inspired by Warp https://github.com/seanmonstar/warp/blob/master/src/filters/fs.rs
+// Inspired by tokio https://github.com/tokio-rs/tokio/blob/master/tokio/src/io/util/read_buf.rs
+// Thanks @seanmonstar and @carllerche.
+</span><span class="kw">fn </span>file_stream(
+    <span class="kw-2">mut </span>f: File,
+    buf_size: usize,
+    <span class="kw-2">mut </span>len: u64,
+) -&gt; <span class="kw">impl </span>TryStream&lt;<span class="prelude-val">Ok </span>= Bytes, Error = io::Error&gt; + Send {
+    <span class="kw">let </span><span class="kw-2">mut </span>buf = BytesMut::with_capacity(buf_size);
+    stream::poll_fn(<span class="kw">move </span>|cx| {
+        <span class="kw">if </span>len == <span class="number">0 </span>{
+            <span class="kw">return </span>Poll::Ready(<span class="prelude-val">None</span>);
         }
-        <span class="kw">if</span> <span class="ident">buf</span>.<span class="ident">remaining_mut</span>() <span class="op">&lt;</span> <span class="ident">buf_size</span> {
-            <span class="ident">buf</span>.<span class="ident">reserve</span>(<span class="ident">buf_size</span>);
+        <span class="kw">if </span>buf.remaining_mut() &lt; buf_size {
+            buf.reserve(buf_size);
         }
 
-        <span class="kw">let</span> <span class="ident">dst</span> <span class="op">=</span> <span class="ident">buf</span>.<span class="ident">chunk_mut</span>();
-        <span class="kw">let</span> <span class="ident">dst</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span>(<span class="ident">dst</span> <span class="kw">as</span> <span class="kw-2">*mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="kw-2">*mut</span> [<span class="ident">MaybeUninit</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>]) };
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">read_buf</span> <span class="op">=</span> <span class="ident">ReadBuf::uninit</span>(<span class="ident">dst</span>);
-        <span class="kw">let</span> <span class="ident">read</span> <span class="op">=</span> <span class="ident">Pin::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">f</span>).<span class="ident">poll_read</span>(<span class="ident">cx</span>, <span class="kw-2">&amp;mut</span> <span class="ident">read_buf</span>);
-        <span class="macro">ready!</span>(<span class="ident">read</span>).<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">err</span><span class="op">|</span> {
-            <span class="macro">debug!</span>(<span class="string">&quot;file read error: {}&quot;</span>, <span class="ident">err</span>);
-            <span class="ident">err</span>
+        <span class="kw">let </span>dst = buf.chunk_mut();
+        <span class="kw">let </span>dst = <span class="kw">unsafe </span>{ <span class="kw-2">&amp;mut *</span>(dst <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_ as </span><span class="kw-2">*mut </span>[MaybeUninit&lt;u8&gt;]) };
+        <span class="kw">let </span><span class="kw-2">mut </span>read_buf = ReadBuf::uninit(dst);
+        <span class="kw">let </span>read = Pin::new(<span class="kw-2">&amp;mut </span>f).poll_read(cx, <span class="kw-2">&amp;mut </span>read_buf);
+        <span class="macro">ready!</span>(read).map_err(|err| {
+            <span class="macro">debug!</span>(<span class="string">&quot;file read error: {}&quot;</span>, err);
+            err
         })<span class="question-mark">?</span>;
 
-        <span class="kw">if</span> <span class="ident">read_buf</span>.<span class="ident">filled</span>().<span class="ident">is_empty</span>() {
+        <span class="kw">if </span>read_buf.filled().is_empty() {
             <span class="macro">debug!</span>(<span class="string">&quot;file read found EOF before expected length&quot;</span>);
-            <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">io::Error::new</span>(
-                <span class="ident">io::ErrorKind::UnexpectedEof</span>,
+            <span class="kw">return </span>Poll::Ready(<span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(io::Error::new(
+                io::ErrorKind::UnexpectedEof,
                 <span class="string">&quot;file read found EOF before expected length&quot;</span>,
             ))));
         }
 
-        <span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="ident">read_buf</span>.<span class="ident">filled</span>().<span class="ident">len</span>();
-        <span class="comment">// Safety: This is guaranteed to be the number of initialized (and read)</span>
-        <span class="comment">// bytes due to the invariants provided by `ReadBuf::filled`.</span>
-        <span class="kw">unsafe</span> {
-            <span class="ident">buf</span>.<span class="ident">advance_mut</span>(<span class="ident">n</span>);
+        <span class="kw">let </span>n = read_buf.filled().len();
+        <span class="comment">// Safety: This is guaranteed to be the number of initialized (and read)
+        // bytes due to the invariants provided by `ReadBuf::filled`.
+        </span><span class="kw">unsafe </span>{
+            buf.advance_mut(n);
         }
-        <span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="ident">n</span> <span class="kw">as</span> <span class="ident">u64</span>;
+        <span class="kw">let </span>n = n <span class="kw">as </span>u64;
 
-        <span class="kw">let</span> <span class="ident">chunk</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">n</span> <span class="op">&gt;</span> <span class="ident">len</span> {
-            <span class="kw">let</span> <span class="ident">chunk</span> <span class="op">=</span> <span class="ident">buf</span>.<span class="ident">split_to</span>(<span class="ident">len</span> <span class="kw">as</span> <span class="ident">usize</span>);
-            <span class="ident">len</span> <span class="op">=</span> <span class="number">0</span>;
-            <span class="ident">chunk</span>
-        } <span class="kw">else</span> {
-            <span class="ident">len</span> <span class="op">-</span><span class="op">=</span> <span class="ident">n</span>;
-            <span class="ident">buf</span>.<span class="ident">split</span>()
+        <span class="kw">let </span>chunk = <span class="kw">if </span>n &gt; len {
+            <span class="kw">let </span>chunk = buf.split_to(len <span class="kw">as </span>usize);
+            len = <span class="number">0</span>;
+            chunk
+        } <span class="kw">else </span>{
+            len -= n;
+            buf.split()
         };
 
-        <span class="ident">Poll::Ready</span>(<span class="prelude-val">Some</span>(<span class="prelude-val">Ok</span>(<span class="ident">chunk</span>.<span class="ident">freeze</span>())))
+        Poll::Ready(<span class="prelude-val">Some</span>(<span class="prelude-val">Ok</span>(chunk.freeze())))
     })
 }
 
-<span class="kw">fn</span> <span class="ident">optimal_buf_size</span>(<span class="ident">metadata</span>: <span class="kw-2">&amp;</span><span class="ident">Metadata</span>) -&gt; <span class="ident">usize</span> {
-    <span class="kw">let</span> <span class="ident">block_size</span> <span class="op">=</span> <span class="ident">get_block_size</span>(<span class="ident">metadata</span>);
+<span class="kw">fn </span>optimal_buf_size(metadata: <span class="kw-2">&amp;</span>Metadata) -&gt; usize {
+    <span class="kw">let </span>block_size = get_block_size(metadata);
 
-    <span class="comment">// If file length is smaller than block size, don&#39;t waste space</span>
-    <span class="comment">// reserving a bigger-than-needed buffer.</span>
-    <span class="ident">cmp::min</span>(<span class="ident">block_size</span> <span class="kw">as</span> <span class="ident">u64</span>, <span class="ident">metadata</span>.<span class="ident">len</span>()) <span class="kw">as</span> <span class="ident">usize</span>
+    <span class="comment">// If file length is smaller than block size, don&#39;t waste space
+    // reserving a bigger-than-needed buffer.
+    </span>cmp::min(block_size <span class="kw">as </span>u64, metadata.len()) <span class="kw">as </span>usize
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">unix</span>)]</span>
-<span class="kw">fn</span> <span class="ident">get_block_size</span>(<span class="ident">metadata</span>: <span class="kw-2">&amp;</span><span class="ident">Metadata</span>) -&gt; <span class="ident">usize</span> {
-    <span class="kw">use</span> <span class="ident">std::os::unix::fs::MetadataExt</span>;
-    <span class="ident">metadata</span>.<span class="ident">blksize</span>() <span class="kw">as</span> <span class="ident">usize</span>
+<span class="attribute">#[cfg(unix)]
+</span><span class="kw">fn </span>get_block_size(metadata: <span class="kw-2">&amp;</span>Metadata) -&gt; usize {
+    <span class="kw">use </span>std::os::unix::fs::MetadataExt;
+    metadata.blksize() <span class="kw">as </span>usize
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">unix</span>))]</span>
-<span class="kw">fn</span> <span class="ident">get_block_size</span>(<span class="ident">metadata</span>: <span class="kw-2">&amp;</span><span class="ident">Metadata</span>) -&gt; <span class="ident">usize</span> {
-    <span class="number">8_192</span>
-}
+<span class="attribute">#[cfg(not(unix))]
+</span><span class="kw">fn </span>get_block_size(metadata: <span class="kw-2">&amp;</span>Metadata) -&gt; usize {
+    <span class="number">8_192
+</span>}
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">tests</span> {
-    <span class="kw">use</span> <span class="ident"><span class="kw">super</span>::FileOptions</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::builder</span>::{<span class="ident">build_simple_router</span>, <span class="ident">DefineSingleRoute</span>, <span class="ident">DrawRoutes</span>};
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::Router</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::test::TestServer</span>;
-    <span class="kw">use</span> <span class="ident">hyper::header</span>::<span class="kw-2">*</span>;
-    <span class="kw">use</span> <span class="ident">hyper::StatusCode</span>;
-    <span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">fs</span>, <span class="ident">str</span>};
+<span class="attribute">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use </span><span class="kw">super</span>::FileOptions;
+    <span class="kw">use </span><span class="kw">crate</span>::router::builder::{build_simple_router, DefineSingleRoute, DrawRoutes};
+    <span class="kw">use </span><span class="kw">crate</span>::router::Router;
+    <span class="kw">use </span><span class="kw">crate</span>::test::TestServer;
+    <span class="kw">use </span>hyper::header::<span class="kw-2">*</span>;
+    <span class="kw">use </span>hyper::StatusCode;
+    <span class="kw">use </span>std::{fs, str};
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">assets_guesses_content_type</span>() {
-        <span class="kw">let</span> <span class="ident">expected_docs</span> <span class="op">=</span> <span class="macro">vec!</span>[
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>assets_guesses_content_type() {
+        <span class="kw">let </span>expected_docs = <span class="macro">vec!</span>[
             (
                 <span class="string">&quot;doc.html&quot;</span>,
-                <span class="ident">HeaderValue::from_static</span>(<span class="string">&quot;text/html&quot;</span>),
+                HeaderValue::from_static(<span class="string">&quot;text/html&quot;</span>),
                 <span class="string">&quot;&lt;html&gt;I am a doc.&lt;/html&gt;&quot;</span>,
             ),
             (
                 <span class="string">&quot;file.txt&quot;</span>,
-                <span class="ident">HeaderValue::from_static</span>(<span class="string">&quot;text/plain&quot;</span>),
+                HeaderValue::from_static(<span class="string">&quot;text/plain&quot;</span>),
                 <span class="string">&quot;I am a file&quot;</span>,
             ),
             (
                 <span class="string">&quot;styles/style.css&quot;</span>,
-                <span class="ident">HeaderValue::from_static</span>(<span class="string">&quot;text/css&quot;</span>),
+                HeaderValue::from_static(<span class="string">&quot;text/css&quot;</span>),
                 <span class="string">&quot;.styled { border: none; }&quot;</span>,
             ),
             (
                 <span class="string">&quot;scripts/script.js&quot;</span>,
-                <span class="ident">HeaderValue::from_static</span>(<span class="string">&quot;application/javascript&quot;</span>),
+                HeaderValue::from_static(<span class="string">&quot;application/javascript&quot;</span>),
                 <span class="string">&quot;console.log(&#39;I am javascript!&#39;);&quot;</span>,
             ),
         ];
 
-        <span class="kw">for</span> <span class="ident">doc</span> <span class="kw">in</span> <span class="ident">expected_docs</span> {
-            <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">test_server</span>()
-                .<span class="ident">client</span>()
-                .<span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">&quot;http://localhost/{}&quot;</span>, <span class="ident">doc</span>.<span class="number">0</span>))
-                .<span class="ident">perform</span>()
-                .<span class="ident">unwrap</span>();
+        <span class="kw">for </span>doc <span class="kw">in </span>expected_docs {
+            <span class="kw">let </span>response = test_server()
+                .client()
+                .get(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">&quot;http://localhost/{}&quot;</span>, doc.<span class="number">0</span>))
+                .perform()
+                .unwrap();
 
-            <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">status</span>(), <span class="ident">StatusCode::OK</span>);
-            <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">headers</span>().<span class="ident">get</span>(<span class="ident">CONTENT_TYPE</span>).<span class="ident">unwrap</span>(), <span class="ident">doc</span>.<span class="number">1</span>);
+            <span class="macro">assert_eq!</span>(response.status(), StatusCode::OK);
+            <span class="macro">assert_eq!</span>(response.headers().get(CONTENT_TYPE).unwrap(), doc.<span class="number">1</span>);
 
-            <span class="kw">let</span> <span class="ident">body</span> <span class="op">=</span> <span class="ident">response</span>.<span class="ident">read_body</span>().<span class="ident">unwrap</span>();
-            <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span><span class="ident">body</span>[..], <span class="ident">doc</span>.<span class="number">2</span>.<span class="ident">as_bytes</span>());
+            <span class="kw">let </span>body = response.read_body().unwrap();
+            <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>body[..], doc.<span class="number">2</span>.as_bytes());
         }
     }
 
-    <span class="comment">// Examples derived from https://www.owasp.org/index.php/Path_Traversal</span>
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">assets_path_traversal</span>() {
-        <span class="kw">let</span> <span class="ident">traversal_attempts</span> <span class="op">=</span> <span class="macro">vec!</span>[
+    <span class="comment">// Examples derived from https://www.owasp.org/index.php/Path_Traversal
+    </span><span class="attribute">#[test]
+    </span><span class="kw">fn </span>assets_path_traversal() {
+        <span class="kw">let </span>traversal_attempts = <span class="macro">vec!</span>[
             <span class="string">r&quot;../private_files/secret.txt&quot;</span>,
             <span class="string">r&quot;%2e%2e%2fprivate_files/secret.txt&quot;</span>,
             <span class="string">r&quot;%2e%2e/private_files/secret.txt&quot;</span>,
@@ -1355,350 +1355,350 @@
             <span class="string">r&quot;..%c1%9cprivate_files/secret.txt&quot;</span>,
             <span class="string">&quot;/etc/passwd&quot;</span>,
         ];
-        <span class="kw">for</span> <span class="ident">attempt</span> <span class="kw">in</span> <span class="ident">traversal_attempts</span> {
-            <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">test_server</span>()
-                .<span class="ident">client</span>()
-                .<span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">&quot;http://localhost/{}&quot;</span>, <span class="ident">attempt</span>))
-                .<span class="ident">perform</span>()
-                .<span class="ident">unwrap</span>();
+        <span class="kw">for </span>attempt <span class="kw">in </span>traversal_attempts {
+            <span class="kw">let </span>response = test_server()
+                .client()
+                .get(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">&quot;http://localhost/{}&quot;</span>, attempt))
+                .perform()
+                .unwrap();
 
-            <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">status</span>(), <span class="ident">StatusCode::NOT_FOUND</span>);
+            <span class="macro">assert_eq!</span>(response.status(), StatusCode::NOT_FOUND);
         }
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">assets_single_file</span>() {
-        <span class="kw">let</span> <span class="ident">test_server</span> <span class="op">=</span> <span class="ident">TestServer::new</span>(<span class="ident">build_simple_router</span>(<span class="op">|</span><span class="ident">route</span><span class="op">|</span> {
-            <span class="ident">route</span>.<span class="ident">get</span>(<span class="string">&quot;/&quot;</span>).<span class="ident">to_file</span>(<span class="string">&quot;resources/test/assets/doc.html&quot;</span>)
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>assets_single_file() {
+        <span class="kw">let </span>test_server = TestServer::new(build_simple_router(|route| {
+            route.get(<span class="string">&quot;/&quot;</span>).to_file(<span class="string">&quot;resources/test/assets/doc.html&quot;</span>)
         }))
-        .<span class="ident">unwrap</span>();
+        .unwrap();
 
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">test_server</span>
-            .<span class="ident">client</span>()
-            .<span class="ident">get</span>(<span class="string">&quot;http://localhost/&quot;</span>)
-            .<span class="ident">perform</span>()
-            .<span class="ident">unwrap</span>();
+        <span class="kw">let </span>response = test_server
+            .client()
+            .get(<span class="string">&quot;http://localhost/&quot;</span>)
+            .perform()
+            .unwrap();
 
-        <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">status</span>(), <span class="ident">StatusCode::OK</span>);
-        <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">headers</span>().<span class="ident">get</span>(<span class="ident">CONTENT_TYPE</span>).<span class="ident">unwrap</span>(), <span class="string">&quot;text/html&quot;</span>);
+        <span class="macro">assert_eq!</span>(response.status(), StatusCode::OK);
+        <span class="macro">assert_eq!</span>(response.headers().get(CONTENT_TYPE).unwrap(), <span class="string">&quot;text/html&quot;</span>);
 
-        <span class="kw">let</span> <span class="ident">body</span> <span class="op">=</span> <span class="ident">response</span>.<span class="ident">read_body</span>().<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span><span class="ident">body</span>[..], <span class="string">b&quot;&lt;html&gt;I am a doc.&lt;/html&gt;&quot;</span>);
+        <span class="kw">let </span>body = response.read_body().unwrap();
+        <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>body[..], <span class="string">b&quot;&lt;html&gt;I am a doc.&lt;/html&gt;&quot;</span>);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">assets_if_none_match_etag</span>() {
-        <span class="kw">use</span> <span class="ident">hyper::header</span>::{<span class="ident">ETAG</span>, <span class="ident">IF_NONE_MATCH</span>};
-        <span class="kw">use</span> <span class="ident">std::fs::File</span>;
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>assets_if_none_match_etag() {
+        <span class="kw">use </span>hyper::header::{ETAG, IF_NONE_MATCH};
+        <span class="kw">use </span>std::fs::File;
 
-        <span class="kw">let</span> <span class="ident">path</span> <span class="op">=</span> <span class="string">&quot;resources/test/assets/doc.html&quot;</span>;
-        <span class="kw">let</span> <span class="ident">test_server</span> <span class="op">=</span>
-            <span class="ident">TestServer::new</span>(<span class="ident">build_simple_router</span>(<span class="op">|</span><span class="ident">route</span><span class="op">|</span> <span class="ident">route</span>.<span class="ident">get</span>(<span class="string">&quot;/&quot;</span>).<span class="ident">to_file</span>(<span class="ident">path</span>))).<span class="ident">unwrap</span>();
+        <span class="kw">let </span>path = <span class="string">&quot;resources/test/assets/doc.html&quot;</span>;
+        <span class="kw">let </span>test_server =
+            TestServer::new(build_simple_router(|route| route.get(<span class="string">&quot;/&quot;</span>).to_file(path))).unwrap();
 
-        <span class="kw">let</span> <span class="ident">etag</span> <span class="op">=</span> <span class="ident">File::open</span>(<span class="ident">path</span>)
-            .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">file</span><span class="op">|</span> <span class="ident">file</span>.<span class="ident">metadata</span>())
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">meta</span><span class="op">|</span> <span class="ident"><span class="kw">super</span>::entity_tag</span>(<span class="kw-2">&amp;</span><span class="ident">meta</span>).<span class="ident">expect</span>(<span class="string">&quot;entity tag&quot;</span>))
-            .<span class="ident">unwrap</span>();
+        <span class="kw">let </span>etag = File::open(path)
+            .and_then(|file| file.metadata())
+            .map(|meta| <span class="kw">super</span>::entity_tag(<span class="kw-2">&amp;</span>meta).expect(<span class="string">&quot;entity tag&quot;</span>))
+            .unwrap();
 
-        <span class="comment">// matching etag</span>
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">test_server</span>
-            .<span class="ident">client</span>()
-            .<span class="ident">get</span>(<span class="string">&quot;http://localhost/&quot;</span>)
-            .<span class="ident">with_header</span>(
-                <span class="ident">IF_NONE_MATCH</span>,
-                <span class="ident">HeaderValue::from_bytes</span>(<span class="ident">etag</span>.<span class="ident">as_bytes</span>()).<span class="ident">unwrap</span>(),
+        <span class="comment">// matching etag
+        </span><span class="kw">let </span>response = test_server
+            .client()
+            .get(<span class="string">&quot;http://localhost/&quot;</span>)
+            .with_header(
+                IF_NONE_MATCH,
+                HeaderValue::from_bytes(etag.as_bytes()).unwrap(),
             )
-            .<span class="ident">perform</span>()
-            .<span class="ident">unwrap</span>();
+            .perform()
+            .unwrap();
 
-        <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">status</span>(), <span class="ident">StatusCode::NOT_MODIFIED</span>);
+        <span class="macro">assert_eq!</span>(response.status(), StatusCode::NOT_MODIFIED);
 
-        <span class="comment">// not matching etag</span>
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">test_server</span>
-            .<span class="ident">client</span>()
-            .<span class="ident">get</span>(<span class="string">&quot;http://localhost/&quot;</span>)
-            .<span class="ident">with_header</span>(<span class="ident">IF_NONE_MATCH</span>, <span class="ident">HeaderValue::from_bytes</span>(<span class="string">b&quot;bogus&quot;</span>).<span class="ident">unwrap</span>())
-            .<span class="ident">perform</span>()
-            .<span class="ident">unwrap</span>();
+        <span class="comment">// not matching etag
+        </span><span class="kw">let </span>response = test_server
+            .client()
+            .get(<span class="string">&quot;http://localhost/&quot;</span>)
+            .with_header(IF_NONE_MATCH, HeaderValue::from_bytes(<span class="string">b&quot;bogus&quot;</span>).unwrap())
+            .perform()
+            .unwrap();
 
-        <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">status</span>(), <span class="ident">StatusCode::OK</span>);
+        <span class="macro">assert_eq!</span>(response.status(), StatusCode::OK);
         <span class="macro">assert_eq!</span>(
-            <span class="ident">response</span>.<span class="ident">headers</span>().<span class="ident">get</span>(<span class="ident">ETAG</span>).<span class="ident">unwrap</span>().<span class="ident">to_str</span>().<span class="ident">unwrap</span>(),
-            <span class="ident">etag</span>
+            response.headers().get(ETAG).unwrap().to_str().unwrap(),
+            etag
         );
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">assets_if_modified_since</span>() {
-        <span class="kw">use</span> <span class="ident">httpdate::fmt_http_date</span>;
-        <span class="kw">use</span> <span class="ident">hyper::header::IF_MODIFIED_SINCE</span>;
-        <span class="kw">use</span> <span class="ident">std::fs::File</span>;
-        <span class="kw">use</span> <span class="ident">std::time::Duration</span>;
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>assets_if_modified_since() {
+        <span class="kw">use </span>httpdate::fmt_http_date;
+        <span class="kw">use </span>hyper::header::IF_MODIFIED_SINCE;
+        <span class="kw">use </span>std::fs::File;
+        <span class="kw">use </span>std::time::Duration;
 
-        <span class="kw">let</span> <span class="ident">path</span> <span class="op">=</span> <span class="string">&quot;resources/test/assets/doc.html&quot;</span>;
-        <span class="kw">let</span> <span class="ident">test_server</span> <span class="op">=</span>
-            <span class="ident">TestServer::new</span>(<span class="ident">build_simple_router</span>(<span class="op">|</span><span class="ident">route</span><span class="op">|</span> <span class="ident">route</span>.<span class="ident">get</span>(<span class="string">&quot;/&quot;</span>).<span class="ident">to_file</span>(<span class="ident">path</span>))).<span class="ident">unwrap</span>();
+        <span class="kw">let </span>path = <span class="string">&quot;resources/test/assets/doc.html&quot;</span>;
+        <span class="kw">let </span>test_server =
+            TestServer::new(build_simple_router(|route| route.get(<span class="string">&quot;/&quot;</span>).to_file(path))).unwrap();
 
-        <span class="kw">let</span> <span class="ident">modified</span> <span class="op">=</span> <span class="ident">File::open</span>(<span class="ident">path</span>)
-            .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">file</span><span class="op">|</span> <span class="ident">file</span>.<span class="ident">metadata</span>())
-            .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">meta</span><span class="op">|</span> <span class="ident">meta</span>.<span class="ident">modified</span>())
-            .<span class="ident">unwrap</span>();
+        <span class="kw">let </span>modified = File::open(path)
+            .and_then(|file| file.metadata())
+            .and_then(|meta| meta.modified())
+            .unwrap();
 
-        <span class="comment">// if-modified-since a newer date</span>
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">test_server</span>
-            .<span class="ident">client</span>()
-            .<span class="ident">get</span>(<span class="string">&quot;http://localhost/&quot;</span>)
-            .<span class="ident">with_header</span>(
-                <span class="ident">IF_MODIFIED_SINCE</span>,
-                <span class="ident">HeaderValue::from_bytes</span>(<span class="ident">fmt_http_date</span>(<span class="ident">modified</span> <span class="op">+</span> <span class="ident">Duration::new</span>(<span class="number">5</span>, <span class="number">0</span>)).<span class="ident">as_bytes</span>())
-                    .<span class="ident">unwrap</span>(),
+        <span class="comment">// if-modified-since a newer date
+        </span><span class="kw">let </span>response = test_server
+            .client()
+            .get(<span class="string">&quot;http://localhost/&quot;</span>)
+            .with_header(
+                IF_MODIFIED_SINCE,
+                HeaderValue::from_bytes(fmt_http_date(modified + Duration::new(<span class="number">5</span>, <span class="number">0</span>)).as_bytes())
+                    .unwrap(),
             )
-            .<span class="ident">perform</span>()
-            .<span class="ident">unwrap</span>();
+            .perform()
+            .unwrap();
 
-        <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">status</span>(), <span class="ident">StatusCode::NOT_MODIFIED</span>);
+        <span class="macro">assert_eq!</span>(response.status(), StatusCode::NOT_MODIFIED);
 
-        <span class="comment">// if-modified-since a older date</span>
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">test_server</span>
-            .<span class="ident">client</span>()
-            .<span class="ident">get</span>(<span class="string">&quot;http://localhost/&quot;</span>)
-            .<span class="ident">with_header</span>(
-                <span class="ident">IF_MODIFIED_SINCE</span>,
-                <span class="ident">HeaderValue::from_bytes</span>(<span class="ident">fmt_http_date</span>(<span class="ident">modified</span> <span class="op">-</span> <span class="ident">Duration::new</span>(<span class="number">5</span>, <span class="number">0</span>)).<span class="ident">as_bytes</span>())
-                    .<span class="ident">unwrap</span>(),
+        <span class="comment">// if-modified-since a older date
+        </span><span class="kw">let </span>response = test_server
+            .client()
+            .get(<span class="string">&quot;http://localhost/&quot;</span>)
+            .with_header(
+                IF_MODIFIED_SINCE,
+                HeaderValue::from_bytes(fmt_http_date(modified - Duration::new(<span class="number">5</span>, <span class="number">0</span>)).as_bytes())
+                    .unwrap(),
             )
-            .<span class="ident">perform</span>()
-            .<span class="ident">unwrap</span>();
+            .perform()
+            .unwrap();
 
-        <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">status</span>(), <span class="ident">StatusCode::OK</span>);
+        <span class="macro">assert_eq!</span>(response.status(), StatusCode::OK);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">assets_with_cache_control</span>() {
-        <span class="kw">let</span> <span class="ident">router</span> <span class="op">=</span> <span class="ident">build_simple_router</span>(<span class="op">|</span><span class="ident">route</span><span class="op">|</span> {
-            <span class="ident">route</span>.<span class="ident">get</span>(<span class="string">&quot;/*&quot;</span>).<span class="ident">to_dir</span>(
-                <span class="ident">FileOptions::new</span>(<span class="string">&quot;resources/test/assets&quot;</span>)
-                    .<span class="ident">with_cache_control</span>(<span class="string">&quot;no-cache&quot;</span>)
-                    .<span class="ident">build</span>(),
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>assets_with_cache_control() {
+        <span class="kw">let </span>router = build_simple_router(|route| {
+            route.get(<span class="string">&quot;/*&quot;</span>).to_dir(
+                FileOptions::new(<span class="string">&quot;resources/test/assets&quot;</span>)
+                    .with_cache_control(<span class="string">&quot;no-cache&quot;</span>)
+                    .build(),
             )
         });
-        <span class="kw">let</span> <span class="ident">server</span> <span class="op">=</span> <span class="ident">TestServer::new</span>(<span class="ident">router</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let </span>server = TestServer::new(router).unwrap();
 
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">server</span>
-            .<span class="ident">client</span>()
-            .<span class="ident">get</span>(<span class="string">&quot;http://localhost/doc.html&quot;</span>)
-            .<span class="ident">perform</span>()
-            .<span class="ident">unwrap</span>();
-
-        <span class="macro">assert_eq!</span>(
-            <span class="ident">response</span>
-                .<span class="ident">headers</span>()
-                .<span class="ident">get</span>(<span class="ident">CACHE_CONTROL</span>)
-                .<span class="ident">unwrap</span>()
-                .<span class="ident">to_str</span>()
-                .<span class="ident">unwrap</span>(),
-            <span class="string">&quot;no-cache&quot;</span>
-        );
-    }
-
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">assets_default_cache_control</span>() {
-        <span class="kw">let</span> <span class="ident">router</span> <span class="op">=</span> <span class="ident">build_simple_router</span>(<span class="op">|</span><span class="ident">route</span><span class="op">|</span> <span class="ident">route</span>.<span class="ident">get</span>(<span class="string">&quot;/*&quot;</span>).<span class="ident">to_dir</span>(<span class="string">&quot;resources/test/assets&quot;</span>));
-        <span class="kw">let</span> <span class="ident">server</span> <span class="op">=</span> <span class="ident">TestServer::new</span>(<span class="ident">router</span>).<span class="ident">unwrap</span>();
-
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">server</span>
-            .<span class="ident">client</span>()
-            .<span class="ident">get</span>(<span class="string">&quot;http://localhost/doc.html&quot;</span>)
-            .<span class="ident">perform</span>()
-            .<span class="ident">unwrap</span>();
+        <span class="kw">let </span>response = server
+            .client()
+            .get(<span class="string">&quot;http://localhost/doc.html&quot;</span>)
+            .perform()
+            .unwrap();
 
         <span class="macro">assert_eq!</span>(
-            <span class="ident">response</span>
-                .<span class="ident">headers</span>()
-                .<span class="ident">get</span>(<span class="ident">CACHE_CONTROL</span>)
-                .<span class="ident">unwrap</span>()
-                .<span class="ident">to_str</span>()
-                .<span class="ident">unwrap</span>(),
-            <span class="string">&quot;public&quot;</span>
-        );
+            response
+                .headers()
+                .get(CACHE_CONTROL)
+                .unwrap()
+                .to_str()
+                .unwrap(),
+            <span class="string">&quot;no-cache&quot;
+        </span>);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">assets_compressed_if_accept_and_exists</span>() {
-        <span class="kw">let</span> <span class="ident">compressed_options</span> <span class="op">=</span> <span class="macro">vec!</span>[
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>assets_default_cache_control() {
+        <span class="kw">let </span>router = build_simple_router(|route| route.get(<span class="string">&quot;/*&quot;</span>).to_dir(<span class="string">&quot;resources/test/assets&quot;</span>));
+        <span class="kw">let </span>server = TestServer::new(router).unwrap();
+
+        <span class="kw">let </span>response = server
+            .client()
+            .get(<span class="string">&quot;http://localhost/doc.html&quot;</span>)
+            .perform()
+            .unwrap();
+
+        <span class="macro">assert_eq!</span>(
+            response
+                .headers()
+                .get(CACHE_CONTROL)
+                .unwrap()
+                .to_str()
+                .unwrap(),
+            <span class="string">&quot;public&quot;
+        </span>);
+    }
+
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>assets_compressed_if_accept_and_exists() {
+        <span class="kw">let </span>compressed_options = <span class="macro">vec!</span>[
             (
                 <span class="string">&quot;gzip&quot;</span>,
                 <span class="string">&quot;.gz&quot;</span>,
-                <span class="ident">FileOptions::new</span>(<span class="string">&quot;resources/test/assets&quot;</span>)
-                    .<span class="ident">with_gzip</span>(<span class="bool-val">true</span>)
-                    .<span class="ident">build</span>(),
+                FileOptions::new(<span class="string">&quot;resources/test/assets&quot;</span>)
+                    .with_gzip(<span class="bool-val">true</span>)
+                    .build(),
             ),
             (
                 <span class="string">&quot;br&quot;</span>,
                 <span class="string">&quot;.br&quot;</span>,
-                <span class="ident">FileOptions::new</span>(<span class="string">&quot;resources/test/assets&quot;</span>)
-                    .<span class="ident">with_brotli</span>(<span class="bool-val">true</span>)
-                    .<span class="ident">build</span>(),
+                FileOptions::new(<span class="string">&quot;resources/test/assets&quot;</span>)
+                    .with_brotli(<span class="bool-val">true</span>)
+                    .build(),
             ),
         ];
 
-        <span class="kw">for</span> (<span class="ident">encoding</span>, <span class="ident">extension</span>, <span class="ident">options</span>) <span class="kw">in</span> <span class="ident">compressed_options</span> {
-            <span class="kw">let</span> <span class="ident">router</span> <span class="op">=</span> <span class="ident">build_simple_router</span>(<span class="op">|</span><span class="ident">route</span><span class="op">|</span> <span class="ident">route</span>.<span class="ident">get</span>(<span class="string">&quot;/*&quot;</span>).<span class="ident">to_dir</span>(<span class="ident">options</span>));
-            <span class="kw">let</span> <span class="ident">server</span> <span class="op">=</span> <span class="ident">TestServer::new</span>(<span class="ident">router</span>).<span class="ident">unwrap</span>();
+        <span class="kw">for </span>(encoding, extension, options) <span class="kw">in </span>compressed_options {
+            <span class="kw">let </span>router = build_simple_router(|route| route.get(<span class="string">&quot;/*&quot;</span>).to_dir(options));
+            <span class="kw">let </span>server = TestServer::new(router).unwrap();
 
-            <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">server</span>
-                .<span class="ident">client</span>()
-                .<span class="ident">get</span>(<span class="string">&quot;http://localhost/doc.html&quot;</span>)
-                .<span class="ident">with_header</span>(<span class="ident">ACCEPT_ENCODING</span>, <span class="ident">HeaderValue::from_str</span>(<span class="ident">encoding</span>).<span class="ident">unwrap</span>())
-                .<span class="ident">perform</span>()
-                .<span class="ident">unwrap</span>();
+            <span class="kw">let </span>response = server
+                .client()
+                .get(<span class="string">&quot;http://localhost/doc.html&quot;</span>)
+                .with_header(ACCEPT_ENCODING, HeaderValue::from_str(encoding).unwrap())
+                .perform()
+                .unwrap();
 
             <span class="macro">assert_eq!</span>(
-                <span class="ident">response</span>
-                    .<span class="ident">headers</span>()
-                    .<span class="ident">get</span>(<span class="ident">CONTENT_ENCODING</span>)
-                    .<span class="ident">unwrap</span>()
-                    .<span class="ident">to_str</span>()
-                    .<span class="ident">unwrap</span>(),
-                <span class="ident">encoding</span>
+                response
+                    .headers()
+                    .get(CONTENT_ENCODING)
+                    .unwrap()
+                    .to_str()
+                    .unwrap(),
+                encoding
             );
             <span class="macro">assert_eq!</span>(
-                <span class="ident">response</span>
-                    .<span class="ident">headers</span>()
-                    .<span class="ident">get</span>(<span class="ident">CONTENT_TYPE</span>)
-                    .<span class="ident">unwrap</span>()
-                    .<span class="ident">to_str</span>()
-                    .<span class="ident">unwrap</span>(),
-                <span class="string">&quot;text/html&quot;</span>
-            );
+                response
+                    .headers()
+                    .get(CONTENT_TYPE)
+                    .unwrap()
+                    .to_str()
+                    .unwrap(),
+                <span class="string">&quot;text/html&quot;
+            </span>);
 
-            <span class="kw">let</span> <span class="ident">expected_body</span> <span class="op">=</span>
-                <span class="ident">fs::read</span>(<span class="macro">format!</span>(<span class="string">&quot;resources/test/assets/doc.html{}&quot;</span>, <span class="ident">extension</span>)).<span class="ident">unwrap</span>();
-            <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">read_body</span>().<span class="ident">unwrap</span>(), <span class="ident">expected_body</span>);
+            <span class="kw">let </span>expected_body =
+                fs::read(<span class="macro">format!</span>(<span class="string">&quot;resources/test/assets/doc.html{}&quot;</span>, extension)).unwrap();
+            <span class="macro">assert_eq!</span>(response.read_body().unwrap(), expected_body);
         }
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">assets_no_compression_if_not_accepted</span>() {
-        <span class="kw">let</span> <span class="ident">router</span> <span class="op">=</span> <span class="ident">build_simple_router</span>(<span class="op">|</span><span class="ident">route</span><span class="op">|</span> {
-            <span class="ident">route</span>.<span class="ident">get</span>(<span class="string">&quot;/*&quot;</span>).<span class="ident">to_dir</span>(
-                <span class="ident">FileOptions::new</span>(<span class="string">&quot;resources/test/assets&quot;</span>)
-                    .<span class="ident">with_gzip</span>(<span class="bool-val">true</span>)
-                    .<span class="ident">with_brotli</span>(<span class="bool-val">true</span>)
-                    .<span class="ident">build</span>(),
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>assets_no_compression_if_not_accepted() {
+        <span class="kw">let </span>router = build_simple_router(|route| {
+            route.get(<span class="string">&quot;/*&quot;</span>).to_dir(
+                FileOptions::new(<span class="string">&quot;resources/test/assets&quot;</span>)
+                    .with_gzip(<span class="bool-val">true</span>)
+                    .with_brotli(<span class="bool-val">true</span>)
+                    .build(),
             )
         });
-        <span class="kw">let</span> <span class="ident">server</span> <span class="op">=</span> <span class="ident">TestServer::new</span>(<span class="ident">router</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let </span>server = TestServer::new(router).unwrap();
 
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">server</span>
-            .<span class="ident">client</span>()
-            .<span class="ident">get</span>(<span class="string">&quot;http://localhost/doc.html&quot;</span>)
-            .<span class="ident">with_header</span>(<span class="ident">ACCEPT_ENCODING</span>, <span class="ident">HeaderValue::from_str</span>(<span class="string">&quot;identity&quot;</span>).<span class="ident">unwrap</span>())
-            .<span class="ident">perform</span>()
-            .<span class="ident">unwrap</span>();
+        <span class="kw">let </span>response = server
+            .client()
+            .get(<span class="string">&quot;http://localhost/doc.html&quot;</span>)
+            .with_header(ACCEPT_ENCODING, HeaderValue::from_str(<span class="string">&quot;identity&quot;</span>).unwrap())
+            .perform()
+            .unwrap();
 
-        <span class="macro">assert!</span>(<span class="ident">response</span>.<span class="ident">headers</span>().<span class="ident">get</span>(<span class="ident">CONTENT_ENCODING</span>).<span class="ident">is_none</span>());
+        <span class="macro">assert!</span>(response.headers().get(CONTENT_ENCODING).is_none());
         <span class="macro">assert_eq!</span>(
-            <span class="ident">response</span>
-                .<span class="ident">headers</span>()
-                .<span class="ident">get</span>(<span class="ident">CONTENT_TYPE</span>)
-                .<span class="ident">unwrap</span>()
-                .<span class="ident">to_str</span>()
-                .<span class="ident">unwrap</span>(),
-            <span class="string">&quot;text/html&quot;</span>
-        );
+            response
+                .headers()
+                .get(CONTENT_TYPE)
+                .unwrap()
+                .to_str()
+                .unwrap(),
+            <span class="string">&quot;text/html&quot;
+        </span>);
 
-        <span class="kw">let</span> <span class="ident">expected_body</span> <span class="op">=</span> <span class="ident">fs::read</span>(<span class="string">&quot;resources/test/assets/doc.html&quot;</span>).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">read_body</span>().<span class="ident">unwrap</span>(), <span class="ident">expected_body</span>);
+        <span class="kw">let </span>expected_body = fs::read(<span class="string">&quot;resources/test/assets/doc.html&quot;</span>).unwrap();
+        <span class="macro">assert_eq!</span>(response.read_body().unwrap(), expected_body);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">assets_no_compression_if_not_exists</span>() {
-        <span class="kw">let</span> <span class="ident">router</span> <span class="op">=</span> <span class="ident">build_simple_router</span>(<span class="op">|</span><span class="ident">route</span><span class="op">|</span> {
-            <span class="ident">route</span>.<span class="ident">get</span>(<span class="string">&quot;/*&quot;</span>).<span class="ident">to_dir</span>(
-                <span class="ident">FileOptions::new</span>(<span class="string">&quot;resources/test/assets_uncompressed&quot;</span>)
-                    .<span class="ident">with_gzip</span>(<span class="bool-val">true</span>)
-                    .<span class="ident">with_brotli</span>(<span class="bool-val">true</span>)
-                    .<span class="ident">build</span>(),
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>assets_no_compression_if_not_exists() {
+        <span class="kw">let </span>router = build_simple_router(|route| {
+            route.get(<span class="string">&quot;/*&quot;</span>).to_dir(
+                FileOptions::new(<span class="string">&quot;resources/test/assets_uncompressed&quot;</span>)
+                    .with_gzip(<span class="bool-val">true</span>)
+                    .with_brotli(<span class="bool-val">true</span>)
+                    .build(),
             )
         });
-        <span class="kw">let</span> <span class="ident">server</span> <span class="op">=</span> <span class="ident">TestServer::new</span>(<span class="ident">router</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let </span>server = TestServer::new(router).unwrap();
 
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">server</span>
-            .<span class="ident">client</span>()
-            .<span class="ident">get</span>(<span class="string">&quot;http://localhost/doc.html&quot;</span>)
-            .<span class="ident">with_header</span>(<span class="ident">ACCEPT_ENCODING</span>, <span class="ident">HeaderValue::from_str</span>(<span class="string">&quot;gzip&quot;</span>).<span class="ident">unwrap</span>())
-            .<span class="ident">with_header</span>(<span class="ident">ACCEPT_ENCODING</span>, <span class="ident">HeaderValue::from_str</span>(<span class="string">&quot;brotli&quot;</span>).<span class="ident">unwrap</span>())
-            .<span class="ident">perform</span>()
-            .<span class="ident">unwrap</span>();
+        <span class="kw">let </span>response = server
+            .client()
+            .get(<span class="string">&quot;http://localhost/doc.html&quot;</span>)
+            .with_header(ACCEPT_ENCODING, HeaderValue::from_str(<span class="string">&quot;gzip&quot;</span>).unwrap())
+            .with_header(ACCEPT_ENCODING, HeaderValue::from_str(<span class="string">&quot;brotli&quot;</span>).unwrap())
+            .perform()
+            .unwrap();
 
-        <span class="macro">assert!</span>(<span class="ident">response</span>.<span class="ident">headers</span>().<span class="ident">get</span>(<span class="ident">CONTENT_ENCODING</span>).<span class="ident">is_none</span>());
+        <span class="macro">assert!</span>(response.headers().get(CONTENT_ENCODING).is_none());
         <span class="macro">assert_eq!</span>(
-            <span class="ident">response</span>
-                .<span class="ident">headers</span>()
-                .<span class="ident">get</span>(<span class="ident">CONTENT_TYPE</span>)
-                .<span class="ident">unwrap</span>()
-                .<span class="ident">to_str</span>()
-                .<span class="ident">unwrap</span>(),
-            <span class="string">&quot;text/html&quot;</span>
-        );
+            response
+                .headers()
+                .get(CONTENT_TYPE)
+                .unwrap()
+                .to_str()
+                .unwrap(),
+            <span class="string">&quot;text/html&quot;
+        </span>);
 
-        <span class="kw">let</span> <span class="ident">expected_body</span> <span class="op">=</span> <span class="ident">fs::read</span>(<span class="string">&quot;resources/test/assets_uncompressed/doc.html&quot;</span>).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">read_body</span>().<span class="ident">unwrap</span>(), <span class="ident">expected_body</span>);
+        <span class="kw">let </span>expected_body = fs::read(<span class="string">&quot;resources/test/assets_uncompressed/doc.html&quot;</span>).unwrap();
+        <span class="macro">assert_eq!</span>(response.read_body().unwrap(), expected_body);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">assets_weighted_accept_encoding</span>() {
-        <span class="kw">let</span> <span class="ident">router</span> <span class="op">=</span> <span class="ident">build_simple_router</span>(<span class="op">|</span><span class="ident">route</span><span class="op">|</span> {
-            <span class="ident">route</span>.<span class="ident">get</span>(<span class="string">&quot;/*&quot;</span>).<span class="ident">to_dir</span>(
-                <span class="ident">FileOptions::new</span>(<span class="string">&quot;resources/test/assets&quot;</span>)
-                    .<span class="ident">with_gzip</span>(<span class="bool-val">true</span>)
-                    .<span class="ident">with_brotli</span>(<span class="bool-val">true</span>)
-                    .<span class="ident">build</span>(),
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>assets_weighted_accept_encoding() {
+        <span class="kw">let </span>router = build_simple_router(|route| {
+            route.get(<span class="string">&quot;/*&quot;</span>).to_dir(
+                FileOptions::new(<span class="string">&quot;resources/test/assets&quot;</span>)
+                    .with_gzip(<span class="bool-val">true</span>)
+                    .with_brotli(<span class="bool-val">true</span>)
+                    .build(),
             )
         });
-        <span class="kw">let</span> <span class="ident">server</span> <span class="op">=</span> <span class="ident">TestServer::new</span>(<span class="ident">router</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let </span>server = TestServer::new(router).unwrap();
 
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">server</span>
-            .<span class="ident">client</span>()
-            .<span class="ident">get</span>(<span class="string">&quot;http://localhost/doc.html&quot;</span>)
-            .<span class="ident">with_header</span>(
-                <span class="ident">ACCEPT_ENCODING</span>,
-                <span class="ident">HeaderValue::from_str</span>(<span class="string">&quot;*;q=0.1, br;q=1.0, gzip;q=0.8&quot;</span>).<span class="ident">unwrap</span>(),
+        <span class="kw">let </span>response = server
+            .client()
+            .get(<span class="string">&quot;http://localhost/doc.html&quot;</span>)
+            .with_header(
+                ACCEPT_ENCODING,
+                HeaderValue::from_str(<span class="string">&quot;*;q=0.1, br;q=1.0, gzip;q=0.8&quot;</span>).unwrap(),
             )
-            .<span class="ident">perform</span>()
-            .<span class="ident">unwrap</span>();
+            .perform()
+            .unwrap();
 
         <span class="macro">assert_eq!</span>(
-            <span class="ident">response</span>
-                .<span class="ident">headers</span>()
-                .<span class="ident">get</span>(<span class="ident">CONTENT_TYPE</span>)
-                .<span class="ident">unwrap</span>()
-                .<span class="ident">to_str</span>()
-                .<span class="ident">unwrap</span>(),
-            <span class="string">&quot;text/html&quot;</span>
-        );
+            response
+                .headers()
+                .get(CONTENT_TYPE)
+                .unwrap()
+                .to_str()
+                .unwrap(),
+            <span class="string">&quot;text/html&quot;
+        </span>);
 
         <span class="macro">assert_eq!</span>(
-            <span class="ident">response</span>
-                .<span class="ident">headers</span>()
-                .<span class="ident">get</span>(<span class="ident">CONTENT_ENCODING</span>)
-                .<span class="ident">unwrap</span>()
-                .<span class="ident">to_str</span>()
-                .<span class="ident">unwrap</span>(),
-            <span class="string">&quot;br&quot;</span>
-        );
-        <span class="kw">let</span> <span class="ident">expected_body</span> <span class="op">=</span> <span class="ident">fs::read</span>(<span class="string">&quot;resources/test/assets/doc.html.br&quot;</span>).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">read_body</span>().<span class="ident">unwrap</span>(), <span class="ident">expected_body</span>);
+            response
+                .headers()
+                .get(CONTENT_ENCODING)
+                .unwrap()
+                .to_str()
+                .unwrap(),
+            <span class="string">&quot;br&quot;
+        </span>);
+        <span class="kw">let </span>expected_body = fs::read(<span class="string">&quot;resources/test/assets/doc.html.br&quot;</span>).unwrap();
+        <span class="macro">assert_eq!</span>(response.read_body().unwrap(), expected_body);
     }
 
-    <span class="kw">fn</span> <span class="ident">test_server</span>() -&gt; <span class="ident">TestServer</span> {
-        <span class="ident">TestServer::new</span>(<span class="ident">static_router</span>(<span class="string">&quot;/*&quot;</span>, <span class="string">&quot;resources/test/assets&quot;</span>)).<span class="ident">unwrap</span>()
+    <span class="kw">fn </span>test_server() -&gt; TestServer {
+        TestServer::new(static_router(<span class="string">&quot;/*&quot;</span>, <span class="string">&quot;resources/test/assets&quot;</span>)).unwrap()
     }
 
-    <span class="kw">fn</span> <span class="ident">static_router</span>(<span class="ident">mount</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">path</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">Router</span> {
-        <span class="ident">build_simple_router</span>(<span class="op">|</span><span class="ident">route</span><span class="op">|</span> <span class="ident">route</span>.<span class="ident">get</span>(<span class="ident">mount</span>).<span class="ident">to_dir</span>(<span class="ident">path</span>))
+    <span class="kw">fn </span>static_router(mount: <span class="kw-2">&amp;</span>str, path: <span class="kw-2">&amp;</span>str) -&gt; Router {
+        build_simple_router(|route| route.get(mount).to_dir(path))
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

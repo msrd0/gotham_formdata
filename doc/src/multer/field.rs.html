@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/multer-2.0.4/src/field.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>field.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../multer/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../multer/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../multer/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/multer-2.0.4/src/field.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>field.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../normalize.css"><link rel="stylesheet" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../ayu.css" disabled><link rel="stylesheet" href="../../dark.css" disabled><link rel="stylesheet" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script><script defer src="../../main.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../multer/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../multer/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../multer/index.html"><img class="rust-logo" src="../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -368,375 +368,375 @@
 <span id="368">368</span>
 <span id="369">369</span>
 <span id="370">370</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">std::borrow::Cow</span>;
-<span class="kw">use</span> <span class="ident">std::pin::Pin</span>;
-<span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
-<span class="kw">use</span> <span class="ident">std::task</span>::{<span class="ident">Context</span>, <span class="ident">Poll</span>};
+</pre><pre class="rust"><code><span class="kw">use </span>std::borrow::Cow;
+<span class="kw">use </span>std::pin::Pin;
+<span class="kw">use </span>std::sync::Arc;
+<span class="kw">use </span>std::task::{Context, Poll};
 
-<span class="kw">use</span> <span class="ident">bytes</span>::{<span class="ident">Bytes</span>, <span class="ident">BytesMut</span>};
-<span class="kw">use</span> <span class="ident">encoding_rs</span>::{<span class="ident">Encoding</span>, <span class="ident">UTF_8</span>};
-<span class="kw">use</span> <span class="ident">futures_util::stream</span>::{<span class="ident">Stream</span>, <span class="ident">TryStreamExt</span>};
-<span class="kw">use</span> <span class="ident">http::header::HeaderMap</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;json&quot;</span>)]</span>
-<span class="kw">use</span> <span class="ident">serde::de::DeserializeOwned</span>;
-<span class="kw">use</span> <span class="ident">spin::mutex::spin::SpinMutex</span> <span class="kw">as</span> <span class="ident">Mutex</span>;
+<span class="kw">use </span>bytes::{Bytes, BytesMut};
+<span class="kw">use </span>encoding_rs::{Encoding, UTF_8};
+<span class="kw">use </span>futures_util::stream::{Stream, TryStreamExt};
+<span class="kw">use </span>http::header::HeaderMap;
+<span class="attribute">#[cfg(feature = <span class="string">&quot;json&quot;</span>)]
+</span><span class="kw">use </span>serde::de::DeserializeOwned;
+<span class="kw">use </span>spin::mutex::spin::SpinMutex <span class="kw">as </span>Mutex;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::content_disposition::ContentDisposition</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::multipart</span>::{<span class="ident">MultipartState</span>, <span class="ident">StreamingStage</span>};
-<span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">helpers</span>, <span class="ident">Error</span>};
+<span class="kw">use </span><span class="kw">crate</span>::content_disposition::ContentDisposition;
+<span class="kw">use </span><span class="kw">crate</span>::multipart::{MultipartState, StreamingStage};
+<span class="kw">use crate</span>::{helpers, Error};
 
-<span class="doccomment">/// A single field in a multipart stream.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Its content can be accessed via the [`Stream`] API or the methods defined in</span>
-<span class="doccomment">/// this type.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Lifetime</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The lifetime of the stream `&#39;r` corresponds to the lifetime of the</span>
-<span class="doccomment">/// underlying `Stream`. If the underlying stream holds no references directly</span>
-<span class="doccomment">/// or transitively, then the lifetime can be `&#39;static`.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">/// use std::convert::Infallible;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// use bytes::Bytes;</span>
-<span class="doccomment">/// use futures_util::stream::once;</span>
-<span class="doccomment">/// use multer::Multipart;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # async fn run() {</span>
-<span class="doccomment">/// let data = &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; \</span>
-<span class="doccomment">///     name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// let stream = once(async move { Result::&lt;Bytes, Infallible&gt;::Ok(Bytes::from(data)) });</span>
-<span class="doccomment">/// let mut multipart = Multipart::new(stream, &quot;X-BOUNDARY&quot;);</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// while let Some(field) = multipart.next_field().await.unwrap() {</span>
-<span class="doccomment">///     let content = field.text().await.unwrap();</span>
-<span class="doccomment">///     assert_eq!(content, &quot;abcd&quot;);</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// # tokio::runtime::Runtime::new().unwrap().block_on(run());</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// [`Multipart`]: crate::Multipart</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Field</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span> {
-    <span class="ident">state</span>: <span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">Mutex</span><span class="op">&lt;</span><span class="ident">MultipartState</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-    <span class="ident">done</span>: <span class="ident">bool</span>,
-    <span class="ident">headers</span>: <span class="ident">HeaderMap</span>,
-    <span class="ident">content_disposition</span>: <span class="ident">ContentDisposition</span>,
-    <span class="ident">content_type</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">mime::Mime</span><span class="op">&gt;</span>,
-    <span class="ident">idx</span>: <span class="ident">usize</span>,
+<span class="doccomment">/// A single field in a multipart stream.
+///
+/// Its content can be accessed via the [`Stream`] API or the methods defined in
+/// this type.
+///
+/// # Lifetime
+///
+/// The lifetime of the stream `&#39;r` corresponds to the lifetime of the
+/// underlying `Stream`. If the underlying stream holds no references directly
+/// or transitively, then the lifetime can be `&#39;static`.
+///
+/// # Examples
+///
+/// ```
+/// use std::convert::Infallible;
+///
+/// use bytes::Bytes;
+/// use futures_util::stream::once;
+/// use multer::Multipart;
+///
+/// # async fn run() {
+/// let data = &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; \
+///     name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;
+///
+/// let stream = once(async move { Result::&lt;Bytes, Infallible&gt;::Ok(Bytes::from(data)) });
+/// let mut multipart = Multipart::new(stream, &quot;X-BOUNDARY&quot;);
+///
+/// while let Some(field) = multipart.next_field().await.unwrap() {
+///     let content = field.text().await.unwrap();
+///     assert_eq!(content, &quot;abcd&quot;);
+/// }
+/// # }
+/// # tokio::runtime::Runtime::new().unwrap().block_on(run());
+/// ```
+///
+/// [`Multipart`]: crate::Multipart
+</span><span class="attribute">#[derive(Debug)]
+</span><span class="kw">pub struct </span>Field&lt;<span class="lifetime">&#39;r</span>&gt; {
+    state: Arc&lt;Mutex&lt;MultipartState&lt;<span class="lifetime">&#39;r</span>&gt;&gt;&gt;,
+    done: bool,
+    headers: HeaderMap,
+    content_disposition: ContentDisposition,
+    content_type: <span class="prelude-ty">Option</span>&lt;mime::Mime&gt;,
+    idx: usize,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span> <span class="ident">Field</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span> {
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">new</span>(
-        <span class="ident">state</span>: <span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">Mutex</span><span class="op">&lt;</span><span class="ident">MultipartState</span><span class="op">&lt;</span><span class="lifetime">&#39;r</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-        <span class="ident">headers</span>: <span class="ident">HeaderMap</span>,
-        <span class="ident">idx</span>: <span class="ident">usize</span>,
-        <span class="ident">content_disposition</span>: <span class="ident">ContentDisposition</span>,
-    ) -&gt; <span class="self">Self</span> {
-        <span class="kw">let</span> <span class="ident">content_type</span> <span class="op">=</span> <span class="ident">helpers::parse_content_type</span>(<span class="kw-2">&amp;</span><span class="ident">headers</span>);
-        <span class="ident">Field</span> {
-            <span class="ident">state</span>,
-            <span class="ident">headers</span>,
-            <span class="ident">content_disposition</span>,
-            <span class="ident">content_type</span>,
-            <span class="ident">idx</span>,
-            <span class="ident">done</span>: <span class="bool-val">false</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;r</span>&gt; Field&lt;<span class="lifetime">&#39;r</span>&gt; {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>new(
+        state: Arc&lt;Mutex&lt;MultipartState&lt;<span class="lifetime">&#39;r</span>&gt;&gt;&gt;,
+        headers: HeaderMap,
+        idx: usize,
+        content_disposition: ContentDisposition,
+    ) -&gt; <span class="self">Self </span>{
+        <span class="kw">let </span>content_type = helpers::parse_content_type(<span class="kw-2">&amp;</span>headers);
+        Field {
+            state,
+            headers,
+            content_disposition,
+            content_type,
+            idx,
+            done: <span class="bool-val">false</span>,
         }
     }
 
-    <span class="doccomment">/// The field name found in the [`Content-Disposition`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition) header.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">content_disposition</span>.<span class="ident">field_name</span>.<span class="ident">as_deref</span>()
+    <span class="doccomment">/// The field name found in the [`Content-Disposition`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition) header.
+    </span><span class="kw">pub fn </span>name(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>str&gt; {
+        <span class="self">self</span>.content_disposition.field_name.as_deref()
     }
 
-    <span class="doccomment">/// The file name found in the [`Content-Disposition`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition) header.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">file_name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">content_disposition</span>.<span class="ident">file_name</span>.<span class="ident">as_deref</span>()
+    <span class="doccomment">/// The file name found in the [`Content-Disposition`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition) header.
+    </span><span class="kw">pub fn </span>file_name(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>str&gt; {
+        <span class="self">self</span>.content_disposition.file_name.as_deref()
     }
 
-    <span class="doccomment">/// Get the content type of the field.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">content_type</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">mime::Mime</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">content_type</span>.<span class="ident">as_ref</span>()
+    <span class="doccomment">/// Get the content type of the field.
+    </span><span class="kw">pub fn </span>content_type(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>mime::Mime&gt; {
+        <span class="self">self</span>.content_type.as_ref()
     }
 
-    <span class="doccomment">/// Get a map of headers as [`HeaderMap`].</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">headers</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">HeaderMap</span> {
-        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">headers</span>
+    <span class="doccomment">/// Get a map of headers as [`HeaderMap`].
+    </span><span class="kw">pub fn </span>headers(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>HeaderMap {
+        <span class="kw-2">&amp;</span><span class="self">self</span>.headers
     }
 
-    <span class="doccomment">/// Get the full data of the field as [`Bytes`].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use std::convert::Infallible;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// use bytes::Bytes;</span>
-    <span class="doccomment">/// use futures_util::stream::once;</span>
-    <span class="doccomment">/// use multer::Multipart;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # async fn run() {</span>
-    <span class="doccomment">/// let data =</span>
-    <span class="doccomment">///     &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;</span>
-    <span class="doccomment">/// let stream = once(async move { Result::&lt;Bytes, Infallible&gt;::Ok(Bytes::from(data)) });</span>
-    <span class="doccomment">/// let mut multipart = Multipart::new(stream, &quot;X-BOUNDARY&quot;);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// while let Some(field) = multipart.next_field().await.unwrap() {</span>
-    <span class="doccomment">///     let bytes = field.bytes().await.unwrap();</span>
-    <span class="doccomment">///     assert_eq!(bytes.len(), 4);</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// # tokio::runtime::Runtime::new().unwrap().block_on(run());</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">bytes</span>(<span class="self">self</span>) -&gt; <span class="ident"><span class="kw">crate</span>::Result</span><span class="op">&lt;</span><span class="ident">Bytes</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> <span class="ident">BytesMut::new</span>();
+    <span class="doccomment">/// Get the full data of the field as [`Bytes`].
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use std::convert::Infallible;
+    ///
+    /// use bytes::Bytes;
+    /// use futures_util::stream::once;
+    /// use multer::Multipart;
+    ///
+    /// # async fn run() {
+    /// let data =
+    ///     &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;
+    /// let stream = once(async move { Result::&lt;Bytes, Infallible&gt;::Ok(Bytes::from(data)) });
+    /// let mut multipart = Multipart::new(stream, &quot;X-BOUNDARY&quot;);
+    ///
+    /// while let Some(field) = multipart.next_field().await.unwrap() {
+    ///     let bytes = field.bytes().await.unwrap();
+    ///     assert_eq!(bytes.len(), 4);
+    /// }
+    /// # }
+    /// # tokio::runtime::Runtime::new().unwrap().block_on(run());
+    /// ```
+    </span><span class="kw">pub async fn </span>bytes(<span class="self">self</span>) -&gt; <span class="kw">crate</span>::Result&lt;Bytes&gt; {
+        <span class="kw">let </span><span class="kw-2">mut </span>buf = BytesMut::new();
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">this</span> <span class="op">=</span> <span class="self">self</span>;
-        <span class="kw">while</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">bytes</span>) <span class="op">=</span> <span class="ident">this</span>.<span class="ident">chunk</span>().<span class="kw">await</span><span class="question-mark">?</span> {
-            <span class="ident">buf</span>.<span class="ident">extend_from_slice</span>(<span class="kw-2">&amp;</span><span class="ident">bytes</span>);
+        <span class="kw">let </span><span class="kw-2">mut </span>this = <span class="self">self</span>;
+        <span class="kw">while let </span><span class="prelude-val">Some</span>(bytes) = this.chunk().<span class="kw">await</span><span class="question-mark">? </span>{
+            buf.extend_from_slice(<span class="kw-2">&amp;</span>bytes);
         }
 
-        <span class="prelude-val">Ok</span>(<span class="ident">buf</span>.<span class="ident">freeze</span>())
+        <span class="prelude-val">Ok</span>(buf.freeze())
     }
 
-    <span class="doccomment">/// Stream a chunk of the field data.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// When the field data has been exhausted, this will return [`None`].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use std::convert::Infallible;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// use bytes::Bytes;</span>
-    <span class="doccomment">/// use futures_util::stream::once;</span>
-    <span class="doccomment">/// use multer::Multipart;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # async fn run() {</span>
-    <span class="doccomment">/// let data =</span>
-    <span class="doccomment">///     &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;</span>
-    <span class="doccomment">/// let stream = once(async move { Result::&lt;Bytes, Infallible&gt;::Ok(Bytes::from(data)) });</span>
-    <span class="doccomment">/// let mut multipart = Multipart::new(stream, &quot;X-BOUNDARY&quot;);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// while let Some(mut field) = multipart.next_field().await.unwrap() {</span>
-    <span class="doccomment">///     while let Some(chunk) = field.chunk().await.unwrap() {</span>
-    <span class="doccomment">///         println!(&quot;Chunk: {:?}&quot;, chunk);</span>
-    <span class="doccomment">///     }</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// # tokio::runtime::Runtime::new().unwrap().block_on(run());</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">chunk</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident"><span class="kw">crate</span>::Result</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Bytes</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">try_next</span>().<span class="kw">await</span>
+    <span class="doccomment">/// Stream a chunk of the field data.
+    ///
+    /// When the field data has been exhausted, this will return [`None`].
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use std::convert::Infallible;
+    ///
+    /// use bytes::Bytes;
+    /// use futures_util::stream::once;
+    /// use multer::Multipart;
+    ///
+    /// # async fn run() {
+    /// let data =
+    ///     &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;
+    /// let stream = once(async move { Result::&lt;Bytes, Infallible&gt;::Ok(Bytes::from(data)) });
+    /// let mut multipart = Multipart::new(stream, &quot;X-BOUNDARY&quot;);
+    ///
+    /// while let Some(mut field) = multipart.next_field().await.unwrap() {
+    ///     while let Some(chunk) = field.chunk().await.unwrap() {
+    ///         println!(&quot;Chunk: {:?}&quot;, chunk);
+    ///     }
+    /// }
+    /// # }
+    /// # tokio::runtime::Runtime::new().unwrap().block_on(run());
+    /// ```
+    </span><span class="kw">pub async fn </span>chunk(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw">crate</span>::Result&lt;<span class="prelude-ty">Option</span>&lt;Bytes&gt;&gt; {
+        <span class="self">self</span>.try_next().<span class="kw">await
+    </span>}
+
+    <span class="doccomment">/// Try to deserialize the field data as JSON.
+    ///
+    /// # Optional
+    ///
+    /// This requires the optional `json` feature to be enabled.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use multer::Multipart;
+    /// use bytes::Bytes;
+    /// use std::convert::Infallible;
+    /// use futures_util::stream::once;
+    /// use serde::Deserialize;
+    ///
+    /// // This `derive` requires the `serde` dependency.
+    /// #[derive(Deserialize)]
+    /// struct User {
+    ///     name: String
+    /// }
+    ///
+    /// # async fn run() {
+    /// let data = &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; name=\&quot;my_text_field\&quot;\r\n\r\n{ \&quot;name\&quot;: \&quot;Alice\&quot; }\r\n--X-BOUNDARY--\r\n&quot;;
+    /// let stream = once(async move { Result::&lt;Bytes, Infallible&gt;::Ok(Bytes::from(data)) });
+    /// let mut multipart = Multipart::new(stream, &quot;X-BOUNDARY&quot;);
+    ///
+    /// while let Some(field) = multipart.next_field().await.unwrap() {
+    ///     let user = field.json::&lt;User&gt;().await.unwrap();
+    ///     println!(&quot;User Name: {}&quot;, user.name);
+    /// }
+    /// # }
+    /// # tokio::runtime::Runtime::new().unwrap().block_on(run());
+    /// ```
+    ///
+    /// # Errors
+    ///
+    /// This method fails if the field data is not in JSON format
+    /// or it cannot be properly deserialized to target type `T`. For more
+    /// details please see [`serde_json::from_slice`].
+    </span><span class="attribute">#[cfg(feature = <span class="string">&quot;json&quot;</span>)]
+    #[cfg_attr(nightly, doc(cfg(feature = <span class="string">&quot;json&quot;</span>)))]
+    </span><span class="kw">pub async fn </span>json&lt;T: DeserializeOwned&gt;(<span class="self">self</span>) -&gt; <span class="kw">crate</span>::Result&lt;T&gt; {
+        serde_json::from_slice(<span class="kw-2">&amp;</span><span class="self">self</span>.bytes().<span class="kw">await</span><span class="question-mark">?</span>).map_err(<span class="kw">crate</span>::Error::DecodeJson)
     }
 
-    <span class="doccomment">/// Try to deserialize the field data as JSON.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Optional</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This requires the optional `json` feature to be enabled.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use multer::Multipart;</span>
-    <span class="doccomment">/// use bytes::Bytes;</span>
-    <span class="doccomment">/// use std::convert::Infallible;</span>
-    <span class="doccomment">/// use futures_util::stream::once;</span>
-    <span class="doccomment">/// use serde::Deserialize;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// // This `derive` requires the `serde` dependency.</span>
-    <span class="doccomment">/// #[derive(Deserialize)]</span>
-    <span class="doccomment">/// struct User {</span>
-    <span class="doccomment">///     name: String</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # async fn run() {</span>
-    <span class="doccomment">/// let data = &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; name=\&quot;my_text_field\&quot;\r\n\r\n{ \&quot;name\&quot;: \&quot;Alice\&quot; }\r\n--X-BOUNDARY--\r\n&quot;;</span>
-    <span class="doccomment">/// let stream = once(async move { Result::&lt;Bytes, Infallible&gt;::Ok(Bytes::from(data)) });</span>
-    <span class="doccomment">/// let mut multipart = Multipart::new(stream, &quot;X-BOUNDARY&quot;);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// while let Some(field) = multipart.next_field().await.unwrap() {</span>
-    <span class="doccomment">///     let user = field.json::&lt;User&gt;().await.unwrap();</span>
-    <span class="doccomment">///     println!(&quot;User Name: {}&quot;, user.name);</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// # tokio::runtime::Runtime::new().unwrap().block_on(run());</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Errors</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This method fails if the field data is not in JSON format</span>
-    <span class="doccomment">/// or it cannot be properly deserialized to target type `T`. For more</span>
-    <span class="doccomment">/// details please see [`serde_json::from_slice`].</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;json&quot;</span>)]</span>
-    <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">nightly</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;json&quot;</span>)))]</span>
-    <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">json</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">DeserializeOwned</span><span class="op">&gt;</span>(<span class="self">self</span>) -&gt; <span class="ident"><span class="kw">crate</span>::Result</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-        <span class="ident">serde_json::from_slice</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">bytes</span>().<span class="kw">await</span><span class="question-mark">?</span>).<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::DecodeJson</span>)
-    }
+    <span class="doccomment">/// Get the full field data as text.
+    ///
+    /// This method decodes the field data with `BOM sniffing` and with
+    /// malformed sequences replaced with the `REPLACEMENT CHARACTER`.
+    /// Encoding is determined from the `charset` parameter of `Content-Type`
+    /// header, and defaults to `utf-8` if not presented.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use std::convert::Infallible;
+    ///
+    /// use bytes::Bytes;
+    /// use futures_util::stream::once;
+    /// use multer::Multipart;
+    ///
+    /// # async fn run() {
+    /// let data =
+    ///     &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;
+    /// let stream = once(async move { Result::&lt;Bytes, Infallible&gt;::Ok(Bytes::from(data)) });
+    /// let mut multipart = Multipart::new(stream, &quot;X-BOUNDARY&quot;);
+    ///
+    /// while let Some(field) = multipart.next_field().await.unwrap() {
+    ///     let content = field.text().await.unwrap();
+    ///     assert_eq!(content, &quot;abcd&quot;);
+    /// }
+    /// # }
+    /// # tokio::runtime::Runtime::new().unwrap().block_on(run());
+    /// ```
+    </span><span class="kw">pub async fn </span>text(<span class="self">self</span>) -&gt; <span class="kw">crate</span>::Result&lt;String&gt; {
+        <span class="self">self</span>.text_with_charset(<span class="string">&quot;utf-8&quot;</span>).<span class="kw">await
+    </span>}
 
-    <span class="doccomment">/// Get the full field data as text.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This method decodes the field data with `BOM sniffing` and with</span>
-    <span class="doccomment">/// malformed sequences replaced with the `REPLACEMENT CHARACTER`.</span>
-    <span class="doccomment">/// Encoding is determined from the `charset` parameter of `Content-Type`</span>
-    <span class="doccomment">/// header, and defaults to `utf-8` if not presented.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use std::convert::Infallible;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// use bytes::Bytes;</span>
-    <span class="doccomment">/// use futures_util::stream::once;</span>
-    <span class="doccomment">/// use multer::Multipart;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # async fn run() {</span>
-    <span class="doccomment">/// let data =</span>
-    <span class="doccomment">///     &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;</span>
-    <span class="doccomment">/// let stream = once(async move { Result::&lt;Bytes, Infallible&gt;::Ok(Bytes::from(data)) });</span>
-    <span class="doccomment">/// let mut multipart = Multipart::new(stream, &quot;X-BOUNDARY&quot;);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// while let Some(field) = multipart.next_field().await.unwrap() {</span>
-    <span class="doccomment">///     let content = field.text().await.unwrap();</span>
-    <span class="doccomment">///     assert_eq!(content, &quot;abcd&quot;);</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// # tokio::runtime::Runtime::new().unwrap().block_on(run());</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">text</span>(<span class="self">self</span>) -&gt; <span class="ident"><span class="kw">crate</span>::Result</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">text_with_charset</span>(<span class="string">&quot;utf-8&quot;</span>).<span class="kw">await</span>
-    }
+    <span class="doccomment">/// Get the full field data as text given a specific encoding.
+    ///
+    /// This method decodes the field data with `BOM sniffing` and with
+    /// malformed sequences replaced with the `REPLACEMENT CHARACTER`.
+    /// You can provide a default encoding for decoding the raw message, while
+    /// the `charset` parameter of `Content-Type` header is still prioritized.
+    /// For more information about the possible encoding name, please go to
+    /// [encoding_rs] docs.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use std::convert::Infallible;
+    ///
+    /// use bytes::Bytes;
+    /// use futures_util::stream::once;
+    /// use multer::Multipart;
+    ///
+    /// # async fn run() {
+    /// let data =
+    ///     &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;
+    /// let stream = once(async move { Result::&lt;Bytes, Infallible&gt;::Ok(Bytes::from(data)) });
+    /// let mut multipart = Multipart::new(stream, &quot;X-BOUNDARY&quot;);
+    ///
+    /// while let Some(field) = multipart.next_field().await.unwrap() {
+    ///     let content = field.text_with_charset(&quot;utf-8&quot;).await.unwrap();
+    ///     assert_eq!(content, &quot;abcd&quot;);
+    /// }
+    /// # }
+    /// # tokio::runtime::Runtime::new().unwrap().block_on(run());
+    /// ```
+    </span><span class="kw">pub async fn </span>text_with_charset(<span class="self">self</span>, default_encoding: <span class="kw-2">&amp;</span>str) -&gt; <span class="kw">crate</span>::Result&lt;String&gt; {
+        <span class="kw">let </span>encoding_name = <span class="self">self
+            </span>.content_type()
+            .and_then(|mime| mime.get_param(mime::CHARSET))
+            .map(|charset| charset.as_str())
+            .unwrap_or(default_encoding);
 
-    <span class="doccomment">/// Get the full field data as text given a specific encoding.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This method decodes the field data with `BOM sniffing` and with</span>
-    <span class="doccomment">/// malformed sequences replaced with the `REPLACEMENT CHARACTER`.</span>
-    <span class="doccomment">/// You can provide a default encoding for decoding the raw message, while</span>
-    <span class="doccomment">/// the `charset` parameter of `Content-Type` header is still prioritized.</span>
-    <span class="doccomment">/// For more information about the possible encoding name, please go to</span>
-    <span class="doccomment">/// [encoding_rs] docs.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use std::convert::Infallible;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// use bytes::Bytes;</span>
-    <span class="doccomment">/// use futures_util::stream::once;</span>
-    <span class="doccomment">/// use multer::Multipart;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # async fn run() {</span>
-    <span class="doccomment">/// let data =</span>
-    <span class="doccomment">///     &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;</span>
-    <span class="doccomment">/// let stream = once(async move { Result::&lt;Bytes, Infallible&gt;::Ok(Bytes::from(data)) });</span>
-    <span class="doccomment">/// let mut multipart = Multipart::new(stream, &quot;X-BOUNDARY&quot;);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// while let Some(field) = multipart.next_field().await.unwrap() {</span>
-    <span class="doccomment">///     let content = field.text_with_charset(&quot;utf-8&quot;).await.unwrap();</span>
-    <span class="doccomment">///     assert_eq!(content, &quot;abcd&quot;);</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// # tokio::runtime::Runtime::new().unwrap().block_on(run());</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">text_with_charset</span>(<span class="self">self</span>, <span class="ident">default_encoding</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident"><span class="kw">crate</span>::Result</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">encoding_name</span> <span class="op">=</span> <span class="self">self</span>
-            .<span class="ident">content_type</span>()
-            .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">mime</span><span class="op">|</span> <span class="ident">mime</span>.<span class="ident">get_param</span>(<span class="ident">mime::CHARSET</span>))
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">charset</span><span class="op">|</span> <span class="ident">charset</span>.<span class="ident">as_str</span>())
-            .<span class="ident">unwrap_or</span>(<span class="ident">default_encoding</span>);
+        <span class="kw">let </span>encoding = Encoding::for_label(encoding_name.as_bytes()).unwrap_or(UTF_8);
 
-        <span class="kw">let</span> <span class="ident">encoding</span> <span class="op">=</span> <span class="ident">Encoding::for_label</span>(<span class="ident">encoding_name</span>.<span class="ident">as_bytes</span>()).<span class="ident">unwrap_or</span>(<span class="ident">UTF_8</span>);
+        <span class="kw">let </span>bytes = <span class="self">self</span>.bytes().<span class="kw">await</span><span class="question-mark">?</span>;
 
-        <span class="kw">let</span> <span class="ident">bytes</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">bytes</span>().<span class="kw">await</span><span class="question-mark">?</span>;
+        <span class="kw">let </span>(text, ..) = encoding.decode(<span class="kw-2">&amp;</span>bytes);
 
-        <span class="kw">let</span> (<span class="ident">text</span>, ..) <span class="op">=</span> <span class="ident">encoding</span>.<span class="ident">decode</span>(<span class="kw-2">&amp;</span><span class="ident">bytes</span>);
-
-        <span class="kw">match</span> <span class="ident">text</span> {
-            <span class="ident">Cow::Owned</span>(<span class="ident">s</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="ident">s</span>),
-            <span class="ident">Cow::Borrowed</span>(<span class="ident">s</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="ident">String::from</span>(<span class="ident">s</span>)),
+        <span class="kw">match </span>text {
+            Cow::Owned(s) =&gt; <span class="prelude-val">Ok</span>(s),
+            Cow::Borrowed(s) =&gt; <span class="prelude-val">Ok</span>(String::from(s)),
         }
     }
 
-    <span class="doccomment">/// Get the index of this field in order they appeared in the stream.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// use std::convert::Infallible;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// use bytes::Bytes;</span>
-    <span class="doccomment">/// use futures_util::stream::once;</span>
-    <span class="doccomment">/// use multer::Multipart;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # async fn run() {</span>
-    <span class="doccomment">/// let data =</span>
-    <span class="doccomment">///     &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;</span>
-    <span class="doccomment">/// let stream = once(async move { Result::&lt;Bytes, Infallible&gt;::Ok(Bytes::from(data)) });</span>
-    <span class="doccomment">/// let mut multipart = Multipart::new(stream, &quot;X-BOUNDARY&quot;);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// while let Some(field) = multipart.next_field().await.unwrap() {</span>
-    <span class="doccomment">///     let idx = field.index();</span>
-    <span class="doccomment">///     println!(&quot;Field index: {}&quot;, idx);</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// # tokio::runtime::Runtime::new().unwrap().block_on(run());</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
-        <span class="self">self</span>.<span class="ident">idx</span>
+    <span class="doccomment">/// Get the index of this field in order they appeared in the stream.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use std::convert::Infallible;
+    ///
+    /// use bytes::Bytes;
+    /// use futures_util::stream::once;
+    /// use multer::Multipart;
+    ///
+    /// # async fn run() {
+    /// let data =
+    ///     &quot;--X-BOUNDARY\r\nContent-Disposition: form-data; name=\&quot;my_text_field\&quot;\r\n\r\nabcd\r\n--X-BOUNDARY--\r\n&quot;;
+    /// let stream = once(async move { Result::&lt;Bytes, Infallible&gt;::Ok(Bytes::from(data)) });
+    /// let mut multipart = Multipart::new(stream, &quot;X-BOUNDARY&quot;);
+    ///
+    /// while let Some(field) = multipart.next_field().await.unwrap() {
+    ///     let idx = field.index();
+    ///     println!(&quot;Field index: {}&quot;, idx);
+    /// }
+    /// # }
+    /// # tokio::runtime::Runtime::new().unwrap().block_on(run());
+    /// ```
+    </span><span class="kw">pub fn </span>index(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize {
+        <span class="self">self</span>.idx
     }
 }
 
-<span class="kw">impl</span> <span class="ident">Stream</span> <span class="kw">for</span> <span class="ident">Field</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-    <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Bytes</span>, <span class="ident">Error</span><span class="op">&gt;</span>;
+<span class="kw">impl </span>Stream <span class="kw">for </span>Field&lt;<span class="lifetime">&#39;_</span>&gt; {
+    <span class="kw">type </span>Item = <span class="prelude-ty">Result</span>&lt;Bytes, Error&gt;;
 
-    <span class="kw">fn</span> <span class="ident">poll_next</span>(<span class="kw-2">mut</span> <span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Item</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">done</span> {
-            <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">None</span>);
+    <span class="kw">fn </span>poll_next(<span class="kw-2">mut </span><span class="self">self</span>: Pin&lt;<span class="kw-2">&amp;mut </span><span class="self">Self</span>&gt;, cx: <span class="kw-2">&amp;mut </span>Context&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; Poll&lt;<span class="prelude-ty">Option</span>&lt;<span class="self">Self</span>::Item&gt;&gt; {
+        <span class="kw">if </span><span class="self">self</span>.done {
+            <span class="kw">return </span>Poll::Ready(<span class="prelude-val">None</span>);
         }
 
-        <span class="macro">debug_assert!</span>(<span class="self">self</span>.<span class="ident">state</span>.<span class="ident">try_lock</span>().<span class="ident">is_some</span>(), <span class="string">&quot;expected exlusive lock&quot;</span>);
-        <span class="kw">let</span> <span class="ident">state</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">state</span>.<span class="ident">clone</span>();
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">lock</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">state</span>.<span class="ident">try_lock</span>() {
-            <span class="prelude-val">Some</span>(<span class="ident">lock</span>) =&gt; <span class="ident">lock</span>,
-            <span class="prelude-val">None</span> =&gt; <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">Error::LockFailure</span>))),
+        <span class="macro">debug_assert!</span>(<span class="self">self</span>.state.try_lock().is_some(), <span class="string">&quot;expected exlusive lock&quot;</span>);
+        <span class="kw">let </span>state = <span class="self">self</span>.state.clone();
+        <span class="kw">let </span><span class="kw-2">mut </span>lock = <span class="kw">match </span>state.try_lock() {
+            <span class="prelude-val">Some</span>(lock) =&gt; lock,
+            <span class="prelude-val">None </span>=&gt; <span class="kw">return </span>Poll::Ready(<span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(Error::LockFailure))),
         };
 
-        <span class="kw">let</span> <span class="ident">state</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="ident">lock</span>;
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">err</span>) <span class="op">=</span> <span class="ident">state</span>.<span class="ident">buffer</span>.<span class="ident">poll_stream</span>(<span class="ident">cx</span>) {
-            <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::StreamReadFailed</span>(<span class="ident">err</span>.<span class="ident">into</span>()))));
+        <span class="kw">let </span>state = <span class="kw-2">&amp;mut *</span>lock;
+        <span class="kw">if let </span><span class="prelude-val">Err</span>(err) = state.buffer.poll_stream(cx) {
+            <span class="kw">return </span>Poll::Ready(<span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="kw">crate</span>::Error::StreamReadFailed(err.into()))));
         }
 
-        <span class="kw">match</span> <span class="ident">state</span>
-            .<span class="ident">buffer</span>
-            .<span class="ident">read_field_data</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>.<span class="ident">boundary</span>, <span class="ident">state</span>.<span class="ident">curr_field_name</span>.<span class="ident">as_deref</span>())
+        <span class="kw">match </span>state
+            .buffer
+            .read_field_data(<span class="kw-2">&amp;</span>state.boundary, state.curr_field_name.as_deref())
         {
-            <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>((<span class="ident">done</span>, <span class="ident">bytes</span>))) =&gt; {
-                <span class="ident">state</span>.<span class="ident">curr_field_size_counter</span> <span class="op">+</span><span class="op">=</span> <span class="ident">bytes</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">u64</span>;
+            <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>((done, bytes))) =&gt; {
+                state.curr_field_size_counter += bytes.len() <span class="kw">as </span>u64;
 
-                <span class="kw">if</span> <span class="ident">state</span>.<span class="ident">curr_field_size_counter</span> <span class="op">&gt;</span> <span class="ident">state</span>.<span class="ident">curr_field_size_limit</span> {
-                    <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::FieldSizeExceeded</span> {
-                        <span class="ident">limit</span>: <span class="ident">state</span>.<span class="ident">curr_field_size_limit</span>,
-                        <span class="ident">field_name</span>: <span class="ident">state</span>.<span class="ident">curr_field_name</span>.<span class="ident">clone</span>(),
+                <span class="kw">if </span>state.curr_field_size_counter &gt; state.curr_field_size_limit {
+                    <span class="kw">return </span>Poll::Ready(<span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="kw">crate</span>::Error::FieldSizeExceeded {
+                        limit: state.curr_field_size_limit,
+                        field_name: state.curr_field_name.clone(),
                     })));
                 }
 
-                <span class="kw">if</span> <span class="ident">done</span> {
-                    <span class="ident">state</span>.<span class="ident">stage</span> <span class="op">=</span> <span class="ident">StreamingStage::ReadingBoundary</span>;
-                    <span class="self">self</span>.<span class="ident">done</span> <span class="op">=</span> <span class="bool-val">true</span>;
+                <span class="kw">if </span>done {
+                    state.stage = StreamingStage::ReadingBoundary;
+                    <span class="self">self</span>.done = <span class="bool-val">true</span>;
                 }
 
-                <span class="ident">Poll::Ready</span>(<span class="prelude-val">Some</span>(<span class="prelude-val">Ok</span>(<span class="ident">bytes</span>)))
+                Poll::Ready(<span class="prelude-val">Some</span>(<span class="prelude-val">Ok</span>(bytes)))
             }
-            <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>) =&gt; <span class="ident">Poll::Pending</span>,
-            <span class="prelude-val">Err</span>(<span class="ident">err</span>) =&gt; <span class="ident">Poll::Ready</span>(<span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(<span class="ident">err</span>))),
+            <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>) =&gt; Poll::Pending,
+            <span class="prelude-val">Err</span>(err) =&gt; Poll::Ready(<span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(err))),
         }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="multer" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="multer" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

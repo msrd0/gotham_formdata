@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/middleware/security.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>security.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/middleware/security.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>security.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -63,70 +63,70 @@
 <span id="63">63</span>
 <span id="64">64</span>
 <span id="65">65</span>
-</pre><pre class="rust"><code><span class="doccomment">//! Security based middleware to handle security based sanitizations.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! Prior to v0.3, this middleware was baked into responses by default. It has</span>
-<span class="doccomment">//! now been separated to allow optional usage. You can attach as a middleware</span>
-<span class="doccomment">//! at startup to include behaviour as was present before.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! Currently this middleware will set the following headers:</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! - X-CONTENT-TYPE-OPTIONS: &quot;nosniff&quot;</span>
-<span class="doccomment">//! - X-FRAME-OPTIONS: &quot;DENY&quot;</span>
-<span class="doccomment">//! - X-XSS-PROTECTION: &quot;1; mode=block&quot;</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! More may be added in future, but these headers provide compatibility with</span>
-<span class="doccomment">//! previous versions of Gotham.</span>
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::handler::HandlerFuture</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::middleware</span>::{<span class="ident">Middleware</span>, <span class="ident">NewMiddleware</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state::State</span>;
+</pre><pre class="rust"><code><span class="doccomment">//! Security based middleware to handle security based sanitizations.
+//!
+//! Prior to v0.3, this middleware was baked into responses by default. It has
+//! now been separated to allow optional usage. You can attach as a middleware
+//! at startup to include behaviour as was present before.
+//!
+//! Currently this middleware will set the following headers:
+//!
+//! - X-CONTENT-TYPE-OPTIONS: &quot;nosniff&quot;
+//! - X-FRAME-OPTIONS: &quot;DENY&quot;
+//! - X-XSS-PROTECTION: &quot;1; mode=block&quot;
+//!
+//! More may be added in future, but these headers provide compatibility with
+//! previous versions of Gotham.
+</span><span class="kw">use </span><span class="kw">crate</span>::handler::HandlerFuture;
+<span class="kw">use </span><span class="kw">crate</span>::middleware::{Middleware, NewMiddleware};
+<span class="kw">use </span><span class="kw">crate</span>::state::State;
 
-<span class="kw">use</span> <span class="ident">futures_util::future</span>::{<span class="self">self</span>, <span class="ident">FutureExt</span>, <span class="ident">TryFutureExt</span>};
-<span class="kw">use</span> <span class="ident">hyper::header</span>::{<span class="ident">HeaderValue</span>, <span class="ident">X_CONTENT_TYPE_OPTIONS</span>, <span class="ident">X_FRAME_OPTIONS</span>, <span class="ident">X_XSS_PROTECTION</span>};
-<span class="kw">use</span> <span class="ident">std::pin::Pin</span>;
+<span class="kw">use </span>futures_util::future::{<span class="self">self</span>, FutureExt, TryFutureExt};
+<span class="kw">use </span>hyper::header::{HeaderValue, X_CONTENT_TYPE_OPTIONS, X_FRAME_OPTIONS, X_XSS_PROTECTION};
+<span class="kw">use </span>std::pin::Pin;
 
-<span class="comment">// constant strings to be used as header values</span>
-<span class="kw">const</span> <span class="ident">XFO_VALUE</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;DENY&quot;</span>;
-<span class="kw">const</span> <span class="ident">XXP_VALUE</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;1; mode=block&quot;</span>;
-<span class="kw">const</span> <span class="ident">XCTO_VALUE</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;nosniff&quot;</span>;
+<span class="comment">// constant strings to be used as header values
+</span><span class="kw">const </span>XFO_VALUE: <span class="kw-2">&amp;</span>str = <span class="string">&quot;DENY&quot;</span>;
+<span class="kw">const </span>XXP_VALUE: <span class="kw-2">&amp;</span>str = <span class="string">&quot;1; mode=block&quot;</span>;
+<span class="kw">const </span>XCTO_VALUE: <span class="kw-2">&amp;</span>str = <span class="string">&quot;nosniff&quot;</span>;
 
-<span class="doccomment">/// Middleware binding for the Gotham security handlers.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// This acts as nothing more than a trait implementation for the time</span>
-<span class="doccomment">/// being; there are no fields on the struct in use (yet).</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SecurityMiddleware</span>;
+<span class="doccomment">/// Middleware binding for the Gotham security handlers.
+///
+/// This acts as nothing more than a trait implementation for the time
+/// being; there are no fields on the struct in use (yet).
+</span><span class="attribute">#[derive(Clone)]
+</span><span class="kw">pub struct </span>SecurityMiddleware;
 
-<span class="doccomment">/// `Middleware` trait implementation.</span>
-<span class="kw">impl</span> <span class="ident">Middleware</span> <span class="kw">for</span> <span class="ident">SecurityMiddleware</span> {
-    <span class="doccomment">/// Attaches security headers to the response.</span>
-    <span class="kw">fn</span> <span class="ident">call</span><span class="op">&lt;</span><span class="ident">Chain</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">state</span>: <span class="ident">State</span>, <span class="ident">chain</span>: <span class="ident">Chain</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">Chain</span>: <span class="ident">FnOnce</span>(<span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+<span class="doccomment">/// `Middleware` trait implementation.
+</span><span class="kw">impl </span>Middleware <span class="kw">for </span>SecurityMiddleware {
+    <span class="doccomment">/// Attaches security headers to the response.
+    </span><span class="kw">fn </span>call&lt;Chain&gt;(<span class="self">self</span>, state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+    <span class="kw">where
+        </span>Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;,
     {
-        <span class="kw">let</span> <span class="ident">f</span> <span class="op">=</span> <span class="ident">chain</span>(<span class="ident">state</span>).<span class="ident">and_then</span>(<span class="op">|</span>(<span class="ident">state</span>, <span class="kw-2">mut</span> <span class="ident">response</span>)<span class="op">|</span> {
+        <span class="kw">let </span>f = chain(state).and_then(|(state, <span class="kw-2">mut </span>response)| {
             {
-                <span class="kw">let</span> <span class="ident">headers</span> <span class="op">=</span> <span class="ident">response</span>.<span class="ident">headers_mut</span>();
+                <span class="kw">let </span>headers = response.headers_mut();
 
-                <span class="ident">headers</span>.<span class="ident">insert</span>(<span class="ident">X_FRAME_OPTIONS</span>, <span class="ident">HeaderValue::from_static</span>(<span class="ident">XFO_VALUE</span>));
-                <span class="ident">headers</span>.<span class="ident">insert</span>(<span class="ident">X_XSS_PROTECTION</span>, <span class="ident">HeaderValue::from_static</span>(<span class="ident">XXP_VALUE</span>));
-                <span class="ident">headers</span>.<span class="ident">insert</span>(<span class="ident">X_CONTENT_TYPE_OPTIONS</span>, <span class="ident">HeaderValue::from_static</span>(<span class="ident">XCTO_VALUE</span>));
+                headers.insert(X_FRAME_OPTIONS, HeaderValue::from_static(XFO_VALUE));
+                headers.insert(X_XSS_PROTECTION, HeaderValue::from_static(XXP_VALUE));
+                headers.insert(X_CONTENT_TYPE_OPTIONS, HeaderValue::from_static(XCTO_VALUE));
             }
-            <span class="ident">future::ok</span>((<span class="ident">state</span>, <span class="ident">response</span>))
+            future::ok((state, response))
         });
 
-        <span class="ident">f</span>.<span class="ident">boxed</span>()
+        f.boxed()
     }
 }
 
-<span class="doccomment">/// `NewMiddleware` trait implementation.</span>
-<span class="kw">impl</span> <span class="ident">NewMiddleware</span> <span class="kw">for</span> <span class="ident">SecurityMiddleware</span> {
-    <span class="kw">type</span> <span class="ident">Instance</span> <span class="op">=</span> <span class="self">Self</span>;
+<span class="doccomment">/// `NewMiddleware` trait implementation.
+</span><span class="kw">impl </span>NewMiddleware <span class="kw">for </span>SecurityMiddleware {
+    <span class="kw">type </span>Instance = <span class="self">Self</span>;
 
-    <span class="doccomment">/// Clones the current middleware to a new instance.</span>
-    <span class="kw">fn</span> <span class="ident">new_middleware</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">anyhow::Result</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Instance</span><span class="op">&gt;</span> {
-        <span class="prelude-val">Ok</span>(<span class="self">self</span>.<span class="ident">clone</span>())
+    <span class="doccomment">/// Clones the current middleware to a new instance.
+    </span><span class="kw">fn </span>new_middleware(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; anyhow::Result&lt;<span class="self">Self</span>::Instance&gt; {
+        <span class="prelude-val">Ok</span>(<span class="self">self</span>.clone())
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

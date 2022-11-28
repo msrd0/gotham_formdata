@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/state/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/state/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -483,490 +483,490 @@
 <span id="483">483</span>
 <span id="484">484</span>
 <span id="485">485</span>
-</pre><pre class="rust"><code><span class="doccomment">//! Defines types for passing request state through `Middleware` and `Handler` implementations</span>
+</pre><pre class="rust"><code><span class="doccomment">//! Defines types for passing request state through `Middleware` and `Handler` implementations
 
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod</span> <span class="ident">client_addr</span>;
-<span class="kw">mod</span> <span class="ident">data</span>;
-<span class="kw">mod</span> <span class="ident">from_state</span>;
-<span class="kw">mod</span> <span class="ident">request_id</span>;
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>client_addr;
+<span class="kw">mod </span>data;
+<span class="kw">mod </span>from_state;
+<span class="kw">mod </span>request_id;
 
-<span class="kw">use</span> <span class="ident">hyper::http::request</span>;
-<span class="kw">use</span> <span class="ident">hyper::upgrade::OnUpgrade</span>;
-<span class="kw">use</span> <span class="ident">hyper</span>::{<span class="ident">Body</span>, <span class="ident">Request</span>};
-<span class="kw">use</span> <span class="ident">log</span>::{<span class="ident">debug</span>, <span class="ident">trace</span>};
-<span class="kw">use</span> <span class="ident">std::any</span>::{<span class="ident">Any</span>, <span class="ident">TypeId</span>};
-<span class="kw">use</span> <span class="ident">std::collections::HashMap</span>;
-<span class="kw">use</span> <span class="ident">std::hash</span>::{<span class="ident">BuildHasherDefault</span>, <span class="ident">Hasher</span>};
-<span class="kw">use</span> <span class="ident">std::net::SocketAddr</span>;
+<span class="kw">use </span>hyper::http::request;
+<span class="kw">use </span>hyper::upgrade::OnUpgrade;
+<span class="kw">use </span>hyper::{Body, Request};
+<span class="kw">use </span>log::{debug, trace};
+<span class="kw">use </span>std::any::{Any, TypeId};
+<span class="kw">use </span>std::collections::HashMap;
+<span class="kw">use </span>std::hash::{BuildHasherDefault, Hasher};
+<span class="kw">use </span>std::net::SocketAddr;
 
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state::client_addr::client_addr</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state::data::StateData</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state::from_state::FromState</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state::request_id::request_id</span>;
+<span class="kw">pub use </span><span class="kw">crate</span>::state::client_addr::client_addr;
+<span class="kw">pub use </span><span class="kw">crate</span>::state::data::StateData;
+<span class="kw">pub use </span><span class="kw">crate</span>::state::from_state::FromState;
+<span class="kw">pub use </span><span class="kw">crate</span>::state::request_id::request_id;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::helpers::http::request::path::RequestPathSegments</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state::client_addr::put_client_addr</span>;
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state::request_id::set_request_id</span>;
+<span class="kw">use </span><span class="kw">crate</span>::helpers::http::request::path::RequestPathSegments;
+<span class="kw">use </span><span class="kw">crate</span>::state::client_addr::put_client_addr;
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use </span><span class="kw">crate</span>::state::request_id::set_request_id;
 
-<span class="comment">// https://docs.rs/http/0.2.5/src/http/extensions.rs.html#8-28</span>
-<span class="comment">// With TypeIds as keys, there&#39;s no need to hash them. They are already hashes</span>
-<span class="comment">// themselves, coming from the compiler. The IdHasher just holds the u64 of</span>
-<span class="comment">// the TypeId, and then returns it, instead of doing any bit fiddling.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Default</span>)]</span>
-<span class="kw">struct</span> <span class="ident">IdHasher</span>(<span class="ident">u64</span>);
+<span class="comment">// https://docs.rs/http/0.2.5/src/http/extensions.rs.html#8-28
+// With TypeIds as keys, there&#39;s no need to hash them. They are already hashes
+// themselves, coming from the compiler. The IdHasher just holds the u64 of
+// the TypeId, and then returns it, instead of doing any bit fiddling.
+</span><span class="attribute">#[derive(Default)]
+</span><span class="kw">struct </span>IdHasher(u64);
 
-<span class="kw">impl</span> <span class="ident">Hasher</span> <span class="kw">for</span> <span class="ident">IdHasher</span> {
-    <span class="kw">fn</span> <span class="ident">write</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) {
+<span class="kw">impl </span>Hasher <span class="kw">for </span>IdHasher {
+    <span class="kw">fn </span>write(<span class="kw-2">&amp;mut </span><span class="self">self</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span>[u8]) {
         <span class="macro">unreachable!</span>(<span class="string">&quot;TypeId calls write_u64&quot;</span>);
     }
 
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">write_u64</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">id</span>: <span class="ident">u64</span>) {
-        <span class="self">self</span>.<span class="number">0</span> <span class="op">=</span> <span class="ident">id</span>;
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>write_u64(<span class="kw-2">&amp;mut </span><span class="self">self</span>, id: u64) {
+        <span class="self">self</span>.<span class="number">0 </span>= id;
     }
 
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">finish</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u64</span> {
-        <span class="self">self</span>.<span class="number">0</span>
-    }
+    <span class="attribute">#[inline]
+    </span><span class="kw">fn </span>finish(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u64 {
+        <span class="self">self</span>.<span class="number">0
+    </span>}
 }
 
-<span class="doccomment">/// Provides storage for request state, and stores one item of each type. The types used for</span>
-<span class="doccomment">/// storage must implement the [`StateData`] trait to allow its storage, which is usually done</span>
-<span class="doccomment">/// by adding `#[derive(StateData)]` on the type in question.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// use gotham::state::{State, StateData};</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// #[derive(StateData)]</span>
-<span class="doccomment">/// struct MyStruct {</span>
-<span class="doccomment">///     value: i32,</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// # fn main() {</span>
-<span class="doccomment">/// #   State::with_new(|state| {</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// state.put(MyStruct { value: 1 });</span>
-<span class="doccomment">/// assert_eq!(state.borrow::&lt;MyStruct&gt;().value, 1);</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #   });</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// ```</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">State</span> {
-    <span class="ident">data</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">TypeId</span>, <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Any</span> <span class="op">+</span> <span class="ident">Send</span><span class="op">&gt;</span>, <span class="ident">BuildHasherDefault</span><span class="op">&lt;</span><span class="ident">IdHasher</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Provides storage for request state, and stores one item of each type. The types used for
+/// storage must implement the [`StateData`] trait to allow its storage, which is usually done
+/// by adding `#[derive(StateData)]` on the type in question.
+///
+/// # Examples
+///
+/// ```rust
+/// use gotham::state::{State, StateData};
+///
+/// #[derive(StateData)]
+/// struct MyStruct {
+///     value: i32,
+/// }
+/// # fn main() {
+/// #   State::with_new(|state| {
+/// #
+/// state.put(MyStruct { value: 1 });
+/// assert_eq!(state.borrow::&lt;MyStruct&gt;().value, 1);
+/// #
+/// #   });
+/// # }
+/// ```
+</span><span class="kw">pub struct </span>State {
+    data: HashMap&lt;TypeId, Box&lt;<span class="kw">dyn </span>Any + Send&gt;, BuildHasherDefault&lt;IdHasher&gt;&gt;,
 }
 
-<span class="kw">impl</span> <span class="ident">State</span> {
-    <span class="doccomment">/// Creates a new, empty `State` container. This is for internal Gotham use, because the</span>
-    <span class="doccomment">/// ability to create a new `State` container would allow for libraries and applications to</span>
-    <span class="doccomment">/// incorrectly discard important internal data.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">new</span>() -&gt; <span class="ident">State</span> {
-        <span class="ident">State</span> {
-            <span class="ident">data</span>: <span class="ident">HashMap::default</span>(),
+<span class="kw">impl </span>State {
+    <span class="doccomment">/// Creates a new, empty `State` container. This is for internal Gotham use, because the
+    /// ability to create a new `State` container would allow for libraries and applications to
+    /// incorrectly discard important internal data.
+    </span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>new() -&gt; State {
+        State {
+            data: HashMap::default(),
         }
     }
 
-    <span class="doccomment">/// Creates a new, empty `State` and yields it mutably into the provided closure. This is</span>
-    <span class="doccomment">/// intended only for use in the documentation tests for `State`, since the `State` container</span>
-    <span class="doccomment">/// cannot be constructed otherwise.</span>
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">with_new</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="ident">f</span>: <span class="ident">F</span>)
-    <span class="kw">where</span>
-        <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;mut</span> <span class="ident">State</span>),
+    <span class="doccomment">/// Creates a new, empty `State` and yields it mutably into the provided closure. This is
+    /// intended only for use in the documentation tests for `State`, since the `State` container
+    /// cannot be constructed otherwise.
+    </span><span class="attribute">#[doc(hidden)]
+    </span><span class="kw">pub fn </span>with_new&lt;F&gt;(f: F)
+    <span class="kw">where
+        </span>F: FnOnce(<span class="kw-2">&amp;mut </span>State),
     {
-        <span class="ident">f</span>(<span class="kw-2">&amp;mut</span> <span class="ident">State::new</span>())
+        f(<span class="kw-2">&amp;mut </span>State::new())
     }
 
-    <span class="doccomment">/// Instantiate a new `State` for a given `Request`. This is primarily useful if you&#39;re calling</span>
-    <span class="doccomment">/// Gotham from your own Hyper service.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_request</span>(<span class="ident">req</span>: <span class="ident">Request</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>, <span class="ident">client_addr</span>: <span class="ident">SocketAddr</span>) -&gt; <span class="self">Self</span> {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">state</span> <span class="op">=</span> <span class="ident"><span class="self">Self</span>::new</span>();
+    <span class="doccomment">/// Instantiate a new `State` for a given `Request`. This is primarily useful if you&#39;re calling
+    /// Gotham from your own Hyper service.
+    </span><span class="kw">pub fn </span>from_request(req: Request&lt;Body&gt;, client_addr: SocketAddr) -&gt; <span class="self">Self </span>{
+        <span class="kw">let </span><span class="kw-2">mut </span>state = <span class="self">Self</span>::new();
 
-        <span class="ident">put_client_addr</span>(<span class="kw-2">&amp;mut</span> <span class="ident">state</span>, <span class="ident">client_addr</span>);
+        put_client_addr(<span class="kw-2">&amp;mut </span>state, client_addr);
 
-        <span class="kw">let</span> (
-            <span class="ident">request::Parts</span> {
-                <span class="ident">method</span>,
-                <span class="ident">uri</span>,
-                <span class="ident">version</span>,
-                <span class="ident">headers</span>,
-                <span class="kw-2">mut</span> <span class="ident">extensions</span>,
+        <span class="kw">let </span>(
+            request::Parts {
+                method,
+                uri,
+                version,
+                headers,
+                <span class="kw-2">mut </span>extensions,
                 ..
             },
-            <span class="ident">body</span>,
-        ) <span class="op">=</span> <span class="ident">req</span>.<span class="ident">into_parts</span>();
+            body,
+        ) = req.into_parts();
 
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">RequestPathSegments::new</span>(<span class="ident">uri</span>.<span class="ident">path</span>()));
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">method</span>);
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">uri</span>);
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">version</span>);
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">headers</span>);
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">body</span>);
+        state.put(RequestPathSegments::new(uri.path()));
+        state.put(method);
+        state.put(uri);
+        state.put(version);
+        state.put(headers);
+        state.put(body);
 
-        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">on_upgrade</span>) <span class="op">=</span> <span class="ident">extensions</span>.<span class="ident">remove</span>::<span class="op">&lt;</span><span class="ident">OnUpgrade</span><span class="op">&gt;</span>() {
-            <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">on_upgrade</span>);
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(on_upgrade) = extensions.remove::&lt;OnUpgrade&gt;() {
+            state.put(on_upgrade);
         }
 
         {
-            <span class="kw">let</span> <span class="ident">request_id</span> <span class="op">=</span> <span class="ident">set_request_id</span>(<span class="kw-2">&amp;mut</span> <span class="ident">state</span>);
+            <span class="kw">let </span>request_id = set_request_id(<span class="kw-2">&amp;mut </span>state);
             <span class="macro">debug!</span>(
                 <span class="string">&quot;[DEBUG][{}][Thread][{:?}]&quot;</span>,
-                <span class="ident">request_id</span>,
-                <span class="ident">std::thread::current</span>().<span class="ident">id</span>(),
+                request_id,
+                std::thread::current().id(),
             );
         };
 
-        <span class="ident">state</span>
+        state
     }
 
-    <span class="doccomment">/// Puts a value into the `State` storage. One value of each type is retained. Successive calls</span>
-    <span class="doccomment">/// to `put` will overwrite the existing value of the same type.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # extern crate gotham;</span>
-    <span class="doccomment">/// # #[macro_use]</span>
-    <span class="doccomment">/// # extern crate gotham_derive;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # use gotham::state::State;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # #[derive(StateData)]</span>
-    <span class="doccomment">/// # struct MyStruct {</span>
-    <span class="doccomment">/// #     value: i32</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # #[derive(StateData)]</span>
-    <span class="doccomment">/// # struct AnotherStruct {</span>
-    <span class="doccomment">/// #     value: &amp;&#39;static str</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn main() {</span>
-    <span class="doccomment">/// #   State::with_new(|state| {</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// state.put(MyStruct { value: 1 });</span>
-    <span class="doccomment">/// assert_eq!(state.borrow::&lt;MyStruct&gt;().value, 1);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// state.put(AnotherStruct { value: &quot;a string&quot; });</span>
-    <span class="doccomment">/// state.put(MyStruct { value: 100 });</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(state.borrow::&lt;AnotherStruct&gt;().value, &quot;a string&quot;);</span>
-    <span class="doccomment">/// assert_eq!(state.borrow::&lt;MyStruct&gt;().value, 100);</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// #   });</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">put</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">t</span>: <span class="ident">T</span>)
-    <span class="kw">where</span>
-        <span class="ident">T</span>: <span class="ident">StateData</span>,
+    <span class="doccomment">/// Puts a value into the `State` storage. One value of each type is retained. Successive calls
+    /// to `put` will overwrite the existing value of the same type.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// # extern crate gotham;
+    /// # #[macro_use]
+    /// # extern crate gotham_derive;
+    /// #
+    /// # use gotham::state::State;
+    /// #
+    /// # #[derive(StateData)]
+    /// # struct MyStruct {
+    /// #     value: i32
+    /// # }
+    /// #
+    /// # #[derive(StateData)]
+    /// # struct AnotherStruct {
+    /// #     value: &amp;&#39;static str
+    /// # }
+    /// #
+    /// # fn main() {
+    /// #   State::with_new(|state| {
+    /// #
+    /// state.put(MyStruct { value: 1 });
+    /// assert_eq!(state.borrow::&lt;MyStruct&gt;().value, 1);
+    ///
+    /// state.put(AnotherStruct { value: &quot;a string&quot; });
+    /// state.put(MyStruct { value: 100 });
+    ///
+    /// assert_eq!(state.borrow::&lt;AnotherStruct&gt;().value, &quot;a string&quot;);
+    /// assert_eq!(state.borrow::&lt;MyStruct&gt;().value, 100);
+    /// #
+    /// #   });
+    /// # }
+    /// ```
+    </span><span class="kw">pub fn </span>put&lt;T&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>, t: T)
+    <span class="kw">where
+        </span>T: StateData,
     {
-        <span class="kw">let</span> <span class="ident">type_id</span> <span class="op">=</span> <span class="ident">TypeId::of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>();
-        <span class="macro">trace!</span>(<span class="string">&quot; inserting record to state for type_id `{:?}`&quot;</span>, <span class="ident">type_id</span>);
-        <span class="self">self</span>.<span class="ident">data</span>.<span class="ident">insert</span>(<span class="ident">type_id</span>, <span class="ident">Box::new</span>(<span class="ident">t</span>));
+        <span class="kw">let </span>type_id = TypeId::of::&lt;T&gt;();
+        <span class="macro">trace!</span>(<span class="string">&quot; inserting record to state for type_id `{:?}`&quot;</span>, type_id);
+        <span class="self">self</span>.data.insert(type_id, Box::new(t));
     }
 
-    <span class="doccomment">/// Determines if the current value exists in `State` storage.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # extern crate gotham;</span>
-    <span class="doccomment">/// # #[macro_use]</span>
-    <span class="doccomment">/// # extern crate gotham_derive;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # use gotham::state::State;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # #[derive(StateData)]</span>
-    <span class="doccomment">/// # struct MyStruct {</span>
-    <span class="doccomment">/// #     value: i32</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # #[derive(StateData)]</span>
-    <span class="doccomment">/// # struct AnotherStruct {</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn main() {</span>
-    <span class="doccomment">/// #   State::with_new(|state| {</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// state.put(MyStruct { value: 1 });</span>
-    <span class="doccomment">/// assert!(state.has::&lt;MyStruct&gt;());</span>
-    <span class="doccomment">/// assert_eq!(state.borrow::&lt;MyStruct&gt;().value, 1);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert!(!state.has::&lt;AnotherStruct&gt;());</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// #   });</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span>
-    <span class="kw">where</span>
-        <span class="ident">T</span>: <span class="ident">StateData</span>,
+    <span class="doccomment">/// Determines if the current value exists in `State` storage.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// # extern crate gotham;
+    /// # #[macro_use]
+    /// # extern crate gotham_derive;
+    /// #
+    /// # use gotham::state::State;
+    /// #
+    /// # #[derive(StateData)]
+    /// # struct MyStruct {
+    /// #     value: i32
+    /// # }
+    /// #
+    /// # #[derive(StateData)]
+    /// # struct AnotherStruct {
+    /// # }
+    /// #
+    /// # fn main() {
+    /// #   State::with_new(|state| {
+    /// #
+    /// state.put(MyStruct { value: 1 });
+    /// assert!(state.has::&lt;MyStruct&gt;());
+    /// assert_eq!(state.borrow::&lt;MyStruct&gt;().value, 1);
+    ///
+    /// assert!(!state.has::&lt;AnotherStruct&gt;());
+    /// #
+    /// #   });
+    /// # }
+    /// ```
+    </span><span class="kw">pub fn </span>has&lt;T&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool
+    <span class="kw">where
+        </span>T: StateData,
     {
-        <span class="kw">let</span> <span class="ident">type_id</span> <span class="op">=</span> <span class="ident">TypeId::of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>();
-        <span class="self">self</span>.<span class="ident">data</span>.<span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="ident">type_id</span>).<span class="ident">is_some</span>()
+        <span class="kw">let </span>type_id = TypeId::of::&lt;T&gt;();
+        <span class="self">self</span>.data.get(<span class="kw-2">&amp;</span>type_id).is_some()
     }
 
-    <span class="doccomment">/// Tries to borrow a value from the `State` storage.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # extern crate gotham;</span>
-    <span class="doccomment">/// # #[macro_use]</span>
-    <span class="doccomment">/// # extern crate gotham_derive;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # use gotham::state::State;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # #[derive(StateData)]</span>
-    <span class="doccomment">/// # struct MyStruct {</span>
-    <span class="doccomment">/// #     value: i32</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # #[derive(StateData)]</span>
-    <span class="doccomment">/// # struct AnotherStruct {</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn main() {</span>
-    <span class="doccomment">/// #   State::with_new(|state| {</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// state.put(MyStruct { value: 1 });</span>
-    <span class="doccomment">/// assert!(state.try_borrow::&lt;MyStruct&gt;().is_some());</span>
-    <span class="doccomment">/// assert_eq!(state.try_borrow::&lt;MyStruct&gt;().unwrap().value, 1);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert!(state.try_borrow::&lt;AnotherStruct&gt;().is_none());</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// #   });</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">try_borrow</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">T</span><span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">T</span>: <span class="ident">StateData</span>,
+    <span class="doccomment">/// Tries to borrow a value from the `State` storage.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// # extern crate gotham;
+    /// # #[macro_use]
+    /// # extern crate gotham_derive;
+    /// #
+    /// # use gotham::state::State;
+    /// #
+    /// # #[derive(StateData)]
+    /// # struct MyStruct {
+    /// #     value: i32
+    /// # }
+    /// #
+    /// # #[derive(StateData)]
+    /// # struct AnotherStruct {
+    /// # }
+    /// #
+    /// # fn main() {
+    /// #   State::with_new(|state| {
+    /// #
+    /// state.put(MyStruct { value: 1 });
+    /// assert!(state.try_borrow::&lt;MyStruct&gt;().is_some());
+    /// assert_eq!(state.try_borrow::&lt;MyStruct&gt;().unwrap().value, 1);
+    ///
+    /// assert!(state.try_borrow::&lt;AnotherStruct&gt;().is_none());
+    /// #
+    /// #   });
+    /// # }
+    /// ```
+    </span><span class="kw">pub fn </span>try_borrow&lt;T&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>T&gt;
+    <span class="kw">where
+        </span>T: StateData,
     {
-        <span class="kw">let</span> <span class="ident">type_id</span> <span class="op">=</span> <span class="ident">TypeId::of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>();
-        <span class="macro">trace!</span>(<span class="string">&quot; borrowing state data for type_id `{:?}`&quot;</span>, <span class="ident">type_id</span>);
-        <span class="self">self</span>.<span class="ident">data</span>.<span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="ident">type_id</span>).<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">b</span><span class="op">|</span> <span class="ident">b</span>.<span class="ident">downcast_ref</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>())
+        <span class="kw">let </span>type_id = TypeId::of::&lt;T&gt;();
+        <span class="macro">trace!</span>(<span class="string">&quot; borrowing state data for type_id `{:?}`&quot;</span>, type_id);
+        <span class="self">self</span>.data.get(<span class="kw-2">&amp;</span>type_id).and_then(|b| b.downcast_ref::&lt;T&gt;())
     }
 
-    <span class="doccomment">/// Borrows a value from the `State` storage.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If a value of type `T` is not present in `State`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # extern crate gotham;</span>
-    <span class="doccomment">/// # #[macro_use]</span>
-    <span class="doccomment">/// # extern crate gotham_derive;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # use gotham::state::State;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # #[derive(StateData)]</span>
-    <span class="doccomment">/// # struct MyStruct {</span>
-    <span class="doccomment">/// #     value: i32</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn main() {</span>
-    <span class="doccomment">/// #   State::with_new(|state| {</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// state.put(MyStruct { value: 1 });</span>
-    <span class="doccomment">/// assert_eq!(state.borrow::&lt;MyStruct&gt;().value, 1);</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// #   });</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">borrow</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">T</span>
-    <span class="kw">where</span>
-        <span class="ident">T</span>: <span class="ident">StateData</span>,
+    <span class="doccomment">/// Borrows a value from the `State` storage.
+    ///
+    /// # Panics
+    ///
+    /// If a value of type `T` is not present in `State`.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// # extern crate gotham;
+    /// # #[macro_use]
+    /// # extern crate gotham_derive;
+    /// #
+    /// # use gotham::state::State;
+    /// #
+    /// # #[derive(StateData)]
+    /// # struct MyStruct {
+    /// #     value: i32
+    /// # }
+    /// #
+    /// # fn main() {
+    /// #   State::with_new(|state| {
+    /// #
+    /// state.put(MyStruct { value: 1 });
+    /// assert_eq!(state.borrow::&lt;MyStruct&gt;().value, 1);
+    /// #
+    /// #   });
+    /// # }
+    /// ```
+    </span><span class="kw">pub fn </span>borrow&lt;T&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>T
+    <span class="kw">where
+        </span>T: StateData,
     {
-        <span class="self">self</span>.<span class="ident">try_borrow</span>()
-            .<span class="ident">expect</span>(<span class="string">&quot;required type is not present in State container&quot;</span>)
+        <span class="self">self</span>.try_borrow()
+            .expect(<span class="string">&quot;required type is not present in State container&quot;</span>)
     }
 
-    <span class="doccomment">/// Tries to mutably borrow a value from the `State` storage.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # extern crate gotham;</span>
-    <span class="doccomment">/// # #[macro_use]</span>
-    <span class="doccomment">/// # extern crate gotham_derive;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # use gotham::state::State;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # #[derive(StateData)]</span>
-    <span class="doccomment">/// # struct MyStruct {</span>
-    <span class="doccomment">/// #     value: i32</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # #[derive(StateData)]</span>
-    <span class="doccomment">/// # struct AnotherStruct {</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn main() {</span>
-    <span class="doccomment">/// #   State::with_new(|state| {</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// state.put(MyStruct { value: 100 });</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// if let Some(a) = state.try_borrow_mut::&lt;MyStruct&gt;() {</span>
-    <span class="doccomment">///     a.value += 10;</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(state.borrow::&lt;MyStruct&gt;().value, 110);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert!(state.try_borrow_mut::&lt;AnotherStruct&gt;().is_none());</span>
-    <span class="doccomment">/// #   });</span>
-    <span class="doccomment">/// # }</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">try_borrow_mut</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="ident">T</span><span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">T</span>: <span class="ident">StateData</span>,
+    <span class="doccomment">/// Tries to mutably borrow a value from the `State` storage.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// # extern crate gotham;
+    /// # #[macro_use]
+    /// # extern crate gotham_derive;
+    /// #
+    /// # use gotham::state::State;
+    /// #
+    /// # #[derive(StateData)]
+    /// # struct MyStruct {
+    /// #     value: i32
+    /// # }
+    /// #
+    /// # #[derive(StateData)]
+    /// # struct AnotherStruct {
+    /// # }
+    /// #
+    /// # fn main() {
+    /// #   State::with_new(|state| {
+    /// #
+    /// state.put(MyStruct { value: 100 });
+    ///
+    /// if let Some(a) = state.try_borrow_mut::&lt;MyStruct&gt;() {
+    ///     a.value += 10;
+    /// }
+    ///
+    /// assert_eq!(state.borrow::&lt;MyStruct&gt;().value, 110);
+    ///
+    /// assert!(state.try_borrow_mut::&lt;AnotherStruct&gt;().is_none());
+    /// #   });
+    /// # }
+    </span><span class="kw">pub fn </span>try_borrow_mut&lt;T&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;mut </span>T&gt;
+    <span class="kw">where
+        </span>T: StateData,
     {
-        <span class="kw">let</span> <span class="ident">type_id</span> <span class="op">=</span> <span class="ident">TypeId::of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>();
-        <span class="macro">trace!</span>(<span class="string">&quot; mutably borrowing state data for type_id `{:?}`&quot;</span>, <span class="ident">type_id</span>);
-        <span class="self">self</span>.<span class="ident">data</span>
-            .<span class="ident">get_mut</span>(<span class="kw-2">&amp;</span><span class="ident">type_id</span>)
-            .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">b</span><span class="op">|</span> <span class="ident">b</span>.<span class="ident">downcast_mut</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>())
+        <span class="kw">let </span>type_id = TypeId::of::&lt;T&gt;();
+        <span class="macro">trace!</span>(<span class="string">&quot; mutably borrowing state data for type_id `{:?}`&quot;</span>, type_id);
+        <span class="self">self</span>.data
+            .get_mut(<span class="kw-2">&amp;</span>type_id)
+            .and_then(|b| b.downcast_mut::&lt;T&gt;())
     }
 
-    <span class="doccomment">/// Mutably borrows a value from the `State` storage.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If a value of type `T` is not present in `State`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # extern crate gotham;</span>
-    <span class="doccomment">/// # #[macro_use]</span>
-    <span class="doccomment">/// # extern crate gotham_derive;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # use gotham::state::State;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # #[derive(StateData)]</span>
-    <span class="doccomment">/// # struct MyStruct {</span>
-    <span class="doccomment">/// #     value: i32</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # #[derive(StateData)]</span>
-    <span class="doccomment">/// # struct AnotherStruct {</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn main() {</span>
-    <span class="doccomment">/// #   State::with_new(|state| {</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// state.put(MyStruct { value: 100 });</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// {</span>
-    <span class="doccomment">///     let a = state.borrow_mut::&lt;MyStruct&gt;();</span>
-    <span class="doccomment">///     a.value += 10;</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(state.borrow::&lt;MyStruct&gt;().value, 110);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert!(state.try_borrow_mut::&lt;AnotherStruct&gt;().is_none());</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// #   });</span>
-    <span class="doccomment">/// # }</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">borrow_mut</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">T</span>
-    <span class="kw">where</span>
-        <span class="ident">T</span>: <span class="ident">StateData</span>,
+    <span class="doccomment">/// Mutably borrows a value from the `State` storage.
+    ///
+    /// # Panics
+    ///
+    /// If a value of type `T` is not present in `State`.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// # extern crate gotham;
+    /// # #[macro_use]
+    /// # extern crate gotham_derive;
+    /// #
+    /// # use gotham::state::State;
+    /// #
+    /// # #[derive(StateData)]
+    /// # struct MyStruct {
+    /// #     value: i32
+    /// # }
+    /// #
+    /// # #[derive(StateData)]
+    /// # struct AnotherStruct {
+    /// # }
+    /// #
+    /// # fn main() {
+    /// #   State::with_new(|state| {
+    /// #
+    /// state.put(MyStruct { value: 100 });
+    ///
+    /// {
+    ///     let a = state.borrow_mut::&lt;MyStruct&gt;();
+    ///     a.value += 10;
+    /// }
+    ///
+    /// assert_eq!(state.borrow::&lt;MyStruct&gt;().value, 110);
+    ///
+    /// assert!(state.try_borrow_mut::&lt;AnotherStruct&gt;().is_none());
+    /// #
+    /// #   });
+    /// # }
+    </span><span class="kw">pub fn </span>borrow_mut&lt;T&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut </span>T
+    <span class="kw">where
+        </span>T: StateData,
     {
-        <span class="self">self</span>.<span class="ident">try_borrow_mut</span>()
-            .<span class="ident">expect</span>(<span class="string">&quot;required type is not present in State container&quot;</span>)
+        <span class="self">self</span>.try_borrow_mut()
+            .expect(<span class="string">&quot;required type is not present in State container&quot;</span>)
     }
 
-    <span class="doccomment">/// Tries to move a value out of the `State` storage and return ownership.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # extern crate gotham;</span>
-    <span class="doccomment">/// # #[macro_use]</span>
-    <span class="doccomment">/// # extern crate gotham_derive;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # use gotham::state::State;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # #[derive(StateData)]</span>
-    <span class="doccomment">/// # struct MyStruct {</span>
-    <span class="doccomment">/// #     value: i32</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # #[derive(StateData)]</span>
-    <span class="doccomment">/// # struct AnotherStruct {</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn main() {</span>
-    <span class="doccomment">/// #   State::with_new(|state| {</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// state.put(MyStruct { value: 110 });</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(state.try_take::&lt;MyStruct&gt;().unwrap().value, 110);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert!(state.try_take::&lt;MyStruct&gt;().is_none());</span>
-    <span class="doccomment">/// assert!(state.try_borrow_mut::&lt;MyStruct&gt;().is_none());</span>
-    <span class="doccomment">/// assert!(state.try_borrow::&lt;MyStruct&gt;().is_none());</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert!(state.try_take::&lt;AnotherStruct&gt;().is_none());</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// #   });</span>
-    <span class="doccomment">/// # }</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">try_take</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">T</span>: <span class="ident">StateData</span>,
+    <span class="doccomment">/// Tries to move a value out of the `State` storage and return ownership.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// # extern crate gotham;
+    /// # #[macro_use]
+    /// # extern crate gotham_derive;
+    /// #
+    /// # use gotham::state::State;
+    /// #
+    /// # #[derive(StateData)]
+    /// # struct MyStruct {
+    /// #     value: i32
+    /// # }
+    /// #
+    /// # #[derive(StateData)]
+    /// # struct AnotherStruct {
+    /// # }
+    /// #
+    /// # fn main() {
+    /// #   State::with_new(|state| {
+    /// #
+    /// state.put(MyStruct { value: 110 });
+    ///
+    /// assert_eq!(state.try_take::&lt;MyStruct&gt;().unwrap().value, 110);
+    ///
+    /// assert!(state.try_take::&lt;MyStruct&gt;().is_none());
+    /// assert!(state.try_borrow_mut::&lt;MyStruct&gt;().is_none());
+    /// assert!(state.try_borrow::&lt;MyStruct&gt;().is_none());
+    ///
+    /// assert!(state.try_take::&lt;AnotherStruct&gt;().is_none());
+    /// #
+    /// #   });
+    /// # }
+    </span><span class="kw">pub fn </span>try_take&lt;T&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;T&gt;
+    <span class="kw">where
+        </span>T: StateData,
     {
-        <span class="kw">let</span> <span class="ident">type_id</span> <span class="op">=</span> <span class="ident">TypeId::of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>();
+        <span class="kw">let </span>type_id = TypeId::of::&lt;T&gt;();
         <span class="macro">trace!</span>(
             <span class="string">&quot; taking ownership from state data for type_id `{:?}`&quot;</span>,
-            <span class="ident">type_id</span>
+            type_id
         );
-        <span class="self">self</span>.<span class="ident">data</span>
-            .<span class="ident">remove</span>(<span class="kw-2">&amp;</span><span class="ident">type_id</span>)
-            .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">b</span><span class="op">|</span> <span class="ident">b</span>.<span class="ident">downcast</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>().<span class="ident">ok</span>())
-            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">b</span><span class="op">|</span> <span class="kw-2">*</span><span class="ident">b</span>)
+        <span class="self">self</span>.data
+            .remove(<span class="kw-2">&amp;</span>type_id)
+            .and_then(|b| b.downcast::&lt;T&gt;().ok())
+            .map(|b| <span class="kw-2">*</span>b)
     }
 
-    <span class="doccomment">/// Moves a value out of the `State` storage and returns ownership.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// If a value of type `T` is not present in `State`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// # extern crate gotham;</span>
-    <span class="doccomment">/// # #[macro_use]</span>
-    <span class="doccomment">/// # extern crate gotham_derive;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # use gotham::state::State;</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # #[derive(StateData)]</span>
-    <span class="doccomment">/// # struct MyStruct {</span>
-    <span class="doccomment">/// #     value: i32</span>
-    <span class="doccomment">/// # }</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// # fn main() {</span>
-    <span class="doccomment">/// #   State::with_new(|state| {</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// state.put(MyStruct { value: 110 });</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert_eq!(state.take::&lt;MyStruct&gt;().value, 110);</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert!(state.try_take::&lt;MyStruct&gt;().is_none());</span>
-    <span class="doccomment">/// assert!(state.try_borrow_mut::&lt;MyStruct&gt;().is_none());</span>
-    <span class="doccomment">/// assert!(state.try_borrow::&lt;MyStruct&gt;().is_none());</span>
-    <span class="doccomment">/// #</span>
-    <span class="doccomment">/// #   });</span>
-    <span class="doccomment">/// # }</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">take</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">T</span>
-    <span class="kw">where</span>
-        <span class="ident">T</span>: <span class="ident">StateData</span>,
+    <span class="doccomment">/// Moves a value out of the `State` storage and returns ownership.
+    ///
+    /// # Panics
+    ///
+    /// If a value of type `T` is not present in `State`.
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// # extern crate gotham;
+    /// # #[macro_use]
+    /// # extern crate gotham_derive;
+    /// #
+    /// # use gotham::state::State;
+    /// #
+    /// # #[derive(StateData)]
+    /// # struct MyStruct {
+    /// #     value: i32
+    /// # }
+    /// #
+    /// # fn main() {
+    /// #   State::with_new(|state| {
+    /// #
+    /// state.put(MyStruct { value: 110 });
+    ///
+    /// assert_eq!(state.take::&lt;MyStruct&gt;().value, 110);
+    ///
+    /// assert!(state.try_take::&lt;MyStruct&gt;().is_none());
+    /// assert!(state.try_borrow_mut::&lt;MyStruct&gt;().is_none());
+    /// assert!(state.try_borrow::&lt;MyStruct&gt;().is_none());
+    /// #
+    /// #   });
+    /// # }
+    </span><span class="kw">pub fn </span>take&lt;T&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; T
+    <span class="kw">where
+        </span>T: StateData,
     {
-        <span class="self">self</span>.<span class="ident">try_take</span>()
-            .<span class="ident">expect</span>(<span class="string">&quot;required type is not present in State container&quot;</span>)
+        <span class="self">self</span>.try_take()
+            .expect(<span class="string">&quot;required type is not present in State container&quot;</span>)
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

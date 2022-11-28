@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/router/builder/modify.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>modify.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../gotham/index.html"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/router/builder/modify.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>modify.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../../normalize.css"><link rel="stylesheet" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../../ayu.css" disabled><link rel="stylesheet" href="../../../../dark.css" disabled><link rel="stylesheet" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../gotham/index.html"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -109,116 +109,116 @@
 <span id="109">109</span>
 <span id="110">110</span>
 <span id="111">111</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">hyper::Body</span>;
+</pre><pre class="rust"><code><span class="kw">use </span>hyper::Body;
 
-<span class="kw">use</span> <span class="ident">std::panic::RefUnwindSafe</span>;
+<span class="kw">use </span>std::panic::RefUnwindSafe;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::extractor</span>::{<span class="ident">PathExtractor</span>, <span class="ident">QueryStringExtractor</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::pipeline::PipelineHandleChain</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::builder::single::DefineSingleRoute</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::builder::SingleRouteBuilder</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::route::matcher</span>::{<span class="ident">AndRouteMatcher</span>, <span class="ident">RouteMatcher</span>};
+<span class="kw">use </span><span class="kw">crate</span>::extractor::{PathExtractor, QueryStringExtractor};
+<span class="kw">use </span><span class="kw">crate</span>::pipeline::PipelineHandleChain;
+<span class="kw">use </span><span class="kw">crate</span>::router::builder::single::DefineSingleRoute;
+<span class="kw">use </span><span class="kw">crate</span>::router::builder::SingleRouteBuilder;
+<span class="kw">use </span><span class="kw">crate</span>::router::route::matcher::{AndRouteMatcher, RouteMatcher};
 
-<span class="doccomment">/// Describes the operation of replacing a `PathExtractor` on a route. This trait exists to remove</span>
-<span class="doccomment">/// type clutter from the documentation of `SingleRouteBuilder::with_path_extractor`.</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">ReplacePathExtractor</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">T</span>: <span class="ident">PathExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Describes the operation of replacing a `PathExtractor` on a route. This trait exists to remove
+/// type clutter from the documentation of `SingleRouteBuilder::with_path_extractor`.
+</span><span class="kw">pub trait </span>ReplacePathExtractor&lt;T&gt;
+<span class="kw">where
+    </span>T: PathExtractor&lt;Body&gt;,
 {
-    <span class="doccomment">/// The type returned when replacing the `PathExtractor` with the target type.</span>
-    <span class="kw">type</span> <span class="ident">Output</span>: <span class="ident">DefineSingleRoute</span>;
+    <span class="doccomment">/// The type returned when replacing the `PathExtractor` with the target type.
+    </span><span class="kw">type </span>Output: DefineSingleRoute;
 
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-    <span class="doccomment">/// Replaces the `PathExtractor` in `self` with the parameterized type `T`. This is a type</span>
-    <span class="doccomment">/// level operation so takes no value.</span>
-    <span class="kw">fn</span> <span class="ident">replace_path_extractor</span>(<span class="self">self</span>) -&gt; <span class="ident"><span class="self">Self</span>::Output</span>;
+    <span class="attribute">#[doc(hidden)]
+    </span><span class="doccomment">/// Replaces the `PathExtractor` in `self` with the parameterized type `T`. This is a type
+    /// level operation so takes no value.
+    </span><span class="kw">fn </span>replace_path_extractor(<span class="self">self</span>) -&gt; <span class="self">Self</span>::Output;
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">M</span>, <span class="ident">C</span>, <span class="ident">P</span>, <span class="ident">PE</span>, <span class="ident">QSE</span>, <span class="ident">NPE</span><span class="op">&gt;</span> <span class="ident">ReplacePathExtractor</span><span class="op">&lt;</span><span class="ident">NPE</span><span class="op">&gt;</span>
-    <span class="kw">for</span> <span class="ident">SingleRouteBuilder</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">M</span>, <span class="ident">C</span>, <span class="ident">P</span>, <span class="ident">PE</span>, <span class="ident">QSE</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">M</span>: <span class="ident">RouteMatcher</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">C</span>: <span class="ident">PipelineHandleChain</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">P</span>: <span class="ident">RefUnwindSafe</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">PE</span>: <span class="ident">PathExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">QSE</span>: <span class="ident">QueryStringExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">NPE</span>: <span class="ident">PathExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, M, C, P, PE, QSE, NPE&gt; ReplacePathExtractor&lt;NPE&gt;
+    <span class="kw">for </span>SingleRouteBuilder&lt;<span class="lifetime">&#39;a</span>, M, C, P, PE, QSE&gt;
+<span class="kw">where
+    </span>M: RouteMatcher + Send + Sync + <span class="lifetime">&#39;static</span>,
+    C: PipelineHandleChain&lt;P&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+    P: RefUnwindSafe + Send + Sync + <span class="lifetime">&#39;static</span>,
+    PE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+    QSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+    NPE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
 {
-    <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">SingleRouteBuilder</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">M</span>, <span class="ident">C</span>, <span class="ident">P</span>, <span class="ident">NPE</span>, <span class="ident">QSE</span><span class="op">&gt;</span>;
+    <span class="kw">type </span>Output = SingleRouteBuilder&lt;<span class="lifetime">&#39;a</span>, M, C, P, NPE, QSE&gt;;
 
-    <span class="kw">fn</span> <span class="ident">replace_path_extractor</span>(<span class="self">self</span>) -&gt; <span class="ident"><span class="self">Self</span>::Output</span> {
-        <span class="self">self</span>.<span class="ident">coerce</span>()
+    <span class="kw">fn </span>replace_path_extractor(<span class="self">self</span>) -&gt; <span class="self">Self</span>::Output {
+        <span class="self">self</span>.coerce()
     }
 }
 
-<span class="doccomment">/// Describes the operation of replacing a `QueryStringExtractor` on a route. This trait exists to</span>
-<span class="doccomment">/// remove type clutter from the documentation of `SingleRouteBuilder::with_query_string_extractor`.</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">ReplaceQueryStringExtractor</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">T</span>: <span class="ident">QueryStringExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Describes the operation of replacing a `QueryStringExtractor` on a route. This trait exists to
+/// remove type clutter from the documentation of `SingleRouteBuilder::with_query_string_extractor`.
+</span><span class="kw">pub trait </span>ReplaceQueryStringExtractor&lt;T&gt;
+<span class="kw">where
+    </span>T: QueryStringExtractor&lt;Body&gt;,
 {
-    <span class="doccomment">/// The type returned when replacing the `QueryStringExtractor` with the target type.</span>
-    <span class="kw">type</span> <span class="ident">Output</span>: <span class="ident">DefineSingleRoute</span>;
+    <span class="doccomment">/// The type returned when replacing the `QueryStringExtractor` with the target type.
+    </span><span class="kw">type </span>Output: DefineSingleRoute;
 
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-    <span class="doccomment">/// Replaces the `QueryStringExtractor` in `self` with the parameterized type `T`. This is a</span>
-    <span class="doccomment">/// type level operation so takes no value.</span>
-    <span class="kw">fn</span> <span class="ident">replace_query_string_extractor</span>(<span class="self">self</span>) -&gt; <span class="ident"><span class="self">Self</span>::Output</span>;
+    <span class="attribute">#[doc(hidden)]
+    </span><span class="doccomment">/// Replaces the `QueryStringExtractor` in `self` with the parameterized type `T`. This is a
+    /// type level operation so takes no value.
+    </span><span class="kw">fn </span>replace_query_string_extractor(<span class="self">self</span>) -&gt; <span class="self">Self</span>::Output;
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">M</span>, <span class="ident">C</span>, <span class="ident">P</span>, <span class="ident">PE</span>, <span class="ident">QSE</span>, <span class="ident">NQSE</span><span class="op">&gt;</span> <span class="ident">ReplaceQueryStringExtractor</span><span class="op">&lt;</span><span class="ident">NQSE</span><span class="op">&gt;</span>
-    <span class="kw">for</span> <span class="ident">SingleRouteBuilder</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">M</span>, <span class="ident">C</span>, <span class="ident">P</span>, <span class="ident">PE</span>, <span class="ident">QSE</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">M</span>: <span class="ident">RouteMatcher</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">C</span>: <span class="ident">PipelineHandleChain</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">P</span>: <span class="ident">RefUnwindSafe</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">PE</span>: <span class="ident">PathExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">QSE</span>: <span class="ident">QueryStringExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">NQSE</span>: <span class="ident">QueryStringExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, M, C, P, PE, QSE, NQSE&gt; ReplaceQueryStringExtractor&lt;NQSE&gt;
+    <span class="kw">for </span>SingleRouteBuilder&lt;<span class="lifetime">&#39;a</span>, M, C, P, PE, QSE&gt;
+<span class="kw">where
+    </span>M: RouteMatcher + Send + Sync + <span class="lifetime">&#39;static</span>,
+    C: PipelineHandleChain&lt;P&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+    P: RefUnwindSafe + Send + Sync + <span class="lifetime">&#39;static</span>,
+    PE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+    QSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+    NQSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
 {
-    <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">SingleRouteBuilder</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">M</span>, <span class="ident">C</span>, <span class="ident">P</span>, <span class="ident">PE</span>, <span class="ident">NQSE</span><span class="op">&gt;</span>;
+    <span class="kw">type </span>Output = SingleRouteBuilder&lt;<span class="lifetime">&#39;a</span>, M, C, P, PE, NQSE&gt;;
 
-    <span class="kw">fn</span> <span class="ident">replace_query_string_extractor</span>(<span class="self">self</span>) -&gt; <span class="ident"><span class="self">Self</span>::Output</span> {
-        <span class="self">self</span>.<span class="ident">coerce</span>()
+    <span class="kw">fn </span>replace_query_string_extractor(<span class="self">self</span>) -&gt; <span class="self">Self</span>::Output {
+        <span class="self">self</span>.coerce()
     }
 }
 
-<span class="doccomment">/// Describes the operation of extending a `RouteMatcher` on a route. This trait exists to remove</span>
-<span class="doccomment">/// type clutter from the documentation of `SingleRouteBuilder::add_route_matcher`.</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">ExtendRouteMatcher</span><span class="op">&lt;</span><span class="ident">NRM</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">NRM</span>: <span class="ident">RouteMatcher</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+<span class="doccomment">/// Describes the operation of extending a `RouteMatcher` on a route. This trait exists to remove
+/// type clutter from the documentation of `SingleRouteBuilder::add_route_matcher`.
+</span><span class="kw">pub trait </span>ExtendRouteMatcher&lt;NRM&gt;
+<span class="kw">where
+    </span>NRM: RouteMatcher + Send + Sync + <span class="lifetime">&#39;static</span>,
 {
-    <span class="doccomment">/// The type returned when extending the existing `RouteMatcher` with the target type.</span>
-    <span class="kw">type</span> <span class="ident">Output</span>: <span class="ident">DefineSingleRoute</span>;
+    <span class="doccomment">/// The type returned when extending the existing `RouteMatcher` with the target type.
+    </span><span class="kw">type </span>Output: DefineSingleRoute;
 
-    <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-    <span class="doccomment">/// Combines the existing `RouteMatcher` using an `AndRouteMatcher` with the `RouteMatcher`</span>
-    <span class="doccomment">/// defined as NM</span>
-    <span class="kw">fn</span> <span class="ident">extend_route_matcher</span>(<span class="self">self</span>, <span class="ident">matcher</span>: <span class="ident">NRM</span>) -&gt; <span class="ident"><span class="self">Self</span>::Output</span>;
+    <span class="attribute">#[doc(hidden)]
+    </span><span class="doccomment">/// Combines the existing `RouteMatcher` using an `AndRouteMatcher` with the `RouteMatcher`
+    /// defined as NM
+    </span><span class="kw">fn </span>extend_route_matcher(<span class="self">self</span>, matcher: NRM) -&gt; <span class="self">Self</span>::Output;
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">M</span>, <span class="ident">NRM</span>, <span class="ident">C</span>, <span class="ident">P</span>, <span class="ident">PE</span>, <span class="ident">QSE</span><span class="op">&gt;</span> <span class="ident">ExtendRouteMatcher</span><span class="op">&lt;</span><span class="ident">NRM</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">SingleRouteBuilder</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">M</span>, <span class="ident">C</span>, <span class="ident">P</span>, <span class="ident">PE</span>, <span class="ident">QSE</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">M</span>: <span class="ident">RouteMatcher</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">NRM</span>: <span class="ident">RouteMatcher</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">C</span>: <span class="ident">PipelineHandleChain</span><span class="op">&lt;</span><span class="ident">P</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">P</span>: <span class="ident">RefUnwindSafe</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">PE</span>: <span class="ident">PathExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">QSE</span>: <span class="ident">QueryStringExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, M, NRM, C, P, PE, QSE&gt; ExtendRouteMatcher&lt;NRM&gt; <span class="kw">for </span>SingleRouteBuilder&lt;<span class="lifetime">&#39;a</span>, M, C, P, PE, QSE&gt;
+<span class="kw">where
+    </span>M: RouteMatcher + Send + Sync + <span class="lifetime">&#39;static</span>,
+    NRM: RouteMatcher + Send + Sync + <span class="lifetime">&#39;static</span>,
+    C: PipelineHandleChain&lt;P&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+    P: RefUnwindSafe + Send + Sync + <span class="lifetime">&#39;static</span>,
+    PE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+    QSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
 {
-    <span class="doccomment">/// The type returned when extending the existing `RouteMatcher` with the target type.</span>
-    <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">SingleRouteBuilder</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">AndRouteMatcher</span><span class="op">&lt;</span><span class="ident">M</span>, <span class="ident">NRM</span><span class="op">&gt;</span>, <span class="ident">C</span>, <span class="ident">P</span>, <span class="ident">PE</span>, <span class="ident">QSE</span><span class="op">&gt;</span>;
+    <span class="doccomment">/// The type returned when extending the existing `RouteMatcher` with the target type.
+    </span><span class="kw">type </span>Output = SingleRouteBuilder&lt;<span class="lifetime">&#39;a</span>, AndRouteMatcher&lt;M, NRM&gt;, C, P, PE, QSE&gt;;
 
-    <span class="kw">fn</span> <span class="ident">extend_route_matcher</span>(<span class="self">self</span>, <span class="ident">matcher</span>: <span class="ident">NRM</span>) -&gt; <span class="ident"><span class="self">Self</span>::Output</span> {
-        <span class="ident">SingleRouteBuilder</span> {
-            <span class="ident">matcher</span>: <span class="ident">AndRouteMatcher</span>::<span class="op">&lt;</span><span class="ident">M</span>, <span class="ident">NRM</span><span class="op">&gt;</span><span class="ident">::new</span>(<span class="self">self</span>.<span class="ident">matcher</span>, <span class="ident">matcher</span>),
-            <span class="ident">phantom</span>: <span class="self">self</span>.<span class="ident">phantom</span>,
-            <span class="ident">node_builder</span>: <span class="self">self</span>.<span class="ident">node_builder</span>,
-            <span class="ident">pipeline_chain</span>: <span class="self">self</span>.<span class="ident">pipeline_chain</span>,
-            <span class="ident">pipelines</span>: <span class="self">self</span>.<span class="ident">pipelines</span>,
+    <span class="kw">fn </span>extend_route_matcher(<span class="self">self</span>, matcher: NRM) -&gt; <span class="self">Self</span>::Output {
+        SingleRouteBuilder {
+            matcher: AndRouteMatcher::&lt;M, NRM&gt;::new(<span class="self">self</span>.matcher, matcher),
+            phantom: <span class="self">self</span>.phantom,
+            node_builder: <span class="self">self</span>.node_builder,
+            pipeline_chain: <span class="self">self</span>.pipeline_chain,
+            pipelines: <span class="self">self</span>.pipelines,
         }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

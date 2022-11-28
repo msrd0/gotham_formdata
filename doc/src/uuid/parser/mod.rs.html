@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/uuid-0.8.2/src/parser/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="icon" href="https://www.rust-lang.org/favicon.ico"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../uuid/index.html"><div class="logo-container"><img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../uuid/index.html"><div class="logo-container">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/uuid-0.8.2/src/parser/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="icon" href="https://www.rust-lang.org/favicon.ico"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../uuid/index.html"><div class="logo-container"><img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../uuid/index.html"><div class="logo-container">
                     <img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../uuid/index.html">
                         <img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
@@ -447,452 +447,452 @@
 <span id="445">445</span>
 <span id="446">446</span>
 <span id="447">447</span>
-</pre><pre class="rust"><code><span class="comment">// Copyright 2013-2014 The Rust Project Developers.</span>
-<span class="comment">// Copyright 2018 The Uuid Project Developers.</span>
-<span class="comment">//</span>
-<span class="comment">// See the COPYRIGHT file at the top-level directory of this distribution.</span>
-<span class="comment">//</span>
-<span class="comment">// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or</span>
-<span class="comment">// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your</span>
-<span class="comment">// option. This file may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
+</pre><pre class="rust"><code><span class="comment">// Copyright 2013-2014 The Rust Project Developers.
+// Copyright 2018 The Uuid Project Developers.
+//
+// See the COPYRIGHT file at the top-level directory of this distribution.
+//
+// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or
+// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your
+// option. This file may not be copied, modified, or distributed
+// except according to those terms.
 
-<span class="doccomment">//! [`Uuid`] parsing constructs and utilities.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! [`Uuid`]: ../struct.Uuid.html</span>
+</span><span class="doccomment">//! [`Uuid`] parsing constructs and utilities.
+//!
+//! [`Uuid`]: ../struct.Uuid.html
 
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod</span> <span class="ident">error</span>;
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="ident"><span class="self">self</span>::error::Error</span>;
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span>error;
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use </span><span class="self">self</span>::error::Error;
 
-<span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">adapter</span>, <span class="ident">Uuid</span>};
+<span class="kw">use crate</span>::{adapter, Uuid};
 
-<span class="doccomment">/// Check if the length matches any of the given criteria lengths.</span>
-<span class="kw">fn</span> <span class="ident">len_matches_any</span>(<span class="ident">len</span>: <span class="ident">usize</span>, <span class="ident">crits</span>: <span class="kw-2">&amp;</span>[<span class="ident">usize</span>]) -&gt; <span class="ident">bool</span> {
-    <span class="kw">for</span> <span class="ident">crit</span> <span class="kw">in</span> <span class="ident">crits</span> {
-        <span class="kw">if</span> <span class="ident">len</span> <span class="op">==</span> <span class="kw-2">*</span><span class="ident">crit</span> {
-            <span class="kw">return</span> <span class="bool-val">true</span>;
+<span class="doccomment">/// Check if the length matches any of the given criteria lengths.
+</span><span class="kw">fn </span>len_matches_any(len: usize, crits: <span class="kw-2">&amp;</span>[usize]) -&gt; bool {
+    <span class="kw">for </span>crit <span class="kw">in </span>crits {
+        <span class="kw">if </span>len == <span class="kw-2">*</span>crit {
+            <span class="kw">return </span><span class="bool-val">true</span>;
         }
     }
 
-    <span class="bool-val">false</span>
-}
+    <span class="bool-val">false
+</span>}
 
-<span class="doccomment">/// Check if the length matches any criteria lengths in the given range</span>
-<span class="doccomment">/// (inclusive).</span>
-<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">dead_code</span>)]</span>
-<span class="kw">fn</span> <span class="ident">len_matches_range</span>(<span class="ident">len</span>: <span class="ident">usize</span>, <span class="ident">min</span>: <span class="ident">usize</span>, <span class="ident">max</span>: <span class="ident">usize</span>) -&gt; <span class="ident">bool</span> {
-    <span class="kw">for</span> <span class="ident">crit</span> <span class="kw">in</span> <span class="ident">min</span>..<span class="op">=</span><span class="ident">max</span> {
-        <span class="kw">if</span> <span class="ident">len</span> <span class="op">==</span> <span class="ident">crit</span> {
-            <span class="kw">return</span> <span class="bool-val">true</span>;
+<span class="doccomment">/// Check if the length matches any criteria lengths in the given range
+/// (inclusive).
+</span><span class="attribute">#[allow(dead_code)]
+</span><span class="kw">fn </span>len_matches_range(len: usize, min: usize, max: usize) -&gt; bool {
+    <span class="kw">for </span>crit <span class="kw">in </span>min..=max {
+        <span class="kw">if </span>len == crit {
+            <span class="kw">return </span><span class="bool-val">true</span>;
         }
     }
 
-    <span class="bool-val">false</span>
-}
+    <span class="bool-val">false
+</span>}
 
-<span class="comment">// Accumulated length of each hyphenated group in hex digits.</span>
-<span class="kw">const</span> <span class="ident">ACC_GROUP_LENS</span>: [<span class="ident">usize</span>; <span class="number">5</span>] <span class="op">=</span> [<span class="number">8</span>, <span class="number">12</span>, <span class="number">16</span>, <span class="number">20</span>, <span class="number">32</span>];
+<span class="comment">// Accumulated length of each hyphenated group in hex digits.
+</span><span class="kw">const </span>ACC_GROUP_LENS: [usize; <span class="number">5</span>] = [<span class="number">8</span>, <span class="number">12</span>, <span class="number">16</span>, <span class="number">20</span>, <span class="number">32</span>];
 
-<span class="comment">// Length of each hyphenated group in hex digits.</span>
-<span class="kw">const</span> <span class="ident">GROUP_LENS</span>: [<span class="ident">usize</span>; <span class="number">5</span>] <span class="op">=</span> [<span class="number">8</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">12</span>];
+<span class="comment">// Length of each hyphenated group in hex digits.
+</span><span class="kw">const </span>GROUP_LENS: [usize; <span class="number">5</span>] = [<span class="number">8</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">12</span>];
 
-<span class="kw">impl</span> <span class="ident">Uuid</span> {
-    <span class="doccomment">/// Parses a `Uuid` from a string of hexadecimal digits with optional</span>
-    <span class="doccomment">/// hyphens.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Any of the formats generated by this module (simple, hyphenated, urn)</span>
-    <span class="doccomment">/// are supported by this parsing function.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse_str</span>(<span class="kw-2">mut</span> <span class="ident">input</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Uuid</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span> {
-        <span class="comment">// Ensure length is valid for any of the supported formats</span>
-        <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">len</span>();
+<span class="kw">impl </span>Uuid {
+    <span class="doccomment">/// Parses a `Uuid` from a string of hexadecimal digits with optional
+    /// hyphens.
+    ///
+    /// Any of the formats generated by this module (simple, hyphenated, urn)
+    /// are supported by this parsing function.
+    </span><span class="kw">pub fn </span>parse_str(<span class="kw-2">mut </span>input: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;Uuid, <span class="kw">crate</span>::Error&gt; {
+        <span class="comment">// Ensure length is valid for any of the supported formats
+        </span><span class="kw">let </span>len = input.len();
 
-        <span class="kw">if</span> <span class="ident">len</span> <span class="op">==</span> <span class="ident">adapter::Urn::LENGTH</span> <span class="op">&amp;&amp;</span> <span class="ident">input</span>.<span class="ident">starts_with</span>(<span class="string">&quot;urn:uuid:&quot;</span>) {
-            <span class="ident">input</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">input</span>[<span class="number">9</span>..];
-        } <span class="kw">else</span> <span class="kw">if</span> <span class="op">!</span><span class="ident">len_matches_any</span>(
-            <span class="ident">len</span>,
-            <span class="kw-2">&amp;</span>[<span class="ident">adapter::Hyphenated::LENGTH</span>, <span class="ident">adapter::Simple::LENGTH</span>],
+        <span class="kw">if </span>len == adapter::Urn::LENGTH &amp;&amp; input.starts_with(<span class="string">&quot;urn:uuid:&quot;</span>) {
+            input = <span class="kw-2">&amp;</span>input[<span class="number">9</span>..];
+        } <span class="kw">else if </span>!len_matches_any(
+            len,
+            <span class="kw-2">&amp;</span>[adapter::Hyphenated::LENGTH, adapter::Simple::LENGTH],
         ) {
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidLength</span> {
-                <span class="ident">expected</span>: <span class="ident">error::ExpectedLength::Any</span>(<span class="kw-2">&amp;</span>[
-                    <span class="ident">adapter::Hyphenated::LENGTH</span>,
-                    <span class="ident">adapter::Simple::LENGTH</span>,
+            <span class="prelude-val">Err</span>(Error::InvalidLength {
+                expected: error::ExpectedLength::Any(<span class="kw-2">&amp;</span>[
+                    adapter::Hyphenated::LENGTH,
+                    adapter::Simple::LENGTH,
                 ]),
-                <span class="ident">found</span>: <span class="ident">len</span>,
+                found: len,
             })<span class="question-mark">?</span>;
         }
 
-        <span class="comment">// `digit` counts only hexadecimal digits, `i_char` counts all chars.</span>
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">digit</span> <span class="op">=</span> <span class="number">0</span>;
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">group</span> <span class="op">=</span> <span class="number">0</span>;
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">acc</span> <span class="op">=</span> <span class="number">0</span>;
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buffer</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">16</span>];
+        <span class="comment">// `digit` counts only hexadecimal digits, `i_char` counts all chars.
+        </span><span class="kw">let </span><span class="kw-2">mut </span>digit = <span class="number">0</span>;
+        <span class="kw">let </span><span class="kw-2">mut </span>group = <span class="number">0</span>;
+        <span class="kw">let </span><span class="kw-2">mut </span>acc = <span class="number">0</span>;
+        <span class="kw">let </span><span class="kw-2">mut </span>buffer = [<span class="number">0u8</span>; <span class="number">16</span>];
 
-        <span class="kw">for</span> (<span class="ident">i_char</span>, <span class="ident">chr</span>) <span class="kw">in</span> <span class="ident">input</span>.<span class="ident">bytes</span>().<span class="ident">enumerate</span>() {
-            <span class="kw">if</span> <span class="ident">digit</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="op">&gt;</span><span class="op">=</span> <span class="ident">adapter::Simple::LENGTH</span> <span class="op">&amp;&amp;</span> <span class="ident">group</span> <span class="op">!</span><span class="op">=</span> <span class="number">4</span> {
-                <span class="kw">if</span> <span class="ident">group</span> <span class="op">==</span> <span class="number">0</span> {
-                    <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidLength</span> {
-                        <span class="ident">expected</span>: <span class="ident">error::ExpectedLength::Any</span>(<span class="kw-2">&amp;</span>[
-                            <span class="ident">adapter::Hyphenated::LENGTH</span>,
-                            <span class="ident">adapter::Simple::LENGTH</span>,
+        <span class="kw">for </span>(i_char, chr) <span class="kw">in </span>input.bytes().enumerate() {
+            <span class="kw">if </span>digit <span class="kw">as </span>usize &gt;= adapter::Simple::LENGTH &amp;&amp; group != <span class="number">4 </span>{
+                <span class="kw">if </span>group == <span class="number">0 </span>{
+                    <span class="prelude-val">Err</span>(Error::InvalidLength {
+                        expected: error::ExpectedLength::Any(<span class="kw-2">&amp;</span>[
+                            adapter::Hyphenated::LENGTH,
+                            adapter::Simple::LENGTH,
                         ]),
-                        <span class="ident">found</span>: <span class="ident">len</span>,
+                        found: len,
                     })<span class="question-mark">?</span>;
                 }
 
-                <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidGroupCount</span> {
-                    <span class="ident">expected</span>: <span class="ident">error::ExpectedLength::Any</span>(<span class="kw-2">&amp;</span>[<span class="number">1</span>, <span class="number">5</span>]),
-                    <span class="ident">found</span>: <span class="ident">group</span> <span class="op">+</span> <span class="number">1</span>,
+                <span class="prelude-val">Err</span>(Error::InvalidGroupCount {
+                    expected: error::ExpectedLength::Any(<span class="kw-2">&amp;</span>[<span class="number">1</span>, <span class="number">5</span>]),
+                    found: group + <span class="number">1</span>,
                 })<span class="question-mark">?</span>;
             }
 
-            <span class="kw">if</span> <span class="ident">digit</span> <span class="op">%</span> <span class="number">2</span> <span class="op">==</span> <span class="number">0</span> {
-                <span class="comment">// First digit of the byte.</span>
-                <span class="kw">match</span> <span class="ident">chr</span> {
-                    <span class="comment">// Calulate upper half.</span>
-                    <span class="string">b&#39;0&#39;</span>..<span class="op">=</span><span class="string">b&#39;9&#39;</span> =&gt; <span class="ident">acc</span> <span class="op">=</span> <span class="ident">chr</span> <span class="op">-</span> <span class="string">b&#39;0&#39;</span>,
-                    <span class="string">b&#39;a&#39;</span>..<span class="op">=</span><span class="string">b&#39;f&#39;</span> =&gt; <span class="ident">acc</span> <span class="op">=</span> <span class="ident">chr</span> <span class="op">-</span> <span class="string">b&#39;a&#39;</span> <span class="op">+</span> <span class="number">10</span>,
-                    <span class="string">b&#39;A&#39;</span>..<span class="op">=</span><span class="string">b&#39;F&#39;</span> =&gt; <span class="ident">acc</span> <span class="op">=</span> <span class="ident">chr</span> <span class="op">-</span> <span class="string">b&#39;A&#39;</span> <span class="op">+</span> <span class="number">10</span>,
-                    <span class="comment">// Found a group delimiter</span>
-                    <span class="string">b&#39;-&#39;</span> =&gt; {
-                        <span class="comment">// TODO: remove the u8 cast</span>
-                        <span class="comment">// BODY: this only needed until we switch to</span>
-                        <span class="comment">//       ParseError</span>
-                        <span class="kw">if</span> <span class="ident">ACC_GROUP_LENS</span>[<span class="ident">group</span>] <span class="kw">as</span> <span class="ident">u8</span> <span class="op">!</span><span class="op">=</span> <span class="ident">digit</span> {
-                            <span class="comment">// Calculate how many digits this group consists of</span>
-                            <span class="comment">// in the input.</span>
-                            <span class="kw">let</span> <span class="ident">found</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">group</span> <span class="op">&gt;</span> <span class="number">0</span> {
-                                <span class="comment">// TODO: remove the u8 cast</span>
-                                <span class="comment">// BODY: this only needed until we switch to</span>
-                                <span class="comment">//       ParseError</span>
-                                <span class="ident">digit</span> <span class="op">-</span> <span class="ident">ACC_GROUP_LENS</span>[<span class="ident">group</span> <span class="op">-</span> <span class="number">1</span>] <span class="kw">as</span> <span class="ident">u8</span>
-                            } <span class="kw">else</span> {
-                                <span class="ident">digit</span>
+            <span class="kw">if </span>digit % <span class="number">2 </span>== <span class="number">0 </span>{
+                <span class="comment">// First digit of the byte.
+                </span><span class="kw">match </span>chr {
+                    <span class="comment">// Calulate upper half.
+                    </span><span class="string">b&#39;0&#39;</span>..=<span class="string">b&#39;9&#39; </span>=&gt; acc = chr - <span class="string">b&#39;0&#39;</span>,
+                    <span class="string">b&#39;a&#39;</span>..=<span class="string">b&#39;f&#39; </span>=&gt; acc = chr - <span class="string">b&#39;a&#39; </span>+ <span class="number">10</span>,
+                    <span class="string">b&#39;A&#39;</span>..=<span class="string">b&#39;F&#39; </span>=&gt; acc = chr - <span class="string">b&#39;A&#39; </span>+ <span class="number">10</span>,
+                    <span class="comment">// Found a group delimiter
+                    </span><span class="string">b&#39;-&#39; </span>=&gt; {
+                        <span class="comment">// TODO: remove the u8 cast
+                        // BODY: this only needed until we switch to
+                        //       ParseError
+                        </span><span class="kw">if </span>ACC_GROUP_LENS[group] <span class="kw">as </span>u8 != digit {
+                            <span class="comment">// Calculate how many digits this group consists of
+                            // in the input.
+                            </span><span class="kw">let </span>found = <span class="kw">if </span>group &gt; <span class="number">0 </span>{
+                                <span class="comment">// TODO: remove the u8 cast
+                                // BODY: this only needed until we switch to
+                                //       ParseError
+                                </span>digit - ACC_GROUP_LENS[group - <span class="number">1</span>] <span class="kw">as </span>u8
+                            } <span class="kw">else </span>{
+                                digit
                             };
 
-                            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidGroupLength</span> {
-                                <span class="ident">expected</span>: <span class="ident">error::ExpectedLength::Exact</span>(
-                                    <span class="ident">GROUP_LENS</span>[<span class="ident">group</span>],
+                            <span class="prelude-val">Err</span>(Error::InvalidGroupLength {
+                                expected: error::ExpectedLength::Exact(
+                                    GROUP_LENS[group],
                                 ),
-                                <span class="ident">found</span>: <span class="ident">found</span> <span class="kw">as</span> <span class="ident">usize</span>,
-                                <span class="ident">group</span>,
+                                found: found <span class="kw">as </span>usize,
+                                group,
                             })<span class="question-mark">?</span>;
                         }
-                        <span class="comment">// Next group, decrement digit, it is incremented again</span>
-                        <span class="comment">// at the bottom.</span>
-                        <span class="ident">group</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
-                        <span class="ident">digit</span> <span class="op">-</span><span class="op">=</span> <span class="number">1</span>;
+                        <span class="comment">// Next group, decrement digit, it is incremented again
+                        // at the bottom.
+                        </span>group += <span class="number">1</span>;
+                        digit -= <span class="number">1</span>;
                     }
-                    <span class="kw">_</span> =&gt; {
-                        <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidCharacter</span> {
-                            <span class="ident">expected</span>: <span class="string">&quot;0123456789abcdefABCDEF-&quot;</span>,
-                            <span class="ident">found</span>: <span class="ident">input</span>[<span class="ident">i_char</span>..].<span class="ident">chars</span>().<span class="ident">next</span>().<span class="ident">unwrap</span>(),
-                            <span class="ident">index</span>: <span class="ident">i_char</span>,
-                            <span class="ident">urn</span>: <span class="ident">error::UrnPrefix::Optional</span>,
+                    <span class="kw">_ </span>=&gt; {
+                        <span class="prelude-val">Err</span>(Error::InvalidCharacter {
+                            expected: <span class="string">&quot;0123456789abcdefABCDEF-&quot;</span>,
+                            found: input[i_char..].chars().next().unwrap(),
+                            index: i_char,
+                            urn: error::UrnPrefix::Optional,
                         })<span class="question-mark">?</span>;
                     }
                 }
-            } <span class="kw">else</span> {
-                <span class="comment">// Second digit of the byte, shift the upper half.</span>
-                <span class="ident">acc</span> <span class="kw-2">*</span><span class="op">=</span> <span class="number">16</span>;
-                <span class="kw">match</span> <span class="ident">chr</span> {
-                    <span class="string">b&#39;0&#39;</span>..<span class="op">=</span><span class="string">b&#39;9&#39;</span> =&gt; <span class="ident">acc</span> <span class="op">+</span><span class="op">=</span> <span class="ident">chr</span> <span class="op">-</span> <span class="string">b&#39;0&#39;</span>,
-                    <span class="string">b&#39;a&#39;</span>..<span class="op">=</span><span class="string">b&#39;f&#39;</span> =&gt; <span class="ident">acc</span> <span class="op">+</span><span class="op">=</span> <span class="ident">chr</span> <span class="op">-</span> <span class="string">b&#39;a&#39;</span> <span class="op">+</span> <span class="number">10</span>,
-                    <span class="string">b&#39;A&#39;</span>..<span class="op">=</span><span class="string">b&#39;F&#39;</span> =&gt; <span class="ident">acc</span> <span class="op">+</span><span class="op">=</span> <span class="ident">chr</span> <span class="op">-</span> <span class="string">b&#39;A&#39;</span> <span class="op">+</span> <span class="number">10</span>,
-                    <span class="string">b&#39;-&#39;</span> =&gt; {
-                        <span class="comment">// The byte isn&#39;t complete yet.</span>
-                        <span class="kw">let</span> <span class="ident">found</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">group</span> <span class="op">&gt;</span> <span class="number">0</span> {
-                            <span class="comment">// TODO: remove the u8 cast</span>
-                            <span class="comment">// BODY: this only needed until we switch to</span>
-                            <span class="comment">//       ParseError</span>
-                            <span class="ident">digit</span> <span class="op">-</span> <span class="ident">ACC_GROUP_LENS</span>[<span class="ident">group</span> <span class="op">-</span> <span class="number">1</span>] <span class="kw">as</span> <span class="ident">u8</span>
-                        } <span class="kw">else</span> {
-                            <span class="ident">digit</span>
+            } <span class="kw">else </span>{
+                <span class="comment">// Second digit of the byte, shift the upper half.
+                </span>acc <span class="kw-2">*</span>= <span class="number">16</span>;
+                <span class="kw">match </span>chr {
+                    <span class="string">b&#39;0&#39;</span>..=<span class="string">b&#39;9&#39; </span>=&gt; acc += chr - <span class="string">b&#39;0&#39;</span>,
+                    <span class="string">b&#39;a&#39;</span>..=<span class="string">b&#39;f&#39; </span>=&gt; acc += chr - <span class="string">b&#39;a&#39; </span>+ <span class="number">10</span>,
+                    <span class="string">b&#39;A&#39;</span>..=<span class="string">b&#39;F&#39; </span>=&gt; acc += chr - <span class="string">b&#39;A&#39; </span>+ <span class="number">10</span>,
+                    <span class="string">b&#39;-&#39; </span>=&gt; {
+                        <span class="comment">// The byte isn&#39;t complete yet.
+                        </span><span class="kw">let </span>found = <span class="kw">if </span>group &gt; <span class="number">0 </span>{
+                            <span class="comment">// TODO: remove the u8 cast
+                            // BODY: this only needed until we switch to
+                            //       ParseError
+                            </span>digit - ACC_GROUP_LENS[group - <span class="number">1</span>] <span class="kw">as </span>u8
+                        } <span class="kw">else </span>{
+                            digit
                         };
 
-                        <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidGroupLength</span> {
-                            <span class="ident">expected</span>: <span class="ident">error::ExpectedLength::Exact</span>(
-                                <span class="ident">GROUP_LENS</span>[<span class="ident">group</span>],
+                        <span class="prelude-val">Err</span>(Error::InvalidGroupLength {
+                            expected: error::ExpectedLength::Exact(
+                                GROUP_LENS[group],
                             ),
-                            <span class="ident">found</span>: <span class="ident">found</span> <span class="kw">as</span> <span class="ident">usize</span>,
-                            <span class="ident">group</span>,
+                            found: found <span class="kw">as </span>usize,
+                            group,
                         })<span class="question-mark">?</span>;
                     }
-                    <span class="kw">_</span> =&gt; {
-                        <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidCharacter</span> {
-                            <span class="ident">expected</span>: <span class="string">&quot;0123456789abcdefABCDEF-&quot;</span>,
-                            <span class="ident">found</span>: <span class="ident">input</span>[<span class="ident">i_char</span>..].<span class="ident">chars</span>().<span class="ident">next</span>().<span class="ident">unwrap</span>(),
-                            <span class="ident">index</span>: <span class="ident">i_char</span>,
-                            <span class="ident">urn</span>: <span class="ident">error::UrnPrefix::Optional</span>,
+                    <span class="kw">_ </span>=&gt; {
+                        <span class="prelude-val">Err</span>(Error::InvalidCharacter {
+                            expected: <span class="string">&quot;0123456789abcdefABCDEF-&quot;</span>,
+                            found: input[i_char..].chars().next().unwrap(),
+                            index: i_char,
+                            urn: error::UrnPrefix::Optional,
                         })<span class="question-mark">?</span>;
                     }
                 }
-                <span class="ident">buffer</span>[(<span class="ident">digit</span> <span class="op">/</span> <span class="number">2</span>) <span class="kw">as</span> <span class="ident">usize</span>] <span class="op">=</span> <span class="ident">acc</span>;
+                buffer[(digit / <span class="number">2</span>) <span class="kw">as </span>usize] = acc;
             }
-            <span class="ident">digit</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
+            digit += <span class="number">1</span>;
         }
 
-        <span class="comment">// Now check the last group.</span>
-        <span class="comment">// TODO: remove the u8 cast</span>
-        <span class="comment">// BODY: this only needed until we switch to</span>
-        <span class="comment">//       ParseError</span>
-        <span class="kw">if</span> <span class="ident">ACC_GROUP_LENS</span>[<span class="number">4</span>] <span class="kw">as</span> <span class="ident">u8</span> <span class="op">!</span><span class="op">=</span> <span class="ident">digit</span> {
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidGroupLength</span> {
-                <span class="ident">expected</span>: <span class="ident">error::ExpectedLength::Exact</span>(<span class="ident">GROUP_LENS</span>[<span class="number">4</span>]),
-                <span class="ident">found</span>: (<span class="ident">digit</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="op">-</span> <span class="ident">ACC_GROUP_LENS</span>[<span class="number">3</span>]),
-                <span class="ident">group</span>,
+        <span class="comment">// Now check the last group.
+        // TODO: remove the u8 cast
+        // BODY: this only needed until we switch to
+        //       ParseError
+        </span><span class="kw">if </span>ACC_GROUP_LENS[<span class="number">4</span>] <span class="kw">as </span>u8 != digit {
+            <span class="prelude-val">Err</span>(Error::InvalidGroupLength {
+                expected: error::ExpectedLength::Exact(GROUP_LENS[<span class="number">4</span>]),
+                found: (digit <span class="kw">as </span>usize - ACC_GROUP_LENS[<span class="number">3</span>]),
+                group,
             })<span class="question-mark">?</span>;
         }
 
-        <span class="prelude-val">Ok</span>(<span class="ident">Uuid::from_bytes</span>(<span class="ident">buffer</span>))
+        <span class="prelude-val">Ok</span>(Uuid::from_bytes(buffer))
     }
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">tests</span> {
-    <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
-    <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">adapter</span>, <span class="ident">std::string::ToString</span>, <span class="ident">test_util</span>};
+<span class="attribute">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
+    <span class="kw">use crate</span>::{adapter, std::string::ToString, test_util};
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">test_parse_uuid_v4</span>() {
-        <span class="kw">const</span> <span class="ident">EXPECTED_UUID_LENGTHS</span>: <span class="ident">error::ExpectedLength</span> <span class="op">=</span>
-            <span class="ident">error::ExpectedLength::Any</span>(<span class="kw-2">&amp;</span>[
-                <span class="ident">adapter::Hyphenated::LENGTH</span>,
-                <span class="ident">adapter::Simple::LENGTH</span>,
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>test_parse_uuid_v4() {
+        <span class="kw">const </span>EXPECTED_UUID_LENGTHS: error::ExpectedLength =
+            error::ExpectedLength::Any(<span class="kw-2">&amp;</span>[
+                adapter::Hyphenated::LENGTH,
+                adapter::Simple::LENGTH,
             ]);
 
-        <span class="kw">const</span> <span class="ident">EXPECTED_GROUP_COUNTS</span>: <span class="ident">error::ExpectedLength</span> <span class="op">=</span>
-            <span class="ident">error::ExpectedLength::Any</span>(<span class="kw-2">&amp;</span>[<span class="number">1</span>, <span class="number">5</span>]);
+        <span class="kw">const </span>EXPECTED_GROUP_COUNTS: error::ExpectedLength =
+            error::ExpectedLength::Any(<span class="kw-2">&amp;</span>[<span class="number">1</span>, <span class="number">5</span>]);
 
-        <span class="kw">const</span> <span class="ident">EXPECTED_CHARS</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;0123456789abcdefABCDEF-&quot;</span>;
+        <span class="kw">const </span>EXPECTED_CHARS: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str = <span class="string">&quot;0123456789abcdefABCDEF-&quot;</span>;
 
-        <span class="comment">// Invalid</span>
-        <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;&quot;</span>).<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidLength</span> {
-                <span class="ident">expected</span>: <span class="ident">EXPECTED_UUID_LENGTHS</span>,
-                <span class="ident">found</span>: <span class="number">0</span>,
+        <span class="comment">// Invalid
+        </span><span class="macro">assert_eq!</span>(
+            Uuid::parse_str(<span class="string">&quot;&quot;</span>).map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidLength {
+                expected: EXPECTED_UUID_LENGTHS,
+                found: <span class="number">0</span>,
             })
         );
 
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;!&quot;</span>).<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidLength</span> {
-                <span class="ident">expected</span>: <span class="ident">EXPECTED_UUID_LENGTHS</span>,
-                <span class="ident">found</span>: <span class="number">1</span>
+            Uuid::parse_str(<span class="string">&quot;!&quot;</span>).map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidLength {
+                expected: EXPECTED_UUID_LENGTHS,
+                found: <span class="number">1
+            </span>})
+        );
+
+        <span class="macro">assert_eq!</span>(
+            Uuid::parse_str(<span class="string">&quot;F9168C5E-CEB2-4faa-B6BF-329BF39FA1E45&quot;</span>)
+                .map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidLength {
+                expected: EXPECTED_UUID_LENGTHS,
+                found: <span class="number">37</span>,
             })
         );
 
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;F9168C5E-CEB2-4faa-B6BF-329BF39FA1E45&quot;</span>)
-                .<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidLength</span> {
-                <span class="ident">expected</span>: <span class="ident">EXPECTED_UUID_LENGTHS</span>,
-                <span class="ident">found</span>: <span class="number">37</span>,
+            Uuid::parse_str(<span class="string">&quot;F9168C5E-CEB2-4faa-BBF-329BF39FA1E4&quot;</span>)
+                .map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidLength {
+                expected: EXPECTED_UUID_LENGTHS,
+                found: <span class="number">35
+            </span>})
+        );
+
+        <span class="macro">assert_eq!</span>(
+            Uuid::parse_str(<span class="string">&quot;F9168C5E-CEB2-4faa-BGBF-329BF39FA1E4&quot;</span>)
+                .map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidCharacter {
+                expected: EXPECTED_CHARS,
+                found: <span class="string">&#39;G&#39;</span>,
+                index: <span class="number">20</span>,
+                urn: error::UrnPrefix::Optional,
             })
         );
 
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;F9168C5E-CEB2-4faa-BBF-329BF39FA1E4&quot;</span>)
-                .<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidLength</span> {
-                <span class="ident">expected</span>: <span class="ident">EXPECTED_UUID_LENGTHS</span>,
-                <span class="ident">found</span>: <span class="number">35</span>
+            Uuid::parse_str(<span class="string">&quot;F9168C5E-CEB2F4faaFB6BFF329BF39FA1E4&quot;</span>)
+                .map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidGroupCount {
+                expected: EXPECTED_GROUP_COUNTS,
+                found: <span class="number">2
+            </span>})
+        );
+
+        <span class="macro">assert_eq!</span>(
+            Uuid::parse_str(<span class="string">&quot;F9168C5E-CEB2-4faaFB6BFF329BF39FA1E4&quot;</span>)
+                .map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidGroupCount {
+                expected: EXPECTED_GROUP_COUNTS,
+                found: <span class="number">3</span>,
             })
         );
 
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;F9168C5E-CEB2-4faa-BGBF-329BF39FA1E4&quot;</span>)
-                .<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidCharacter</span> {
-                <span class="ident">expected</span>: <span class="ident">EXPECTED_CHARS</span>,
-                <span class="ident">found</span>: <span class="string">&#39;G&#39;</span>,
-                <span class="ident">index</span>: <span class="number">20</span>,
-                <span class="ident">urn</span>: <span class="ident">error::UrnPrefix::Optional</span>,
+            Uuid::parse_str(<span class="string">&quot;F9168C5E-CEB2-4faa-B6BFF329BF39FA1E4&quot;</span>)
+                .map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidGroupCount {
+                expected: EXPECTED_GROUP_COUNTS,
+                found: <span class="number">4</span>,
             })
         );
 
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;F9168C5E-CEB2F4faaFB6BFF329BF39FA1E4&quot;</span>)
-                .<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidGroupCount</span> {
-                <span class="ident">expected</span>: <span class="ident">EXPECTED_GROUP_COUNTS</span>,
-                <span class="ident">found</span>: <span class="number">2</span>
+            Uuid::parse_str(<span class="string">&quot;F9168C5E-CEB2-4faa&quot;</span>)
+                .map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidLength {
+                expected: EXPECTED_UUID_LENGTHS,
+                found: <span class="number">18</span>,
             })
         );
 
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;F9168C5E-CEB2-4faaFB6BFF329BF39FA1E4&quot;</span>)
-                .<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidGroupCount</span> {
-                <span class="ident">expected</span>: <span class="ident">EXPECTED_GROUP_COUNTS</span>,
-                <span class="ident">found</span>: <span class="number">3</span>,
+            Uuid::parse_str(<span class="string">&quot;F9168C5E-CEB2-4faaXB6BFF329BF39FA1E4&quot;</span>)
+                .map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidCharacter {
+                expected: EXPECTED_CHARS,
+                found: <span class="string">&#39;X&#39;</span>,
+                index: <span class="number">18</span>,
+                urn: error::UrnPrefix::Optional,
             })
         );
 
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;F9168C5E-CEB2-4faa-B6BFF329BF39FA1E4&quot;</span>)
-                .<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidGroupCount</span> {
-                <span class="ident">expected</span>: <span class="ident">EXPECTED_GROUP_COUNTS</span>,
-                <span class="ident">found</span>: <span class="number">4</span>,
+            Uuid::parse_str(<span class="string">&quot;F9168C5E-CEB-24fa-eB6BFF32-BF39FA1E4&quot;</span>)
+                .map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidGroupLength {
+                expected: error::ExpectedLength::Exact(<span class="number">4</span>),
+                found: <span class="number">3</span>,
+                group: <span class="number">1</span>,
+            })
+        );
+        <span class="comment">// (group, found, expecting)
+        //
+        </span><span class="macro">assert_eq!</span>(
+            Uuid::parse_str(<span class="string">&quot;01020304-1112-2122-3132-41424344&quot;</span>)
+                .map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidGroupLength {
+                expected: error::ExpectedLength::Exact(<span class="number">12</span>),
+                found: <span class="number">8</span>,
+                group: <span class="number">4</span>,
             })
         );
 
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;F9168C5E-CEB2-4faa&quot;</span>)
-                .<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidLength</span> {
-                <span class="ident">expected</span>: <span class="ident">EXPECTED_UUID_LENGTHS</span>,
-                <span class="ident">found</span>: <span class="number">18</span>,
+            Uuid::parse_str(<span class="string">&quot;67e5504410b1426f9247bb680e5fe0c&quot;</span>)
+                .map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidLength {
+                expected: EXPECTED_UUID_LENGTHS,
+                found: <span class="number">31</span>,
             })
         );
 
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;F9168C5E-CEB2-4faaXB6BFF329BF39FA1E4&quot;</span>)
-                .<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidCharacter</span> {
-                <span class="ident">expected</span>: <span class="ident">EXPECTED_CHARS</span>,
-                <span class="ident">found</span>: <span class="string">&#39;X&#39;</span>,
-                <span class="ident">index</span>: <span class="number">18</span>,
-                <span class="ident">urn</span>: <span class="ident">error::UrnPrefix::Optional</span>,
+            Uuid::parse_str(<span class="string">&quot;67e5504410b1426f9247bb680e5fe0c88&quot;</span>)
+                .map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidLength {
+                expected: EXPECTED_UUID_LENGTHS,
+                found: <span class="number">33</span>,
             })
         );
 
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;F9168C5E-CEB-24fa-eB6BFF32-BF39FA1E4&quot;</span>)
-                .<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidGroupLength</span> {
-                <span class="ident">expected</span>: <span class="ident">error::ExpectedLength::Exact</span>(<span class="number">4</span>),
-                <span class="ident">found</span>: <span class="number">3</span>,
-                <span class="ident">group</span>: <span class="number">1</span>,
-            })
-        );
-        <span class="comment">// (group, found, expecting)</span>
-        <span class="comment">//</span>
-        <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;01020304-1112-2122-3132-41424344&quot;</span>)
-                .<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidGroupLength</span> {
-                <span class="ident">expected</span>: <span class="ident">error::ExpectedLength::Exact</span>(<span class="number">12</span>),
-                <span class="ident">found</span>: <span class="number">8</span>,
-                <span class="ident">group</span>: <span class="number">4</span>,
+            Uuid::parse_str(<span class="string">&quot;67e5504410b1426f9247bb680e5fe0cg8&quot;</span>)
+                .map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidLength {
+                expected: EXPECTED_UUID_LENGTHS,
+                found: <span class="number">33</span>,
             })
         );
 
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;67e5504410b1426f9247bb680e5fe0c&quot;</span>)
-                .<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidLength</span> {
-                <span class="ident">expected</span>: <span class="ident">EXPECTED_UUID_LENGTHS</span>,
-                <span class="ident">found</span>: <span class="number">31</span>,
+            Uuid::parse_str(<span class="string">&quot;67e5504410b1426%9247bb680e5fe0c8&quot;</span>)
+                .map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidCharacter {
+                expected: EXPECTED_CHARS,
+                found: <span class="string">&#39;%&#39;</span>,
+                index: <span class="number">15</span>,
+                urn: error::UrnPrefix::Optional,
             })
         );
 
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;67e5504410b1426f9247bb680e5fe0c88&quot;</span>)
-                .<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidLength</span> {
-                <span class="ident">expected</span>: <span class="ident">EXPECTED_UUID_LENGTHS</span>,
-                <span class="ident">found</span>: <span class="number">33</span>,
+            Uuid::parse_str(<span class="string">&quot;231231212212423424324323477343246663&quot;</span>)
+                .map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidLength {
+                expected: EXPECTED_UUID_LENGTHS,
+                found: <span class="number">36</span>,
             })
         );
 
-        <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;67e5504410b1426f9247bb680e5fe0cg8&quot;</span>)
-                .<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidLength</span> {
-                <span class="ident">expected</span>: <span class="ident">EXPECTED_UUID_LENGTHS</span>,
-                <span class="ident">found</span>: <span class="number">33</span>,
-            })
-        );
+        <span class="comment">// Valid
+        </span><span class="macro">assert!</span>(Uuid::parse_str(<span class="string">&quot;00000000000000000000000000000000&quot;</span>).is_ok());
+        <span class="macro">assert!</span>(Uuid::parse_str(<span class="string">&quot;67e55044-10b1-426f-9247-bb680e5fe0c8&quot;</span>).is_ok());
+        <span class="macro">assert!</span>(Uuid::parse_str(<span class="string">&quot;F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4&quot;</span>).is_ok());
+        <span class="macro">assert!</span>(Uuid::parse_str(<span class="string">&quot;67e5504410b1426f9247bb680e5fe0c8&quot;</span>).is_ok());
+        <span class="macro">assert!</span>(Uuid::parse_str(<span class="string">&quot;01020304-1112-2122-3132-414243444546&quot;</span>).is_ok());
+        <span class="macro">assert!</span>(Uuid::parse_str(
+            <span class="string">&quot;urn:uuid:67e55044-10b1-426f-9247-bb680e5fe0c8&quot;
+        </span>)
+        .is_ok());
 
+        <span class="comment">// Nil
+        </span><span class="kw">let </span>nil = Uuid::nil();
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;67e5504410b1426%9247bb680e5fe0c8&quot;</span>)
-                .<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidCharacter</span> {
-                <span class="ident">expected</span>: <span class="ident">EXPECTED_CHARS</span>,
-                <span class="ident">found</span>: <span class="string">&#39;%&#39;</span>,
-                <span class="ident">index</span>: <span class="number">15</span>,
-                <span class="ident">urn</span>: <span class="ident">error::UrnPrefix::Optional</span>,
-            })
-        );
-
-        <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;231231212212423424324323477343246663&quot;</span>)
-                .<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidLength</span> {
-                <span class="ident">expected</span>: <span class="ident">EXPECTED_UUID_LENGTHS</span>,
-                <span class="ident">found</span>: <span class="number">36</span>,
-            })
-        );
-
-        <span class="comment">// Valid</span>
-        <span class="macro">assert!</span>(<span class="ident">Uuid::parse_str</span>(<span class="string">&quot;00000000000000000000000000000000&quot;</span>).<span class="ident">is_ok</span>());
-        <span class="macro">assert!</span>(<span class="ident">Uuid::parse_str</span>(<span class="string">&quot;67e55044-10b1-426f-9247-bb680e5fe0c8&quot;</span>).<span class="ident">is_ok</span>());
-        <span class="macro">assert!</span>(<span class="ident">Uuid::parse_str</span>(<span class="string">&quot;F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4&quot;</span>).<span class="ident">is_ok</span>());
-        <span class="macro">assert!</span>(<span class="ident">Uuid::parse_str</span>(<span class="string">&quot;67e5504410b1426f9247bb680e5fe0c8&quot;</span>).<span class="ident">is_ok</span>());
-        <span class="macro">assert!</span>(<span class="ident">Uuid::parse_str</span>(<span class="string">&quot;01020304-1112-2122-3132-414243444546&quot;</span>).<span class="ident">is_ok</span>());
-        <span class="macro">assert!</span>(<span class="ident">Uuid::parse_str</span>(
-            <span class="string">&quot;urn:uuid:67e55044-10b1-426f-9247-bb680e5fe0c8&quot;</span>
-        )
-        .<span class="ident">is_ok</span>());
-
-        <span class="comment">// Nil</span>
-        <span class="kw">let</span> <span class="ident">nil</span> <span class="op">=</span> <span class="ident">Uuid::nil</span>();
-        <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;00000000000000000000000000000000&quot;</span>).<span class="ident">unwrap</span>(),
-            <span class="ident">nil</span>
+            Uuid::parse_str(<span class="string">&quot;00000000000000000000000000000000&quot;</span>).unwrap(),
+            nil
         );
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;00000000-0000-0000-0000-000000000000&quot;</span>).<span class="ident">unwrap</span>(),
-            <span class="ident">nil</span>
+            Uuid::parse_str(<span class="string">&quot;00000000-0000-0000-0000-000000000000&quot;</span>).unwrap(),
+            nil
         );
 
-        <span class="comment">// Round-trip</span>
-        <span class="kw">let</span> <span class="ident">uuid_orig</span> <span class="op">=</span> <span class="ident">test_util::new</span>();
-        <span class="kw">let</span> <span class="ident">orig_str</span> <span class="op">=</span> <span class="ident">uuid_orig</span>.<span class="ident">to_string</span>();
-        <span class="kw">let</span> <span class="ident">uuid_out</span> <span class="op">=</span> <span class="ident">Uuid::parse_str</span>(<span class="kw-2">&amp;</span><span class="ident">orig_str</span>).<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">uuid_orig</span>, <span class="ident">uuid_out</span>);
+        <span class="comment">// Round-trip
+        </span><span class="kw">let </span>uuid_orig = test_util::new();
+        <span class="kw">let </span>orig_str = uuid_orig.to_string();
+        <span class="kw">let </span>uuid_out = Uuid::parse_str(<span class="kw-2">&amp;</span>orig_str).unwrap();
+        <span class="macro">assert_eq!</span>(uuid_orig, uuid_out);
 
-        <span class="comment">// Test error reporting</span>
-        <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;67e5504410b1426f9247bb680e5fe0c&quot;</span>)
-                .<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidLength</span> {
-                <span class="ident">expected</span>: <span class="ident">EXPECTED_UUID_LENGTHS</span>,
-                <span class="ident">found</span>: <span class="number">31</span>,
+        <span class="comment">// Test error reporting
+        </span><span class="macro">assert_eq!</span>(
+            Uuid::parse_str(<span class="string">&quot;67e5504410b1426f9247bb680e5fe0c&quot;</span>)
+                .map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidLength {
+                expected: EXPECTED_UUID_LENGTHS,
+                found: <span class="number">31</span>,
             })
         );
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;67e550X410b1426f9247bb680e5fe0cd&quot;</span>)
-                .<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidCharacter</span> {
-                <span class="ident">expected</span>: <span class="ident">EXPECTED_CHARS</span>,
-                <span class="ident">found</span>: <span class="string">&#39;X&#39;</span>,
-                <span class="ident">index</span>: <span class="number">6</span>,
-                <span class="ident">urn</span>: <span class="ident">error::UrnPrefix::Optional</span>,
+            Uuid::parse_str(<span class="string">&quot;67e550X410b1426f9247bb680e5fe0cd&quot;</span>)
+                .map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidCharacter {
+                expected: EXPECTED_CHARS,
+                found: <span class="string">&#39;X&#39;</span>,
+                index: <span class="number">6</span>,
+                urn: error::UrnPrefix::Optional,
             })
         );
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;67e550-4105b1426f9247bb680e5fe0c&quot;</span>)
-                .<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidGroupLength</span> {
-                <span class="ident">expected</span>: <span class="ident">error::ExpectedLength::Exact</span>(<span class="number">8</span>),
-                <span class="ident">found</span>: <span class="number">6</span>,
-                <span class="ident">group</span>: <span class="number">0</span>,
+            Uuid::parse_str(<span class="string">&quot;67e550-4105b1426f9247bb680e5fe0c&quot;</span>)
+                .map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidGroupLength {
+                expected: error::ExpectedLength::Exact(<span class="number">8</span>),
+                found: <span class="number">6</span>,
+                group: <span class="number">0</span>,
             })
         );
         <span class="macro">assert_eq!</span>(
-            <span class="ident">Uuid::parse_str</span>(<span class="string">&quot;F9168C5E-CEB2-4faa-B6BF1-02BF39FA1E4&quot;</span>)
-                .<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::expect_parser</span>),
-            <span class="prelude-val">Err</span>(<span class="ident">Error::InvalidGroupLength</span> {
-                <span class="ident">expected</span>: <span class="ident">error::ExpectedLength::Exact</span>(<span class="number">4</span>),
-                <span class="ident">found</span>: <span class="number">5</span>,
-                <span class="ident">group</span>: <span class="number">3</span>,
+            Uuid::parse_str(<span class="string">&quot;F9168C5E-CEB2-4faa-B6BF1-02BF39FA1E4&quot;</span>)
+                .map_err(<span class="kw">crate</span>::Error::expect_parser),
+            <span class="prelude-val">Err</span>(Error::InvalidGroupLength {
+                expected: error::ExpectedLength::Exact(<span class="number">4</span>),
+                found: <span class="number">5</span>,
+                group: <span class="number">3</span>,
             })
         );
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="uuid" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="uuid" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

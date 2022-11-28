@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/pipeline/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/pipeline/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -414,421 +414,421 @@
 <span id="414">414</span>
 <span id="415">415</span>
 <span id="416">416</span>
-</pre><pre class="rust"><code><span class="doccomment">//! Defines types for a middleware pipeline</span>
+</pre><pre class="rust"><code><span class="doccomment">//! Defines types for a middleware pipeline
 
-<span class="kw">mod</span> <span class="ident">chain</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">chain::PipelineHandleChain</span>;
+</span><span class="kw">mod </span>chain;
+<span class="kw">pub use </span>chain::PipelineHandleChain;
 
-<span class="kw">mod</span> <span class="ident">set</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">set</span>::{<span class="ident">finalize_pipeline_set</span>, <span class="ident">new_pipeline_set</span>, <span class="ident">EditablePipelineSet</span>, <span class="ident">PipelineSet</span>};
+<span class="kw">mod </span>set;
+<span class="kw">pub use </span>set::{finalize_pipeline_set, new_pipeline_set, EditablePipelineSet, PipelineSet};
 
-<span class="kw">mod</span> <span class="ident">single</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">single</span>::{<span class="ident">single_pipeline</span>, <span class="ident">SinglePipelineChain</span>, <span class="ident">SinglePipelineHandle</span>, <span class="ident">SinglePipelineSet</span>};
+<span class="kw">mod </span>single;
+<span class="kw">pub use </span>single::{single_pipeline, SinglePipelineChain, SinglePipelineHandle, SinglePipelineSet};
 
-<span class="kw">use</span> <span class="ident">log::trace</span>;
-<span class="kw">use</span> <span class="ident">std::pin::Pin</span>;
+<span class="kw">use </span>log::trace;
+<span class="kw">use </span>std::pin::Pin;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::handler::HandlerFuture</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::middleware::chain</span>::{<span class="ident">MiddlewareChain</span>, <span class="ident">NewMiddlewareChain</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::middleware::NewMiddleware</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state</span>::{<span class="ident">request_id</span>, <span class="ident">State</span>};
+<span class="kw">use </span><span class="kw">crate</span>::handler::HandlerFuture;
+<span class="kw">use </span><span class="kw">crate</span>::middleware::chain::{MiddlewareChain, NewMiddlewareChain};
+<span class="kw">use </span><span class="kw">crate</span>::middleware::NewMiddleware;
+<span class="kw">use </span><span class="kw">crate</span>::state::{request_id, State};
 
-<span class="doccomment">/// When using middleware, one or more `Middleware` are combined to form a `Pipeline`.</span>
-<span class="doccomment">/// `Middleware` are invoked strictly in the order they&#39;re added to the `Pipeline`.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// At `Request` dispatch time, the `Middleware` are created from the `NewMiddleware` values given</span>
-<span class="doccomment">/// to the `PipelineBuilder`, and combined with a `Handler` created from the `NewHandler` provided</span>
-<span class="doccomment">/// to `Pipeline::call`.  These `Middleware` and `Handler` values are used for a single `Request`.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # #[macro_use]</span>
-<span class="doccomment">/// # extern crate gotham_derive;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # use std::pin::Pin;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # use gotham::helpers::http::response::create_response;</span>
-<span class="doccomment">/// # use gotham::state::State;</span>
-<span class="doccomment">/// # use gotham::handler::HandlerFuture;</span>
-<span class="doccomment">/// # use gotham::middleware::Middleware;</span>
-<span class="doccomment">/// # use gotham::pipeline::*;</span>
-<span class="doccomment">/// # use gotham::router::builder::*;</span>
-<span class="doccomment">/// # use gotham::test::TestServer;</span>
-<span class="doccomment">/// # use hyper::{Body, Response, StatusCode};</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// #[derive(StateData)]</span>
-<span class="doccomment">/// struct MiddlewareData {</span>
-<span class="doccomment">///     vec: Vec&lt;i32&gt;,</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// #[derive(NewMiddleware, Copy, Clone)]</span>
-<span class="doccomment">/// struct MiddlewareOne;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// impl Middleware for MiddlewareOne {</span>
-<span class="doccomment">///     // Implementation elided.</span>
-<span class="doccomment">///     // Appends `1` to `MiddlewareData.vec`</span>
-<span class="doccomment">/// #     fn call&lt;Chain&gt;(self, mut state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;</span>
-<span class="doccomment">/// #         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static</span>
-<span class="doccomment">/// #     {</span>
-<span class="doccomment">/// #         state.put(MiddlewareData { vec: vec![1] });</span>
-<span class="doccomment">/// #         chain(state)</span>
-<span class="doccomment">/// #     }</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// #[derive(NewMiddleware, Copy, Clone)]</span>
-<span class="doccomment">/// struct MiddlewareTwo;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// impl Middleware for MiddlewareTwo {</span>
-<span class="doccomment">///     // Implementation elided.</span>
-<span class="doccomment">///     // Appends `2` to `MiddlewareData.vec`</span>
-<span class="doccomment">/// #     fn call&lt;Chain&gt;(self, mut state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;</span>
-<span class="doccomment">/// #         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static</span>
-<span class="doccomment">/// #     {</span>
-<span class="doccomment">/// #         state.borrow_mut::&lt;MiddlewareData&gt;().vec.push(2);</span>
-<span class="doccomment">/// #         chain(state)</span>
-<span class="doccomment">/// #     }</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// #[derive(NewMiddleware, Copy, Clone)]</span>
-<span class="doccomment">/// struct MiddlewareThree;</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// impl Middleware for MiddlewareThree {</span>
-<span class="doccomment">///     // Implementation elided.</span>
-<span class="doccomment">///     // Appends `3` to `MiddlewareData.vec`</span>
-<span class="doccomment">/// #     fn call&lt;Chain&gt;(self, mut state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;</span>
-<span class="doccomment">/// #         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static</span>
-<span class="doccomment">/// #     {</span>
-<span class="doccomment">/// #         state.borrow_mut::&lt;MiddlewareData&gt;().vec.push(3);</span>
-<span class="doccomment">/// #         chain(state)</span>
-<span class="doccomment">/// #     }</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// fn handler(state: State) -&gt; (State, Response&lt;Body&gt;) {</span>
-<span class="doccomment">///     let body = {</span>
-<span class="doccomment">///         let data = state.borrow::&lt;MiddlewareData&gt;();</span>
-<span class="doccomment">///         format!(&quot;{:?}&quot;, data.vec)</span>
-<span class="doccomment">///     };</span>
-<span class="doccomment">///</span>
-<span class="doccomment">///     let res = create_response(&amp;state, StatusCode::OK, mime::TEXT_PLAIN, body);</span>
-<span class="doccomment">///</span>
-<span class="doccomment">///     (state, res)</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// fn main() {</span>
-<span class="doccomment">///     let (chain, pipelines) = single_pipeline(</span>
-<span class="doccomment">///         new_pipeline()</span>
-<span class="doccomment">///             .add(MiddlewareOne)</span>
-<span class="doccomment">///             .add(MiddlewareTwo)</span>
-<span class="doccomment">///             .add(MiddlewareThree)</span>
-<span class="doccomment">///             .build(),</span>
-<span class="doccomment">///     );</span>
-<span class="doccomment">///</span>
-<span class="doccomment">///     let router = build_router(chain, pipelines, |route| {</span>
-<span class="doccomment">///         route.get(&quot;/&quot;).to(handler);</span>
-<span class="doccomment">///     });</span>
-<span class="doccomment">///</span>
-<span class="doccomment">///     let test_server = TestServer::new(router).unwrap();</span>
-<span class="doccomment">///     let response = test_server</span>
-<span class="doccomment">///         .client()</span>
-<span class="doccomment">///         .get(&quot;http://example.com/&quot;)</span>
-<span class="doccomment">///         .perform()</span>
-<span class="doccomment">///         .unwrap();</span>
-<span class="doccomment">///     assert_eq!(response.status(), StatusCode::OK);</span>
-<span class="doccomment">///     assert_eq!(response.read_utf8_body().unwrap(), &quot;[1, 2, 3]&quot;);</span>
-<span class="doccomment">/// }</span>
-<span class="doccomment">/// ```</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Pipeline</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">T</span>: <span class="ident">NewMiddlewareChain</span>,
+<span class="doccomment">/// When using middleware, one or more `Middleware` are combined to form a `Pipeline`.
+/// `Middleware` are invoked strictly in the order they&#39;re added to the `Pipeline`.
+///
+/// At `Request` dispatch time, the `Middleware` are created from the `NewMiddleware` values given
+/// to the `PipelineBuilder`, and combined with a `Handler` created from the `NewHandler` provided
+/// to `Pipeline::call`.  These `Middleware` and `Handler` values are used for a single `Request`.
+///
+/// # Examples
+///
+/// ```rust
+/// # #[macro_use]
+/// # extern crate gotham_derive;
+/// #
+/// # use std::pin::Pin;
+/// #
+/// # use gotham::helpers::http::response::create_response;
+/// # use gotham::state::State;
+/// # use gotham::handler::HandlerFuture;
+/// # use gotham::middleware::Middleware;
+/// # use gotham::pipeline::*;
+/// # use gotham::router::builder::*;
+/// # use gotham::test::TestServer;
+/// # use hyper::{Body, Response, StatusCode};
+/// #
+/// #[derive(StateData)]
+/// struct MiddlewareData {
+///     vec: Vec&lt;i32&gt;,
+/// }
+///
+/// #[derive(NewMiddleware, Copy, Clone)]
+/// struct MiddlewareOne;
+///
+/// impl Middleware for MiddlewareOne {
+///     // Implementation elided.
+///     // Appends `1` to `MiddlewareData.vec`
+/// #     fn call&lt;Chain&gt;(self, mut state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+/// #         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static
+/// #     {
+/// #         state.put(MiddlewareData { vec: vec![1] });
+/// #         chain(state)
+/// #     }
+/// }
+///
+/// #[derive(NewMiddleware, Copy, Clone)]
+/// struct MiddlewareTwo;
+///
+/// impl Middleware for MiddlewareTwo {
+///     // Implementation elided.
+///     // Appends `2` to `MiddlewareData.vec`
+/// #     fn call&lt;Chain&gt;(self, mut state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+/// #         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static
+/// #     {
+/// #         state.borrow_mut::&lt;MiddlewareData&gt;().vec.push(2);
+/// #         chain(state)
+/// #     }
+/// }
+///
+/// #[derive(NewMiddleware, Copy, Clone)]
+/// struct MiddlewareThree;
+///
+/// impl Middleware for MiddlewareThree {
+///     // Implementation elided.
+///     // Appends `3` to `MiddlewareData.vec`
+/// #     fn call&lt;Chain&gt;(self, mut state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+/// #         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static
+/// #     {
+/// #         state.borrow_mut::&lt;MiddlewareData&gt;().vec.push(3);
+/// #         chain(state)
+/// #     }
+/// }
+///
+/// fn handler(state: State) -&gt; (State, Response&lt;Body&gt;) {
+///     let body = {
+///         let data = state.borrow::&lt;MiddlewareData&gt;();
+///         format!(&quot;{:?}&quot;, data.vec)
+///     };
+///
+///     let res = create_response(&amp;state, StatusCode::OK, mime::TEXT_PLAIN, body);
+///
+///     (state, res)
+/// }
+///
+/// fn main() {
+///     let (chain, pipelines) = single_pipeline(
+///         new_pipeline()
+///             .add(MiddlewareOne)
+///             .add(MiddlewareTwo)
+///             .add(MiddlewareThree)
+///             .build(),
+///     );
+///
+///     let router = build_router(chain, pipelines, |route| {
+///         route.get(&quot;/&quot;).to(handler);
+///     });
+///
+///     let test_server = TestServer::new(router).unwrap();
+///     let response = test_server
+///         .client()
+///         .get(&quot;http://example.com/&quot;)
+///         .perform()
+///         .unwrap();
+///     assert_eq!(response.status(), StatusCode::OK);
+///     assert_eq!(response.read_utf8_body().unwrap(), &quot;[1, 2, 3]&quot;);
+/// }
+/// ```
+</span><span class="kw">pub struct </span>Pipeline&lt;T&gt;
+<span class="kw">where
+    </span>T: NewMiddlewareChain,
 {
-    <span class="ident">chain</span>: <span class="ident">T</span>,
+    chain: T,
 }
 
-<span class="doccomment">/// Represents an instance of a `Pipeline`. Returned from `Pipeline::construct()`.</span>
-<span class="kw">struct</span> <span class="ident">PipelineInstance</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">T</span>: <span class="ident">MiddlewareChain</span>,
+<span class="doccomment">/// Represents an instance of a `Pipeline`. Returned from `Pipeline::construct()`.
+</span><span class="kw">struct </span>PipelineInstance&lt;T&gt;
+<span class="kw">where
+    </span>T: MiddlewareChain,
 {
-    <span class="ident">chain</span>: <span class="ident">T</span>,
+    chain: T,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">Pipeline</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">T</span>: <span class="ident">NewMiddlewareChain</span>,
+<span class="kw">impl</span>&lt;T&gt; Pipeline&lt;T&gt;
+<span class="kw">where
+    </span>T: NewMiddlewareChain,
 {
-    <span class="doccomment">/// Constructs an instance of this `Pipeline` by creating all `Middleware` instances required</span>
-    <span class="doccomment">/// to serve a request. If any middleware fails creation, its error will be returned.</span>
-    <span class="kw">fn</span> <span class="ident">construct</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">anyhow::Result</span><span class="op">&lt;</span><span class="ident">PipelineInstance</span><span class="op">&lt;</span><span class="ident">T::Instance</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="prelude-val">Ok</span>(<span class="ident">PipelineInstance</span> {
-            <span class="ident">chain</span>: <span class="self">self</span>.<span class="ident">chain</span>.<span class="ident">construct</span>()<span class="question-mark">?</span>,
+    <span class="doccomment">/// Constructs an instance of this `Pipeline` by creating all `Middleware` instances required
+    /// to serve a request. If any middleware fails creation, its error will be returned.
+    </span><span class="kw">fn </span>construct(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; anyhow::Result&lt;PipelineInstance&lt;T::Instance&gt;&gt; {
+        <span class="prelude-val">Ok</span>(PipelineInstance {
+            chain: <span class="self">self</span>.chain.construct()<span class="question-mark">?</span>,
         })
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">PipelineInstance</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">T</span>: <span class="ident">MiddlewareChain</span>,
+<span class="kw">impl</span>&lt;T&gt; PipelineInstance&lt;T&gt;
+<span class="kw">where
+    </span>T: MiddlewareChain,
 {
-    <span class="doccomment">/// Serves a request using this `PipelineInstance`. Requests that pass through all `Middleware`</span>
-    <span class="doccomment">/// will be served with the `f` function.</span>
-    <span class="kw">fn</span> <span class="ident">call</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">state</span>: <span class="ident">State</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+    <span class="doccomment">/// Serves a request using this `PipelineInstance`. Requests that pass through all `Middleware`
+    /// will be served with the `f` function.
+    </span><span class="kw">fn </span>call&lt;F&gt;(<span class="self">self</span>, state: State, f: F) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+    <span class="kw">where
+        </span>F: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + <span class="lifetime">&#39;static</span>,
     {
-        <span class="macro">trace!</span>(<span class="string">&quot;[{}] calling middleware&quot;</span>, <span class="ident">request_id</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>));
-        <span class="self">self</span>.<span class="ident">chain</span>.<span class="ident">call</span>(<span class="ident">state</span>, <span class="ident">f</span>)
+        <span class="macro">trace!</span>(<span class="string">&quot;[{}] calling middleware&quot;</span>, request_id(<span class="kw-2">&amp;</span>state));
+        <span class="self">self</span>.chain.call(state, f)
     }
 }
 
-<span class="doccomment">/// Begins defining a new pipeline.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// See `PipelineBuilder` for information on using `new_pipeline()`.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_pipeline</span>() -&gt; <span class="ident">PipelineBuilder</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+<span class="doccomment">/// Begins defining a new pipeline.
+///
+/// See `PipelineBuilder` for information on using `new_pipeline()`.
+</span><span class="kw">pub fn </span>new_pipeline() -&gt; PipelineBuilder&lt;()&gt; {
     <span class="macro">trace!</span>(<span class="string">&quot; starting pipeline construction&quot;</span>);
-    <span class="comment">// See: `impl NewMiddlewareChain for ()`</span>
-    <span class="ident">PipelineBuilder</span> { <span class="ident">t</span>: () }
+    <span class="comment">// See: `impl NewMiddlewareChain for ()`
+    </span>PipelineBuilder { t: () }
 }
 
-<span class="doccomment">/// Constructs a pipeline from a single middleware.</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">single_middleware</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span>(<span class="ident">m</span>: <span class="ident">M</span>) -&gt; <span class="ident">Pipeline</span><span class="op">&lt;</span>(<span class="ident">M</span>, ())<span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">M</span>: <span class="ident">NewMiddleware</span>,
-    <span class="ident">M::Instance</span>: <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+<span class="doccomment">/// Constructs a pipeline from a single middleware.
+</span><span class="kw">pub fn </span>single_middleware&lt;M&gt;(m: M) -&gt; Pipeline&lt;(M, ())&gt;
+<span class="kw">where
+    </span>M: NewMiddleware,
+    M::Instance: Send + <span class="lifetime">&#39;static</span>,
 {
-    <span class="ident">new_pipeline</span>().<span class="ident">add</span>(<span class="ident">m</span>).<span class="ident">build</span>()
+    new_pipeline().add(m).build()
 }
 
-<span class="doccomment">/// Allows a pipeline to be defined by adding `NewMiddleware` values, and building a `Pipeline`.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Examples</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// ```rust</span>
-<span class="doccomment">/// # extern crate gotham;</span>
-<span class="doccomment">/// # #[macro_use]</span>
-<span class="doccomment">/// # extern crate gotham_derive;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # use std::pin::Pin;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # use gotham::state::State;</span>
-<span class="doccomment">/// # use gotham::handler::HandlerFuture;</span>
-<span class="doccomment">/// # use gotham::middleware::Middleware;</span>
-<span class="doccomment">/// # use gotham::pipeline::new_pipeline;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # #[derive(NewMiddleware, Copy, Clone)]</span>
-<span class="doccomment">/// # struct MiddlewareOne;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # #[derive(NewMiddleware, Copy, Clone)]</span>
-<span class="doccomment">/// # struct MiddlewareTwo;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # #[derive(NewMiddleware, Copy, Clone)]</span>
-<span class="doccomment">/// # struct MiddlewareThree;</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # impl Middleware for MiddlewareOne {</span>
-<span class="doccomment">/// #   fn call&lt;Chain&gt;(self, state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;</span>
-<span class="doccomment">/// #       where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static</span>
-<span class="doccomment">/// #   {</span>
-<span class="doccomment">/// #       chain(state)</span>
-<span class="doccomment">/// #   }</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # impl Middleware for MiddlewareTwo {</span>
-<span class="doccomment">/// #   fn call&lt;Chain&gt;(self, state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;</span>
-<span class="doccomment">/// #       where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static</span>
-<span class="doccomment">/// #   {</span>
-<span class="doccomment">/// #       chain(state)</span>
-<span class="doccomment">/// #   }</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # impl Middleware for MiddlewareThree {</span>
-<span class="doccomment">/// #   fn call&lt;Chain&gt;(self, state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;</span>
-<span class="doccomment">/// #       where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static</span>
-<span class="doccomment">/// #   {</span>
-<span class="doccomment">/// #       chain(state)</span>
-<span class="doccomment">/// #   }</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// #</span>
-<span class="doccomment">/// # fn main() {</span>
-<span class="doccomment">/// new_pipeline()</span>
-<span class="doccomment">///     .add(MiddlewareOne)</span>
-<span class="doccomment">///     .add(MiddlewareTwo)</span>
-<span class="doccomment">///     .add(MiddlewareThree)</span>
-<span class="doccomment">///     .build();</span>
-<span class="doccomment">/// # }</span>
-<span class="doccomment">/// ```</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The pipeline defined here is invoked in this order:</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// `(&amp;mut state)` &amp;rarr; `MiddlewareOne` &amp;rarr; `MiddlewareTwo` &amp;rarr; `MiddlewareThree` &amp;rarr;</span>
-<span class="doccomment">/// `handler` (provided later, when building the router)</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">PipelineBuilder</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">T</span>: <span class="ident">NewMiddlewareChain</span>,
+<span class="doccomment">/// Allows a pipeline to be defined by adding `NewMiddleware` values, and building a `Pipeline`.
+///
+/// # Examples
+///
+/// ```rust
+/// # extern crate gotham;
+/// # #[macro_use]
+/// # extern crate gotham_derive;
+/// #
+/// # use std::pin::Pin;
+/// #
+/// # use gotham::state::State;
+/// # use gotham::handler::HandlerFuture;
+/// # use gotham::middleware::Middleware;
+/// # use gotham::pipeline::new_pipeline;
+/// #
+/// # #[derive(NewMiddleware, Copy, Clone)]
+/// # struct MiddlewareOne;
+/// #
+/// # #[derive(NewMiddleware, Copy, Clone)]
+/// # struct MiddlewareTwo;
+/// #
+/// # #[derive(NewMiddleware, Copy, Clone)]
+/// # struct MiddlewareThree;
+/// #
+/// # impl Middleware for MiddlewareOne {
+/// #   fn call&lt;Chain&gt;(self, state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+/// #       where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static
+/// #   {
+/// #       chain(state)
+/// #   }
+/// # }
+/// #
+/// # impl Middleware for MiddlewareTwo {
+/// #   fn call&lt;Chain&gt;(self, state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+/// #       where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static
+/// #   {
+/// #       chain(state)
+/// #   }
+/// # }
+/// #
+/// # impl Middleware for MiddlewareThree {
+/// #   fn call&lt;Chain&gt;(self, state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+/// #       where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static
+/// #   {
+/// #       chain(state)
+/// #   }
+/// # }
+/// #
+/// # fn main() {
+/// new_pipeline()
+///     .add(MiddlewareOne)
+///     .add(MiddlewareTwo)
+///     .add(MiddlewareThree)
+///     .build();
+/// # }
+/// ```
+///
+/// The pipeline defined here is invoked in this order:
+///
+/// `(&amp;mut state)` &amp;rarr; `MiddlewareOne` &amp;rarr; `MiddlewareTwo` &amp;rarr; `MiddlewareThree` &amp;rarr;
+/// `handler` (provided later, when building the router)
+</span><span class="kw">pub struct </span>PipelineBuilder&lt;T&gt;
+<span class="kw">where
+    </span>T: NewMiddlewareChain,
 {
-    <span class="ident">t</span>: <span class="ident">T</span>,
+    t: T,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">PipelineBuilder</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">T</span>: <span class="ident">NewMiddlewareChain</span>,
+<span class="kw">impl</span>&lt;T&gt; PipelineBuilder&lt;T&gt;
+<span class="kw">where
+    </span>T: NewMiddlewareChain,
 {
-    <span class="doccomment">/// Builds a `Pipeline`, which contains all middleware in the order provided via `add` and is</span>
-    <span class="doccomment">/// ready to process requests via a `NewHandler` provided to `Pipeline::call`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">build</span>(<span class="self">self</span>) -&gt; <span class="ident">Pipeline</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">T</span>: <span class="ident">NewMiddlewareChain</span>,
+    <span class="doccomment">/// Builds a `Pipeline`, which contains all middleware in the order provided via `add` and is
+    /// ready to process requests via a `NewHandler` provided to `Pipeline::call`.
+    </span><span class="kw">pub fn </span>build(<span class="self">self</span>) -&gt; Pipeline&lt;T&gt;
+    <span class="kw">where
+        </span>T: NewMiddlewareChain,
     {
-        <span class="ident">Pipeline</span> { <span class="ident">chain</span>: <span class="self">self</span>.<span class="ident">t</span> }
+        Pipeline { chain: <span class="self">self</span>.t }
     }
 
-    <span class="doccomment">/// Adds a `NewMiddleware` which will create a `Middleware` during request dispatch.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">m</span>: <span class="ident">M</span>) -&gt; <span class="ident">PipelineBuilder</span><span class="op">&lt;</span>(<span class="ident">M</span>, <span class="ident">T</span>)<span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">M</span>: <span class="ident">NewMiddleware</span>,
-        <span class="ident">M::Instance</span>: <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-        <span class="self">Self</span>: <span class="ident">Sized</span>,
+    <span class="doccomment">/// Adds a `NewMiddleware` which will create a `Middleware` during request dispatch.
+    </span><span class="kw">pub fn </span>add&lt;M&gt;(<span class="self">self</span>, m: M) -&gt; PipelineBuilder&lt;(M, T)&gt;
+    <span class="kw">where
+        </span>M: NewMiddleware,
+        M::Instance: Send + <span class="lifetime">&#39;static</span>,
+        <span class="self">Self</span>: Sized,
     {
-        <span class="comment">// &quot;cons&quot; the most recently added `NewMiddleware` onto the front of the list. This is</span>
-        <span class="comment">// essentially building an HList-style tuple in reverse order. So for a call like:</span>
-        <span class="comment">//</span>
-        <span class="comment">//     new_pipeline().add(MiddlewareOne).add(MiddlewareTwo).add(MiddlewareThree)</span>
-        <span class="comment">//</span>
-        <span class="comment">// The resulting `PipelineBuilder` will be:</span>
-        <span class="comment">//</span>
-        <span class="comment">//     PipelineBuilder { t: (MiddlewareThree, (MiddlewareTwo, (MiddlewareOne, ()))) }</span>
-        <span class="comment">//</span>
-        <span class="comment">// An empty `PipelineBuilder` is represented as:</span>
-        <span class="comment">//</span>
-        <span class="comment">//     PipelineBuilder { t: () }</span>
-        <span class="macro">trace!</span>(<span class="string">&quot; adding middleware to pipeline&quot;</span>);
-        <span class="ident">PipelineBuilder</span> { <span class="ident">t</span>: (<span class="ident">m</span>, <span class="self">self</span>.<span class="ident">t</span>) }
+        <span class="comment">// &quot;cons&quot; the most recently added `NewMiddleware` onto the front of the list. This is
+        // essentially building an HList-style tuple in reverse order. So for a call like:
+        //
+        //     new_pipeline().add(MiddlewareOne).add(MiddlewareTwo).add(MiddlewareThree)
+        //
+        // The resulting `PipelineBuilder` will be:
+        //
+        //     PipelineBuilder { t: (MiddlewareThree, (MiddlewareTwo, (MiddlewareOne, ()))) }
+        //
+        // An empty `PipelineBuilder` is represented as:
+        //
+        //     PipelineBuilder { t: () }
+        </span><span class="macro">trace!</span>(<span class="string">&quot; adding middleware to pipeline&quot;</span>);
+        PipelineBuilder { t: (m, <span class="self">self</span>.t) }
     }
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">tests</span> {
-    <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+<span class="attribute">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
 
-    <span class="kw">use</span> <span class="ident">futures_util::future</span>::{<span class="self">self</span>, <span class="ident">FutureExt</span>};
-    <span class="kw">use</span> <span class="ident">hyper</span>::{<span class="ident">Body</span>, <span class="ident">Response</span>, <span class="ident">StatusCode</span>};
+    <span class="kw">use </span>futures_util::future::{<span class="self">self</span>, FutureExt};
+    <span class="kw">use </span>hyper::{Body, Response, StatusCode};
 
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::handler::Handler</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::middleware::Middleware</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state::StateData</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::test::TestServer</span>;
+    <span class="kw">use </span><span class="kw">crate</span>::handler::Handler;
+    <span class="kw">use </span><span class="kw">crate</span>::middleware::Middleware;
+    <span class="kw">use </span><span class="kw">crate</span>::state::StateData;
+    <span class="kw">use </span><span class="kw">crate</span>::test::TestServer;
 
-    <span class="kw">fn</span> <span class="ident">handler</span>(<span class="ident">state</span>: <span class="ident">State</span>) -&gt; (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
-        <span class="kw">let</span> <span class="ident">number</span> <span class="op">=</span> <span class="ident">state</span>.<span class="ident">borrow</span>::<span class="op">&lt;</span><span class="ident">Number</span><span class="op">&gt;</span>().<span class="ident">value</span>;
+    <span class="kw">fn </span>handler(state: State) -&gt; (State, Response&lt;Body&gt;) {
+        <span class="kw">let </span>number = state.borrow::&lt;Number&gt;().value;
         (
-            <span class="ident">state</span>,
-            <span class="ident">Response::builder</span>()
-                .<span class="ident">status</span>(<span class="ident">StatusCode::OK</span>)
-                .<span class="ident">body</span>(<span class="macro">format!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">number</span>).<span class="ident">into</span>())
-                .<span class="ident">unwrap</span>(),
+            state,
+            Response::builder()
+                .status(StatusCode::OK)
+                .body(<span class="macro">format!</span>(<span class="string">&quot;{}&quot;</span>, number).into())
+                .unwrap(),
         )
     }
 
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>)]</span>
-    <span class="kw">struct</span> <span class="ident">Number</span> {
-        <span class="ident">value</span>: <span class="ident">i32</span>,
+    <span class="attribute">#[derive(Clone)]
+    </span><span class="kw">struct </span>Number {
+        value: i32,
     }
 
-    <span class="kw">impl</span> <span class="ident">NewMiddleware</span> <span class="kw">for</span> <span class="ident">Number</span> {
-        <span class="kw">type</span> <span class="ident">Instance</span> <span class="op">=</span> <span class="ident">Number</span>;
+    <span class="kw">impl </span>NewMiddleware <span class="kw">for </span>Number {
+        <span class="kw">type </span>Instance = Number;
 
-        <span class="kw">fn</span> <span class="ident">new_middleware</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">anyhow::Result</span><span class="op">&lt;</span><span class="ident">Number</span><span class="op">&gt;</span> {
-            <span class="prelude-val">Ok</span>(<span class="self">self</span>.<span class="ident">clone</span>())
+        <span class="kw">fn </span>new_middleware(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; anyhow::Result&lt;Number&gt; {
+            <span class="prelude-val">Ok</span>(<span class="self">self</span>.clone())
         }
     }
 
-    <span class="kw">impl</span> <span class="ident">Middleware</span> <span class="kw">for</span> <span class="ident">Number</span> {
-        <span class="kw">fn</span> <span class="ident">call</span><span class="op">&lt;</span><span class="ident">Chain</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">state</span>: <span class="ident">State</span>, <span class="ident">chain</span>: <span class="ident">Chain</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span>
-        <span class="kw">where</span>
-            <span class="ident">Chain</span>: <span class="ident">FnOnce</span>(<span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-            <span class="self">Self</span>: <span class="ident">Sized</span>,
+    <span class="kw">impl </span>Middleware <span class="kw">for </span>Number {
+        <span class="kw">fn </span>call&lt;Chain&gt;(<span class="self">self</span>, <span class="kw-2">mut </span>state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+        <span class="kw">where
+            </span>Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + <span class="lifetime">&#39;static</span>,
+            <span class="self">Self</span>: Sized,
         {
-            <span class="ident">state</span>.<span class="ident">put</span>(<span class="self">self</span>);
-            <span class="ident">chain</span>(<span class="ident">state</span>)
+            state.put(<span class="self">self</span>);
+            chain(state)
         }
     }
 
-    <span class="kw">impl</span> <span class="ident">StateData</span> <span class="kw">for</span> <span class="ident">Number</span> {}
+    <span class="kw">impl </span>StateData <span class="kw">for </span>Number {}
 
-    <span class="kw">struct</span> <span class="ident">Addition</span> {
-        <span class="ident">value</span>: <span class="ident">i32</span>,
+    <span class="kw">struct </span>Addition {
+        value: i32,
     }
 
-    <span class="kw">impl</span> <span class="ident">NewMiddleware</span> <span class="kw">for</span> <span class="ident">Addition</span> {
-        <span class="kw">type</span> <span class="ident">Instance</span> <span class="op">=</span> <span class="ident">Addition</span>;
+    <span class="kw">impl </span>NewMiddleware <span class="kw">for </span>Addition {
+        <span class="kw">type </span>Instance = Addition;
 
-        <span class="kw">fn</span> <span class="ident">new_middleware</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">anyhow::Result</span><span class="op">&lt;</span><span class="ident">Addition</span><span class="op">&gt;</span> {
-            <span class="prelude-val">Ok</span>(<span class="ident">Addition</span> { ..<span class="kw-2">*</span><span class="self">self</span> })
+        <span class="kw">fn </span>new_middleware(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; anyhow::Result&lt;Addition&gt; {
+            <span class="prelude-val">Ok</span>(Addition { ..<span class="kw-2">*</span><span class="self">self </span>})
         }
     }
 
-    <span class="kw">impl</span> <span class="ident">Middleware</span> <span class="kw">for</span> <span class="ident">Addition</span> {
-        <span class="kw">fn</span> <span class="ident">call</span><span class="op">&lt;</span><span class="ident">Chain</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">state</span>: <span class="ident">State</span>, <span class="ident">chain</span>: <span class="ident">Chain</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span>
-        <span class="kw">where</span>
-            <span class="ident">Chain</span>: <span class="ident">FnOnce</span>(<span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-            <span class="self">Self</span>: <span class="ident">Sized</span>,
+    <span class="kw">impl </span>Middleware <span class="kw">for </span>Addition {
+        <span class="kw">fn </span>call&lt;Chain&gt;(<span class="self">self</span>, <span class="kw-2">mut </span>state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+        <span class="kw">where
+            </span>Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + <span class="lifetime">&#39;static</span>,
+            <span class="self">Self</span>: Sized,
         {
-            <span class="ident">state</span>.<span class="ident">borrow_mut</span>::<span class="op">&lt;</span><span class="ident">Number</span><span class="op">&gt;</span>().<span class="ident">value</span> <span class="op">+</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">value</span>;
-            <span class="ident">chain</span>(<span class="ident">state</span>)
+            state.borrow_mut::&lt;Number&gt;().value += <span class="self">self</span>.value;
+            chain(state)
         }
     }
 
-    <span class="kw">struct</span> <span class="ident">Multiplication</span> {
-        <span class="ident">value</span>: <span class="ident">i32</span>,
+    <span class="kw">struct </span>Multiplication {
+        value: i32,
     }
 
-    <span class="kw">impl</span> <span class="ident">NewMiddleware</span> <span class="kw">for</span> <span class="ident">Multiplication</span> {
-        <span class="kw">type</span> <span class="ident">Instance</span> <span class="op">=</span> <span class="ident">Multiplication</span>;
+    <span class="kw">impl </span>NewMiddleware <span class="kw">for </span>Multiplication {
+        <span class="kw">type </span>Instance = Multiplication;
 
-        <span class="kw">fn</span> <span class="ident">new_middleware</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">anyhow::Result</span><span class="op">&lt;</span><span class="ident">Multiplication</span><span class="op">&gt;</span> {
-            <span class="prelude-val">Ok</span>(<span class="ident">Multiplication</span> { ..<span class="kw-2">*</span><span class="self">self</span> })
+        <span class="kw">fn </span>new_middleware(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; anyhow::Result&lt;Multiplication&gt; {
+            <span class="prelude-val">Ok</span>(Multiplication { ..<span class="kw-2">*</span><span class="self">self </span>})
         }
     }
 
-    <span class="kw">impl</span> <span class="ident">Middleware</span> <span class="kw">for</span> <span class="ident">Multiplication</span> {
-        <span class="kw">fn</span> <span class="ident">call</span><span class="op">&lt;</span><span class="ident">Chain</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">state</span>: <span class="ident">State</span>, <span class="ident">chain</span>: <span class="ident">Chain</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span>
-        <span class="kw">where</span>
-            <span class="ident">Chain</span>: <span class="ident">FnOnce</span>(<span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-            <span class="self">Self</span>: <span class="ident">Sized</span>,
+    <span class="kw">impl </span>Middleware <span class="kw">for </span>Multiplication {
+        <span class="kw">fn </span>call&lt;Chain&gt;(<span class="self">self</span>, <span class="kw-2">mut </span>state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+        <span class="kw">where
+            </span>Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + <span class="lifetime">&#39;static</span>,
+            <span class="self">Self</span>: Sized,
         {
-            <span class="ident">state</span>.<span class="ident">borrow_mut</span>::<span class="op">&lt;</span><span class="ident">Number</span><span class="op">&gt;</span>().<span class="ident">value</span> <span class="kw-2">*</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">value</span>;
-            <span class="ident">chain</span>(<span class="ident">state</span>)
+            state.borrow_mut::&lt;Number&gt;().value <span class="kw-2">*</span>= <span class="self">self</span>.value;
+            chain(state)
         }
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">pipeline_ordering_test</span>() {
-        <span class="kw">let</span> <span class="ident">test_server</span> <span class="op">=</span> <span class="ident">TestServer::new</span>(<span class="op">|</span><span class="op">|</span> {
-            <span class="kw">let</span> <span class="ident">pipeline</span> <span class="op">=</span> <span class="ident">new_pipeline</span>()
-                .<span class="ident">add</span>(<span class="ident">Number</span> { <span class="ident">value</span>: <span class="number">0</span> }) <span class="comment">// 0</span>
-                .<span class="ident">add</span>(<span class="ident">Addition</span> { <span class="ident">value</span>: <span class="number">1</span> }) <span class="comment">// 1</span>
-                .<span class="ident">add</span>(<span class="ident">Multiplication</span> { <span class="ident">value</span>: <span class="number">2</span> }) <span class="comment">// 2</span>
-                .<span class="ident">add</span>(<span class="ident">Addition</span> { <span class="ident">value</span>: <span class="number">1</span> }) <span class="comment">// 3</span>
-                .<span class="ident">add</span>(<span class="ident">Multiplication</span> { <span class="ident">value</span>: <span class="number">2</span> }) <span class="comment">// 6</span>
-                .<span class="ident">add</span>(<span class="ident">Addition</span> { <span class="ident">value</span>: <span class="number">2</span> }) <span class="comment">// 8</span>
-                .<span class="ident">add</span>(<span class="ident">Multiplication</span> { <span class="ident">value</span>: <span class="number">3</span> }) <span class="comment">// 24</span>
-                .<span class="ident">build</span>();
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>pipeline_ordering_test() {
+        <span class="kw">let </span>test_server = TestServer::new(|| {
+            <span class="kw">let </span>pipeline = new_pipeline()
+                .add(Number { value: <span class="number">0 </span>}) <span class="comment">// 0
+                </span>.add(Addition { value: <span class="number">1 </span>}) <span class="comment">// 1
+                </span>.add(Multiplication { value: <span class="number">2 </span>}) <span class="comment">// 2
+                </span>.add(Addition { value: <span class="number">1 </span>}) <span class="comment">// 3
+                </span>.add(Multiplication { value: <span class="number">2 </span>}) <span class="comment">// 6
+                </span>.add(Addition { value: <span class="number">2 </span>}) <span class="comment">// 8
+                </span>.add(Multiplication { value: <span class="number">3 </span>}) <span class="comment">// 24
+                </span>.build();
 
-            <span class="prelude-val">Ok</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">state</span><span class="op">|</span> <span class="kw">match</span> <span class="ident">pipeline</span>.<span class="ident">construct</span>() {
-                <span class="prelude-val">Ok</span>(<span class="ident">p</span>) =&gt; <span class="ident">p</span>.<span class="ident">call</span>(<span class="ident">state</span>, <span class="op">|</span><span class="ident">state</span><span class="op">|</span> <span class="ident">handler</span>.<span class="ident">handle</span>(<span class="ident">state</span>)),
-                <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; <span class="ident">future::err</span>((<span class="ident">state</span>, <span class="ident">e</span>.<span class="ident">into</span>())).<span class="ident">boxed</span>(),
+            <span class="prelude-val">Ok</span>(<span class="kw">move </span>|state| <span class="kw">match </span>pipeline.construct() {
+                <span class="prelude-val">Ok</span>(p) =&gt; p.call(state, |state| handler.handle(state)),
+                <span class="prelude-val">Err</span>(e) =&gt; future::err((state, e.into())).boxed(),
             })
         })
-        .<span class="ident">unwrap</span>();
+        .unwrap();
 
-        <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">test_server</span>
-            .<span class="ident">client</span>()
-            .<span class="ident">get</span>(<span class="string">&quot;http://localhost/&quot;</span>)
-            .<span class="ident">perform</span>()
-            .<span class="ident">unwrap</span>();
+        <span class="kw">let </span>response = test_server
+            .client()
+            .get(<span class="string">&quot;http://localhost/&quot;</span>)
+            .perform()
+            .unwrap();
 
-        <span class="kw">let</span> <span class="ident">buf</span> <span class="op">=</span> <span class="ident">response</span>.<span class="ident">read_body</span>().<span class="ident">unwrap</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">buf</span>.<span class="ident">as_slice</span>(), <span class="string">b&quot;24&quot;</span>);
+        <span class="kw">let </span>buf = response.read_body().unwrap();
+        <span class="macro">assert_eq!</span>(buf.as_slice(), <span class="string">b&quot;24&quot;</span>);
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

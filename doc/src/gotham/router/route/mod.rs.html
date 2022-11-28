@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/router/route/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../gotham/index.html"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/router/route/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../../normalize.css"><link rel="stylesheet" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../../ayu.css" disabled><link rel="stylesheet" href="../../../../dark.css" disabled><link rel="stylesheet" href="../../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../../storage.js"></script><script defer src="../../../../source-script.js"></script><script defer src="../../../../source-files.js"></script><script defer src="../../../../main.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../../gotham/index.html"><img class="rust-logo" src="../../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -292,299 +292,299 @@
 <span id="292">292</span>
 <span id="293">293</span>
 <span id="294">294</span>
-</pre><pre class="rust"><code><span class="doccomment">//! Defines types that support individual application routes.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! The `Router` will identify one or more `Route` instances that match the path of a request, and</span>
-<span class="doccomment">//! iterate to find the first matching `Route` (indicated by `Route::is_match`). The request will</span>
-<span class="doccomment">//! be dispatched to the first `Route` which matches.</span>
+</pre><pre class="rust"><code><span class="doccomment">//! Defines types that support individual application routes.
+//!
+//! The `Router` will identify one or more `Route` instances that match the path of a request, and
+//! iterate to find the first matching `Route` (indicated by `Route::is_match`). The request will
+//! be dispatched to the first `Route` which matches.
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">dispatch</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">matcher</span>;
+</span><span class="kw">pub mod </span>dispatch;
+<span class="kw">pub mod </span>matcher;
 
-<span class="kw">use</span> <span class="ident">std::marker::PhantomData</span>;
-<span class="kw">use</span> <span class="ident">std::panic::RefUnwindSafe</span>;
-<span class="kw">use</span> <span class="ident">std::pin::Pin</span>;
+<span class="kw">use </span>std::marker::PhantomData;
+<span class="kw">use </span>std::panic::RefUnwindSafe;
+<span class="kw">use </span>std::pin::Pin;
 
-<span class="kw">use</span> <span class="ident">hyper</span>::{<span class="ident">Body</span>, <span class="ident">Response</span>, <span class="ident">Uri</span>};
-<span class="kw">use</span> <span class="ident">log::debug</span>;
+<span class="kw">use </span>hyper::{Body, Response, Uri};
+<span class="kw">use </span>log::debug;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::extractor</span>::{<span class="self">self</span>, <span class="ident">PathExtractor</span>, <span class="ident">QueryStringExtractor</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::handler::HandlerFuture</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::helpers::http::request::query_string</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::non_match::RouteNonMatch</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::route::dispatch::Dispatcher</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::route::matcher::RouteMatcher</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::tree::segment::SegmentMapping</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state</span>::{<span class="ident">request_id</span>, <span class="ident">State</span>};
+<span class="kw">use </span><span class="kw">crate</span>::extractor::{<span class="self">self</span>, PathExtractor, QueryStringExtractor};
+<span class="kw">use </span><span class="kw">crate</span>::handler::HandlerFuture;
+<span class="kw">use </span><span class="kw">crate</span>::helpers::http::request::query_string;
+<span class="kw">use </span><span class="kw">crate</span>::router::non_match::RouteNonMatch;
+<span class="kw">use </span><span class="kw">crate</span>::router::route::dispatch::Dispatcher;
+<span class="kw">use </span><span class="kw">crate</span>::router::route::matcher::RouteMatcher;
+<span class="kw">use </span><span class="kw">crate</span>::router::tree::segment::SegmentMapping;
+<span class="kw">use </span><span class="kw">crate</span>::state::{request_id, State};
 
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="doccomment">/// Indicates whether this `Route` will dispatch the request to an inner `Router` instance. To</span>
-<span class="doccomment">/// support inner `Router` instances which handle a subtree, the `Dispatcher` stores additional</span>
-<span class="doccomment">/// context information.</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Delegation</span> {
-    <span class="doccomment">/// This `Route` is dispatching a request to a normal `NewHandler` / `Handler` and does not</span>
-    <span class="doccomment">/// need to store any additional context information.</span>
-    <span class="ident">Internal</span>,
+<span class="attribute">#[derive(Clone, Copy, PartialEq)]
+</span><span class="doccomment">/// Indicates whether this `Route` will dispatch the request to an inner `Router` instance. To
+/// support inner `Router` instances which handle a subtree, the `Dispatcher` stores additional
+/// context information.
+</span><span class="kw">pub enum </span>Delegation {
+    <span class="doccomment">/// This `Route` is dispatching a request to a normal `NewHandler` / `Handler` and does not
+    /// need to store any additional context information.
+    </span>Internal,
 
-    <span class="doccomment">/// This `Route` is dispatching a request to another `Router` which handles a subtree. The path</span>
-    <span class="doccomment">/// segments already consumed by the current `Router` will not be processed again.</span>
-    <span class="ident">External</span>,
+    <span class="doccomment">/// This `Route` is dispatching a request to another `Router` which handles a subtree. The path
+    /// segments already consumed by the current `Router` will not be processed again.
+    </span>External,
 }
 
-<span class="doccomment">/// Values of the `Route` type are used by the `Router` to conditionally dispatch a request after</span>
-<span class="doccomment">/// matching the path segments successfully. The steps taken in dispatching to a `Route` are:</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// 1. Given a list of routes that match the request path, determine the first `Route` which</span>
-<span class="doccomment">///    indicates a match via `Route::is_match`;</span>
-<span class="doccomment">/// 2. Determine whether the route&#39;s `Delegation` is `Internal` or `External`. If `External`, halt</span>
-<span class="doccomment">///    processing and dispatch to the inner `Router`;</span>
-<span class="doccomment">/// 3. Run `PathExtractor` and `QueryStringExtractor` logic to popuate `State` with the necessary</span>
-<span class="doccomment">///    request data. If either of these extractors fail, the request is halted here;</span>
-<span class="doccomment">/// 4. Dispatch the request via `Route::dispatch`.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// `Route` exists as a trait to allow abstraction over the generic types in `RouteImpl`. This</span>
-<span class="doccomment">/// trait should not be implemented outside of Gotham.</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Route</span>: <span class="ident">RefUnwindSafe</span> {
-    <span class="doccomment">/// The type of the response body. The requirements of Hyper are that this implements `HttpBody`.</span>
-    <span class="doccomment">/// Almost always, it will want to be `hyper::Body`.</span>
-    <span class="kw">type</span> <span class="ident">ResBody</span>;
-    <span class="doccomment">/// Determines if this `Route` should be invoked, based on the request data in `State.</span>
-    <span class="kw">fn</span> <span class="ident">is_match</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="ident">State</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">RouteNonMatch</span><span class="op">&gt;</span>;
+<span class="doccomment">/// Values of the `Route` type are used by the `Router` to conditionally dispatch a request after
+/// matching the path segments successfully. The steps taken in dispatching to a `Route` are:
+///
+/// 1. Given a list of routes that match the request path, determine the first `Route` which
+///    indicates a match via `Route::is_match`;
+/// 2. Determine whether the route&#39;s `Delegation` is `Internal` or `External`. If `External`, halt
+///    processing and dispatch to the inner `Router`;
+/// 3. Run `PathExtractor` and `QueryStringExtractor` logic to popuate `State` with the necessary
+///    request data. If either of these extractors fail, the request is halted here;
+/// 4. Dispatch the request via `Route::dispatch`.
+///
+/// `Route` exists as a trait to allow abstraction over the generic types in `RouteImpl`. This
+/// trait should not be implemented outside of Gotham.
+</span><span class="kw">pub trait </span>Route: RefUnwindSafe {
+    <span class="doccomment">/// The type of the response body. The requirements of Hyper are that this implements `HttpBody`.
+    /// Almost always, it will want to be `hyper::Body`.
+    </span><span class="kw">type </span>ResBody;
+    <span class="doccomment">/// Determines if this `Route` should be invoked, based on the request data in `State.
+    </span><span class="kw">fn </span>is_match(<span class="kw-2">&amp;</span><span class="self">self</span>, state: <span class="kw-2">&amp;</span>State) -&gt; <span class="prelude-ty">Result</span>&lt;(), RouteNonMatch&gt;;
 
-    <span class="doccomment">/// Determines if this `Route` intends to delegate requests to a secondary `Router` instance.</span>
-    <span class="kw">fn</span> <span class="ident">delegation</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Delegation</span>;
+    <span class="doccomment">/// Determines if this `Route` intends to delegate requests to a secondary `Router` instance.
+    </span><span class="kw">fn </span>delegation(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Delegation;
 
-    <span class="doccomment">/// Extracts dynamic components of the `Request` path and stores the `PathExtractor` in `State`.</span>
-    <span class="kw">fn</span> <span class="ident">extract_request_path</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(
+    <span class="doccomment">/// Extracts dynamic components of the `Request` path and stores the `PathExtractor` in `State`.
+    </span><span class="kw">fn </span>extract_request_path&lt;<span class="lifetime">&#39;a</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">state</span>: <span class="kw-2">&amp;mut</span> <span class="ident">State</span>,
-        <span class="ident">params</span>: <span class="ident">SegmentMapping</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>,
-    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ExtractorFailed</span><span class="op">&gt;</span>;
+        state: <span class="kw-2">&amp;mut </span>State,
+        params: SegmentMapping&lt;<span class="lifetime">&#39;a</span>&gt;,
+    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), ExtractorFailed&gt;;
 
-    <span class="doccomment">/// Extends the `Response` object when the `PathExtractor` fails.</span>
-    <span class="kw">fn</span> <span class="ident">extend_response_on_path_error</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">state</span>: <span class="kw-2">&amp;mut</span> <span class="ident">State</span>, <span class="ident">res</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Response</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::ResBody</span><span class="op">&gt;</span>);
+    <span class="doccomment">/// Extends the `Response` object when the `PathExtractor` fails.
+    </span><span class="kw">fn </span>extend_response_on_path_error(<span class="kw-2">&amp;</span><span class="self">self</span>, state: <span class="kw-2">&amp;mut </span>State, res: <span class="kw-2">&amp;mut </span>Response&lt;<span class="self">Self</span>::ResBody&gt;);
 
-    <span class="doccomment">/// Extracts the query string parameters and stores the `QueryStringExtractor` in `State`.</span>
-    <span class="kw">fn</span> <span class="ident">extract_query_string</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">state</span>: <span class="kw-2">&amp;mut</span> <span class="ident">State</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ExtractorFailed</span><span class="op">&gt;</span>;
+    <span class="doccomment">/// Extracts the query string parameters and stores the `QueryStringExtractor` in `State`.
+    </span><span class="kw">fn </span>extract_query_string(<span class="kw-2">&amp;</span><span class="self">self</span>, state: <span class="kw-2">&amp;mut </span>State) -&gt; <span class="prelude-ty">Result</span>&lt;(), ExtractorFailed&gt;;
 
-    <span class="doccomment">/// Extends the `Response` object when query string extraction fails.</span>
-    <span class="kw">fn</span> <span class="ident">extend_response_on_query_string_error</span>(
+    <span class="doccomment">/// Extends the `Response` object when query string extraction fails.
+    </span><span class="kw">fn </span>extend_response_on_query_string_error(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">state</span>: <span class="kw-2">&amp;mut</span> <span class="ident">State</span>,
-        <span class="ident">res</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Response</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::ResBody</span><span class="op">&gt;</span>,
+        state: <span class="kw-2">&amp;mut </span>State,
+        res: <span class="kw-2">&amp;mut </span>Response&lt;<span class="self">Self</span>::ResBody&gt;,
     );
 
-    <span class="doccomment">/// Dispatches the request to this `Route`, which will execute the pipelines and the handler</span>
-    <span class="doccomment">/// assigned to the `Route.</span>
-    <span class="kw">fn</span> <span class="ident">dispatch</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">state</span>: <span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span>;
+    <span class="doccomment">/// Dispatches the request to this `Route`, which will execute the pipelines and the handler
+    /// assigned to the `Route.
+    </span><span class="kw">fn </span>dispatch(<span class="kw-2">&amp;</span><span class="self">self</span>, state: State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;;
 }
 
-<span class="doccomment">/// Returned in the `Err` variant from `extract_query_string` or `extract_request_path`, this</span>
-<span class="doccomment">/// signals that the extractor has failed and the request should not proceed.</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ExtractorFailed</span>;
+<span class="doccomment">/// Returned in the `Err` variant from `extract_query_string` or `extract_request_path`, this
+/// signals that the extractor has failed and the request should not proceed.
+</span><span class="kw">pub struct </span>ExtractorFailed;
 
-<span class="doccomment">/// Concrete type for a route in a Gotham web application. Values of this type are created by the</span>
-<span class="doccomment">/// `gotham::router::builder` API and held internally in the `Router` for dispatching requests.</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">RouteImpl</span><span class="op">&lt;</span><span class="ident">RM</span>, <span class="ident">PE</span>, <span class="ident">QSE</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">RM</span>: <span class="ident">RouteMatcher</span>,
-    <span class="ident">PE</span>: <span class="ident">PathExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>,
-    <span class="ident">QSE</span>: <span class="ident">QueryStringExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Concrete type for a route in a Gotham web application. Values of this type are created by the
+/// `gotham::router::builder` API and held internally in the `Router` for dispatching requests.
+</span><span class="kw">pub struct </span>RouteImpl&lt;RM, PE, QSE&gt;
+<span class="kw">where
+    </span>RM: RouteMatcher,
+    PE: PathExtractor&lt;Body&gt;,
+    QSE: QueryStringExtractor&lt;Body&gt;,
 {
-    <span class="ident">matcher</span>: <span class="ident">RM</span>,
-    <span class="ident">dispatcher</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Dispatcher</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span>,
-    <span class="ident">_extractors</span>: <span class="ident">Extractors</span><span class="op">&lt;</span><span class="ident">PE</span>, <span class="ident">QSE</span><span class="op">&gt;</span>,
-    <span class="ident">delegation</span>: <span class="ident">Delegation</span>,
+    matcher: RM,
+    dispatcher: Box&lt;<span class="kw">dyn </span>Dispatcher + Send + Sync&gt;,
+    _extractors: Extractors&lt;PE, QSE&gt;,
+    delegation: Delegation,
 }
 
-<span class="doccomment">/// Extractors used by `RouteImpl` to acquire request data and change into a type safe form</span>
-<span class="doccomment">/// for use by `Middleware` and `Handler` implementations.</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Extractors</span><span class="op">&lt;</span><span class="ident">PE</span>, <span class="ident">QSE</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">PE</span>: <span class="ident">PathExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>,
-    <span class="ident">QSE</span>: <span class="ident">QueryStringExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>,
+<span class="doccomment">/// Extractors used by `RouteImpl` to acquire request data and change into a type safe form
+/// for use by `Middleware` and `Handler` implementations.
+</span><span class="kw">pub struct </span>Extractors&lt;PE, QSE&gt;
+<span class="kw">where
+    </span>PE: PathExtractor&lt;Body&gt;,
+    QSE: QueryStringExtractor&lt;Body&gt;,
 {
-    <span class="ident">rpe_phantom</span>: <span class="ident">PhantomData</span><span class="op">&lt;</span><span class="ident">PE</span><span class="op">&gt;</span>,
-    <span class="ident">qse_phantom</span>: <span class="ident">PhantomData</span><span class="op">&lt;</span><span class="ident">QSE</span><span class="op">&gt;</span>,
+    rpe_phantom: PhantomData&lt;PE&gt;,
+    qse_phantom: PhantomData&lt;QSE&gt;,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">RM</span>, <span class="ident">PE</span>, <span class="ident">QSE</span><span class="op">&gt;</span> <span class="ident">RouteImpl</span><span class="op">&lt;</span><span class="ident">RM</span>, <span class="ident">PE</span>, <span class="ident">QSE</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">RM</span>: <span class="ident">RouteMatcher</span>,
-    <span class="ident">PE</span>: <span class="ident">PathExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>,
-    <span class="ident">QSE</span>: <span class="ident">QueryStringExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>,
+<span class="kw">impl</span>&lt;RM, PE, QSE&gt; RouteImpl&lt;RM, PE, QSE&gt;
+<span class="kw">where
+    </span>RM: RouteMatcher,
+    PE: PathExtractor&lt;Body&gt;,
+    QSE: QueryStringExtractor&lt;Body&gt;,
 {
-    <span class="doccomment">/// Creates a new `RouteImpl` from the provided components.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
-        <span class="ident">matcher</span>: <span class="ident">RM</span>,
-        <span class="ident">dispatcher</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Dispatcher</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span>,
-        <span class="ident">_extractors</span>: <span class="ident">Extractors</span><span class="op">&lt;</span><span class="ident">PE</span>, <span class="ident">QSE</span><span class="op">&gt;</span>,
-        <span class="ident">delegation</span>: <span class="ident">Delegation</span>,
-    ) -&gt; <span class="self">Self</span> {
-        <span class="ident">RouteImpl</span> {
-            <span class="ident">matcher</span>,
-            <span class="ident">dispatcher</span>,
-            <span class="ident">_extractors</span>,
-            <span class="ident">delegation</span>,
+    <span class="doccomment">/// Creates a new `RouteImpl` from the provided components.
+    </span><span class="kw">pub fn </span>new(
+        matcher: RM,
+        dispatcher: Box&lt;<span class="kw">dyn </span>Dispatcher + Send + Sync&gt;,
+        _extractors: Extractors&lt;PE, QSE&gt;,
+        delegation: Delegation,
+    ) -&gt; <span class="self">Self </span>{
+        RouteImpl {
+            matcher,
+            dispatcher,
+            _extractors,
+            delegation,
         }
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">PE</span>, <span class="ident">QSE</span><span class="op">&gt;</span> <span class="ident">Extractors</span><span class="op">&lt;</span><span class="ident">PE</span>, <span class="ident">QSE</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">PE</span>: <span class="ident">PathExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>,
-    <span class="ident">QSE</span>: <span class="ident">QueryStringExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>,
+<span class="kw">impl</span>&lt;PE, QSE&gt; Extractors&lt;PE, QSE&gt;
+<span class="kw">where
+    </span>PE: PathExtractor&lt;Body&gt;,
+    QSE: QueryStringExtractor&lt;Body&gt;,
 {
-    <span class="doccomment">/// Creates a new set of Extractors for use with a `RouteImpl`</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() -&gt; <span class="self">Self</span> {
-        <span class="ident">Extractors</span> {
-            <span class="ident">rpe_phantom</span>: <span class="ident">PhantomData</span>,
-            <span class="ident">qse_phantom</span>: <span class="ident">PhantomData</span>,
+    <span class="doccomment">/// Creates a new set of Extractors for use with a `RouteImpl`
+    </span><span class="kw">pub fn </span>new() -&gt; <span class="self">Self </span>{
+        Extractors {
+            rpe_phantom: PhantomData,
+            qse_phantom: PhantomData,
         }
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">RM</span>, <span class="ident">PE</span>, <span class="ident">QSE</span><span class="op">&gt;</span> <span class="ident">Route</span> <span class="kw">for</span> <span class="ident">RouteImpl</span><span class="op">&lt;</span><span class="ident">RM</span>, <span class="ident">PE</span>, <span class="ident">QSE</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">RM</span>: <span class="ident">RouteMatcher</span>,
-    <span class="ident">PE</span>: <span class="ident">PathExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>,
-    <span class="ident">QSE</span>: <span class="ident">QueryStringExtractor</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>,
+<span class="kw">impl</span>&lt;RM, PE, QSE&gt; Route <span class="kw">for </span>RouteImpl&lt;RM, PE, QSE&gt;
+<span class="kw">where
+    </span>RM: RouteMatcher,
+    PE: PathExtractor&lt;Body&gt;,
+    QSE: QueryStringExtractor&lt;Body&gt;,
 {
-    <span class="kw">type</span> <span class="ident">ResBody</span> <span class="op">=</span> <span class="ident">Body</span>;
+    <span class="kw">type </span>ResBody = Body;
 
-    <span class="kw">fn</span> <span class="ident">is_match</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">state</span>: <span class="kw-2">&amp;</span><span class="ident">State</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">RouteNonMatch</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">matcher</span>.<span class="ident">is_match</span>(<span class="ident">state</span>)
+    <span class="kw">fn </span>is_match(<span class="kw-2">&amp;</span><span class="self">self</span>, state: <span class="kw-2">&amp;</span>State) -&gt; <span class="prelude-ty">Result</span>&lt;(), RouteNonMatch&gt; {
+        <span class="self">self</span>.matcher.is_match(state)
     }
 
-    <span class="kw">fn</span> <span class="ident">delegation</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">Delegation</span> {
-        <span class="self">self</span>.<span class="ident">delegation</span>
+    <span class="kw">fn </span>delegation(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Delegation {
+        <span class="self">self</span>.delegation
     }
 
-    <span class="kw">fn</span> <span class="ident">dispatch</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">state</span>: <span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">dispatcher</span>.<span class="ident">dispatch</span>(<span class="ident">state</span>)
+    <span class="kw">fn </span>dispatch(<span class="kw-2">&amp;</span><span class="self">self</span>, state: State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; {
+        <span class="self">self</span>.dispatcher.dispatch(state)
     }
 
-    <span class="kw">fn</span> <span class="ident">extract_request_path</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(
+    <span class="kw">fn </span>extract_request_path&lt;<span class="lifetime">&#39;a</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">state</span>: <span class="kw-2">&amp;mut</span> <span class="ident">State</span>,
-        <span class="ident">params</span>: <span class="ident">SegmentMapping</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>,
-    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ExtractorFailed</span><span class="op">&gt;</span> {
-        <span class="kw">match</span> <span class="ident">extractor::internal::from_segment_mapping</span>::<span class="op">&lt;</span><span class="ident">PE</span><span class="op">&gt;</span>(<span class="ident">params</span>) {
-            <span class="prelude-val">Ok</span>(<span class="ident">val</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">val</span>)),
-            <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; {
-                <span class="macro">debug!</span>(<span class="string">&quot;[{}] path extractor failed: {}&quot;</span>, <span class="ident">request_id</span>(<span class="ident">state</span>), <span class="ident">e</span>);
-                <span class="prelude-val">Err</span>(<span class="ident">ExtractorFailed</span>)
+        state: <span class="kw-2">&amp;mut </span>State,
+        params: SegmentMapping&lt;<span class="lifetime">&#39;a</span>&gt;,
+    ) -&gt; <span class="prelude-ty">Result</span>&lt;(), ExtractorFailed&gt; {
+        <span class="kw">match </span>extractor::internal::from_segment_mapping::&lt;PE&gt;(params) {
+            <span class="prelude-val">Ok</span>(val) =&gt; <span class="prelude-val">Ok</span>(state.put(val)),
+            <span class="prelude-val">Err</span>(e) =&gt; {
+                <span class="macro">debug!</span>(<span class="string">&quot;[{}] path extractor failed: {}&quot;</span>, request_id(state), e);
+                <span class="prelude-val">Err</span>(ExtractorFailed)
             }
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">extend_response_on_path_error</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">state</span>: <span class="kw-2">&amp;mut</span> <span class="ident">State</span>, <span class="ident">res</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Response</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::ResBody</span><span class="op">&gt;</span>) {
-        <span class="ident">PE::extend</span>(<span class="ident">state</span>, <span class="ident">res</span>)
+    <span class="kw">fn </span>extend_response_on_path_error(<span class="kw-2">&amp;</span><span class="self">self</span>, state: <span class="kw-2">&amp;mut </span>State, res: <span class="kw-2">&amp;mut </span>Response&lt;<span class="self">Self</span>::ResBody&gt;) {
+        PE::extend(state, res)
     }
 
-    <span class="kw">fn</span> <span class="ident">extract_query_string</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">state</span>: <span class="kw-2">&amp;mut</span> <span class="ident">State</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">ExtractorFailed</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">result</span>: <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">QSE</span>, <span class="kw">_</span><span class="op">&gt;</span> <span class="op">=</span> {
-            <span class="kw">let</span> <span class="ident">uri</span> <span class="op">=</span> <span class="ident">state</span>.<span class="ident">borrow</span>::<span class="op">&lt;</span><span class="ident">Uri</span><span class="op">&gt;</span>();
-            <span class="kw">let</span> <span class="ident">query_string_mapping</span> <span class="op">=</span> <span class="ident">query_string::split</span>(<span class="ident">uri</span>.<span class="ident">query</span>());
-            <span class="ident">extractor::internal::from_query_string_mapping</span>(<span class="kw-2">&amp;</span><span class="ident">query_string_mapping</span>)
+    <span class="kw">fn </span>extract_query_string(<span class="kw-2">&amp;</span><span class="self">self</span>, state: <span class="kw-2">&amp;mut </span>State) -&gt; <span class="prelude-ty">Result</span>&lt;(), ExtractorFailed&gt; {
+        <span class="kw">let </span>result: <span class="prelude-ty">Result</span>&lt;QSE, <span class="kw">_</span>&gt; = {
+            <span class="kw">let </span>uri = state.borrow::&lt;Uri&gt;();
+            <span class="kw">let </span>query_string_mapping = query_string::split(uri.query());
+            extractor::internal::from_query_string_mapping(<span class="kw-2">&amp;</span>query_string_mapping)
         };
 
-        <span class="kw">match</span> <span class="ident">result</span> {
-            <span class="prelude-val">Ok</span>(<span class="ident">val</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">val</span>)),
-            <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; {
+        <span class="kw">match </span>result {
+            <span class="prelude-val">Ok</span>(val) =&gt; <span class="prelude-val">Ok</span>(state.put(val)),
+            <span class="prelude-val">Err</span>(e) =&gt; {
                 <span class="macro">debug!</span>(
                     <span class="string">&quot;[{}] query string extractor failed: {}&quot;</span>,
-                    <span class="ident">request_id</span>(<span class="ident">state</span>),
-                    <span class="ident">e</span>
+                    request_id(state),
+                    e
                 );
-                <span class="prelude-val">Err</span>(<span class="ident">ExtractorFailed</span>)
+                <span class="prelude-val">Err</span>(ExtractorFailed)
             }
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">extend_response_on_query_string_error</span>(
+    <span class="kw">fn </span>extend_response_on_query_string_error(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">state</span>: <span class="kw-2">&amp;mut</span> <span class="ident">State</span>,
-        <span class="ident">res</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Response</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::ResBody</span><span class="op">&gt;</span>,
+        state: <span class="kw-2">&amp;mut </span>State,
+        res: <span class="kw-2">&amp;mut </span>Response&lt;<span class="self">Self</span>::ResBody&gt;,
     ) {
-        <span class="ident">QSE::extend</span>(<span class="ident">state</span>, <span class="ident">res</span>)
+        QSE::extend(state, res)
     }
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">tests</span> {
-    <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+<span class="attribute">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use super</span>::<span class="kw-2">*</span>;
 
-    <span class="kw">use</span> <span class="ident">futures_util::FutureExt</span>;
-    <span class="kw">use</span> <span class="ident">hyper</span>::{<span class="ident">HeaderMap</span>, <span class="ident">Method</span>, <span class="ident">StatusCode</span>, <span class="ident">Uri</span>};
-    <span class="kw">use</span> <span class="ident">std::str::FromStr</span>;
+    <span class="kw">use </span>futures_util::FutureExt;
+    <span class="kw">use </span>hyper::{HeaderMap, Method, StatusCode, Uri};
+    <span class="kw">use </span>std::str::FromStr;
 
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::extractor</span>::{<span class="ident">NoopPathExtractor</span>, <span class="ident">NoopQueryStringExtractor</span>};
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::helpers::http::request::path::RequestPathSegments</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::helpers::http::response::create_empty_response</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::pipeline</span>::{<span class="ident">finalize_pipeline_set</span>, <span class="ident">new_pipeline_set</span>};
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::builder</span>::<span class="kw-2">*</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::route::dispatch::DispatcherImpl</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::router::route::matcher::MethodOnlyRouteMatcher</span>;
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state::set_request_id</span>;
+    <span class="kw">use </span><span class="kw">crate</span>::extractor::{NoopPathExtractor, NoopQueryStringExtractor};
+    <span class="kw">use </span><span class="kw">crate</span>::helpers::http::request::path::RequestPathSegments;
+    <span class="kw">use </span><span class="kw">crate</span>::helpers::http::response::create_empty_response;
+    <span class="kw">use </span><span class="kw">crate</span>::pipeline::{finalize_pipeline_set, new_pipeline_set};
+    <span class="kw">use </span><span class="kw">crate</span>::router::builder::<span class="kw-2">*</span>;
+    <span class="kw">use </span><span class="kw">crate</span>::router::route::dispatch::DispatcherImpl;
+    <span class="kw">use </span><span class="kw">crate</span>::router::route::matcher::MethodOnlyRouteMatcher;
+    <span class="kw">use </span><span class="kw">crate</span>::state::set_request_id;
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">internal_route_tests</span>() {
-        <span class="kw">fn</span> <span class="ident">handler</span>(<span class="ident">state</span>: <span class="ident">State</span>) -&gt; (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
-            <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">create_empty_response</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>, <span class="ident">StatusCode::ACCEPTED</span>);
-            (<span class="ident">state</span>, <span class="ident">res</span>)
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>internal_route_tests() {
+        <span class="kw">fn </span>handler(state: State) -&gt; (State, Response&lt;Body&gt;) {
+            <span class="kw">let </span>res = create_empty_response(<span class="kw-2">&amp;</span>state, StatusCode::ACCEPTED);
+            (state, res)
         }
 
-        <span class="kw">let</span> <span class="ident">pipeline_set</span> <span class="op">=</span> <span class="ident">finalize_pipeline_set</span>(<span class="ident">new_pipeline_set</span>());
-        <span class="kw">let</span> <span class="ident">methods</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">Method::GET</span>];
-        <span class="kw">let</span> <span class="ident">matcher</span> <span class="op">=</span> <span class="ident">MethodOnlyRouteMatcher::new</span>(<span class="ident">methods</span>);
-        <span class="kw">let</span> <span class="ident">dispatcher</span> <span class="op">=</span> <span class="ident">Box::new</span>(<span class="ident">DispatcherImpl::new</span>(<span class="op">|</span><span class="op">|</span> <span class="prelude-val">Ok</span>(<span class="ident">handler</span>), (), <span class="ident">pipeline_set</span>));
-        <span class="kw">let</span> <span class="ident">extractors</span>: <span class="ident">Extractors</span><span class="op">&lt;</span><span class="ident">NoopPathExtractor</span>, <span class="ident">NoopQueryStringExtractor</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Extractors::new</span>();
-        <span class="kw">let</span> <span class="ident">route</span> <span class="op">=</span> <span class="ident">RouteImpl::new</span>(<span class="ident">matcher</span>, <span class="ident">dispatcher</span>, <span class="ident">extractors</span>, <span class="ident">Delegation::Internal</span>);
+        <span class="kw">let </span>pipeline_set = finalize_pipeline_set(new_pipeline_set());
+        <span class="kw">let </span>methods = <span class="macro">vec!</span>[Method::GET];
+        <span class="kw">let </span>matcher = MethodOnlyRouteMatcher::new(methods);
+        <span class="kw">let </span>dispatcher = Box::new(DispatcherImpl::new(|| <span class="prelude-val">Ok</span>(handler), (), pipeline_set));
+        <span class="kw">let </span>extractors: Extractors&lt;NoopPathExtractor, NoopQueryStringExtractor&gt; = Extractors::new();
+        <span class="kw">let </span>route = RouteImpl::new(matcher, dispatcher, extractors, Delegation::Internal);
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">state</span> <span class="op">=</span> <span class="ident">State::new</span>();
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">HeaderMap::new</span>());
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">Method::GET</span>);
-        <span class="ident">set_request_id</span>(<span class="kw-2">&amp;mut</span> <span class="ident">state</span>);
+        <span class="kw">let </span><span class="kw-2">mut </span>state = State::new();
+        state.put(HeaderMap::new());
+        state.put(Method::GET);
+        set_request_id(<span class="kw-2">&amp;mut </span>state);
 
-        <span class="kw">match</span> <span class="ident">route</span>.<span class="ident">dispatch</span>(<span class="ident">state</span>).<span class="ident">now_or_never</span>() {
-            <span class="prelude-val">Some</span>(<span class="prelude-val">Ok</span>((<span class="ident">_state</span>, <span class="ident">response</span>))) =&gt; <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">status</span>(), <span class="ident">StatusCode::ACCEPTED</span>),
-            <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>((<span class="ident">_state</span>, <span class="ident">e</span>))) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;error polling future: {:?}&quot;</span>, <span class="ident">e</span>),
-            <span class="prelude-val">None</span> =&gt; <span class="macro">panic!</span>(<span class="string">&quot;expected future to be completed already&quot;</span>),
+        <span class="kw">match </span>route.dispatch(state).now_or_never() {
+            <span class="prelude-val">Some</span>(<span class="prelude-val">Ok</span>((_state, response))) =&gt; <span class="macro">assert_eq!</span>(response.status(), StatusCode::ACCEPTED),
+            <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>((_state, e))) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;error polling future: {:?}&quot;</span>, e),
+            <span class="prelude-val">None </span>=&gt; <span class="macro">panic!</span>(<span class="string">&quot;expected future to be completed already&quot;</span>),
         }
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">external_route_tests</span>() {
-        <span class="kw">fn</span> <span class="ident">handler</span>(<span class="ident">state</span>: <span class="ident">State</span>) -&gt; (<span class="ident">State</span>, <span class="ident">Response</span><span class="op">&lt;</span><span class="ident">Body</span><span class="op">&gt;</span>) {
-            <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">create_empty_response</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>, <span class="ident">StatusCode::ACCEPTED</span>);
-            (<span class="ident">state</span>, <span class="ident">res</span>)
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>external_route_tests() {
+        <span class="kw">fn </span>handler(state: State) -&gt; (State, Response&lt;Body&gt;) {
+            <span class="kw">let </span>res = create_empty_response(<span class="kw-2">&amp;</span>state, StatusCode::ACCEPTED);
+            (state, res)
         }
 
-        <span class="kw">let</span> <span class="ident">secondary_router</span> <span class="op">=</span> <span class="ident">build_simple_router</span>(<span class="op">|</span><span class="ident">route</span><span class="op">|</span> {
-            <span class="ident">route</span>.<span class="ident">get</span>(<span class="string">&quot;/&quot;</span>).<span class="ident">to</span>(<span class="ident">handler</span>);
+        <span class="kw">let </span>secondary_router = build_simple_router(|route| {
+            route.get(<span class="string">&quot;/&quot;</span>).to(handler);
         });
 
-        <span class="kw">let</span> <span class="ident">pipeline_set</span> <span class="op">=</span> <span class="ident">finalize_pipeline_set</span>(<span class="ident">new_pipeline_set</span>());
-        <span class="kw">let</span> <span class="ident">methods</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">Method::GET</span>];
-        <span class="kw">let</span> <span class="ident">matcher</span> <span class="op">=</span> <span class="ident">MethodOnlyRouteMatcher::new</span>(<span class="ident">methods</span>);
-        <span class="kw">let</span> <span class="ident">dispatcher</span> <span class="op">=</span> <span class="ident">Box::new</span>(<span class="ident">DispatcherImpl::new</span>(<span class="ident">secondary_router</span>, (), <span class="ident">pipeline_set</span>));
-        <span class="kw">let</span> <span class="ident">extractors</span>: <span class="ident">Extractors</span><span class="op">&lt;</span><span class="ident">NoopPathExtractor</span>, <span class="ident">NoopQueryStringExtractor</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Extractors::new</span>();
-        <span class="kw">let</span> <span class="ident">route</span> <span class="op">=</span> <span class="ident">RouteImpl::new</span>(<span class="ident">matcher</span>, <span class="ident">dispatcher</span>, <span class="ident">extractors</span>, <span class="ident">Delegation::External</span>);
+        <span class="kw">let </span>pipeline_set = finalize_pipeline_set(new_pipeline_set());
+        <span class="kw">let </span>methods = <span class="macro">vec!</span>[Method::GET];
+        <span class="kw">let </span>matcher = MethodOnlyRouteMatcher::new(methods);
+        <span class="kw">let </span>dispatcher = Box::new(DispatcherImpl::new(secondary_router, (), pipeline_set));
+        <span class="kw">let </span>extractors: Extractors&lt;NoopPathExtractor, NoopQueryStringExtractor&gt; = Extractors::new();
+        <span class="kw">let </span>route = RouteImpl::new(matcher, dispatcher, extractors, Delegation::External);
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">state</span> <span class="op">=</span> <span class="ident">State::new</span>();
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">Method::GET</span>);
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">Uri::from_str</span>(<span class="string">&quot;https://example.com/&quot;</span>).<span class="ident">unwrap</span>());
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">HeaderMap::new</span>());
-        <span class="ident">state</span>.<span class="ident">put</span>(<span class="ident">RequestPathSegments::new</span>(<span class="string">&quot;/&quot;</span>));
-        <span class="ident">set_request_id</span>(<span class="kw-2">&amp;mut</span> <span class="ident">state</span>);
+        <span class="kw">let </span><span class="kw-2">mut </span>state = State::new();
+        state.put(Method::GET);
+        state.put(Uri::from_str(<span class="string">&quot;https://example.com/&quot;</span>).unwrap());
+        state.put(HeaderMap::new());
+        state.put(RequestPathSegments::new(<span class="string">&quot;/&quot;</span>));
+        set_request_id(<span class="kw-2">&amp;mut </span>state);
 
-        <span class="kw">match</span> <span class="ident">route</span>.<span class="ident">dispatch</span>(<span class="ident">state</span>).<span class="ident">now_or_never</span>() {
-            <span class="prelude-val">Some</span>(<span class="prelude-val">Ok</span>((<span class="ident">_state</span>, <span class="ident">response</span>))) =&gt; <span class="macro">assert_eq!</span>(<span class="ident">response</span>.<span class="ident">status</span>(), <span class="ident">StatusCode::ACCEPTED</span>),
-            <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>((<span class="ident">_state</span>, <span class="ident">e</span>))) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;error polling future: {:?}&quot;</span>, <span class="ident">e</span>),
-            <span class="prelude-val">None</span> =&gt; <span class="macro">panic!</span>(<span class="string">&quot;expected future to be completed already&quot;</span>),
+        <span class="kw">match </span>route.dispatch(state).now_or_never() {
+            <span class="prelude-val">Some</span>(<span class="prelude-val">Ok</span>((_state, response))) =&gt; <span class="macro">assert_eq!</span>(response.status(), StatusCode::ACCEPTED),
+            <span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>((_state, e))) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;error polling future: {:?}&quot;</span>, e),
+            <span class="prelude-val">None </span>=&gt; <span class="macro">panic!</span>(<span class="string">&quot;expected future to be completed already&quot;</span>),
         }
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

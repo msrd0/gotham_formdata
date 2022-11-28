@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/uuid-0.8.2/src/adapter/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="icon" href="https://www.rust-lang.org/favicon.ico"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../uuid/index.html"><div class="logo-container"><img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../uuid/index.html"><div class="logo-container">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/uuid-0.8.2/src/adapter/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="icon" href="https://www.rust-lang.org/favicon.ico"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../uuid/index.html"><div class="logo-container"><img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../uuid/index.html"><div class="logo-container">
                     <img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../uuid/index.html">
                         <img src="https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
@@ -1027,1032 +1027,1032 @@
 <span id="1025">1025</span>
 <span id="1026">1026</span>
 <span id="1027">1027</span>
-</pre><pre class="rust"><code><span class="comment">// Copyright 2013-2014 The Rust Project Developers.</span>
-<span class="comment">// Copyright 2018 The Uuid Project Developers.</span>
-<span class="comment">//</span>
-<span class="comment">// See the COPYRIGHT file at the top-level directory of this distribution.</span>
-<span class="comment">//</span>
-<span class="comment">// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or</span>
-<span class="comment">// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license</span>
-<span class="comment">// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your</span>
-<span class="comment">// option. This file may not be copied, modified, or distributed</span>
-<span class="comment">// except according to those terms.</span>
+</pre><pre class="rust"><code><span class="comment">// Copyright 2013-2014 The Rust Project Developers.
+// Copyright 2018 The Uuid Project Developers.
+//
+// See the COPYRIGHT file at the top-level directory of this distribution.
+//
+// Licensed under the Apache License, Version 2.0 &lt;LICENSE-APACHE or
+// http://www.apache.org/licenses/LICENSE-2.0&gt; or the MIT license
+// &lt;LICENSE-MIT or http://opensource.org/licenses/MIT&gt;, at your
+// option. This file may not be copied, modified, or distributed
+// except according to those terms.
 
-<span class="doccomment">//! Adapters for various formats for UUIDs</span>
+</span><span class="doccomment">//! Adapters for various formats for UUIDs
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::prelude</span>::<span class="kw-2">*</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::std</span>::{<span class="ident">fmt</span>, <span class="ident">str</span>};
+</span><span class="kw">use </span><span class="kw">crate</span>::prelude::<span class="kw-2">*</span>;
+<span class="kw">use </span><span class="kw">crate</span>::std::{fmt, str};
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">compact</span>;
+<span class="attribute">#[cfg(feature = <span class="string">&quot;serde&quot;</span>)]
+</span><span class="kw">pub mod </span>compact;
 
-<span class="doccomment">/// An adaptor for formatting an [`Uuid`] as a hyphenated string.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Takes an owned instance of the [`Uuid`].</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">Default</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Ord</span>, <span class="ident">PartialEq</span>, <span class="ident">PartialOrd</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Hyphenated</span>(<span class="ident">Uuid</span>);
+<span class="doccomment">/// An adaptor for formatting an [`Uuid`] as a hyphenated string.
+///
+/// Takes an owned instance of the [`Uuid`].
+///
+/// [`Uuid`]: ../struct.Uuid.html
+</span><span class="attribute">#[derive(Clone, Copy, Debug, Default, Eq, Hash, Ord, PartialEq, PartialOrd)]
+</span><span class="kw">pub struct </span>Hyphenated(Uuid);
 
-<span class="doccomment">/// An adaptor for formatting an [`Uuid`] as a hyphenated string.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Takes a reference of the [`Uuid`].</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Ord</span>, <span class="ident">PartialEq</span>, <span class="ident">PartialOrd</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">HyphenatedRef</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Uuid</span>);
+<span class="doccomment">/// An adaptor for formatting an [`Uuid`] as a hyphenated string.
+///
+/// Takes a reference of the [`Uuid`].
+///
+/// [`Uuid`]: ../struct.Uuid.html
+</span><span class="attribute">#[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
+</span><span class="kw">pub struct </span>HyphenatedRef&lt;<span class="lifetime">&#39;a</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>Uuid);
 
-<span class="doccomment">/// An adaptor for formatting an [`Uuid`] as a simple string.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Takes an owned instance of the [`Uuid`].</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">Default</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Ord</span>, <span class="ident">PartialEq</span>, <span class="ident">PartialOrd</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Simple</span>(<span class="ident">Uuid</span>);
+<span class="doccomment">/// An adaptor for formatting an [`Uuid`] as a simple string.
+///
+/// Takes an owned instance of the [`Uuid`].
+///
+/// [`Uuid`]: ../struct.Uuid.html
+</span><span class="attribute">#[derive(Clone, Copy, Debug, Default, Eq, Hash, Ord, PartialEq, PartialOrd)]
+</span><span class="kw">pub struct </span>Simple(Uuid);
 
-<span class="doccomment">/// An adaptor for formatting an [`Uuid`] as a simple string.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Takes a reference of the [`Uuid`].</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Ord</span>, <span class="ident">PartialEq</span>, <span class="ident">PartialOrd</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SimpleRef</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Uuid</span>);
+<span class="doccomment">/// An adaptor for formatting an [`Uuid`] as a simple string.
+///
+/// Takes a reference of the [`Uuid`].
+///
+/// [`Uuid`]: ../struct.Uuid.html
+</span><span class="attribute">#[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
+</span><span class="kw">pub struct </span>SimpleRef&lt;<span class="lifetime">&#39;a</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>Uuid);
 
-<span class="doccomment">/// An adaptor for formatting an [`Uuid`] as a URN string.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Takes an owned instance of the [`Uuid`].</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">Default</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Ord</span>, <span class="ident">PartialEq</span>, <span class="ident">PartialOrd</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Urn</span>(<span class="ident">Uuid</span>);
+<span class="doccomment">/// An adaptor for formatting an [`Uuid`] as a URN string.
+///
+/// Takes an owned instance of the [`Uuid`].
+///
+/// [`Uuid`]: ../struct.Uuid.html
+</span><span class="attribute">#[derive(Clone, Copy, Debug, Default, Eq, Hash, Ord, PartialEq, PartialOrd)]
+</span><span class="kw">pub struct </span>Urn(Uuid);
 
-<span class="doccomment">/// An adaptor for formatting an [`Uuid`] as a URN string.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Takes a reference of the [`Uuid`].</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Debug</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Ord</span>, <span class="ident">PartialEq</span>, <span class="ident">PartialOrd</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">UrnRef</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Uuid</span>);
+<span class="doccomment">/// An adaptor for formatting an [`Uuid`] as a URN string.
+///
+/// Takes a reference of the [`Uuid`].
+///
+/// [`Uuid`]: ../struct.Uuid.html
+</span><span class="attribute">#[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
+</span><span class="kw">pub struct </span>UrnRef&lt;<span class="lifetime">&#39;a</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>Uuid);
 
-<span class="kw">impl</span> <span class="ident">Uuid</span> {
-    <span class="doccomment">/// Get a [`Hyphenated`] formatter.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Hyphenated`]: adapter/struct.Hyphenated.html</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">to_hyphenated</span>(<span class="self">self</span>) -&gt; <span class="ident">Hyphenated</span> {
-        <span class="ident">Hyphenated::from_uuid</span>(<span class="self">self</span>)
+<span class="kw">impl </span>Uuid {
+    <span class="doccomment">/// Get a [`Hyphenated`] formatter.
+    ///
+    /// [`Hyphenated`]: adapter/struct.Hyphenated.html
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub const fn </span>to_hyphenated(<span class="self">self</span>) -&gt; Hyphenated {
+        Hyphenated::from_uuid(<span class="self">self</span>)
     }
 
-    <span class="doccomment">/// Get a borrowed [`HyphenatedRef`] formatter.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`HyphenatedRef`]: adapter/struct.HyphenatedRef.html</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">to_hyphenated_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">HyphenatedRef</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-        <span class="ident">HyphenatedRef::from_uuid_ref</span>(<span class="self">self</span>)
+    <span class="doccomment">/// Get a borrowed [`HyphenatedRef`] formatter.
+    ///
+    /// [`HyphenatedRef`]: adapter/struct.HyphenatedRef.html
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub const fn </span>to_hyphenated_ref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; HyphenatedRef&lt;<span class="lifetime">&#39;_</span>&gt; {
+        HyphenatedRef::from_uuid_ref(<span class="self">self</span>)
     }
 
-    <span class="doccomment">/// Get a [`Simple`] formatter.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Simple`]: adapter/struct.Simple.html</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">to_simple</span>(<span class="self">self</span>) -&gt; <span class="ident">Simple</span> {
-        <span class="ident">Simple::from_uuid</span>(<span class="self">self</span>)
+    <span class="doccomment">/// Get a [`Simple`] formatter.
+    ///
+    /// [`Simple`]: adapter/struct.Simple.html
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub const fn </span>to_simple(<span class="self">self</span>) -&gt; Simple {
+        Simple::from_uuid(<span class="self">self</span>)
     }
 
-    <span class="doccomment">/// Get a borrowed [`SimpleRef`] formatter.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`SimpleRef`]: adapter/struct.SimpleRef.html</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">to_simple_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">SimpleRef</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-        <span class="ident">SimpleRef::from_uuid_ref</span>(<span class="self">self</span>)
+    <span class="doccomment">/// Get a borrowed [`SimpleRef`] formatter.
+    ///
+    /// [`SimpleRef`]: adapter/struct.SimpleRef.html
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub const fn </span>to_simple_ref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; SimpleRef&lt;<span class="lifetime">&#39;_</span>&gt; {
+        SimpleRef::from_uuid_ref(<span class="self">self</span>)
     }
 
-    <span class="doccomment">/// Get a [`Urn`] formatter.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="doccomment">/// [`Urn`]: adapter/struct.Urn.html</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">to_urn</span>(<span class="self">self</span>) -&gt; <span class="ident">Urn</span> {
-        <span class="ident">Urn::from_uuid</span>(<span class="self">self</span>)
+    <span class="doccomment">/// Get a [`Urn`] formatter.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    /// [`Urn`]: adapter/struct.Urn.html
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub const fn </span>to_urn(<span class="self">self</span>) -&gt; Urn {
+        Urn::from_uuid(<span class="self">self</span>)
     }
 
-    <span class="doccomment">/// Get a borrowed [`UrnRef`] formatter.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="doccomment">/// [`UrnRef`]: adapter/struct.UrnRef.html</span>
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">to_urn_ref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">UrnRef</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
-        <span class="ident">UrnRef::from_uuid_ref</span>(<span class="self">self</span>)
+    <span class="doccomment">/// Get a borrowed [`UrnRef`] formatter.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    /// [`UrnRef`]: adapter/struct.UrnRef.html
+    </span><span class="attribute">#[inline]
+    </span><span class="kw">pub const fn </span>to_urn_ref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; UrnRef&lt;<span class="lifetime">&#39;_</span>&gt; {
+        UrnRef::from_uuid_ref(<span class="self">self</span>)
     }
 }
 
-<span class="kw">const</span> <span class="ident">UPPER</span>: [<span class="ident">u8</span>; <span class="number">16</span>] <span class="op">=</span> [
+<span class="kw">const </span>UPPER: [u8; <span class="number">16</span>] = [
     <span class="string">b&#39;0&#39;</span>, <span class="string">b&#39;1&#39;</span>, <span class="string">b&#39;2&#39;</span>, <span class="string">b&#39;3&#39;</span>, <span class="string">b&#39;4&#39;</span>, <span class="string">b&#39;5&#39;</span>, <span class="string">b&#39;6&#39;</span>, <span class="string">b&#39;7&#39;</span>, <span class="string">b&#39;8&#39;</span>, <span class="string">b&#39;9&#39;</span>, <span class="string">b&#39;A&#39;</span>, <span class="string">b&#39;B&#39;</span>,
     <span class="string">b&#39;C&#39;</span>, <span class="string">b&#39;D&#39;</span>, <span class="string">b&#39;E&#39;</span>, <span class="string">b&#39;F&#39;</span>,
 ];
-<span class="kw">const</span> <span class="ident">LOWER</span>: [<span class="ident">u8</span>; <span class="number">16</span>] <span class="op">=</span> [
+<span class="kw">const </span>LOWER: [u8; <span class="number">16</span>] = [
     <span class="string">b&#39;0&#39;</span>, <span class="string">b&#39;1&#39;</span>, <span class="string">b&#39;2&#39;</span>, <span class="string">b&#39;3&#39;</span>, <span class="string">b&#39;4&#39;</span>, <span class="string">b&#39;5&#39;</span>, <span class="string">b&#39;6&#39;</span>, <span class="string">b&#39;7&#39;</span>, <span class="string">b&#39;8&#39;</span>, <span class="string">b&#39;9&#39;</span>, <span class="string">b&#39;a&#39;</span>, <span class="string">b&#39;b&#39;</span>,
     <span class="string">b&#39;c&#39;</span>, <span class="string">b&#39;d&#39;</span>, <span class="string">b&#39;e&#39;</span>, <span class="string">b&#39;f&#39;</span>,
 ];
-<span class="doccomment">/// The segments of a UUID&#39;s [u8; 16] corresponding to each group.</span>
-<span class="kw">const</span> <span class="ident">BYTE_POSITIONS</span>: [<span class="ident">usize</span>; <span class="number">6</span>] <span class="op">=</span> [<span class="number">0</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">16</span>];
-<span class="doccomment">/// The locations that hyphens are written into the buffer, after each</span>
-<span class="doccomment">/// group.</span>
-<span class="kw">const</span> <span class="ident">HYPHEN_POSITIONS</span>: [<span class="ident">usize</span>; <span class="number">4</span>] <span class="op">=</span> [<span class="number">8</span>, <span class="number">13</span>, <span class="number">18</span>, <span class="number">23</span>];
+<span class="doccomment">/// The segments of a UUID&#39;s [u8; 16] corresponding to each group.
+</span><span class="kw">const </span>BYTE_POSITIONS: [usize; <span class="number">6</span>] = [<span class="number">0</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">16</span>];
+<span class="doccomment">/// The locations that hyphens are written into the buffer, after each
+/// group.
+</span><span class="kw">const </span>HYPHEN_POSITIONS: [usize; <span class="number">4</span>] = [<span class="number">8</span>, <span class="number">13</span>, <span class="number">18</span>, <span class="number">23</span>];
 
-<span class="doccomment">/// Encodes the `uuid` possibly with hyphens, and possibly in upper</span>
-<span class="doccomment">/// case, to full_buffer[start..] and returns the str sliced from</span>
-<span class="doccomment">/// full_buffer[..start + encoded_length].</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// The `start` parameter allows writing a prefix (such as</span>
-<span class="doccomment">/// &quot;urn:uuid:&quot;) to the buffer that&#39;s included in the final encoded</span>
-<span class="doccomment">/// UUID.</span>
-<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::needless_range_loop</span>)]</span>
-<span class="kw">fn</span> <span class="ident">encode</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(
-    <span class="ident">full_buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>],
-    <span class="ident">start</span>: <span class="ident">usize</span>,
-    <span class="ident">uuid</span>: <span class="kw-2">&amp;</span><span class="ident">Uuid</span>,
-    <span class="ident">hyphens</span>: <span class="ident">bool</span>,
-    <span class="ident">upper</span>: <span class="ident">bool</span>,
-) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="ident">str</span> {
-    <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">hyphens</span> { <span class="number">36</span> } <span class="kw">else</span> { <span class="number">32</span> };
+<span class="doccomment">/// Encodes the `uuid` possibly with hyphens, and possibly in upper
+/// case, to full_buffer[start..] and returns the str sliced from
+/// full_buffer[..start + encoded_length].
+///
+/// The `start` parameter allows writing a prefix (such as
+/// &quot;urn:uuid:&quot;) to the buffer that&#39;s included in the final encoded
+/// UUID.
+</span><span class="attribute">#[allow(clippy::needless_range_loop)]
+</span><span class="kw">fn </span>encode&lt;<span class="lifetime">&#39;a</span>&gt;(
+    full_buffer: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>[u8],
+    start: usize,
+    uuid: <span class="kw-2">&amp;</span>Uuid,
+    hyphens: bool,
+    upper: bool,
+) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>str {
+    <span class="kw">let </span>len = <span class="kw">if </span>hyphens { <span class="number">36 </span>} <span class="kw">else </span>{ <span class="number">32 </span>};
 
     {
-        <span class="kw">let</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="kw-2">&amp;mut</span> <span class="ident">full_buffer</span>[<span class="ident">start</span>..<span class="ident">start</span> <span class="op">+</span> <span class="ident">len</span>];
-        <span class="kw">let</span> <span class="ident">bytes</span> <span class="op">=</span> <span class="ident">uuid</span>.<span class="ident">as_bytes</span>();
+        <span class="kw">let </span>buffer = <span class="kw-2">&amp;mut </span>full_buffer[start..start + len];
+        <span class="kw">let </span>bytes = uuid.as_bytes();
 
-        <span class="kw">let</span> <span class="ident">hex</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">upper</span> { <span class="kw-2">&amp;</span><span class="ident">UPPER</span> } <span class="kw">else</span> { <span class="kw-2">&amp;</span><span class="ident">LOWER</span> };
+        <span class="kw">let </span>hex = <span class="kw">if </span>upper { <span class="kw-2">&amp;</span>UPPER } <span class="kw">else </span>{ <span class="kw-2">&amp;</span>LOWER };
 
-        <span class="kw">for</span> <span class="ident">group</span> <span class="kw">in</span> <span class="number">0</span>..<span class="number">5</span> {
-            <span class="comment">// If we&#39;re writing hyphens, we need to shift the output</span>
-            <span class="comment">// location along by how many of them have been written</span>
-            <span class="comment">// before this point. That&#39;s exactly the (0-indexed) group</span>
-            <span class="comment">// number.</span>
-            <span class="kw">let</span> <span class="ident">hyphens_before</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">hyphens</span> { <span class="ident">group</span> } <span class="kw">else</span> { <span class="number">0</span> };
-            <span class="kw">for</span> <span class="ident">idx</span> <span class="kw">in</span> <span class="ident">BYTE_POSITIONS</span>[<span class="ident">group</span>]..<span class="ident">BYTE_POSITIONS</span>[<span class="ident">group</span> <span class="op">+</span> <span class="number">1</span>] {
-                <span class="kw">let</span> <span class="ident">b</span> <span class="op">=</span> <span class="ident">bytes</span>[<span class="ident">idx</span>];
-                <span class="kw">let</span> <span class="ident">out_idx</span> <span class="op">=</span> <span class="ident">hyphens_before</span> <span class="op">+</span> <span class="number">2</span> <span class="op">*</span> <span class="ident">idx</span>;
+        <span class="kw">for </span>group <span class="kw">in </span><span class="number">0</span>..<span class="number">5 </span>{
+            <span class="comment">// If we&#39;re writing hyphens, we need to shift the output
+            // location along by how many of them have been written
+            // before this point. That&#39;s exactly the (0-indexed) group
+            // number.
+            </span><span class="kw">let </span>hyphens_before = <span class="kw">if </span>hyphens { group } <span class="kw">else </span>{ <span class="number">0 </span>};
+            <span class="kw">for </span>idx <span class="kw">in </span>BYTE_POSITIONS[group]..BYTE_POSITIONS[group + <span class="number">1</span>] {
+                <span class="kw">let </span>b = bytes[idx];
+                <span class="kw">let </span>out_idx = hyphens_before + <span class="number">2 </span>* idx;
 
-                <span class="ident">buffer</span>[<span class="ident">out_idx</span>] <span class="op">=</span> <span class="ident">hex</span>[(<span class="ident">b</span> <span class="op">&gt;</span><span class="op">&gt;</span> <span class="number">4</span>) <span class="kw">as</span> <span class="ident">usize</span>];
-                <span class="ident">buffer</span>[<span class="ident">out_idx</span> <span class="op">+</span> <span class="number">1</span>] <span class="op">=</span> <span class="ident">hex</span>[(<span class="ident">b</span> <span class="op">&amp;</span> <span class="number">0b1111</span>) <span class="kw">as</span> <span class="ident">usize</span>];
+                buffer[out_idx] = hex[(b &gt;&gt; <span class="number">4</span>) <span class="kw">as </span>usize];
+                buffer[out_idx + <span class="number">1</span>] = hex[(b &amp; <span class="number">0b1111</span>) <span class="kw">as </span>usize];
             }
 
-            <span class="kw">if</span> <span class="ident">group</span> <span class="op">!</span><span class="op">=</span> <span class="number">4</span> <span class="op">&amp;&amp;</span> <span class="ident">hyphens</span> {
-                <span class="ident">buffer</span>[<span class="ident">HYPHEN_POSITIONS</span>[<span class="ident">group</span>]] <span class="op">=</span> <span class="string">b&#39;-&#39;</span>;
-            }
-        }
-    }
-
-    <span class="ident">str::from_utf8_mut</span>(<span class="kw-2">&amp;mut</span> <span class="ident">full_buffer</span>[..<span class="ident">start</span> <span class="op">+</span> <span class="ident">len</span>])
-        .<span class="ident">expect</span>(<span class="string">&quot;found non-ASCII output characters while encoding a UUID&quot;</span>)
-}
-
-<span class="kw">impl</span> <span class="ident">Hyphenated</span> {
-    <span class="doccomment">/// The length of a hyphenated [`Uuid`] string.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LENGTH</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">36</span>;
-
-    <span class="doccomment">/// Creates a [`Hyphenated`] from a [`Uuid`].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="doccomment">/// [`Hyphenated`]: struct.Hyphenated.html</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">from_uuid</span>(<span class="ident">uuid</span>: <span class="ident">Uuid</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">Hyphenated</span>(<span class="ident">uuid</span>)
-    }
-
-    <span class="doccomment">/// Writes the [`Uuid`] as a lower-case hyphenated string to</span>
-    <span class="doccomment">/// `buffer`, and returns the subslice of the buffer that contains the</span>
-    <span class="doccomment">/// encoded UUID.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is slightly more efficient than using the formatting</span>
-    <span class="doccomment">/// infrastructure as it avoids virtual calls, and may avoid</span>
-    <span class="doccomment">/// double buffering.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Panics if the buffer is not large enough: it must have length at least</span>
-    <span class="doccomment">/// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a</span>
-    <span class="doccomment">/// sufficiently-large temporary buffer.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`LENGTH`]: #associatedconstant.LENGTH</span>
-    <span class="doccomment">/// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// fn main() -&gt; Result&lt;(), uuid::Error&gt; {</span>
-    <span class="doccomment">///     let uuid = Uuid::parse_str(&quot;936DA01f9abd4d9d80c702af85c822a8&quot;)?;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the encoded portion is returned</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_hyphenated()</span>
-    <span class="doccomment">///             .encode_lower(&amp;mut Uuid::encode_buffer()),</span>
-    <span class="doccomment">///         &quot;936da01f-9abd-4d9d-80c7-02af85c822a8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the buffer is mutated directly, and trailing contents remains</span>
-    <span class="doccomment">///     let mut buf = [b&#39;!&#39;; 40];</span>
-    <span class="doccomment">///     uuid.to_hyphenated().encode_lower(&amp;mut buf);</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         &amp;buf as &amp;[_],</span>
-    <span class="doccomment">///         b&quot;936da01f-9abd-4d9d-80c7-02af85c822a8!!!!&quot; as &amp;[_]</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     Ok(())</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// */</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">encode_lower</span><span class="op">&lt;</span><span class="lifetime">&#39;buf</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> <span class="ident">str</span> {
-        <span class="ident">encode</span>(<span class="ident">buffer</span>, <span class="number">0</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">true</span>, <span class="bool-val">false</span>)
-    }
-
-    <span class="doccomment">/// Writes the [`Uuid`] as an upper-case hyphenated string to</span>
-    <span class="doccomment">/// `buffer`, and returns the subslice of the buffer that contains the</span>
-    <span class="doccomment">/// encoded UUID.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is slightly more efficient than using the formatting</span>
-    <span class="doccomment">/// infrastructure as it avoids virtual calls, and may avoid</span>
-    <span class="doccomment">/// double buffering.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Panics if the buffer is not large enough: it must have length at least</span>
-    <span class="doccomment">/// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a</span>
-    <span class="doccomment">/// sufficiently-large temporary buffer.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`LENGTH`]: #associatedconstant.LENGTH</span>
-    <span class="doccomment">/// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// fn main() -&gt; Result&lt;(), uuid::Error&gt; {</span>
-    <span class="doccomment">///     let uuid = Uuid::parse_str(&quot;936da01f9abd4d9d80c702af85c822a8&quot;)?;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the encoded portion is returned</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_hyphenated()</span>
-    <span class="doccomment">///             .encode_upper(&amp;mut Uuid::encode_buffer()),</span>
-    <span class="doccomment">///         &quot;936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the buffer is mutated directly, and trailing contents remains</span>
-    <span class="doccomment">///     let mut buf = [b&#39;!&#39;; 40];</span>
-    <span class="doccomment">///     uuid.to_hyphenated().encode_upper(&amp;mut buf);</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         &amp;buf as &amp;[_],</span>
-    <span class="doccomment">///         b&quot;936DA01F-9ABD-4D9D-80C7-02AF85C822A8!!!!&quot; as &amp;[_]</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     Ok(())</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// */</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">encode_upper</span><span class="op">&lt;</span><span class="lifetime">&#39;buf</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> <span class="ident">str</span> {
-        <span class="ident">encode</span>(<span class="ident">buffer</span>, <span class="number">0</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>)
-    }
-}
-
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">HyphenatedRef</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// The length of a hyphenated [`Uuid`] string.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LENGTH</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">36</span>;
-
-    <span class="doccomment">/// Creates a [`HyphenatedRef`] from a [`Uuid`] reference.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="doccomment">/// [`HyphenatedRef`]: struct.HyphenatedRef.html</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">from_uuid_ref</span>(<span class="ident">uuid</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Uuid</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">HyphenatedRef</span>(<span class="ident">uuid</span>)
-    }
-
-    <span class="doccomment">/// Writes the [`Uuid`] as a lower-case hyphenated string to</span>
-    <span class="doccomment">/// `buffer`, and returns the subslice of the buffer that contains the</span>
-    <span class="doccomment">/// encoded UUID.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is slightly more efficient than using the formatting</span>
-    <span class="doccomment">/// infrastructure as it avoids virtual calls, and may avoid</span>
-    <span class="doccomment">/// double buffering.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Panics if the buffer is not large enough: it must have length at least</span>
-    <span class="doccomment">/// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a</span>
-    <span class="doccomment">/// sufficiently-large temporary buffer.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`LENGTH`]: #associatedconstant.LENGTH</span>
-    <span class="doccomment">/// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// fn main() -&gt; Result&lt;(), uuid::Error&gt; {</span>
-    <span class="doccomment">///     let uuid = Uuid::parse_str(&quot;936DA01f9abd4d9d80c702af85c822a8&quot;)?;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the encoded portion is returned</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_hyphenated()</span>
-    <span class="doccomment">///             .encode_lower(&amp;mut Uuid::encode_buffer()),</span>
-    <span class="doccomment">///         &quot;936da01f-9abd-4d9d-80c7-02af85c822a8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///     </span>
-    <span class="doccomment">///     // the buffer is mutated directly, and trailing contents remains</span>
-    <span class="doccomment">///     let mut buf = [b&#39;!&#39;; 40];</span>
-    <span class="doccomment">///     uuid.to_hyphenated().encode_lower(&amp;mut buf);</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_hyphenated().encode_lower(&amp;mut buf),</span>
-    <span class="doccomment">///         &quot;936da01f-9abd-4d9d-80c7-02af85c822a8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         &amp;buf as &amp;[_],</span>
-    <span class="doccomment">///         b&quot;936da01f-9abd-4d9d-80c7-02af85c822a8!!!!&quot; as &amp;[_]</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     Ok(())</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// */</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">encode_lower</span><span class="op">&lt;</span><span class="lifetime">&#39;buf</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> <span class="ident">str</span> {
-        <span class="ident">encode</span>(<span class="ident">buffer</span>, <span class="number">0</span>, <span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">true</span>, <span class="bool-val">false</span>)
-    }
-
-    <span class="doccomment">/// Writes the [`Uuid`] as an upper-case hyphenated string to</span>
-    <span class="doccomment">/// `buffer`, and returns the subslice of the buffer that contains the</span>
-    <span class="doccomment">/// encoded UUID.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is slightly more efficient than using the formatting</span>
-    <span class="doccomment">/// infrastructure as it avoids virtual calls, and may avoid</span>
-    <span class="doccomment">/// double buffering.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Panics if the buffer is not large enough: it must have length at least</span>
-    <span class="doccomment">/// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a</span>
-    <span class="doccomment">/// sufficiently-large temporary buffer.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`LENGTH`]: #associatedconstant.LENGTH</span>
-    <span class="doccomment">/// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// fn main() -&gt; Result&lt;(), uuid::Error&gt; {</span>
-    <span class="doccomment">///     let uuid = Uuid::parse_str(&quot;936da01f9abd4d9d80c702af85c822a8&quot;)?;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the encoded portion is returned</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_hyphenated()</span>
-    <span class="doccomment">///             .encode_upper(&amp;mut Uuid::encode_buffer()),</span>
-    <span class="doccomment">///         &quot;936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the buffer is mutated directly, and trailing contents remains</span>
-    <span class="doccomment">///     let mut buf = [b&#39;!&#39;; 40];</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_hyphenated().encode_upper(&amp;mut buf),</span>
-    <span class="doccomment">///         &quot;936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         &amp;buf as &amp;[_],</span>
-    <span class="doccomment">///         b&quot;936DA01F-9ABD-4D9D-80C7-02AF85C822A8!!!!&quot; as &amp;[_]</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     Ok(())</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// */</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">encode_upper</span><span class="op">&lt;</span><span class="lifetime">&#39;buf</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> <span class="ident">str</span> {
-        <span class="ident">encode</span>(<span class="ident">buffer</span>, <span class="number">0</span>, <span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>)
-    }
-}
-
-<span class="kw">impl</span> <span class="ident">Simple</span> {
-    <span class="doccomment">/// The length of a simple [`Uuid`] string.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LENGTH</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">32</span>;
-
-    <span class="doccomment">/// Creates a [`Simple`] from a [`Uuid`].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="doccomment">/// [`Simple`]: struct.Simple.html</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">from_uuid</span>(<span class="ident">uuid</span>: <span class="ident">Uuid</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">Simple</span>(<span class="ident">uuid</span>)
-    }
-
-    <span class="doccomment">/// Writes the [`Uuid`] as a lower-case simple string to `buffer`,</span>
-    <span class="doccomment">/// and returns the subslice of the buffer that contains the encoded UUID.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is slightly more efficient than using the formatting</span>
-    <span class="doccomment">/// infrastructure as it avoids virtual calls, and may avoid</span>
-    <span class="doccomment">/// double buffering.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Panics if the buffer is not large enough: it must have length at least</span>
-    <span class="doccomment">/// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a</span>
-    <span class="doccomment">/// sufficiently-large temporary buffer.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`LENGTH`]: #associatedconstant.LENGTH</span>
-    <span class="doccomment">/// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// fn main() -&gt; Result&lt;(), uuid::Error&gt; {</span>
-    <span class="doccomment">///     let uuid = Uuid::parse_str(&quot;936DA01f9abd4d9d80c702af85c822a8&quot;)?;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the encoded portion is returned</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_simple().encode_lower(&amp;mut Uuid::encode_buffer()),</span>
-    <span class="doccomment">///         &quot;936da01f9abd4d9d80c702af85c822a8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the buffer is mutated directly, and trailing contents remains</span>
-    <span class="doccomment">///     let mut buf = [b&#39;!&#39;; 36];</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_simple().encode_lower(&amp;mut buf),</span>
-    <span class="doccomment">///         &quot;936da01f9abd4d9d80c702af85c822a8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         &amp;buf as &amp;[_],</span>
-    <span class="doccomment">///         b&quot;936da01f9abd4d9d80c702af85c822a8!!!!&quot; as &amp;[_]</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     Ok(())</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// */</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">encode_lower</span><span class="op">&lt;</span><span class="lifetime">&#39;buf</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> <span class="ident">str</span> {
-        <span class="ident">encode</span>(<span class="ident">buffer</span>, <span class="number">0</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">false</span>, <span class="bool-val">false</span>)
-    }
-
-    <span class="doccomment">/// Writes the [`Uuid`] as an upper-case simple string to `buffer`,</span>
-    <span class="doccomment">/// and returns the subslice of the buffer that contains the encoded UUID.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Panics if the buffer is not large enough: it must have length at least</span>
-    <span class="doccomment">/// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a</span>
-    <span class="doccomment">/// sufficiently-large temporary buffer.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`LENGTH`]: #associatedconstant.LENGTH</span>
-    <span class="doccomment">/// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// fn main() -&gt; Result&lt;(), uuid::Error&gt; {</span>
-    <span class="doccomment">///     let uuid = Uuid::parse_str(&quot;936da01f9abd4d9d80c702af85c822a8&quot;)?;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the encoded portion is returned</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_simple().encode_upper(&amp;mut Uuid::encode_buffer()),</span>
-    <span class="doccomment">///         &quot;936DA01F9ABD4D9D80C702AF85C822A8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the buffer is mutated directly, and trailing contents remains</span>
-    <span class="doccomment">///     let mut buf = [b&#39;!&#39;; 36];</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_simple().encode_upper(&amp;mut buf),</span>
-    <span class="doccomment">///         &quot;936DA01F9ABD4D9D80C702AF85C822A8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         &amp;buf as &amp;[_],</span>
-    <span class="doccomment">///         b&quot;936DA01F9ABD4D9D80C702AF85C822A8!!!!&quot; as &amp;[_]</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     Ok(())</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// */</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">encode_upper</span><span class="op">&lt;</span><span class="lifetime">&#39;buf</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> <span class="ident">str</span> {
-        <span class="ident">encode</span>(<span class="ident">buffer</span>, <span class="number">0</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">false</span>, <span class="bool-val">true</span>)
-    }
-}
-
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">SimpleRef</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// The length of a simple [`Uuid`] string.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LENGTH</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">32</span>;
-
-    <span class="doccomment">/// Creates a [`SimpleRef`] from a [`Uuid`] reference.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="doccomment">/// [`SimpleRef`]: struct.SimpleRef.html</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">from_uuid_ref</span>(<span class="ident">uuid</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Uuid</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">SimpleRef</span>(<span class="ident">uuid</span>)
-    }
-
-    <span class="doccomment">/// Writes the [`Uuid`] as a lower-case simple string to `buffer`,</span>
-    <span class="doccomment">/// and returns the subslice of the buffer that contains the encoded UUID.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is slightly more efficient than using the formatting</span>
-    <span class="doccomment">/// infrastructure as it avoids virtual calls, and may avoid</span>
-    <span class="doccomment">/// double buffering.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Panics if the buffer is not large enough: it must have length at least</span>
-    <span class="doccomment">/// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a</span>
-    <span class="doccomment">/// sufficiently-large temporary buffer.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`LENGTH`]: #associatedconstant.LENGTH</span>
-    <span class="doccomment">/// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// fn main() -&gt; Result&lt;(), uuid::Error&gt; {</span>
-    <span class="doccomment">///     let uuid = Uuid::parse_str(&quot;936DA01f9abd4d9d80c702af85c822a8&quot;)?;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the encoded portion is returned</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_simple().encode_lower(&amp;mut Uuid::encode_buffer()),</span>
-    <span class="doccomment">///         &quot;936da01f9abd4d9d80c702af85c822a8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the buffer is mutated directly, and trailing contents remains</span>
-    <span class="doccomment">///     let mut buf = [b&#39;!&#39;; 36];</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_simple().encode_lower(&amp;mut buf),</span>
-    <span class="doccomment">///         &quot;936da01f9abd4d9d80c702af85c822a8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         &amp;buf as &amp;[_],</span>
-    <span class="doccomment">///         b&quot;936da01f9abd4d9d80c702af85c822a8!!!!&quot; as &amp;[_]</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     Ok(())</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// */</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">encode_lower</span><span class="op">&lt;</span><span class="lifetime">&#39;buf</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> <span class="ident">str</span> {
-        <span class="ident">encode</span>(<span class="ident">buffer</span>, <span class="number">0</span>, <span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">false</span>, <span class="bool-val">false</span>)
-    }
-
-    <span class="doccomment">/// Writes the [`Uuid`] as an upper-case simple string to `buffer`,</span>
-    <span class="doccomment">/// and returns the subslice of the buffer that contains the encoded UUID.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Panics if the buffer is not large enough: it must have length at least</span>
-    <span class="doccomment">/// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a</span>
-    <span class="doccomment">/// sufficiently-large temporary buffer.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`LENGTH`]: #associatedconstant.LENGTH</span>
-    <span class="doccomment">/// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// fn main() -&gt; Result&lt;(), uuid::Error&gt; {</span>
-    <span class="doccomment">///     let uuid = Uuid::parse_str(&quot;936da01f9abd4d9d80c702af85c822a8&quot;)?;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the encoded portion is returned</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_simple().encode_upper(&amp;mut Uuid::encode_buffer()),</span>
-    <span class="doccomment">///         &quot;936DA01F9ABD4D9D80C702AF85C822A8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the buffer is mutated directly, and trailing contents remains</span>
-    <span class="doccomment">///     let mut buf = [b&#39;!&#39;; 36];</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_simple().encode_upper(&amp;mut buf),</span>
-    <span class="doccomment">///         &quot;936DA01F9ABD4D9D80C702AF85C822A8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         &amp;buf as &amp;[_],</span>
-    <span class="doccomment">///         b&quot;936DA01F9ABD4D9D80C702AF85C822A8!!!!&quot; as &amp;[_]</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     Ok(())</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// */</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">encode_upper</span><span class="op">&lt;</span><span class="lifetime">&#39;buf</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> <span class="ident">str</span> {
-        <span class="ident">encode</span>(<span class="ident">buffer</span>, <span class="number">0</span>, <span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">false</span>, <span class="bool-val">true</span>)
-    }
-}
-
-<span class="kw">impl</span> <span class="ident">Urn</span> {
-    <span class="doccomment">/// The length of a URN [`Uuid`] string.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LENGTH</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">45</span>;
-
-    <span class="doccomment">/// Creates a [`Urn`] from a [`Uuid`].</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="doccomment">/// [`Urn`]: struct.Urn.html</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">from_uuid</span>(<span class="ident">uuid</span>: <span class="ident">Uuid</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">Urn</span>(<span class="ident">uuid</span>)
-    }
-
-    <span class="doccomment">/// Writes the [`Uuid`] as a lower-case URN string to</span>
-    <span class="doccomment">/// `buffer`, and returns the subslice of the buffer that contains the</span>
-    <span class="doccomment">/// encoded UUID.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is slightly more efficient than using the formatting</span>
-    <span class="doccomment">/// infrastructure as it avoids virtual calls, and may avoid</span>
-    <span class="doccomment">/// double buffering.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Panics if the buffer is not large enough: it must have length at least</span>
-    <span class="doccomment">/// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a</span>
-    <span class="doccomment">/// sufficiently-large temporary buffer.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`LENGTH`]: #associatedconstant.LENGTH</span>
-    <span class="doccomment">/// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// fn main() -&gt; Result&lt;(), uuid::Error&gt; {</span>
-    <span class="doccomment">///     let uuid = Uuid::parse_str(&quot;936DA01f9abd4d9d80c702af85c822a8&quot;)?;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the encoded portion is returned</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_urn().encode_lower(&amp;mut Uuid::encode_buffer()),</span>
-    <span class="doccomment">///         &quot;urn:uuid:936da01f-9abd-4d9d-80c7-02af85c822a8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the buffer is mutated directly, and trailing contents remains</span>
-    <span class="doccomment">///     let mut buf = [b&#39;!&#39;; 49];</span>
-    <span class="doccomment">///     uuid.to_urn().encode_lower(&amp;mut buf);</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_urn().encode_lower(&amp;mut buf),</span>
-    <span class="doccomment">///         &quot;urn:uuid:936da01f-9abd-4d9d-80c7-02af85c822a8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         &amp;buf as &amp;[_],</span>
-    <span class="doccomment">///         b&quot;urn:uuid:936da01f-9abd-4d9d-80c7-02af85c822a8!!!!&quot; as &amp;[_]</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///     </span>
-    <span class="doccomment">///     Ok(())</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// */</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">encode_lower</span><span class="op">&lt;</span><span class="lifetime">&#39;buf</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> <span class="ident">str</span> {
-        <span class="ident">buffer</span>[..<span class="number">9</span>].<span class="ident">copy_from_slice</span>(<span class="string">b&quot;urn:uuid:&quot;</span>);
-        <span class="ident">encode</span>(<span class="ident">buffer</span>, <span class="number">9</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">true</span>, <span class="bool-val">false</span>)
-    }
-
-    <span class="doccomment">/// Writes the [`Uuid`] as an upper-case URN string to</span>
-    <span class="doccomment">/// `buffer`, and returns the subslice of the buffer that contains the</span>
-    <span class="doccomment">/// encoded UUID.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is slightly more efficient than using the formatting</span>
-    <span class="doccomment">/// infrastructure as it avoids virtual calls, and may avoid</span>
-    <span class="doccomment">/// double buffering.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Panics if the buffer is not large enough: it must have length at least</span>
-    <span class="doccomment">/// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a</span>
-    <span class="doccomment">/// sufficiently-large temporary buffer.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`LENGTH`]: #associatedconstant.LENGTH</span>
-    <span class="doccomment">/// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// fn main() -&gt; Result&lt;(), uuid::Error&gt; {</span>
-    <span class="doccomment">///     let uuid = Uuid::parse_str(&quot;936da01f9abd4d9d80c702af85c822a8&quot;)?;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the encoded portion is returned</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_urn().encode_upper(&amp;mut Uuid::encode_buffer()),</span>
-    <span class="doccomment">///         &quot;urn:uuid:936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the buffer is mutated directly, and trailing contents remains</span>
-    <span class="doccomment">///     let mut buf = [b&#39;!&#39;; 49];</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_urn().encode_upper(&amp;mut buf),</span>
-    <span class="doccomment">///         &quot;urn:uuid:936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         &amp;buf as &amp;[_],</span>
-    <span class="doccomment">///         b&quot;urn:uuid:936DA01F-9ABD-4D9D-80C7-02AF85C822A8!!!!&quot; as &amp;[_]</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     Ok(())</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// */</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">encode_upper</span><span class="op">&lt;</span><span class="lifetime">&#39;buf</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> <span class="ident">str</span> {
-        <span class="ident">buffer</span>[..<span class="number">9</span>].<span class="ident">copy_from_slice</span>(<span class="string">b&quot;urn:uuid:&quot;</span>);
-        <span class="ident">encode</span>(<span class="ident">buffer</span>, <span class="number">9</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>)
-    }
-}
-
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">UrnRef</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// The length of a URN [`Uuid`] string.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LENGTH</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">45</span>;
-
-    <span class="doccomment">/// Creates a [`UrnRef`] from a [`Uuid`] reference.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="doccomment">/// [`UrnRef`]: struct.UrnRef.html</span>
-    <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">from_uuid_ref</span>(<span class="ident">uuid</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Uuid</span>) -&gt; <span class="self">Self</span> {
-        <span class="ident">UrnRef</span>(<span class="kw-2">&amp;</span><span class="ident">uuid</span>)
-    }
-
-    <span class="doccomment">/// Writes the [`Uuid`] as a lower-case URN string to</span>
-    <span class="doccomment">/// `buffer`, and returns the subslice of the buffer that contains the</span>
-    <span class="doccomment">/// encoded UUID.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is slightly more efficient than using the formatting</span>
-    <span class="doccomment">/// infrastructure as it avoids virtual calls, and may avoid</span>
-    <span class="doccomment">/// double buffering.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Panics if the buffer is not large enough: it must have length at least</span>
-    <span class="doccomment">/// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a</span>
-    <span class="doccomment">/// sufficiently-large temporary buffer.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`LENGTH`]: #associatedconstant.LENGTH</span>
-    <span class="doccomment">/// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// fn main() -&gt; Result&lt;(), uuid::Error&gt; {</span>
-    <span class="doccomment">///     let uuid = Uuid::parse_str(&quot;936DA01f9abd4d9d80c702af85c822a8&quot;)?;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the encoded portion is returned</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_urn().encode_lower(&amp;mut Uuid::encode_buffer()),</span>
-    <span class="doccomment">///         &quot;urn:uuid:936da01f-9abd-4d9d-80c7-02af85c822a8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the buffer is mutated directly, and trailing contents remains</span>
-    <span class="doccomment">///     let mut buf = [b&#39;!&#39;; 49];</span>
-    <span class="doccomment">///     uuid.to_urn().encode_lower(&amp;mut buf);</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_urn().encode_lower(&amp;mut buf),</span>
-    <span class="doccomment">///         &quot;urn:uuid:936da01f-9abd-4d9d-80c7-02af85c822a8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         &amp;buf as &amp;[_],</span>
-    <span class="doccomment">///         b&quot;urn:uuid:936da01f-9abd-4d9d-80c7-02af85c822a8!!!!&quot; as &amp;[_]</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     Ok(())</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// */</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">encode_lower</span><span class="op">&lt;</span><span class="lifetime">&#39;buf</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> <span class="ident">str</span> {
-        <span class="ident">buffer</span>[..<span class="number">9</span>].<span class="ident">copy_from_slice</span>(<span class="string">b&quot;urn:uuid:&quot;</span>);
-        <span class="ident">encode</span>(<span class="ident">buffer</span>, <span class="number">9</span>, <span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">true</span>, <span class="bool-val">false</span>)
-    }
-
-    <span class="doccomment">/// Writes the [`Uuid`] as an upper-case URN string to</span>
-    <span class="doccomment">/// `buffer`, and returns the subslice of the buffer that contains the</span>
-    <span class="doccomment">/// encoded UUID.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This is slightly more efficient than using the formatting</span>
-    <span class="doccomment">/// infrastructure as it avoids virtual calls, and may avoid</span>
-    <span class="doccomment">/// double buffering.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`Uuid`]: ../struct.Uuid.html</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Panics</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Panics if the buffer is not large enough: it must have length at least</span>
-    <span class="doccomment">/// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a</span>
-    <span class="doccomment">/// sufficiently-large temporary buffer.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// [`LENGTH`]: #associatedconstant.LENGTH</span>
-    <span class="doccomment">/// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Examples</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// ```rust</span>
-    <span class="doccomment">/// use uuid::Uuid;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// fn main() -&gt; Result&lt;(), uuid::Error&gt; {</span>
-    <span class="doccomment">///     let uuid = Uuid::parse_str(&quot;936da01f9abd4d9d80c702af85c822a8&quot;)?;</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the encoded portion is returned</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_urn().encode_upper(&amp;mut Uuid::encode_buffer()),</span>
-    <span class="doccomment">///         &quot;urn:uuid:936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     // the buffer is mutated directly, and trailing contents remains</span>
-    <span class="doccomment">///     let mut buf = [b&#39;!&#39;; 49];</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         uuid.to_urn().encode_upper(&amp;mut buf),</span>
-    <span class="doccomment">///         &quot;urn:uuid:936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///     assert_eq!(</span>
-    <span class="doccomment">///         &amp;buf as &amp;[_],</span>
-    <span class="doccomment">///         b&quot;urn:uuid:936DA01F-9ABD-4D9D-80C7-02AF85C822A8!!!!&quot; as &amp;[_]</span>
-    <span class="doccomment">///     );</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">///     Ok(())</span>
-    <span class="doccomment">/// }</span>
-    <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// */</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">encode_upper</span><span class="op">&lt;</span><span class="lifetime">&#39;buf</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> [<span class="ident">u8</span>]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf</span> <span class="kw-2">mut</span> <span class="ident">str</span> {
-        <span class="ident">buffer</span>[..<span class="number">9</span>].<span class="ident">copy_from_slice</span>(<span class="string">b&quot;urn:uuid:&quot;</span>);
-        <span class="ident">encode</span>(<span class="ident">buffer</span>, <span class="number">9</span>, <span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>)
-    }
-}
-
-<span class="macro">macro_rules!</span> <span class="ident">impl_adapter_traits</span> {
-    ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">T</span>:<span class="ident">ident</span><span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">a</span>:<span class="ident">lifetime</span>),<span class="kw-2">*</span><span class="op">&gt;</span>),<span class="op">+</span>) =&gt; {$(
-        <span class="kw">impl</span><span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">a</span>),<span class="kw-2">*</span><span class="op">&gt;</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">T</span><span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">a</span>),<span class="kw-2">*</span><span class="op">&gt;</span> {
-            <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
-                <span class="ident">fmt::LowerHex::fmt</span>(<span class="self">self</span>, <span class="ident">f</span>)
+            <span class="kw">if </span>group != <span class="number">4 </span>&amp;&amp; hyphens {
+                buffer[HYPHEN_POSITIONS[group]] = <span class="string">b&#39;-&#39;</span>;
             }
         }
+    }
 
-        <span class="kw">impl</span><span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">a</span>),<span class="kw-2">*</span><span class="op">&gt;</span> <span class="ident">fmt::LowerHex</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">T</span><span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">a</span>),<span class="kw-2">*</span><span class="op">&gt;</span> {
-            <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
-                <span class="comment">// TODO: Self doesn&#39;t work https://github.com/rust-lang/rust/issues/52808</span>
-                <span class="ident">f</span>.<span class="ident">write_str</span>(<span class="self">self</span>.<span class="ident">encode_lower</span>(<span class="kw-2">&amp;mut</span> [<span class="number">0</span>; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">T::LENGTH</span>]))
+    str::from_utf8_mut(<span class="kw-2">&amp;mut </span>full_buffer[..start + len])
+        .expect(<span class="string">&quot;found non-ASCII output characters while encoding a UUID&quot;</span>)
+}
+
+<span class="kw">impl </span>Hyphenated {
+    <span class="doccomment">/// The length of a hyphenated [`Uuid`] string.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    </span><span class="kw">pub const </span>LENGTH: usize = <span class="number">36</span>;
+
+    <span class="doccomment">/// Creates a [`Hyphenated`] from a [`Uuid`].
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    /// [`Hyphenated`]: struct.Hyphenated.html
+    </span><span class="kw">pub const fn </span>from_uuid(uuid: Uuid) -&gt; <span class="self">Self </span>{
+        Hyphenated(uuid)
+    }
+
+    <span class="doccomment">/// Writes the [`Uuid`] as a lower-case hyphenated string to
+    /// `buffer`, and returns the subslice of the buffer that contains the
+    /// encoded UUID.
+    ///
+    /// This is slightly more efficient than using the formatting
+    /// infrastructure as it avoids virtual calls, and may avoid
+    /// double buffering.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    ///
+    /// # Panics
+    ///
+    /// Panics if the buffer is not large enough: it must have length at least
+    /// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a
+    /// sufficiently-large temporary buffer.
+    ///
+    /// [`LENGTH`]: #associatedconstant.LENGTH
+    /// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use uuid::Uuid;
+    ///
+    /// fn main() -&gt; Result&lt;(), uuid::Error&gt; {
+    ///     let uuid = Uuid::parse_str(&quot;936DA01f9abd4d9d80c702af85c822a8&quot;)?;
+    ///
+    ///     // the encoded portion is returned
+    ///     assert_eq!(
+    ///         uuid.to_hyphenated()
+    ///             .encode_lower(&amp;mut Uuid::encode_buffer()),
+    ///         &quot;936da01f-9abd-4d9d-80c7-02af85c822a8&quot;
+    ///     );
+    ///
+    ///     // the buffer is mutated directly, and trailing contents remains
+    ///     let mut buf = [b&#39;!&#39;; 40];
+    ///     uuid.to_hyphenated().encode_lower(&amp;mut buf);
+    ///     assert_eq!(
+    ///         &amp;buf as &amp;[_],
+    ///         b&quot;936da01f-9abd-4d9d-80c7-02af85c822a8!!!!&quot; as &amp;[_]
+    ///     );
+    ///
+    ///     Ok(())
+    /// }
+    /// ```
+    /// */
+    </span><span class="kw">pub fn </span>encode_lower&lt;<span class="lifetime">&#39;buf</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, buffer: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>[u8]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>str {
+        encode(buffer, <span class="number">0</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">true</span>, <span class="bool-val">false</span>)
+    }
+
+    <span class="doccomment">/// Writes the [`Uuid`] as an upper-case hyphenated string to
+    /// `buffer`, and returns the subslice of the buffer that contains the
+    /// encoded UUID.
+    ///
+    /// This is slightly more efficient than using the formatting
+    /// infrastructure as it avoids virtual calls, and may avoid
+    /// double buffering.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    ///
+    /// # Panics
+    ///
+    /// Panics if the buffer is not large enough: it must have length at least
+    /// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a
+    /// sufficiently-large temporary buffer.
+    ///
+    /// [`LENGTH`]: #associatedconstant.LENGTH
+    /// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use uuid::Uuid;
+    ///
+    /// fn main() -&gt; Result&lt;(), uuid::Error&gt; {
+    ///     let uuid = Uuid::parse_str(&quot;936da01f9abd4d9d80c702af85c822a8&quot;)?;
+    ///
+    ///     // the encoded portion is returned
+    ///     assert_eq!(
+    ///         uuid.to_hyphenated()
+    ///             .encode_upper(&amp;mut Uuid::encode_buffer()),
+    ///         &quot;936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;
+    ///     );
+    ///
+    ///     // the buffer is mutated directly, and trailing contents remains
+    ///     let mut buf = [b&#39;!&#39;; 40];
+    ///     uuid.to_hyphenated().encode_upper(&amp;mut buf);
+    ///     assert_eq!(
+    ///         &amp;buf as &amp;[_],
+    ///         b&quot;936DA01F-9ABD-4D9D-80C7-02AF85C822A8!!!!&quot; as &amp;[_]
+    ///     );
+    ///
+    ///     Ok(())
+    /// }
+    /// ```
+    /// */
+    </span><span class="kw">pub fn </span>encode_upper&lt;<span class="lifetime">&#39;buf</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, buffer: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>[u8]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>str {
+        encode(buffer, <span class="number">0</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>)
+    }
+}
+
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; HyphenatedRef&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="doccomment">/// The length of a hyphenated [`Uuid`] string.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    </span><span class="kw">pub const </span>LENGTH: usize = <span class="number">36</span>;
+
+    <span class="doccomment">/// Creates a [`HyphenatedRef`] from a [`Uuid`] reference.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    /// [`HyphenatedRef`]: struct.HyphenatedRef.html
+    </span><span class="kw">pub const fn </span>from_uuid_ref(uuid: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>Uuid) -&gt; <span class="self">Self </span>{
+        HyphenatedRef(uuid)
+    }
+
+    <span class="doccomment">/// Writes the [`Uuid`] as a lower-case hyphenated string to
+    /// `buffer`, and returns the subslice of the buffer that contains the
+    /// encoded UUID.
+    ///
+    /// This is slightly more efficient than using the formatting
+    /// infrastructure as it avoids virtual calls, and may avoid
+    /// double buffering.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    ///
+    /// # Panics
+    ///
+    /// Panics if the buffer is not large enough: it must have length at least
+    /// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a
+    /// sufficiently-large temporary buffer.
+    ///
+    /// [`LENGTH`]: #associatedconstant.LENGTH
+    /// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use uuid::Uuid;
+    ///
+    /// fn main() -&gt; Result&lt;(), uuid::Error&gt; {
+    ///     let uuid = Uuid::parse_str(&quot;936DA01f9abd4d9d80c702af85c822a8&quot;)?;
+    ///
+    ///     // the encoded portion is returned
+    ///     assert_eq!(
+    ///         uuid.to_hyphenated()
+    ///             .encode_lower(&amp;mut Uuid::encode_buffer()),
+    ///         &quot;936da01f-9abd-4d9d-80c7-02af85c822a8&quot;
+    ///     );
+    ///     
+    ///     // the buffer is mutated directly, and trailing contents remains
+    ///     let mut buf = [b&#39;!&#39;; 40];
+    ///     uuid.to_hyphenated().encode_lower(&amp;mut buf);
+    ///     assert_eq!(
+    ///         uuid.to_hyphenated().encode_lower(&amp;mut buf),
+    ///         &quot;936da01f-9abd-4d9d-80c7-02af85c822a8&quot;
+    ///     );
+    ///     assert_eq!(
+    ///         &amp;buf as &amp;[_],
+    ///         b&quot;936da01f-9abd-4d9d-80c7-02af85c822a8!!!!&quot; as &amp;[_]
+    ///     );
+    ///
+    ///     Ok(())
+    /// }
+    /// ```
+    /// */
+    </span><span class="kw">pub fn </span>encode_lower&lt;<span class="lifetime">&#39;buf</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, buffer: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>[u8]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>str {
+        encode(buffer, <span class="number">0</span>, <span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">true</span>, <span class="bool-val">false</span>)
+    }
+
+    <span class="doccomment">/// Writes the [`Uuid`] as an upper-case hyphenated string to
+    /// `buffer`, and returns the subslice of the buffer that contains the
+    /// encoded UUID.
+    ///
+    /// This is slightly more efficient than using the formatting
+    /// infrastructure as it avoids virtual calls, and may avoid
+    /// double buffering.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    ///
+    /// # Panics
+    ///
+    /// Panics if the buffer is not large enough: it must have length at least
+    /// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a
+    /// sufficiently-large temporary buffer.
+    ///
+    /// [`LENGTH`]: #associatedconstant.LENGTH
+    /// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use uuid::Uuid;
+    ///
+    /// fn main() -&gt; Result&lt;(), uuid::Error&gt; {
+    ///     let uuid = Uuid::parse_str(&quot;936da01f9abd4d9d80c702af85c822a8&quot;)?;
+    ///
+    ///     // the encoded portion is returned
+    ///     assert_eq!(
+    ///         uuid.to_hyphenated()
+    ///             .encode_upper(&amp;mut Uuid::encode_buffer()),
+    ///         &quot;936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;
+    ///     );
+    ///
+    ///     // the buffer is mutated directly, and trailing contents remains
+    ///     let mut buf = [b&#39;!&#39;; 40];
+    ///     assert_eq!(
+    ///         uuid.to_hyphenated().encode_upper(&amp;mut buf),
+    ///         &quot;936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;
+    ///     );
+    ///     assert_eq!(
+    ///         &amp;buf as &amp;[_],
+    ///         b&quot;936DA01F-9ABD-4D9D-80C7-02AF85C822A8!!!!&quot; as &amp;[_]
+    ///     );
+    ///
+    ///     Ok(())
+    /// }
+    /// ```
+    /// */
+    </span><span class="kw">pub fn </span>encode_upper&lt;<span class="lifetime">&#39;buf</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, buffer: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>[u8]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>str {
+        encode(buffer, <span class="number">0</span>, <span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>)
+    }
+}
+
+<span class="kw">impl </span>Simple {
+    <span class="doccomment">/// The length of a simple [`Uuid`] string.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    </span><span class="kw">pub const </span>LENGTH: usize = <span class="number">32</span>;
+
+    <span class="doccomment">/// Creates a [`Simple`] from a [`Uuid`].
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    /// [`Simple`]: struct.Simple.html
+    </span><span class="kw">pub const fn </span>from_uuid(uuid: Uuid) -&gt; <span class="self">Self </span>{
+        Simple(uuid)
+    }
+
+    <span class="doccomment">/// Writes the [`Uuid`] as a lower-case simple string to `buffer`,
+    /// and returns the subslice of the buffer that contains the encoded UUID.
+    ///
+    /// This is slightly more efficient than using the formatting
+    /// infrastructure as it avoids virtual calls, and may avoid
+    /// double buffering.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    ///
+    /// # Panics
+    ///
+    /// Panics if the buffer is not large enough: it must have length at least
+    /// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a
+    /// sufficiently-large temporary buffer.
+    ///
+    /// [`LENGTH`]: #associatedconstant.LENGTH
+    /// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use uuid::Uuid;
+    ///
+    /// fn main() -&gt; Result&lt;(), uuid::Error&gt; {
+    ///     let uuid = Uuid::parse_str(&quot;936DA01f9abd4d9d80c702af85c822a8&quot;)?;
+    ///
+    ///     // the encoded portion is returned
+    ///     assert_eq!(
+    ///         uuid.to_simple().encode_lower(&amp;mut Uuid::encode_buffer()),
+    ///         &quot;936da01f9abd4d9d80c702af85c822a8&quot;
+    ///     );
+    ///
+    ///     // the buffer is mutated directly, and trailing contents remains
+    ///     let mut buf = [b&#39;!&#39;; 36];
+    ///     assert_eq!(
+    ///         uuid.to_simple().encode_lower(&amp;mut buf),
+    ///         &quot;936da01f9abd4d9d80c702af85c822a8&quot;
+    ///     );
+    ///     assert_eq!(
+    ///         &amp;buf as &amp;[_],
+    ///         b&quot;936da01f9abd4d9d80c702af85c822a8!!!!&quot; as &amp;[_]
+    ///     );
+    ///
+    ///     Ok(())
+    /// }
+    /// ```
+    /// */
+    </span><span class="kw">pub fn </span>encode_lower&lt;<span class="lifetime">&#39;buf</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, buffer: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>[u8]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>str {
+        encode(buffer, <span class="number">0</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">false</span>, <span class="bool-val">false</span>)
+    }
+
+    <span class="doccomment">/// Writes the [`Uuid`] as an upper-case simple string to `buffer`,
+    /// and returns the subslice of the buffer that contains the encoded UUID.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    ///
+    /// # Panics
+    ///
+    /// Panics if the buffer is not large enough: it must have length at least
+    /// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a
+    /// sufficiently-large temporary buffer.
+    ///
+    /// [`LENGTH`]: #associatedconstant.LENGTH
+    /// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use uuid::Uuid;
+    ///
+    /// fn main() -&gt; Result&lt;(), uuid::Error&gt; {
+    ///     let uuid = Uuid::parse_str(&quot;936da01f9abd4d9d80c702af85c822a8&quot;)?;
+    ///
+    ///     // the encoded portion is returned
+    ///     assert_eq!(
+    ///         uuid.to_simple().encode_upper(&amp;mut Uuid::encode_buffer()),
+    ///         &quot;936DA01F9ABD4D9D80C702AF85C822A8&quot;
+    ///     );
+    ///
+    ///     // the buffer is mutated directly, and trailing contents remains
+    ///     let mut buf = [b&#39;!&#39;; 36];
+    ///     assert_eq!(
+    ///         uuid.to_simple().encode_upper(&amp;mut buf),
+    ///         &quot;936DA01F9ABD4D9D80C702AF85C822A8&quot;
+    ///     );
+    ///     assert_eq!(
+    ///         &amp;buf as &amp;[_],
+    ///         b&quot;936DA01F9ABD4D9D80C702AF85C822A8!!!!&quot; as &amp;[_]
+    ///     );
+    ///
+    ///     Ok(())
+    /// }
+    /// ```
+    /// */
+    </span><span class="kw">pub fn </span>encode_upper&lt;<span class="lifetime">&#39;buf</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, buffer: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>[u8]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>str {
+        encode(buffer, <span class="number">0</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">false</span>, <span class="bool-val">true</span>)
+    }
+}
+
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; SimpleRef&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="doccomment">/// The length of a simple [`Uuid`] string.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    </span><span class="kw">pub const </span>LENGTH: usize = <span class="number">32</span>;
+
+    <span class="doccomment">/// Creates a [`SimpleRef`] from a [`Uuid`] reference.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    /// [`SimpleRef`]: struct.SimpleRef.html
+    </span><span class="kw">pub const fn </span>from_uuid_ref(uuid: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>Uuid) -&gt; <span class="self">Self </span>{
+        SimpleRef(uuid)
+    }
+
+    <span class="doccomment">/// Writes the [`Uuid`] as a lower-case simple string to `buffer`,
+    /// and returns the subslice of the buffer that contains the encoded UUID.
+    ///
+    /// This is slightly more efficient than using the formatting
+    /// infrastructure as it avoids virtual calls, and may avoid
+    /// double buffering.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    ///
+    /// # Panics
+    ///
+    /// Panics if the buffer is not large enough: it must have length at least
+    /// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a
+    /// sufficiently-large temporary buffer.
+    ///
+    /// [`LENGTH`]: #associatedconstant.LENGTH
+    /// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use uuid::Uuid;
+    ///
+    /// fn main() -&gt; Result&lt;(), uuid::Error&gt; {
+    ///     let uuid = Uuid::parse_str(&quot;936DA01f9abd4d9d80c702af85c822a8&quot;)?;
+    ///
+    ///     // the encoded portion is returned
+    ///     assert_eq!(
+    ///         uuid.to_simple().encode_lower(&amp;mut Uuid::encode_buffer()),
+    ///         &quot;936da01f9abd4d9d80c702af85c822a8&quot;
+    ///     );
+    ///
+    ///     // the buffer is mutated directly, and trailing contents remains
+    ///     let mut buf = [b&#39;!&#39;; 36];
+    ///     assert_eq!(
+    ///         uuid.to_simple().encode_lower(&amp;mut buf),
+    ///         &quot;936da01f9abd4d9d80c702af85c822a8&quot;
+    ///     );
+    ///     assert_eq!(
+    ///         &amp;buf as &amp;[_],
+    ///         b&quot;936da01f9abd4d9d80c702af85c822a8!!!!&quot; as &amp;[_]
+    ///     );
+    ///
+    ///     Ok(())
+    /// }
+    /// ```
+    /// */
+    </span><span class="kw">pub fn </span>encode_lower&lt;<span class="lifetime">&#39;buf</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, buffer: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>[u8]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>str {
+        encode(buffer, <span class="number">0</span>, <span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">false</span>, <span class="bool-val">false</span>)
+    }
+
+    <span class="doccomment">/// Writes the [`Uuid`] as an upper-case simple string to `buffer`,
+    /// and returns the subslice of the buffer that contains the encoded UUID.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    ///
+    /// # Panics
+    ///
+    /// Panics if the buffer is not large enough: it must have length at least
+    /// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a
+    /// sufficiently-large temporary buffer.
+    ///
+    /// [`LENGTH`]: #associatedconstant.LENGTH
+    /// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use uuid::Uuid;
+    ///
+    /// fn main() -&gt; Result&lt;(), uuid::Error&gt; {
+    ///     let uuid = Uuid::parse_str(&quot;936da01f9abd4d9d80c702af85c822a8&quot;)?;
+    ///
+    ///     // the encoded portion is returned
+    ///     assert_eq!(
+    ///         uuid.to_simple().encode_upper(&amp;mut Uuid::encode_buffer()),
+    ///         &quot;936DA01F9ABD4D9D80C702AF85C822A8&quot;
+    ///     );
+    ///
+    ///     // the buffer is mutated directly, and trailing contents remains
+    ///     let mut buf = [b&#39;!&#39;; 36];
+    ///     assert_eq!(
+    ///         uuid.to_simple().encode_upper(&amp;mut buf),
+    ///         &quot;936DA01F9ABD4D9D80C702AF85C822A8&quot;
+    ///     );
+    ///     assert_eq!(
+    ///         &amp;buf as &amp;[_],
+    ///         b&quot;936DA01F9ABD4D9D80C702AF85C822A8!!!!&quot; as &amp;[_]
+    ///     );
+    ///
+    ///     Ok(())
+    /// }
+    /// ```
+    /// */
+    </span><span class="kw">pub fn </span>encode_upper&lt;<span class="lifetime">&#39;buf</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, buffer: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>[u8]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>str {
+        encode(buffer, <span class="number">0</span>, <span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">false</span>, <span class="bool-val">true</span>)
+    }
+}
+
+<span class="kw">impl </span>Urn {
+    <span class="doccomment">/// The length of a URN [`Uuid`] string.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    </span><span class="kw">pub const </span>LENGTH: usize = <span class="number">45</span>;
+
+    <span class="doccomment">/// Creates a [`Urn`] from a [`Uuid`].
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    /// [`Urn`]: struct.Urn.html
+    </span><span class="kw">pub const fn </span>from_uuid(uuid: Uuid) -&gt; <span class="self">Self </span>{
+        Urn(uuid)
+    }
+
+    <span class="doccomment">/// Writes the [`Uuid`] as a lower-case URN string to
+    /// `buffer`, and returns the subslice of the buffer that contains the
+    /// encoded UUID.
+    ///
+    /// This is slightly more efficient than using the formatting
+    /// infrastructure as it avoids virtual calls, and may avoid
+    /// double buffering.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    ///
+    /// # Panics
+    ///
+    /// Panics if the buffer is not large enough: it must have length at least
+    /// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a
+    /// sufficiently-large temporary buffer.
+    ///
+    /// [`LENGTH`]: #associatedconstant.LENGTH
+    /// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use uuid::Uuid;
+    ///
+    /// fn main() -&gt; Result&lt;(), uuid::Error&gt; {
+    ///     let uuid = Uuid::parse_str(&quot;936DA01f9abd4d9d80c702af85c822a8&quot;)?;
+    ///
+    ///     // the encoded portion is returned
+    ///     assert_eq!(
+    ///         uuid.to_urn().encode_lower(&amp;mut Uuid::encode_buffer()),
+    ///         &quot;urn:uuid:936da01f-9abd-4d9d-80c7-02af85c822a8&quot;
+    ///     );
+    ///
+    ///     // the buffer is mutated directly, and trailing contents remains
+    ///     let mut buf = [b&#39;!&#39;; 49];
+    ///     uuid.to_urn().encode_lower(&amp;mut buf);
+    ///     assert_eq!(
+    ///         uuid.to_urn().encode_lower(&amp;mut buf),
+    ///         &quot;urn:uuid:936da01f-9abd-4d9d-80c7-02af85c822a8&quot;
+    ///     );
+    ///     assert_eq!(
+    ///         &amp;buf as &amp;[_],
+    ///         b&quot;urn:uuid:936da01f-9abd-4d9d-80c7-02af85c822a8!!!!&quot; as &amp;[_]
+    ///     );
+    ///     
+    ///     Ok(())
+    /// }
+    /// ```
+    /// */
+    </span><span class="kw">pub fn </span>encode_lower&lt;<span class="lifetime">&#39;buf</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, buffer: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>[u8]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>str {
+        buffer[..<span class="number">9</span>].copy_from_slice(<span class="string">b&quot;urn:uuid:&quot;</span>);
+        encode(buffer, <span class="number">9</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">true</span>, <span class="bool-val">false</span>)
+    }
+
+    <span class="doccomment">/// Writes the [`Uuid`] as an upper-case URN string to
+    /// `buffer`, and returns the subslice of the buffer that contains the
+    /// encoded UUID.
+    ///
+    /// This is slightly more efficient than using the formatting
+    /// infrastructure as it avoids virtual calls, and may avoid
+    /// double buffering.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    ///
+    /// # Panics
+    ///
+    /// Panics if the buffer is not large enough: it must have length at least
+    /// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a
+    /// sufficiently-large temporary buffer.
+    ///
+    /// [`LENGTH`]: #associatedconstant.LENGTH
+    /// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use uuid::Uuid;
+    ///
+    /// fn main() -&gt; Result&lt;(), uuid::Error&gt; {
+    ///     let uuid = Uuid::parse_str(&quot;936da01f9abd4d9d80c702af85c822a8&quot;)?;
+    ///
+    ///     // the encoded portion is returned
+    ///     assert_eq!(
+    ///         uuid.to_urn().encode_upper(&amp;mut Uuid::encode_buffer()),
+    ///         &quot;urn:uuid:936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;
+    ///     );
+    ///
+    ///     // the buffer is mutated directly, and trailing contents remains
+    ///     let mut buf = [b&#39;!&#39;; 49];
+    ///     assert_eq!(
+    ///         uuid.to_urn().encode_upper(&amp;mut buf),
+    ///         &quot;urn:uuid:936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;
+    ///     );
+    ///     assert_eq!(
+    ///         &amp;buf as &amp;[_],
+    ///         b&quot;urn:uuid:936DA01F-9ABD-4D9D-80C7-02AF85C822A8!!!!&quot; as &amp;[_]
+    ///     );
+    ///
+    ///     Ok(())
+    /// }
+    /// ```
+    /// */
+    </span><span class="kw">pub fn </span>encode_upper&lt;<span class="lifetime">&#39;buf</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, buffer: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>[u8]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>str {
+        buffer[..<span class="number">9</span>].copy_from_slice(<span class="string">b&quot;urn:uuid:&quot;</span>);
+        encode(buffer, <span class="number">9</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>)
+    }
+}
+
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; UrnRef&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="doccomment">/// The length of a URN [`Uuid`] string.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    </span><span class="kw">pub const </span>LENGTH: usize = <span class="number">45</span>;
+
+    <span class="doccomment">/// Creates a [`UrnRef`] from a [`Uuid`] reference.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    /// [`UrnRef`]: struct.UrnRef.html
+    </span><span class="kw">pub const fn </span>from_uuid_ref(uuid: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>Uuid) -&gt; <span class="self">Self </span>{
+        UrnRef(<span class="kw-2">&amp;</span>uuid)
+    }
+
+    <span class="doccomment">/// Writes the [`Uuid`] as a lower-case URN string to
+    /// `buffer`, and returns the subslice of the buffer that contains the
+    /// encoded UUID.
+    ///
+    /// This is slightly more efficient than using the formatting
+    /// infrastructure as it avoids virtual calls, and may avoid
+    /// double buffering.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    ///
+    /// # Panics
+    ///
+    /// Panics if the buffer is not large enough: it must have length at least
+    /// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a
+    /// sufficiently-large temporary buffer.
+    ///
+    /// [`LENGTH`]: #associatedconstant.LENGTH
+    /// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use uuid::Uuid;
+    ///
+    /// fn main() -&gt; Result&lt;(), uuid::Error&gt; {
+    ///     let uuid = Uuid::parse_str(&quot;936DA01f9abd4d9d80c702af85c822a8&quot;)?;
+    ///
+    ///     // the encoded portion is returned
+    ///     assert_eq!(
+    ///         uuid.to_urn().encode_lower(&amp;mut Uuid::encode_buffer()),
+    ///         &quot;urn:uuid:936da01f-9abd-4d9d-80c7-02af85c822a8&quot;
+    ///     );
+    ///
+    ///     // the buffer is mutated directly, and trailing contents remains
+    ///     let mut buf = [b&#39;!&#39;; 49];
+    ///     uuid.to_urn().encode_lower(&amp;mut buf);
+    ///     assert_eq!(
+    ///         uuid.to_urn().encode_lower(&amp;mut buf),
+    ///         &quot;urn:uuid:936da01f-9abd-4d9d-80c7-02af85c822a8&quot;
+    ///     );
+    ///     assert_eq!(
+    ///         &amp;buf as &amp;[_],
+    ///         b&quot;urn:uuid:936da01f-9abd-4d9d-80c7-02af85c822a8!!!!&quot; as &amp;[_]
+    ///     );
+    ///
+    ///     Ok(())
+    /// }
+    /// ```
+    /// */
+    </span><span class="kw">pub fn </span>encode_lower&lt;<span class="lifetime">&#39;buf</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, buffer: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>[u8]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>str {
+        buffer[..<span class="number">9</span>].copy_from_slice(<span class="string">b&quot;urn:uuid:&quot;</span>);
+        encode(buffer, <span class="number">9</span>, <span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">true</span>, <span class="bool-val">false</span>)
+    }
+
+    <span class="doccomment">/// Writes the [`Uuid`] as an upper-case URN string to
+    /// `buffer`, and returns the subslice of the buffer that contains the
+    /// encoded UUID.
+    ///
+    /// This is slightly more efficient than using the formatting
+    /// infrastructure as it avoids virtual calls, and may avoid
+    /// double buffering.
+    ///
+    /// [`Uuid`]: ../struct.Uuid.html
+    ///
+    /// # Panics
+    ///
+    /// Panics if the buffer is not large enough: it must have length at least
+    /// [`LENGTH`]. [`Uuid::encode_buffer`] can be used to get a
+    /// sufficiently-large temporary buffer.
+    ///
+    /// [`LENGTH`]: #associatedconstant.LENGTH
+    /// [`Uuid::encode_buffer`]: ../struct.Uuid.html#method.encode_buffer
+    ///
+    /// # Examples
+    ///
+    /// ```rust
+    /// use uuid::Uuid;
+    ///
+    /// fn main() -&gt; Result&lt;(), uuid::Error&gt; {
+    ///     let uuid = Uuid::parse_str(&quot;936da01f9abd4d9d80c702af85c822a8&quot;)?;
+    ///
+    ///     // the encoded portion is returned
+    ///     assert_eq!(
+    ///         uuid.to_urn().encode_upper(&amp;mut Uuid::encode_buffer()),
+    ///         &quot;urn:uuid:936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;
+    ///     );
+    ///
+    ///     // the buffer is mutated directly, and trailing contents remains
+    ///     let mut buf = [b&#39;!&#39;; 49];
+    ///     assert_eq!(
+    ///         uuid.to_urn().encode_upper(&amp;mut buf),
+    ///         &quot;urn:uuid:936DA01F-9ABD-4D9D-80C7-02AF85C822A8&quot;
+    ///     );
+    ///     assert_eq!(
+    ///         &amp;buf as &amp;[_],
+    ///         b&quot;urn:uuid:936DA01F-9ABD-4D9D-80C7-02AF85C822A8!!!!&quot; as &amp;[_]
+    ///     );
+    ///
+    ///     Ok(())
+    /// }
+    /// ```
+    /// */
+    </span><span class="kw">pub fn </span>encode_upper&lt;<span class="lifetime">&#39;buf</span>&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, buffer: <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>[u8]) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;buf </span><span class="kw-2">mut </span>str {
+        buffer[..<span class="number">9</span>].copy_from_slice(<span class="string">b&quot;urn:uuid:&quot;</span>);
+        encode(buffer, <span class="number">9</span>, <span class="self">self</span>.<span class="number">0</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>)
+    }
+}
+
+<span class="macro">macro_rules! </span>impl_adapter_traits {
+    ($(<span class="macro-nonterminal">$T</span>:ident&lt;$(<span class="macro-nonterminal">$a</span>:lifetime),<span class="kw-2">*</span>&gt;),+) =&gt; {$(
+        <span class="kw">impl</span>&lt;$(<span class="macro-nonterminal">$a</span>),<span class="kw-2">*</span>&gt; fmt::Display <span class="kw">for </span><span class="macro-nonterminal">$T</span>&lt;$(<span class="macro-nonterminal">$a</span>),<span class="kw-2">*</span>&gt; {
+            <span class="attribute">#[inline]
+            </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+                fmt::LowerHex::fmt(<span class="self">self</span>, f)
             }
         }
 
-        <span class="kw">impl</span><span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">a</span>),<span class="kw-2">*</span><span class="op">&gt;</span> <span class="ident">fmt::UpperHex</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">T</span><span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">a</span>),<span class="kw-2">*</span><span class="op">&gt;</span> {
-            <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">fmt::Result</span> {
-                <span class="comment">// TODO: Self doesn&#39;t work https://github.com/rust-lang/rust/issues/52808</span>
-                <span class="ident">f</span>.<span class="ident">write_str</span>(<span class="self">self</span>.<span class="ident">encode_upper</span>(<span class="kw-2">&amp;mut</span> [<span class="number">0</span>; <span class="macro-nonterminal">$</span><span class="macro-nonterminal">T::LENGTH</span>]))
+        <span class="kw">impl</span>&lt;$(<span class="macro-nonterminal">$a</span>),<span class="kw-2">*</span>&gt; fmt::LowerHex <span class="kw">for </span><span class="macro-nonterminal">$T</span>&lt;$(<span class="macro-nonterminal">$a</span>),<span class="kw-2">*</span>&gt; {
+            <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+                <span class="comment">// TODO: Self doesn&#39;t work https://github.com/rust-lang/rust/issues/52808
+                </span>f.write_str(<span class="self">self</span>.encode_lower(<span class="kw-2">&amp;mut </span>[<span class="number">0</span>; <span class="macro-nonterminal">$T::LENGTH</span>]))
             }
         }
 
-        <span class="macro">impl_adapter_from!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">T</span><span class="op">&lt;</span>$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">a</span>),<span class="kw-2">*</span><span class="op">&gt;</span>);
-    )<span class="op">+</span>}
+        <span class="kw">impl</span>&lt;$(<span class="macro-nonterminal">$a</span>),<span class="kw-2">*</span>&gt; fmt::UpperHex <span class="kw">for </span><span class="macro-nonterminal">$T</span>&lt;$(<span class="macro-nonterminal">$a</span>),<span class="kw-2">*</span>&gt; {
+            <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+                <span class="comment">// TODO: Self doesn&#39;t work https://github.com/rust-lang/rust/issues/52808
+                </span>f.write_str(<span class="self">self</span>.encode_upper(<span class="kw-2">&amp;mut </span>[<span class="number">0</span>; <span class="macro-nonterminal">$T::LENGTH</span>]))
+            }
+        }
+
+        <span class="macro">impl_adapter_from!</span>(<span class="macro-nonterminal">$T</span>&lt;$(<span class="macro-nonterminal">$a</span>),<span class="kw-2">*</span>&gt;);
+    )+}
 }
 
-<span class="macro">macro_rules!</span> <span class="ident">impl_adapter_from</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">T</span>:<span class="ident">ident</span><span class="op">&lt;</span><span class="op">&gt;</span>) =&gt; {
-        <span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">Uuid</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">T</span> {
-            <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">f</span>: <span class="ident">Uuid</span>) -&gt; <span class="self">Self</span> {
-                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">T::from_uuid</span>(<span class="ident">f</span>)
-            }
-        }
-    };
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">T</span>:<span class="ident">ident</span><span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">a</span>:<span class="ident">lifetime</span><span class="op">&gt;</span>) =&gt; {
-        <span class="kw">impl</span><span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">a</span> <span class="ident">Uuid</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">T</span><span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">a</span><span class="op">&gt;</span> {
-            <span class="attribute">#[<span class="ident">inline</span>]</span>
-            <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="macro-nonterminal">$</span><span class="macro-nonterminal">a</span> <span class="ident">Uuid</span>) -&gt; <span class="self">Self</span> {
-                <span class="macro-nonterminal">$</span><span class="macro-nonterminal">T::from_uuid_ref</span>(<span class="ident">f</span>)
+<span class="macro">macro_rules! </span>impl_adapter_from {
+    (<span class="macro-nonterminal">$T</span>:ident&lt;&gt;) =&gt; {
+        <span class="kw">impl </span>From&lt;Uuid&gt; <span class="kw">for </span><span class="macro-nonterminal">$T </span>{
+            <span class="attribute">#[inline]
+            </span><span class="kw">fn </span>from(f: Uuid) -&gt; <span class="self">Self </span>{
+                <span class="macro-nonterminal">$T::from_uuid</span>(f)
             }
         }
     };
+    (<span class="macro-nonterminal">$T</span>:ident&lt;<span class="macro-nonterminal">$a</span>:lifetime&gt;) =&gt; {
+        <span class="kw">impl</span>&lt;<span class="macro-nonterminal">$a</span>&gt; From&lt;<span class="kw-2">&amp;</span><span class="macro-nonterminal">$a </span>Uuid&gt; <span class="kw">for </span><span class="macro-nonterminal">$T</span>&lt;<span class="macro-nonterminal">$a</span>&gt; {
+            <span class="attribute">#[inline]
+            </span><span class="kw">fn </span>from(f: <span class="kw-2">&amp;</span><span class="macro-nonterminal">$a </span>Uuid) -&gt; <span class="self">Self </span>{
+                <span class="macro-nonterminal">$T::from_uuid_ref</span>(f)
+            }
+        }
+    };
 }
 
-<span class="macro">impl_adapter_traits!</span> {
-    <span class="ident">Hyphenated</span><span class="op">&lt;</span><span class="op">&gt;</span>,
-    <span class="ident">HyphenatedRef</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>,
-    <span class="ident">Simple</span><span class="op">&lt;</span><span class="op">&gt;</span>,
-    <span class="ident">SimpleRef</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>,
-    <span class="ident">Urn</span><span class="op">&lt;</span><span class="op">&gt;</span>,
-    <span class="ident">UrnRef</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>
+<span class="macro">impl_adapter_traits! </span>{
+    Hyphenated&lt;&gt;,
+    HyphenatedRef&lt;<span class="lifetime">&#39;a</span>&gt;,
+    Simple&lt;&gt;,
+    SimpleRef&lt;<span class="lifetime">&#39;a</span>&gt;,
+    Urn&lt;&gt;,
+    UrnRef&lt;<span class="lifetime">&#39;a</span>&gt;
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
-<span class="kw">mod</span> <span class="ident">tests</span> {
-    <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::prelude</span>::<span class="kw-2">*</span>;
+<span class="attribute">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use </span><span class="kw">crate</span>::prelude::<span class="kw-2">*</span>;
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">hyphenated_trailing</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> [<span class="string">b&#39;x&#39;</span>; <span class="number">100</span>];
-        <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">Uuid::nil</span>().<span class="ident">to_hyphenated</span>().<span class="ident">encode_lower</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buf</span>).<span class="ident">len</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">len</span>, <span class="ident"><span class="kw">super</span>::Hyphenated::LENGTH</span>);
-        <span class="macro">assert!</span>(<span class="ident">buf</span>[<span class="ident">len</span>..].<span class="ident">iter</span>().<span class="ident">all</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="kw-2">*</span><span class="ident">x</span> <span class="op">==</span> <span class="string">b&#39;x&#39;</span>));
-    }
-
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">hyphenated_ref_trailing</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> [<span class="string">b&#39;x&#39;</span>; <span class="number">100</span>];
-        <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">Uuid::nil</span>().<span class="ident">to_hyphenated</span>().<span class="ident">encode_lower</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buf</span>).<span class="ident">len</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">len</span>, <span class="ident"><span class="kw">super</span>::HyphenatedRef::LENGTH</span>);
-        <span class="macro">assert!</span>(<span class="ident">buf</span>[<span class="ident">len</span>..].<span class="ident">iter</span>().<span class="ident">all</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="kw-2">*</span><span class="ident">x</span> <span class="op">==</span> <span class="string">b&#39;x&#39;</span>));
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>hyphenated_trailing() {
+        <span class="kw">let </span><span class="kw-2">mut </span>buf = [<span class="string">b&#39;x&#39;</span>; <span class="number">100</span>];
+        <span class="kw">let </span>len = Uuid::nil().to_hyphenated().encode_lower(<span class="kw-2">&amp;mut </span>buf).len();
+        <span class="macro">assert_eq!</span>(len, <span class="kw">super</span>::Hyphenated::LENGTH);
+        <span class="macro">assert!</span>(buf[len..].iter().all(|x| <span class="kw-2">*</span>x == <span class="string">b&#39;x&#39;</span>));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">simple_trailing</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> [<span class="string">b&#39;x&#39;</span>; <span class="number">100</span>];
-        <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">Uuid::nil</span>().<span class="ident">to_simple</span>().<span class="ident">encode_lower</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buf</span>).<span class="ident">len</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">len</span>, <span class="ident"><span class="kw">super</span>::Simple::LENGTH</span>);
-        <span class="macro">assert!</span>(<span class="ident">buf</span>[<span class="ident">len</span>..].<span class="ident">iter</span>().<span class="ident">all</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="kw-2">*</span><span class="ident">x</span> <span class="op">==</span> <span class="string">b&#39;x&#39;</span>));
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>hyphenated_ref_trailing() {
+        <span class="kw">let </span><span class="kw-2">mut </span>buf = [<span class="string">b&#39;x&#39;</span>; <span class="number">100</span>];
+        <span class="kw">let </span>len = Uuid::nil().to_hyphenated().encode_lower(<span class="kw-2">&amp;mut </span>buf).len();
+        <span class="macro">assert_eq!</span>(len, <span class="kw">super</span>::HyphenatedRef::LENGTH);
+        <span class="macro">assert!</span>(buf[len..].iter().all(|x| <span class="kw-2">*</span>x == <span class="string">b&#39;x&#39;</span>));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">simple_ref_trailing</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> [<span class="string">b&#39;x&#39;</span>; <span class="number">100</span>];
-        <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">Uuid::nil</span>().<span class="ident">to_simple</span>().<span class="ident">encode_lower</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buf</span>).<span class="ident">len</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">len</span>, <span class="ident"><span class="kw">super</span>::SimpleRef::LENGTH</span>);
-        <span class="macro">assert!</span>(<span class="ident">buf</span>[<span class="ident">len</span>..].<span class="ident">iter</span>().<span class="ident">all</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="kw-2">*</span><span class="ident">x</span> <span class="op">==</span> <span class="string">b&#39;x&#39;</span>));
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>simple_trailing() {
+        <span class="kw">let </span><span class="kw-2">mut </span>buf = [<span class="string">b&#39;x&#39;</span>; <span class="number">100</span>];
+        <span class="kw">let </span>len = Uuid::nil().to_simple().encode_lower(<span class="kw-2">&amp;mut </span>buf).len();
+        <span class="macro">assert_eq!</span>(len, <span class="kw">super</span>::Simple::LENGTH);
+        <span class="macro">assert!</span>(buf[len..].iter().all(|x| <span class="kw-2">*</span>x == <span class="string">b&#39;x&#39;</span>));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">urn_trailing</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> [<span class="string">b&#39;x&#39;</span>; <span class="number">100</span>];
-        <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">Uuid::nil</span>().<span class="ident">to_urn</span>().<span class="ident">encode_lower</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buf</span>).<span class="ident">len</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">len</span>, <span class="ident"><span class="kw">super</span>::Urn::LENGTH</span>);
-        <span class="macro">assert!</span>(<span class="ident">buf</span>[<span class="ident">len</span>..].<span class="ident">iter</span>().<span class="ident">all</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="kw-2">*</span><span class="ident">x</span> <span class="op">==</span> <span class="string">b&#39;x&#39;</span>));
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>simple_ref_trailing() {
+        <span class="kw">let </span><span class="kw-2">mut </span>buf = [<span class="string">b&#39;x&#39;</span>; <span class="number">100</span>];
+        <span class="kw">let </span>len = Uuid::nil().to_simple().encode_lower(<span class="kw-2">&amp;mut </span>buf).len();
+        <span class="macro">assert_eq!</span>(len, <span class="kw">super</span>::SimpleRef::LENGTH);
+        <span class="macro">assert!</span>(buf[len..].iter().all(|x| <span class="kw-2">*</span>x == <span class="string">b&#39;x&#39;</span>));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="kw">fn</span> <span class="ident">urn_ref_trailing</span>() {
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> [<span class="string">b&#39;x&#39;</span>; <span class="number">100</span>];
-        <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">Uuid::nil</span>().<span class="ident">to_urn</span>().<span class="ident">encode_lower</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buf</span>).<span class="ident">len</span>();
-        <span class="macro">assert_eq!</span>(<span class="ident">len</span>, <span class="ident"><span class="kw">super</span>::UrnRef::LENGTH</span>);
-        <span class="macro">assert!</span>(<span class="ident">buf</span>[<span class="ident">len</span>..].<span class="ident">iter</span>().<span class="ident">all</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="kw-2">*</span><span class="ident">x</span> <span class="op">==</span> <span class="string">b&#39;x&#39;</span>));
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>urn_trailing() {
+        <span class="kw">let </span><span class="kw-2">mut </span>buf = [<span class="string">b&#39;x&#39;</span>; <span class="number">100</span>];
+        <span class="kw">let </span>len = Uuid::nil().to_urn().encode_lower(<span class="kw-2">&amp;mut </span>buf).len();
+        <span class="macro">assert_eq!</span>(len, <span class="kw">super</span>::Urn::LENGTH);
+        <span class="macro">assert!</span>(buf[len..].iter().all(|x| <span class="kw-2">*</span>x == <span class="string">b&#39;x&#39;</span>));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="attribute">#[<span class="ident">should_panic</span>]</span>
-    <span class="kw">fn</span> <span class="ident">hyphenated_too_small</span>() {
-        <span class="ident">Uuid::nil</span>().<span class="ident">to_hyphenated</span>().<span class="ident">encode_lower</span>(<span class="kw-2">&amp;mut</span> [<span class="number">0</span>; <span class="number">35</span>]);
+    <span class="attribute">#[test]
+    </span><span class="kw">fn </span>urn_ref_trailing() {
+        <span class="kw">let </span><span class="kw-2">mut </span>buf = [<span class="string">b&#39;x&#39;</span>; <span class="number">100</span>];
+        <span class="kw">let </span>len = Uuid::nil().to_urn().encode_lower(<span class="kw-2">&amp;mut </span>buf).len();
+        <span class="macro">assert_eq!</span>(len, <span class="kw">super</span>::UrnRef::LENGTH);
+        <span class="macro">assert!</span>(buf[len..].iter().all(|x| <span class="kw-2">*</span>x == <span class="string">b&#39;x&#39;</span>));
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="attribute">#[<span class="ident">should_panic</span>]</span>
-    <span class="kw">fn</span> <span class="ident">hyphenated_ref_too_small</span>() {
-        <span class="ident">Uuid::nil</span>().<span class="ident">to_hyphenated_ref</span>().<span class="ident">encode_lower</span>(<span class="kw-2">&amp;mut</span> [<span class="number">0</span>; <span class="number">35</span>]);
+    <span class="attribute">#[test]
+    #[should_panic]
+    </span><span class="kw">fn </span>hyphenated_too_small() {
+        Uuid::nil().to_hyphenated().encode_lower(<span class="kw-2">&amp;mut </span>[<span class="number">0</span>; <span class="number">35</span>]);
     }
 
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="attribute">#[<span class="ident">should_panic</span>]</span>
-    <span class="kw">fn</span> <span class="ident">simple_too_small</span>() {
-        <span class="ident">Uuid::nil</span>().<span class="ident">to_simple</span>().<span class="ident">encode_lower</span>(<span class="kw-2">&amp;mut</span> [<span class="number">0</span>; <span class="number">31</span>]);
+    <span class="attribute">#[test]
+    #[should_panic]
+    </span><span class="kw">fn </span>hyphenated_ref_too_small() {
+        Uuid::nil().to_hyphenated_ref().encode_lower(<span class="kw-2">&amp;mut </span>[<span class="number">0</span>; <span class="number">35</span>]);
     }
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="attribute">#[<span class="ident">should_panic</span>]</span>
-    <span class="kw">fn</span> <span class="ident">simple_ref_too_small</span>() {
-        <span class="ident">Uuid::nil</span>().<span class="ident">to_simple_ref</span>().<span class="ident">encode_lower</span>(<span class="kw-2">&amp;mut</span> [<span class="number">0</span>; <span class="number">31</span>]);
+
+    <span class="attribute">#[test]
+    #[should_panic]
+    </span><span class="kw">fn </span>simple_too_small() {
+        Uuid::nil().to_simple().encode_lower(<span class="kw-2">&amp;mut </span>[<span class="number">0</span>; <span class="number">31</span>]);
     }
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="attribute">#[<span class="ident">should_panic</span>]</span>
-    <span class="kw">fn</span> <span class="ident">urn_too_small</span>() {
-        <span class="ident">Uuid::nil</span>().<span class="ident">to_urn</span>().<span class="ident">encode_lower</span>(<span class="kw-2">&amp;mut</span> [<span class="number">0</span>; <span class="number">44</span>]);
+    <span class="attribute">#[test]
+    #[should_panic]
+    </span><span class="kw">fn </span>simple_ref_too_small() {
+        Uuid::nil().to_simple_ref().encode_lower(<span class="kw-2">&amp;mut </span>[<span class="number">0</span>; <span class="number">31</span>]);
     }
-    <span class="attribute">#[<span class="ident">test</span>]</span>
-    <span class="attribute">#[<span class="ident">should_panic</span>]</span>
-    <span class="kw">fn</span> <span class="ident">urn_ref_too_small</span>() {
-        <span class="ident">Uuid::nil</span>().<span class="ident">to_urn_ref</span>().<span class="ident">encode_lower</span>(<span class="kw-2">&amp;mut</span> [<span class="number">0</span>; <span class="number">44</span>]);
+    <span class="attribute">#[test]
+    #[should_panic]
+    </span><span class="kw">fn </span>urn_too_small() {
+        Uuid::nil().to_urn().encode_lower(<span class="kw-2">&amp;mut </span>[<span class="number">0</span>; <span class="number">44</span>]);
+    }
+    <span class="attribute">#[test]
+    #[should_panic]
+    </span><span class="kw">fn </span>urn_ref_too_small() {
+        Uuid::nil().to_urn_ref().encode_lower(<span class="kw-2">&amp;mut </span>[<span class="number">0</span>; <span class="number">44</span>]);
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="uuid" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="uuid" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

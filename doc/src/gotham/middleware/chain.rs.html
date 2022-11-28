@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/middleware/chain.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>chain.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/gotham-0.7.1/src/middleware/chain.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>chain.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" href="../../../normalize.css"><link rel="stylesheet" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" href="../../../ayu.css" disabled><link rel="stylesheet" href="../../../dark.css" disabled><link rel="stylesheet" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../main.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a><h2 class="location"></h2></nav><nav class="sidebar"><a class="sidebar-logo" href="../../../gotham/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></div></a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../gotham/index.html"><img class="rust-logo" src="../../../rust-logo.svg" alt="logo"></a><nav class="sub"><form class="search-form"><div class="search-container"><span></span><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><button type="button">?</button></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../wheel.svg"></a></div></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
 <span id="4">4</span>
@@ -107,114 +107,114 @@
 <span id="107">107</span>
 <span id="108">108</span>
 <span id="109">109</span>
-</pre><pre class="rust"><code><span class="doccomment">//! Defines the types for connecting multiple middleware into a &quot;chain&quot; when forming a pipeline.</span>
+</pre><pre class="rust"><code><span class="doccomment">//! Defines the types for connecting multiple middleware into a &quot;chain&quot; when forming a pipeline.
 
-<span class="kw">use</span> <span class="ident">log::trace</span>;
+</span><span class="kw">use </span>log::trace;
 
-<span class="kw">use</span> <span class="ident">std::panic::RefUnwindSafe</span>;
-<span class="kw">use</span> <span class="ident">std::pin::Pin</span>;
+<span class="kw">use </span>std::panic::RefUnwindSafe;
+<span class="kw">use </span>std::pin::Pin;
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::handler::HandlerFuture</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::middleware</span>::{<span class="ident">Middleware</span>, <span class="ident">NewMiddleware</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::state</span>::{<span class="ident">request_id</span>, <span class="ident">State</span>};
+<span class="kw">use </span><span class="kw">crate</span>::handler::HandlerFuture;
+<span class="kw">use </span><span class="kw">crate</span>::middleware::{Middleware, NewMiddleware};
+<span class="kw">use </span><span class="kw">crate</span>::state::{request_id, State};
 
-<span class="doccomment">/// A recursive type representing a pipeline, which is used to spawn a `MiddlewareChain`.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// This type should never be implemented outside of Gotham, does not form part of the public API,</span>
-<span class="doccomment">/// and is subject to change without notice.</span>
-<span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-<span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">trait</span> <span class="ident">NewMiddlewareChain</span>: <span class="ident">RefUnwindSafe</span> <span class="op">+</span> <span class="ident">Sized</span> {
-    <span class="kw">type</span> <span class="ident">Instance</span>: <span class="ident">MiddlewareChain</span>;
+<span class="doccomment">/// A recursive type representing a pipeline, which is used to spawn a `MiddlewareChain`.
+///
+/// This type should never be implemented outside of Gotham, does not form part of the public API,
+/// and is subject to change without notice.
+</span><span class="attribute">#[doc(hidden)]
+</span><span class="kw">pub unsafe trait </span>NewMiddlewareChain: RefUnwindSafe + Sized {
+    <span class="kw">type </span>Instance: MiddlewareChain;
 
-    <span class="doccomment">/// Create and return a new `MiddlewareChain` value.</span>
-    <span class="kw">fn</span> <span class="ident">construct</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">anyhow::Result</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Instance</span><span class="op">&gt;</span>;
+    <span class="doccomment">/// Create and return a new `MiddlewareChain` value.
+    </span><span class="kw">fn </span>construct(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; anyhow::Result&lt;<span class="self">Self</span>::Instance&gt;;
 }
 
-<span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">U</span><span class="op">&gt;</span> <span class="ident">NewMiddlewareChain</span> <span class="kw">for</span> (<span class="ident">T</span>, <span class="ident">U</span>)
-<span class="kw">where</span>
-    <span class="ident">T</span>: <span class="ident">NewMiddleware</span>,
-    <span class="ident">T::Instance</span>: <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">U</span>: <span class="ident">NewMiddlewareChain</span>,
+<span class="kw">unsafe impl</span>&lt;T, U&gt; NewMiddlewareChain <span class="kw">for </span>(T, U)
+<span class="kw">where
+    </span>T: NewMiddleware,
+    T::Instance: Send + <span class="lifetime">&#39;static</span>,
+    U: NewMiddlewareChain,
 {
-    <span class="kw">type</span> <span class="ident">Instance</span> <span class="op">=</span> (<span class="ident">T::Instance</span>, <span class="ident">U::Instance</span>);
+    <span class="kw">type </span>Instance = (T::Instance, U::Instance);
 
-    <span class="kw">fn</span> <span class="ident">construct</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">anyhow::Result</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Instance</span><span class="op">&gt;</span> {
-        <span class="comment">// This works as a recursive `map` over the &quot;list&quot; of `NewMiddleware`, and is used in</span>
-        <span class="comment">// creating the `Middleware` instances for serving a single request.</span>
-        <span class="comment">//</span>
-        <span class="comment">// The reversed order is preserved in the return value.</span>
-        <span class="macro">trace!</span>(<span class="string">&quot; adding middleware instance to pipeline&quot;</span>);
-        <span class="kw">let</span> (<span class="kw-2">ref</span> <span class="ident">nm</span>, <span class="kw-2">ref</span> <span class="ident">tail</span>) <span class="op">=</span> <span class="kw-2">*</span><span class="self">self</span>;
-        <span class="prelude-val">Ok</span>((<span class="ident">nm</span>.<span class="ident">new_middleware</span>()<span class="question-mark">?</span>, <span class="ident">tail</span>.<span class="ident">construct</span>()<span class="question-mark">?</span>))
+    <span class="kw">fn </span>construct(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; anyhow::Result&lt;<span class="self">Self</span>::Instance&gt; {
+        <span class="comment">// This works as a recursive `map` over the &quot;list&quot; of `NewMiddleware`, and is used in
+        // creating the `Middleware` instances for serving a single request.
+        //
+        // The reversed order is preserved in the return value.
+        </span><span class="macro">trace!</span>(<span class="string">&quot; adding middleware instance to pipeline&quot;</span>);
+        <span class="kw">let </span>(<span class="kw-2">ref </span>nm, <span class="kw-2">ref </span>tail) = <span class="kw-2">*</span><span class="self">self</span>;
+        <span class="prelude-val">Ok</span>((nm.new_middleware()<span class="question-mark">?</span>, tail.construct()<span class="question-mark">?</span>))
     }
 }
 
-<span class="kw">unsafe</span> <span class="kw">impl</span> <span class="ident">NewMiddlewareChain</span> <span class="kw">for</span> () {
-    <span class="kw">type</span> <span class="ident">Instance</span> <span class="op">=</span> ();
+<span class="kw">unsafe impl </span>NewMiddlewareChain <span class="kw">for </span>() {
+    <span class="kw">type </span>Instance = ();
 
-    <span class="kw">fn</span> <span class="ident">construct</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">anyhow::Result</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Instance</span><span class="op">&gt;</span> {
-        <span class="comment">// () marks the end of the list, so is returned as-is.</span>
-        <span class="macro">trace!</span>(<span class="string">&quot; completed middleware pipeline construction&quot;</span>);
+    <span class="kw">fn </span>construct(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; anyhow::Result&lt;<span class="self">Self</span>::Instance&gt; {
+        <span class="comment">// () marks the end of the list, so is returned as-is.
+        </span><span class="macro">trace!</span>(<span class="string">&quot; completed middleware pipeline construction&quot;</span>);
         <span class="prelude-val">Ok</span>(())
     }
 }
 
-<span class="doccomment">/// A recursive type representing an instance of a pipeline, which is used to process a single</span>
-<span class="doccomment">/// request.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// This type should never be implemented outside of Gotham, does not form part of the public API,</span>
-<span class="doccomment">/// and is subject to change without notice.</span>
-<span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
-<span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">trait</span> <span class="ident">MiddlewareChain</span>: <span class="ident">Sized</span> {
-    <span class="doccomment">/// Recursive function for processing middleware and chaining to the given function.</span>
-    <span class="kw">fn</span> <span class="ident">call</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">state</span>: <span class="ident">State</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>;
+<span class="doccomment">/// A recursive type representing an instance of a pipeline, which is used to process a single
+/// request.
+///
+/// This type should never be implemented outside of Gotham, does not form part of the public API,
+/// and is subject to change without notice.
+</span><span class="attribute">#[doc(hidden)]
+</span><span class="kw">pub unsafe trait </span>MiddlewareChain: Sized {
+    <span class="doccomment">/// Recursive function for processing middleware and chaining to the given function.
+    </span><span class="kw">fn </span>call&lt;F&gt;(<span class="self">self</span>, state: State, f: F) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+    <span class="kw">where
+        </span>F: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + <span class="lifetime">&#39;static</span>;
 }
 
-<span class="kw">unsafe</span> <span class="kw">impl</span> <span class="ident">MiddlewareChain</span> <span class="kw">for</span> () {
-    <span class="kw">fn</span> <span class="ident">call</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">state</span>: <span class="ident">State</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+<span class="kw">unsafe impl </span>MiddlewareChain <span class="kw">for </span>() {
+    <span class="kw">fn </span>call&lt;F&gt;(<span class="self">self</span>, state: State, f: F) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+    <span class="kw">where
+        </span>F: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + <span class="lifetime">&#39;static</span>,
     {
-        <span class="comment">// At the last item in the `MiddlewareChain`, the function is invoked to serve the</span>
-        <span class="comment">// request. `f` is the nested function of all `Middleware` and the `Handler`.</span>
-        <span class="comment">//</span>
-        <span class="comment">// In the case of 0 middleware, `f` is the function created in `MiddlewareChain::call`</span>
-        <span class="comment">// which invokes the `Handler` directly.</span>
-        <span class="macro">trace!</span>(<span class="string">&quot;pipeline complete, invoking handler&quot;</span>);
-        <span class="ident">f</span>(<span class="ident">state</span>)
+        <span class="comment">// At the last item in the `MiddlewareChain`, the function is invoked to serve the
+        // request. `f` is the nested function of all `Middleware` and the `Handler`.
+        //
+        // In the case of 0 middleware, `f` is the function created in `MiddlewareChain::call`
+        // which invokes the `Handler` directly.
+        </span><span class="macro">trace!</span>(<span class="string">&quot;pipeline complete, invoking handler&quot;</span>);
+        f(state)
     }
 }
 
-<span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">U</span><span class="op">&gt;</span> <span class="ident">MiddlewareChain</span> <span class="kw">for</span> (<span class="ident">T</span>, <span class="ident">U</span>)
-<span class="kw">where</span>
-    <span class="ident">T</span>: <span class="ident">Middleware</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
-    <span class="ident">U</span>: <span class="ident">MiddlewareChain</span>,
+<span class="kw">unsafe impl</span>&lt;T, U&gt; MiddlewareChain <span class="kw">for </span>(T, U)
+<span class="kw">where
+    </span>T: Middleware + Send + <span class="lifetime">&#39;static</span>,
+    U: MiddlewareChain,
 {
-    <span class="kw">fn</span> <span class="ident">call</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">state</span>: <span class="ident">State</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span>
-    <span class="kw">where</span>
-        <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="ident">State</span>) -&gt; <span class="ident">Pin</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">HandlerFuture</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
+    <span class="kw">fn </span>call&lt;F&gt;(<span class="self">self</span>, state: State, f: F) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
+    <span class="kw">where
+        </span>F: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + <span class="lifetime">&#39;static</span>,
     {
-        <span class="kw">let</span> (<span class="ident">m</span>, <span class="ident">p</span>) <span class="op">=</span> <span class="self">self</span>;
-        <span class="comment">// Construct the function from the inside, out. Starting with a function which calls the</span>
-        <span class="comment">// `Handler`, and then creating a new function which calls the `Middleware` with the</span>
-        <span class="comment">// previous function as the `chain` argument, we end up with a structure somewhat like</span>
-        <span class="comment">// this (using `m0`, `m1`, `m2` as middleware names, where `m2` is the last middleware</span>
-        <span class="comment">// before the `Handler`):</span>
-        <span class="comment">//</span>
-        <span class="comment">//  move |state| {</span>
-        <span class="comment">//      m0.call(state, move |state| {</span>
-        <span class="comment">//          m1.call(state, move |state| {</span>
-        <span class="comment">//              m2.call(state, move |state| handler.call(state))</span>
-        <span class="comment">//          })</span>
-        <span class="comment">//      })</span>
-        <span class="comment">//  }</span>
-        <span class="comment">//</span>
-        <span class="comment">// The resulting function is called by `&lt;() as MiddlewareChain&gt;::call`</span>
-        <span class="macro">trace!</span>(<span class="string">&quot;[{}] executing middleware&quot;</span>, <span class="ident">request_id</span>(<span class="kw-2">&amp;</span><span class="ident">state</span>));
-        <span class="ident">p</span>.<span class="ident">call</span>(<span class="ident">state</span>, <span class="kw">move</span> <span class="op">|</span><span class="ident">state</span><span class="op">|</span> <span class="ident">m</span>.<span class="ident">call</span>(<span class="ident">state</span>, <span class="ident">f</span>))
+        <span class="kw">let </span>(m, p) = <span class="self">self</span>;
+        <span class="comment">// Construct the function from the inside, out. Starting with a function which calls the
+        // `Handler`, and then creating a new function which calls the `Middleware` with the
+        // previous function as the `chain` argument, we end up with a structure somewhat like
+        // this (using `m0`, `m1`, `m2` as middleware names, where `m2` is the last middleware
+        // before the `Handler`):
+        //
+        //  move |state| {
+        //      m0.call(state, move |state| {
+        //          m1.call(state, move |state| {
+        //              m2.call(state, move |state| handler.call(state))
+        //          })
+        //      })
+        //  }
+        //
+        // The resulting function is called by `&lt;() as MiddlewareChain&gt;::call`
+        </span><span class="macro">trace!</span>(<span class="string">&quot;[{}] executing middleware&quot;</span>, request_id(<span class="kw-2">&amp;</span>state));
+        p.call(state, <span class="kw">move </span>|state| m.call(state, f))
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.64.0 (a55dd71d5 2022-09-19)" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="gotham" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

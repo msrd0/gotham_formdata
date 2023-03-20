@@ -3,9 +3,9 @@ use proc_macro2::{Span, TokenStream};
 use std::iter;
 use syn::{
 	AngleBracketedGenericArguments, BoundLifetimes, Data, DeriveInput, Error, Fields,
-	GenericArgument, Lifetime, LifetimeDef, PathArguments, PredicateType, Result,
+	GenericArgument, Lifetime, PathArguments, PredicateType, Result,
 	TraitBound, TraitBoundModifier, Type, TypeParamBound, TypePath, WhereClause,
-	WherePredicate
+	WherePredicate, LifetimeParam, GenericParam
 };
 use syn_path::path;
 
@@ -135,12 +135,12 @@ fn where_predicate_value_parse_t(t: Type) -> WherePredicate {
 		lifetimes: Some(BoundLifetimes {
 			for_token: Default::default(),
 			lt_token: Default::default(),
-			lifetimes: iter::once(LifetimeDef {
+			lifetimes: iter::once(GenericParam::Lifetime(LifetimeParam {
 				attrs: Vec::new(),
 				lifetime: lt.clone(),
 				colon_token: None,
 				bounds: Default::default()
-			})
+			}))
 			.collect(),
 			gt_token: Default::default()
 		}),

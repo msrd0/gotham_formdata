@@ -3,9 +3,9 @@ use proc_macro2::{Span, TokenStream};
 use std::iter;
 use syn::{
 	AngleBracketedGenericArguments, BoundLifetimes, Data, DeriveInput, Error, Fields,
-	GenericArgument, Lifetime, PathArguments, PredicateType, Result,
-	TraitBound, TraitBoundModifier, Type, TypeParamBound, TypePath, WhereClause,
-	WherePredicate, LifetimeParam, GenericParam
+	GenericArgument, GenericParam, Lifetime, LifetimeParam, PathArguments, PredicateType,
+	Result, TraitBound, TraitBoundModifier, Type, TypeParamBound, TypePath, WhereClause,
+	WherePredicate
 };
 use syn_path::path;
 

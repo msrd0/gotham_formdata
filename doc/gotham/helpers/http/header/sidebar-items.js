@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":[["X_REQUEST_ID","Marks the identifier of a request to a Gotham server."],["X_RUNTIME_DURATION","Marks the execution time of a Gotham request."]]};
+window.SIDEBAR_ITEMS = {"constant":["X_REQUEST_ID","X_RUNTIME_DURATION"]};

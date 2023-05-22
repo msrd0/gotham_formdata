@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":[["BytesOrString","Either a stream of bytes or a string."]],"struct":[["Mime","A parsed mime or media type."],["Value","A value, either a string parsed from and urlencoded form, or bytes from a multipart body."]],"type":[["ByteStream","A stream of bytes."]]};
+window.SIDEBAR_ITEMS = {"enum":["BytesOrString"],"struct":["Mime","Value"],"type":["ByteStream"]};

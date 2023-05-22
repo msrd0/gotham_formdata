@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":[["init_server","Returns a `Future` used to spawn an Gotham application."],["start","Starts a Gotham application on plain, unsecured HTTP."],["start_with_num_threads","Starts a Gotham application with a designated number of threads."]]};
+window.SIDEBAR_ITEMS = {"fn":["init_server","start","start_with_num_threads"]};

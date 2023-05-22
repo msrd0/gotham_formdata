@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":[["SecurityMiddleware","Middleware binding for the Gotham security handlers."]]};
+window.SIDEBAR_ITEMS = {"struct":["SecurityMiddleware"]};

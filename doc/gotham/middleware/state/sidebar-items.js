@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":[["StateMiddleware","Middleware binding for generic types to enable easy shared state."]]};
+window.SIDEBAR_ITEMS = {"struct":["StateMiddleware"]};

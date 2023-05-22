@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":[["path","Defines helper functions for processing the request path"],["query_string","Defines helper functions for the Request query string"]]};
+window.SIDEBAR_ITEMS = {"mod":["path","query_string"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"derive":[["FormData","This derive macro implements `FormData` for the struct it is invoked on. Enums, unions and tuple structs are not supported."]]};
+window.SIDEBAR_ITEMS = {"derive":["FormData"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":[["DispatcherImpl","Default implementation of the `Dispatcher` trait."]],"trait":[["Dispatcher","Used by `Router` to dispatch requests via pipelines and finally into the configured `Handler`."]]};
+window.SIDEBAR_ITEMS = {"struct":["DispatcherImpl"],"trait":["Dispatcher"]};

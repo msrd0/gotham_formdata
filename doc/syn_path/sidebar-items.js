@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"macro":[["path","A simple macro that can take paths of the form `my_crate::my_mod::FooBar` and `::my_crate::my_mod::FooBar` and turn them into a `syn::Path`."]]};
+window.SIDEBAR_ITEMS = {"macro":["path"]};

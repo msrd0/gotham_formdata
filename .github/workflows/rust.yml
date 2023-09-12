@@ -9,7 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: dtolnay/rust-toolchain@1.65.0
+
+      - uses: dtolnay/rust-toolchain@nightly
+      - run: cargo -Z minimal-versions update
+      - run: cargo update -p lazy_static
+
+      - uses: dtolnay/rust-toolchain@1.60.0
         id: rust-toolchain
       
       - uses: actions/cache@v3
@@ -17,9 +22,9 @@ jobs:
           path: |
             ~/.cargo
             target
-          key: ${{ runner.os }}-cargo-${{steps.rust-toolchain.outputs.cachekey}}
+          key: ${{runner.os}}-cargo-${{steps.rust-toolchain.outputs.cachekey}}
       
-      - run: cargo test -- --skip trybuild_ui
+      - run: cargo test --locked -- --skip trybuild_ui
         env:
           RUST_BACKTRACE: 1
           RUST_LOG: info
@@ -28,7 +33,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: dtolnay/rust-toolchain@1.65.0
+
+      - uses: dtolnay/rust-toolchain@nightly
+      - run: cargo -Z minimal-versions update
+      - run: cargo update -p lazy_static
+
+      - uses: dtolnay/rust-toolchain@1.60.0
         id: rust-toolchain
       
       - uses: actions/cache@v3
@@ -38,7 +48,7 @@ jobs:
             target
           key: ${{ runner.os }}-cargo-${{steps.rust-toolchain.outputs.cachekey}}
       
-      - run: cargo test --no-default-features --lib --tests -- --skip trybuild_ui
+      - run: cargo test --locked --no-default-features --lib --tests -- --skip trybuild_ui
         env:
           RUST_BACKTRACE: 1
           RUST_LOG: info
@@ -50,7 +60,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@master
         id: rust-toolchain
         with:
-          toolchain: "1.69"
+          toolchain: "1.72"
       
       - uses: actions/cache@v3
         with:

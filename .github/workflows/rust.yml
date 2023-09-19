@@ -100,7 +100,7 @@ jobs:
       
       - name: Run Tarpaulin coverage tests
         run: |
-          cargo tarpaulin -v \
+          cargo tarpaulin --verbose \
           	--target-dir target/tarpaulin \
           	--workspace \
           	--all-features \

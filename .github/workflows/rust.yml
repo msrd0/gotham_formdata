@@ -108,7 +108,7 @@ jobs:
           	--exclude-files 'derive/*' \
           	--exclude-files 'target/*' \
           	--ignore-panics --ignore-tests \
-          	--out Html --out Json \
+          	--out html --out json \
           	-- --skip trybuild_ui
         env:
           RUST_BACKTRACE: 1

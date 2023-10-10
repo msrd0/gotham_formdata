@@ -1,4 +1,4 @@
-var sourcesIndex = JSON.parse('{\
+var srcIndex = JSON.parse('{\
 "aho_corasick":["",[["nfa",[],["contiguous.rs","mod.rs","noncontiguous.rs"]],["packed",[["teddy",[],["builder.rs","generic.rs","mod.rs"]]],["api.rs","ext.rs","mod.rs","pattern.rs","rabinkarp.rs","vector.rs"]],["util",[],["alphabet.rs","buffer.rs","byte_frequencies.rs","debug.rs","error.rs","int.rs","mod.rs","prefilter.rs","primitives.rs","remapper.rs","search.rs","special.rs"]]],["ahocorasick.rs","automaton.rs","dfa.rs","lib.rs","macros.rs"]],\
 "anyhow":["",[],["backtrace.rs","chain.rs","context.rs","ensure.rs","error.rs","fmt.rs","kind.rs","lib.rs","macros.rs","ptr.rs","wrapper.rs"]],\
 "base64":["",[["engine",[["general_purpose",[],["decode.rs","decode_suffix.rs","mod.rs"]]],["mod.rs"]],["read",[],["decoder.rs","mod.rs"]],["write",[],["encoder.rs","encoder_string_writer.rs","mod.rs"]]],["alphabet.rs","chunked_encoder.rs","decode.rs","display.rs","encode.rs","lib.rs","prelude.rs"]],\
@@ -61,7 +61,7 @@ var sourcesIndex = JSON.parse('{\
 "syn_path":["",[],["lib.rs"]],\
 "thiserror":["",[],["aserror.rs","display.rs","lib.rs"]],\
 "thiserror_impl":["",[],["ast.rs","attr.rs","expand.rs","fmt.rs","generics.rs","lib.rs","prop.rs","valid.rs"]],\
-"time":["",[["error",[],["component_range.rs","conversion_range.rs","different_variant.rs","format.rs","invalid_format_description.rs","invalid_variant.rs","mod.rs"]],["format_description",[["parse",[],["ast.rs","format_item.rs","lexer.rs","mod.rs"]],["well_known",[["iso8601",[],["adt_hack.rs"]]],["iso8601.rs","rfc2822.rs","rfc3339.rs"]]],["borrowed_format_item.rs","component.rs","mod.rs","modifier.rs","owned_format_item.rs"]],["formatting",[],["formattable.rs","iso8601.rs","mod.rs"]],["sys",[],["mod.rs"]]],["date.rs","date_time.rs","duration.rs","ext.rs","instant.rs","lib.rs","macros.rs","month.rs","offset_date_time.rs","primitive_date_time.rs","time.rs","utc_offset.rs","util.rs","weekday.rs"]],\
+"time":["",[["error",[],["component_range.rs","conversion_range.rs","different_variant.rs","format.rs","invalid_format_description.rs","invalid_variant.rs","mod.rs"]],["format_description",[["parse",[],["ast.rs","format_item.rs","lexer.rs","mod.rs"]],["well_known",[["iso8601",[],["adt_hack.rs"]]],["iso8601.rs","rfc2822.rs","rfc3339.rs"]]],["borrowed_format_item.rs","component.rs","mod.rs","modifier.rs","owned_format_item.rs"]],["formatting",[],["formattable.rs","iso8601.rs","mod.rs"]],["sys",[],["mod.rs"]]],["date.rs","date_time.rs","duration.rs","ext.rs","instant.rs","internal_macros.rs","lib.rs","macros.rs","month.rs","offset_date_time.rs","primitive_date_time.rs","time.rs","utc_offset.rs","util.rs","weekday.rs"]],\
 "time_core":["",[],["convert.rs","lib.rs","util.rs"]],\
 "tinyvec":["",[["array",[],["generated_impl.rs"]]],["array.rs","arrayvec.rs","arrayvec_drain.rs","lib.rs","slicevec.rs","tinyvec.rs"]],\
 "tinyvec_macros":["",[],["lib.rs"]],\
@@ -79,4 +79,4 @@ var sourcesIndex = JSON.parse('{\
 "validator":["",[["validation",[],["contains.rs","does_not_contain.rs","email.rs","ip.rs","length.rs","mod.rs","must_match.rs","range.rs","required.rs","urls.rs"]]],["display_impl.rs","lib.rs","traits.rs","types.rs"]],\
 "want":["",[],["lib.rs"]]\
 }');
-createSourceSidebar();
+createSrcSidebar();

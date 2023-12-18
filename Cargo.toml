@@ -25,7 +25,7 @@ gotham = { version = "0.7.2", default-features = false }
 gotham_formdata_derive = { version = "0.0.7", path = "derive/" }
 log = "0.4"
 mime = "0.3.16"
-multer = "2.0"
+multer = "3.0"
 paste = "1.0"
 serde = "1.0"
 thiserror = "1.0"

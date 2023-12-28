@@ -14,7 +14,7 @@ jobs:
       - run: cargo -Z minimal-versions update
       - run: cargo update -p lazy_static
 
-      - uses: dtolnay/rust-toolchain@1.60.0
+      - uses: dtolnay/rust-toolchain@1.63.0
         id: rust-toolchain
       
       - uses: actions/cache@v3
@@ -38,7 +38,7 @@ jobs:
       - run: cargo -Z minimal-versions update
       - run: cargo update -p lazy_static
 
-      - uses: dtolnay/rust-toolchain@1.60.0
+      - uses: dtolnay/rust-toolchain@1.63.0
         id: rust-toolchain
       
       - uses: actions/cache@v3

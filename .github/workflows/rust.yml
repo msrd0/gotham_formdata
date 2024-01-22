@@ -17,7 +17,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@1.63.0
         id: rust-toolchain
       
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         with:
           path: |
             ~/.cargo
@@ -41,7 +41,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@1.63.0
         id: rust-toolchain
       
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         with:
           path: |
             ~/.cargo
@@ -62,7 +62,7 @@ jobs:
         with:
           toolchain: "1.72"
       
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         with:
           path: |
             ~/.cargo
@@ -85,7 +85,7 @@ jobs:
         id: tarpaulin-version
         run: echo "::set-output name=VERSION::$(wget -qO- 'https://api.github.com/repos/xd009642/tarpaulin/releases/latest' | jq -r '.tag_name')"
       
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         with:
           path: |
             ~/.cargo
@@ -127,7 +127,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
       
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         with:
           path: |
             ~/.cargo

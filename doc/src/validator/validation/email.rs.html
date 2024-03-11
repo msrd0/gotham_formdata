@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/validator-0.16.1/src/validation/email.rs`."><title>email.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-9ee3a5e31a2afa3e.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="validator" data-themes="" data-resource-suffix="" data-rustdoc-version="1.75.0 (82e1608df 2023-12-21)" data-channel="1.75.0" data-search-js="search-8fbf244ebcf71464.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-9dd44ab47b99a0fb.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/validator-0.17.0/src/validation/email.rs`."><title>email.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-ac92e1bbe349e143.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="validator" data-themes="" data-resource-suffix="" data-rustdoc-version="1.76.0 (07dca489a 2024-02-04)" data-channel="1.76.0" data-search-js="search-2b6ce74ff89ae146.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../../static.files/storage-f2adc0d6ca4d09fb.js"></script><script defer src="../../../static.files/src-script-39ed315d46fb705f.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-305769736d49e732.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-feafe1bb7466e4bd.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -167,65 +168,73 @@
 <a href="#167" id="167">167</a>
 <a href="#168" id="168">168</a>
 <a href="#169" id="169">169</a>
+<a href="#170" id="170">170</a>
+<a href="#171" id="171">171</a>
+<a href="#172" id="172">172</a>
+<a href="#173" id="173">173</a>
+<a href="#174" id="174">174</a>
+<a href="#175" id="175">175</a>
+<a href="#176" id="176">176</a>
+<a href="#177" id="177">177</a>
+<a href="#178" id="178">178</a>
+<a href="#179" id="179">179</a>
+<a href="#180" id="180">180</a>
+<a href="#181" id="181">181</a>
+<a href="#182" id="182">182</a>
+<a href="#183" id="183">183</a>
+<a href="#184" id="184">184</a>
+<a href="#185" id="185">185</a>
+<a href="#186" id="186">186</a>
+<a href="#187" id="187">187</a>
+<a href="#188" id="188">188</a>
+<a href="#189" id="189">189</a>
+<a href="#190" id="190">190</a>
+<a href="#191" id="191">191</a>
+<a href="#192" id="192">192</a>
+<a href="#193" id="193">193</a>
+<a href="#194" id="194">194</a>
+<a href="#195" id="195">195</a>
+<a href="#196" id="196">196</a>
+<a href="#197" id="197">197</a>
+<a href="#198" id="198">198</a>
+<a href="#199" id="199">199</a>
+<a href="#200" id="200">200</a>
+<a href="#201" id="201">201</a>
+<a href="#202" id="202">202</a>
+<a href="#203" id="203">203</a>
+<a href="#204" id="204">204</a>
+<a href="#205" id="205">205</a>
+<a href="#206" id="206">206</a>
+<a href="#207" id="207">207</a>
+<a href="#208" id="208">208</a>
+<a href="#209" id="209">209</a>
+<a href="#210" id="210">210</a>
+<a href="#211" id="211">211</a>
+<a href="#212" id="212">212</a>
 </pre></div><pre class="rust"><code><span class="kw">use </span>idna::domain_to_ascii;
-<span class="kw">use </span>lazy_static::lazy_static;
+<span class="kw">use </span>once_cell::sync::Lazy;
 <span class="kw">use </span>regex::Regex;
 <span class="kw">use </span>std::borrow::Cow;
 
-<span class="kw">use crate</span>::{validation::ip::validate_ip, HasLen};
+<span class="kw">use crate</span>::{ValidateIp};
 
-<span class="macro">lazy_static! </span>{
-    <span class="comment">// Regex from the specs
-    // https://html.spec.whatwg.org/multipage/forms.html#valid-e-mail-address
-    // It will mark esoteric email addresses like quoted string as invalid
-    </span><span class="kw">static </span><span class="kw-2">ref </span>EMAIL_USER_RE: Regex = Regex::new(<span class="string">r&quot;^(?i)[a-z0-9.!#$%&amp;&#39;*+/=?^_`{|}~-]+\z&quot;</span>).unwrap();
-    <span class="kw">static </span><span class="kw-2">ref </span>EMAIL_DOMAIN_RE: Regex = Regex::new(
-        <span class="string">r&quot;(?i)^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)*$&quot;
-    </span>).unwrap();
-    <span class="comment">// literal form, ipv4 or ipv6 address (SMTP 4.1.3)
-    </span><span class="kw">static </span><span class="kw-2">ref </span>EMAIL_LITERAL_RE: Regex = Regex::new(<span class="string">r&quot;(?i)\[([A-f0-9:\.]+)\]\z&quot;</span>).unwrap();
-}
+<span class="comment">// Regex from the specs
+// https://html.spec.whatwg.org/multipage/forms.html#valid-e-mail-address
+// It will mark esoteric email addresses like quoted string as invalid
+</span><span class="kw">static </span>EMAIL_USER_RE: Lazy&lt;Regex&gt; = Lazy::new(|| {
+    Regex::new(<span class="string">r"^[a-zA-Z0-9.!#$%&amp;'*+/=?^_`{|}~-]+\z"</span>).unwrap()
+});
+<span class="kw">static </span>EMAIL_DOMAIN_RE: Lazy&lt;Regex&gt; = Lazy::new(|| {
+    Regex::new(
+        <span class="string">r"^[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+    </span>).unwrap()
+});
+<span class="comment">// literal form, ipv4 or ipv6 address (SMTP 4.1.3)
+</span><span class="kw">static </span>EMAIL_LITERAL_RE: Lazy&lt;Regex&gt; = Lazy::new(|| {
+    Regex::new(<span class="string">r"\[([a-fA-F0-9:\.]+)\]\z"</span>).unwrap()
+});
 
-<span class="doccomment">/// Validates whether the given string is an email based on the [HTML5 spec](https://html.spec.whatwg.org/multipage/forms.html#valid-e-mail-address).
-/// [RFC 5322](https://tools.ietf.org/html/rfc5322) is not practical in most circumstances and allows email addresses
-/// that are unfamiliar to most users.
-</span><span class="attr">#[must_use]
-</span><span class="kw">pub fn </span>validate_email&lt;<span class="lifetime">&#39;a</span>, T&gt;(val: T) -&gt; bool
-<span class="kw">where
-    </span>T: Into&lt;Cow&lt;<span class="lifetime">&#39;a</span>, str&gt;&gt;,
-{
-    <span class="kw">let </span>val = val.into();
-    <span class="kw">if </span>val.is_empty() || !val.contains(<span class="string">&#39;@&#39;</span>) {
-        <span class="kw">return </span><span class="bool-val">false</span>;
-    }
-    <span class="kw">let </span>parts: Vec&lt;<span class="kw-2">&amp;</span>str&gt; = val.rsplitn(<span class="number">2</span>, <span class="string">&#39;@&#39;</span>).collect();
-    <span class="kw">let </span>user_part = parts[<span class="number">1</span>];
-    <span class="kw">let </span>domain_part = parts[<span class="number">0</span>];
-
-    <span class="comment">// validate the length of each part of the email, BEFORE doing the regex
-    // according to RFC5321 the max length of the local part is 64 characters
-    // and the max length of the domain part is 255 characters
-    // https://datatracker.ietf.org/doc/html/rfc5321#section-4.5.3.1.1
-    </span><span class="kw">if </span>user_part.length() &gt; <span class="number">64 </span>|| domain_part.length() &gt; <span class="number">255 </span>{
-        <span class="kw">return </span><span class="bool-val">false</span>;
-    }
-
-    <span class="kw">if </span>!EMAIL_USER_RE.is_match(user_part) {
-        <span class="kw">return </span><span class="bool-val">false</span>;
-    }
-
-    <span class="kw">if </span>!validate_domain_part(domain_part) {
-        <span class="comment">// Still the possibility of an [IDN](https://en.wikipedia.org/wiki/Internationalized_domain_name)
-        </span><span class="kw">return match </span>domain_to_ascii(domain_part) {
-            <span class="prelude-val">Ok</span>(d) =&gt; validate_domain_part(<span class="kw-2">&amp;</span>d),
-            <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="bool-val">false</span>,
-        };
-    }
-
-    <span class="bool-val">true
-</span>}
-
-<span class="doccomment">/// Checks if the domain is a valid domain and if not, check whether it&#39;s an IP
+<span class="doccomment">/// Checks if the domain is a valid domain and if not, check whether it's an IP
 </span><span class="attr">#[must_use]
 </span><span class="kw">fn </span>validate_domain_part(domain_part: <span class="kw-2">&amp;</span>str) -&gt; bool {
     <span class="kw">if </span>EMAIL_DOMAIN_RE.is_match(domain_part) {
@@ -235,10 +244,88 @@
     <span class="comment">// maybe we have an ip as a domain?
     </span><span class="kw">match </span>EMAIL_LITERAL_RE.captures(domain_part) {
         <span class="prelude-val">Some</span>(caps) =&gt; <span class="kw">match </span>caps.get(<span class="number">1</span>) {
-            <span class="prelude-val">Some</span>(c) =&gt; validate_ip(c.as_str()),
+            <span class="prelude-val">Some</span>(c) =&gt; c.as_str().validate_ip(),
             <span class="prelude-val">None </span>=&gt; <span class="bool-val">false</span>,
         },
         <span class="prelude-val">None </span>=&gt; <span class="bool-val">false</span>,
+    }
+}
+
+<span class="doccomment">/// Validates whether the given string is an email based on the [HTML5 spec](https://html.spec.whatwg.org/multipage/forms.html#valid-e-mail-address).
+/// [RFC 5322](https://tools.ietf.org/html/rfc5322) is not practical in most circumstances and allows email addresses
+/// that are unfamiliar to most users.
+</span><span class="kw">pub trait </span>ValidateEmail {
+    <span class="kw">fn </span>validate_email(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; bool {
+        <span class="kw">let </span>val = <span class="kw">if let </span><span class="prelude-val">Some</span>(v) = <span class="self">self</span>.as_email_string() { v } <span class="kw">else </span>{ <span class="kw">return </span><span class="bool-val">true</span>; };
+
+        <span class="kw">if </span>val.is_empty() || !val.contains(<span class="string">'@'</span>) {
+            <span class="kw">return </span><span class="bool-val">false</span>;
+        }
+
+        <span class="kw">let </span>parts: Vec&lt;<span class="kw-2">&amp;</span>str&gt; = val.rsplitn(<span class="number">2</span>, <span class="string">'@'</span>).collect();
+        <span class="kw">let </span>user_part = parts[<span class="number">1</span>];
+        <span class="kw">let </span>domain_part = parts[<span class="number">0</span>];
+
+        <span class="comment">// validate the length of each part of the email, BEFORE doing the regex
+        // according to RFC5321 the max length of the local part is 64 characters
+        // and the max length of the domain part is 255 characters
+        // https://datatracker.ietf.org/doc/html/rfc5321#section-4.5.3.1.1
+        </span><span class="kw">if </span>user_part.chars().count() &gt; <span class="number">64 </span>|| domain_part.chars().count() &gt; <span class="number">255 </span>{
+            <span class="kw">return </span><span class="bool-val">false</span>;
+        }
+
+        <span class="kw">if </span>!EMAIL_USER_RE.is_match(user_part) {
+            <span class="kw">return </span><span class="bool-val">false</span>;
+        }
+
+        <span class="kw">if </span>!validate_domain_part(domain_part) {
+            <span class="comment">// Still the possibility of an [IDN](https://en.wikipedia.org/wiki/Internationalized_domain_name)
+            </span><span class="kw">return match </span>domain_to_ascii(domain_part) {
+                <span class="prelude-val">Ok</span>(d) =&gt; validate_domain_part(<span class="kw-2">&amp;</span>d),
+                <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="bool-val">false</span>,
+            };
+        }
+
+        <span class="bool-val">true
+    </span>}
+
+    <span class="kw">fn </span>as_email_string(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Cow&lt;str&gt;&gt;;
+}
+
+<span class="kw">impl</span>&lt;T&gt; ValidateEmail <span class="kw">for </span><span class="kw-2">&amp;</span>T
+    <span class="kw">where </span>T: ValidateEmail {
+    <span class="kw">fn </span>as_email_string(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Cow&lt;str&gt;&gt; {
+        T::as_email_string(<span class="self">self</span>)
+    }
+}
+
+<span class="kw">impl </span>ValidateEmail <span class="kw">for </span>String {
+    <span class="kw">fn </span>as_email_string(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Cow&lt;str&gt;&gt; {
+        <span class="prelude-val">Some</span>(Cow::from(<span class="self">self</span>))
+    }
+}
+
+<span class="kw">impl</span>&lt;T&gt; ValidateEmail <span class="kw">for </span><span class="prelude-ty">Option</span>&lt;T&gt;
+    <span class="kw">where
+        </span>T: ValidateEmail, {
+    <span class="kw">fn </span>as_email_string(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Cow&lt;str&gt;&gt; {
+        <span class="kw">let </span><span class="prelude-val">Some</span>(u) = <span class="self">self </span><span class="kw">else </span>{
+            <span class="kw">return </span><span class="prelude-val">None</span>;
+        };
+
+        T::as_email_string(u)
+    }
+}
+
+<span class="kw">impl</span>&lt;<span class="lifetime">'a</span>&gt; ValidateEmail <span class="kw">for </span><span class="kw-2">&amp;</span><span class="lifetime">'a </span>str {
+    <span class="kw">fn </span>as_email_string(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Cow&lt;<span class="lifetime">'_</span>, str&gt;&gt; {
+        <span class="prelude-val">Some</span>(Cow::from(<span class="kw-2">*</span><span class="self">self</span>))
+    }
+}
+
+<span class="kw">impl </span>ValidateEmail <span class="kw">for </span>Cow&lt;<span class="lifetime">'_</span>, str&gt; {
+    <span class="kw">fn </span>as_email_string(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Cow&lt;<span class="lifetime">'_</span>, str&gt;&gt; {
+        <span class="prelude-val">Some</span>(<span class="self">self</span>.clone())
     }
 }
 
@@ -246,69 +333,69 @@
 </span><span class="kw">mod </span>tests {
     <span class="kw">use </span>std::borrow::Cow;
 
-    <span class="kw">use </span><span class="kw">super</span>::validate_email;
+    <span class="kw">use </span><span class="kw">crate</span>::ValidateEmail;
 
     <span class="attr">#[test]
     </span><span class="kw">fn </span>test_validate_email() {
         <span class="comment">// Test cases taken from Django
         // https://github.com/django/django/blob/master/tests/validators/tests.py#L48
         </span><span class="kw">let </span>tests = <span class="macro">vec!</span>[
-            (<span class="string">&quot;email@here.com&quot;</span>, <span class="bool-val">true</span>),
-            (<span class="string">&quot;weirder-email@here.and.there.com&quot;</span>, <span class="bool-val">true</span>),
-            (<span class="string">r#&quot;!def!xyz%abc@example.com&quot;#</span>, <span class="bool-val">true</span>),
-            (<span class="string">&quot;email@[127.0.0.1]&quot;</span>, <span class="bool-val">true</span>),
-            (<span class="string">&quot;email@[2001:dB8::1]&quot;</span>, <span class="bool-val">true</span>),
-            (<span class="string">&quot;email@[2001:dB8:0:0:0:0:0:1]&quot;</span>, <span class="bool-val">true</span>),
-            (<span class="string">&quot;email@[::fffF:127.0.0.1]&quot;</span>, <span class="bool-val">true</span>),
-            (<span class="string">&quot;example@valid-----hyphens.com&quot;</span>, <span class="bool-val">true</span>),
-            (<span class="string">&quot;example@valid-with-hyphens.com&quot;</span>, <span class="bool-val">true</span>),
-            (<span class="string">&quot;test@domain.with.idn.tld.उदाहरण.परीक्षा&quot;</span>, <span class="bool-val">true</span>),
-            (<span class="string">r#&quot;&quot;test@test&quot;@example.com&quot;#</span>, <span class="bool-val">false</span>),
+            (<span class="string">"email@here.com"</span>, <span class="bool-val">true</span>),
+            (<span class="string">"weirder-email@here.and.there.com"</span>, <span class="bool-val">true</span>),
+            (<span class="string">r#"!def!xyz%abc@example.com"#</span>, <span class="bool-val">true</span>),
+            (<span class="string">"email@[127.0.0.1]"</span>, <span class="bool-val">true</span>),
+            (<span class="string">"email@[2001:dB8::1]"</span>, <span class="bool-val">true</span>),
+            (<span class="string">"email@[2001:dB8:0:0:0:0:0:1]"</span>, <span class="bool-val">true</span>),
+            (<span class="string">"email@[::fffF:127.0.0.1]"</span>, <span class="bool-val">true</span>),
+            (<span class="string">"example@valid-----hyphens.com"</span>, <span class="bool-val">true</span>),
+            (<span class="string">"example@valid-with-hyphens.com"</span>, <span class="bool-val">true</span>),
+            (<span class="string">"test@domain.with.idn.tld.उदाहरण.परीक्षा"</span>, <span class="bool-val">true</span>),
+            (<span class="string">r#""test@test"@example.com"#</span>, <span class="bool-val">false</span>),
             <span class="comment">// max length for domain name labels is 63 characters per RFC 1034
-            </span>(<span class="string">&quot;a@atm.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</span>, <span class="bool-val">true</span>),
-            (<span class="string">&quot;a@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.atm&quot;</span>, <span class="bool-val">true</span>),
+            </span>(<span class="string">"a@atm.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"</span>, <span class="bool-val">true</span>),
+            (<span class="string">"a@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.atm"</span>, <span class="bool-val">true</span>),
             (
-                <span class="string">&quot;a@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bbbbbbbbbb.atm&quot;</span>,
+                <span class="string">"a@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bbbbbbbbbb.atm"</span>,
                 <span class="bool-val">true</span>,
             ),
             <span class="comment">// 64 * a
-            </span>(<span class="string">&quot;a@atm.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</span>, <span class="bool-val">false</span>),
-            (<span class="string">&quot;&quot;</span>, <span class="bool-val">false</span>),
-            (<span class="string">&quot;abc&quot;</span>, <span class="bool-val">false</span>),
-            (<span class="string">&quot;abc@&quot;</span>, <span class="bool-val">false</span>),
-            (<span class="string">&quot;abc@bar&quot;</span>, <span class="bool-val">true</span>),
-            (<span class="string">&quot;a @x.cz&quot;</span>, <span class="bool-val">false</span>),
-            (<span class="string">&quot;abc@.com&quot;</span>, <span class="bool-val">false</span>),
-            (<span class="string">&quot;something@@somewhere.com&quot;</span>, <span class="bool-val">false</span>),
-            (<span class="string">&quot;email@127.0.0.1&quot;</span>, <span class="bool-val">true</span>),
-            (<span class="string">&quot;email@[127.0.0.256]&quot;</span>, <span class="bool-val">false</span>),
-            (<span class="string">&quot;email@[2001:db8::12345]&quot;</span>, <span class="bool-val">false</span>),
-            (<span class="string">&quot;email@[2001:db8:0:0:0:0:1]&quot;</span>, <span class="bool-val">false</span>),
-            (<span class="string">&quot;email@[::ffff:127.0.0.256]&quot;</span>, <span class="bool-val">false</span>),
-            (<span class="string">&quot;example@invalid-.com&quot;</span>, <span class="bool-val">false</span>),
-            (<span class="string">&quot;example@-invalid.com&quot;</span>, <span class="bool-val">false</span>),
-            (<span class="string">&quot;example@invalid.com-&quot;</span>, <span class="bool-val">false</span>),
-            (<span class="string">&quot;example@inv-.alid-.com&quot;</span>, <span class="bool-val">false</span>),
-            (<span class="string">&quot;example@inv-.-alid.com&quot;</span>, <span class="bool-val">false</span>),
-            (<span class="string">r#&quot;test@example.com\n\n&lt;script src=&quot;x.js&quot;&gt;&quot;#</span>, <span class="bool-val">false</span>),
-            (<span class="string">r#&quot;&quot;\\\011&quot;@here.com&quot;#</span>, <span class="bool-val">false</span>),
-            (<span class="string">r#&quot;&quot;\\\012&quot;@here.com&quot;#</span>, <span class="bool-val">false</span>),
-            (<span class="string">&quot;trailingdot@shouldfail.com.&quot;</span>, <span class="bool-val">false</span>),
+            </span>(<span class="string">"a@atm.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"</span>, <span class="bool-val">false</span>),
+            (<span class="string">""</span>, <span class="bool-val">false</span>),
+            (<span class="string">"abc"</span>, <span class="bool-val">false</span>),
+            (<span class="string">"abc@"</span>, <span class="bool-val">false</span>),
+            (<span class="string">"abc@bar"</span>, <span class="bool-val">true</span>),
+            (<span class="string">"a @x.cz"</span>, <span class="bool-val">false</span>),
+            (<span class="string">"abc@.com"</span>, <span class="bool-val">false</span>),
+            (<span class="string">"something@@somewhere.com"</span>, <span class="bool-val">false</span>),
+            (<span class="string">"email@127.0.0.1"</span>, <span class="bool-val">true</span>),
+            (<span class="string">"email@[127.0.0.256]"</span>, <span class="bool-val">false</span>),
+            (<span class="string">"email@[2001:db8::12345]"</span>, <span class="bool-val">false</span>),
+            (<span class="string">"email@[2001:db8:0:0:0:0:1]"</span>, <span class="bool-val">false</span>),
+            (<span class="string">"email@[::ffff:127.0.0.256]"</span>, <span class="bool-val">false</span>),
+            (<span class="string">"example@invalid-.com"</span>, <span class="bool-val">false</span>),
+            (<span class="string">"example@-invalid.com"</span>, <span class="bool-val">false</span>),
+            (<span class="string">"example@invalid.com-"</span>, <span class="bool-val">false</span>),
+            (<span class="string">"example@inv-.alid-.com"</span>, <span class="bool-val">false</span>),
+            (<span class="string">"example@inv-.-alid.com"</span>, <span class="bool-val">false</span>),
+            (<span class="string">r#"test@example.com\n\n&lt;script src="x.js"&gt;"#</span>, <span class="bool-val">false</span>),
+            (<span class="string">r#""\\\011"@here.com"#</span>, <span class="bool-val">false</span>),
+            (<span class="string">r#""\\\012"@here.com"#</span>, <span class="bool-val">false</span>),
+            (<span class="string">"trailingdot@shouldfail.com."</span>, <span class="bool-val">false</span>),
             <span class="comment">// Trailing newlines in username or domain not allowed
-            </span>(<span class="string">&quot;a@b.com\n&quot;</span>, <span class="bool-val">false</span>),
-            (<span class="string">&quot;a\n@b.com&quot;</span>, <span class="bool-val">false</span>),
-            (<span class="string">r#&quot;&quot;test@test&quot;\n@example.com&quot;#</span>, <span class="bool-val">false</span>),
-            (<span class="string">&quot;a@[127.0.0.1]\n&quot;</span>, <span class="bool-val">false</span>),
+            </span>(<span class="string">"a@b.com\n"</span>, <span class="bool-val">false</span>),
+            (<span class="string">"a\n@b.com"</span>, <span class="bool-val">false</span>),
+            (<span class="string">r#""test@test"\n@example.com"#</span>, <span class="bool-val">false</span>),
+            (<span class="string">"a@[127.0.0.1]\n"</span>, <span class="bool-val">false</span>),
             <span class="comment">// underscores are not allowed
-            </span>(<span class="string">&quot;John.Doe@exam_ple.com&quot;</span>, <span class="bool-val">false</span>),
+            </span>(<span class="string">"John.Doe@exam_ple.com"</span>, <span class="bool-val">false</span>),
         ];
 
         <span class="kw">for </span>(input, expected) <span class="kw">in </span>tests {
-            <span class="comment">// println!(&quot;{} - {}&quot;, input, expected);
+            <span class="comment">// println!("{} - {}", input, expected);
             </span><span class="macro">assert_eq!</span>(
-                validate_email(input),
+                input.validate_email(),
                 expected,
-                <span class="string">&quot;Email `{}` was not classified correctly&quot;</span>,
+                <span class="string">"Email `{}` was not classified correctly"</span>,
                 input
             );
         }
@@ -316,24 +403,24 @@
 
     <span class="attr">#[test]
     </span><span class="kw">fn </span>test_validate_email_cow() {
-        <span class="kw">let </span>test: Cow&lt;<span class="lifetime">&#39;static</span>, str&gt; = <span class="string">&quot;email@here.com&quot;</span>.into();
-        <span class="macro">assert!</span>(validate_email(test));
-        <span class="kw">let </span>test: Cow&lt;<span class="lifetime">&#39;static</span>, str&gt; = String::from(<span class="string">&quot;email@here.com&quot;</span>).into();
-        <span class="macro">assert!</span>(validate_email(test));
-        <span class="kw">let </span>test: Cow&lt;<span class="lifetime">&#39;static</span>, str&gt; = <span class="string">&quot;a@[127.0.0.1]\n&quot;</span>.into();
-        <span class="macro">assert!</span>(!validate_email(test));
-        <span class="kw">let </span>test: Cow&lt;<span class="lifetime">&#39;static</span>, str&gt; = String::from(<span class="string">&quot;a@[127.0.0.1]\n&quot;</span>).into();
-        <span class="macro">assert!</span>(!validate_email(test));
+        <span class="kw">let </span>test: Cow&lt;<span class="lifetime">'static</span>, str&gt; = <span class="string">"email@here.com"</span>.into();
+        <span class="macro">assert!</span>(test.validate_email());
+        <span class="kw">let </span>test: Cow&lt;<span class="lifetime">'static</span>, str&gt; = String::from(<span class="string">"email@here.com"</span>).into();
+        <span class="macro">assert!</span>(test.validate_email());
+        <span class="kw">let </span>test: Cow&lt;<span class="lifetime">'static</span>, str&gt; = <span class="string">"a@[127.0.0.1]\n"</span>.into();
+        <span class="macro">assert!</span>(!test.validate_email());
+        <span class="kw">let </span>test: Cow&lt;<span class="lifetime">'static</span>, str&gt; = String::from(<span class="string">"a@[127.0.0.1]\n"</span>).into();
+        <span class="macro">assert!</span>(!test.validate_email());
     }
 
     <span class="attr">#[test]
     </span><span class="kw">fn </span>test_validate_email_rfc5321() {
         <span class="comment">// 65 character local part
-        </span><span class="kw">let </span>test = <span class="string">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@mail.com&quot;</span>;
-        <span class="macro">assert_eq!</span>(validate_email(test), <span class="bool-val">false</span>);
+        </span><span class="kw">let </span>test = <span class="string">"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@mail.com"</span>;
+        <span class="macro">assert_eq!</span>(test.validate_email(), <span class="bool-val">false</span>);
         <span class="comment">// 256 character domain part
-        </span><span class="kw">let </span>test = <span class="string">&quot;a@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com&quot;</span>;
-        <span class="macro">assert_eq!</span>(validate_email(test), <span class="bool-val">false</span>);
+        </span><span class="kw">let </span>test = <span class="string">"a@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com"</span>;
+        <span class="macro">assert_eq!</span>(test.validate_email(), <span class="bool-val">false</span>);
     }
 }
 </code></pre></div></section></main></body></html>

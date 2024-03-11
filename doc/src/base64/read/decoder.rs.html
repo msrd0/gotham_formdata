@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/base64-0.21.7/src/read/decoder.rs`."><title>decoder.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-9ee3a5e31a2afa3e.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="base64" data-themes="" data-resource-suffix="" data-rustdoc-version="1.75.0 (82e1608df 2023-12-21)" data-channel="1.75.0" data-search-js="search-8fbf244ebcf71464.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-9dd44ab47b99a0fb.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/base64-0.22.0/src/read/decoder.rs`."><title>decoder.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-ac92e1bbe349e143.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="base64" data-themes="" data-resource-suffix="" data-rustdoc-version="1.76.0 (07dca489a 2024-02-04)" data-channel="1.76.0" data-search-js="search-2b6ce74ff89ae146.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../../static.files/storage-f2adc0d6ca4d09fb.js"></script><script defer src="../../../static.files/src-script-39ed315d46fb705f.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-305769736d49e732.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-feafe1bb7466e4bd.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -314,7 +315,26 @@
 <a href="#314" id="314">314</a>
 <a href="#315" id="315">315</a>
 <a href="#316" id="316">316</a>
-</pre></div><pre class="rust"><code><span class="kw">use crate</span>::{engine::Engine, DecodeError, PAD_BYTE};
+<a href="#317" id="317">317</a>
+<a href="#318" id="318">318</a>
+<a href="#319" id="319">319</a>
+<a href="#320" id="320">320</a>
+<a href="#321" id="321">321</a>
+<a href="#322" id="322">322</a>
+<a href="#323" id="323">323</a>
+<a href="#324" id="324">324</a>
+<a href="#325" id="325">325</a>
+<a href="#326" id="326">326</a>
+<a href="#327" id="327">327</a>
+<a href="#328" id="328">328</a>
+<a href="#329" id="329">329</a>
+<a href="#330" id="330">330</a>
+<a href="#331" id="331">331</a>
+<a href="#332" id="332">332</a>
+<a href="#333" id="333">333</a>
+<a href="#334" id="334">334</a>
+<a href="#335" id="335">335</a>
+</pre></div><pre class="rust"><code><span class="kw">use crate</span>::{engine::Engine, DecodeError, DecodeSliceError, PAD_BYTE};
 <span class="kw">use </span>std::{cmp, fmt, io};
 
 <span class="comment">// This should be large, but it has to fit on the stack.
@@ -334,7 +354,7 @@
 /// use base64::engine::general_purpose;
 ///
 /// // use a cursor as the simplest possible `Read` -- in real code this is probably a file, etc.
-/// let mut wrapped_reader = Cursor::new(b&quot;YXNkZg==&quot;);
+/// let mut wrapped_reader = Cursor::new(b"YXNkZg==");
 /// let mut decoder = base64::read::DecoderReader::new(
 ///     &amp;mut wrapped_reader,
 ///     &amp;general_purpose::STANDARD);
@@ -343,63 +363,65 @@
 /// let mut result = Vec::new();
 /// decoder.read_to_end(&amp;mut result).unwrap();
 ///
-/// assert_eq!(b&quot;asdf&quot;, &amp;result[..]);
+/// assert_eq!(b"asdf", &amp;result[..]);
 ///
 /// ```
-</span><span class="kw">pub struct </span>DecoderReader&lt;<span class="lifetime">&#39;e</span>, E: Engine, R: io::Read&gt; {
-    engine: <span class="kw-2">&amp;</span><span class="lifetime">&#39;e </span>E,
+</span><span class="kw">pub struct </span>DecoderReader&lt;<span class="lifetime">'e</span>, E: Engine, R: io::Read&gt; {
+    engine: <span class="kw-2">&amp;</span><span class="lifetime">'e </span>E,
     <span class="doccomment">/// Where b64 data is read from
     </span>inner: R,
 
-    <span class="comment">// Holds b64 data read from the delegate reader.
+    <span class="doccomment">/// Holds b64 data read from the delegate reader.
     </span>b64_buffer: [u8; BUF_SIZE],
-    <span class="comment">// The start of the pending buffered data in b64_buffer.
+    <span class="doccomment">/// The start of the pending buffered data in `b64_buffer`.
     </span>b64_offset: usize,
-    <span class="comment">// The amount of buffered b64 data.
+    <span class="doccomment">/// The amount of buffered b64 data after `b64_offset` in `b64_len`.
     </span>b64_len: usize,
-    <span class="comment">// Since the caller may provide us with a buffer of size 1 or 2 that&#39;s too small to copy a
-    // decoded chunk in to, we have to be able to hang on to a few decoded bytes.
-    // Technically we only need to hold 2 bytes but then we&#39;d need a separate temporary buffer to
-    // decode 3 bytes into and then juggle copying one byte into the provided read buf and the rest
-    // into here, which seems like a lot of complexity for 1 extra byte of storage.
-    </span>decoded_buffer: [u8; DECODED_CHUNK_SIZE],
-    <span class="comment">// index of start of decoded data
+    <span class="doccomment">/// Since the caller may provide us with a buffer of size 1 or 2 that's too small to copy a
+    /// decoded chunk in to, we have to be able to hang on to a few decoded bytes.
+    /// Technically we only need to hold 2 bytes, but then we'd need a separate temporary buffer to
+    /// decode 3 bytes into and then juggle copying one byte into the provided read buf and the rest
+    /// into here, which seems like a lot of complexity for 1 extra byte of storage.
+    </span>decoded_chunk_buffer: [u8; DECODED_CHUNK_SIZE],
+    <span class="doccomment">/// Index of start of decoded data in `decoded_chunk_buffer`
     </span>decoded_offset: usize,
-    <span class="comment">// length of decoded data
+    <span class="doccomment">/// Length of decoded data after `decoded_offset` in `decoded_chunk_buffer`
     </span>decoded_len: usize,
-    <span class="comment">// used to provide accurate offsets in errors
-    </span>total_b64_decoded: usize,
-    <span class="comment">// offset of previously seen padding, if any
+    <span class="doccomment">/// Input length consumed so far.
+    /// Used to provide accurate offsets in errors
+    </span>input_consumed_len: usize,
+    <span class="doccomment">/// offset of previously seen padding, if any
     </span>padding_offset: <span class="prelude-ty">Option</span>&lt;usize&gt;,
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;e</span>, E: Engine, R: io::Read&gt; fmt::Debug <span class="kw">for </span>DecoderReader&lt;<span class="lifetime">&#39;e</span>, E, R&gt; {
+<span class="comment">// exclude b64_buffer as it's uselessly large
+</span><span class="kw">impl</span>&lt;<span class="lifetime">'e</span>, E: Engine, R: io::Read&gt; fmt::Debug <span class="kw">for </span>DecoderReader&lt;<span class="lifetime">'e</span>, E, R&gt; {
     <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {
-        f.debug_struct(<span class="string">&quot;DecoderReader&quot;</span>)
-            .field(<span class="string">&quot;b64_offset&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.b64_offset)
-            .field(<span class="string">&quot;b64_len&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.b64_len)
-            .field(<span class="string">&quot;decoded_buffer&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.decoded_buffer)
-            .field(<span class="string">&quot;decoded_offset&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.decoded_offset)
-            .field(<span class="string">&quot;decoded_len&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.decoded_len)
-            .field(<span class="string">&quot;total_b64_decoded&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.total_b64_decoded)
-            .field(<span class="string">&quot;padding_offset&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.padding_offset)
+        f.debug_struct(<span class="string">"DecoderReader"</span>)
+            .field(<span class="string">"b64_offset"</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.b64_offset)
+            .field(<span class="string">"b64_len"</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.b64_len)
+            .field(<span class="string">"decoded_chunk_buffer"</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.decoded_chunk_buffer)
+            .field(<span class="string">"decoded_offset"</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.decoded_offset)
+            .field(<span class="string">"decoded_len"</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.decoded_len)
+            .field(<span class="string">"input_consumed_len"</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.input_consumed_len)
+            .field(<span class="string">"padding_offset"</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.padding_offset)
             .finish()
     }
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;e</span>, E: Engine, R: io::Read&gt; DecoderReader&lt;<span class="lifetime">&#39;e</span>, E, R&gt; {
+<span class="kw">impl</span>&lt;<span class="lifetime">'e</span>, E: Engine, R: io::Read&gt; DecoderReader&lt;<span class="lifetime">'e</span>, E, R&gt; {
     <span class="doccomment">/// Create a new decoder that will read from the provided reader `r`.
-    </span><span class="kw">pub fn </span>new(reader: R, engine: <span class="kw-2">&amp;</span><span class="lifetime">&#39;e </span>E) -&gt; <span class="self">Self </span>{
+    </span><span class="kw">pub fn </span>new(reader: R, engine: <span class="kw-2">&amp;</span><span class="lifetime">'e </span>E) -&gt; <span class="self">Self </span>{
         DecoderReader {
             engine,
             inner: reader,
             b64_buffer: [<span class="number">0</span>; BUF_SIZE],
             b64_offset: <span class="number">0</span>,
             b64_len: <span class="number">0</span>,
-            decoded_buffer: [<span class="number">0</span>; DECODED_CHUNK_SIZE],
+            decoded_chunk_buffer: [<span class="number">0</span>; DECODED_CHUNK_SIZE],
             decoded_offset: <span class="number">0</span>,
             decoded_len: <span class="number">0</span>,
-            total_b64_decoded: <span class="number">0</span>,
+            input_consumed_len: <span class="number">0</span>,
             padding_offset: <span class="prelude-val">None</span>,
         }
     }
@@ -416,7 +438,7 @@
         <span class="macro">debug_assert!</span>(copy_len &lt;= <span class="self">self</span>.decoded_len);
 
         buf[..copy_len].copy_from_slice(
-            <span class="kw-2">&amp;</span><span class="self">self</span>.decoded_buffer[<span class="self">self</span>.decoded_offset..<span class="self">self</span>.decoded_offset + copy_len],
+            <span class="kw-2">&amp;</span><span class="self">self</span>.decoded_chunk_buffer[<span class="self">self</span>.decoded_offset..<span class="self">self</span>.decoded_offset + copy_len],
         );
 
         <span class="self">self</span>.decoded_offset += copy_len;
@@ -443,10 +465,14 @@
         <span class="prelude-val">Ok</span>(read)
     }
 
-    <span class="doccomment">/// Decode the requested number of bytes from the b64 buffer into the provided buffer. It&#39;s the
-    /// caller&#39;s responsibility to choose the number of b64 bytes to decode correctly.
+    <span class="doccomment">/// Decode the requested number of bytes from the b64 buffer into the provided buffer. It's the
+    /// caller's responsibility to choose the number of b64 bytes to decode correctly.
     ///
     /// Returns a Result with the number of decoded bytes written to `buf`.
+    ///
+    /// # Panics
+    ///
+    /// panics if `buf` is too small
     </span><span class="kw">fn </span>decode_to_buf(<span class="kw-2">&amp;mut </span><span class="self">self</span>, b64_len_to_decode: usize, buf: <span class="kw-2">&amp;mut </span>[u8]) -&gt; io::Result&lt;usize&gt; {
         <span class="macro">debug_assert!</span>(<span class="self">self</span>.b64_len &gt;= b64_len_to_decode);
         <span class="macro">debug_assert!</span>(<span class="self">self</span>.b64_offset + <span class="self">self</span>.b64_len &lt;= BUF_SIZE);
@@ -460,27 +486,40 @@
                 buf,
                 <span class="self">self</span>.engine.internal_decoded_len_estimate(b64_len_to_decode),
             )
-            .map_err(|e| <span class="kw">match </span>e {
-                DecodeError::InvalidByte(offset, byte) =&gt; {
-                    <span class="comment">// This can be incorrect, but not in a way that probably matters to anyone:
-                    // if there was padding handled in a previous decode, and we are now getting
-                    // InvalidByte due to more padding, we should arguably report InvalidByte with
-                    // PAD_BYTE at the original padding position (`self.padding_offset`), but we
-                    // don&#39;t have a good way to tie those two cases together, so instead we
-                    // just report the invalid byte as if the previous padding, and its possibly
-                    // related downgrade to a now invalid byte, didn&#39;t happen.
-                    </span>DecodeError::InvalidByte(<span class="self">self</span>.total_b64_decoded + offset, byte)
+            .map_err(|dse| <span class="kw">match </span>dse {
+                DecodeSliceError::DecodeError(de) =&gt; {
+                    <span class="kw">match </span>de {
+                        DecodeError::InvalidByte(offset, byte) =&gt; {
+                            <span class="kw">match </span>(byte, <span class="self">self</span>.padding_offset) {
+                                <span class="comment">// if there was padding in a previous block of decoding that happened to
+                                // be correct, and we now find more padding that happens to be incorrect,
+                                // to be consistent with non-reader decodes, record the error at the first
+                                // padding
+                                </span>(PAD_BYTE, <span class="prelude-val">Some</span>(first_pad_offset)) =&gt; {
+                                    DecodeError::InvalidByte(first_pad_offset, PAD_BYTE)
+                                }
+                                <span class="kw">_ </span>=&gt; {
+                                    DecodeError::InvalidByte(<span class="self">self</span>.input_consumed_len + offset, byte)
+                                }
+                            }
+                        }
+                        DecodeError::InvalidLength(len) =&gt; {
+                            DecodeError::InvalidLength(<span class="self">self</span>.input_consumed_len + len)
+                        }
+                        DecodeError::InvalidLastSymbol(offset, byte) =&gt; {
+                            DecodeError::InvalidLastSymbol(<span class="self">self</span>.input_consumed_len + offset, byte)
+                        }
+                        DecodeError::InvalidPadding =&gt; DecodeError::InvalidPadding,
+                    }
                 }
-                DecodeError::InvalidLength =&gt; DecodeError::InvalidLength,
-                DecodeError::InvalidLastSymbol(offset, byte) =&gt; {
-                    DecodeError::InvalidLastSymbol(<span class="self">self</span>.total_b64_decoded + offset, byte)
+                DecodeSliceError::OutputSliceTooSmall =&gt; {
+                    <span class="macro">unreachable!</span>(<span class="string">"buf is sized correctly in calling code"</span>)
                 }
-                DecodeError::InvalidPadding =&gt; DecodeError::InvalidPadding,
             })
             .map_err(|e| io::Error::new(io::ErrorKind::InvalidData, e))<span class="question-mark">?</span>;
 
         <span class="kw">if let </span><span class="prelude-val">Some</span>(offset) = <span class="self">self</span>.padding_offset {
-            <span class="comment">// we&#39;ve already seen padding
+            <span class="comment">// we've already seen padding
             </span><span class="kw">if </span>decode_metadata.decoded_len &gt; <span class="number">0 </span>{
                 <span class="comment">// we read more after already finding padding; report error at first padding byte
                 </span><span class="kw">return </span><span class="prelude-val">Err</span>(io::Error::new(
@@ -492,8 +531,8 @@
 
         <span class="self">self</span>.padding_offset = <span class="self">self</span>.padding_offset.or(decode_metadata
             .padding_offset
-            .map(|offset| <span class="self">self</span>.total_b64_decoded + offset));
-        <span class="self">self</span>.total_b64_decoded += b64_len_to_decode;
+            .map(|offset| <span class="self">self</span>.input_consumed_len + offset));
+        <span class="self">self</span>.input_consumed_len += b64_len_to_decode;
         <span class="self">self</span>.b64_offset += b64_len_to_decode;
         <span class="self">self</span>.b64_len -= b64_len_to_decode;
 
@@ -513,7 +552,7 @@
     }
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;e</span>, E: Engine, R: io::Read&gt; io::Read <span class="kw">for </span>DecoderReader&lt;<span class="lifetime">&#39;e</span>, E, R&gt; {
+<span class="kw">impl</span>&lt;<span class="lifetime">'e</span>, E: Engine, R: io::Read&gt; io::Read <span class="kw">for </span>DecoderReader&lt;<span class="lifetime">'e</span>, E, R&gt; {
     <span class="doccomment">/// Decode input from the wrapped reader.
     ///
     /// Under non-error circumstances, this returns `Ok` with the value being the number of bytes
@@ -547,7 +586,7 @@
             <span class="self">self</span>.decoded_offset &lt; DECODED_CHUNK_SIZE
         });
 
-        <span class="comment">// We shouldn&#39;t ever decode into decoded_buffer when we can&#39;t immediately write at least one
+        <span class="comment">// We shouldn't ever decode into decoded_buffer when we can't immediately write at least one
         // byte into the provided buf, so the effective length should only be 3 momentarily between
         // when we decode and when we copy into the target buffer.
         </span><span class="macro">debug_assert!</span>(<span class="self">self</span>.decoded_len &lt; DECODED_CHUNK_SIZE);
@@ -567,7 +606,7 @@
                 <span class="comment">// then fill in more data
                 </span><span class="kw">let </span>read = <span class="self">self</span>.read_from_delegate()<span class="question-mark">?</span>;
                 <span class="kw">if </span>read == <span class="number">0 </span>{
-                    <span class="comment">// we never read into an empty buf, so 0 =&gt; we&#39;ve hit EOF
+                    <span class="comment">// we never read into an empty buf, so 0 =&gt; we've hit EOF
                     </span>at_eof = <span class="bool-val">true</span>;
                     <span class="kw">break</span>;
                 }
@@ -595,11 +634,11 @@
                 </span><span class="kw">let </span><span class="kw-2">mut </span>decoded_chunk = [<span class="number">0_u8</span>; DECODED_CHUNK_SIZE];
                 <span class="comment">// if we are at eof, could have less than BASE64_CHUNK_SIZE, in which case we have
                 // to assume that these last few tokens are, in fact, valid (i.e. must be 2-4 b64
-                // tokens, not 1, since 1 token can&#39;t decode to 1 byte).
+                // tokens, not 1, since 1 token can't decode to 1 byte).
                 </span><span class="kw">let </span>to_decode = cmp::min(<span class="self">self</span>.b64_len, BASE64_CHUNK_SIZE);
 
                 <span class="kw">let </span>decoded = <span class="self">self</span>.decode_to_buf(to_decode, <span class="kw-2">&amp;mut </span>decoded_chunk[..])<span class="question-mark">?</span>;
-                <span class="self">self</span>.decoded_buffer[..decoded].copy_from_slice(<span class="kw-2">&amp;</span>decoded_chunk[..decoded]);
+                <span class="self">self</span>.decoded_chunk_buffer[..decoded].copy_from_slice(<span class="kw-2">&amp;</span>decoded_chunk[..decoded]);
 
                 <span class="self">self</span>.decoded_offset = <span class="number">0</span>;
                 <span class="self">self</span>.decoded_len = decoded;
@@ -611,7 +650,7 @@
             } <span class="kw">else </span>{
                 <span class="kw">let </span>b64_bytes_that_can_decode_into_buf = (buf.len() / DECODED_CHUNK_SIZE)
                     .checked_mul(BASE64_CHUNK_SIZE)
-                    .expect(<span class="string">&quot;too many chunks&quot;</span>);
+                    .expect(<span class="string">"too many chunks"</span>);
                 <span class="macro">debug_assert!</span>(b64_bytes_that_can_decode_into_buf &gt;= BASE64_CHUNK_SIZE);
 
                 <span class="kw">let </span>b64_bytes_available_to_decode = <span class="kw">if </span>at_eof {

@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gotham-0.7.2/src/router/mod.rs`."><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-9ee3a5e31a2afa3e.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gotham" data-themes="" data-resource-suffix="" data-rustdoc-version="1.75.0 (82e1608df 2023-12-21)" data-channel="1.75.0" data-search-js="search-8fbf244ebcf71464.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-9dd44ab47b99a0fb.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gotham-0.7.3/src/router/mod.rs`."><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-ac92e1bbe349e143.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gotham" data-themes="" data-resource-suffix="" data-rustdoc-version="1.76.0 (07dca489a 2024-02-04)" data-channel="1.76.0" data-search-js="search-2b6ce74ff89ae146.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../../static.files/storage-f2adc0d6ca4d09fb.js"></script><script defer src="../../../static.files/src-script-39ed315d46fb705f.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-305769736d49e732.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-feafe1bb7466e4bd.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -470,7 +471,7 @@
 /// API, and used with the `gotham::start` function when booting a Gotham web application.
 ///
 /// The `Router` is capable of delegating requests to secondary `Router` instances, which allows
-/// the support of &quot;modular applications&quot;. A modular application contains multiple applications
+/// the support of "modular applications". A modular application contains multiple applications
 /// within a single binary that have clear boundaries established via Rust module separation.
 /// Please see the documentation for `DrawRoutes::delegate` within `gotham::router::builder` in
 /// order to delegate to other `Router` instances.
@@ -484,7 +485,7 @@
 
     <span class="comment">// Creates a new Router instance to route new HTTP requests
     </span><span class="kw">fn </span>new_handler(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; anyhow::Result&lt;<span class="self">Self</span>::Instance&gt; {
-        <span class="macro">trace!</span>(<span class="string">&quot; cloning instance&quot;</span>);
+        <span class="macro">trace!</span>(<span class="string">" cloning instance"</span>);
         <span class="prelude-val">Ok</span>(<span class="self">self</span>.clone())
     }
 }
@@ -493,7 +494,7 @@
     <span class="doccomment">/// Handles the `Request` by determining the correct `Route` from the internal `Tree`, storing
     /// any path related variables in `State` and dispatching to the associated `Handler`.
     </span><span class="kw">fn </span>handle(<span class="self">self</span>, <span class="kw-2">mut </span>state: State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; {
-        <span class="macro">trace!</span>(<span class="string">&quot;[{}] starting&quot;</span>, request_id(<span class="kw-2">&amp;</span>state));
+        <span class="macro">trace!</span>(<span class="string">"[{}] starting"</span>, request_id(<span class="kw-2">&amp;</span>state));
 
         <span class="kw">let </span>future = <span class="kw">match </span>state.try_take::&lt;RequestPathSegments&gt;() {
             <span class="prelude-val">Some</span>(rps) =&gt; {
@@ -501,20 +502,20 @@
                     <span class="kw">match </span>node.select_route(<span class="kw-2">&amp;</span>state) {
                         <span class="prelude-val">Ok</span>(route) =&gt; <span class="kw">match </span>route.delegation() {
                             Delegation::External =&gt; {
-                                <span class="macro">trace!</span>(<span class="string">&quot;[{}] delegating to secondary router&quot;</span>, request_id(<span class="kw-2">&amp;</span>state));
+                                <span class="macro">trace!</span>(<span class="string">"[{}] delegating to secondary router"</span>, request_id(<span class="kw-2">&amp;</span>state));
 
                                 state.put(rps.subsegments(processed));
                                 route.dispatch(state)
                             }
                             Delegation::Internal =&gt; {
-                                <span class="macro">trace!</span>(<span class="string">&quot;[{}] dispatching to route&quot;</span>, request_id(<span class="kw-2">&amp;</span>state));
+                                <span class="macro">trace!</span>(<span class="string">"[{}] dispatching to route"</span>, request_id(<span class="kw-2">&amp;</span>state));
                                 <span class="self">self</span>.dispatch(state, params, route)
                             }
                         },
                         <span class="prelude-val">Err</span>(non_match) =&gt; {
                             <span class="kw">let </span>(status, allow) = non_match.deconstruct();
 
-                            <span class="macro">trace!</span>(<span class="string">&quot;[{}] responding with error status&quot;</span>, request_id(<span class="kw-2">&amp;</span>state));
+                            <span class="macro">trace!</span>(<span class="string">"[{}] responding with error status"</span>, request_id(<span class="kw-2">&amp;</span>state));
                             <span class="kw">let </span><span class="kw-2">mut </span>res = create_empty_response(<span class="kw-2">&amp;</span>state, status);
                             <span class="kw">if let </span>StatusCode::METHOD_NOT_ALLOWED = status {
                                 <span class="kw">for </span>allowed <span class="kw">in </span>allow {
@@ -528,13 +529,13 @@
                         }
                     }
                 } <span class="kw">else </span>{
-                    <span class="macro">trace!</span>(<span class="string">&quot;[{}] did not find routable node&quot;</span>, request_id(<span class="kw-2">&amp;</span>state));
+                    <span class="macro">trace!</span>(<span class="string">"[{}] did not find routable node"</span>, request_id(<span class="kw-2">&amp;</span>state));
                     <span class="kw">let </span>res = create_empty_response(<span class="kw-2">&amp;</span>state, StatusCode::NOT_FOUND);
                     future::ok((state, res)).boxed()
                 }
             }
             <span class="prelude-val">None </span>=&gt; {
-                <span class="macro">trace!</span>(<span class="string">&quot;[{}] invalid request path segments&quot;</span>, request_id(<span class="kw-2">&amp;</span>state));
+                <span class="macro">trace!</span>(<span class="string">"[{}] invalid request path segments"</span>, request_id(<span class="kw-2">&amp;</span>state));
                 <span class="kw">let </span>res = create_empty_response(<span class="kw-2">&amp;</span>state, StatusCode::INTERNAL_SERVER_ERROR);
                 future::ok((state, res)).boxed()
             }
@@ -553,23 +554,23 @@
         }
     }
 
-    <span class="kw">fn </span>dispatch&lt;<span class="lifetime">&#39;a</span>&gt;(
+    <span class="kw">fn </span>dispatch&lt;<span class="lifetime">'a</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="kw-2">mut </span>state: State,
-        params: SegmentMapping&lt;<span class="lifetime">&#39;a</span>&gt;,
+        params: SegmentMapping&lt;<span class="lifetime">'a</span>&gt;,
         route: <span class="kw-2">&amp;</span>Box&lt;<span class="kw">dyn </span>Route&lt;ResBody = Body&gt; + Send + Sync&gt;,
     ) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; {
         <span class="kw">match </span>route.extract_request_path(<span class="kw-2">&amp;mut </span>state, params) {
             <span class="prelude-val">Ok</span>(()) =&gt; {
-                <span class="macro">trace!</span>(<span class="string">&quot;[{}] extracted request path&quot;</span>, request_id(<span class="kw-2">&amp;</span>state));
+                <span class="macro">trace!</span>(<span class="string">"[{}] extracted request path"</span>, request_id(<span class="kw-2">&amp;</span>state));
                 <span class="kw">match </span>route.extract_query_string(<span class="kw-2">&amp;mut </span>state) {
                     <span class="prelude-val">Ok</span>(()) =&gt; {
-                        <span class="macro">trace!</span>(<span class="string">&quot;[{}] extracted query string&quot;</span>, request_id(<span class="kw-2">&amp;</span>state));
-                        <span class="macro">trace!</span>(<span class="string">&quot;[{}] dispatching&quot;</span>, request_id(<span class="kw-2">&amp;</span>state));
+                        <span class="macro">trace!</span>(<span class="string">"[{}] extracted query string"</span>, request_id(<span class="kw-2">&amp;</span>state));
+                        <span class="macro">trace!</span>(<span class="string">"[{}] dispatching"</span>, request_id(<span class="kw-2">&amp;</span>state));
                         route.dispatch(state)
                     }
                     <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; {
-                        <span class="macro">error!</span>(<span class="string">&quot;[{}] the server cannot or will not process the request due to a client error within the query string&quot;</span>,
+                        <span class="macro">error!</span>(<span class="string">"[{}] the server cannot or will not process the request due to a client error within the query string"</span>,
                                request_id(<span class="kw-2">&amp;</span>state));
 
                         <span class="kw">let </span><span class="kw-2">mut </span>res = Response::new(Body::empty());
@@ -580,7 +581,7 @@
             }
             <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; {
                 <span class="macro">error!</span>(
-                    <span class="string">&quot;[{}] the server cannot or will not process the request due to a client error on the request path&quot;</span>,
+                    <span class="string">"[{}] the server cannot or will not process the request due to a client error on the request path"</span>,
                     request_id(<span class="kw-2">&amp;</span>state)
                 );
                 <span class="kw">let </span><span class="kw-2">mut </span>res = Response::new(Body::empty());
@@ -595,8 +596,8 @@
         result
             .or_else(|(state, err)| {
                 <span class="macro">trace!</span>(
-                    <span class="string">&quot;[{}] converting error into http response \
-                     during finalization: {:?}&quot;</span>,
+                    <span class="string">"[{}] converting error into http response \
+                     during finalization: {:?}"</span>,
                     request_id(<span class="kw-2">&amp;</span>state),
                     err
                 );
@@ -604,7 +605,7 @@
                 future::ok((state, response))
             })
             .and_then(<span class="kw">move </span>|(state, res)| {
-                <span class="macro">trace!</span>(<span class="string">&quot;[{}] handler complete&quot;</span>, request_id(<span class="kw-2">&amp;</span>state));
+                <span class="macro">trace!</span>(<span class="string">"[{}] handler complete"</span>, request_id(<span class="kw-2">&amp;</span>state));
                 response_finalizer.finalize(state, res)
             })
             .boxed()
@@ -646,7 +647,7 @@
 
         <span class="kw">let </span><span class="kw-2">mut </span>headers = HeaderMap::new();
         <span class="kw">if </span>method == Method::POST {
-            headers.insert(CONTENT_TYPE, <span class="string">&quot;application/json&quot;</span>.parse().unwrap());
+            headers.insert(CONTENT_TYPE, <span class="string">"application/json"</span>.parse().unwrap());
             headers.insert(CONTENT_LENGTH, <span class="number">0</span>.into());
         }
 
@@ -666,7 +667,7 @@
         <span class="kw">let </span>router = Router::new(tree, ResponseFinalizerBuilder::new().finalize());
 
         <span class="kw">let </span>method = Method::GET;
-        <span class="kw">let </span>uri = Uri::from_str(<span class="string">&quot;https://test.gotham.rs&quot;</span>).unwrap();
+        <span class="kw">let </span>uri = Uri::from_str(<span class="string">"https://test.gotham.rs"</span>).unwrap();
 
         <span class="kw">let </span><span class="kw-2">mut </span>state = State::new();
         state.put(method);
@@ -678,7 +679,7 @@
             <span class="prelude-val">Ok</span>((_state, res)) =&gt; {
                 <span class="macro">assert_eq!</span>(res.status(), StatusCode::INTERNAL_SERVER_ERROR);
             }
-            <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">unreachable!</span>(<span class="string">&quot;Router should have handled request&quot;</span>),
+            <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">unreachable!</span>(<span class="string">"Router should have handled request"</span>),
         };
     }
 
@@ -687,11 +688,11 @@
         <span class="kw">let </span>tree = Tree::new();
         <span class="kw">let </span>router = Router::new(tree, ResponseFinalizerBuilder::new().finalize());
 
-        <span class="kw">match </span>send_request(router, Method::GET, <span class="string">&quot;https://test.gotham.rs&quot;</span>) {
+        <span class="kw">match </span>send_request(router, Method::GET, <span class="string">"https://test.gotham.rs"</span>) {
             <span class="prelude-val">Ok</span>((_state, res)) =&gt; {
                 <span class="macro">assert_eq!</span>(res.status(), StatusCode::NOT_FOUND);
             }
-            <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">unreachable!</span>(<span class="string">&quot;Router should have handled request&quot;</span>),
+            <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">unreachable!</span>(<span class="string">"Router should have handled request"</span>),
         };
     }
 
@@ -715,7 +716,7 @@
         tree.add_route(route);
         <span class="kw">let </span>router = Router::new(tree, ResponseFinalizerBuilder::new().finalize());
 
-        <span class="kw">match </span>send_request(router.clone(), Method::GET, <span class="string">&quot;https://test.gotham.rs&quot;</span>) {
+        <span class="kw">match </span>send_request(router.clone(), Method::GET, <span class="string">"https://test.gotham.rs"</span>) {
             <span class="prelude-val">Ok</span>((_state, res)) =&gt; {
                 <span class="macro">assert_eq!</span>(res.status(), StatusCode::METHOD_NOT_ALLOWED);
                 <span class="macro">assert_eq!</span>(
@@ -724,18 +725,18 @@
                         .iter()
                         .map(|it| it.to_str().unwrap())
                         .collect::&lt;Vec&lt;<span class="kw-2">&amp;</span>str&gt;&gt;(),
-                    <span class="macro">vec!</span>[<span class="string">&quot;POST&quot;</span>]
+                    <span class="macro">vec!</span>[<span class="string">"POST"</span>]
                 );
             }
-            <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">unreachable!</span>(<span class="string">&quot;Router should have handled request&quot;</span>),
+            <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">unreachable!</span>(<span class="string">"Router should have handled request"</span>),
         };
 
-        <span class="kw">match </span>send_request(router, Method::POST, <span class="string">&quot;https://test.gotham.rs&quot;</span>) {
+        <span class="kw">match </span>send_request(router, Method::POST, <span class="string">"https://test.gotham.rs"</span>) {
             <span class="prelude-val">Ok</span>((_state, res)) =&gt; {
                 <span class="macro">assert_eq!</span>(res.status(), StatusCode::UNSUPPORTED_MEDIA_TYPE);
                 <span class="macro">assert!</span>(res.headers().get_all(ALLOW).iter().next().is_none());
             }
-            <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">unreachable!</span>(<span class="string">&quot;Router should have handled request&quot;</span>),
+            <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">unreachable!</span>(<span class="string">"Router should have handled request"</span>),
         };
     }
 
@@ -756,11 +757,11 @@
         tree.add_route(route);
         <span class="kw">let </span>router = Router::new(tree, ResponseFinalizerBuilder::new().finalize());
 
-        <span class="kw">match </span>send_request(router, Method::GET, <span class="string">&quot;https://test.gotham.rs&quot;</span>) {
+        <span class="kw">match </span>send_request(router, Method::GET, <span class="string">"https://test.gotham.rs"</span>) {
             <span class="prelude-val">Ok</span>((_state, res)) =&gt; {
                 <span class="macro">assert_eq!</span>(res.status(), StatusCode::OK);
             }
-            <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">unreachable!</span>(<span class="string">&quot;Router should have handled request&quot;</span>),
+            <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">unreachable!</span>(<span class="string">"Router should have handled request"</span>),
         };
     }
 
@@ -786,7 +787,7 @@
 
         <span class="kw">let </span>pipeline_set = finalize_pipeline_set(new_pipeline_set());
         <span class="kw">let </span><span class="kw-2">mut </span>tree = Tree::new();
-        <span class="kw">let </span><span class="kw-2">mut </span>delegated_node = Node::new(<span class="string">&quot;var&quot;</span>, SegmentType::Dynamic);
+        <span class="kw">let </span><span class="kw-2">mut </span>delegated_node = Node::new(<span class="string">"var"</span>, SegmentType::Dynamic);
 
         <span class="kw">let </span>route = {
             <span class="kw">let </span>methods = <span class="macro">vec!</span>[Method::GET];
@@ -803,19 +804,19 @@
         <span class="kw">let </span>router = Router::new(tree, ResponseFinalizerBuilder::new().finalize());
 
         <span class="comment">// Ensure that top level tree has no route
-        </span><span class="kw">match </span>send_request(router.clone(), Method::GET, <span class="string">&quot;https://test.gotham.rs&quot;</span>) {
+        </span><span class="kw">match </span>send_request(router.clone(), Method::GET, <span class="string">"https://test.gotham.rs"</span>) {
             <span class="prelude-val">Ok</span>((_state, res)) =&gt; {
                 <span class="macro">assert_eq!</span>(res.status(), StatusCode::NOT_FOUND);
             }
-            <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">unreachable!</span>(<span class="string">&quot;Router should have handled request&quot;</span>),
+            <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">unreachable!</span>(<span class="string">"Router should have handled request"</span>),
         };
 
         <span class="comment">// Ensure that top level tree of delegated router has route that responds correctly
-        </span><span class="kw">match </span>send_request(router, Method::GET, <span class="string">&quot;https://test.gotham.rs/api&quot;</span>) {
+        </span><span class="kw">match </span>send_request(router, Method::GET, <span class="string">"https://test.gotham.rs/api"</span>) {
             <span class="prelude-val">Ok</span>((_state, res)) =&gt; {
                 <span class="macro">assert_eq!</span>(res.status(), StatusCode::OK);
             }
-            <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">unreachable!</span>(<span class="string">&quot;Router should have handled request&quot;</span>),
+            <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">unreachable!</span>(<span class="string">"Router should have handled request"</span>),
         };
     }
 
@@ -826,17 +827,17 @@
         <span class="kw">let </span><span class="kw-2">mut </span>response_finalizer_builder = ResponseFinalizerBuilder::new();
         <span class="kw">let </span>not_found_extender = |_s: <span class="kw-2">&amp;mut </span>State, r: <span class="kw-2">&amp;mut </span>Response&lt;Body&gt;| {
             r.headers_mut()
-                .insert(CONTENT_LENGTH, <span class="string">&quot;3&quot;</span>.to_owned().parse().unwrap());
+                .insert(CONTENT_LENGTH, <span class="string">"3"</span>.to_owned().parse().unwrap());
         };
         response_finalizer_builder.add(StatusCode::NOT_FOUND, Box::new(not_found_extender));
         <span class="kw">let </span>response_finalizer = response_finalizer_builder.finalize();
         <span class="kw">let </span>router = Router::new(tree, response_finalizer);
 
-        <span class="kw">match </span>send_request(router, Method::GET, <span class="string">&quot;https://test.gotham.rs/api&quot;</span>) {
+        <span class="kw">match </span>send_request(router, Method::GET, <span class="string">"https://test.gotham.rs/api"</span>) {
             <span class="prelude-val">Ok</span>((_state, res)) =&gt; {
-                <span class="macro">assert_eq!</span>(res.headers().get(CONTENT_LENGTH).unwrap(), <span class="string">&quot;3&quot;</span>);
+                <span class="macro">assert_eq!</span>(res.headers().get(CONTENT_LENGTH).unwrap(), <span class="string">"3"</span>);
             }
-            <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">unreachable!</span>(<span class="string">&quot;Router should have correctly handled request&quot;</span>),
+            <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="macro">unreachable!</span>(<span class="string">"Router should have correctly handled request"</span>),
         };
     }
 }

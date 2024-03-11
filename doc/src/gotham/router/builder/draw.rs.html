@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gotham-0.7.2/src/router/builder/draw.rs`."><title>draw.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-9ee3a5e31a2afa3e.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="gotham" data-themes="" data-resource-suffix="" data-rustdoc-version="1.75.0 (82e1608df 2023-12-21)" data-channel="1.75.0" data-search-js="search-8fbf244ebcf71464.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../../../src-files.js"></script><script defer src="../../../../static.files/main-9dd44ab47b99a0fb.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gotham-0.7.3/src/router/builder/draw.rs`."><title>draw.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-ac92e1bbe349e143.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="gotham" data-themes="" data-resource-suffix="" data-rustdoc-version="1.76.0 (07dca489a 2024-02-04)" data-channel="1.76.0" data-search-js="search-2b6ce74ff89ae146.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../../../static.files/storage-f2adc0d6ca4d09fb.js"></script><script defer src="../../../../static.files/src-script-39ed315d46fb705f.js"></script><script defer src="../../../../src-files.js"></script><script defer src="../../../../static.files/main-305769736d49e732.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-feafe1bb7466e4bd.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -1076,8 +1077,8 @@
 /// determining if it matches a request.
 ///
 /// See `router::builder::DefineSingleRoute` for an overview of route specification.
-</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">type </span>DefaultSingleRouteBuilder&lt;<span class="lifetime">&#39;a</span>, C, P&gt; = SingleRouteBuilder&lt;
-    <span class="lifetime">&#39;a</span>,
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">type </span>DefaultSingleRouteBuilder&lt;<span class="lifetime">'a</span>, C, P&gt; = SingleRouteBuilder&lt;
+    <span class="lifetime">'a</span>,
     MethodOnlyRouteMatcher,
     C,
     P,
@@ -1088,21 +1089,21 @@
 <span class="doccomment">/// The type returned when building a route with explicit matching requirements.
 ///
 /// See `router::builder::DefineSingleRoute` for an overview of route specification.
-</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">type </span>ExplicitSingleRouteBuilder&lt;<span class="lifetime">&#39;a</span>, M, C, P&gt; =
-    SingleRouteBuilder&lt;<span class="lifetime">&#39;a</span>, M, C, P, NoopPathExtractor, NoopQueryStringExtractor&gt;;
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">type </span>ExplicitSingleRouteBuilder&lt;<span class="lifetime">'a</span>, M, C, P&gt; =
+    SingleRouteBuilder&lt;<span class="lifetime">'a</span>, M, C, P, NoopPathExtractor, NoopQueryStringExtractor&gt;;
 
 <span class="doccomment">/// The type passed to the function used when building associated routes. See
 /// `AssociatedRouteBuilder` for information about the API available for associated routes.
-</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">type </span>DefaultAssociatedRouteBuilder&lt;<span class="lifetime">&#39;a</span>, M, C, P&gt; =
-    AssociatedRouteBuilder&lt;<span class="lifetime">&#39;a</span>, M, C, P, NoopPathExtractor, NoopQueryStringExtractor&gt;;
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">type </span>DefaultAssociatedRouteBuilder&lt;<span class="lifetime">'a</span>, M, C, P&gt; =
+    AssociatedRouteBuilder&lt;<span class="lifetime">'a</span>, M, C, P, NoopPathExtractor, NoopQueryStringExtractor&gt;;
 
 <span class="doccomment">/// Defines functions used by a builder to determine which request paths will be dispatched to a
 /// route. This trait is implemented by the top-level `RouterBuilder`, and also the `ScopedBuilder`
 /// created by `DrawRoutes::scope`.
 </span><span class="kw">pub trait </span>DrawRoutes&lt;C, P&gt;
 <span class="kw">where
-    </span>C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">&#39;static</span>,
-    P: RefUnwindSafe + Send + Sync + <span class="lifetime">&#39;static</span>,
+    </span>C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">'static</span>,
+    P: RefUnwindSafe + Send + Sync + <span class="lifetime">'static</span>,
 {
     <span class="doccomment">/// Creates a route which matches `GET` and `HEAD` requests to the given path.
     ///
@@ -1121,7 +1122,7 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.get_or_head(&quot;/request/path&quot;).to(my_handler);
+    ///     route.get_or_head("/request/path").to(my_handler);
     /// })
     /// # }
     /// #
@@ -1129,19 +1130,19 @@
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #
     /// #   let response = test_server.client()
-    /// #       .get(&quot;https://example.com/request/path&quot;)
+    /// #       .get("https://example.com/request/path")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// #
     /// #   let response = test_server.client()
-    /// #       .head(&quot;https://example.com/request/path&quot;)
+    /// #       .head("https://example.com/request/path")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">fn </span>get_or_head&lt;<span class="lifetime">&#39;b</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; DefaultSingleRouteBuilder&lt;<span class="lifetime">&#39;b</span>, C, P&gt; {
+    </span><span class="kw">fn </span>get_or_head&lt;<span class="lifetime">'b</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; DefaultSingleRouteBuilder&lt;<span class="lifetime">'b</span>, C, P&gt; {
         <span class="self">self</span>.request(<span class="macro">vec!</span>[Method::GET, Method::HEAD], path)
     }
 
@@ -1166,20 +1167,20 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.get(&quot;/request/path&quot;).to(my_handler);
+    ///     route.get("/request/path").to(my_handler);
     /// })
     /// # }
     /// #
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .get(&quot;https://example.com/request/path&quot;)
+    /// #       .get("https://example.com/request/path")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">fn </span>get&lt;<span class="lifetime">&#39;b</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; DefaultSingleRouteBuilder&lt;<span class="lifetime">&#39;b</span>, C, P&gt; {
+    </span><span class="kw">fn </span>get&lt;<span class="lifetime">'b</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; DefaultSingleRouteBuilder&lt;<span class="lifetime">'b</span>, C, P&gt; {
         <span class="self">self</span>.request(<span class="macro">vec!</span>[Method::GET], path)
     }
 
@@ -1203,20 +1204,20 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.head(&quot;/request/path&quot;).to(my_handler);
+    ///     route.head("/request/path").to(my_handler);
     /// })
     /// # }
     /// #
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .head(&quot;https://example.com/request/path&quot;)
+    /// #       .head("https://example.com/request/path")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">fn </span>head&lt;<span class="lifetime">&#39;b</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; DefaultSingleRouteBuilder&lt;<span class="lifetime">&#39;b</span>, C, P&gt; {
+    </span><span class="kw">fn </span>head&lt;<span class="lifetime">'b</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; DefaultSingleRouteBuilder&lt;<span class="lifetime">'b</span>, C, P&gt; {
         <span class="self">self</span>.request(<span class="macro">vec!</span>[Method::HEAD], path)
     }
 
@@ -1241,20 +1242,20 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.post(&quot;/request/path&quot;).to(my_handler);
+    ///     route.post("/request/path").to(my_handler);
     /// })
     /// # }
     /// #
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .post(&quot;https://example.com/request/path&quot;, b&quot;&quot;.to_vec(), mime::TEXT_PLAIN)
+    /// #       .post("https://example.com/request/path", b"".to_vec(), mime::TEXT_PLAIN)
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">fn </span>post&lt;<span class="lifetime">&#39;b</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; DefaultSingleRouteBuilder&lt;<span class="lifetime">&#39;b</span>, C, P&gt; {
+    </span><span class="kw">fn </span>post&lt;<span class="lifetime">'b</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; DefaultSingleRouteBuilder&lt;<span class="lifetime">'b</span>, C, P&gt; {
         <span class="self">self</span>.request(<span class="macro">vec!</span>[Method::POST], path)
     }
 
@@ -1279,20 +1280,20 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.put(&quot;/request/path&quot;).to(my_handler);
+    ///     route.put("/request/path").to(my_handler);
     /// })
     /// # }
     /// #
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .put(&quot;https://example.com/request/path&quot;, b&quot;&quot;.to_vec(), mime::TEXT_PLAIN)
+    /// #       .put("https://example.com/request/path", b"".to_vec(), mime::TEXT_PLAIN)
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">fn </span>put&lt;<span class="lifetime">&#39;b</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; DefaultSingleRouteBuilder&lt;<span class="lifetime">&#39;b</span>, C, P&gt; {
+    </span><span class="kw">fn </span>put&lt;<span class="lifetime">'b</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; DefaultSingleRouteBuilder&lt;<span class="lifetime">'b</span>, C, P&gt; {
         <span class="self">self</span>.request(<span class="macro">vec!</span>[Method::PUT], path)
     }
 
@@ -1317,20 +1318,20 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.patch(&quot;/request/path&quot;).to(my_handler);
+    ///     route.patch("/request/path").to(my_handler);
     /// })
     /// # }
     /// #
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .patch(&quot;https://example.com/request/path&quot;, b&quot;&quot;.to_vec(), mime::TEXT_PLAIN)
+    /// #       .patch("https://example.com/request/path", b"".to_vec(), mime::TEXT_PLAIN)
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">fn </span>patch&lt;<span class="lifetime">&#39;b</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; DefaultSingleRouteBuilder&lt;<span class="lifetime">&#39;b</span>, C, P&gt; {
+    </span><span class="kw">fn </span>patch&lt;<span class="lifetime">'b</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; DefaultSingleRouteBuilder&lt;<span class="lifetime">'b</span>, C, P&gt; {
         <span class="self">self</span>.request(<span class="macro">vec!</span>[Method::PATCH], path)
     }
 
@@ -1354,20 +1355,20 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.delete(&quot;/request/path&quot;).to(my_handler);
+    ///     route.delete("/request/path").to(my_handler);
     /// })
     /// # }
     /// #
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .delete(&quot;https://example.com/request/path&quot;)
+    /// #       .delete("https://example.com/request/path")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">fn </span>delete&lt;<span class="lifetime">&#39;b</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; DefaultSingleRouteBuilder&lt;<span class="lifetime">&#39;b</span>, C, P&gt; {
+    </span><span class="kw">fn </span>delete&lt;<span class="lifetime">'b</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; DefaultSingleRouteBuilder&lt;<span class="lifetime">'b</span>, C, P&gt; {
         <span class="self">self</span>.request(<span class="macro">vec!</span>[Method::DELETE], path)
     }
 
@@ -1391,28 +1392,28 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.options(&quot;/request/path&quot;).to(my_handler);
+    ///     route.options("/request/path").to(my_handler);
     /// })
     /// # }
     /// #
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .options(&quot;https://example.com/request/path&quot;)
+    /// #       .options("https://example.com/request/path")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">fn </span>options&lt;<span class="lifetime">&#39;b</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; DefaultSingleRouteBuilder&lt;<span class="lifetime">&#39;b</span>, C, P&gt; {
+    </span><span class="kw">fn </span>options&lt;<span class="lifetime">'b</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; DefaultSingleRouteBuilder&lt;<span class="lifetime">'b</span>, C, P&gt; {
         <span class="self">self</span>.request(<span class="macro">vec!</span>[Method::OPTIONS], path)
     }
 
     <span class="doccomment">/// Creates a single route which matches any requests to the given `path` with one of the
     /// given `methods`. The `path` can consist of static or dynamic segments, for example:
     ///
-    /// * `&quot;/hello/world&quot;` - a static path, matching only a request for exactly `&quot;/hello/world&quot;`
-    /// * `&quot;/hello/:name&quot;` - a dynamic path, matching requests for `&quot;/hello/any_value_here&quot;`
+    /// * `"/hello/world"` - a static path, matching only a request for exactly `"/hello/world"`
+    /// * `"/hello/:name"` - a dynamic path, matching requests for `"/hello/any_value_here"`
     ///
     /// # Examples
     ///
@@ -1433,7 +1434,7 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.request(vec![Method::GET, Method::HEAD], &quot;/request/path&quot;).to(my_handler);
+    ///     route.request(vec![Method::GET, Method::HEAD], "/request/path").to(my_handler);
     /// })
     /// # }
     /// #
@@ -1441,13 +1442,13 @@
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #
     /// #   let response = test_server.client()
-    /// #       .get(&quot;https://example.com/request/path&quot;)
+    /// #       .get("https://example.com/request/path")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// #
     /// #   let response = test_server.client()
-    /// #       .head(&quot;https://example.com/request/path&quot;)
+    /// #       .head("https://example.com/request/path")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
@@ -1475,7 +1476,7 @@
     /// build_simple_router(|route| {
     ///     // All we match on is the Accept header, the method is not considered.
     ///     let matcher = AcceptHeaderRouteMatcher::new(vec![mime::APPLICATION_JSON]);
-    ///     route.request(matcher, &quot;/request/path&quot;).to(my_handler);
+    ///     route.request(matcher, "/request/path").to(my_handler);
     /// })
     /// # }
     /// #
@@ -1483,14 +1484,14 @@
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #
     /// #   let response = test_server.client()
-    /// #       .get(&quot;https://example.com/request/path&quot;)
+    /// #       .get("https://example.com/request/path")
     /// #       .with_header(ACCEPT, mime::APPLICATION_JSON.to_string().parse().unwrap())
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// #
     /// #   let response = test_server.client()
-    /// #       .get(&quot;https://example.com/request/path&quot;)
+    /// #       .get("https://example.com/request/path")
     /// #       .with_header(ACCEPT, mime::TEXT_PLAIN.to_string().parse().unwrap())
     /// #       .perform()
     /// #       .unwrap();
@@ -1499,20 +1500,20 @@
     /// #   // No Accept type being provided is valid for the AcceptHeaderRouterMatcher
     /// #   // Proves the method is not considered
     /// #   let response = test_server.client()
-    /// #       .delete(&quot;https://example.com/request/path&quot;)
+    /// #       .delete("https://example.com/request/path")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">fn </span>request&lt;<span class="lifetime">&#39;b</span>, IRM, M&gt;(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>,
+    </span><span class="kw">fn </span>request&lt;<span class="lifetime">'b</span>, IRM, M&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>,
         matcher: IRM,
         path: <span class="kw-2">&amp;</span>str,
-    ) -&gt; ExplicitSingleRouteBuilder&lt;<span class="lifetime">&#39;b</span>, M, C, P&gt;
+    ) -&gt; ExplicitSingleRouteBuilder&lt;<span class="lifetime">'b</span>, M, C, P&gt;
     <span class="kw">where
         </span>IRM: IntoRouteMatcher&lt;Output = M&gt;,
-        M: RouteMatcher + Send + Sync + <span class="lifetime">&#39;static</span>,
+        M: RouteMatcher + Send + Sync + <span class="lifetime">'static</span>,
     {
         <span class="kw">let </span>(node_builder, pipeline_chain, pipelines) = <span class="self">self</span>.component_refs();
         <span class="kw">let </span>node_builder = descend(node_builder, path);
@@ -1550,9 +1551,9 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.scope(&quot;/api&quot;, |route| {
+    ///     route.scope("/api", |route| {
     ///         // Match requests to `/api/list`
-    ///         route.get(&quot;/list&quot;).to(api::list);
+    ///         route.get("/list").to(api::list);
     ///     });
     /// })
     /// # }
@@ -1560,7 +1561,7 @@
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .get(&quot;https://example.com/api/list&quot;)
+    /// #       .get("https://example.com/api/list")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
@@ -1647,17 +1648,17 @@
     ///     // Requests for the root handler use an empty set of pipelines, skipping the session
     ///     // middlewares.
     ///     route.with_pipeline_chain((), |route| {
-    ///         route.get(&quot;/&quot;).to(handler);
+    ///         route.get("/").to(handler);
     ///     });
     ///
     ///     // Requests dispatched to the resource module will only invoke one session
     ///     // middleware which is the default behavior.
-    ///     route.get(&quot;/resource/list&quot;).to(resource::list);
+    ///     route.get("/resource/list").to(resource::list);
     ///
     ///     // Requests for the admin handler will additionally invoke the admin session
     ///     // middleware.
     ///     route.with_pipeline_chain(extended_chain, |route| {
-    ///         route.get(&quot;/admin&quot;).to(admin::handler);
+    ///         route.get("/admin").to(admin::handler);
     ///     });
     /// })
     /// # }
@@ -1666,13 +1667,13 @@
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #
     /// #   let response = test_server.client()
-    /// #       .get(&quot;https://example.com/&quot;)
+    /// #       .get("https://example.com/")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// #
     /// #   let response = test_server.client()
-    /// #       .get(&quot;https://example.com/resource/list&quot;)
+    /// #       .get("https://example.com/resource/list")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
@@ -1681,7 +1682,7 @@
     </span><span class="kw">fn </span>with_pipeline_chain&lt;F, NC&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>, pipeline_chain: NC, f: F)
     <span class="kw">where
         </span>F: FnOnce(<span class="kw-2">&amp;mut </span>ScopeBuilder&lt;NC, P&gt;),
-        NC: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">&#39;static</span>,
+        NC: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">'static</span>,
     {
         <span class="kw">let </span>(node_builder, _pipeline_chain, pipelines) = <span class="self">self</span>.component_refs();
 
@@ -1715,26 +1716,26 @@
     /// #   }
     /// #
     /// #   build_simple_router(|route| {
-    /// #       route.get(&quot;/&quot;).to(handler);
+    /// #       route.get("/").to(handler);
     /// #   })
     /// }
     ///
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.delegate(&quot;/admin&quot;).to_router(admin_router());
+    ///     route.delegate("/admin").to_router(admin_router());
     /// })
     /// # }
     /// #
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .get(&quot;https://example.com/admin&quot;)
+    /// #       .get("https://example.com/admin")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">fn </span>delegate&lt;<span class="lifetime">&#39;b</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; DelegateRouteBuilder&lt;<span class="lifetime">&#39;b</span>, AnyRouteMatcher, C, P&gt; {
+    </span><span class="kw">fn </span>delegate&lt;<span class="lifetime">'b</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str) -&gt; DelegateRouteBuilder&lt;<span class="lifetime">'b</span>, AnyRouteMatcher, C, P&gt; {
         <span class="kw">let </span>(node_builder, pipeline_chain, pipelines) = <span class="self">self</span>.component_refs();
         <span class="kw">let </span>node_builder = descend(node_builder, path);
 
@@ -1747,7 +1748,7 @@
     }
 
     <span class="doccomment">/// Begins delegating a subpath of the tree, but does not dispatch the requests via this
-    /// router&#39;s `PipelineChain`.
+    /// router's `PipelineChain`.
     ///
     /// # Examples
     ///
@@ -1764,7 +1765,7 @@
     /// # #[derive(Default, Serialize, Deserialize)]
     /// # struct Session;
     /// #
-    /// // API routes which don&#39;t require sessions.
+    /// // API routes which don't require sessions.
     /// fn api_router() -&gt; Router {
     ///     // Implementation elided
     /// #   fn handler(state: State) -&gt; (State, Response&lt;Body&gt;) {
@@ -1773,7 +1774,7 @@
     /// #   }
     /// #
     /// #   build_simple_router(|route| {
-    /// #       route.get(&quot;/&quot;).to(handler);
+    /// #       route.get("/").to(handler);
     /// #   })
     /// }
     /// # fn handler(state: State) -&gt; (State, Response&lt;Body&gt;) {
@@ -1790,32 +1791,32 @@
     ///
     /// build_router(chain, pipelines, |route| {
     ///     // Requests dispatched to the `/api` router will not invoke the session middleware.
-    ///     route.delegate_without_pipelines(&quot;/api&quot;).to_router(api_router());
+    ///     route.delegate_without_pipelines("/api").to_router(api_router());
     ///
     ///     // Other requests will invoke the session middleware as normal.
-    ///     route.get(&quot;/&quot;).to(handler);
+    ///     route.get("/").to(handler);
     /// })
     /// # }
     /// #
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .get(&quot;https://example.com/&quot;)
+    /// #       .get("https://example.com/")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// #
     /// #   let response = test_server.client()
-    /// #       .get(&quot;https://example.com/api&quot;)
+    /// #       .get("https://example.com/api")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">fn </span>delegate_without_pipelines&lt;<span class="lifetime">&#39;b</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>,
+    </span><span class="kw">fn </span>delegate_without_pipelines&lt;<span class="lifetime">'b</span>&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>,
         path: <span class="kw-2">&amp;</span>str,
-    ) -&gt; DelegateRouteBuilder&lt;<span class="lifetime">&#39;b</span>, AnyRouteMatcher, (), P&gt; {
+    ) -&gt; DelegateRouteBuilder&lt;<span class="lifetime">'b</span>, AnyRouteMatcher, (), P&gt; {
         <span class="kw">let </span>(node_builder, _pipeline_chain, pipelines) = <span class="self">self</span>.component_refs();
         <span class="kw">let </span>node_builder = descend(node_builder, path);
 
@@ -1864,7 +1865,7 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.associate(&quot;/resource&quot;, |assoc| {
+    ///     route.associate("/resource", |assoc| {
     ///         assoc.get_or_head().to(resource::show);
     ///         assoc.patch().to(resource::update);
     ///         assoc.delete().to(resource::delete);
@@ -1875,27 +1876,27 @@
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .get(&quot;https://example.com/resource&quot;)
+    /// #       .get("https://example.com/resource")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::NO_CONTENT);
     /// #
     /// #   let response = test_server.client()
-    /// #       .patch(&quot;https://example.com/resource&quot;, b&quot;&quot;.to_vec(), mime::TEXT_PLAIN)
+    /// #       .patch("https://example.com/resource", b"".to_vec(), mime::TEXT_PLAIN)
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::CREATED);
     /// #
     /// #   let response = test_server.client()
-    /// #       .delete(&quot;https://example.com/resource&quot;)
+    /// #       .delete("https://example.com/resource")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">fn </span>associate&lt;<span class="lifetime">&#39;b</span>, F&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str, f: F)
+    </span><span class="kw">fn </span>associate&lt;<span class="lifetime">'b</span>, F&gt;(<span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>, path: <span class="kw-2">&amp;</span>str, f: F)
     <span class="kw">where
-        </span>F: FnOnce(<span class="kw-2">&amp;mut </span>DefaultAssociatedRouteBuilder&lt;<span class="lifetime">&#39;b</span>, AnyRouteMatcher, C, P&gt;),
+        </span>F: FnOnce(<span class="kw-2">&amp;mut </span>DefaultAssociatedRouteBuilder&lt;<span class="lifetime">'b</span>, AnyRouteMatcher, C, P&gt;),
     {
         <span class="kw">let </span>(node_builder, pipeline_chain, pipelines) = <span class="self">self</span>.component_refs();
         <span class="kw">let </span>node_builder = descend(node_builder, path);
@@ -1911,10 +1912,10 @@
     </span><span class="kw">fn </span>component_refs(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; (<span class="kw-2">&amp;mut </span>Node, <span class="kw-2">&amp;mut </span>C, <span class="kw-2">&amp;</span>PipelineSet&lt;P&gt;);
 }
 
-<span class="kw">fn </span>descend&lt;<span class="lifetime">&#39;n</span>&gt;(node_builder: <span class="kw-2">&amp;</span><span class="lifetime">&#39;n </span><span class="kw-2">mut </span>Node, path: <span class="kw-2">&amp;</span>str) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;n </span><span class="kw-2">mut </span>Node {
-    <span class="macro">trace!</span>(<span class="string">&quot;[walking to: {}]&quot;</span>, path);
+<span class="kw">fn </span>descend&lt;<span class="lifetime">'n</span>&gt;(node_builder: <span class="kw-2">&amp;</span><span class="lifetime">'n </span><span class="kw-2">mut </span>Node, path: <span class="kw-2">&amp;</span>str) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">'n </span><span class="kw-2">mut </span>Node {
+    <span class="macro">trace!</span>(<span class="string">"[walking to: {}]"</span>, path);
 
-    <span class="kw">let </span>path = path.strip_prefix(<span class="string">&#39;/&#39;</span>).unwrap_or(path);
+    <span class="kw">let </span>path = path.strip_prefix(<span class="string">'/'</span>).unwrap_or(path);
     <span class="kw">if </span>path.is_empty() {
         node_builder
     } <span class="kw">else </span>{
@@ -1922,18 +1923,18 @@
     }
 }
 
-<span class="kw">fn </span>build_subtree&lt;<span class="lifetime">&#39;n</span>, <span class="lifetime">&#39;s</span>, I&gt;(node: <span class="kw-2">&amp;</span><span class="lifetime">&#39;n </span><span class="kw-2">mut </span>Node, <span class="kw-2">mut </span>i: I) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;n </span><span class="kw-2">mut </span>Node
+<span class="kw">fn </span>build_subtree&lt;<span class="lifetime">'n</span>, <span class="lifetime">'s</span>, I&gt;(node: <span class="kw-2">&amp;</span><span class="lifetime">'n </span><span class="kw-2">mut </span>Node, <span class="kw-2">mut </span>i: I) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">'n </span><span class="kw-2">mut </span>Node
 <span class="kw">where
-    </span>I: Iterator&lt;Item = <span class="kw-2">&amp;</span><span class="lifetime">&#39;s </span>str&gt;,
+    </span>I: Iterator&lt;Item = <span class="kw-2">&amp;</span><span class="lifetime">'s </span>str&gt;,
 {
     <span class="kw">match </span>i.next() {
         <span class="prelude-val">Some</span>(segment) =&gt; {
-            <span class="macro">trace!</span>(<span class="string">&quot;[descending into {}]&quot;</span>, segment);
+            <span class="macro">trace!</span>(<span class="string">"[descending into {}]"</span>, segment);
 
             <span class="kw">let </span>(segment, segment_type) = <span class="kw">match </span>segment.chars().next() {
-                <span class="prelude-val">Some</span>(<span class="string">&#39;:&#39;</span>) =&gt; {
+                <span class="prelude-val">Some</span>(<span class="string">':'</span>) =&gt; {
                     <span class="kw">let </span>segment = <span class="kw-2">&amp;</span>segment[<span class="number">1</span>..];
-                    <span class="kw">match </span>segment.find(<span class="string">&#39;:&#39;</span>) {
+                    <span class="kw">match </span>segment.find(<span class="string">':'</span>) {
                         <span class="prelude-val">Some</span>(n) =&gt; {
                             <span class="kw">let </span>(segment, pattern) = segment.split_at(n);
                             <span class="kw">let </span>regex = Box::new(ConstrainedSegmentRegex::new(<span class="kw-2">&amp;</span>pattern[<span class="number">1</span>..]));
@@ -1942,9 +1943,9 @@
                         <span class="prelude-val">None </span>=&gt; (segment, SegmentType::Dynamic),
                     }
                 }
-                <span class="prelude-val">Some</span>(<span class="string">&#39;*&#39;</span>) <span class="kw">if </span>segment.len() == <span class="number">1 </span>=&gt; (segment, SegmentType::Glob),
-                <span class="prelude-val">Some</span>(<span class="string">&#39;*&#39;</span>) =&gt; (<span class="kw-2">&amp;</span>segment[<span class="number">1</span>..], SegmentType::Glob),
-                <span class="prelude-val">Some</span>(<span class="string">&#39;\\&#39;</span>) =&gt; (<span class="kw-2">&amp;</span>segment[<span class="number">1</span>..], SegmentType::Static),
+                <span class="prelude-val">Some</span>(<span class="string">'*'</span>) <span class="kw">if </span>segment.len() == <span class="number">1 </span>=&gt; (segment, SegmentType::Glob),
+                <span class="prelude-val">Some</span>(<span class="string">'*'</span>) =&gt; (<span class="kw-2">&amp;</span>segment[<span class="number">1</span>..], SegmentType::Glob),
+                <span class="prelude-val">Some</span>(<span class="string">'\\'</span>) =&gt; (<span class="kw-2">&amp;</span>segment[<span class="number">1</span>..], SegmentType::Static),
                 <span class="kw">_ </span>=&gt; (segment, SegmentType::Static),
             };
 
@@ -1956,26 +1957,26 @@
             build_subtree(child, i)
         }
         <span class="prelude-val">None </span>=&gt; {
-            <span class="macro">trace!</span>(<span class="string">&quot;[reached node]&quot;</span>);
+            <span class="macro">trace!</span>(<span class="string">"[reached node]"</span>);
             node
         }
     }
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, C, P&gt; DrawRoutes&lt;C, P&gt; <span class="kw">for </span>RouterBuilder&lt;<span class="lifetime">&#39;a</span>, C, P&gt;
+<span class="kw">impl</span>&lt;<span class="lifetime">'a</span>, C, P&gt; DrawRoutes&lt;C, P&gt; <span class="kw">for </span>RouterBuilder&lt;<span class="lifetime">'a</span>, C, P&gt;
 <span class="kw">where
-    </span>C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">&#39;static</span>,
-    P: RefUnwindSafe + Send + Sync + <span class="lifetime">&#39;static</span>,
+    </span>C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">'static</span>,
+    P: RefUnwindSafe + Send + Sync + <span class="lifetime">'static</span>,
 {
     <span class="kw">fn </span>component_refs(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; (<span class="kw-2">&amp;mut </span>Node, <span class="kw-2">&amp;mut </span>C, <span class="kw-2">&amp;</span>PipelineSet&lt;P&gt;) {
         (<span class="self">self</span>.node_builder, <span class="kw-2">&amp;mut </span><span class="self">self</span>.pipeline_chain, <span class="kw-2">&amp;</span><span class="self">self</span>.pipelines)
     }
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, C, P&gt; DrawRoutes&lt;C, P&gt; <span class="kw">for </span>ScopeBuilder&lt;<span class="lifetime">&#39;a</span>, C, P&gt;
+<span class="kw">impl</span>&lt;<span class="lifetime">'a</span>, C, P&gt; DrawRoutes&lt;C, P&gt; <span class="kw">for </span>ScopeBuilder&lt;<span class="lifetime">'a</span>, C, P&gt;
 <span class="kw">where
-    </span>C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">&#39;static</span>,
-    P: RefUnwindSafe + Send + Sync + <span class="lifetime">&#39;static</span>,
+    </span>C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">'static</span>,
+    P: RefUnwindSafe + Send + Sync + <span class="lifetime">'static</span>,
 {
     <span class="kw">fn </span>component_refs(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; (<span class="kw-2">&amp;mut </span>Node, <span class="kw-2">&amp;mut </span>C, <span class="kw-2">&amp;</span>PipelineSet&lt;P&gt;) {
         (<span class="self">self</span>.node_builder, <span class="kw-2">&amp;mut </span><span class="self">self</span>.pipeline_chain, <span class="kw-2">&amp;</span><span class="self">self</span>.pipelines)
@@ -2013,7 +2014,7 @@
     <span class="kw">impl </span>Middleware <span class="kw">for </span>QuickExitMiddleware {
         <span class="kw">fn </span>call&lt;Chain&gt;(<span class="self">self</span>, state: State, _chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
         <span class="kw">where
-            </span>Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + <span class="lifetime">&#39;static</span>,
+            </span>Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + <span class="lifetime">'static</span>,
         {
             <span class="kw">let </span>f = future::ok((
                 state,
@@ -2035,13 +2036,13 @@
     <span class="attr">#[test]
     </span><span class="kw">fn </span>delegate_with_matcher() {
         <span class="kw">let </span>test_router = build_simple_router(|route| {
-            route.get(<span class="string">&quot;/&quot;</span>).to(test_handler);
+            route.get(<span class="string">"/"</span>).to(test_handler);
         });
 
         <span class="kw">let </span>router = build_simple_router(|route| {
             <span class="kw">let </span>matcher = AcceptHeaderRouteMatcher::new(<span class="macro">vec!</span>[mime::APPLICATION_JSON]);
             route
-                .delegate(<span class="string">&quot;/test&quot;</span>)
+                .delegate(<span class="string">"/test"</span>)
                 .add_route_matcher(matcher)
                 .to_router(test_router);
         });
@@ -2049,14 +2050,14 @@
         <span class="kw">let </span>test_server = TestServer::new(router).unwrap();
         <span class="kw">let </span>response = test_server
             .client()
-            .get(<span class="string">&quot;http://localhost/test/&quot;</span>)
+            .get(<span class="string">"http://localhost/test/"</span>)
             .with_header(ACCEPT, mime::JAVASCRIPT.to_string().parse().unwrap())
             .perform()
             .unwrap();
         <span class="macro">assert_eq!</span>(response.status(), StatusCode::NOT_ACCEPTABLE);
         <span class="kw">let </span>response = test_server
             .client()
-            .get(<span class="string">&quot;http://localhost/test/&quot;</span>)
+            .get(<span class="string">"http://localhost/test/"</span>)
             .with_header(ACCEPT, mime::APPLICATION_JSON.to_string().parse().unwrap())
             .perform()
             .unwrap();
@@ -2068,17 +2069,17 @@
         <span class="kw">let </span>(chain, pipelines) = single_pipeline(new_pipeline().add(QuickExitMiddleware).build());
 
         <span class="kw">let </span>test_router = build_simple_router(|route| {
-            route.get(<span class="string">&quot;/&quot;</span>).to(test_handler);
+            route.get(<span class="string">"/"</span>).to(test_handler);
         });
 
         <span class="kw">let </span>router = build_router(chain, pipelines, |route| {
-            route.delegate(<span class="string">&quot;/test&quot;</span>).to_router(test_router);
+            route.delegate(<span class="string">"/test"</span>).to_router(test_router);
         });
 
         <span class="kw">let </span>test_server = TestServer::new(router).unwrap();
         <span class="kw">let </span>response = test_server
             .client()
-            .get(<span class="string">&quot;http://localhost/test/&quot;</span>)
+            .get(<span class="string">"http://localhost/test/"</span>)
             .perform()
             .unwrap();
         <span class="macro">assert_eq!</span>(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
@@ -2089,19 +2090,19 @@
         <span class="kw">let </span>(chain, pipelines) = single_pipeline(new_pipeline().add(QuickExitMiddleware).build());
 
         <span class="kw">let </span>test_router = build_simple_router(|route| {
-            route.get(<span class="string">&quot;/&quot;</span>).to(test_handler);
+            route.get(<span class="string">"/"</span>).to(test_handler);
         });
 
         <span class="kw">let </span>router = build_router(chain, pipelines, |route| {
             route
-                .delegate_without_pipelines(<span class="string">&quot;/test&quot;</span>)
+                .delegate_without_pipelines(<span class="string">"/test"</span>)
                 .to_router(test_router);
         });
 
         <span class="kw">let </span>test_server = TestServer::new(router).unwrap();
         <span class="kw">let </span>response = test_server
             .client()
-            .get(<span class="string">&quot;http://localhost/test/&quot;</span>)
+            .get(<span class="string">"http://localhost/test/"</span>)
             .perform()
             .unwrap();
 

@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gotham-0.7.2/src/pipeline/mod.rs`."><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-9ee3a5e31a2afa3e.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gotham" data-themes="" data-resource-suffix="" data-rustdoc-version="1.75.0 (82e1608df 2023-12-21)" data-channel="1.75.0" data-search-js="search-8fbf244ebcf71464.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-9dd44ab47b99a0fb.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gotham-0.7.3/src/pipeline/mod.rs`."><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-ac92e1bbe349e143.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gotham" data-themes="" data-resource-suffix="" data-rustdoc-version="1.76.0 (07dca489a 2024-02-04)" data-channel="1.76.0" data-search-js="search-2b6ce74ff89ae146.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../../static.files/storage-f2adc0d6ca4d09fb.js"></script><script defer src="../../../static.files/src-script-39ed315d46fb705f.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-305769736d49e732.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-feafe1bb7466e4bd.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -434,7 +435,7 @@
 <span class="kw">use </span><span class="kw">crate</span>::state::{request_id, State};
 
 <span class="doccomment">/// When using middleware, one or more `Middleware` are combined to form a `Pipeline`.
-/// `Middleware` are invoked strictly in the order they&#39;re added to the `Pipeline`.
+/// `Middleware` are invoked strictly in the order they're added to the `Pipeline`.
 ///
 /// At `Request` dispatch time, the `Middleware` are created from the `NewMiddleware` values given
 /// to the `PipelineBuilder`, and combined with a `Handler` created from the `NewHandler` provided
@@ -469,7 +470,7 @@
 ///     // Implementation elided.
 ///     // Appends `1` to `MiddlewareData.vec`
 /// #     fn call&lt;Chain&gt;(self, mut state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
-/// #         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static
+/// #         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + 'static
 /// #     {
 /// #         state.put(MiddlewareData { vec: vec![1] });
 /// #         chain(state)
@@ -483,7 +484,7 @@
 ///     // Implementation elided.
 ///     // Appends `2` to `MiddlewareData.vec`
 /// #     fn call&lt;Chain&gt;(self, mut state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
-/// #         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static
+/// #         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + 'static
 /// #     {
 /// #         state.borrow_mut::&lt;MiddlewareData&gt;().vec.push(2);
 /// #         chain(state)
@@ -497,7 +498,7 @@
 ///     // Implementation elided.
 ///     // Appends `3` to `MiddlewareData.vec`
 /// #     fn call&lt;Chain&gt;(self, mut state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
-/// #         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static
+/// #         where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + 'static
 /// #     {
 /// #         state.borrow_mut::&lt;MiddlewareData&gt;().vec.push(3);
 /// #         chain(state)
@@ -507,7 +508,7 @@
 /// fn handler(state: State) -&gt; (State, Response&lt;Body&gt;) {
 ///     let body = {
 ///         let data = state.borrow::&lt;MiddlewareData&gt;();
-///         format!(&quot;{:?}&quot;, data.vec)
+///         format!("{:?}", data.vec)
 ///     };
 ///
 ///     let res = create_response(&amp;state, StatusCode::OK, mime::TEXT_PLAIN, body);
@@ -525,17 +526,17 @@
 ///     );
 ///
 ///     let router = build_router(chain, pipelines, |route| {
-///         route.get(&quot;/&quot;).to(handler);
+///         route.get("/").to(handler);
 ///     });
 ///
 ///     let test_server = TestServer::new(router).unwrap();
 ///     let response = test_server
 ///         .client()
-///         .get(&quot;http://example.com/&quot;)
+///         .get("http://example.com/")
 ///         .perform()
 ///         .unwrap();
 ///     assert_eq!(response.status(), StatusCode::OK);
-///     assert_eq!(response.read_utf8_body().unwrap(), &quot;[1, 2, 3]&quot;);
+///     assert_eq!(response.read_utf8_body().unwrap(), "[1, 2, 3]");
 /// }
 /// ```
 </span><span class="kw">pub struct </span>Pipeline&lt;T&gt;
@@ -574,9 +575,9 @@
     /// will be served with the `f` function.
     </span><span class="kw">fn </span>call&lt;F&gt;(<span class="self">self</span>, state: State, f: F) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
     <span class="kw">where
-        </span>F: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + <span class="lifetime">&#39;static</span>,
+        </span>F: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + <span class="lifetime">'static</span>,
     {
-        <span class="macro">trace!</span>(<span class="string">&quot;[{}] calling middleware&quot;</span>, request_id(<span class="kw-2">&amp;</span>state));
+        <span class="macro">trace!</span>(<span class="string">"[{}] calling middleware"</span>, request_id(<span class="kw-2">&amp;</span>state));
         <span class="self">self</span>.chain.call(state, f)
     }
 }
@@ -585,7 +586,7 @@
 ///
 /// See `PipelineBuilder` for information on using `new_pipeline()`.
 </span><span class="kw">pub fn </span>new_pipeline() -&gt; PipelineBuilder&lt;()&gt; {
-    <span class="macro">trace!</span>(<span class="string">&quot; starting pipeline construction&quot;</span>);
+    <span class="macro">trace!</span>(<span class="string">" starting pipeline construction"</span>);
     <span class="comment">// See: `impl NewMiddlewareChain for ()`
     </span>PipelineBuilder { t: () }
 }
@@ -594,7 +595,7 @@
 </span><span class="kw">pub fn </span>single_middleware&lt;M&gt;(m: M) -&gt; Pipeline&lt;(M, ())&gt;
 <span class="kw">where
     </span>M: NewMiddleware,
-    M::Instance: Send + <span class="lifetime">&#39;static</span>,
+    M::Instance: Send + <span class="lifetime">'static</span>,
 {
     new_pipeline().add(m).build()
 }
@@ -626,7 +627,7 @@
 /// #
 /// # impl Middleware for MiddlewareOne {
 /// #   fn call&lt;Chain&gt;(self, state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
-/// #       where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static
+/// #       where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + 'static
 /// #   {
 /// #       chain(state)
 /// #   }
@@ -634,7 +635,7 @@
 /// #
 /// # impl Middleware for MiddlewareTwo {
 /// #   fn call&lt;Chain&gt;(self, state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
-/// #       where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static
+/// #       where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + 'static
 /// #   {
 /// #       chain(state)
 /// #   }
@@ -642,7 +643,7 @@
 /// #
 /// # impl Middleware for MiddlewareThree {
 /// #   fn call&lt;Chain&gt;(self, state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
-/// #       where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + &#39;static
+/// #       where Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + 'static
 /// #   {
 /// #       chain(state)
 /// #   }
@@ -685,10 +686,10 @@
     </span><span class="kw">pub fn </span>add&lt;M&gt;(<span class="self">self</span>, m: M) -&gt; PipelineBuilder&lt;(M, T)&gt;
     <span class="kw">where
         </span>M: NewMiddleware,
-        M::Instance: Send + <span class="lifetime">&#39;static</span>,
+        M::Instance: Send + <span class="lifetime">'static</span>,
         <span class="self">Self</span>: Sized,
     {
-        <span class="comment">// &quot;cons&quot; the most recently added `NewMiddleware` onto the front of the list. This is
+        <span class="comment">// "cons" the most recently added `NewMiddleware` onto the front of the list. This is
         // essentially building an HList-style tuple in reverse order. So for a call like:
         //
         //     new_pipeline().add(MiddlewareOne).add(MiddlewareTwo).add(MiddlewareThree)
@@ -700,7 +701,7 @@
         // An empty `PipelineBuilder` is represented as:
         //
         //     PipelineBuilder { t: () }
-        </span><span class="macro">trace!</span>(<span class="string">&quot; adding middleware to pipeline&quot;</span>);
+        </span><span class="macro">trace!</span>(<span class="string">" adding middleware to pipeline"</span>);
         PipelineBuilder { t: (m, <span class="self">self</span>.t) }
     }
 }
@@ -723,7 +724,7 @@
             state,
             Response::builder()
                 .status(StatusCode::OK)
-                .body(<span class="macro">format!</span>(<span class="string">&quot;{}&quot;</span>, number).into())
+                .body(<span class="macro">format!</span>(<span class="string">"{}"</span>, number).into())
                 .unwrap(),
         )
     }
@@ -744,7 +745,7 @@
     <span class="kw">impl </span>Middleware <span class="kw">for </span>Number {
         <span class="kw">fn </span>call&lt;Chain&gt;(<span class="self">self</span>, <span class="kw-2">mut </span>state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
         <span class="kw">where
-            </span>Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + <span class="lifetime">&#39;static</span>,
+            </span>Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + <span class="lifetime">'static</span>,
             <span class="self">Self</span>: Sized,
         {
             state.put(<span class="self">self</span>);
@@ -769,7 +770,7 @@
     <span class="kw">impl </span>Middleware <span class="kw">for </span>Addition {
         <span class="kw">fn </span>call&lt;Chain&gt;(<span class="self">self</span>, <span class="kw-2">mut </span>state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
         <span class="kw">where
-            </span>Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + <span class="lifetime">&#39;static</span>,
+            </span>Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + Send + <span class="lifetime">'static</span>,
             <span class="self">Self</span>: Sized,
         {
             state.borrow_mut::&lt;Number&gt;().value += <span class="self">self</span>.value;
@@ -792,7 +793,7 @@
     <span class="kw">impl </span>Middleware <span class="kw">for </span>Multiplication {
         <span class="kw">fn </span>call&lt;Chain&gt;(<span class="self">self</span>, <span class="kw-2">mut </span>state: State, chain: Chain) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt;
         <span class="kw">where
-            </span>Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + <span class="lifetime">&#39;static</span>,
+            </span>Chain: FnOnce(State) -&gt; Pin&lt;Box&lt;HandlerFuture&gt;&gt; + <span class="lifetime">'static</span>,
             <span class="self">Self</span>: Sized,
         {
             state.borrow_mut::&lt;Number&gt;().value <span class="kw-2">*</span>= <span class="self">self</span>.value;
@@ -822,12 +823,12 @@
 
         <span class="kw">let </span>response = test_server
             .client()
-            .get(<span class="string">&quot;http://localhost/&quot;</span>)
+            .get(<span class="string">"http://localhost/"</span>)
             .perform()
             .unwrap();
 
         <span class="kw">let </span>buf = response.read_body().unwrap();
-        <span class="macro">assert_eq!</span>(buf.as_slice(), <span class="string">b&quot;24&quot;</span>);
+        <span class="macro">assert_eq!</span>(buf.as_slice(), <span class="string">b"24"</span>);
     }
 }
 </code></pre></div></section></main></body></html>

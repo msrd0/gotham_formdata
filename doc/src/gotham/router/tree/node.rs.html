@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gotham-0.7.2/src/router/tree/node.rs`."><title>node.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-9ee3a5e31a2afa3e.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="gotham" data-themes="" data-resource-suffix="" data-rustdoc-version="1.75.0 (82e1608df 2023-12-21)" data-channel="1.75.0" data-search-js="search-8fbf244ebcf71464.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../../../src-files.js"></script><script defer src="../../../../static.files/main-9dd44ab47b99a0fb.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gotham-0.7.3/src/router/tree/node.rs`."><title>node.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-ac92e1bbe349e143.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="gotham" data-themes="" data-resource-suffix="" data-rustdoc-version="1.76.0 (07dca489a 2024-02-04)" data-channel="1.76.0" data-search-js="search-2b6ce74ff89ae146.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../../../static.files/storage-f2adc0d6ca4d09fb.js"></script><script defer src="../../../../static.files/src-script-39ed315d46fb705f.js"></script><script defer src="../../../../src-files.js"></script><script defer src="../../../../static.files/main-305769736d49e732.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-feafe1bb7466e4bd.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -663,10 +664,10 @@
     ///
     /// This method is a wrapping of an internal recursive implementation to mask the required
     /// types needed for the recursion.
-    </span><span class="kw">pub fn </span>match_node&lt;<span class="lifetime">&#39;a</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="self">self</span>,
-        segments: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>[PercentDecoded],
-    ) -&gt; <span class="prelude-ty">Option</span>&lt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>Node, SegmentMapping&lt;<span class="lifetime">&#39;a</span>&gt;, usize)&gt; {
+    </span><span class="kw">pub fn </span>match_node&lt;<span class="lifetime">'a</span>&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">'a </span><span class="self">self</span>,
+        segments: <span class="kw-2">&amp;</span><span class="lifetime">'a </span>[PercentDecoded],
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;(<span class="kw-2">&amp;</span><span class="lifetime">'a </span>Node, SegmentMapping&lt;<span class="lifetime">'a</span>&gt;, usize)&gt; {
         <span class="comment">// accumulators for recursion
         </span><span class="kw">let </span><span class="kw-2">mut </span>params = HashMap::new();
         <span class="kw">let </span><span class="kw-2">mut </span>processed = <span class="number">0</span>;
@@ -679,7 +680,7 @@
     <span class="doccomment">/// Retrieves a reference to the contained segment value.
     ///
     /// This is required for lifetime related annotations.
-    </span><span class="kw">pub fn </span>segment&lt;<span class="lifetime">&#39;a</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str {
+    </span><span class="kw">pub fn </span>segment&lt;<span class="lifetime">'a</span>&gt;(<span class="kw-2">&amp;</span><span class="lifetime">'a </span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">'a </span>str {
         <span class="kw-2">&amp;</span><span class="self">self</span>.segment
     }
 
@@ -704,7 +705,7 @@
         </span><span class="kw">for </span>r <span class="kw">in </span><span class="self">self</span>.routes.iter() {
             <span class="kw">match </span>r.is_match(state) {
                 <span class="prelude-val">Ok</span>(()) =&gt; {
-                    <span class="macro">trace!</span>(<span class="string">&quot;[{}] found matching route&quot;</span>, request_id(state));
+                    <span class="macro">trace!</span>(<span class="string">"[{}] found matching route"</span>, request_id(state));
                     <span class="kw">return </span><span class="prelude-val">Ok</span>(r);
                 }
                 <span class="prelude-val">Err</span>(e) =&gt; {
@@ -720,35 +721,35 @@
         <span class="comment">// unpack required for types
         </span><span class="kw">if let </span><span class="prelude-val">Err</span>(e) = err {
             <span class="macro">trace!</span>(
-                <span class="string">&quot;[{}] no matching route, using error status code from route&quot;</span>,
+                <span class="string">"[{}] no matching route, using error status code from route"</span>,
                 request_id(state)
             );
             <span class="kw">return </span><span class="prelude-val">Err</span>(e);
         }
 
         <span class="macro">trace!</span>(
-            <span class="string">&quot;[{}] invalid state, no routes. sending internal server error&quot;</span>,
+            <span class="string">"[{}] invalid state, no routes. sending internal server error"</span>,
             request_id(state)
         );
 
-        <span class="comment">// error because we shouldn&#39;t arrive here due to match_node/1
+        <span class="comment">// error because we shouldn't arrive here due to match_node/1
         </span><span class="prelude-val">Err</span>(RouteNonMatch::new(StatusCode::INTERNAL_SERVER_ERROR))
     }
 
     <span class="doccomment">/// Recursive implementation of `match_route` to populate parameters and keep
     /// track of the number of visited nodes.
     ///
-    /// There&#39;s space for optimizations in here (perhaps), but it seems to perform
+    /// There's space for optimizations in here (perhaps), but it seems to perform
     /// faster than the previous implementation of the router, so all is well for now.
-    </span><span class="kw">fn </span>inner_match_node&lt;<span class="lifetime">&#39;a</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="self">self</span>,
-        segments: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>[PercentDecoded],
-        params: <span class="kw-2">&amp;mut </span>SegmentMapping&lt;<span class="lifetime">&#39;a</span>&gt;,
+    </span><span class="kw">fn </span>inner_match_node&lt;<span class="lifetime">'a</span>&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">'a </span><span class="self">self</span>,
+        segments: <span class="kw-2">&amp;</span><span class="lifetime">'a </span>[PercentDecoded],
+        params: <span class="kw-2">&amp;mut </span>SegmentMapping&lt;<span class="lifetime">'a</span>&gt;,
         processed: <span class="kw-2">&amp;mut </span>usize,
-    ) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>Node&gt; {
+    ) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">'a </span>Node&gt; {
         <span class="kw">let </span>next_segment = segments.split_first();
 
-        <span class="comment">// stop if we&#39;re done
+        <span class="comment">// stop if we're done
         </span><span class="kw">if </span>next_segment.is_none() {
             <span class="kw">if </span>!<span class="self">self</span>.is_routable() {
                 <span class="kw">return </span><span class="prelude-val">None</span>;
@@ -781,7 +782,7 @@
 
                 <span class="comment">// Static matches based on a raw string match, so we simply
                 // compare the value of the current segment with that of the
-                // child node we&#39;re currently iterating.
+                // child node we're currently iterating.
                 </span>SegmentType::Static =&gt; {
                     <span class="comment">// check for raw string match
                     </span><span class="kw">if </span>child.segment != segment.as_ref() {
@@ -797,7 +798,7 @@
                     </span><span class="kw">if </span>!regex.is_match(segment.as_ref()) {
                         <span class="kw">continue</span>;
                     }
-                    <span class="comment">// if there&#39;s a match, store the value
+                    <span class="comment">// if there's a match, store the value
                     </span>params.insert(<span class="kw-2">&amp;</span>child.segment, <span class="macro">vec!</span>[segment]);
                 }
 
@@ -805,12 +806,12 @@
                 // segment value to the parameters list (just like with the
                 // constrained type).
                 </span>SegmentType::Dynamic =&gt; {
-                    <span class="comment">// if there&#39;s a match, store the value
+                    <span class="comment">// if there's a match, store the value
                     </span>params.insert(<span class="kw-2">&amp;</span>child.segment, <span class="macro">vec!</span>[segment]);
                 }
             };
 
-            <span class="comment">// If we hit this point, we&#39;ve determined that the child node is
+            <span class="comment">// If we hit this point, we've determined that the child node is
             // the correct node to delegate to, so we continue the recursion
             // on the child node, passing in the same parameters.
             </span><span class="kw">return </span>child.inner_match_node(remaining, params, processed);
@@ -878,7 +879,7 @@
 
     <span class="kw">fn </span>get_route&lt;P&gt;(pipeline_set: PipelineSet&lt;P&gt;) -&gt; Box&lt;<span class="kw">dyn </span>Route&lt;ResBody = Body&gt; + Send + Sync&gt;
     <span class="kw">where
-        </span>P: Send + Sync + RefUnwindSafe + <span class="lifetime">&#39;static</span>,
+        </span>P: Send + Sync + RefUnwindSafe + <span class="lifetime">'static</span>,
     {
         <span class="kw">let </span>methods = <span class="macro">vec!</span>[Method::GET];
         <span class="kw">let </span>matcher = MethodOnlyRouteMatcher::new(methods);
@@ -894,12 +895,12 @@
     }
 
     <span class="kw">fn </span>test_structure() -&gt; Node {
-        <span class="kw">let </span><span class="kw-2">mut </span>root = Node::new(<span class="string">&quot;/&quot;</span>, SegmentType::Static);
+        <span class="kw">let </span><span class="kw-2">mut </span>root = Node::new(<span class="string">"/"</span>, SegmentType::Static);
         <span class="kw">let </span>pipeline_set = finalize_pipeline_set(new_pipeline_set());
 
         <span class="comment">// Two methods, same path, same handler
         // [Get|Head]: /seg1
-        </span><span class="kw">let </span><span class="kw-2">mut </span>seg1 = Node::new(<span class="string">&quot;seg1&quot;</span>, SegmentType::Static);
+        </span><span class="kw">let </span><span class="kw-2">mut </span>seg1 = Node::new(<span class="string">"seg1"</span>, SegmentType::Static);
         <span class="kw">let </span>methods = <span class="macro">vec!</span>[Method::GET, Method::HEAD];
         <span class="kw">let </span>matcher = MethodOnlyRouteMatcher::new(methods);
         <span class="kw">let </span>dispatcher = DispatcherImpl::new(|| <span class="prelude-val">Ok</span>(handler), (), pipeline_set.clone());
@@ -915,7 +916,7 @@
 
         <span class="comment">// Two methods, same path, different handlers
         // Post: /seg2
-        </span><span class="kw">let </span><span class="kw-2">mut </span>seg2 = Node::new(<span class="string">&quot;seg2&quot;</span>, SegmentType::Static);
+        </span><span class="kw">let </span><span class="kw-2">mut </span>seg2 = Node::new(<span class="string">"seg2"</span>, SegmentType::Static);
         <span class="kw">let </span>methods = <span class="macro">vec!</span>[Method::POST];
         <span class="kw">let </span>matcher = MethodOnlyRouteMatcher::new(methods);
         <span class="kw">let </span>dispatcher = DispatcherImpl::new(|| <span class="prelude-val">Ok</span>(handler), (), pipeline_set.clone());
@@ -944,20 +945,20 @@
 
         <span class="comment">// Ensure basic traversal
         // Get: /seg3/seg4
-        </span><span class="kw">let </span><span class="kw-2">mut </span>seg3 = Node::new(<span class="string">&quot;seg3&quot;</span>, SegmentType::Static);
-        <span class="kw">let </span><span class="kw-2">mut </span>seg4 = Node::new(<span class="string">&quot;seg4&quot;</span>, SegmentType::Static);
+        </span><span class="kw">let </span><span class="kw-2">mut </span>seg3 = Node::new(<span class="string">"seg3"</span>, SegmentType::Static);
+        <span class="kw">let </span><span class="kw-2">mut </span>seg4 = Node::new(<span class="string">"seg4"</span>, SegmentType::Static);
         seg4.add_route(get_route(pipeline_set.clone()));
         seg3.add_child(seg4);
         root.add_child(seg3);
 
-        <span class="comment">// Ensure regex matching works and that it&#39;s anchored to the segment and does not allow for
+        <span class="comment">// Ensure regex matching works and that it's anchored to the segment and does not allow for
         // overzealous matching
         // GET: /resource/&lt;id&gt; where id: [0-9]+
-        </span><span class="kw">let </span><span class="kw-2">mut </span>seg_resource = Node::new(<span class="string">&quot;resource&quot;</span>, SegmentType::Static);
+        </span><span class="kw">let </span><span class="kw-2">mut </span>seg_resource = Node::new(<span class="string">"resource"</span>, SegmentType::Static);
         <span class="kw">let </span><span class="kw-2">mut </span>seg_id = Node::new(
-            <span class="string">&quot;id&quot;</span>,
+            <span class="string">"id"</span>,
             SegmentType::Constrained {
-                regex: Box::new(ConstrainedSegmentRegex::new(<span class="string">&quot;[0-9]+&quot;</span>)),
+                regex: Box::new(ConstrainedSegmentRegex::new(<span class="string">"[0-9]+"</span>)),
             },
         );
         seg_id.add_route(get_route(pipeline_set.clone()));
@@ -970,19 +971,19 @@
         //
         // Get /seg5/:segdyn1/seg7
         // Get /seg5/seg6
-        </span><span class="kw">let </span><span class="kw-2">mut </span>seg5 = Node::new(<span class="string">&quot;seg5&quot;</span>, SegmentType::Static);
-        <span class="kw">let </span><span class="kw-2">mut </span>seg6 = Node::new(<span class="string">&quot;seg6&quot;</span>, SegmentType::Static);
+        </span><span class="kw">let </span><span class="kw-2">mut </span>seg5 = Node::new(<span class="string">"seg5"</span>, SegmentType::Static);
+        <span class="kw">let </span><span class="kw-2">mut </span>seg6 = Node::new(<span class="string">"seg6"</span>, SegmentType::Static);
         seg6.add_route(get_route(pipeline_set.clone()));
 
-        <span class="kw">let </span><span class="kw-2">mut </span>segdyn1 = Node::new(<span class="string">&quot;:segdyn1&quot;</span>, SegmentType::Dynamic);
-        <span class="kw">let </span><span class="kw-2">mut </span>seg7 = Node::new(<span class="string">&quot;seg7&quot;</span>, SegmentType::Static);
+        <span class="kw">let </span><span class="kw-2">mut </span>segdyn1 = Node::new(<span class="string">":segdyn1"</span>, SegmentType::Dynamic);
+        <span class="kw">let </span><span class="kw-2">mut </span>seg7 = Node::new(<span class="string">"seg7"</span>, SegmentType::Static);
         seg7.add_route(get_route(pipeline_set.clone()));
 
         <span class="comment">// Ensure traversal will respect Globs
-        </span><span class="kw">let </span><span class="kw-2">mut </span>seg8 = Node::new(<span class="string">&quot;seg8&quot;</span>, SegmentType::Glob);
-        <span class="kw">let </span><span class="kw-2">mut </span>seg9 = Node::new(<span class="string">&quot;seg9&quot;</span>, SegmentType::Static);
+        </span><span class="kw">let </span><span class="kw-2">mut </span>seg8 = Node::new(<span class="string">"seg8"</span>, SegmentType::Glob);
+        <span class="kw">let </span><span class="kw-2">mut </span>seg9 = Node::new(<span class="string">"seg9"</span>, SegmentType::Static);
 
-        <span class="kw">let </span><span class="kw-2">mut </span>seg10 = Node::new(<span class="string">&quot;seg10&quot;</span>, SegmentType::Glob);
+        <span class="kw">let </span><span class="kw-2">mut </span>seg10 = Node::new(<span class="string">"seg10"</span>, SegmentType::Glob);
         seg10.add_route(get_route(pipeline_set));
 
         segdyn1.add_child(seg7);
@@ -1001,10 +1002,10 @@
     </span><span class="kw">fn </span>manages_children() {
         <span class="kw">let </span>root = test_structure();
 
-        <span class="macro">assert!</span>(root.borrow_child(<span class="string">&quot;seg1&quot;</span>, SegmentType::Static).is_some());
-        <span class="macro">assert!</span>(root.borrow_child(<span class="string">&quot;seg2&quot;</span>, SegmentType::Static).is_some());
-        <span class="macro">assert!</span>(root.borrow_child(<span class="string">&quot;seg1&quot;</span>, SegmentType::Dynamic).is_none());
-        <span class="macro">assert!</span>(root.borrow_child(<span class="string">&quot;seg0&quot;</span>, SegmentType::Static).is_none());
+        <span class="macro">assert!</span>(root.borrow_child(<span class="string">"seg1"</span>, SegmentType::Static).is_some());
+        <span class="macro">assert!</span>(root.borrow_child(<span class="string">"seg2"</span>, SegmentType::Static).is_some());
+        <span class="macro">assert!</span>(root.borrow_child(<span class="string">"seg1"</span>, SegmentType::Dynamic).is_none());
+        <span class="macro">assert!</span>(root.borrow_child(<span class="string">"seg0"</span>, SegmentType::Static).is_none());
     }
 
     <span class="attr">#[test]
@@ -1012,57 +1013,57 @@
         <span class="kw">let </span>root = test_structure();
 
         <span class="comment">// GET /seg3/seg4
-        </span><span class="kw">let </span>rs = RequestPathSegments::new(<span class="string">&quot;/seg3/seg4&quot;</span>);
+        </span><span class="kw">let </span>rs = RequestPathSegments::new(<span class="string">"/seg3/seg4"</span>);
         <span class="kw">match </span>root.match_node(rs.segments()) {
             <span class="prelude-val">Some</span>((node, _params, processed)) =&gt; {
-                <span class="macro">assert_eq!</span>(node.segment, <span class="string">&quot;seg4&quot;</span>);
+                <span class="macro">assert_eq!</span>(node.segment, <span class="string">"seg4"</span>);
                 <span class="macro">assert_eq!</span>(processed, <span class="number">2</span>);
             }
-            <span class="prelude-val">None </span>=&gt; <span class="macro">panic!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
+            <span class="prelude-val">None </span>=&gt; <span class="macro">panic!</span>(<span class="string">"traversal should have succeeded here"</span>),
         }
 
         <span class="comment">// GET /seg3/seg4/seg5
-        </span><span class="kw">let </span>rs = RequestPathSegments::new(<span class="string">&quot;/seg3/seg4/seg5&quot;</span>);
+        </span><span class="kw">let </span>rs = RequestPathSegments::new(<span class="string">"/seg3/seg4/seg5"</span>);
         <span class="macro">assert!</span>(root.match_node(rs.segments()).is_none());
 
         <span class="comment">// GET /seg5/seg6
-        </span><span class="kw">let </span>rs = RequestPathSegments::new(<span class="string">&quot;/seg5/seg6&quot;</span>);
+        </span><span class="kw">let </span>rs = RequestPathSegments::new(<span class="string">"/seg5/seg6"</span>);
         <span class="kw">match </span>root.match_node(rs.segments()) {
             <span class="prelude-val">Some</span>((node, _params, processed)) =&gt; {
-                <span class="macro">assert_eq!</span>(node.segment, <span class="string">&quot;seg6&quot;</span>);
+                <span class="macro">assert_eq!</span>(node.segment, <span class="string">"seg6"</span>);
                 <span class="macro">assert_eq!</span>(processed, <span class="number">2</span>);
             }
-            <span class="prelude-val">None </span>=&gt; <span class="macro">panic!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
+            <span class="prelude-val">None </span>=&gt; <span class="macro">panic!</span>(<span class="string">"traversal should have succeeded here"</span>),
         }
 
         <span class="comment">// GET /seg5/someval/seg7
-        </span><span class="kw">let </span>rs = RequestPathSegments::new(<span class="string">&quot;/seg5/someval/seg7&quot;</span>);
+        </span><span class="kw">let </span>rs = RequestPathSegments::new(<span class="string">"/seg5/someval/seg7"</span>);
         <span class="kw">match </span>root.match_node(rs.segments()) {
             <span class="prelude-val">Some</span>((node, _params, processed)) =&gt; {
-                <span class="macro">assert_eq!</span>(node.segment, <span class="string">&quot;seg7&quot;</span>);
+                <span class="macro">assert_eq!</span>(node.segment, <span class="string">"seg7"</span>);
                 <span class="macro">assert_eq!</span>(processed, <span class="number">3</span>);
             }
-            <span class="prelude-val">None </span>=&gt; <span class="macro">panic!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
+            <span class="prelude-val">None </span>=&gt; <span class="macro">panic!</span>(<span class="string">"traversal should have succeeded here"</span>),
         }
 
         <span class="comment">// GET /some/path/seg9/another/path
-        </span><span class="kw">let </span>rs = RequestPathSegments::new(<span class="string">&quot;/some/path/seg9/another/branch&quot;</span>);
+        </span><span class="kw">let </span>rs = RequestPathSegments::new(<span class="string">"/some/path/seg9/another/branch"</span>);
         <span class="kw">match </span>root.match_node(rs.segments()) {
             <span class="prelude-val">Some</span>((node, _params, processed)) =&gt; {
-                <span class="macro">assert_eq!</span>(node.segment, <span class="string">&quot;seg10&quot;</span>);
+                <span class="macro">assert_eq!</span>(node.segment, <span class="string">"seg10"</span>);
                 <span class="macro">assert_eq!</span>(processed, <span class="number">5</span>);
             }
-            <span class="prelude-val">None </span>=&gt; <span class="macro">panic!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
+            <span class="prelude-val">None </span>=&gt; <span class="macro">panic!</span>(<span class="string">"traversal should have succeeded here"</span>),
         }
 
-        <span class="kw">let </span>rs = RequestPathSegments::new(<span class="string">&quot;/resource/5001&quot;</span>);
-        <span class="kw">let </span>expected_segment = <span class="string">&quot;id&quot;</span>;
+        <span class="kw">let </span>rs = RequestPathSegments::new(<span class="string">"/resource/5001"</span>);
+        <span class="kw">let </span>expected_segment = <span class="string">"id"</span>;
         <span class="kw">match </span>root.match_node(rs.segments()) {
             <span class="prelude-val">Some</span>((node, _params, processed)) =&gt; {
                 <span class="macro">assert_eq!</span>(node.segment, expected_segment);
                 <span class="macro">assert_eq!</span>(processed, <span class="number">2</span>);
             }
-            <span class="prelude-val">None </span>=&gt; <span class="macro">panic!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
+            <span class="prelude-val">None </span>=&gt; <span class="macro">panic!</span>(<span class="string">"traversal should have succeeded here"</span>),
         }
     }
 
@@ -1075,7 +1076,7 @@
         state.put(HeaderMap::new());
         set_request_id(<span class="kw-2">&amp;mut </span>state);
 
-        <span class="kw">let </span>rs = RequestPathSegments::new(<span class="string">&quot;/seg2&quot;</span>);
+        <span class="kw">let </span>rs = RequestPathSegments::new(<span class="string">"/seg2"</span>);
         <span class="kw">match </span>root.match_node(rs.segments()) {
             <span class="prelude-val">Some</span>((node, _params, _processed)) =&gt; <span class="kw">match </span>node.select_route(<span class="kw-2">&amp;</span>state) {
                 <span class="prelude-val">Err</span>(e) =&gt; {
@@ -1084,12 +1085,12 @@
                     allow_list.sort_by(|a, b| a.as_ref().cmp(b.as_ref()));
                     <span class="macro">assert_eq!</span>(allow_list, <span class="macro">vec!</span>[Method::PATCH, Method::POST]);
                 }
-                <span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;expected mismatched route to test allow header&quot;</span>),
+                <span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; <span class="macro">panic!</span>(<span class="string">"expected mismatched route to test allow header"</span>),
             },
-            <span class="prelude-val">None </span>=&gt; <span class="macro">panic!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
+            <span class="prelude-val">None </span>=&gt; <span class="macro">panic!</span>(<span class="string">"traversal should have succeeded here"</span>),
         }
 
-        <span class="kw">let </span>rs = RequestPathSegments::new(<span class="string">&quot;/resource/100&quot;</span>);
+        <span class="kw">let </span>rs = RequestPathSegments::new(<span class="string">"/resource/100"</span>);
         <span class="kw">match </span>root.match_node(rs.segments()) {
             <span class="prelude-val">Some</span>((node, _params, _processed)) =&gt; <span class="kw">match </span>node.select_route(<span class="kw-2">&amp;</span>state) {
                 <span class="prelude-val">Err</span>(e) =&gt; {
@@ -1098,19 +1099,19 @@
                     allow_list.sort_by(|a, b| a.as_ref().cmp(b.as_ref()));
                     <span class="macro">assert_eq!</span>(allow_list, <span class="macro">vec!</span>[Method::GET]);
                 }
-                <span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; <span class="macro">panic!</span>(<span class="string">&quot;expected mismatched route to test allow header&quot;</span>),
+                <span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; <span class="macro">panic!</span>(<span class="string">"expected mismatched route to test allow header"</span>),
             },
-            <span class="prelude-val">None </span>=&gt; <span class="macro">panic!</span>(<span class="string">&quot;traversal should have succeeded here&quot;</span>),
+            <span class="prelude-val">None </span>=&gt; <span class="macro">panic!</span>(<span class="string">"traversal should have succeeded here"</span>),
         }
     }
 
     <span class="attr">#[test]
     </span><span class="kw">fn </span>node_traversal_tests() {
         <span class="kw">let </span>pipeline_set = finalize_pipeline_set(new_pipeline_set());
-        <span class="kw">let </span><span class="kw-2">mut </span>root_node_builder = Node::new(<span class="string">&quot;/&quot;</span>, SegmentType::Static);
-        <span class="kw">let </span><span class="kw-2">mut </span>activate_node_builder = Node::new(<span class="string">&quot;activate&quot;</span>, SegmentType::Static);
+        <span class="kw">let </span><span class="kw-2">mut </span>root_node_builder = Node::new(<span class="string">"/"</span>, SegmentType::Static);
+        <span class="kw">let </span><span class="kw-2">mut </span>activate_node_builder = Node::new(<span class="string">"activate"</span>, SegmentType::Static);
 
-        <span class="kw">let </span><span class="kw-2">mut </span>workflow_node = Node::new(<span class="string">&quot;workflow&quot;</span>, SegmentType::Static);
+        <span class="kw">let </span><span class="kw-2">mut </span>workflow_node = Node::new(<span class="string">"workflow"</span>, SegmentType::Static);
         <span class="kw">let </span>route = {
             <span class="kw">let </span>methods = <span class="macro">vec!</span>[Method::GET];
             <span class="kw">let </span>matcher = MethodOnlyRouteMatcher::new(methods);
@@ -1127,8 +1128,8 @@
 
         <span class="kw">let </span>root_node = root_node_builder;
         <span class="kw">match </span>root_node.match_node(<span class="kw-2">&amp;</span>[
-            PercentDecoded::new(<span class="string">&quot;activate&quot;</span>).unwrap(),
-            PercentDecoded::new(<span class="string">&quot;workflow&quot;</span>).unwrap(),
+            PercentDecoded::new(<span class="string">"activate"</span>).unwrap(),
+            PercentDecoded::new(<span class="string">"workflow"</span>).unwrap(),
         ]) {
             <span class="prelude-val">Some</span>((node, _params, processed)) =&gt; {
                 <span class="macro">assert!</span>(node.is_routable());

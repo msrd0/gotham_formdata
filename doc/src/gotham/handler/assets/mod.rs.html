@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gotham-0.7.2/src/handler/assets/mod.rs`."><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-9ee3a5e31a2afa3e.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="gotham" data-themes="" data-resource-suffix="" data-rustdoc-version="1.75.0 (82e1608df 2023-12-21)" data-channel="1.75.0" data-search-js="search-8fbf244ebcf71464.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../../../src-files.js"></script><script defer src="../../../../static.files/main-9dd44ab47b99a0fb.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gotham-0.7.3/src/handler/assets/mod.rs`."><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-ac92e1bbe349e143.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="gotham" data-themes="" data-resource-suffix="" data-rustdoc-version="1.76.0 (07dca489a 2024-02-04)" data-channel="1.76.0" data-search-js="search-2b6ce74ff89ae146.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../../../static.files/storage-f2adc0d6ca4d09fb.js"></script><script defer src="../../../../static.files/src-script-39ed315d46fb705f.js"></script><script defer src="../../../../src-files.js"></script><script defer src="../../../../static.files/main-305769736d49e732.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-feafe1bb7466e4bd.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -849,11 +850,143 @@
 <a href="#849" id="849">849</a>
 <a href="#850" id="850">850</a>
 <a href="#851" id="851">851</a>
+<a href="#852" id="852">852</a>
+<a href="#853" id="853">853</a>
+<a href="#854" id="854">854</a>
+<a href="#855" id="855">855</a>
+<a href="#856" id="856">856</a>
+<a href="#857" id="857">857</a>
+<a href="#858" id="858">858</a>
+<a href="#859" id="859">859</a>
+<a href="#860" id="860">860</a>
+<a href="#861" id="861">861</a>
+<a href="#862" id="862">862</a>
+<a href="#863" id="863">863</a>
+<a href="#864" id="864">864</a>
+<a href="#865" id="865">865</a>
+<a href="#866" id="866">866</a>
+<a href="#867" id="867">867</a>
+<a href="#868" id="868">868</a>
+<a href="#869" id="869">869</a>
+<a href="#870" id="870">870</a>
+<a href="#871" id="871">871</a>
+<a href="#872" id="872">872</a>
+<a href="#873" id="873">873</a>
+<a href="#874" id="874">874</a>
+<a href="#875" id="875">875</a>
+<a href="#876" id="876">876</a>
+<a href="#877" id="877">877</a>
+<a href="#878" id="878">878</a>
+<a href="#879" id="879">879</a>
+<a href="#880" id="880">880</a>
+<a href="#881" id="881">881</a>
+<a href="#882" id="882">882</a>
+<a href="#883" id="883">883</a>
+<a href="#884" id="884">884</a>
+<a href="#885" id="885">885</a>
+<a href="#886" id="886">886</a>
+<a href="#887" id="887">887</a>
+<a href="#888" id="888">888</a>
+<a href="#889" id="889">889</a>
+<a href="#890" id="890">890</a>
+<a href="#891" id="891">891</a>
+<a href="#892" id="892">892</a>
+<a href="#893" id="893">893</a>
+<a href="#894" id="894">894</a>
+<a href="#895" id="895">895</a>
+<a href="#896" id="896">896</a>
+<a href="#897" id="897">897</a>
+<a href="#898" id="898">898</a>
+<a href="#899" id="899">899</a>
+<a href="#900" id="900">900</a>
+<a href="#901" id="901">901</a>
+<a href="#902" id="902">902</a>
+<a href="#903" id="903">903</a>
+<a href="#904" id="904">904</a>
+<a href="#905" id="905">905</a>
+<a href="#906" id="906">906</a>
+<a href="#907" id="907">907</a>
+<a href="#908" id="908">908</a>
+<a href="#909" id="909">909</a>
+<a href="#910" id="910">910</a>
+<a href="#911" id="911">911</a>
+<a href="#912" id="912">912</a>
+<a href="#913" id="913">913</a>
+<a href="#914" id="914">914</a>
+<a href="#915" id="915">915</a>
+<a href="#916" id="916">916</a>
+<a href="#917" id="917">917</a>
+<a href="#918" id="918">918</a>
+<a href="#919" id="919">919</a>
+<a href="#920" id="920">920</a>
+<a href="#921" id="921">921</a>
+<a href="#922" id="922">922</a>
+<a href="#923" id="923">923</a>
+<a href="#924" id="924">924</a>
+<a href="#925" id="925">925</a>
+<a href="#926" id="926">926</a>
+<a href="#927" id="927">927</a>
+<a href="#928" id="928">928</a>
+<a href="#929" id="929">929</a>
+<a href="#930" id="930">930</a>
+<a href="#931" id="931">931</a>
+<a href="#932" id="932">932</a>
+<a href="#933" id="933">933</a>
+<a href="#934" id="934">934</a>
+<a href="#935" id="935">935</a>
+<a href="#936" id="936">936</a>
+<a href="#937" id="937">937</a>
+<a href="#938" id="938">938</a>
+<a href="#939" id="939">939</a>
+<a href="#940" id="940">940</a>
+<a href="#941" id="941">941</a>
+<a href="#942" id="942">942</a>
+<a href="#943" id="943">943</a>
+<a href="#944" id="944">944</a>
+<a href="#945" id="945">945</a>
+<a href="#946" id="946">946</a>
+<a href="#947" id="947">947</a>
+<a href="#948" id="948">948</a>
+<a href="#949" id="949">949</a>
+<a href="#950" id="950">950</a>
+<a href="#951" id="951">951</a>
+<a href="#952" id="952">952</a>
+<a href="#953" id="953">953</a>
+<a href="#954" id="954">954</a>
+<a href="#955" id="955">955</a>
+<a href="#956" id="956">956</a>
+<a href="#957" id="957">957</a>
+<a href="#958" id="958">958</a>
+<a href="#959" id="959">959</a>
+<a href="#960" id="960">960</a>
+<a href="#961" id="961">961</a>
+<a href="#962" id="962">962</a>
+<a href="#963" id="963">963</a>
+<a href="#964" id="964">964</a>
+<a href="#965" id="965">965</a>
+<a href="#966" id="966">966</a>
+<a href="#967" id="967">967</a>
+<a href="#968" id="968">968</a>
+<a href="#969" id="969">969</a>
+<a href="#970" id="970">970</a>
+<a href="#971" id="971">971</a>
+<a href="#972" id="972">972</a>
+<a href="#973" id="973">973</a>
+<a href="#974" id="974">974</a>
+<a href="#975" id="975">975</a>
+<a href="#976" id="976">976</a>
+<a href="#977" id="977">977</a>
+<a href="#978" id="978">978</a>
+<a href="#979" id="979">979</a>
+<a href="#980" id="980">980</a>
+<a href="#981" id="981">981</a>
+<a href="#982" id="982">982</a>
+<a href="#983" id="983">983</a>
 </pre></div><pre class="rust"><code><span class="doccomment">//! Defines handlers for static assets, used by `to_file` and `to_dir` routes.
-//! Both &#39;If-None-Match&#39; (etags) and &#39;If-Modified-Since&#39; are supported to check
+//! Both 'If-None-Match' (etags) and 'If-Modified-Since' are supported to check
 //! file modification.
 //! Side-by-side compressed files for gzip and brotli are supported if enabled
-//! See &#39;FileOptions&#39; for more details.
+//! See 'FileOptions' for more details.
 
 </span><span class="kw">mod </span>accepted_encoding;
 
@@ -868,7 +1001,7 @@
 <span class="kw">use </span>mime_guess::from_path;
 <span class="kw">use </span>serde::Deserialize;
 <span class="kw">use </span>tokio::fs::File;
-<span class="kw">use </span>tokio::io::{AsyncRead, ReadBuf};
+<span class="kw">use </span>tokio::io::{AsyncRead, AsyncSeekExt, ReadBuf};
 
 <span class="kw">use </span><span class="self">self</span>::accepted_encoding::accepted_encodings;
 <span class="kw">use </span><span class="kw">crate</span>::handler::{Handler, HandlerError, HandlerFuture, NewHandler};
@@ -877,6 +1010,7 @@
 
 <span class="kw">use </span>std::convert::From;
 <span class="kw">use </span>std::fs::Metadata;
+<span class="kw">use </span>std::io::{ErrorKind, SeekFrom};
 <span class="kw">use </span>std::iter::FromIterator;
 <span class="kw">use </span>std::mem::MaybeUninit;
 <span class="kw">use </span>std::path::{Component, Path, PathBuf};
@@ -910,9 +1044,9 @@
 /// ```rust
 /// # use gotham::handler::FileOptions;
 ///
-/// let default_options = FileOptions::from(&quot;my_static_path&quot;);
-/// let from_builder = FileOptions::new(&quot;my_static_path&quot;)
-///     .with_cache_control(&quot;public&quot;)
+/// let default_options = FileOptions::from("my_static_path");
+/// let from_builder = FileOptions::new("my_static_path")
+///     .with_cache_control("public")
 ///     .with_gzip(false)
 ///     .with_brotli(false)
 ///     .build();
@@ -935,13 +1069,13 @@
     {
         FileOptions {
             path: PathBuf::from(path),
-            cache_control: <span class="string">&quot;public&quot;</span>.to_string(),
+            cache_control: <span class="string">"public"</span>.to_string(),
             gzip: <span class="bool-val">false</span>,
             brotli: <span class="bool-val">false</span>,
         }
     }
 
-    <span class="doccomment">/// Sets the &quot;cache_control&quot; header in static file responses to the given value.
+    <span class="doccomment">/// Sets the "cache_control" header in static file responses to the given value.
     </span><span class="kw">pub fn </span>with_cache_control(<span class="kw-2">&amp;mut </span><span class="self">self</span>, cache_control: <span class="kw-2">&amp;</span>str) -&gt; <span class="kw-2">&amp;mut </span><span class="self">Self </span>{
         <span class="self">self</span>.cache_control = cache_control.to_owned();
         <span class="self">self
@@ -1057,7 +1191,7 @@
 
     <span class="kw">let </span>(path, encoding) = check_compressed_options(<span class="kw-2">&amp;</span>options, <span class="kw-2">&amp;</span>headers);
 
-    <span class="kw">let </span>response_future = File::open(path).and_then(|file| <span class="kw">async move </span>{
+    <span class="kw">let </span>response_future = File::open(path).and_then(<span class="kw">move </span>|<span class="kw-2">mut </span>file| <span class="kw">async move </span>{
         <span class="kw">let </span>meta = file.metadata().<span class="kw">await</span><span class="question-mark">?</span>;
         <span class="kw">if </span>not_modified(<span class="kw-2">&amp;</span>meta, <span class="kw-2">&amp;</span>headers) {
             <span class="kw">return </span><span class="prelude-val">Ok</span>(hyper::Response::builder()
@@ -1065,8 +1199,19 @@
                 .body(Body::empty())
                 .unwrap());
         }
-        <span class="kw">let </span>len = meta.len();
         <span class="kw">let </span>buf_size = optimal_buf_size(<span class="kw-2">&amp;</span>meta);
+        <span class="kw">let </span>(len, range_start) = <span class="kw">match </span>resolve_range(meta.len(), <span class="kw-2">&amp;</span>headers) {
+            <span class="prelude-val">Ok</span>((len, range_start)) =&gt; (len, range_start),
+            <span class="prelude-val">Err</span>(e) =&gt; {
+                <span class="kw">return </span><span class="prelude-val">Ok</span>(hyper::Response::builder()
+                    .status(StatusCode::RANGE_NOT_SATISFIABLE)
+                    .body(Body::from(e))
+                    .unwrap());
+            }
+        };
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(seek_to) = range_start {
+            file.seek(SeekFrom::Start(seek_to)).<span class="kw">await</span><span class="question-mark">?</span>;
+        };
 
         <span class="kw">let </span>stream = file_stream(file, buf_size, len);
         <span class="kw">let </span>body = Body::wrap_stream(stream.into_stream());
@@ -1081,6 +1226,19 @@
         }
         <span class="kw">if let </span><span class="prelude-val">Some</span>(content_encoding) = encoding {
             response = response.header(CONTENT_ENCODING, content_encoding);
+        }
+
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(range_start) = range_start {
+            <span class="kw">let </span>val = <span class="macro">format!</span>(
+                <span class="string">"bytes {}-{}/{}"</span>,
+                range_start,
+                (range_start + len).saturating_sub(<span class="number">1</span>),
+                meta.len()
+            );
+            response = response.status(StatusCode::PARTIAL_CONTENT).header(
+                CONTENT_RANGE,
+                HeaderValue::from_str(<span class="kw-2">&amp;</span>val).map_err(|e| io::Error::new(ErrorKind::Other, e))<span class="question-mark">?</span>,
+            );
         }
 
         <span class="prelude-val">Ok</span>(response.body(body).unwrap())
@@ -1102,9 +1260,57 @@
         .boxed()
 }
 
+<span class="doccomment">/// Checks for existence of "Range" header and whether it is in supported format
+/// This implementations only supports single part ranges.
+/// Returns a result of length and optional starting position, or an error if range value is invalid
+/// If range header does not exist or is unsupported the length is the whole file length and start position is none.
+</span><span class="kw">fn </span>resolve_range(len: u64, headers: <span class="kw-2">&amp;</span>HeaderMap) -&gt; <span class="prelude-ty">Result</span>&lt;(u64, <span class="prelude-ty">Option</span>&lt;u64&gt;), <span class="kw-2">&amp;</span><span class="lifetime">'static </span>str&gt; {
+    <span class="kw">let </span><span class="prelude-val">Some</span>(range_val) = headers.get(RANGE) <span class="kw">else </span>{
+        <span class="kw">return </span><span class="prelude-val">Ok</span>((len, <span class="prelude-val">None</span>));
+    };
+    range_val
+        .to_str()
+        .ok()
+        .and_then(|range_val| {
+            regex::Regex::new(<span class="string">r"^bytes=(\d*)-(\d*)$"</span>)
+                .unwrap()
+                .captures(range_val)
+                .map(|captures| {
+                    <span class="kw">let </span>begin = captures
+                        .get(<span class="number">1</span>)
+                        .and_then(|digits| digits.as_str().parse::&lt;u64&gt;().ok());
+                    <span class="kw">let </span>end = captures
+                        .get(<span class="number">2</span>)
+                        .and_then(|digits| digits.as_str().parse::&lt;u64&gt;().ok());
+                    <span class="kw">match </span>(begin, end) {
+                        (<span class="prelude-val">Some</span>(begin), <span class="prelude-val">Some</span>(end)) =&gt; {
+                            <span class="kw">let </span>end = cmp::min(end, len.saturating_sub(<span class="number">1</span>));
+                            <span class="kw">if </span>end &lt; begin {
+                                <span class="prelude-val">Err</span>(<span class="string">"invalid range"</span>)
+                            } <span class="kw">else </span>{
+                                <span class="kw">let </span>begin = cmp::min(begin, end);
+                                <span class="prelude-val">Ok</span>(((<span class="number">1 </span>+ end).saturating_sub(begin), <span class="prelude-val">Some</span>(begin)))
+                            }
+                        }
+                        (<span class="prelude-val">Some</span>(begin), <span class="prelude-val">None</span>) =&gt; {
+                            <span class="kw">let </span>end = len.saturating_sub(<span class="number">1</span>);
+                            <span class="kw">let </span>begin = cmp::min(begin, len);
+                            <span class="prelude-val">Ok</span>((<span class="number">1 </span>+ end.saturating_sub(begin), <span class="prelude-val">Some</span>(begin)))
+                        }
+                        (<span class="prelude-val">None</span>, <span class="prelude-val">Some</span>(end)) =&gt; {
+                            <span class="kw">let </span>begin = len.saturating_sub(end);
+                            <span class="prelude-val">Ok</span>((end, <span class="prelude-val">Some</span>(begin)))
+                        }
+                        (<span class="prelude-val">None</span>, <span class="prelude-val">None</span>) =&gt; <span class="prelude-val">Err</span>(<span class="string">"invalid range"</span>),
+                    }
+                })
+        })
+        .unwrap_or(<span class="prelude-val">Ok</span>((len, <span class="prelude-val">None</span>)))
+}
+
 <span class="comment">// Checks for existence of compressed files if `FileOptions` and
-// &quot;Accept-Encoding&quot; headers allow. Returns the final path to read,
-// along with an optional encoding to return as the &quot;Content-Encoding&quot;.
+// "Accept-Encoding" headers allow. Returns the final path to read,
+// along with an optional encoding to return as the "Content-Encoding".
 </span><span class="kw">fn </span>check_compressed_options(
     options: <span class="kw-2">&amp;</span>FileOptions,
     headers: <span class="kw-2">&amp;</span>HeaderMap,
@@ -1120,7 +1326,7 @@
                 })
                 .find_map(|(encoding, ext)| {
                     <span class="kw">let </span>path = options.path.with_file_name(<span class="macro">format!</span>(
-                        <span class="string">&quot;{}.{}&quot;</span>,
+                        <span class="string">"{}.{}"</span>,
                         filename.to_string_lossy(),
                         ext
                     ));
@@ -1137,11 +1343,11 @@
 <span class="comment">// Gets the file extension for the compressed version of a file
 // for a given encoding, if allowed by `FileOptions`.
 </span><span class="kw">fn </span>get_extension(encoding: <span class="kw-2">&amp;</span>str, options: <span class="kw-2">&amp;</span>FileOptions) -&gt; <span class="prelude-ty">Option</span>&lt;String&gt; {
-    <span class="kw">if </span>encoding == <span class="string">&quot;gzip&quot; </span>&amp;&amp; options.gzip {
-        <span class="kw">return </span><span class="prelude-val">Some</span>(<span class="string">&quot;gz&quot;</span>.to_string());
+    <span class="kw">if </span>encoding == <span class="string">"gzip" </span>&amp;&amp; options.gzip {
+        <span class="kw">return </span><span class="prelude-val">Some</span>(<span class="string">"gz"</span>.to_string());
     }
-    <span class="kw">if </span>encoding == <span class="string">&quot;br&quot; </span>&amp;&amp; options.brotli {
-        <span class="kw">return </span><span class="prelude-val">Some</span>(<span class="string">&quot;br&quot;</span>.to_string());
+    <span class="kw">if </span>encoding == <span class="string">"br" </span>&amp;&amp; options.brotli {
+        <span class="kw">return </span><span class="prelude-val">Some</span>(<span class="string">"br"</span>.to_string());
     }
     <span class="prelude-val">None
 </span>}
@@ -1190,7 +1396,7 @@
     metadata.modified().ok().and_then(|modified| {
         modified.duration_since(UNIX_EPOCH).ok().map(|duration| {
             <span class="macro">format!</span>(
-                <span class="string">&quot;W/\&quot;{0:x}-{1:x}.{2:x}\&quot;&quot;</span>,
+                <span class="string">"W/\"{0:x}-{1:x}.{2:x}\""</span>,
                 metadata.len(),
                 duration.as_secs(),
                 duration.subsec_nanos()
@@ -1202,7 +1408,7 @@
 <span class="doccomment">/// Responsible for extracting the file path matched by the glob segment from the URL.
 </span><span class="attr">#[derive(Debug, Deserialize)]
 </span><span class="kw">pub struct </span>FilePathExtractor {
-    <span class="attr">#[serde(rename = <span class="string">&quot;*&quot;</span>)]
+    <span class="attr">#[serde(rename = <span class="string">"*"</span>)]
     </span>parts: Vec&lt;String&gt;,
 }
 
@@ -1236,15 +1442,15 @@
         <span class="kw">let </span><span class="kw-2">mut </span>read_buf = ReadBuf::uninit(dst);
         <span class="kw">let </span>read = Pin::new(<span class="kw-2">&amp;mut </span>f).poll_read(cx, <span class="kw-2">&amp;mut </span>read_buf);
         <span class="macro">ready!</span>(read).map_err(|err| {
-            <span class="macro">debug!</span>(<span class="string">&quot;file read error: {}&quot;</span>, err);
+            <span class="macro">debug!</span>(<span class="string">"file read error: {}"</span>, err);
             err
         })<span class="question-mark">?</span>;
 
         <span class="kw">if </span>read_buf.filled().is_empty() {
-            <span class="macro">debug!</span>(<span class="string">&quot;file read found EOF before expected length&quot;</span>);
+            <span class="macro">debug!</span>(<span class="string">"file read found EOF before expected length"</span>);
             <span class="kw">return </span>Poll::Ready(<span class="prelude-val">Some</span>(<span class="prelude-val">Err</span>(io::Error::new(
                 io::ErrorKind::UnexpectedEof,
-                <span class="string">&quot;file read found EOF before expected length&quot;</span>,
+                <span class="string">"file read found EOF before expected length"</span>,
             ))));
         }
 
@@ -1272,7 +1478,7 @@
 <span class="kw">fn </span>optimal_buf_size(metadata: <span class="kw-2">&amp;</span>Metadata) -&gt; usize {
     <span class="kw">let </span>block_size = get_block_size(metadata);
 
-    <span class="comment">// If file length is smaller than block size, don&#39;t waste space
+    <span class="comment">// If file length is smaller than block size, don't waste space
     // reserving a bigger-than-needed buffer.
     </span>cmp::min(block_size <span class="kw">as </span>u64, metadata.len()) <span class="kw">as </span>usize
 }
@@ -1296,37 +1502,39 @@
     <span class="kw">use </span><span class="kw">crate</span>::test::TestServer;
     <span class="kw">use </span>hyper::header::<span class="kw-2">*</span>;
     <span class="kw">use </span>hyper::StatusCode;
+    <span class="kw">use </span>std::fs::File;
+    <span class="kw">use </span>std::io::{Read, Seek, SeekFrom};
+    <span class="kw">use </span>std::path::PathBuf;
     <span class="kw">use </span>std::{fs, str};
-
     <span class="attr">#[test]
     </span><span class="kw">fn </span>assets_guesses_content_type() {
         <span class="kw">let </span>expected_docs = <span class="macro">vec!</span>[
             (
-                <span class="string">&quot;doc.html&quot;</span>,
-                HeaderValue::from_static(<span class="string">&quot;text/html&quot;</span>),
-                <span class="string">&quot;&lt;html&gt;I am a doc.&lt;/html&gt;&quot;</span>,
+                <span class="string">"doc.html"</span>,
+                HeaderValue::from_static(<span class="string">"text/html"</span>),
+                <span class="string">"&lt;html&gt;I am a doc.&lt;/html&gt;"</span>,
             ),
             (
-                <span class="string">&quot;file.txt&quot;</span>,
-                HeaderValue::from_static(<span class="string">&quot;text/plain&quot;</span>),
-                <span class="string">&quot;I am a file&quot;</span>,
+                <span class="string">"file.txt"</span>,
+                HeaderValue::from_static(<span class="string">"text/plain"</span>),
+                <span class="string">"I am a file"</span>,
             ),
             (
-                <span class="string">&quot;styles/style.css&quot;</span>,
-                HeaderValue::from_static(<span class="string">&quot;text/css&quot;</span>),
-                <span class="string">&quot;.styled { border: none; }&quot;</span>,
+                <span class="string">"styles/style.css"</span>,
+                HeaderValue::from_static(<span class="string">"text/css"</span>),
+                <span class="string">".styled { border: none; }"</span>,
             ),
             (
-                <span class="string">&quot;scripts/script.js&quot;</span>,
-                HeaderValue::from_static(<span class="string">&quot;application/javascript&quot;</span>),
-                <span class="string">&quot;console.log(&#39;I am javascript!&#39;);&quot;</span>,
+                <span class="string">"scripts/script.js"</span>,
+                HeaderValue::from_static(<span class="string">"application/javascript"</span>),
+                <span class="string">"console.log('I am javascript!');"</span>,
             ),
         ];
 
         <span class="kw">for </span>doc <span class="kw">in </span>expected_docs {
             <span class="kw">let </span>response = test_server()
                 .client()
-                .get(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">&quot;http://localhost/{}&quot;</span>, doc.<span class="number">0</span>))
+                .get(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">"http://localhost/{}"</span>, doc.<span class="number">0</span>))
                 .perform()
                 .unwrap();
 
@@ -1342,23 +1550,23 @@
     </span><span class="attr">#[test]
     </span><span class="kw">fn </span>assets_path_traversal() {
         <span class="kw">let </span>traversal_attempts = <span class="macro">vec!</span>[
-            <span class="string">r&quot;../private_files/secret.txt&quot;</span>,
-            <span class="string">r&quot;%2e%2e%2fprivate_files/secret.txt&quot;</span>,
-            <span class="string">r&quot;%2e%2e/private_files/secret.txt&quot;</span>,
-            <span class="string">r&quot;..%2fprivate_files/secret.txt&quot;</span>,
-            <span class="string">r&quot;%2e%2e%5cprivate_files/secret.txt&quot;</span>,
-            <span class="string">r&quot;%2e%2e/private_files/secret.txt&quot;</span>,
-            <span class="string">r&quot;..%5cprivate_files/secret.txt&quot;</span>,
-            <span class="string">r&quot;%252e%252e%255cprivate_files/secret.txt&quot;</span>,
-            <span class="string">r&quot;..%255cprivate_files/secret.txt&quot;</span>,
-            <span class="string">r&quot;..%c0%afprivate_files/secret.txt&quot;</span>,
-            <span class="string">r&quot;..%c1%9cprivate_files/secret.txt&quot;</span>,
-            <span class="string">&quot;/etc/passwd&quot;</span>,
+            <span class="string">r"../private_files/secret.txt"</span>,
+            <span class="string">r"%2e%2e%2fprivate_files/secret.txt"</span>,
+            <span class="string">r"%2e%2e/private_files/secret.txt"</span>,
+            <span class="string">r"..%2fprivate_files/secret.txt"</span>,
+            <span class="string">r"%2e%2e%5cprivate_files/secret.txt"</span>,
+            <span class="string">r"%2e%2e/private_files/secret.txt"</span>,
+            <span class="string">r"..%5cprivate_files/secret.txt"</span>,
+            <span class="string">r"%252e%252e%255cprivate_files/secret.txt"</span>,
+            <span class="string">r"..%255cprivate_files/secret.txt"</span>,
+            <span class="string">r"..%c0%afprivate_files/secret.txt"</span>,
+            <span class="string">r"..%c1%9cprivate_files/secret.txt"</span>,
+            <span class="string">"/etc/passwd"</span>,
         ];
         <span class="kw">for </span>attempt <span class="kw">in </span>traversal_attempts {
             <span class="kw">let </span>response = test_server()
                 .client()
-                .get(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">&quot;http://localhost/{}&quot;</span>, attempt))
+                .get(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">"http://localhost/{}"</span>, attempt))
                 .perform()
                 .unwrap();
 
@@ -1369,21 +1577,21 @@
     <span class="attr">#[test]
     </span><span class="kw">fn </span>assets_single_file() {
         <span class="kw">let </span>test_server = TestServer::new(build_simple_router(|route| {
-            route.get(<span class="string">&quot;/&quot;</span>).to_file(<span class="string">&quot;resources/test/assets/doc.html&quot;</span>)
+            route.get(<span class="string">"/"</span>).to_file(<span class="string">"resources/test/assets/doc.html"</span>)
         }))
         .unwrap();
 
         <span class="kw">let </span>response = test_server
             .client()
-            .get(<span class="string">&quot;http://localhost/&quot;</span>)
+            .get(<span class="string">"http://localhost/"</span>)
             .perform()
             .unwrap();
 
         <span class="macro">assert_eq!</span>(response.status(), StatusCode::OK);
-        <span class="macro">assert_eq!</span>(response.headers().get(CONTENT_TYPE).unwrap(), <span class="string">&quot;text/html&quot;</span>);
+        <span class="macro">assert_eq!</span>(response.headers().get(CONTENT_TYPE).unwrap(), <span class="string">"text/html"</span>);
 
         <span class="kw">let </span>body = response.read_body().unwrap();
-        <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>body[..], <span class="string">b&quot;&lt;html&gt;I am a doc.&lt;/html&gt;&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>body[..], <span class="string">b"&lt;html&gt;I am a doc.&lt;/html&gt;"</span>);
     }
 
     <span class="attr">#[test]
@@ -1391,19 +1599,19 @@
         <span class="kw">use </span>hyper::header::{ETAG, IF_NONE_MATCH};
         <span class="kw">use </span>std::fs::File;
 
-        <span class="kw">let </span>path = <span class="string">&quot;resources/test/assets/doc.html&quot;</span>;
+        <span class="kw">let </span>path = <span class="string">"resources/test/assets/doc.html"</span>;
         <span class="kw">let </span>test_server =
-            TestServer::new(build_simple_router(|route| route.get(<span class="string">&quot;/&quot;</span>).to_file(path))).unwrap();
+            TestServer::new(build_simple_router(|route| route.get(<span class="string">"/"</span>).to_file(path))).unwrap();
 
         <span class="kw">let </span>etag = File::open(path)
             .and_then(|file| file.metadata())
-            .map(|meta| <span class="kw">super</span>::entity_tag(<span class="kw-2">&amp;</span>meta).expect(<span class="string">&quot;entity tag&quot;</span>))
+            .map(|meta| <span class="kw">super</span>::entity_tag(<span class="kw-2">&amp;</span>meta).expect(<span class="string">"entity tag"</span>))
             .unwrap();
 
         <span class="comment">// matching etag
         </span><span class="kw">let </span>response = test_server
             .client()
-            .get(<span class="string">&quot;http://localhost/&quot;</span>)
+            .get(<span class="string">"http://localhost/"</span>)
             .with_header(
                 IF_NONE_MATCH,
                 HeaderValue::from_bytes(etag.as_bytes()).unwrap(),
@@ -1416,8 +1624,8 @@
         <span class="comment">// not matching etag
         </span><span class="kw">let </span>response = test_server
             .client()
-            .get(<span class="string">&quot;http://localhost/&quot;</span>)
-            .with_header(IF_NONE_MATCH, HeaderValue::from_bytes(<span class="string">b&quot;bogus&quot;</span>).unwrap())
+            .get(<span class="string">"http://localhost/"</span>)
+            .with_header(IF_NONE_MATCH, HeaderValue::from_bytes(<span class="string">b"bogus"</span>).unwrap())
             .perform()
             .unwrap();
 
@@ -1435,9 +1643,9 @@
         <span class="kw">use </span>std::fs::File;
         <span class="kw">use </span>std::time::Duration;
 
-        <span class="kw">let </span>path = <span class="string">&quot;resources/test/assets/doc.html&quot;</span>;
+        <span class="kw">let </span>path = <span class="string">"resources/test/assets/doc.html"</span>;
         <span class="kw">let </span>test_server =
-            TestServer::new(build_simple_router(|route| route.get(<span class="string">&quot;/&quot;</span>).to_file(path))).unwrap();
+            TestServer::new(build_simple_router(|route| route.get(<span class="string">"/"</span>).to_file(path))).unwrap();
 
         <span class="kw">let </span>modified = File::open(path)
             .and_then(|file| file.metadata())
@@ -1447,7 +1655,7 @@
         <span class="comment">// if-modified-since a newer date
         </span><span class="kw">let </span>response = test_server
             .client()
-            .get(<span class="string">&quot;http://localhost/&quot;</span>)
+            .get(<span class="string">"http://localhost/"</span>)
             .with_header(
                 IF_MODIFIED_SINCE,
                 HeaderValue::from_bytes(fmt_http_date(modified + Duration::new(<span class="number">5</span>, <span class="number">0</span>)).as_bytes())
@@ -1461,7 +1669,7 @@
         <span class="comment">// if-modified-since a older date
         </span><span class="kw">let </span>response = test_server
             .client()
-            .get(<span class="string">&quot;http://localhost/&quot;</span>)
+            .get(<span class="string">"http://localhost/"</span>)
             .with_header(
                 IF_MODIFIED_SINCE,
                 HeaderValue::from_bytes(fmt_http_date(modified - Duration::new(<span class="number">5</span>, <span class="number">0</span>)).as_bytes())
@@ -1476,9 +1684,9 @@
     <span class="attr">#[test]
     </span><span class="kw">fn </span>assets_with_cache_control() {
         <span class="kw">let </span>router = build_simple_router(|route| {
-            route.get(<span class="string">&quot;/*&quot;</span>).to_dir(
-                FileOptions::new(<span class="string">&quot;resources/test/assets&quot;</span>)
-                    .with_cache_control(<span class="string">&quot;no-cache&quot;</span>)
+            route.get(<span class="string">"/*"</span>).to_dir(
+                FileOptions::new(<span class="string">"resources/test/assets"</span>)
+                    .with_cache_control(<span class="string">"no-cache"</span>)
                     .build(),
             )
         });
@@ -1486,7 +1694,7 @@
 
         <span class="kw">let </span>response = server
             .client()
-            .get(<span class="string">&quot;http://localhost/doc.html&quot;</span>)
+            .get(<span class="string">"http://localhost/doc.html"</span>)
             .perform()
             .unwrap();
 
@@ -1497,18 +1705,18 @@
                 .unwrap()
                 .to_str()
                 .unwrap(),
-            <span class="string">&quot;no-cache&quot;
+            <span class="string">"no-cache"
         </span>);
     }
 
     <span class="attr">#[test]
     </span><span class="kw">fn </span>assets_default_cache_control() {
-        <span class="kw">let </span>router = build_simple_router(|route| route.get(<span class="string">&quot;/*&quot;</span>).to_dir(<span class="string">&quot;resources/test/assets&quot;</span>));
+        <span class="kw">let </span>router = build_simple_router(|route| route.get(<span class="string">"/*"</span>).to_dir(<span class="string">"resources/test/assets"</span>));
         <span class="kw">let </span>server = TestServer::new(router).unwrap();
 
         <span class="kw">let </span>response = server
             .client()
-            .get(<span class="string">&quot;http://localhost/doc.html&quot;</span>)
+            .get(<span class="string">"http://localhost/doc.html"</span>)
             .perform()
             .unwrap();
 
@@ -1519,7 +1727,7 @@
                 .unwrap()
                 .to_str()
                 .unwrap(),
-            <span class="string">&quot;public&quot;
+            <span class="string">"public"
         </span>);
     }
 
@@ -1527,28 +1735,28 @@
     </span><span class="kw">fn </span>assets_compressed_if_accept_and_exists() {
         <span class="kw">let </span>compressed_options = <span class="macro">vec!</span>[
             (
-                <span class="string">&quot;gzip&quot;</span>,
-                <span class="string">&quot;.gz&quot;</span>,
-                FileOptions::new(<span class="string">&quot;resources/test/assets&quot;</span>)
+                <span class="string">"gzip"</span>,
+                <span class="string">".gz"</span>,
+                FileOptions::new(<span class="string">"resources/test/assets"</span>)
                     .with_gzip(<span class="bool-val">true</span>)
                     .build(),
             ),
             (
-                <span class="string">&quot;br&quot;</span>,
-                <span class="string">&quot;.br&quot;</span>,
-                FileOptions::new(<span class="string">&quot;resources/test/assets&quot;</span>)
+                <span class="string">"br"</span>,
+                <span class="string">".br"</span>,
+                FileOptions::new(<span class="string">"resources/test/assets"</span>)
                     .with_brotli(<span class="bool-val">true</span>)
                     .build(),
             ),
         ];
 
         <span class="kw">for </span>(encoding, extension, options) <span class="kw">in </span>compressed_options {
-            <span class="kw">let </span>router = build_simple_router(|route| route.get(<span class="string">&quot;/*&quot;</span>).to_dir(options));
+            <span class="kw">let </span>router = build_simple_router(|route| route.get(<span class="string">"/*"</span>).to_dir(options));
             <span class="kw">let </span>server = TestServer::new(router).unwrap();
 
             <span class="kw">let </span>response = server
                 .client()
-                .get(<span class="string">&quot;http://localhost/doc.html&quot;</span>)
+                .get(<span class="string">"http://localhost/doc.html"</span>)
                 .with_header(ACCEPT_ENCODING, HeaderValue::from_str(encoding).unwrap())
                 .perform()
                 .unwrap();
@@ -1569,11 +1777,11 @@
                     .unwrap()
                     .to_str()
                     .unwrap(),
-                <span class="string">&quot;text/html&quot;
+                <span class="string">"text/html"
             </span>);
 
             <span class="kw">let </span>expected_body =
-                fs::read(<span class="macro">format!</span>(<span class="string">&quot;resources/test/assets/doc.html{}&quot;</span>, extension)).unwrap();
+                fs::read(<span class="macro">format!</span>(<span class="string">"resources/test/assets/doc.html{}"</span>, extension)).unwrap();
             <span class="macro">assert_eq!</span>(response.read_body().unwrap(), expected_body);
         }
     }
@@ -1581,8 +1789,8 @@
     <span class="attr">#[test]
     </span><span class="kw">fn </span>assets_no_compression_if_not_accepted() {
         <span class="kw">let </span>router = build_simple_router(|route| {
-            route.get(<span class="string">&quot;/*&quot;</span>).to_dir(
-                FileOptions::new(<span class="string">&quot;resources/test/assets&quot;</span>)
+            route.get(<span class="string">"/*"</span>).to_dir(
+                FileOptions::new(<span class="string">"resources/test/assets"</span>)
                     .with_gzip(<span class="bool-val">true</span>)
                     .with_brotli(<span class="bool-val">true</span>)
                     .build(),
@@ -1592,8 +1800,8 @@
 
         <span class="kw">let </span>response = server
             .client()
-            .get(<span class="string">&quot;http://localhost/doc.html&quot;</span>)
-            .with_header(ACCEPT_ENCODING, HeaderValue::from_str(<span class="string">&quot;identity&quot;</span>).unwrap())
+            .get(<span class="string">"http://localhost/doc.html"</span>)
+            .with_header(ACCEPT_ENCODING, HeaderValue::from_str(<span class="string">"identity"</span>).unwrap())
             .perform()
             .unwrap();
 
@@ -1605,18 +1813,18 @@
                 .unwrap()
                 .to_str()
                 .unwrap(),
-            <span class="string">&quot;text/html&quot;
+            <span class="string">"text/html"
         </span>);
 
-        <span class="kw">let </span>expected_body = fs::read(<span class="string">&quot;resources/test/assets/doc.html&quot;</span>).unwrap();
+        <span class="kw">let </span>expected_body = fs::read(<span class="string">"resources/test/assets/doc.html"</span>).unwrap();
         <span class="macro">assert_eq!</span>(response.read_body().unwrap(), expected_body);
     }
 
     <span class="attr">#[test]
     </span><span class="kw">fn </span>assets_no_compression_if_not_exists() {
         <span class="kw">let </span>router = build_simple_router(|route| {
-            route.get(<span class="string">&quot;/*&quot;</span>).to_dir(
-                FileOptions::new(<span class="string">&quot;resources/test/assets_uncompressed&quot;</span>)
+            route.get(<span class="string">"/*"</span>).to_dir(
+                FileOptions::new(<span class="string">"resources/test/assets_uncompressed"</span>)
                     .with_gzip(<span class="bool-val">true</span>)
                     .with_brotli(<span class="bool-val">true</span>)
                     .build(),
@@ -1626,9 +1834,9 @@
 
         <span class="kw">let </span>response = server
             .client()
-            .get(<span class="string">&quot;http://localhost/doc.html&quot;</span>)
-            .with_header(ACCEPT_ENCODING, HeaderValue::from_str(<span class="string">&quot;gzip&quot;</span>).unwrap())
-            .with_header(ACCEPT_ENCODING, HeaderValue::from_str(<span class="string">&quot;brotli&quot;</span>).unwrap())
+            .get(<span class="string">"http://localhost/doc.html"</span>)
+            .with_header(ACCEPT_ENCODING, HeaderValue::from_str(<span class="string">"gzip"</span>).unwrap())
+            .with_header(ACCEPT_ENCODING, HeaderValue::from_str(<span class="string">"brotli"</span>).unwrap())
             .perform()
             .unwrap();
 
@@ -1640,18 +1848,18 @@
                 .unwrap()
                 .to_str()
                 .unwrap(),
-            <span class="string">&quot;text/html&quot;
+            <span class="string">"text/html"
         </span>);
 
-        <span class="kw">let </span>expected_body = fs::read(<span class="string">&quot;resources/test/assets_uncompressed/doc.html&quot;</span>).unwrap();
+        <span class="kw">let </span>expected_body = fs::read(<span class="string">"resources/test/assets_uncompressed/doc.html"</span>).unwrap();
         <span class="macro">assert_eq!</span>(response.read_body().unwrap(), expected_body);
     }
 
     <span class="attr">#[test]
     </span><span class="kw">fn </span>assets_weighted_accept_encoding() {
         <span class="kw">let </span>router = build_simple_router(|route| {
-            route.get(<span class="string">&quot;/*&quot;</span>).to_dir(
-                FileOptions::new(<span class="string">&quot;resources/test/assets&quot;</span>)
+            route.get(<span class="string">"/*"</span>).to_dir(
+                FileOptions::new(<span class="string">"resources/test/assets"</span>)
                     .with_gzip(<span class="bool-val">true</span>)
                     .with_brotli(<span class="bool-val">true</span>)
                     .build(),
@@ -1661,10 +1869,10 @@
 
         <span class="kw">let </span>response = server
             .client()
-            .get(<span class="string">&quot;http://localhost/doc.html&quot;</span>)
+            .get(<span class="string">"http://localhost/doc.html"</span>)
             .with_header(
                 ACCEPT_ENCODING,
-                HeaderValue::from_str(<span class="string">&quot;*;q=0.1, br;q=1.0, gzip;q=0.8&quot;</span>).unwrap(),
+                HeaderValue::from_str(<span class="string">"*;q=0.1, br;q=1.0, gzip;q=0.8"</span>).unwrap(),
             )
             .perform()
             .unwrap();
@@ -1676,7 +1884,7 @@
                 .unwrap()
                 .to_str()
                 .unwrap(),
-            <span class="string">&quot;text/html&quot;
+            <span class="string">"text/html"
         </span>);
 
         <span class="macro">assert_eq!</span>(
@@ -1686,14 +1894,71 @@
                 .unwrap()
                 .to_str()
                 .unwrap(),
-            <span class="string">&quot;br&quot;
+            <span class="string">"br"
         </span>);
-        <span class="kw">let </span>expected_body = fs::read(<span class="string">&quot;resources/test/assets/doc.html.br&quot;</span>).unwrap();
+        <span class="kw">let </span>expected_body = fs::read(<span class="string">"resources/test/assets/doc.html.br"</span>).unwrap();
         <span class="macro">assert_eq!</span>(response.read_body().unwrap(), expected_body);
     }
 
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>assets_range_request() {
+        <span class="kw">let </span>root = PathBuf::from(<span class="string">"resources/test/assets"</span>);
+        <span class="kw">let </span>file_name = <span class="string">"doc.html"</span>;
+        <span class="kw">let </span><span class="kw-2">mut </span>file = File::open(root.join(file_name)).unwrap();
+        <span class="kw">let </span>file_len = file.metadata().unwrap().len();
+        <span class="kw">let </span>router = build_simple_router(|route| route.get(<span class="string">"/*"</span>).to_dir(root));
+        <span class="kw">let </span>server = TestServer::new(router).unwrap();
+
+        <span class="kw">let </span>tests = [
+            (<span class="prelude-val">Some</span>(<span class="number">1</span>), <span class="prelude-val">Some</span>(<span class="number">123456789</span>), <span class="number">1</span>, file_len - <span class="number">1</span>),
+            (<span class="prelude-val">None</span>, <span class="prelude-val">Some</span>(<span class="number">5</span>), file_len - <span class="number">5</span>, <span class="number">5</span>),
+            (<span class="prelude-val">Some</span>(<span class="number">5</span>), <span class="prelude-val">None</span>, <span class="number">5</span>, file_len - <span class="number">5</span>),
+            (<span class="prelude-val">Some</span>(<span class="number">5</span>), <span class="prelude-val">Some</span>(<span class="number">5</span>), <span class="number">5</span>, <span class="number">1</span>),
+            (<span class="prelude-val">Some</span>(<span class="number">6</span>), <span class="prelude-val">Some</span>(<span class="number">5</span>), <span class="number">0</span>, <span class="number">0</span>),
+        ];
+
+        <span class="kw">for </span>(range_begin, range_end, range_start, range_len) <span class="kw">in </span>tests {
+            <span class="kw">let </span>range_header = <span class="macro">format!</span>(
+                <span class="string">"bytes={}-{}"</span>,
+                range_begin.map(|i| i.to_string()).unwrap_or(<span class="string">""</span>.to_string()),
+                range_end.map(|i| i.to_string()).unwrap_or(<span class="string">""</span>.to_string())
+            );
+            <span class="kw">let </span>response = server
+                .client()
+                .get(<span class="macro">format!</span>(<span class="string">"http://localhost/{file_name}"</span>))
+                .with_header(RANGE, HeaderValue::from_str(<span class="kw-2">&amp;</span>range_header).unwrap())
+                .perform()
+                .unwrap();
+            <span class="kw">if </span>range_start == <span class="number">0 </span>&amp;&amp; range_len == <span class="number">0 </span>{
+                <span class="macro">assert_eq!</span>(response.status(), StatusCode::RANGE_NOT_SATISFIABLE);
+                <span class="kw">break</span>;
+            }
+            <span class="macro">assert_eq!</span>(response.status(), StatusCode::PARTIAL_CONTENT);
+            file.seek(SeekFrom::Start(range_start)).unwrap();
+
+            <span class="kw">let </span>expected_content_range = <span class="macro">format!</span>(
+                <span class="string">"bytes {}-{}/{}"</span>,
+                range_start,
+                range_start + range_len - <span class="number">1</span>,
+                file_len
+            );
+            <span class="macro">assert_eq!</span>(
+                response
+                    .headers()
+                    .get(CONTENT_RANGE)
+                    .unwrap()
+                    .to_str()
+                    .unwrap(),
+                expected_content_range
+            );
+            <span class="kw">let </span><span class="kw-2">mut </span>expected_body = <span class="macro">vec!</span>[<span class="number">0</span>; range_len <span class="kw">as </span>usize];
+            file.read_exact(<span class="kw-2">&amp;mut </span>expected_body).unwrap();
+            <span class="macro">assert_eq!</span>(response.read_body().unwrap(), expected_body);
+        }
+    }
+
     <span class="kw">fn </span>test_server() -&gt; TestServer {
-        TestServer::new(static_router(<span class="string">&quot;/*&quot;</span>, <span class="string">&quot;resources/test/assets&quot;</span>)).unwrap()
+        TestServer::new(static_router(<span class="string">"/*"</span>, <span class="string">"resources/test/assets"</span>)).unwrap()
     }
 
     <span class="kw">fn </span>static_router(mount: <span class="kw-2">&amp;</span>str, path: <span class="kw-2">&amp;</span>str) -&gt; Router {

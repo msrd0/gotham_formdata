@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gotham-0.7.2/src/router/builder/associated.rs`."><title>associated.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-9ee3a5e31a2afa3e.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="gotham" data-themes="" data-resource-suffix="" data-rustdoc-version="1.75.0 (82e1608df 2023-12-21)" data-channel="1.75.0" data-search-js="search-8fbf244ebcf71464.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../../../src-files.js"></script><script defer src="../../../../static.files/main-9dd44ab47b99a0fb.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gotham-0.7.3/src/router/builder/associated.rs`."><title>associated.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-ac92e1bbe349e143.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="gotham" data-themes="" data-resource-suffix="" data-rustdoc-version="1.76.0 (07dca489a 2024-02-04)" data-channel="1.76.0" data-search-js="search-2b6ce74ff89ae146.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../../../static.files/storage-f2adc0d6ca4d09fb.js"></script><script defer src="../../../../static.files/src-script-39ed315d46fb705f.js"></script><script defer src="../../../../src-files.js"></script><script defer src="../../../../static.files/main-305769736d49e732.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-feafe1bb7466e4bd.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -688,35 +689,35 @@
 
 <span class="doccomment">/// The default type returned when building a single associated route. See
 /// `router::builder::DefineSingleRoute` for an overview of the ways that a route can be specified.
-</span><span class="kw">pub type </span>AssociatedSingleRouteBuilder&lt;<span class="lifetime">&#39;a</span>, M, C, P, PE, QSE&gt; =
-    SingleRouteBuilder&lt;<span class="lifetime">&#39;a</span>, M, C, P, PE, QSE&gt;;
+</span><span class="kw">pub type </span>AssociatedSingleRouteBuilder&lt;<span class="lifetime">'a</span>, M, C, P, PE, QSE&gt; =
+    SingleRouteBuilder&lt;<span class="lifetime">'a</span>, M, C, P, PE, QSE&gt;;
 
 <span class="doccomment">/// Implements the methods required for associating a number of routes with a single path. This is
 /// used by `DrawRoutes::associated`.
-</span><span class="kw">pub struct </span>AssociatedRouteBuilder&lt;<span class="lifetime">&#39;a</span>, M, C, P, PE, QSE&gt;
+</span><span class="kw">pub struct </span>AssociatedRouteBuilder&lt;<span class="lifetime">'a</span>, M, C, P, PE, QSE&gt;
 <span class="kw">where
-    </span>M: RouteMatcher + Send + Sync + <span class="lifetime">&#39;static</span>,
-    C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">&#39;static</span>,
-    P: RefUnwindSafe + Send + Sync + <span class="lifetime">&#39;static</span>,
-    PE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
-    QSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+    </span>M: RouteMatcher + Send + Sync + <span class="lifetime">'static</span>,
+    C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">'static</span>,
+    P: RefUnwindSafe + Send + Sync + <span class="lifetime">'static</span>,
+    PE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">'static</span>,
+    QSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">'static</span>,
 {
-    node_builder: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>Node,
+    node_builder: <span class="kw-2">&amp;</span><span class="lifetime">'a </span><span class="kw-2">mut </span>Node,
     matcher: M,
     pipeline_chain: C,
     pipelines: PipelineSet&lt;P&gt;,
     phantom: PhantomData&lt;(PE, QSE)&gt;,
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, C, P, PE, QSE&gt; AssociatedRouteBuilder&lt;<span class="lifetime">&#39;a</span>, AnyRouteMatcher, C, P, PE, QSE&gt;
+<span class="kw">impl</span>&lt;<span class="lifetime">'a</span>, C, P, PE, QSE&gt; AssociatedRouteBuilder&lt;<span class="lifetime">'a</span>, AnyRouteMatcher, C, P, PE, QSE&gt;
 <span class="kw">where
-    </span>C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">&#39;static</span>,
-    P: RefUnwindSafe + Send + Sync + <span class="lifetime">&#39;static</span>,
-    PE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
-    QSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+    </span>C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">'static</span>,
+    P: RefUnwindSafe + Send + Sync + <span class="lifetime">'static</span>,
+    PE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">'static</span>,
+    QSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">'static</span>,
 {
     <span class="doccomment">/// Create an instance of AssociatedRouteBuilder
-    </span><span class="kw">pub fn </span>new(node_builder: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>Node, pipeline_chain: C, pipelines: PipelineSet&lt;P&gt;) -&gt; <span class="self">Self </span>{
+    </span><span class="kw">pub fn </span>new(node_builder: <span class="kw-2">&amp;</span><span class="lifetime">'a </span><span class="kw-2">mut </span>Node, pipeline_chain: C, pipelines: PipelineSet&lt;P&gt;) -&gt; <span class="self">Self </span>{
         AssociatedRouteBuilder {
             node_builder,
             matcher: AnyRouteMatcher::new(),
@@ -727,13 +728,13 @@
     }
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, M, C, P, PE, QSE&gt; AssociatedRouteBuilder&lt;<span class="lifetime">&#39;a</span>, M, C, P, PE, QSE&gt;
+<span class="kw">impl</span>&lt;<span class="lifetime">'a</span>, M, C, P, PE, QSE&gt; AssociatedRouteBuilder&lt;<span class="lifetime">'a</span>, M, C, P, PE, QSE&gt;
 <span class="kw">where
-    </span>M: RouteMatcher + Send + Sync + <span class="lifetime">&#39;static</span>,
-    C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">&#39;static</span>,
-    P: RefUnwindSafe + Send + Sync + <span class="lifetime">&#39;static</span>,
-    PE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
-    QSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+    </span>M: RouteMatcher + Send + Sync + <span class="lifetime">'static</span>,
+    C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">'static</span>,
+    P: RefUnwindSafe + Send + Sync + <span class="lifetime">'static</span>,
+    PE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">'static</span>,
+    QSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">'static</span>,
 {
     <span class="doccomment">/// Adds aadditional `RouteMatcher` requirements to all subsequently associated routes.
     ///
@@ -756,7 +757,7 @@
     /// build_simple_router(|route| {
     ///     let matcher = AcceptHeaderRouteMatcher::new(vec![mime::APPLICATION_JSON]);
     ///
-    ///     route.associate(&quot;/resource/path&quot;, |assoc| {
+    ///     route.associate("/resource/path", |assoc| {
     ///         let mut assoc = assoc.add_route_matcher(matcher);
     ///
     ///         assoc.get().to(my_handler);
@@ -768,26 +769,26 @@
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #
     /// #   let response = test_server.client()
-    /// #       .get(&quot;https://example.com/resource/path&quot;)
+    /// #       .get("https://example.com/resource/path")
     /// #       .with_header(ACCEPT, mime::APPLICATION_JSON.to_string().parse().unwrap())
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// #
     /// #   let response = test_server.client()
-    /// #       .get(&quot;https://example.com/resource/path&quot;)
+    /// #       .get("https://example.com/resource/path")
     /// #       .with_header(ACCEPT, mime::TEXT_PLAIN.to_string().parse().unwrap())
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::NOT_ACCEPTABLE);
     /// # }
     /// ```
-    </span><span class="kw">pub fn </span>add_route_matcher&lt;<span class="lifetime">&#39;b</span>, NM&gt;(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>,
+    </span><span class="kw">pub fn </span>add_route_matcher&lt;<span class="lifetime">'b</span>, NM&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>,
         matcher: NM,
-    ) -&gt; AssociatedRouteBuilder&lt;<span class="lifetime">&#39;b</span>, AssociatedRouteBuilderMatcher&lt;M, NM&gt;, C, P, PE, QSE&gt;
+    ) -&gt; AssociatedRouteBuilder&lt;<span class="lifetime">'b</span>, AssociatedRouteBuilderMatcher&lt;M, NM&gt;, C, P, PE, QSE&gt;
     <span class="kw">where
-        </span>NM: RouteMatcher + Send + Sync + <span class="lifetime">&#39;static</span>,
+        </span>NM: RouteMatcher + Send + Sync + <span class="lifetime">'static</span>,
     {
         <span class="kw">let </span>matcher = AndRouteMatcher::new(<span class="self">self</span>.matcher.clone(), matcher);
         AssociatedRouteBuilder {
@@ -826,7 +827,7 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.associate(&quot;/resource/:id&quot;, |assoc| {
+    ///     route.associate("/resource/:id", |assoc| {
     ///         let mut assoc = assoc.with_path_extractor::&lt;MyPathExtractor&gt;();
     ///         assoc.get().to(handler);
     ///     });
@@ -836,17 +837,17 @@
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .get(&quot;https://example.com/resource/42&quot;)
+    /// #       .get("https://example.com/resource/42")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">pub fn </span>with_path_extractor&lt;<span class="lifetime">&#39;b</span>, NPE&gt;(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>,
-    ) -&gt; AssociatedRouteBuilder&lt;<span class="lifetime">&#39;b</span>, M, C, P, NPE, QSE&gt;
+    </span><span class="kw">pub fn </span>with_path_extractor&lt;<span class="lifetime">'b</span>, NPE&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>,
+    ) -&gt; AssociatedRouteBuilder&lt;<span class="lifetime">'b</span>, M, C, P, NPE, QSE&gt;
     <span class="kw">where
-        </span>NPE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+        </span>NPE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">'static</span>,
     {
         AssociatedRouteBuilder {
             node_builder: <span class="self">self</span>.node_builder,
@@ -871,7 +872,7 @@
     /// #
     /// fn handler(state: State) -&gt; (State, Response&lt;Body&gt;) {
     ///     // Implementation elided.
-    /// #   assert_eq!(state.borrow::&lt;MyQueryStringExtractor&gt;().val.as_str(), &quot;test_val&quot;);
+    /// #   assert_eq!(state.borrow::&lt;MyQueryStringExtractor&gt;().val.as_str(), "test_val");
     /// #   (state, Response::builder().status(StatusCode::ACCEPTED).body(Body::empty()).unwrap())
     /// }
     ///
@@ -884,7 +885,7 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.associate(&quot;/resource&quot;, |assoc| {
+    ///     route.associate("/resource", |assoc| {
     ///         let mut assoc = assoc.with_query_string_extractor::&lt;MyQueryStringExtractor&gt;();
     ///         assoc.get().to(handler);
     ///     });
@@ -894,17 +895,17 @@
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .get(&quot;https://example.com/resource?val=test_val&quot;)
+    /// #       .get("https://example.com/resource?val=test_val")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">pub fn </span>with_query_string_extractor&lt;<span class="lifetime">&#39;b</span>, NQSE&gt;(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>,
-    ) -&gt; AssociatedRouteBuilder&lt;<span class="lifetime">&#39;b</span>, M, C, P, PE, NQSE&gt;
+    </span><span class="kw">pub fn </span>with_query_string_extractor&lt;<span class="lifetime">'b</span>, NQSE&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>,
+    ) -&gt; AssociatedRouteBuilder&lt;<span class="lifetime">'b</span>, M, C, P, PE, NQSE&gt;
     <span class="kw">where
-        </span>NQSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+        </span>NQSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">'static</span>,
     {
         AssociatedRouteBuilder {
             node_builder: <span class="self">self</span>.node_builder,
@@ -939,7 +940,7 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.associate(&quot;/resource&quot;, |assoc| {
+    ///     route.associate("/resource", |assoc| {
     ///         assoc.request(vec![Method::GET, Method::HEAD, Method::POST]).to(handler);
     ///     });
     /// })
@@ -949,28 +950,28 @@
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #
     /// #   let response = test_server.client()
-    /// #       .get(&quot;https://example.com/resource&quot;)
+    /// #       .get("https://example.com/resource")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// #
     /// #   let response = test_server.client()
-    /// #       .head(&quot;https://example.com/resource&quot;)
+    /// #       .head("https://example.com/resource")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// #
     /// #   let response = test_server.client()
-    /// #       .post(&quot;https://example.com/resource&quot;, b&quot;&quot;.to_vec(), mime::TEXT_PLAIN)
+    /// #       .post("https://example.com/resource", b"".to_vec(), mime::TEXT_PLAIN)
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">pub fn </span>request&lt;<span class="lifetime">&#39;b</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>,
+    </span><span class="kw">pub fn </span>request&lt;<span class="lifetime">'b</span>&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>,
         methods: Vec&lt;Method&gt;,
-    ) -&gt; AssociatedSingleRouteBuilder&lt;<span class="lifetime">&#39;b</span>, AssociatedRouteMatcher&lt;M&gt;, C, P, PE, QSE&gt; {
+    ) -&gt; AssociatedSingleRouteBuilder&lt;<span class="lifetime">'b</span>, AssociatedRouteMatcher&lt;M&gt;, C, P, PE, QSE&gt; {
         <span class="kw">let </span>AssociatedRouteBuilder {
             <span class="kw-2">ref mut </span>node_builder,
             <span class="kw-2">ref </span>matcher,
@@ -1010,7 +1011,7 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.associate(&quot;/resource&quot;, |assoc| {
+    ///     route.associate("/resource", |assoc| {
     ///         assoc.head().to(handler);
     ///     });
     /// })
@@ -1019,15 +1020,15 @@
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .head(&quot;https://example.com/resource&quot;)
+    /// #       .head("https://example.com/resource")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">pub fn </span>head&lt;<span class="lifetime">&#39;b</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>,
-    ) -&gt; AssociatedSingleRouteBuilder&lt;<span class="lifetime">&#39;b</span>, AssociatedRouteMatcher&lt;M&gt;, C, P, PE, QSE&gt; {
+    </span><span class="kw">pub fn </span>head&lt;<span class="lifetime">'b</span>&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>,
+    ) -&gt; AssociatedSingleRouteBuilder&lt;<span class="lifetime">'b</span>, AssociatedRouteMatcher&lt;M&gt;, C, P, PE, QSE&gt; {
         <span class="self">self</span>.request(<span class="macro">vec!</span>[Method::HEAD])
     }
 
@@ -1053,7 +1054,7 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.associate(&quot;/resource&quot;, |assoc| {
+    ///     route.associate("/resource", |assoc| {
     ///         assoc.get_or_head().to(handler);
     ///     });
     /// })
@@ -1063,21 +1064,21 @@
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #
     /// #   let response = test_server.client()
-    /// #       .get(&quot;https://example.com/resource&quot;)
+    /// #       .get("https://example.com/resource")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// #
     /// #   let response = test_server.client()
-    /// #       .head(&quot;https://example.com/resource&quot;)
+    /// #       .head("https://example.com/resource")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">pub fn </span>get_or_head&lt;<span class="lifetime">&#39;b</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>,
-    ) -&gt; AssociatedSingleRouteBuilder&lt;<span class="lifetime">&#39;b</span>, AssociatedRouteMatcher&lt;M&gt;, C, P, PE, QSE&gt; {
+    </span><span class="kw">pub fn </span>get_or_head&lt;<span class="lifetime">'b</span>&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>,
+    ) -&gt; AssociatedSingleRouteBuilder&lt;<span class="lifetime">'b</span>, AssociatedRouteMatcher&lt;M&gt;, C, P, PE, QSE&gt; {
         <span class="self">self</span>.request(<span class="macro">vec!</span>[Method::GET, Method::HEAD])
     }
 
@@ -1103,7 +1104,7 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.associate(&quot;/resource&quot;, |assoc| {
+    ///     route.associate("/resource", |assoc| {
     ///         assoc.get().to(handler);
     ///     });
     /// })
@@ -1112,15 +1113,15 @@
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .get(&quot;https://example.com/resource&quot;)
+    /// #       .get("https://example.com/resource")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">pub fn </span>get&lt;<span class="lifetime">&#39;b</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>,
-    ) -&gt; AssociatedSingleRouteBuilder&lt;<span class="lifetime">&#39;b</span>, AssociatedRouteMatcher&lt;M&gt;, C, P, PE, QSE&gt; {
+    </span><span class="kw">pub fn </span>get&lt;<span class="lifetime">'b</span>&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>,
+    ) -&gt; AssociatedSingleRouteBuilder&lt;<span class="lifetime">'b</span>, AssociatedRouteMatcher&lt;M&gt;, C, P, PE, QSE&gt; {
         <span class="self">self</span>.request(<span class="macro">vec!</span>[Method::GET])
     }
 
@@ -1147,7 +1148,7 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.associate(&quot;/resource&quot;, |assoc| {
+    ///     route.associate("/resource", |assoc| {
     ///         assoc.post().to(handler);
     ///     });
     /// })
@@ -1156,15 +1157,15 @@
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .post(&quot;https://example.com/resource&quot;, b&quot;&quot;.to_vec(), mime::TEXT_PLAIN)
+    /// #       .post("https://example.com/resource", b"".to_vec(), mime::TEXT_PLAIN)
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">pub fn </span>post&lt;<span class="lifetime">&#39;b</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>,
-    ) -&gt; AssociatedSingleRouteBuilder&lt;<span class="lifetime">&#39;b</span>, AssociatedRouteMatcher&lt;M&gt;, C, P, PE, QSE&gt; {
+    </span><span class="kw">pub fn </span>post&lt;<span class="lifetime">'b</span>&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>,
+    ) -&gt; AssociatedSingleRouteBuilder&lt;<span class="lifetime">'b</span>, AssociatedRouteMatcher&lt;M&gt;, C, P, PE, QSE&gt; {
         <span class="self">self</span>.request(<span class="macro">vec!</span>[Method::POST])
     }
 
@@ -1191,7 +1192,7 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.associate(&quot;/resource&quot;, |assoc| {
+    ///     route.associate("/resource", |assoc| {
     ///         assoc.put().to(handler);
     ///     });
     /// })
@@ -1200,15 +1201,15 @@
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .put(&quot;https://example.com/resource&quot;, b&quot;&quot;.to_vec(), mime::TEXT_PLAIN)
+    /// #       .put("https://example.com/resource", b"".to_vec(), mime::TEXT_PLAIN)
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">pub fn </span>put&lt;<span class="lifetime">&#39;b</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>,
-    ) -&gt; AssociatedSingleRouteBuilder&lt;<span class="lifetime">&#39;b</span>, AssociatedRouteMatcher&lt;M&gt;, C, P, PE, QSE&gt; {
+    </span><span class="kw">pub fn </span>put&lt;<span class="lifetime">'b</span>&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>,
+    ) -&gt; AssociatedSingleRouteBuilder&lt;<span class="lifetime">'b</span>, AssociatedRouteMatcher&lt;M&gt;, C, P, PE, QSE&gt; {
         <span class="self">self</span>.request(<span class="macro">vec!</span>[Method::PUT])
     }
 
@@ -1235,7 +1236,7 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.associate(&quot;/resource&quot;, |assoc| {
+    ///     route.associate("/resource", |assoc| {
     ///         assoc.patch().to(handler);
     ///     });
     /// })
@@ -1244,15 +1245,15 @@
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .patch(&quot;https://example.com/resource&quot;, b&quot;&quot;.to_vec(), mime::TEXT_PLAIN)
+    /// #       .patch("https://example.com/resource", b"".to_vec(), mime::TEXT_PLAIN)
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">pub fn </span>patch&lt;<span class="lifetime">&#39;b</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>,
-    ) -&gt; AssociatedSingleRouteBuilder&lt;<span class="lifetime">&#39;b</span>, AssociatedRouteMatcher&lt;M&gt;, C, P, PE, QSE&gt; {
+    </span><span class="kw">pub fn </span>patch&lt;<span class="lifetime">'b</span>&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>,
+    ) -&gt; AssociatedSingleRouteBuilder&lt;<span class="lifetime">'b</span>, AssociatedRouteMatcher&lt;M&gt;, C, P, PE, QSE&gt; {
         <span class="self">self</span>.request(<span class="macro">vec!</span>[Method::PATCH])
     }
 
@@ -1278,7 +1279,7 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.associate(&quot;/resource&quot;, |assoc| {
+    ///     route.associate("/resource", |assoc| {
     ///         assoc.delete().to(handler);
     ///     });
     /// })
@@ -1287,15 +1288,15 @@
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .delete(&quot;https://example.com/resource&quot;)
+    /// #       .delete("https://example.com/resource")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">pub fn </span>delete&lt;<span class="lifetime">&#39;b</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>,
-    ) -&gt; AssociatedSingleRouteBuilder&lt;<span class="lifetime">&#39;b</span>, AssociatedRouteMatcher&lt;M&gt;, C, P, PE, QSE&gt; {
+    </span><span class="kw">pub fn </span>delete&lt;<span class="lifetime">'b</span>&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>,
+    ) -&gt; AssociatedSingleRouteBuilder&lt;<span class="lifetime">'b</span>, AssociatedRouteMatcher&lt;M&gt;, C, P, PE, QSE&gt; {
         <span class="self">self</span>.request(<span class="macro">vec!</span>[Method::DELETE])
     }
 
@@ -1321,7 +1322,7 @@
     /// #
     /// # fn router() -&gt; Router {
     /// build_simple_router(|route| {
-    ///     route.associate(&quot;/resource&quot;, |assoc| {
+    ///     route.associate("/resource", |assoc| {
     ///         assoc.options().to(handler);
     ///     });
     /// })
@@ -1330,15 +1331,15 @@
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .options(&quot;https://example.com/resource&quot;)
+    /// #       .options("https://example.com/resource")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
     /// # }
     /// ```
-    </span><span class="kw">pub fn </span>options&lt;<span class="lifetime">&#39;b</span>&gt;(
-        <span class="kw-2">&amp;</span><span class="lifetime">&#39;b </span><span class="kw-2">mut </span><span class="self">self</span>,
-    ) -&gt; AssociatedSingleRouteBuilder&lt;<span class="lifetime">&#39;b</span>, AssociatedRouteMatcher&lt;M&gt;, C, P, PE, QSE&gt; {
+    </span><span class="kw">pub fn </span>options&lt;<span class="lifetime">'b</span>&gt;(
+        <span class="kw-2">&amp;</span><span class="lifetime">'b </span><span class="kw-2">mut </span><span class="self">self</span>,
+    ) -&gt; AssociatedSingleRouteBuilder&lt;<span class="lifetime">'b</span>, AssociatedRouteMatcher&lt;M&gt;, C, P, PE, QSE&gt; {
         <span class="self">self</span>.request(<span class="macro">vec!</span>[Method::OPTIONS])
     }
 }

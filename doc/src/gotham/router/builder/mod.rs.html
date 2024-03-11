@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gotham-0.7.2/src/router/builder/mod.rs`."><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-9ee3a5e31a2afa3e.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="gotham" data-themes="" data-resource-suffix="" data-rustdoc-version="1.75.0 (82e1608df 2023-12-21)" data-channel="1.75.0" data-search-js="search-8fbf244ebcf71464.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../../../src-files.js"></script><script defer src="../../../../static.files/main-9dd44ab47b99a0fb.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gotham-0.7.3/src/router/builder/mod.rs`."><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-ac92e1bbe349e143.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="gotham" data-themes="" data-resource-suffix="" data-rustdoc-version="1.76.0 (07dca489a 2024-02-04)" data-channel="1.76.0" data-search-js="search-2b6ce74ff89ae146.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../../../static.files/storage-f2adc0d6ca4d09fb.js"></script><script defer src="../../../../static.files/src-script-39ed315d46fb705f.js"></script><script defer src="../../../../src-files.js"></script><script defer src="../../../../static.files/main-305769736d49e732.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-feafe1bb7466e4bd.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -662,8 +663,8 @@
 ///
 /// **Important note**: The `path` passed to the `RouterBuilder` is decomposed
 /// in segments. This means that empty segments and trailing slashes are
-/// removed. Basically `route.get(&quot;/foo//bar/baz/&quot;)` will have the same effect as
-/// `route.get(&quot;/foo/bar/baz&quot;)`
+/// removed. Basically `route.get("/foo//bar/baz/")` will have the same effect as
+/// `route.get("/foo/bar/baz")`
 ///
 /// ```rust
 /// # use hyper::{Body, Response, StatusCode};
@@ -691,14 +692,14 @@
 ///     );
 ///
 ///     build_router(chain, pipelines, |route| {
-///         route.get(&quot;/request/path&quot;).to(my_handler);
+///         route.get("/request/path").to(my_handler);
 ///     })
 /// }
 /// #
 /// # fn main() {
 /// #   let test_server = TestServer::new(router()).unwrap();
 /// #   let response = test_server.client()
-/// #       .get(&quot;https://example.com/request/path&quot;)
+/// #       .get("https://example.com/request/path")
 /// #       .perform()
 /// #       .unwrap();
 /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
@@ -706,8 +707,8 @@
 /// ```
 </span><span class="kw">pub fn </span>build_router&lt;C, P, F&gt;(pipeline_chain: C, pipelines: PipelineSet&lt;P&gt;, f: F) -&gt; Router
 <span class="kw">where
-    </span>C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">&#39;static</span>,
-    P: Send + Sync + <span class="lifetime">&#39;static</span>,
+    </span>C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">'static</span>,
+    P: Send + Sync + <span class="lifetime">'static</span>,
     F: FnOnce(<span class="kw-2">&amp;mut </span>RouterBuilder&lt;C, P&gt;),
 {
     <span class="kw">let </span><span class="kw-2">mut </span>tree = Tree::new();
@@ -748,14 +749,14 @@
 /// #
 /// fn router() -&gt; Router {
 ///     build_simple_router(|route| {
-///         route.get(&quot;/request/path&quot;).to(my_handler);
+///         route.get("/request/path").to(my_handler);
 ///     })
 /// }
 /// #
 /// # fn main() {
 /// #   let test_server = TestServer::new(router()).unwrap();
 /// #   let response = test_server.client()
-/// #       .get(&quot;https://example.com/request/path&quot;)
+/// #       .get("https://example.com/request/path")
 /// #       .perform()
 /// #       .unwrap();
 /// #   assert_eq!(response.status(), StatusCode::ACCEPTED);
@@ -771,21 +772,21 @@
 
 <span class="doccomment">/// The top-level builder which is created by `build_router` and passed to the provided closure.
 /// See the `build_router` function and the `DrawRoutes` trait for usage.
-</span><span class="kw">pub struct </span>RouterBuilder&lt;<span class="lifetime">&#39;a</span>, C, P&gt;
+</span><span class="kw">pub struct </span>RouterBuilder&lt;<span class="lifetime">'a</span>, C, P&gt;
 <span class="kw">where
-    </span>C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">&#39;static</span>,
-    P: Send + Sync + <span class="lifetime">&#39;static</span>,
+    </span>C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">'static</span>,
+    P: Send + Sync + <span class="lifetime">'static</span>,
 {
-    node_builder: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>Node,
+    node_builder: <span class="kw-2">&amp;</span><span class="lifetime">'a </span><span class="kw-2">mut </span>Node,
     pipeline_chain: C,
     pipelines: PipelineSet&lt;P&gt;,
     response_finalizer_builder: ResponseFinalizerBuilder,
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, C, P&gt; RouterBuilder&lt;<span class="lifetime">&#39;a</span>, C, P&gt;
+<span class="kw">impl</span>&lt;<span class="lifetime">'a</span>, C, P&gt; RouterBuilder&lt;<span class="lifetime">'a</span>, C, P&gt;
 <span class="kw">where
-    </span>C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">&#39;static</span>,
-    P: Send + Sync + <span class="lifetime">&#39;static</span>,
+    </span>C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">'static</span>,
+    P: Send + Sync + <span class="lifetime">'static</span>,
 {
     <span class="doccomment">/// Adds a `ResponseExtender` to the `ResponseFinalizer` in the `Router`.
     ///
@@ -808,7 +809,7 @@
     ///     fn extend(&amp;self, state: &amp;mut State, response: &amp;mut Response&lt;Body&gt;) {
     ///         // Extender implementation omitted.
     /// #       let _ = state;
-    /// #       response.headers_mut().insert(WARNING, &quot;299 example.com Deprecated&quot;.parse().unwrap());
+    /// #       response.headers_mut().insert(WARNING, "299 example.com Deprecated".parse().unwrap());
     ///     }
     /// }
     ///
@@ -816,27 +817,27 @@
     ///     build_simple_router(|route| {
     ///         route.add_response_extender(StatusCode::INTERNAL_SERVER_ERROR, MyExtender);
     /// #
-    /// #       route.get(&quot;/&quot;).to(my_handler);
+    /// #       route.get("/").to(my_handler);
     ///     })
     /// }
     /// #
     /// # fn main() {
     /// #   let test_server = TestServer::new(router()).unwrap();
     /// #   let response = test_server.client()
-    /// #       .get(&quot;https://example.com/&quot;)
+    /// #       .get("https://example.com/")
     /// #       .perform()
     /// #       .unwrap();
     /// #   assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
     /// #
     /// #   {
     /// #       let warning = response.headers().get(WARNING).unwrap();
-    /// #       assert_eq!(warning, &quot;299 example.com Deprecated&quot;);
+    /// #       assert_eq!(warning, "299 example.com Deprecated");
     /// #   }
     /// # }
     /// ```
     </span><span class="kw">pub fn </span>add_response_extender&lt;E&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>, status_code: StatusCode, extender: E)
     <span class="kw">where
-        </span>E: ResponseExtender&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+        </span>E: ResponseExtender&lt;Body&gt; + Send + Sync + <span class="lifetime">'static</span>,
     {
         <span class="self">self</span>.response_finalizer_builder
             .add(status_code, Box::new(extender))
@@ -845,37 +846,37 @@
 
 <span class="doccomment">/// A scoped builder, which is created by `DrawRoutes::scope` and passed to the provided closure.
 /// The `DrawRoutes` trait has documentation for using this type.
-</span><span class="kw">pub struct </span>ScopeBuilder&lt;<span class="lifetime">&#39;a</span>, C, P&gt;
+</span><span class="kw">pub struct </span>ScopeBuilder&lt;<span class="lifetime">'a</span>, C, P&gt;
 <span class="kw">where
-    </span>C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">&#39;static</span>,
-    P: Send + Sync + <span class="lifetime">&#39;static</span>,
+    </span>C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">'static</span>,
+    P: Send + Sync + <span class="lifetime">'static</span>,
 {
-    node_builder: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>Node,
+    node_builder: <span class="kw-2">&amp;</span><span class="lifetime">'a </span><span class="kw-2">mut </span>Node,
     pipeline_chain: C,
     pipelines: PipelineSet&lt;P&gt;,
 }
 
 <span class="doccomment">/// A delegated builder, which is created by `DrawRoutes::delegate` and returned. The `DrawRoutes`
 /// trait has documentation for using this type.
-</span><span class="kw">pub struct </span>DelegateRouteBuilder&lt;<span class="lifetime">&#39;a</span>, M, C, P&gt;
+</span><span class="kw">pub struct </span>DelegateRouteBuilder&lt;<span class="lifetime">'a</span>, M, C, P&gt;
 <span class="kw">where
-    </span>M: RouteMatcher + Send + Sync + <span class="lifetime">&#39;static</span>,
-    C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">&#39;static</span>,
-    P: Send + Sync + <span class="lifetime">&#39;static</span>,
+    </span>M: RouteMatcher + Send + Sync + <span class="lifetime">'static</span>,
+    C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">'static</span>,
+    P: Send + Sync + <span class="lifetime">'static</span>,
 {
     matcher: M,
-    node_builder: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>Node,
+    node_builder: <span class="kw-2">&amp;</span><span class="lifetime">'a </span><span class="kw-2">mut </span>Node,
     pipeline_chain: C,
     pipelines: PipelineSet&lt;P&gt;,
 }
 
 <span class="kw">type </span>DelegatedRoute&lt;M&gt; = RouteImpl&lt;M, NoopPathExtractor, NoopQueryStringExtractor&gt;;
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, M, C, P&gt; DelegateRouteBuilder&lt;<span class="lifetime">&#39;a</span>, M, C, P&gt;
+<span class="kw">impl</span>&lt;<span class="lifetime">'a</span>, M, C, P&gt; DelegateRouteBuilder&lt;<span class="lifetime">'a</span>, M, C, P&gt;
 <span class="kw">where
-    </span>M: RouteMatcher + Send + Sync + <span class="lifetime">&#39;static</span>,
-    C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">&#39;static</span>,
-    P: RefUnwindSafe + Send + Sync + <span class="lifetime">&#39;static</span>,
+    </span>M: RouteMatcher + Send + Sync + <span class="lifetime">'static</span>,
+    C: PipelineHandleChain&lt;P&gt; + Copy + Send + Sync + <span class="lifetime">'static</span>,
+    P: RefUnwindSafe + Send + Sync + <span class="lifetime">'static</span>,
 {
     <span class="doccomment">/// Directs the delegated route to the given `Router`.
     </span><span class="kw">pub fn </span>to_router(<span class="self">self</span>, router: Router) {
@@ -891,10 +892,10 @@
     }
 
     <span class="doccomment">/// Adds additional `RouteMatcher` requirements to the current delegate.
-    </span><span class="kw">pub fn </span>add_route_matcher&lt;NM: RouteMatcher + Send + Sync + <span class="lifetime">&#39;static</span>&gt;(
+    </span><span class="kw">pub fn </span>add_route_matcher&lt;NM: RouteMatcher + Send + Sync + <span class="lifetime">'static</span>&gt;(
         <span class="self">self</span>,
         matcher: NM,
-    ) -&gt; DelegateRouteBuilder&lt;<span class="lifetime">&#39;a</span>, AndRouteMatcher&lt;M, NM&gt;, C, P&gt; {
+    ) -&gt; DelegateRouteBuilder&lt;<span class="lifetime">'a</span>, AndRouteMatcher&lt;M, NM&gt;, C, P&gt; {
         DelegateRouteBuilder {
             matcher: AndRouteMatcher::&lt;M, NM&gt;::new(<span class="self">self</span>.matcher, matcher),
             node_builder: <span class="self">self</span>.node_builder,
@@ -906,15 +907,15 @@
 
 <span class="doccomment">/// Implements the traits required to define a single route, after determining which request paths
 /// will be dispatched here. The `DefineSingleRoute` trait has documentation for using this type.
-</span><span class="kw">pub struct </span>SingleRouteBuilder&lt;<span class="lifetime">&#39;a</span>, M, C, P, PE, QSE&gt;
+</span><span class="kw">pub struct </span>SingleRouteBuilder&lt;<span class="lifetime">'a</span>, M, C, P, PE, QSE&gt;
 <span class="kw">where
-    </span>M: RouteMatcher + Send + Sync + <span class="lifetime">&#39;static</span>,
-    C: PipelineHandleChain&lt;P&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
-    P: Send + Sync + <span class="lifetime">&#39;static</span>,
-    PE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
-    QSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+    </span>M: RouteMatcher + Send + Sync + <span class="lifetime">'static</span>,
+    C: PipelineHandleChain&lt;P&gt; + Send + Sync + <span class="lifetime">'static</span>,
+    P: Send + Sync + <span class="lifetime">'static</span>,
+    PE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">'static</span>,
+    QSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">'static</span>,
 {
-    node_builder: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw-2">mut </span>Node,
+    node_builder: <span class="kw-2">&amp;</span><span class="lifetime">'a </span><span class="kw-2">mut </span>Node,
     matcher: M,
     pipeline_chain: C,
     pipelines: PipelineSet&lt;P&gt;,
@@ -922,20 +923,20 @@
 }
 
 <span class="comment">// Trait impls live with the traits.
-</span><span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, M, C, P, PE, QSE&gt; SingleRouteBuilder&lt;<span class="lifetime">&#39;a</span>, M, C, P, PE, QSE&gt;
+</span><span class="kw">impl</span>&lt;<span class="lifetime">'a</span>, M, C, P, PE, QSE&gt; SingleRouteBuilder&lt;<span class="lifetime">'a</span>, M, C, P, PE, QSE&gt;
 <span class="kw">where
-    </span>M: RouteMatcher + Send + Sync + <span class="lifetime">&#39;static</span>,
-    C: PipelineHandleChain&lt;P&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
-    P: Send + Sync + <span class="lifetime">&#39;static</span>,
-    PE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
-    QSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+    </span>M: RouteMatcher + Send + Sync + <span class="lifetime">'static</span>,
+    C: PipelineHandleChain&lt;P&gt; + Send + Sync + <span class="lifetime">'static</span>,
+    P: Send + Sync + <span class="lifetime">'static</span>,
+    PE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">'static</span>,
+    QSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">'static</span>,
 {
     <span class="doccomment">/// Coerces the type of the internal `PhantomData`, to replace an extractor by changing the
     /// type parameter without changing anything else.
-    </span><span class="kw">fn </span>coerce&lt;NPE, NQSE&gt;(<span class="self">self</span>) -&gt; SingleRouteBuilder&lt;<span class="lifetime">&#39;a</span>, M, C, P, NPE, NQSE&gt;
+    </span><span class="kw">fn </span>coerce&lt;NPE, NQSE&gt;(<span class="self">self</span>) -&gt; SingleRouteBuilder&lt;<span class="lifetime">'a</span>, M, C, P, NPE, NQSE&gt;
     <span class="kw">where
-        </span>NPE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
-        NQSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">&#39;static</span>,
+        </span>NPE: PathExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">'static</span>,
+        NQSE: QueryStringExtractor&lt;Body&gt; + Send + Sync + <span class="lifetime">'static</span>,
     {
         SingleRouteBuilder {
             node_builder: <span class="self">self</span>.node_builder,
@@ -1012,7 +1013,7 @@
             <span class="kw">let </span>params = state.take::&lt;SalutationParams&gt;();
             <span class="kw">let </span>response = Response::builder()
                 .status(StatusCode::OK)
-                .body(<span class="macro">format!</span>(<span class="string">&quot;Hello, {}!&quot;</span>, params.name).into())
+                .body(<span class="macro">format!</span>(<span class="string">"Hello, {}!"</span>, params.name).into())
                 .unwrap();
             (state, response)
         }
@@ -1020,7 +1021,7 @@
         <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>globbed(state: State) -&gt; (State, Response&lt;Body&gt;) {
             <span class="kw">let </span>response = Response::builder()
                 .status(StatusCode::OK)
-                .body(<span class="string">&quot;Globbed&quot;</span>.into())
+                .body(<span class="string">"Globbed"</span>.into())
                 .unwrap();
             (state, response)
         }
@@ -1028,7 +1029,7 @@
         <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>delegated(state: State) -&gt; (State, Response&lt;Body&gt;) {
             <span class="kw">let </span>response = Response::builder()
                 .status(StatusCode::OK)
-                .body(<span class="string">&quot;Delegated&quot;</span>.into())
+                .body(<span class="string">"Delegated"</span>.into())
                 .unwrap();
             (state, response)
         }
@@ -1037,7 +1038,7 @@
             <span class="kw">let </span>params = state.take::&lt;SalutationParams&gt;();
             <span class="kw">let </span>response = Response::builder()
                 .status(StatusCode::OK)
-                .body(<span class="macro">format!</span>(<span class="string">&quot;Goodbye, {}!&quot;</span>, params.name).into())
+                .body(<span class="macro">format!</span>(<span class="string">"Goodbye, {}!"</span>, params.name).into())
                 .unwrap();
             (state, response)
         }
@@ -1046,7 +1047,7 @@
             <span class="kw">let </span>params = state.take::&lt;AddParams&gt;();
             <span class="kw">let </span>response = Response::builder()
                 .status(StatusCode::OK)
-                .body(<span class="macro">format!</span>(<span class="string">&quot;{} + {} = {}&quot;</span>, params.x, params.y, params.x + params.y,).into())
+                .body(<span class="macro">format!</span>(<span class="string">"{} + {} = {}"</span>, params.x, params.y, params.x + params.y,).into())
                 .unwrap();
             (state, response)
         }
@@ -1054,7 +1055,7 @@
         <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>trailing_slash(state: State) -&gt; (State, Response&lt;Body&gt;) {
             <span class="kw">let </span>response = Response::builder()
                 .status(StatusCode::OK)
-                .body(<span class="string">&quot;Trailing slash!&quot;</span>.into())
+                .body(<span class="string">"Trailing slash!"</span>.into())
                 .unwrap();
             (state, response)
         }
@@ -1081,7 +1082,7 @@
         <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>show(state: State) -&gt; (State, Response&lt;Body&gt;) {
             <span class="kw">let </span>response = Response::builder()
                 .status(StatusCode::OK)
-                .body(<span class="string">&quot;It&#39;s a resource.&quot;</span>.into())
+                .body(<span class="string">"It's a resource."</span>.into())
                 .unwrap();
             (state, response)
         }
@@ -1118,72 +1119,72 @@
         <span class="kw">let </span>default_pipeline_chain = (default, ());
 
         <span class="kw">let </span>delegated_router = build_simple_router(|route| {
-            route.get(<span class="string">&quot;/b&quot;</span>).to(welcome::delegated);
+            route.get(<span class="string">"/b"</span>).to(welcome::delegated);
         });
 
         <span class="kw">let </span>router = build_router(default_pipeline_chain, pipelines, |route| {
-            route.get(<span class="string">&quot;/&quot;</span>).to(welcome::index);
+            route.get(<span class="string">"/"</span>).to(welcome::index);
 
             route
-                .get(<span class="string">&quot;/hello/:name&quot;</span>)
+                .get(<span class="string">"/hello/:name"</span>)
                 .with_path_extractor::&lt;SalutationParams&gt;()
                 .to(welcome::hello);
 
             route
-                .get(<span class="string">&quot;/hello/:name/*&quot;</span>)
+                .get(<span class="string">"/hello/:name/*"</span>)
                 .with_path_extractor::&lt;SalutationParams&gt;()
                 .to(welcome::globbed);
 
             route
-                .get(<span class="string">&quot;/goodbye/:name:[a-zA-Z]+&quot;</span>)
+                .get(<span class="string">"/goodbye/:name:[a-zA-Z]+"</span>)
                 .with_path_extractor::&lt;SalutationParams&gt;()
                 .to(welcome::goodbye);
 
             route
-                .get(<span class="string">&quot;/add&quot;</span>)
+                .get(<span class="string">"/add"</span>)
                 .with_query_string_extractor::&lt;AddParams&gt;()
                 .to(welcome::add);
 
-            route.get(<span class="string">r&quot;/literal/\:param/\*&quot;</span>).to(welcome::literal);
+            route.get(<span class="string">r"/literal/\:param/\*"</span>).to(welcome::literal);
 
-            route.scope(<span class="string">&quot;/api&quot;</span>, |route| {
-                route.post(<span class="string">&quot;/submit&quot;</span>).to(api::submit);
+            route.scope(<span class="string">"/api"</span>, |route| {
+                route.post(<span class="string">"/submit"</span>).to(api::submit);
             });
 
-            route.associate(<span class="string">&quot;/resource&quot;</span>, |route| {
+            route.associate(<span class="string">"/resource"</span>, |route| {
                 route.post().to(resource::create);
                 route.patch().to(resource::update);
                 route.delete().to(resource::destroy);
                 route.get_or_head().to(resource::show);
             });
 
-            route.delegate(<span class="string">&quot;/delegated&quot;</span>).to_router(delegated_router);
+            route.delegate(<span class="string">"/delegated"</span>).to_router(delegated_router);
 
-            route.get(<span class="string">&quot;/trailing-slash/&quot;</span>).to(welcome::trailing_slash);
+            route.get(<span class="string">"/trailing-slash/"</span>).to(welcome::trailing_slash);
         });
 
         <span class="kw">let </span>new_service = GothamService::new(router);
 
         <span class="kw">let </span>call = <span class="kw">move </span>|req| {
-            <span class="kw">let </span><span class="kw-2">mut </span>service = new_service.connect(<span class="string">&quot;127.0.0.1:10000&quot;</span>.parse().unwrap());
+            <span class="kw">let </span><span class="kw-2">mut </span>service = new_service.connect(<span class="string">"127.0.0.1:10000"</span>.parse().unwrap());
             futures_executor::block_on(service.call(req)).unwrap()
         };
 
-        <span class="kw">let </span>response = call(Request::get(<span class="string">&quot;/&quot;</span>).body(Body::empty()).unwrap());
+        <span class="kw">let </span>response = call(Request::get(<span class="string">"/"</span>).body(Body::empty()).unwrap());
         <span class="macro">assert_eq!</span>(response.status(), StatusCode::OK);
 
-        <span class="kw">let </span>response = call(Request::post(<span class="string">&quot;/api/submit&quot;</span>).body(Body::empty()).unwrap());
+        <span class="kw">let </span>response = call(Request::post(<span class="string">"/api/submit"</span>).body(Body::empty()).unwrap());
         <span class="macro">assert_eq!</span>(response.status(), StatusCode::ACCEPTED);
 
-        <span class="kw">let </span>response = call(Request::get(<span class="string">&quot;/hello/world&quot;</span>).body(Body::empty()).unwrap());
+        <span class="kw">let </span>response = call(Request::get(<span class="string">"/hello/world"</span>).body(Body::empty()).unwrap());
         <span class="macro">assert_eq!</span>(response.status(), StatusCode::OK);
         <span class="kw">let </span>response_bytes = futures_executor::block_on(body::to_bytes(response.into_body()))
             .unwrap()
             .to_vec();
-        <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>String::from_utf8(response_bytes).unwrap(), <span class="string">&quot;Hello, world!&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>String::from_utf8(response_bytes).unwrap(), <span class="string">"Hello, world!"</span>);
 
         <span class="kw">let </span>response = call(
-            Request::get(<span class="string">&quot;/hello/world/more/path/here/handled/by/glob&quot;</span>)
+            Request::get(<span class="string">"/hello/world/more/path/here/handled/by/glob"</span>)
                 .body(Body::empty())
                 .unwrap(),
         );
@@ -1191,68 +1192,68 @@
         <span class="kw">let </span>response_bytes = futures_executor::block_on(body::to_bytes(response.into_body()))
             .unwrap()
             .to_vec();
-        <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>String::from_utf8(response_bytes).unwrap(), <span class="string">&quot;Globbed&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>String::from_utf8(response_bytes).unwrap(), <span class="string">"Globbed"</span>);
 
-        <span class="kw">let </span>response = call(Request::get(<span class="string">&quot;/delegated/b&quot;</span>).body(Body::empty()).unwrap());
+        <span class="kw">let </span>response = call(Request::get(<span class="string">"/delegated/b"</span>).body(Body::empty()).unwrap());
         <span class="macro">assert_eq!</span>(response.status(), StatusCode::OK);
         <span class="kw">let </span>response_bytes = futures_executor::block_on(body::to_bytes(response.into_body()))
             .unwrap()
             .to_vec();
-        <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>String::from_utf8(response_bytes).unwrap(), <span class="string">&quot;Delegated&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>String::from_utf8(response_bytes).unwrap(), <span class="string">"Delegated"</span>);
 
-        <span class="kw">let </span>response = call(Request::get(<span class="string">&quot;/goodbye/world&quot;</span>).body(Body::empty()).unwrap());
+        <span class="kw">let </span>response = call(Request::get(<span class="string">"/goodbye/world"</span>).body(Body::empty()).unwrap());
         <span class="macro">assert_eq!</span>(response.status(), StatusCode::OK);
         <span class="kw">let </span>response_bytes = futures_executor::block_on(body::to_bytes(response.into_body()))
             .unwrap()
             .to_vec();
         <span class="macro">assert_eq!</span>(
             <span class="kw-2">&amp;</span>String::from_utf8(response_bytes).unwrap(),
-            <span class="string">&quot;Goodbye, world!&quot;
+            <span class="string">"Goodbye, world!"
         </span>);
 
-        <span class="kw">let </span>response = call(Request::get(<span class="string">&quot;/goodbye/9875&quot;</span>).body(Body::empty()).unwrap());
+        <span class="kw">let </span>response = call(Request::get(<span class="string">"/goodbye/9875"</span>).body(Body::empty()).unwrap());
         <span class="macro">assert_eq!</span>(response.status(), StatusCode::NOT_FOUND);
 
         <span class="kw">let </span>response = call(
-            Request::get(<span class="string">&quot;/literal/:param/*&quot;</span>)
+            Request::get(<span class="string">"/literal/:param/*"</span>)
                 .body(Body::empty())
                 .unwrap(),
         );
         <span class="macro">assert_eq!</span>(response.status(), StatusCode::CREATED);
 
-        <span class="kw">let </span>response = call(Request::get(<span class="string">&quot;/literal/a/b&quot;</span>).body(Body::empty()).unwrap());
+        <span class="kw">let </span>response = call(Request::get(<span class="string">"/literal/a/b"</span>).body(Body::empty()).unwrap());
         <span class="macro">assert_eq!</span>(response.status(), StatusCode::NOT_FOUND);
 
-        <span class="kw">let </span>response = call(Request::get(<span class="string">&quot;/add?x=16&amp;y=71&quot;</span>).body(Body::empty()).unwrap());
+        <span class="kw">let </span>response = call(Request::get(<span class="string">"/add?x=16&amp;y=71"</span>).body(Body::empty()).unwrap());
         <span class="macro">assert_eq!</span>(response.status(), StatusCode::OK);
         <span class="kw">let </span>response_bytes = futures_executor::block_on(body::to_bytes(response.into_body()))
             .unwrap()
             .to_vec();
-        <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>String::from_utf8(response_bytes).unwrap(), <span class="string">&quot;16 + 71 = 87&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>String::from_utf8(response_bytes).unwrap(), <span class="string">"16 + 71 = 87"</span>);
 
-        <span class="kw">let </span>response = call(Request::post(<span class="string">&quot;/resource&quot;</span>).body(Body::empty()).unwrap());
+        <span class="kw">let </span>response = call(Request::post(<span class="string">"/resource"</span>).body(Body::empty()).unwrap());
         <span class="macro">assert_eq!</span>(response.status(), StatusCode::CREATED);
 
-        <span class="kw">let </span>response = call(Request::patch(<span class="string">&quot;/resource&quot;</span>).body(Body::empty()).unwrap());
+        <span class="kw">let </span>response = call(Request::patch(<span class="string">"/resource"</span>).body(Body::empty()).unwrap());
         <span class="macro">assert_eq!</span>(response.status(), StatusCode::ACCEPTED);
 
-        <span class="kw">let </span>response = call(Request::delete(<span class="string">&quot;/resource&quot;</span>).body(Body::empty()).unwrap());
+        <span class="kw">let </span>response = call(Request::delete(<span class="string">"/resource"</span>).body(Body::empty()).unwrap());
         <span class="macro">assert_eq!</span>(response.status(), StatusCode::ACCEPTED);
 
-        <span class="kw">let </span>response = call(Request::get(<span class="string">&quot;/resource&quot;</span>).body(Body::empty()).unwrap());
+        <span class="kw">let </span>response = call(Request::get(<span class="string">"/resource"</span>).body(Body::empty()).unwrap());
         <span class="macro">assert_eq!</span>(response.status(), StatusCode::OK);
         <span class="kw">let </span>response_bytes = futures_executor::block_on(body::to_bytes(response.into_body()))
             .unwrap()
             .to_vec();
-        <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>response_bytes[..], <span class="string">b&quot;It&#39;s a resource.&quot;</span>);
+        <span class="macro">assert_eq!</span>(<span class="kw-2">&amp;</span>response_bytes[..], <span class="string">b"It's a resource."</span>);
 
         <span class="kw">let </span>response = call(
-            Request::get(<span class="string">&quot;/trailing-slash/&quot;</span>)
+            Request::get(<span class="string">"/trailing-slash/"</span>)
                 .body(Body::empty())
                 .unwrap(),
         );
         <span class="macro">assert_eq!</span>(response.status(), StatusCode::OK);
-        <span class="kw">let </span>response = call(Request::get(<span class="string">&quot;/trailing-slash&quot;</span>).body(Body::empty()).unwrap());
+        <span class="kw">let </span>response = call(Request::get(<span class="string">"/trailing-slash"</span>).body(Body::empty()).unwrap());
         <span class="macro">assert_eq!</span>(response.status(), StatusCode::OK);
     }
 }

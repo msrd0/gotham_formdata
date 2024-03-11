@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/error.rs`."><title>error.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-9ee3a5e31a2afa3e.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gotham_formdata" data-themes="" data-resource-suffix="" data-rustdoc-version="1.75.0 (82e1608df 2023-12-21)" data-channel="1.75.0" data-search-js="search-8fbf244ebcf71464.js" data-settings-js="settings-74424d7eec62a23e.js" ><script src="../../static.files/storage-fec3eaa3851e447d.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-9dd44ab47b99a0fb.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-5d8b3c7633ad77ba.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/error.rs`."><title>error.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-ac92e1bbe349e143.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="gotham_formdata" data-themes="" data-resource-suffix="" data-rustdoc-version="1.76.0 (07dca489a 2024-02-04)" data-channel="1.76.0" data-search-js="search-2b6ce74ff89ae146.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-f2adc0d6ca4d09fb.js"></script><script defer src="../../static.files/src-script-39ed315d46fb705f.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-305769736d49e732.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-feafe1bb7466e4bd.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -69,55 +70,55 @@
 #[non_exhaustive]
 </span><span class="kw">pub enum </span>Error {
 	<span class="doccomment">/// The body of the request could not be read.
-	</span><span class="attr">#[error(<span class="string">&quot;The body of the request could not be read&quot;</span>)]
+	</span><span class="attr">#[error(<span class="string">"The body of the request could not be read"</span>)]
 	</span>IllegalBody(<span class="attr">#[from] </span>gotham::hyper::Error),
 
 	<span class="doccomment">/// The content type of the body was not a valid mime type.
-	</span><span class="attr">#[error(<span class="string">&quot;The &#39;Content-Type&#39; header could not be parsed: {0}&quot;</span>)]
+	</span><span class="attr">#[error(<span class="string">"The 'Content-Type' header could not be parsed: {0}"</span>)]
 	</span>IllegalContentType(<span class="attr">#[from] </span>mime::FromStrError),
 
 	<span class="doccomment">/// The content type of the body contained unreadable bytes.
-	</span><span class="attr">#[error(<span class="string">&quot;The &#39;Content-Type&#39; header could not be parsed: {0}&quot;</span>)]
+	</span><span class="attr">#[error(<span class="string">"The 'Content-Type' header could not be parsed: {0}"</span>)]
 	</span>IllegalContentTypeValue(<span class="attr">#[from] </span>gotham::hyper::header::ToStrError),
 
-	<span class="doccomment">/// The value of a field could not be parsed into that field&#39;s type.
-	</span><span class="attr">#[error(<span class="string">&quot;The field {0} could not be parsed: {1}&quot;</span>)]
+	<span class="doccomment">/// The value of a field could not be parsed into that field's type.
+	</span><span class="attr">#[error(<span class="string">"The field {0} could not be parsed: {1}"</span>)]
 	</span>IllegalField(String, <span class="attr">#[source] </span>anyhow::Error),
 
 	<span class="doccomment">/// The body was parsed but contained data that did not pass validation.
-	</span><span class="attr">#[error(<span class="string">&quot;The body contained invalid data: {0}&quot;</span>)]
+	</span><span class="attr">#[error(<span class="string">"The body contained invalid data: {0}"</span>)]
 	</span>InvalidData(<span class="attr">#[from] </span>ValidationErrors),
 
 	<span class="doccomment">/// An I/O error occured while reading the body.
-	</span><span class="attr">#[error(<span class="string">&quot;I/O Error while reading body: {0}&quot;</span>)]
+	</span><span class="attr">#[error(<span class="string">"I/O Error while reading body: {0}"</span>)]
 	</span>IoError(<span class="attr">#[from] </span>std::io::Error),
 
 	<span class="doccomment">/// The body was a multipart body but did not specify a boundary.
-	</span><span class="attr">#[error(<span class="string">&quot;The request failed to specify the multipart boundary&quot;</span>)]
+	</span><span class="attr">#[error(<span class="string">"The request failed to specify the multipart boundary"</span>)]
 	</span>MissingBoundary,
 
 	<span class="doccomment">/// The request did not specify a content type.
-	</span><span class="attr">#[error(<span class="string">&quot;The request is missing a &#39;Content-Type&#39; header&quot;</span>)]
+	</span><span class="attr">#[error(<span class="string">"The request is missing a 'Content-Type' header"</span>)]
 	</span>MissingContentType,
 
 	<span class="doccomment">/// One of the multipart parts is missing a `Content-Disposition` header.
-	</span><span class="attr">#[error(<span class="string">&quot;Missing a &#39;Content-Disposition&#39; header&quot;</span>)]
+	</span><span class="attr">#[error(<span class="string">"Missing a 'Content-Disposition' header"</span>)]
 	</span>MissingContentDisposition,
 
 	<span class="doccomment">/// The body is missing a required field.
-	</span><span class="attr">#[error(<span class="string">&quot;Missing Field &#39;{0}&#39;&quot;</span>)]
+	</span><span class="attr">#[error(<span class="string">"Missing Field '{0}'"</span>)]
 	</span>MissingField(String),
 
 	<span class="doccomment">/// The multipart format was invalid.
-	</span><span class="attr">#[error(<span class="string">&quot;Multipart error: {0}&quot;</span>)]
+	</span><span class="attr">#[error(<span class="string">"Multipart error: {0}"</span>)]
 	</span>MultipartError(<span class="attr">#[from] </span>multer::Error),
 
-	<span class="doccomment">/// The body&#39;s content type is not supported.
-	</span><span class="attr">#[error(<span class="string">&quot;Unknown &#39;Content-Type&#39; header value: {0}&quot;</span>)]
+	<span class="doccomment">/// The body's content type is not supported.
+	</span><span class="attr">#[error(<span class="string">"Unknown 'Content-Type' header value: {0}"</span>)]
 	</span>UnknownContentType(Mime),
 
 	<span class="doccomment">/// The body contained a field that was not expected.
-	</span><span class="attr">#[error(<span class="string">&quot;Unknown Field &#39;{0}&#39;&quot;</span>)]
+	</span><span class="attr">#[error(<span class="string">"Unknown Field '{0}'"</span>)]
 	</span>UnknownField(String)
 }
 </code></pre></div></section></main></body></html>

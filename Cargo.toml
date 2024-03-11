@@ -8,7 +8,7 @@ name = "gotham_formdata"
 version = "0.0.7"
 authors = ["Dominic Meiser <git@msrd0.de>"]
 edition = "2021"
-rust-version = "1.63.0"
+rust-version = "1.70.0"
 description = "Form data parsing for the gotham web framework"
 keywords = ["gotham", "html", "form", "urlencoded", "multipart"]
 categories = ["web-programming", "web-programming::http-server"]
@@ -29,7 +29,7 @@ multer = "2.0"
 paste = "1.0"
 serde = "1.0"
 thiserror = "1.0"
-validator = "0.16"
+validator = "0.17"
 
 [dev-dependencies]
 futures-executor = "0.3.15"
@@ -37,4 +37,4 @@ gotham = { version = "0.7", features = ["testing"], default-features = false }
 percent-encoding = "2.1"
 pretty_env_logger = "0.5"
 trybuild = "=1.0.89"
-validator = { version = "0.16", features = ["derive"] }
+validator = { version = "0.17", features = ["derive"] }

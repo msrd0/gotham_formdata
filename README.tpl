@@ -20,8 +20,8 @@
 	<a href="https://msrd0.github.io/gotham_formdata/doc/gotham_formdata/index.html">
 		<img alt="docs for main" src="https://img.shields.io/badge/docs-main-blue.svg"/>
 	</a>
-	<a href="https://blog.rust-lang.org/2022/08/11/Rust-1.63.0.html">
-		<img alt="Rust 1.63+" src="https://img.shields.io/badge/rustc-1.63+-orange.svg"/>
+	<a href="https://blog.rust-lang.org/2023/06/01/Rust-1.70.0.html">
+		<img alt="Rust 1.70+" src="https://img.shields.io/badge/rustc-1.63+-orange.svg"/>
 	</a>
 	<a href="https://www.apache.org/licenses/LICENSE-2.0">
 		<img alt="License Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue.svg"/>

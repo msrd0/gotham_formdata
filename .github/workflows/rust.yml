@@ -12,9 +12,12 @@ jobs:
 
       - uses: dtolnay/rust-toolchain@nightly
       - run: cargo -Z minimal-versions update
-      - run: cargo update -p lazy_static
+      - name: Fix -Z minimal-versions
+        run: |
+          cargo update -p darling
+          cargo update -p lazy_static
 
-      - uses: dtolnay/rust-toolchain@1.63.0
+      - uses: dtolnay/rust-toolchain@1.70.0
         id: rust-toolchain
       
       - uses: actions/cache@v4
@@ -36,9 +39,12 @@ jobs:
 
       - uses: dtolnay/rust-toolchain@nightly
       - run: cargo -Z minimal-versions update
-      - run: cargo update -p lazy_static
+      - name: Fix -Z minimal-versions
+        run: |
+          cargo update -p darling
+          cargo update -p lazy_static
 
-      - uses: dtolnay/rust-toolchain@1.63.0
+      - uses: dtolnay/rust-toolchain@1.70.0
         id: rust-toolchain
       
       - uses: actions/cache@v4
@@ -60,7 +66,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@master
         id: rust-toolchain
         with:
-          toolchain: "1.72"
+          toolchain: "1.76"
       
       - uses: actions/cache@v4
         with:

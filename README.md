@@ -40,16 +40,16 @@
 </div>
 <br/>
 
-This crate is an extension to the popular [gotham web framework][gotham] for Rust. It aims to
+This crate is an extension to the popular [gotham web framework][__link0] for Rust. It aims to
 reduce boilerplate necessary to read request bodies today as a stop-gap until gotham finally
-implements a [body extractor].
+implements a [body extractor][__link1].
 
 ## :sparkles: Features
 
-- Parse `application/x-www-form-urlencoded` request bodies
-- Parse `multipart/form-data` request bodies
-- Verify the parsed request body
-- `#![forbid(unsafe_code)]` ensures that all functionality is implemented in 100% safe Rust code
+* Parse `application/x-www-form-urlencoded` request bodies
+* Parse `multipart/form-data` request bodies
+* Verify the parsed request body
+* `#![forbid(unsafe_code)]` ensures that all functionality is implemented in 100% safe Rust code
 
 ## :warning: Warning
 
@@ -87,7 +87,7 @@ the MSRV (minimum supported rust version) is not considered a breaking change.
 
 ## :page_with_curl: License
 
-```
+```text
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -101,6 +101,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
- [body extractor]: https://github.com/gotham-rs/gotham/issues/11
- [gotham]: https://github.com/gotham-rs/gotham
- [multipart]: https://crates.io/crates/multipart
+
+ [__link0]: https://github.com/gotham-rs/gotham
+ [__link1]: https://github.com/gotham-rs/gotham/issues/11

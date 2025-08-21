@@ -72,7 +72,6 @@ limitations under the License.
 
  [body extractor]: https://github.com/gotham-rs/gotham/issues/11
  [gotham]: https://github.com/gotham-rs/gotham
- [multipart]: https://crates.io/crates/multipart
 */
 
 #[doc(inline)]

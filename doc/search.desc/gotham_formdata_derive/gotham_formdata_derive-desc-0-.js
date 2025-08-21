@@ -1,0 +1,1 @@
+searchState.loadedDescShard("gotham_formdata_derive", 0, "This crate implements derive macros for the <code>gotham_formdata</code>…\nThis derive macro implements <code>FormData</code> for the struct it is …")

@@ -1,0 +1,1 @@
+searchState.loadedDescShard("syn_path", 0, "This crate contains the <code>path!</code> macro to turn a path into a …\nA simple macro that can take paths of the form …")
